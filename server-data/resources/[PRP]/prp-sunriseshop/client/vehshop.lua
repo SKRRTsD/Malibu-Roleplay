@@ -112,7 +112,6 @@ local vehshopOwner = {
 			title = "VEHICLES",
 			name = "vehicles",
 			buttons = {
-				{name = "Police", description = ''},
 				{name = "Drift", description = ''},
 				{name = "Imports", description = ''},
 			}
