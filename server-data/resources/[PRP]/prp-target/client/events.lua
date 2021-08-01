@@ -315,7 +315,7 @@ Citizen.CreateThread(
         AddBoxZone("drift_garage", vector3(-128.32, -2534.7, 6.0), 3, 2, {
             name="drift_garage",
             heading=325,
-            debugPoly=true,
+            debugPoly=false,
             minZ=4.8,
             maxZ=8.8
         }, {
