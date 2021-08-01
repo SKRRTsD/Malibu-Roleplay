@@ -36,6 +36,27 @@ Citizen.CreateThread(
             distance = 1.5
         })
 
+        AddCircleZone("pdgarage", vector3(464.51, -1012.59, 28.43), 0.72, {
+            name="pdgarage",
+            debugPoly=false,
+            useZ=true
+            }, {
+                options = {
+                    {
+                        event = "police:buycrownvic",
+                        icon = "fas fa-car",
+                        label = "Buy Crown Vic $5000",
+                    },
+                    {
+                        event = "police:buycharger",
+                        icon = "fas fa-car",
+                        label = "Buy Charger $180000",
+                    },
+                },
+                job = {"police"},
+                distance = 1.5
+            })
+
         AddBoxZone("lspd_evidence",vector3(475.78, -993.94, 26.27), 0.8, 2, {
             name="lspd_evidence",
             heading=90,
