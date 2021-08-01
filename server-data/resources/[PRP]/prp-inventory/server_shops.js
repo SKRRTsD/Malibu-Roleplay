@@ -232,6 +232,7 @@ function Mechanic() {
         { item_id: "repairkit", id: 0, name: "craft", information: "{}", slot: 4, amount: 50 },
         { item_id: "racingusb0", id: 0, name: "craft", information: "{}", slot: 5, amount: 50 },
         { item_id: "racingusb1", id: 0, name: "craft", information: "{}", slot: 6, amount: 50 },
+        { item_id: "drill", id: 0, name: "craft", information: "{}", slot: 7, amount: 50 },
     ];
     return JSON.stringify(shopItems);
 }
