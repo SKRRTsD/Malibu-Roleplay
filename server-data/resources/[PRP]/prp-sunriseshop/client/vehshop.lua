@@ -280,7 +280,13 @@ local vehshopOwner = {
                 {name = "Drift Schwarzer", costs = 125000, description = {}, model = "schwarzer2"},
                 {name = "Drift Ruiner", costs = 130000, description = {}, model = "ruiner6str"},
                 {name = "Drift Sultan", costs = 165000, description = {}, model = "sultanrsv8"},	
-				{name = "Drift Yosemite", costs = 150000, description = {}, model = "yosemite6str"},			
+				{name = "Drift Yosemite", costs = 150000, description = {}, model = "yosemite6str"},	
+				{name = "Drift R34", costs = 200000, description = {}, model = "er34"},	
+				{name = "Drift Evo", costs = 200000, description = {}, model = "evo9"},	
+				{name = "Drift FC RX7", costs = 250000, description = {}, model = "fc3s"},	
+				{name = "Drift Lamborghini Murcielago", costs = 850000, description = {}, model = "lwlp670"},			
+				{name = "Drift BMW", costs = 350000, description = {}, model = "m235"},	
+				{name = "Drift Nis 13", costs = 250000, description = {}, model = "nis13"},			
 			}
 		},
 
