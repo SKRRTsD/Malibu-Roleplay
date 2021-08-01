@@ -254,6 +254,62 @@ Citizen.CreateThread(
             distance = 5.0
         })
 
+        -- Gallery
+        
+        AddBoxZone("gallery_sell", vector3(-485.16, 63.9, 52.41), 5, 1.0, {
+            name="gallery_sell",
+            heading=265,
+            minZ=50.01,
+            maxZ=54.01
+        }, {
+            options = {
+                {
+                    event = "gallery-menu",
+                    parms = "gallery",
+                    icon = "fas fa-dollar-sign",
+                    label = "Open Gallery's Info",
+                },
+            },
+            job = {"gallery"},
+            distance = 3.5
+        })
+
+        AddBoxZone("gallery_stash", vector3(-422.57, 32.25, 46.23), 1, 1.0, {
+            name="gallery_stash",
+            heading=0,
+            minZ=42.43,
+            maxZ=46.43
+        }, {
+            options = {
+                {
+                    event = "open:storage",
+                    parms = "gallery",
+                    icon = "fas fa-dollar-sign",
+                    label = "Open Gallery Stash",
+                },
+            },
+            job = {"gallery"},
+            distance = 3.5
+        })
+
+        AddBoxZone("gallery_tray", vector3(-418.64, 29.02, 46.23), 3, 1, {
+            name="gallery_tray",
+            heading=265,
+            minZ=42.83,
+            maxZ=46.83
+        }, {
+            options = {
+                {
+                    event = "open:tray",
+                    parms = "all",
+                    icon = "fas fa-hand-pointer",
+                    label = "Open Gallery Tray",
+                },
+            },
+            job = {"all"},
+            distance = 3.5
+        })
+
         -- Digital Den
         
         AddBoxZone("digital_den_stash", vector3(1134.64, -466.63, 66.49), 1, 1.8, {

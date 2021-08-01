@@ -721,7 +721,7 @@ end)
 RegisterNetEvent("open:storage")
 AddEventHandler("open:storage", function(shop)
 	local job = exports["prp_manager"]:isPed("myJob")
-	if job == "hayes_autos" or job == "digital_den" or job == "bennys" or job == 'harmony_autos' or job == 'auto_exotics' or job == 'tuner_shop' or job == "best_buds" or job == "bean_machine" or job == "burger_shot" or job == "bahamas_bar" or job == "best_buds" or job == "vanilla_unicorn" or job == "news" or job == "videogeddon_arcade" or job == "car_shop" or job == "sunrise_shop" then
+	if job == "hayes_autos" or job == "gallery" or job == "digital_den" or job == "bennys" or job == 'harmony_autos' or job == 'auto_exotics' or job == 'tuner_shop' or job == "best_buds" or job == "bean_machine" or job == "burger_shot" or job == "bahamas_bar" or job == "best_buds" or job == "vanilla_unicorn" or job == "news" or job == "videogeddon_arcade" or job == "car_shop" or job == "sunrise_shop" then
 		TriggerEvent("server-inventory-open", "1", job);
 		Wait(1000)
 	else
