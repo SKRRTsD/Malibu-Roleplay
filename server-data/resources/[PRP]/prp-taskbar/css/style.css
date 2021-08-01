@@ -2,7 +2,7 @@
 .nicesexytext {
   font-family: "Courier New", Courier, monospace;
   font-weight:0;
-  font-size:17px;
+  font-size:14px;
 
   margin-left:auto;
   margin-right:auto;
@@ -21,10 +21,10 @@
   font-style: normal;
   font-variant: small-caps;
   text-transform: none;
-  /* text-shadow: 1px 1px 1px rgba(1,1,1,1); */
+  text-shadow: 1.5px 1.5px 5px rgba(1,1,1,1);
   position: relative;
   z-index: 99;
-  text-shadow: 1px 1px 2px rgba(0,0,0,1);}
+}
 
 .divwrap {
 	display:none;
@@ -53,7 +53,7 @@
   height: 100%;
   overflow: hidden;
   position: relative;
-  background:#4d86c3;
+  background:#4F7CAC;
   left: 0;
   position: absolute;
   top: 0;
