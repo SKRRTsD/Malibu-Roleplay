@@ -1,6 +1,6 @@
 isRoll = false
 amount = 500
-local DISCORD_WEBHOOK5 = "https://discord.com/api/webhooks/870495192405409824/W36q1j55GFT7iLH91BvRgdN3QvATszTLVhG4jocwaggyPgoloS85EkNXlUNW1E2ZR7y7"
+local DISCORD_WEBHOOK5 = "https://discord.com/api/webhooks/871354519441768488/NcJwDh4Ia7hPNl5L4Y1eVjkC1a74ciLb8j3nGwDJT52r3OsjS1pdBu-nAx3rOX_j4XZU"
 local DISCORD_NAME5 = "Car Winner Logs"
 
 local STEAM_KEY = "0C007CC382AB06D1D99D9B45EC3924B1"

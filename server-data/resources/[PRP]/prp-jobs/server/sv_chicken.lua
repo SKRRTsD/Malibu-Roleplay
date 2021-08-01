@@ -1,4 +1,4 @@
-local DISCORD_WEBHOOK5 = "https://discord.com/api/webhooks/870496970131800095/9CqNt5nrGSg4jY6z5Gcfyet9Ur7Ho9Dqqk0O1Ob3kLCC7ewvMR0HYigkXUfeUAX6xU5g"
+local DISCORD_WEBHOOK5 = "https://discord.com/api/webhooks/871353932608331836/1GZsG1mgsSKtazK7IiNozDK8ednjCpCxHmx8FHsDn1FBKWo3shaNpfiUp9ev8RQPVbxn"
 local DISCORD_NAME5 = "Chicken Selling Logs"
 
 local STEAM_KEY = "0C007CC382AB06D1D99D9B45EC3924B1"

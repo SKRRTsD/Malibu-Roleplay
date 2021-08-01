@@ -1,4 +1,4 @@
-local DISCORD_WEBHOOK5 = "https://discord.com/api/webhooks/870496610583457792/Tu21ayiIkXbFCXHBO-3eXM5Mspod5Sp_ERx084X9_1D53vtzN36rPg-75adKjOaDdF5T"
+local DISCORD_WEBHOOK5 = "https://discord.com/api/webhooks/871354196371316786/kdmHUWKLIwLQUFoMyAmfSjvO8NeaaNIBlK1njB_ydJOZU4Pjh6ueGHv7H39wd4Qsm5KI"
 local DISCORD_NAME5 = "Crack Selling Logs"
 
 local STEAM_KEY = "0C007CC382AB06D1D99D9B45EC3924B1"
