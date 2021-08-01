@@ -1120,12 +1120,12 @@ AddEventHandler("police:buycharger2", function()
 	Citizen.InvokeNative(0xEA386986E786A54F, Citizen.PointerValueIntInitialized(veh))
 
 	FreezeEntityPosition(ped,false)
-	RequestModel('dfd18chgr')
-	while not HasModelLoaded('dfd18chgr') do
+	RequestModel('polchar')
+	while not HasModelLoaded('polchar') do
 		Citizen.Wait(0)
 	end
-	personalvehicle = CreateVehicle('dfd18chgr',451.01538085938, -1019.6835327148, 28.437377929688, 87.874015808105,true,false)
-	SetModelAsNoLongerNeeded('dfd18chgr')
+	personalvehicle = CreateVehicle('polchar',451.01538085938, -1019.6835327148, 28.437377929688, 87.874015808105,true,false)
+	SetModelAsNoLongerNeeded('polcharpolchar')
 
 	SetVehicleOnGroundProperly(personalvehicle)
 
@@ -1137,7 +1137,7 @@ AddEventHandler("police:buycharger2", function()
 	TaskWarpPedIntoVehicle(PlayerPedId(),personalvehicle,-1)
 	SetEntityVisible(ped,true)			
 	local VehicleProps = exports['prp-core']:FetchVehProps(personalvehicle)
-	local name = 'dfd18chgr'
+	local name = 'polchar'
 	TriggerEvent("keys:addNew",personalvehicle, plate)
 	TriggerServerEvent('chargerbuy', plate, name, VehicleProps)
 end)
