@@ -823,3 +823,4 @@ AddEventHandler('Vehicle:Rental', function()
         },
     })
 end)
+

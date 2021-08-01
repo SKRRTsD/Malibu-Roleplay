@@ -321,7 +321,7 @@ Citizen.CreateThread(
         }, {
             options = {
                 {
-                    event = "drift-garage",
+                    event = "drift:garage",
                     parms = "drift_instructor",
                     icon = "fas fa-car",
                     label = "Open Drift School Garage",

@@ -271,7 +271,7 @@ local vehshopOwner = {
 			title = "drift",
 			name = "drift",
 			buttons = {
-				{name = "Sentinel", costs = 80000, description = {}, model = "sentinel6str"},	
+				{name = "Drift Sentinel", costs = 80000, description = {}, model = "sentinel6str"},	
 				{name = "Drift Pigalle", costs = 85000, description = {}, model = "pigalle6str"},
                 {name = "Drift Stratum", costs = 95000, description = {}, model = "stratumc"},
                 {name = "Drift Tampa 5", costs = 110000, description = {}, model = "tampa5"},
