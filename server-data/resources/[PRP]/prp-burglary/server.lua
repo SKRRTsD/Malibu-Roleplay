@@ -22,6 +22,7 @@ local robbableItems = {
   [21] = {chance = 5, id = 'ps5', quantity = 1},
   [22] = {chance = 6, id = 'rolexwatch', math.random(1,5)},
   [23] = {chance = 7, id = 'goldbar', math.random(1,4)},
+  [24] = {chance = 7, id = 'anime', math.random(1,3)},
  }
  
  RegisterServerEvent('houseRobberies:removeLockpick')
