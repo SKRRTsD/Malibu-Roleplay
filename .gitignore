@@ -12,3 +12,4 @@
 *.log
 server-data/cache/
 server
+*.txt
