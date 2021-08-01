@@ -13,3 +13,4 @@
 server-data/cache/
 server
 *.txt
+server-data/polyzone_created_zones.txt
