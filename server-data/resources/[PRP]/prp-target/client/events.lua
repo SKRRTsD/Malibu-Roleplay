@@ -310,6 +310,27 @@ Citizen.CreateThread(
             distance = 3.5
         })
 
+        -- Drift School
+
+        AddBoxZone("drift_garage", vector3(-128.32, -2534.7, 6.0), 3, 2, {
+            name="drift_garage",
+            heading=325,
+            debugPoly=true,
+            minZ=4.8,
+            maxZ=8.8
+        }, {
+            options = {
+                {
+                    event = "drift-garage",
+                    parms = "drift_instructor",
+                    icon = "fas fa-car",
+                    label = "Open Drift School Garage",
+                },
+            },
+            job = {"drift_instructor"},
+            distance = 3.5
+        })
+
         -- Digital Den
         
         AddBoxZone("digital_den_stash", vector3(1134.64, -466.63, 66.49), 1, 1.8, {
