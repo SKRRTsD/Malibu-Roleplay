@@ -1050,6 +1050,97 @@ function CloseCreator(name, veh, price, financed)
 	end)
 end
 
+RegisterNetEvent("police:buycrownvic")
+AddEventHandler("police:buycrownvic", function()
+	if exports["prp_manager"]:isPed("myJob") == 'police' then
+		TriggerServerEvent('police:buycrownvic_sv')
+	else
+		TriggerEvent('DoLongHudText', 'You are not a police officer dumbass!', 2)
+	end
+end)
+
+RegisterNetEvent("police:buycrownvic2")
+AddEventHandler("police:buycrownvic2", function()
+	local vehicle = veh
+	local price = price		
+	local veh = GetVehiclePedIsUsing(ped)
+	local colors = table.pack(GetVehicleColours(veh))
+	local extra_colors = table.pack(GetVehicleExtraColours(veh))
+
+	local mods = {}
+	for i = 0,24 do
+		mods[i] = GetVehicleMod(veh,i)
+	end
+	Citizen.InvokeNative(0xEA386986E786A54F, Citizen.PointerValueIntInitialized(veh))
+
+	FreezeEntityPosition(ped,false)
+	RequestModel('npolvic')
+	while not HasModelLoaded('npolvic') do
+		Citizen.Wait(0)
+	end
+	personalvehicle = CreateVehicle('npolvic',451.01538085938, -1019.6835327148, 28.437377929688, 87.874015808105,true,false)
+	SetModelAsNoLongerNeeded('npolvic')
+
+	SetVehicleOnGroundProperly(personalvehicle)
+
+	local plate = GetVehicleNumberPlateText(personalvehicle)
+	SetVehicleHasBeenOwnedByPlayer(personalvehicle,true)
+	local id = NetworkGetNetworkIdFromEntity(personalvehicle)
+	SetNetworkIdCanMigrate(id, true)
+	Citizen.InvokeNative(0x629BFA74418D6239,Citizen.PointerValueIntInitialized(personalvehicle))
+	TaskWarpPedIntoVehicle(PlayerPedId(),personalvehicle,-1)
+	SetEntityVisible(ped,true)			
+	local VehicleProps = exports['prp-core']:FetchVehProps(personalvehicle)
+	local name = 'polvic'
+	TriggerEvent("keys:addNew",personalvehicle, plate)
+	TriggerServerEvent('crownvicbuy', plate, name, VehicleProps)
+end)
+
+RegisterNetEvent("police:buycharger")
+AddEventHandler("police:buycharger", function()
+	if exports["prp_manager"]:isPed("myJob") == 'police' then
+		TriggerServerEvent('police:buycharger_sv')
+	else
+		TriggerEvent('DoLongHudText', 'You are not a police officer dumbass!', 2)
+	end
+end)
+
+RegisterNetEvent("police:buycharger2")
+AddEventHandler("police:buycharger2", function()
+	local vehicle = veh
+	local price = price		
+	local veh = GetVehiclePedIsUsing(ped)
+	local colors = table.pack(GetVehicleColours(veh))
+	local extra_colors = table.pack(GetVehicleExtraColours(veh))
+
+	local mods = {}
+	for i = 0,24 do
+		mods[i] = GetVehicleMod(veh,i)
+	end
+	Citizen.InvokeNative(0xEA386986E786A54F, Citizen.PointerValueIntInitialized(veh))
+
+	FreezeEntityPosition(ped,false)
+	RequestModel('dfd18chgr')
+	while not HasModelLoaded('dfd18chgr') do
+		Citizen.Wait(0)
+	end
+	personalvehicle = CreateVehicle('dfd18chgr',451.01538085938, -1019.6835327148, 28.437377929688, 87.874015808105,true,false)
+	SetModelAsNoLongerNeeded('dfd18chgr')
+
+	SetVehicleOnGroundProperly(personalvehicle)
+
+	local plate = GetVehicleNumberPlateText(personalvehicle)
+	SetVehicleHasBeenOwnedByPlayer(personalvehicle,true)
+	local id = NetworkGetNetworkIdFromEntity(personalvehicle)
+	SetNetworkIdCanMigrate(id, true)
+	Citizen.InvokeNative(0x629BFA74418D6239,Citizen.PointerValueIntInitialized(personalvehicle))
+	TaskWarpPedIntoVehicle(PlayerPedId(),personalvehicle,-1)
+	SetEntityVisible(ped,true)			
+	local VehicleProps = exports['prp-core']:FetchVehProps(personalvehicle)
+	local name = 'dfd18chgr'
+	TriggerEvent("keys:addNew",personalvehicle, plate)
+	TriggerServerEvent('chargerbuy', plate, name, VehicleProps)
+end)
 
 RegisterNetEvent("carshop:failedpurchase")
 AddEventHandler("carshop:failedpurchase", function()

@@ -116,6 +116,71 @@ AddEventHandler('BuyForVeh', function(platew, name, vehicle, price, financed)
     end)
 end)
 
+RegisterServerEvent('crownvicbuy')
+AddEventHandler('crownvicbuy', function(plate, name, personalvehicle)
+    local src = source
+    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local char = user:getVar("character")
+    local player = user:getVar("hexid")
+    exports.ghmattimysql:execute('INSERT INTO characters_cars (owner, cid, license_plate, name, model, purchase_price, vehicle_state) VALUES (@owner, @cid, @license_plate, @name, @model, @buy_price, @vehicle_state)',{
+        ['@owner']   = player,
+        ['@cid']   =  char.id,
+        ['@license_plate']   = plate,
+        ['@name'] = name,
+        ['@model'] = 'npolvic',
+        ['@purchase_price'] = 5000,
+        ['@data'] = json.encode(personalvehicle),
+        ['@current_garage'] = "Police Department",
+        ['@vehicle_state'] = "Out"
+    })
+end)
+
+RegisterServerEvent('police:buycrownvic_sv')
+AddEventHandler('police:buycrownvic_sv', function()
+    local src = source
+    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local char = user:getVar("character")
+    local money = tonumber(user:getCash())
+    if money >= 5000 then
+        user:removeMoney(5000)
+        TriggerClientEvent('police:buycrownvic2', src)
+    else
+        TriggerClientEvent('DoLongHudText', src, 'You dont have enough money!', 2)
+    end
+end)
+
+RegisterServerEvent('chargerbuy')
+AddEventHandler('chargerbuy', function(plate, name, personalvehicle)
+    local src = source
+    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local char = user:getVar("character")
+    local player = user:getVar("hexid")
+    exports.ghmattimysql:execute('INSERT INTO characters_cars (owner, cid, license_plate, model, data, name, purchase_price, vehicle_state, current_garage) VALUES (@owner, @cid, @license_plate, @model, @data, @name, @purchase_price, @vehicle_state, @current_garage)',{
+        ['@owner']   = player,
+        ['@cid']   =  char.id,
+        ['@license_plate']   = plate,
+         ['@name'] = name,
+        ['@model'] = 'polchar',
+        ['@purchase_price'] = 180000,
+        ['@data'] = json.encode(personalvehicle),
+        ['@current_garage'] = "Police Department",
+        ['@vehicle_state'] = "Out"
+    })
+end)
+
+RegisterServerEvent('police:buycharger_sv')
+AddEventHandler('police:buycharger_sv', function()
+    local src = source
+    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local char = user:getVar("character")
+    local money = tonumber(user:getCash())
+    if money >= 180000 then
+        user:removeMoney(180000)
+        TriggerClientEvent('police:buycharger2', src)
+    else
+        TriggerClientEvent('DoLongHudText', src, 'You dont have enough money!', 2)
+    end
+end)
     
 function updateDisplayVehicles()
     for i=1, #carTable do
