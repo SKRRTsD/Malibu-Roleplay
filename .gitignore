@@ -10,3 +10,5 @@
 *.json
 *.txt
 *.log
+server-data/cache/
+server
