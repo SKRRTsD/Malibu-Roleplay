@@ -347,7 +347,7 @@ local vehshopOwner = {
 				{model = "panamera17turbo", name = "Porsche Panamara Turbo", costs = 600000, description = {}},
 				{model = "por930", name = "1982 Porsche 911 Turbo", costs = 700000, description = {}},
 				{model = "r35", name = "Nissan GTR R35", costs = 650000, description = {}},
-				{model = "rcf", name = "Lexus RC", costs = 400000, description = {}},
+				{model = "rcf", name = "Lexus RC", costs = 80000, description = {}},
 				{model = "regera", name = "2020 Koenigsegg Regera", costs = 800000, description = {}},
 				{model = "s14boss", name = "Rocket Bunny Nissan Silvia", costs = 450000, description = {}},
 				{model = "s15rb", name = "Nissan Silvia S15", costs = 500000, description = {}},
