@@ -4672,7 +4672,7 @@ itemList["drill"] = {
         amount: 1
     }],
     price: 150,
-    weight: 80,
+    weight: 20,
     nonStack: false,
     model: "",
     image: "drill.png",
