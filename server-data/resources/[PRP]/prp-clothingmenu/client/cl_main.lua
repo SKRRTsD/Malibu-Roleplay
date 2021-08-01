@@ -1117,7 +1117,13 @@ RegisterCommand("g0", function(source, args, rawCommand)
     TriggerEvent("facewear:adjust",2,true)
 end, false)
 
+RegisterCommand("e1", function(source, args, rawCommand)
+    TriggerEvent("facewear:adjust",3,false)
+end, false)
 
+RegisterCommand("e0", function(source, args, rawCommand)
+    TriggerEvent("facewear:adjust",3,true)
+end, false)
 
 RegisterCommand("m1", function(source, args, rawCommand)
     TriggerEvent("facewear:adjust",4,false)
@@ -1127,13 +1133,13 @@ RegisterCommand("m0", function(source, args, rawCommand)
     TriggerEvent("facewear:adjust",4,true)
 end, false)
 
--- RegisterCommand("t1", function(source, args, rawCommand)
---     TriggerEvent("facewear:adjust",5,false)
--- end, false)
+RegisterCommand("t1", function(source, args, rawCommand)
+    TriggerEvent("facewear:adjust",5,false)
+end, false)
 
--- RegisterCommand("t0", function(source, args, rawCommand)
---     TriggerEvent("facewear:adjust",5,true)
--- end, false)
+RegisterCommand("t0", function(source, args, rawCommand)
+    TriggerEvent("facewear:adjust",5,true)
+end, false)
 
 RegisterCommand("h1", function(source, args, rawCommand)
     TriggerEvent("facewear:adjust",6,false)
