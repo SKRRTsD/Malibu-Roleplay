@@ -61,7 +61,7 @@ Citizen.CreateThread(function()
                                 DrawMarker(27,Config.SmallBanks[closestBank]["lockers"][k].x, Config.SmallBanks[closestBank]["lockers"][k].y, Config.SmallBanks[closestBank]["lockers"][k].z-0.9, 0, 0, 0, 0, 0, 0, 0.60, 0.60, 0.3, 255,0,0, 60, 0, 0, 2, 0, 0, 0, 0)
 
                                 if dist < 0.5 then
-                                    DrawText3Ds(Config.SmallBanks[closestBank]["lockers"][k].x, Config.SmallBanks[closestBank]["lockers"][k].y, Config.SmallBanks[closestBank]["lockers"][k].z, '[E] - Lockpick')									
+                                    DrawText3Ds(Config.SmallBanks[closestBank]["lockers"][k].x, Config.SmallBanks[closestBank]["lockers"][k].y, Config.SmallBanks[closestBank]["lockers"][k].z, "[E]")									
                                     if IsControlJustPressed(0, Keys["E"]) then
                                         OpenLocker(closestBank, k)
                                     end   
@@ -114,7 +114,7 @@ AddEventHandler('prp-robbery:usb', function()
                 if dist < 1.5 then				
                     if not Config.SmallBanks[closestBank]["isOpened"] then 
                         if exports['prp-inventory']:hasEnoughOfItem('laptop1', 1) and exports['prp-inventory']:hasEnoughOfItem('Gruppe6Card22', 1) and exports['prp-inventory']:hasEnoughOfItem('fcadrive', 1) then
-                            if police >= 3 then
+                            if police >= 0 then
                                 exports['prp-dispatch']:SendAlert("AlertFleecaRobbery")
                                 StartHeistFleecaPanel()
                                 local card = exports["prp-taskbar"]:taskBar(9000,"Hooking up equipment")
@@ -341,7 +341,7 @@ function OpenLocker(bankId, lockerId)
 		-- end
     else
 
-        if exports['prp-inventory']:hasEnoughOfItem('lockpick', 1) then
+        if exports['prp-inventory']:hasEnoughOfItem('drill', 1) then
             local finished = exports["prp-lockpicking"]:lockpick(100,5,2,10)
             if finished == 100 then 
                 FreezeEntityPosition(PlayerPedId(), true)
@@ -363,7 +363,7 @@ function OpenLocker(bankId, lockerId)
                 end
             else
                 TriggerEvent("fleeca:fail")
-                TriggerEvent("DoLongHudText", "You failed to breach into the vault box", 2)
+                TriggerEvent("DoLongHudText", "You failed to breach into the vault box and the Drill bit bent its no good now!", 2)
                 local pSecondChance = math.random(1, 10)
                 if pSecondChance >= 5 then
                     TriggerEvent("DoLongHudText", "You got another shot!")
@@ -414,7 +414,7 @@ end)
 
 RegisterNetEvent("fleeca:fail", function()
     TriggerEvent("DoLongHudText", "Failed", 2)
-    TriggerEvent("inventory:removeItem", "lockpick", 1)
+    TriggerEvent("inventory:removeItem", "drill", 1)
 end)
 
 
