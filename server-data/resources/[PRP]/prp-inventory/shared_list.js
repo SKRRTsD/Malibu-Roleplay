@@ -3429,7 +3429,7 @@ itemList["anime"] = {
     weight: 0,
     nonStack: false,
     model: "",
-    image: "anime-poster.png",
+    image: "prp_anime-poster.png",
     information: "Weebs in uwu",
     deg: false
 }
