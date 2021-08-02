@@ -2996,12 +2996,6 @@ Citizen.CreateThread(
                     label = "Enable/Disable!",
                 },
 
-                {
-                    event = "attempt:change:slot",
-                    icon = "fas fa-adjust",
-                    label = "Enable/Disable Slots!",
-                },
-
 
             },
             job = {"all"},
