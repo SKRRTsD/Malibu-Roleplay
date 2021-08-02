@@ -313,7 +313,7 @@ AddEventHandler('casinoreedeem', function(plate, name, personalvehicle)
         ['@cid']   =  char.id,
         ['@license_plate']   = plate,
         ['@name'] = name,
-        ['@model'] = 'rx7rb',
+        ['@model'] = 'exor',
         ['@purchase_price'] = 5000,
         ['@data'] = json.encode(personalvehicle),
         ['@current_garage'] = "Police Department",
