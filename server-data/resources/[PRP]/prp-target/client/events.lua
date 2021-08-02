@@ -4815,7 +4815,7 @@ Citizen.CreateThread(
                 }, {
                     options = {
                         {
-                            event = "secret:exit",
+                            event = "secret:exit2",
                             icon = "fas fa-circle",
                             label = "Leave"
                         },
