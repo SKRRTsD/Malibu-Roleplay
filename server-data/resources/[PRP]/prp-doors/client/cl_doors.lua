@@ -366,14 +366,14 @@ Citizen.CreateThread(function()
                                     locked, heading = GetStateOfClosestDoorOfType(GetHashKey(targetDoor["doorType"]), doorCoords["x"], doorCoords["y"], doorCoords["z"]) 
                                     heading = math.ceil(heading * 100) 
           
-                                    TriggerEvent('prp-doors:show', 'show', ("%s"):format("LOCKING"))
+                                    -- TriggerEvent('prp-doors:show', 'show', ("%s"):format("LOCKING"))
                                     local dist = #(plyCoords - vector3(targetDoor["x"], targetDoor["y"], targetDoor["z"]))
                                     local dst2 = #(plyCoords - vector3(1830.45, 2607.56, 45.59))
 
                                     if heading < 1.5 and heading > -1.5 then
                                         swingcount = swingcount + 1
                                     end             
-                                    if dist > 150.0 or swingcount > 100 or dst2 < 200.0 then
+                                    if dist > 150.0 or swingcount > 1 or dst2 < 200.0 then
                                         active = false
                                     end
                                 end
@@ -384,9 +384,9 @@ Citizen.CreateThread(function()
                                 local swingcount = 0
                                 while active do
                                     Citizen.Wait(1)
-                                    TriggerEvent('prp-doors:show', 'show', ("%s"):format("UNLOCKING"))
+                                    -- TriggerEvent('prp-doors:show', 'show', ("%s"):format("UNLOCKING"))
                                     swingcount = swingcount + 1
-                                    if swingcount > 100 then
+                                    if swingcount > 1 then
                                         active = false
                                     end
                                 end
