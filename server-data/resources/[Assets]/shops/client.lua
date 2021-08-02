@@ -169,6 +169,19 @@ function setShopBlip()
 	SetBlockingOfNonTemporaryEvents(ped, true)
 	TaskStartScenarioInPlace(ped, "WORLD_HUMAN_CLIPBOARD", 0, true)
 
+	-- Casino Membership
+	modelHash = GetHashKey("a_m_y_smartcaspat_01")
+	RequestModel(modelHash)
+	while not HasModelLoaded(modelHash) do
+		Wait(1)
+	end
+	ped = CreatePed(0, modelHash , 929.20233154297, 35.924045562744, 81.095741271973 -1,true)
+	FreezeEntityPosition(ped, true)
+	SetEntityHeading(ped,  351.65298461914)
+	SetEntityInvincible(ped, true)
+	SetBlockingOfNonTemporaryEvents(ped, true)
+	TaskStartScenarioInPlace(ped, "WORLD_HUMAN_CLIPBOARD", 0, true)
+
 	-- Ammunation Ped
 	modelHash = GetHashKey("a_m_m_hillbilly_01")
 	RequestModel(modelHash)
