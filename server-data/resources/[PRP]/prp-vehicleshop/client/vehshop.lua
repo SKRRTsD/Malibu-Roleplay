@@ -1058,7 +1058,7 @@ AddEventHandler("casino:reedeem", function()
 		TriggerEvent("inventory:removeItem","casinofob", 1)       
 		TriggerServerEvent('casino:reedeem_sv')
 	else
-		TriggerEvent('DoLongHudText', 'You aint got a fob!', 2)
+		TriggerEvent('DoLongHudText', 'You aint got a fob! Go win one on the wheel', 2)
 	end
 end)
 

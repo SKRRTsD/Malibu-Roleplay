@@ -3707,7 +3707,6 @@ Citizen.CreateThread(
         AddBoxZone("casino_car", vector3(909.41, 50.69, 80.9), 0.7, 0.5, {
             name="casino_car",
             heading=355,
-            debugPoly=true,
             minZ=77.9,
             maxZ=81.9
         }, {
