@@ -10445,7 +10445,7 @@ itemList["thermalcharge"] = {
 
 itemList["jimpass"] = {
     fullyDegrades: false,
-    decayrate: 1,
+    decayrate: 0.1,
     displayname: "Jim Pass",
     price: 5000,
     weight: 10,
