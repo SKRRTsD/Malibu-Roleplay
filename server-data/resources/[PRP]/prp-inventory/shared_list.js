@@ -179,7 +179,7 @@ itemList["-771403250"] = {
     weight: 13,
     nonStack: true,
     model: "",
-    image: "weapon_heavypistol.png",
+    image: "heavy-pistol.png",
     weapon: true,
     deg: true
 }
@@ -705,7 +705,7 @@ itemList["3523564046"] = {
     weight: 13,
     nonStack: true,
     model: "",
-    image: "weapon_heavypistol.png",
+    image: "heavy-pistol.png",
     weapon: true,
     deg: true
 }
@@ -1564,7 +1564,7 @@ itemList["joint"] = {
     weight: 1,
     nonStack: false,
     model: "",
-    image: "joint.png",
+    image: "prp_joint.png",
     information: "Its a Joint, man. ",
     deg: false
 }
