@@ -190,7 +190,7 @@ AddEventHandler('prp_luckywheel:getLucky', function(money)
                 TriggerClientEvent("prp_luckywheel:doRoll", -1, _priceIndex)
             else
                 TriggerClientEvent("prp_luckywheel:rollFinished", -1)  
-                TriggerClientEvent('DoLongHudText', src, "You Need some cash FOO!", 2)
+                TriggerClientEvent('DoLongHudText', src, "You Need some cash Dummie!", 2)
             end
         end
     end
