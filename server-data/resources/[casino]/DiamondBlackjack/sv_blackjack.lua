@@ -29,6 +29,7 @@ function giveChips(source,amount)
     local src = source
     local user = exports["prp-core"]:getModule("Player"):GetUser(src)
     user:addMoney(amount)
+    exports["prp-banking"]:UpdateSociety(amount, "casino_dealer", "add")
 end
 
 AddEventHandler('playerDropped', function (reason)
