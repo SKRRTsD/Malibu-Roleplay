@@ -74,9 +74,10 @@ Citizen.CreateThread(function()
 	SetEntityHeading(atm,GetEntityHeading(atm)+222.0)
 end)
 
----casino--
+--Casino--
 RegisterNetEvent('casino:enter')
 AddEventHandler('casino:enter', function()
+  if exports["prp-inventory"]:hasEnoughOfItem("casinomembership",1,false) then 
 	TriggerServerEvent("casino_enter")
 	DoScreenFadeOut(1)
 	Citizen.Wait(100)
@@ -90,6 +91,9 @@ AddEventHandler('casino:enter', function()
 	SetEntityHeading(PlayerPedId(), 0.0)
 	DoScreenFadeIn(1000)
 	Citizen.Wait(1000)
+  else
+    TriggerEvent("DoLongHudText","You do not have a membership for the casino!",2)
+  end
 end)
 
 RegisterNetEvent('casino:exit')
