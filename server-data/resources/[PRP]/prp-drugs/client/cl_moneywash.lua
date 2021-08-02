@@ -1,5 +1,3 @@
--- Coded by big daddy sk1c2
-
 RegisterNetEvent('sk1c2:entersecret')
 AddEventHandler('sk1c2:entersecret', function()
         ExecuteCommand('e lapdance')
