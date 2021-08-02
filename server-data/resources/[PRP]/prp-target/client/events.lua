@@ -3721,17 +3721,17 @@ Citizen.CreateThread(
             distance = 3.0
         })
 
-        AddBoxZone("casino_membership", vector3(930.32, 36.81, 81.1), 0.5, 3.1, {
+        AddBoxZone("casino_membership", vector3(929.25, 36.06, 81.1), 0.7, 0.7, {
             name="casino_membership",
-            heading=0,
-            minZ=77.1,
-            maxZ=81.1
+            heading=355,
+            minZ=78.1,
+            maxZ=82.1
         }, {
             options = {
                 {
-                    event = 'casino:memb',
+                    event = 'casino-menu',
                     icon = "fas fa-circle",
-                    label = "Grab Membership!"
+                    label = "Casino Actions!"
                 }
             },
             job = {"casino_dealer"},
