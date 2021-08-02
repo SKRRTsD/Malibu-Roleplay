@@ -24,6 +24,8 @@ local blips = {
     {id = "sellturtles", name = "Sell Turtles", scale = 0.5, color = 1, sprite = 465, x = -1082.0241699219, y= -315.50793457031, z= 37.823421478271},
     {id = "bestbuds", name = "Best Buds", scale = 0.5, color = 2, sprite = 469, x = 376.20977783203, y= -828.07543945312, z= 29.302406311035},
     {id = "garbage", name = "Garbage Depo", scale = 0.5, color = 5, sprite = 318, x = -321.43109130859, y= -1545.6550292969, z= 31.021816253662},
+    {id = "casino", name = "Diamond Casino", scale = 0.5, color = 5, sprite = 500, x = 922.79058837891, y= 56.141410827637, z= 80.893363952637},
+    {id = "gallery", name = "Gallery", scale = 0.5, color = 0, sprite = 606, x = -424.94924926758, y= 23.275018692017, z= 46.25617980957},
 }
 
 
