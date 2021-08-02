@@ -4574,11 +4574,11 @@ itemList["casinofob"] = {
 
 itemList["casinomembership"] = {
     fullyDegrades: false,
-    decayrate: 0.0,
+    decayrate: 0.1,
     displayname: "Casino Membership",
     price: 1,
     weight: 0,
-    nonStack: false,
+    nonStack: true,
     model: "",
     image: "casino_membership.png",
     information: "Go Gamble!",

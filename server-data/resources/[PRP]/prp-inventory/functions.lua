@@ -1203,7 +1203,6 @@ AddEventHandler('SniffRequestCID', function(src)
     TriggerServerEvent("SniffCID",cid,src)
 end)
 
-
 function GetItemInfo(checkslot)
     for i,v in pairs(clientInventory) do
         if (tonumber(v.slot) == tonumber(checkslot)) then

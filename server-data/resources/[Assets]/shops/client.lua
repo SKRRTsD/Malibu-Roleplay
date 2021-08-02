@@ -703,6 +703,11 @@ AddEventHandler('courthouse:idbuy', function()
 	Wait(1000)
 end)
 
+RegisterNetEvent('casino:memb')
+AddEventHandler('casino:memb', function()
+	TriggerEvent("player:receiveItem",'casinomembership', 1)
+end)
+
 -------------------------------------
 -------- Mechanic Shops Shit --------
 -------------------------------------
