@@ -2996,12 +2996,6 @@ Citizen.CreateThread(
                     label = "Enable/Disable!",
                 },
 
-                {
-                    event = "attempt:change:slot",
-                    icon = "fas fa-adjust",
-                    label = "Enable/Disable Slots!",
-                },
-
 
             },
             job = {"all"},
@@ -3682,32 +3676,66 @@ Citizen.CreateThread(
 
         --casino
 
-        AddBoxZone("casino_cashier", vector3(1116.67, 220.06, -49.44), 0.9, 0.5, {
-            name="casino_cashier",
-            heading=0,
-            minZ=-52.44,
-            maxZ=-48.44
+        -- AddBoxZone("casino_cashier", vector3(1116.67, 220.06, -49.44), 0.9, 0.5, {
+        --     name="casino_cashier",
+        --     heading=0,
+        --     minZ=-52.44,
+        --     maxZ=-48.44
+        -- }, {
+        --     options = {
+        --         {
+        --             event = "buy:chips",
+        --             icon = "fas fa-circle",
+        --             label = "PURCHASE CHIPS",
+        --         },
+        --         {
+        --             event = "exchange:cash",
+        --             icon = "fas fa-money-bill-wave",
+        --             label = "CASHOUT(CASH)",
+        --         },
+
+        --         {
+        --             event = "exchange:bank",
+        --             icon = "fas fa-university",
+        --             label = "CASHOUT(BANK)",
+        --         },
+        --     },
+        --     job = {"all"},
+        --     distance = 3.5
+        -- })
+
+        AddBoxZone("casino_car", vector3(909.41, 50.69, 80.9), 0.7, 0.5, {
+            name="casino_car",
+            heading=355,
+            minZ=77.9,
+            maxZ=81.9
         }, {
             options = {
                 {
-                    event = "buy:chips",
+                    event = 'casino:reedeem',
                     icon = "fas fa-circle",
-                    label = "PURCHASE CHIPS",
-                },
-                {
-                    event = "exchange:cash",
-                    icon = "fas fa-money-bill-wave",
-                    label = "CASHOUT(CASH)",
-                },
-
-                {
-                    event = "exchange:bank",
-                    icon = "fas fa-university",
-                    label = "CASHOUT(BANK)",
-                },
+                    label = "Claim Lucky Wheel Car!"
+                }
             },
             job = {"all"},
-            distance = 3.5
+            distance = 3.0
+        })
+
+        AddBoxZone("casino_membership", vector3(929.25, 36.06, 81.1), 0.7, 0.7, {
+            name="casino_membership",
+            heading=355,
+            minZ=78.1,
+            maxZ=82.1
+        }, {
+            options = {
+                {
+                    event = 'casino-menu',
+                    icon = "fas fa-circle",
+                    label = "Casino Actions!"
+                }
+            },
+            job = {"casino_dealer"},
+            distance = 3.0
         })
 
         AddBoxZone("casinoenter", vector3(935.96, 47.36, 81.1), 0.6, 1, {

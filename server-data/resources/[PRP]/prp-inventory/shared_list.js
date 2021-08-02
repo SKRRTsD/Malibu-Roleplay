@@ -179,7 +179,7 @@ itemList["-771403250"] = {
     weight: 13,
     nonStack: true,
     model: "",
-    image: "weapon_heavypistol.png",
+    image: "heavy-pistol.png",
     weapon: true,
     deg: true
 }
@@ -705,7 +705,7 @@ itemList["3523564046"] = {
     weight: 13,
     nonStack: true,
     model: "",
-    image: "weapon_heavypistol.png",
+    image: "heavy-pistol.png",
     weapon: true,
     deg: true
 }
@@ -1564,7 +1564,7 @@ itemList["joint"] = {
     weight: 1,
     nonStack: false,
     model: "",
-    image: "joint.png",
+    image: "prp_joint.png",
     information: "Its a Joint, man. ",
     deg: false
 }
@@ -4568,10 +4568,22 @@ itemList["casinofob"] = {
     nonStack: false,
     model: "",
     image: "casinofob.png",
-    information: "You Won A CAR!!!!!!!!",
+    information: "You Won A CAR!! Trade it in and get the car at the!",
     deg: false
 }
 
+itemList["casinomembership"] = {
+    fullyDegrades: false,
+    decayrate: 0.1,
+    displayname: "Casino Membership",
+    price: 1,
+    weight: 0,
+    nonStack: true,
+    model: "",
+    image: "casino_membership.png",
+    information: "Go Gamble!",
+    deg: false
+}
 
 itemList["dice"] = {
     fullyDegrades: false,
@@ -10445,7 +10457,7 @@ itemList["thermalcharge"] = {
 
 itemList["jimpass"] = {
     fullyDegrades: false,
-    decayrate: 1,
+    decayrate: 0.1,
     displayname: "Jim Pass",
     price: 5000,
     weight: 10,

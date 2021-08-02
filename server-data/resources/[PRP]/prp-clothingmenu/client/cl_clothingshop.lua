@@ -209,6 +209,13 @@ Citizen.CreateThread(function()
 		maxZ=15.4
 	})
 
+	exports["prp-polyzone"]:AddBoxZone("clothing_shop", vector3(1104.65, 195.97, -49.44), 2.5, 6.5, {
+		name="clothing_shop",
+		heading=225,
+		minZ=-51.44,
+		maxZ=-47.44
+	})
+
 	exports["prp-polyzone"]:AddBoxZone("clothing_shop", vector3(105.44, -1303.18, 28.79), 3, 3, {
 		name="clothing_shop",
 		heading=31,

@@ -302,3 +302,35 @@ function updateFinance()
 end
 SetTimeout(timer, updateFinance)
 
+RegisterServerEvent('casinoreedeem')
+AddEventHandler('casinoreedeem', function(plate, name, personalvehicle)
+    local src = source
+    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local char = user:getVar("character")
+    local player = user:getVar("hexid")
+    exports.ghmattimysql:execute('INSERT INTO characters_cars (owner, cid, license_plate, name, model, purchase_price, vehicle_state) VALUES (@owner, @cid, @license_plate, @name, @model, @buy_price, @vehicle_state)',{
+        ['@owner']   = player,
+        ['@cid']   =  char.id,
+        ['@license_plate']   = plate,
+        ['@name'] = name,
+        ['@model'] = 'rx7rb',
+        ['@purchase_price'] = 5000,
+        ['@data'] = json.encode(personalvehicle),
+        ['@current_garage'] = "Police Department",
+        ['@vehicle_state'] = "Out"
+    })
+end)
+
+RegisterServerEvent('casino:reedeem_sv')
+AddEventHandler('casino:reedeem_sv', function()
+    local src = source
+    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local char = user:getVar("character")
+    local money = tonumber(user:getCash())
+    if money >= 0 then
+        user:removeMoney(0)
+        TriggerClientEvent('casino:reedeem2', src)
+    else
+        TriggerClientEvent('DoLongHudText', src, 'You dont have enough money!', 2)
+    end
+end)

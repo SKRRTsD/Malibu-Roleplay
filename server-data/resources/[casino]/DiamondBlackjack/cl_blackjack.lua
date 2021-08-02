@@ -70,47 +70,30 @@ cfg.blackjackTables = {
         distance = 1000.0,
         prop = "vw_prop_casino_blckjack_01b"
     },
-    [4] = {
-
-        dealerPos = vector3(1145.73, 261.93, -51.84),
-        dealerHeading = 225.04,
-        tablePos = vector3(1146.329, 261.2543, -52.84094),
-        tableHeading = 44.99991607666,
-        distance = 1000.0,
-        prop = "vw_prop_casino_3cardpoker_01"
-    },
-    [5] = {
-        dealerPos = vector3(1144.02,263.65,-51.84),
-        dealerHeading = 45.54,
-        tablePos = vector3(1143.338, 264.2453, -52.84094),
-        tableHeading = 225.00004577637,
-        distance = 1000.0,
-        prop = "vw_prop_casino_3cardpoker_01"
-    },
 }
 
--- --Use this command to get the coords you need for setting up new tables. 
--- --Some maps use the prop vw_prop_casino_blckjack_01 some use vw_prop_casino_blckjack_01b, so change accordingly.
--- RegisterCommand("getcasinotable",function()
---     local playerCoords = GetEntityCoords(PlayerPedId())
---     local blackjackTable = GetClosestObjectOfType(playerCoords.x,playerCoords.y,playerCoords.z,GetEntityHeading(PlayerPedId()),GetHashKey("vw_prop_casino_blckjack_01"),0,0,0)
---     if DoesEntityExist(blackjackTable) then
---         print("Found entity")
---         print("tablePos pos",GetEntityCoords(blackjackTable))
---         print("tableHeading heading",GetEntityHeading(blackjackTable))
---         print("prop: vw_prop_casino_blckjack_01")
---     else
---         local blackjackTable2 = GetClosestObjectOfType(playerCoords.x,playerCoords.y,playerCoords.z,GetEntityHeading(PlayerPedId()),GetHashKey("vw_prop_casino_blckjack_01b"),0,0,0)
---         if DoesEntityExist(blackjackTable2) then
---             print("Found entity")
---             print("tablePos pos:",GetEntityCoords(blackjackTable2))
---             print("tableHeading heading:",GetEntityHeading(blackjackTable2))
---             print("prop: vw_prop_casino_blckjack_01")
---         else
---             print("Could not find entity")
---         end
---     end
--- end)
+--Use this command to get the coords you need for setting up new tables. 
+--Some maps use the prop vw_prop_casino_blckjack_01 some use vw_prop_casino_blckjack_01b, so change accordingly.
+RegisterCommand("getcasinotable",function()
+    local playerCoords = GetEntityCoords(PlayerPedId())
+    local blackjackTable = GetClosestObjectOfType(playerCoords.x,playerCoords.y,playerCoords.z,GetEntityHeading(PlayerPedId()),GetHashKey("vw_prop_casino_blckjack_01"),0,0,0)
+    if DoesEntityExist(blackjackTable) then
+        print("Found entity")
+        print("tablePos pos",GetEntityCoords(blackjackTable))
+        print("tableHeading heading",GetEntityHeading(blackjackTable))
+        print("prop: vw_prop_casino_blckjack_01")
+    else
+        local blackjackTable2 = GetClosestObjectOfType(playerCoords.x,playerCoords.y,playerCoords.z,GetEntityHeading(PlayerPedId()),GetHashKey("vw_prop_casino_blckjack_01b"),0,0,0)
+        if DoesEntityExist(blackjackTable2) then
+            print("Found entity")
+            print("tablePos pos:",GetEntityCoords(blackjackTable2))
+            print("tableHeading heading:",GetEntityHeading(blackjackTable2))
+            print("prop: vw_prop_casino_blckjack_01")
+        else
+            print("Could not find entity")
+        end
+    end
+end)
 
 Citizen.CreateThread(function()
 	TriggerServerEvent("Blackjack:requestBlackjackTableData")
@@ -226,19 +209,17 @@ Citizen.CreateThread(function()
     while true do 
         if not sittingAtBlackjackTable then
             if closestChair ~= nil and closestChairDist < 2 then
-                --TriggerEvent("DoLongHudText", "Press E to play BlackJack")
                 if not timeoutHowToBlackjack then
                     if blackjackTableData[closestChair] == false then 
-                        drawNativeNotification("Press ~INPUT_PICKUP~ to play the blackjack")
+                        -- drawNativeNotification("Press ~INPUT_PICKUP~ to play the blackjack")
                     else 
-                        --drawNativeNotification("This seat is taken.")
-                        TriggerEvent("DoLongHudText", "This seat is taken", 2)
+                        drawNativeNotification("This seat is taken.")
                     end
                     showHowToBlackjack(true)
                     if not playedCasinoGuiSound then
                         playedCasinoGuiSound = true 
-                        PlaySoundFrontend(-1, "DLC_VW_RULES", "dlc_vw_table_games_frontend_sounds", 1)
-                        PlaySoundFrontend(-1, "DLC_VW_WIN_CHIPS", "dlc_vw_table_games_frontend_sounds", 1)
+                        -- PlaySoundFrontend(-1, "DLC_VW_RULES", "dlc_vw_table_games_frontend_sounds", 1)
+                        -- PlaySoundFrontend(-1, "DLC_VW_WIN_CHIPS", "dlc_vw_table_games_frontend_sounds", 1)
                     end
                 end
             end
@@ -265,80 +246,42 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterNetEvent("betmenu")
-AddEventHandler("betmenu", function()
-    local tmpInput = exports["prp-applications"]:KeyboardInput({
-        header = "Bet Amount",
-        rows = {
-            {
-                id = 1,
-                txt = ""
-            }
-        }
-    })
-    if tmpInput then
-        tmpInput = tonumber(tmpInput[1].input) 
-        if tmpInput > 0 then
-            currentBetAmount = tmpInput
+Citizen.CreateThread(function()
+    while true do 
+        if waitingForBetState then
+            if IsDisabledControlJustPressed(0, 22) then --Custom Bet [space]
+                local tmpInput = getGenericTextInput("Bet Amount")
+                if tonumber(tmpInput) then
+                    tmpInput = tonumber(tmpInput) 
+                    if tmpInput > 0 then
+                        currentBetAmount = tmpInput
+                    end
+                end
+            end
+            if IsControlJustPressed(0, 201) then --Submit bet [Enter]
+                --print("submitting bet")
+                if tonumber(currentBetAmount) >= 0 then
+                    TriggerServerEvent("Blackjack:setBlackjackBet",globalGameId,currentBetAmount,closestChair)
+                    closestDealerPed = getClosestDealer()
+                    PlayAmbientSpeech1(closestDealerPed,"MINIGAME_DEALER_PLACE_CHIPS","SPEECH_PARAMS_FORCE_NORMAL_CLEAR",1) --TODO check this is the right sound?
+                    putBetOnTable()
+                    Wait(1000)
+                else
+                    notify("~r~Invalid amount.")
+                end
+            end
+            if IsControlPressed(0, 10) then --Increase bet [pageup]
+                currentBetAmount = currentBetAmount + 100
+            end            
+            if IsControlPressed(0, 11) then --Decrease bet [pagedown]
+                if currentBetAmount >= 100 then 
+                    currentBetAmount = currentBetAmount - 100
+                end
+            end            
         end
-        if tonumber(currentBetAmount) >= 0 then
-            TriggerServerEvent("Blackjack:setBlackjackBet",globalGameId,currentBetAmount,closestChair)
-            closestDealerPed = getClosestDealer()
-            PlayAmbientSpeech1(closestDealerPed,"MINIGAME_DEALER_PLACE_CHIPS","SPEECH_PARAMS_FORCE_NORMAL_CLEAR",1) --TODO check this is the right sound?
-            putBetOnTable()
-            Wait(1000)
-        else
-            TriggerEvent("DoLongHudText", "Invalid amount.", 2)
-        end
+        Wait(0)
     end
 end)
-
-RegisterNetEvent("buy:chips")
-AddEventHandler("buy:chips", function()
-    local chips = exports["prp-applications"]:KeyboardInput({
-        header = "PURCHASE CHIPS",
-        rows = {
-            {
-                id = 0,
-                txt = ""
-            },
-        }
-    })
-    if chips then
-        TriggerServerEvent("buy:casinochips", chips[1].input)
-    end
-end)
-RegisterNetEvent("exchange:cash")
-AddEventHandler("exchange:cash", function()
-    local cash = exports["prp-applications"]:KeyboardInput({
-        header = "CASHOUT CHIPS",
-        rows = {
-            {
-                id = 0,
-                txt = ""
-            },
-        }
-    })
-    if cash then
-        TriggerServerEvent("cashout:casinochips", cash[1].input)
-    end
-end)
-RegisterNetEvent("exchange:bank")
-AddEventHandler("exchange:bank", function()
-    local bank = exports["prp-applications"]:KeyboardInput({
-        header = "DEPOSIT TO BANK ACCOUNT",
-        rows = {
-            {
-                id = 0,
-                txt = ""
-            },
-        }
-    })
-    if bank then
-        TriggerServerEvent("bank:casinochips", bank[1].input)
-    end
-end)
-
 
 RegisterNetEvent("Blackjack:successBlackjackBet")
 AddEventHandler("Blackjack:successBlackjackBet",function()
@@ -402,79 +345,25 @@ Citizen.CreateThread(function()
                 end)
             end
         end
-        -- if waitingForStandOrHitState and sittingAtBlackjackTable and blackjackGameInProgress then 
-        --     if IsDisabledControlJustPressed(0, 22) then --hit
-        --         waitingForStandOrHitState = false
-        --         TriggerServerEvent("Blackjack:hitBlackjack",globalGameId,globalNextCardCount)
-        --         drawTimerBar = false
-        --         standOrHitThisRound = true
-        --         requestCard()
-        --     end
-        --     if IsControlJustPressed(0, 202) then --stand
-        --         waitingForStandOrHitState = false
-        --         TriggerServerEvent("Blackjack:standBlackjack",globalGameId,globalNextCardCount)
-        --         drawTimerBar = false
-        --         standOrHitThisRound = true
-        --         declineCard()
-        --     end
-        -- end
+        if waitingForStandOrHitState and sittingAtBlackjackTable and blackjackGameInProgress then 
+            if IsDisabledControlJustPressed(0, 22) then --hit
+                waitingForStandOrHitState = false
+                TriggerServerEvent("Blackjack:hitBlackjack",globalGameId,globalNextCardCount)
+                drawTimerBar = false
+                standOrHitThisRound = true
+                requestCard()
+            end
+            if IsControlJustPressed(0, 202) then --stand
+                waitingForStandOrHitState = false
+                TriggerServerEvent("Blackjack:standBlackjack",globalGameId,globalNextCardCount)
+                drawTimerBar = false
+                standOrHitThisRound = true
+                declineCard()
+            end
+        end
         Wait(0)
     end
 end)
-
-RegisterNetEvent("hitcasino")
-AddEventHandler("hitcasino", function()
-    if waitingForStandOrHitState and sittingAtBlackjackTable and blackjackGameInProgress then 
-        waitingForStandOrHitState = false
-        TriggerServerEvent("Blackjack:hitBlackjack",globalGameId,globalNextCardCount)
-        drawTimerBar = false
-        standOrHitThisRound = true
-        requestCard()
-    end
-
-end)
-
-RegisterNetEvent("standcasino")
-AddEventHandler("standcasino", function()
-    if waitingForStandOrHitState and sittingAtBlackjackTable and blackjackGameInProgress then 
-        waitingForStandOrHitState = false
-        TriggerServerEvent("Blackjack:standBlackjack",globalGameId,globalNextCardCount)
-        drawTimerBar = false
-        standOrHitThisRound = true
-        declineCard()
-    end
-end)
-
-RegisterNetEvent('casinomenu')
-AddEventHandler('casinomenu', function()
-    TriggerEvent('prp-context:sendMenu', {
-        {
-            id = 1,
-            header = "Double or NOTHING!!",
-            txt = ""
-        },
-
-        {
-            id = 2,
-            header = "Hit",
-			txt = "Draw another card",
-			params = {
-                event = "hitcasino"
-            }
-        },
-
-        {
-            id = 3,
-            header = "Stand",
-			txt = "Be a bitch",
-			params = {
-                event = "standcasino"
-            }
-        }
-    })
-end)
-
-
 
 Citizen.CreateThread(function()
     while true do 
@@ -510,53 +399,53 @@ Citizen.CreateThread(function()
     end
 end)
 
--- RMenu.Add('cmgblackjack', 'instructions', RageUI.CreateMenu("", "test",0,100,"casinoui_cards_blackjack", "casinoui_cards_blackjack"))
--- RMenu:Get('cmgblackjack', 'instructions'):SetSubtitle("~b~BLACKJACK")
--- RMenu.Add('cmgblackjack_high', 'instructions', RageUI.CreateMenu("", "test",0,100,"casinoui_cards_blackjack_high", "casinoui_cards_blackjack_high"))
--- RMenu:Get('cmgblackjack_high', 'instructions'):SetSubtitle("~b~BLACKJACK")
+RMenu.Add('cmgblackjack', 'instructions', RageUI.CreateMenu("", "test",0,100,"casinoui_cards_blackjack", "casinoui_cards_blackjack"))
+RMenu:Get('cmgblackjack', 'instructions'):SetSubtitle("~b~BLACKJACK")
+RMenu.Add('cmgblackjack_high', 'instructions', RageUI.CreateMenu("", "test",0,100,"casinoui_cards_blackjack_high", "casinoui_cards_blackjack_high"))
+RMenu:Get('cmgblackjack_high', 'instructions'):SetSubtitle("~b~BLACKJACK")
 
 
-RageUI.CreateWhile(1.0, true, function()
-    if RageUI.Visible(RMenu:Get('cmgblackjack', 'instructions')) then
-        RageUI.DrawContent({ header = true, glare = true, instructionalButton = true }, function()           
-            RageUI.FakeButton("test", "The aim of Blackjack is to beat the Dealer's hand without going over 21. This game uses four 52           card decks, which are shuffled at the start of every hand.                                                                                    The dealer will stand on soft 17.", { RightLabel = "→→→" }, true, function(Hovered, Active, Selected)
-                if (Hovered) then
+-- RageUI.CreateWhile(1.0, true, function()
+--     if RageUI.Visible(RMenu:Get('cmgblackjack', 'instructions')) then
+--         RageUI.DrawContent({ header = true, glare = true, instructionalButton = true }, function()           
+--             RageUI.FakeButton("test", "The aim of Blackjack is to beat the Dealer's hand without going over 21. This game uses four 52           card decks, which are shuffled at the start of every hand.                                                                                    The dealer will stand on soft 17.", { RightLabel = "→→→" }, true, function(Hovered, Active, Selected)
+--                 if (Hovered) then
 
-                end
-                if (Active) then
+--                 end
+--                 if (Active) then
 
-                end
-                if (Selected) then
+--                 end
+--                 if (Selected) then
 
-                end
-            end, RMenu:Get('cmgblackjack', 'instructions'))            
-        end, function()
-            ---Panels
-        end)
-    end
+--                 end
+--             end, RMenu:Get('cmgblackjack', 'instructions'))            
+--         end, function()
+--             ---Panels
+--         end)
+--     end
 
-end, 1)
+-- end, 1)
 
-RageUI.CreateWhile(1.0, true, function()
-    if RageUI.Visible(RMenu:Get('cmgblackjack_high', 'instructions')) then
-        RageUI.DrawContent({ header = true, glare = true, instructionalButton = true }, function()           
-            RageUI.FakeButton("test", "The aim of Blackjack is to beat the Dealer's hand without going over 21. This game uses four 52           card decks, which are shuffled at the start of every hand.                                                                                    The dealer will stand on soft 17.", { RightLabel = "→→→" }, true, function(Hovered, Active, Selected)
-                if (Hovered) then
+-- RageUI.CreateWhile(1.0, true, function()
+--     if RageUI.Visible(RMenu:Get('cmgblackjack_high', 'instructions')) then
+--         RageUI.DrawContent({ header = true, glare = true, instructionalButton = true }, function()           
+--             RageUI.FakeButton("test", "The aim of Blackjack is to beat the Dealer's hand without going over 21. This game uses four 52           card decks, which are shuffled at the start of every hand.                                                                                    The dealer will stand on soft 17.", { RightLabel = "→→→" }, true, function(Hovered, Active, Selected)
+--                 if (Hovered) then
 
-                end
-                if (Active) then
+--                 end
+--                 if (Active) then
 
-                end
-                if (Selected) then
+--                 end
+--                 if (Selected) then
 
-                end
-            end, RMenu:Get('cmgblackjack_high', 'instructions'))            
-        end, function()
-            ---Panels
-        end)
-    end
+--                 end
+--             end, RMenu:Get('cmgblackjack_high', 'instructions'))            
+--         end, function()
+--             ---Panels
+--         end)
+--     end
 
-end, 1)
+-- end, 1)
 
 function showHowToBlackjack(flag)
     if closestChair < 8 then 
@@ -595,8 +484,6 @@ Citizen.CreateThread(function()
     end
 end)
 
-
-
 RegisterNetEvent("Blackjack:syncChipsPropBlackjack")
 AddEventHandler("Blackjack:syncChipsPropBlackjack",function(betAmount,chairId)
     if closeToCasino then
@@ -606,14 +493,11 @@ end)
 
 RegisterNetEvent("Blackjack:beginBetsBlackjack")
 AddEventHandler("Blackjack:beginBetsBlackjack",function(gameID,tableId)
-    TriggerEvent("betmenu")
-    TriggerServerEvent("balance:casinochips")
     globalGameId = gameID
     blackjackInstructional = setupBlackjackInstructionalScaleform("instructional_buttons")
     --print("made blackjackInstructional true cause its intro time bet")
     ClearHelp(true)
-    --drawNativeNotification("Place your bets")
-    TriggerEvent("DoLongHudText", "Place your bets")
+    drawNativeNotification("Place your bets")
     bettedThisRound = false
     drawTimerBar = true
     drawCurrentHand = false
@@ -638,8 +522,7 @@ AddEventHandler("Blackjack:beginBetsBlackjack",function(gameID,tableId)
         drawTimerBar = false
         if not bettedThisRound then
             --print("made blackjackInstructional nil cause you didnt bet")
-            --drawNativeNotification("No bet placed, round skipped")
-            TriggerEvent("DoLongHudText", "No bet placed, Round skipped", 2)
+            drawNativeNotification("No bet placed, round skipped")
         end
     end)
 end)
@@ -706,7 +589,6 @@ AddEventHandler("Blackjack:standOrHit",function(gameId,chairId,nextCardCount,tab
             startStandOrHit(gameId,dealerPed,chairId,true)
             Citizen.CreateThread(function()
                 if sittingAtBlackjackTable then
-                    TriggerEvent("casinomenu")
                     drawTimerBar = true
                     timeLeft = 20
                     while timeLeft > 0 do 
@@ -729,8 +611,7 @@ AddEventHandler("Blackjack:standOrHit",function(gameId,chairId,nextCardCount,tab
                     waitingForStandOrHitState = false
                     TriggerServerEvent("Blackjack:standBlackjack",globalGameId,globalNextCardCount)
                     declineCard()
-                    --drawNativeNotification("Failed to stand/hit in time, standing.")
-                    TriggerEvent("DoLongHudText", "Failed to stand/hit in time, standing.", 2)
+                    drawNativeNotification("Failed to stand/hit in time, standing.")
                 end
             end)
         else 
@@ -780,8 +661,7 @@ function goToBlackjackSeat(blackjackSeatID)
     closestDealerPed, closestDealerPedDistance = getClosestDealer()
     PlayAmbientSpeech1(closestDealerPed,"MINIGAME_DEALER_GREET","SPEECH_PARAMS_FORCE_NORMAL_CLEAR",1)
     --print("[CMG Casino] start sit at blackjack seat") 
-    --drawNativeNotification("Waiting for next game to start...")
-    TriggerEvent("DoLongHudText", "Waiting for next game to start...")
+    drawNativeNotification("Waiting for next game to start...")
     blackjackAnimsToLoad = {
       "anim_casino_b@amb@casino@games@blackjack@dealer",
       "anim_casino_b@amb@casino@games@shared@dealer@",
@@ -1010,8 +890,7 @@ function startDealing(dealerPed,gameId,cardData,chairId,cardIndex,gotCurrentHand
         end
         --print("checking betttingInstructional",closestChair,chairId)
         if closestChair == chairId and sittingAtBlackjackTable then
-            -- bettingInstructional = nil
-
+            bettingInstructional = setupBlackjackMidBetScaleform("instructional_buttons")
         end
         --soundID = GetSoundId()
         --PlaySoundFromEntity(soundID,"DLC_VW_CHIP_BET_SML_MEDIUM",nextCardObj,"dlc_vw_table_games_sounds", 0, 0)
@@ -1162,8 +1041,7 @@ AddEventHandler("Blackjack:blackjackLose",function(tableId)
         TaskPlayAnim(dealerPed, "anim_casino_b@amb@casino@games@blackjack@dealer", "reaction_bad", 3.0, 1.0, -1, 2, 0, 0, 0, 0 )
         angryILost()
         canExitBlackjack = true
-        --drawNativeNotification("~r~You lose!")
-        TriggerEvent("DoLongHudText", "You lose!", 2)
+        drawNativeNotification("~r~You lose!")
         drawCurrentHand = false
         currentHand = 0
         dealersHand = 0
@@ -1178,8 +1056,7 @@ AddEventHandler("Blackjack:blackjackPush",function(tableId)
         TaskPlayAnim(dealerPed, "anim_casino_b@amb@casino@games@blackjack@dealer", "reaction_impartial", 3.0, 1.0, -1, 2, 0, 0, 0, 0 )
         annoyedIPushed()
         canExitBlackjack = true
-        --drawNativeNotification("~b~You pushed!")
-        TriggerEvent("DoLongHudText", "You pushed!")
+        drawNativeNotification("~b~You pushed!")
         drawCurrentHand = false
         currentHand = 0
         dealersHand = 0
@@ -1194,8 +1071,7 @@ AddEventHandler("Blackjack:blackjackWin",function(tableId)
         TaskPlayAnim(dealerPed, "anim_casino_b@amb@casino@games@blackjack@dealer", "reaction_good", 3.0, 1.0, -1, 2, 0, 0, 0, 0 )
         happyIWon()
         canExitBlackjack = true
-        --drawNativeNotification("~g~You win!")
-        TriggerEvent("DoLongHudText", "You win!")
+        drawNativeNotification("~g~You win!")
         drawCurrentHand = false
         currentHand = 0
         dealersHand = 0
@@ -1214,7 +1090,7 @@ AddEventHandler("Blackjack:chipsCleanup",function(chairId,tableId)
             if gender == "female" then 
                 genderAnimString = "female_" 
             end
-            local localChairId = getLocalChairIdFromGlobalChairId(chairId)
+            localChairId = getLocalChairIdFromGlobalChairId(chairId)
             if chairId > 99 then --if "chairId" is above 99 its not a chair Id, its the gameId so its the dealers turn
                 TaskPlayAnim(dealerPed, "anim_casino_b@amb@casino@games@blackjack@dealer", genderAnimString .. "retrieve_own_cards_and_remove", 3.0, 1.0, -1, 2, 0, 0, 0, 0)
                 PlayFacialAnim(dealerPed, genderAnimString .. "retrieve_own_cards_and_remove_facial", "anim_casino_b@amb@casino@games@blackjack@dealer")
@@ -2781,30 +2657,32 @@ function setupBlackjackInstructionalScaleform(scaleform)
     ButtonMessage("Leave table") --BACKSPACE
     PopScaleformMovieFunctionVoid()
 
-    -- PushScaleformMovieFunction(scaleform, "SET_DATA_SLOT")
-    -- PushScaleformMovieFunctionParameterInt(0)
-    -- Button(GetControlInstructionalButton(2, 191, true))
-    -- ButtonMessage("Place bet") --ENTER
-    -- PopScaleformMovieFunctionVoid()
+    PushScaleformMovieFunction(scaleform, "SET_DATA_SLOT")
+    PushScaleformMovieFunctionParameterInt(0)
+    Button(GetControlInstructionalButton(2, 191, true))
+    ButtonMessage("Place bet") --ENTER
+    PopScaleformMovieFunctionVoid()
 
-    -- PushScaleformMovieFunction(scaleform, "SET_DATA_SLOT")
-    -- PushScaleformMovieFunctionParameterInt(2)
-    -- Button(GetControlInstructionalButton(2, 11, true))
-    -- ButtonMessage("Lower bet") --Page Down
-    -- PopScaleformMovieFunctionVoid()
+    PushScaleformMovieFunction(scaleform, "SET_DATA_SLOT")
+    PushScaleformMovieFunctionParameterInt(2)
+    Button(GetControlInstructionalButton(2, 11, true))
+    ButtonMessage("Lower bet") --Page Down
+    PopScaleformMovieFunctionVoid()
 
-    -- PushScaleformMovieFunction(scaleform, "SET_DATA_SLOT")
-    -- PushScaleformMovieFunctionParameterInt(3)
-    -- Button(GetControlInstructionalButton(2, 10, true))
-    -- ButtonMessage("Increase bet") --Page Up
-    -- PopScaleformMovieFunctionVoid()
+    PushScaleformMovieFunction(scaleform, "SET_DATA_SLOT")
+    PushScaleformMovieFunctionParameterInt(3)
+    Button(GetControlInstructionalButton(2, 10, true))
+    ButtonMessage("Increase bet") --Page Up
+    PopScaleformMovieFunctionVoid()
 
-    -- PushScaleformMovieFunction(scaleform, "SET_DATA_SLOT")
-    -- PushScaleformMovieFunctionParameterInt(4)
-    -- Button(GetControlInstructionalButton(2, 22, true))
-    -- ButtonMessage("Custom bet") --Space
-    -- PopScaleformMovieFunctionVoid()  
+    PushScaleformMovieFunction(scaleform, "SET_DATA_SLOT")
+    PushScaleformMovieFunctionParameterInt(4)
+    Button(GetControlInstructionalButton(2, 22, true))
+    ButtonMessage("Custom bet") --Space
+    PopScaleformMovieFunctionVoid()  
     
+    
+
     PushScaleformMovieFunction(scaleform, "DRAW_INSTRUCTIONAL_BUTTONS")
     PopScaleformMovieFunctionVoid()
 
@@ -3162,3 +3040,108 @@ RegisterCommand("cleantable",function()
 	end	
 end)
 
+Citizen.CreateThread(function()
+	exports["prp-polyzone"]:AddBoxZone("diamond_blackjack", vector3(1148.87, 269.48, -51.84), 3, 3, {
+		name="diamond_blackjack",
+        heading=315,
+        minZ=-54.84,
+        maxZ=-50.84
+	})	  
+end)
+
+RegisterNetEvent('prp-polyzone:enter')
+AddEventHandler('prp-polyzone:enter', function(name)
+    if name == "diamond_blackjack"  then
+        drillingstart = true
+		TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Play Blackjack")) 
+    end
+end)
+
+RegisterNetEvent('prp-polyzone:exit')
+AddEventHandler('prp-polyzone:exit', function(name)
+    if name == "diamond_blackjack"  then
+        drillingstart = false
+    end
+    TriggerEvent('prp-ui:HideUI')
+end)
+
+-- 2nd Table
+
+Citizen.CreateThread(function()
+	exports["prp-polyzone"]:AddBoxZone("diamond_blackjack2", vector3(1152.03, 266.46, -51.84), 3, 3, {
+		name="diamond_blackjack2",
+        heading=315,
+        minZ=-54.64,
+        maxZ=-50.64
+	})	  
+end)
+
+RegisterNetEvent('prp-polyzone:enter')
+AddEventHandler('prp-polyzone:enter', function(name)
+    if name == "diamond_blackjack2"  then
+        drillingstart = true
+		TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Play Blackjack")) 
+    end
+end)
+
+RegisterNetEvent('prp-polyzone:exit')
+AddEventHandler('prp-polyzone:exit', function(name)
+    if name == "diamond_blackjack2"  then
+        drillingstart = false
+    end
+    TriggerEvent('prp-ui:HideUI')
+end)
+
+-- 3rd Table
+
+Citizen.CreateThread(function()
+	exports["prp-polyzone"]:AddBoxZone("diamond_blackjack3", vector3(1129.53, 262.22, -51.04), 3, 3.2, {
+		name="diamond_blackjack3",
+        heading=315,
+        minZ=-53.84,
+        maxZ=-49.84
+	})	  
+end)
+
+RegisterNetEvent('prp-polyzone:enter')
+AddEventHandler('prp-polyzone:enter', function(name)
+    if name == "diamond_blackjack3"  then
+        drillingstart = true
+		TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Play Blackjack")) 
+    end
+end)
+
+RegisterNetEvent('prp-polyzone:exit')
+AddEventHandler('prp-polyzone:exit', function(name)
+    if name == "diamond_blackjack3"  then
+        drillingstart = false
+    end
+    TriggerEvent('prp-ui:HideUI')
+end)
+
+-- 3rd Table
+
+Citizen.CreateThread(function()
+	exports["prp-polyzone"]:AddBoxZone("diamond_blackjack4", vector3(1144.55, 247.67, -51.04), 3, 3, {
+		name="diamond_blackjack4",
+        heading=320,
+        minZ=-54.04,
+        maxZ=-50.04
+	})	  
+end)
+
+RegisterNetEvent('prp-polyzone:enter')
+AddEventHandler('prp-polyzone:enter', function(name)
+    if name == "diamond_blackjack4"  then
+        drillingstart = false
+		TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Play Blackjack")) 
+    end
+end)
+
+RegisterNetEvent('prp-polyzone:exit')
+AddEventHandler('prp-polyzone:exit', function(name)
+    if name == "diamond_blackjack4"  then
+        drillingstart = false
+    end
+    TriggerEvent('prp-ui:HideUI')
+end)
