@@ -211,15 +211,15 @@ Citizen.CreateThread(function()
             if closestChair ~= nil and closestChairDist < 2 then
                 if not timeoutHowToBlackjack then
                     if blackjackTableData[closestChair] == false then 
-                        drawNativeNotification("Press ~INPUT_PICKUP~ to play the blackjack")
+                        -- drawNativeNotification("Press ~INPUT_PICKUP~ to play the blackjack")
                     else 
                         drawNativeNotification("This seat is taken.")
                     end
                     showHowToBlackjack(true)
                     if not playedCasinoGuiSound then
                         playedCasinoGuiSound = true 
-                        PlaySoundFrontend(-1, "DLC_VW_RULES", "dlc_vw_table_games_frontend_sounds", 1)
-                        PlaySoundFrontend(-1, "DLC_VW_WIN_CHIPS", "dlc_vw_table_games_frontend_sounds", 1)
+                        -- PlaySoundFrontend(-1, "DLC_VW_RULES", "dlc_vw_table_games_frontend_sounds", 1)
+                        -- PlaySoundFrontend(-1, "DLC_VW_WIN_CHIPS", "dlc_vw_table_games_frontend_sounds", 1)
                     end
                 end
             end
@@ -405,47 +405,47 @@ RMenu.Add('cmgblackjack_high', 'instructions', RageUI.CreateMenu("", "test",0,10
 RMenu:Get('cmgblackjack_high', 'instructions'):SetSubtitle("~b~BLACKJACK")
 
 
-RageUI.CreateWhile(1.0, true, function()
-    if RageUI.Visible(RMenu:Get('cmgblackjack', 'instructions')) then
-        RageUI.DrawContent({ header = true, glare = true, instructionalButton = true }, function()           
-            RageUI.FakeButton("test", "The aim of Blackjack is to beat the Dealer's hand without going over 21. This game uses four 52           card decks, which are shuffled at the start of every hand.                                                                                    The dealer will stand on soft 17.", { RightLabel = "→→→" }, true, function(Hovered, Active, Selected)
-                if (Hovered) then
+-- RageUI.CreateWhile(1.0, true, function()
+--     if RageUI.Visible(RMenu:Get('cmgblackjack', 'instructions')) then
+--         RageUI.DrawContent({ header = true, glare = true, instructionalButton = true }, function()           
+--             RageUI.FakeButton("test", "The aim of Blackjack is to beat the Dealer's hand without going over 21. This game uses four 52           card decks, which are shuffled at the start of every hand.                                                                                    The dealer will stand on soft 17.", { RightLabel = "→→→" }, true, function(Hovered, Active, Selected)
+--                 if (Hovered) then
 
-                end
-                if (Active) then
+--                 end
+--                 if (Active) then
 
-                end
-                if (Selected) then
+--                 end
+--                 if (Selected) then
 
-                end
-            end, RMenu:Get('cmgblackjack', 'instructions'))            
-        end, function()
-            ---Panels
-        end)
-    end
+--                 end
+--             end, RMenu:Get('cmgblackjack', 'instructions'))            
+--         end, function()
+--             ---Panels
+--         end)
+--     end
 
-end, 1)
+-- end, 1)
 
-RageUI.CreateWhile(1.0, true, function()
-    if RageUI.Visible(RMenu:Get('cmgblackjack_high', 'instructions')) then
-        RageUI.DrawContent({ header = true, glare = true, instructionalButton = true }, function()           
-            RageUI.FakeButton("test", "The aim of Blackjack is to beat the Dealer's hand without going over 21. This game uses four 52           card decks, which are shuffled at the start of every hand.                                                                                    The dealer will stand on soft 17.", { RightLabel = "→→→" }, true, function(Hovered, Active, Selected)
-                if (Hovered) then
+-- RageUI.CreateWhile(1.0, true, function()
+--     if RageUI.Visible(RMenu:Get('cmgblackjack_high', 'instructions')) then
+--         RageUI.DrawContent({ header = true, glare = true, instructionalButton = true }, function()           
+--             RageUI.FakeButton("test", "The aim of Blackjack is to beat the Dealer's hand without going over 21. This game uses four 52           card decks, which are shuffled at the start of every hand.                                                                                    The dealer will stand on soft 17.", { RightLabel = "→→→" }, true, function(Hovered, Active, Selected)
+--                 if (Hovered) then
 
-                end
-                if (Active) then
+--                 end
+--                 if (Active) then
 
-                end
-                if (Selected) then
+--                 end
+--                 if (Selected) then
 
-                end
-            end, RMenu:Get('cmgblackjack_high', 'instructions'))            
-        end, function()
-            ---Panels
-        end)
-    end
+--                 end
+--             end, RMenu:Get('cmgblackjack_high', 'instructions'))            
+--         end, function()
+--             ---Panels
+--         end)
+--     end
 
-end, 1)
+-- end, 1)
 
 function showHowToBlackjack(flag)
     if closestChair < 8 then 
@@ -3040,3 +3040,108 @@ RegisterCommand("cleantable",function()
 	end	
 end)
 
+Citizen.CreateThread(function()
+	exports["prp-polyzone"]:AddBoxZone("diamond_blackjack", vector3(1148.87, 269.48, -51.84), 3, 3, {
+		name="diamond_blackjack",
+        heading=315,
+        minZ=-54.84,
+        maxZ=-50.84
+	})	  
+end)
+
+RegisterNetEvent('prp-polyzone:enter')
+AddEventHandler('prp-polyzone:enter', function(name)
+    if name == "diamond_blackjack"  then
+        drillingstart = true
+		TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Play Blackjack")) 
+    end
+end)
+
+RegisterNetEvent('prp-polyzone:exit')
+AddEventHandler('prp-polyzone:exit', function(name)
+    if name == "diamond_blackjack"  then
+        drillingstart = false
+    end
+    TriggerEvent('prp-ui:HideUI')
+end)
+
+-- 2nd Table
+
+Citizen.CreateThread(function()
+	exports["prp-polyzone"]:AddBoxZone("diamond_blackjack2", vector3(1152.03, 266.46, -51.84), 3, 3, {
+		name="diamond_blackjack2",
+        heading=315,
+        minZ=-54.64,
+        maxZ=-50.64
+	})	  
+end)
+
+RegisterNetEvent('prp-polyzone:enter')
+AddEventHandler('prp-polyzone:enter', function(name)
+    if name == "diamond_blackjack2"  then
+        drillingstart = true
+		TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Play Blackjack")) 
+    end
+end)
+
+RegisterNetEvent('prp-polyzone:exit')
+AddEventHandler('prp-polyzone:exit', function(name)
+    if name == "diamond_blackjack2"  then
+        drillingstart = false
+    end
+    TriggerEvent('prp-ui:HideUI')
+end)
+
+-- 3rd Table
+
+Citizen.CreateThread(function()
+	exports["prp-polyzone"]:AddBoxZone("diamond_blackjack3", vector3(1129.53, 262.22, -51.04), 3, 3.2, {
+		name="diamond_blackjack3",
+        heading=315,
+        minZ=-53.84,
+        maxZ=-49.84
+	})	  
+end)
+
+RegisterNetEvent('prp-polyzone:enter')
+AddEventHandler('prp-polyzone:enter', function(name)
+    if name == "diamond_blackjack3"  then
+        drillingstart = true
+		TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Play Blackjack")) 
+    end
+end)
+
+RegisterNetEvent('prp-polyzone:exit')
+AddEventHandler('prp-polyzone:exit', function(name)
+    if name == "diamond_blackjack3"  then
+        drillingstart = false
+    end
+    TriggerEvent('prp-ui:HideUI')
+end)
+
+-- 3rd Table
+
+Citizen.CreateThread(function()
+	exports["prp-polyzone"]:AddBoxZone("diamond_blackjack4", vector3(1144.55, 247.67, -51.04), 3, 3, {
+		name="diamond_blackjack4",
+        heading=320,
+        minZ=-54.04,
+        maxZ=-50.04
+	})	  
+end)
+
+RegisterNetEvent('prp-polyzone:enter')
+AddEventHandler('prp-polyzone:enter', function(name)
+    if name == "diamond_blackjack4"  then
+        drillingstart = false
+		TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Play Blackjack")) 
+    end
+end)
+
+RegisterNetEvent('prp-polyzone:exit')
+AddEventHandler('prp-polyzone:exit', function(name)
+    if name == "diamond_blackjack4"  then
+        drillingstart = false
+    end
+    TriggerEvent('prp-ui:HideUI')
+end)
