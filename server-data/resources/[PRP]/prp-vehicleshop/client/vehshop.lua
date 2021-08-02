@@ -1050,6 +1050,57 @@ function CloseCreator(name, veh, price, financed)
 	end)
 end
 
+--CASINO CAR BELOW
+
+RegisterNetEvent("casino:reedeem")
+AddEventHandler("casino:reedeem", function()
+	if exports["prp-inventory"]:hasEnoughOfItem("casinofob",1,false) then 
+		TriggerEvent("inventory:removeItem","casinofob", 1)       
+		TriggerServerEvent('casino:reedeem_sv')
+	else
+		TriggerEvent('DoLongHudText', 'You aint got a fob!', 2)
+	end
+end)
+
+RegisterNetEvent("casino:reedeem2")
+AddEventHandler("casino:reedeem2", function()
+	local vehicle = veh
+	local price = price		
+	local veh = GetVehiclePedIsUsing(ped)
+	local colors = table.pack(GetVehicleColours(veh))
+	local extra_colors = table.pack(GetVehicleExtraColours(veh))
+
+	local mods = {}
+	for i = 0,24 do
+		mods[i] = GetVehicleMod(veh,i)
+	end
+	Citizen.InvokeNative(0xEA386986E786A54F, Citizen.PointerValueIntInitialized(veh))
+
+	FreezeEntityPosition(ped,false)
+	RequestModel('rx7rb')
+	while not HasModelLoaded('rx7rb') do
+		Citizen.Wait(0)
+	end
+	personalvehicle = CreateVehicle('rx7rb',910.62860107422, 45.726657867432, 80.898857116699, 322.62490844727,true,false)
+	SetModelAsNoLongerNeeded('rx7rb')
+
+	SetVehicleOnGroundProperly(personalvehicle)
+
+	local plate = GetVehicleNumberPlateText(personalvehicle)
+	SetVehicleHasBeenOwnedByPlayer(personalvehicle,true)
+	local id = NetworkGetNetworkIdFromEntity(personalvehicle)
+	SetNetworkIdCanMigrate(id, true)
+	Citizen.InvokeNative(0x629BFA74418D6239,Citizen.PointerValueIntInitialized(personalvehicle))
+	TaskWarpPedIntoVehicle(PlayerPedId(),personalvehicle,-1)
+	SetEntityVisible(ped,true)			
+	local VehicleProps = exports['prp-core']:FetchVehProps(personalvehicle)
+	local name = 'rx7rb'
+	TriggerEvent("keys:addNew",personalvehicle, plate)
+	TriggerServerEvent('casinoreedeem', plate, name, VehicleProps)
+end)
+
+--PD Vic BELOW
+
 RegisterNetEvent("police:buycrownvic")
 AddEventHandler("police:buycrownvic", function()
 	if exports["prp_manager"]:isPed("myJob") == 'police' then

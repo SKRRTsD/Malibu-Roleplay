@@ -3704,6 +3704,24 @@ Citizen.CreateThread(
         --     distance = 3.5
         -- })
 
+        AddBoxZone("casino_car", vector3(909.41, 50.69, 80.9), 0.7, 0.5, {
+            name="casino_car",
+            heading=355,
+            debugPoly=true,
+            minZ=77.9,
+            maxZ=81.9
+        }, {
+            options = {
+                {
+                    event = 'casino:reedeem',
+                    icon = "fas fa-circle",
+                    label = "Claim Lucky Wheel Car!"
+                }
+            },
+            job = {"all"},
+            distance = 3.0
+        })
+
         AddBoxZone("casino_membership", vector3(930.32, 36.81, 81.1), 0.5, 3.1, {
             name="casino_membership",
             heading=0,
