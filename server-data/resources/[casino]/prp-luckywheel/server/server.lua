@@ -40,7 +40,7 @@ AddEventHandler('prp_luckywheel:getLucky', function(money)
         if user ~= nil then
             if  user:getCash() >= amount  then
                 user:removeMoney(amount)
-
+                exports["prp-banking"]:UpdateSociety(250, "casino_dealer", "add")
                 -- local societyAccount
                 -- TriggerEvent('prp_addonaccount:getSharedAccount', 'society_diamondcasino', function(account)
                 --     societyAccount = account
