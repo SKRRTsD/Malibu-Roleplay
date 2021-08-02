@@ -49,7 +49,7 @@ AddEventHandler('prp_luckywheel:getLucky', function(money)
 
                 isRoll = true
                 -- local _priceIndex = math.random(1, 20)
-                local _randomPrice = math.random(1, 100)
+                local _randomPrice = math.random(1, 500)
                 if _randomPrice == 1 then
                     -- Win car
                     local _subRan = math.random(1,1000)
