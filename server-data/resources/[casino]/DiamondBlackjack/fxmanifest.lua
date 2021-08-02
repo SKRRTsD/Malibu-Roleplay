@@ -40,8 +40,6 @@ files{
 	'audio/dlcvinewood_speech.dat4.rel',
 	'audio/sfx/dlc_vinewood/casino_general.awc',
 	'audio/sfx/dlc_vinewood/casino_interior_stems.awc',
-	'audio/sfx/dlc_vinewood/casino_ped_distant_speech.awc',
-	'audio/sfx/dlc_vinewood/casino_penthouse_party.awc',
 	'audio/sfx/dlc_vinewood/casino_slot_machines_01.awc',
 	'audio/sfx/dlc_vinewood/casino_slot_machines_02.awc',
 	'audio/sfx/dlc_vinewood/casino_slot_machines_03.awc',
