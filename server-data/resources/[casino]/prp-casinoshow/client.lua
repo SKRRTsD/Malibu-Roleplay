@@ -1,7 +1,7 @@
 local inCasino = false
 local spinningObject = nil
 local spinningCar = nil
-local carOnShow = `rxrb`
+local carOnShow = `rx7rb`
 
 function IsTable(T)
 	return type(T) == 'table'
