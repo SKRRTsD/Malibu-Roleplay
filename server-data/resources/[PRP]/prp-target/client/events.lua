@@ -3682,33 +3682,33 @@ Citizen.CreateThread(
 
         --casino
 
-        AddBoxZone("casino_cashier", vector3(1116.67, 220.06, -49.44), 0.9, 0.5, {
-            name="casino_cashier",
-            heading=0,
-            minZ=-52.44,
-            maxZ=-48.44
-        }, {
-            options = {
-                {
-                    event = "buy:chips",
-                    icon = "fas fa-circle",
-                    label = "PURCHASE CHIPS",
-                },
-                {
-                    event = "exchange:cash",
-                    icon = "fas fa-money-bill-wave",
-                    label = "CASHOUT(CASH)",
-                },
+        -- AddBoxZone("casino_cashier", vector3(1116.67, 220.06, -49.44), 0.9, 0.5, {
+        --     name="casino_cashier",
+        --     heading=0,
+        --     minZ=-52.44,
+        --     maxZ=-48.44
+        -- }, {
+        --     options = {
+        --         {
+        --             event = "buy:chips",
+        --             icon = "fas fa-circle",
+        --             label = "PURCHASE CHIPS",
+        --         },
+        --         {
+        --             event = "exchange:cash",
+        --             icon = "fas fa-money-bill-wave",
+        --             label = "CASHOUT(CASH)",
+        --         },
 
-                {
-                    event = "exchange:bank",
-                    icon = "fas fa-university",
-                    label = "CASHOUT(BANK)",
-                },
-            },
-            job = {"all"},
-            distance = 3.5
-        })
+        --         {
+        --             event = "exchange:bank",
+        --             icon = "fas fa-university",
+        --             label = "CASHOUT(BANK)",
+        --         },
+        --     },
+        --     job = {"all"},
+        --     distance = 3.5
+        -- })
 
         AddBoxZone("casinoenter", vector3(935.96, 47.36, 81.1), 0.6, 1, {
             name="casinoenter",
