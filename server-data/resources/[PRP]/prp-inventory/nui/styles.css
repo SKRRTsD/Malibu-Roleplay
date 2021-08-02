@@ -25,14 +25,13 @@ body {
     width: 100%;
     height: 100%;
 }
-
 .itemname2 {
     text-align: center;
     width: 110px;
-    font-size: 10px;
+    font-size: 11px;
     position: absolute;
-    bottom: 3px;
-    color: rgb(255, 255, 255);
+    bottom: 5px;
+    color: white;
 }
 
 .information {
@@ -72,54 +71,46 @@ body {
 
 #bind1 {
     position: absolute;
-    padding: 2px;
-    color: rgb(0, 0, 0);
-    font-size: 11px;
+    padding: 0.2vh;
+    color: white;
+    font-size: 1.1vh;
     font-weight: bold;
-    margin-top: 8px;
+    margin-top: 0.2vh;
     opacity: 0.9;
-    background: rgba(255, 255, 255, 1);
-    margin-left: 7px;
-    border-radius: 15%;
+    margin-left: 0.2vh;
 }
 
 #bind2 {
     position: absolute;
-    padding: 2px;
-    color: rgb(0, 0, 0);
-    font-size: 11px;
+    padding: 0.2vh;
+    color: white;
+    font-size: 1.1vh;
     font-weight: bold;
-    margin-top: 8px;
+    margin-top: 0.2vh;
     opacity: 0.9;
-    background: rgb(241, 241, 241);
-    margin-left: 121px;
-    border-radius: 15%;
+    margin-left: 10.8vh;
 }
 
 #bind3 {
     position: absolute;
-    padding: 2px;
-    color: rgb(0, 0, 0);
-    font-size: 11px;
+    padding: 0.2vh;
+    color: white;
+    font-size: 1.1vh;
     font-weight: bold;
-    margin-top: 8px;
+    margin-top: 0.2vh;
     opacity: 0.9;
-    background: rgba(255, 255, 255, 1);
-    margin-left: 235px;
-    border-radius: 15%;
+    margin-left: 21.5vh;
 }
 
 #bind4 {
     position: absolute;
-    padding: 2px;
-    color: rgb(0, 0, 0);
-    font-size: 11px;
+    padding: 0.2vh;
+    color: white;
+    font-size: 1.1vh;
     font-weight: bold;
-    margin-top: 8px;
+    margin-top: 0.2vh;
     opacity: 0.9;
-    background: rgba(255, 255, 255, 1);
-    margin-left: 349px;
-    border-radius: 15%;
+    margin-left: 32vh;
 }
 
 #move-amount:hover {
@@ -143,10 +134,10 @@ hr {
 
 
 div.tooltip {
-    background-color: #191e25;
+    background-color: #222831;
     border-bottom-left-radius: 0;
-    border-radius: 10px;
 }
+
 .Logs {
     position: absolute;
     top: 78.5%;
@@ -169,13 +160,13 @@ div.tooltip {
 }
 
 div.CloseInv {
-    margin-top: 17%;
-    background-color: rgba(28, 103, 243, 0.856);
+    margin-top: 40%;
+    background-color: #30475e;
     color: rgba(220, 220, 220, 1);
 }
 
 div.CloseInv:hover {
-    background-color: #2b9fb4;
+    background-color: #47688a;
 }
 
 input[type='number']::-webkit-outer-spin-button,
@@ -204,7 +195,7 @@ input[type='number']::-webkit-inner-spin-button {
     height: 130px;
     text-align: center;
     border: 1px solid rgba(220, 240, 220, 0.05);
-    background: linear-gradient(to bottom, rgba(1, 1, 1, 0.15) 107px, rgba(28, 103, 243, 0.541) 108px) repeat-x;
+    background: linear-gradient(to bottom, rgba(1, 1, 1, 0.15) 107px, #191e25 108px) repeat-x;
     transition: all 0.2s ease;
     margin: 1px;
     text-transform: uppercase;
@@ -270,41 +261,49 @@ input[type='number']::-webkit-inner-spin-button {
 .itemname3 {
     text-align: center;
     width: 110px;
-    font-size: 9px;
+    font-size: 11px;
     position: absolute;
-    bottom: 3px;
-    color: rgb(255, 255, 255);
+    bottom: 5px;
+    color: white;
 }
-
 
 .itemQuality {
     position: absolute;
     left: 0;
-    bottom: 13%;
-    background: linear-gradient(to bottom, #3b9b43, #da5950 100%);
+    bottom: 0;
+    background: linear-gradient(to bottom, #30475e, #f26e65 100%);
     background-size: 1000% 1000%;
     background-position: 0% 0%;
     pointer-events: none;
-    height: 0.5vh;
+    border-bottom-left-radius: 0.5vh;
+    height: 0.8vh;
+}
+
+.near-full {
+    border-bottom-right-radius: 0.5vh;
 }
 
 .perfect {
     position: absolute;
     left: 0;
-    bottom: 13%;
-    background: #3b9b43;
+    bottom: 0;
+    background: #30475e;
     background-size: 100000% 100000%;
     pointer-events: none;
-    height: 0.5vh;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    height: 0.8vh;
 }
 
 .destroyed {
     position: absolute;
     left: 0;
-    bottom: 13%;
-    background: #da5950;
+    bottom: 0;
+    background: #f26e65;
     pointer-events: none;
-    height: 0.5vh;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    height: 0.8vh;
 }
 
 #UseBar {
@@ -345,19 +344,21 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .wrapmain::-webkit-scrollbar {
-    width: 8px;
+    width: 5px;
 }
 
 .wrapmain::-webkit-scrollbar-thumb {
-    background: rgba(28, 103, 243, 0.541) !important;
+    background: #30475e !important;
+    border-radius: 3px;
 }
 
 .wrapsecondary::-webkit-scrollbar {
-    width: 8px;
+    width: 5px;
 }
 
 .wrapsecondary::-webkit-scrollbar-thumb {
-    background: rgba(28, 103, 243, 0.541) !important;
+    background: #30475e !important;
+    border-radius: 3px;
 }
 
 
@@ -402,7 +403,7 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .weightfill {
-    background: linear-gradient(to right, rgba(28, 103, 243, 0.856), #f2a265b0 600px);
+    background: linear-gradient(to right, #689f38a9, #f2a265b0 600px);
     height: 20px;
     text-align: right;
     margin-right: 5px;
@@ -429,14 +430,13 @@ input[type='number']::-webkit-inner-spin-button {
     opacity: 1;
 }
 
-div.UseInv {
-    margin-top: 15%;
-    background-color: rgba(28, 103, 243, 0.856);
-    color: rgba(220, 220, 220, 1);
-}
-
-div.UseInv:hover {
-    background-color: #2b9fb4;
+.Use {
+    margin: 0 auto;
+    width: 50%;
+    margin-top: 30px;
+    display: block;
+    opacity: 0.5;
+    transition: all 0.5s ease;
 }
 
 .bottom-button:hover {
@@ -494,20 +494,16 @@ img.smaller {
     text-align: center;
     color: rgba(220, 220, 220, 1);
     border-radius: 5px;
-    background-color: rgba(28, 103, 243, 0.856);
+    background-color: #30475e;
     border: none;
     text-transform: uppercase;
 }
 
-#move-amount:hover {
-    background-color: #2b9fb4;
-}
-
 .buttondude {
     align-items: center;
-    background-color: rgba(28, 103, 243, 0.856);
+    background-color: #689f38;
     border-radius: 5px;
-    color: white;
+    color: #191e25;
     display: block;
     flex-grow: 1;
     float: none;
@@ -532,7 +528,7 @@ img.smaller {
 }
 
 .bottom-button {
-    background: rgba(28, 103, 243, 0.541);
+    background: #191e25;
     border-radius: 5px;
     color: #fff;
     display: inline-block;
@@ -686,7 +682,7 @@ h2 {
 }
 
 .weightfill {
-    background: linear-gradient(to right, rgba(28, 103, 243, 0.856), #f2a265b0 600px);
+    background: linear-gradient(to right, #689f38a9, #f2a265b0 600px);
     border-radius: 1vh;
     display: inline-block;
     height: 100%;
@@ -736,8 +732,9 @@ h2 {
 }
 
 .item {
-    background: linear-gradient(to bottom, rgba(1, 1, 1, 0.15) 82%, rgba(28, 103, 243, 0.541) 82%) repeat-x;
-    border: 2px solid rgba(66, 65, 65, 0.55);
+    background: linear-gradient(to bottom, rgba(1, 1, 1, 0.15) 82%, #191e25 82%) repeat-x;
+    border: 1px solid rgba(220, 240, 220, 0.05);
+    border-radius: 7%;
     float: left;
     height: 12.5vh;
     margin: 1%;
@@ -746,7 +743,6 @@ h2 {
     text-transform: uppercase;
     transition: all 0.2s ease;
     width: 98%;
-    border-radius: 10px;
 }
 
 .craftGrid {
@@ -772,7 +768,7 @@ h2 {
 }
 
 .itemname {
-    bottom: 2%;
+    bottom: 8%;
     color: #fff;
     font-size: 0.9vh;
     overflow: hidden;
