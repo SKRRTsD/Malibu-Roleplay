@@ -4568,7 +4568,7 @@ itemList["casinofob"] = {
     nonStack: false,
     model: "",
     image: "casinofob.png",
-    information: "You Won A CAR!!!!!!!!",
+    information: "You Won A CAR!! Trade it in and get the car at the!",
     deg: false
 }
 
