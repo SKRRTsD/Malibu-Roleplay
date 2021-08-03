@@ -42,13 +42,14 @@
 }
 .content button {
     background-color: #fbbe28;
-    color: #011b37;
+    color: rgb(0, 0, 0);
     font-family: "Arial";
     font-weight: bolder;
     border: 4px solid #fbbe28;
     font-size: 12pt;
     text-align: center;
     padding: 4px 3px;
+    border-radius: 10px;
 }
 .content input {
     background-color: #011b37;
@@ -114,8 +115,9 @@
     background-color: #00152c;
 }
 .content button:hover {
-    background-color: #00a2d6;
-    border-color: #00a2d6;
+    background-color: #ffffff62;
+    border-color: #ffffff62;
+    border-radius: 10px;
 }
 .content ::-webkit-scrollbar-thumb {
     background: #fbbe28; 
@@ -188,7 +190,7 @@
 }
 .close:hover,
 .close:focus {
-    color: #00a2d6;
+    color: #0011ff;
     text-decoration: none;
     cursor: pointer;
 }

@@ -17,16 +17,16 @@
             <img v-if="officer.department == 'Police'" src="badges/police.png" v-bind:class="getClass('badge')" >
             <img src="footer.png" id="banner" >
             
-            <p v-if="officer.department == 'Police'" style="font-family: 'Georgia'; font-style: italic; font-size: 20pt; text-align: center;">Los Santos Police Department</p>
+            <p v-if="officer.department == 'Police'" style="font-family: 'Georgia'; font-style: italic; font-size: 20pt; text-align: center;">Police Department</p>
             <p style="position: fixed; left: 17%; top: 5.5%">Welcome, {{ officer.name }}.</p>
-            <button type="button" v-on:click="closeMDT()" style="position: fixed; right: 10%; top: 5.5%">LOGOUT</button>
+            <button type="button" v-on:click="closeMDT()" style="position: fixed; right: 92%; top: 93%">LOGOUT</button>
 
             <div style="position: fixed; left: 16%; top: 12.5%;">
                 <ul>
                     <li v-on:click="changePage('Home')" id="home" >Home</li>
-                    <li v-on:click="changePage('Search Offenders')" id="search-offenders" >Search Persons</li>
+                    <li v-on:click="changePage('Search Offenders')" id="search-offenders" >Search Person</li>
                     <!-- <li v-on:click="changePage('Search Vehicles')" id="search-vehicles" >Search Vehicles</li> -->
-                    <li v-on:click="changePage('Search Reports')" id="search-reports" >Search Reports</li>
+                    <li v-on:click="changePage('Search Reports')" id="search-reports" >Search Report</li>
                     <li v-on:click="changePage('Submit Report')" id="submit-report" >Create Report</li>
                     <li v-on:click="changePage('Warrants')" id="warrants" >Warrants</li>
                 </ul>
@@ -118,7 +118,7 @@
                         <button v-if="report_selected.date" type="button" v-on:click="changePage('Submit Report'); report_new.charges = report_selected.charges; report_new.title = report_selected.title; report_new.incident = report_selected.incident;" id="report-details" >COPY REPORT</button>
                         <button v-if="report_selected.date" type="button" v-on:click="changePage('Submit Warrant'); warrant_new.report_id = report_selected.id; warrant_new.char_id = report_selected.char_id; warrant_new.report_title = report_selected.title; warrant_new.name = report_selected.name; warrant_new.charges = report_selected.charges;" >NEW WARRANT</button>
                         <button type="button" style="margin-top: 5px;" v-on:click="changePage('Submit Report')" >NEW REPORT</button>
-                        <button type="button" style="margin-top: 5px;" v-on:click="closeMDT();evFile(report_selected.id)" class="noselect">EVIDENCE</button>
+                        <!-- <button type="button" style="margin-top: 5px;" v-on:click="closeMDT();evFile(report_selected.id)" class="noselect">EVIDENCE</button> -->
                     </div>
 
                     <div class="right-side" style="max-height: 435px;">
