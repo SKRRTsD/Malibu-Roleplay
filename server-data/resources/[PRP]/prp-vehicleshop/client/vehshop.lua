@@ -1077,12 +1077,12 @@ AddEventHandler("casino:reedeem2", function()
 	Citizen.InvokeNative(0xEA386986E786A54F, Citizen.PointerValueIntInitialized(veh))
 
 	FreezeEntityPosition(ped,false)
-	RequestModel('exor')
-	while not HasModelLoaded('exor') do
+	RequestModel('subwrx')
+	while not HasModelLoaded('subwrx') do
 		Citizen.Wait(0)
 	end
-	personalvehicle = CreateVehicle('exor',910.62860107422, 45.726657867432, 80.898857116699, 322.62490844727,true,false)
-	SetModelAsNoLongerNeeded('exor')
+	personalvehicle = CreateVehicle('subwrx',910.62860107422, 45.726657867432, 80.898857116699, 322.62490844727,true,false)
+	SetModelAsNoLongerNeeded('subwrx')
 
 	SetVehicleOnGroundProperly(personalvehicle)
 
@@ -1094,7 +1094,7 @@ AddEventHandler("casino:reedeem2", function()
 	TaskWarpPedIntoVehicle(PlayerPedId(),personalvehicle,-1)
 	SetEntityVisible(ped,true)			
 	local VehicleProps = exports['prp-core']:FetchVehProps(personalvehicle)
-	local name = 'exor'
+	local name = 'subwrx'
 	TriggerEvent("keys:addNew",personalvehicle, plate)
 	TriggerServerEvent('casinoreedeem', plate, name, VehicleProps)
 end)
