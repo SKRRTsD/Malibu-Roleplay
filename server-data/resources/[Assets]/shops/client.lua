@@ -1153,9 +1153,9 @@ end)
 
 RegisterNetEvent('pillbox:painkiller')
 AddEventHandler('pillbox:painkiller', function()
-	if exports["prp-inventory"]:hasEnoughOfItem('painkiller',2,true) then 
+	if exports["prp-inventory"]:hasEnoughOfItem('painkiller',15,true) then 
 		TriggerEvent("DoLongHudText", "You already have painkillers!", 2)
 	else
-		TriggerEvent("player:receiveItem", "painkiller", 2)
+		TriggerEvent("player:receiveItem", "painkiller", 15)
 	end
 end)
