@@ -41,6 +41,7 @@ AddEventHandler('prp_luckywheel:getLucky', function(money)
             if  user:getCash() >= amount  then
                 user:removeMoney(amount)
                 exports["prp-banking"]:UpdateSociety(250, "casino_dealer", "add")
+
                 -- local societyAccount
                 -- TriggerEvent('prp_addonaccount:getSharedAccount', 'society_diamondcasino', function(account)
                 --     societyAccount = account
@@ -49,7 +50,7 @@ AddEventHandler('prp_luckywheel:getLucky', function(money)
 
                 isRoll = true
                 -- local _priceIndex = math.random(1, 20)
-                local _randomPrice = math.random(1, 500)
+                local _randomPrice = math.random(1, 250)
                 if _randomPrice == 1 then
                     -- Win car
                     local _subRan = math.random(1,1000)
@@ -190,7 +191,7 @@ AddEventHandler('prp_luckywheel:getLucky', function(money)
                 TriggerClientEvent("prp_luckywheel:doRoll", -1, _priceIndex)
             else
                 TriggerClientEvent("prp_luckywheel:rollFinished", -1)  
-                TriggerClientEvent('DoLongHudText', src, "You Need some cash Dummie!", 2)
+                TriggerClientEvent('DoLongHudText', src, "You Need some cash FOO!", 2)
             end
         end
     end
