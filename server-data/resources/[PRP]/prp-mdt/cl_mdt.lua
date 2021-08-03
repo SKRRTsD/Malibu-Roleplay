@@ -255,3 +255,10 @@ function ToggleGUI(explicit_status)
   })
 end
 
+RegisterCommand('mdt', function()
+    if exports["prp_manager"]:isPed("myjob") == 'police' then
+        TriggerEvent('prp-mdt:hotKeyOpen')
+    else
+        TriggerEvent('DoLongHudText', 'You are not a police officer!', 2)
+   end
+end)
