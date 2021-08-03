@@ -4065,20 +4065,20 @@ Citizen.CreateThread(
             [1] = -994634286
         }
 
-        AddTargetModel(
-            pdvehped,
-            {
-                options = {
-                    {
-                        event = "PDSpawnVeh",
-                        icon = "fas fa-car",
-                        label = "Police Garage"
-                    }
-                },
-                job = {"police"},
-                distance = 1.5
-            }
-        )
+        -- AddTargetModel(
+        --     pdvehped,
+        --     {
+        --         options = {
+        --             {
+        --                 event = "PDSpawnVeh",
+        --                 icon = "fas fa-car",
+        --                 label = "Police Garage"
+        --             }
+        --         },
+        --         job = {"police"},
+        --         distance = 1.5
+        --     }
+        -- )
 
         local pdboatsped = {
             [1] = 193469166
