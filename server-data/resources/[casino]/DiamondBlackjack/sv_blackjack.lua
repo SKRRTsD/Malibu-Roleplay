@@ -16,11 +16,11 @@ function tryTakeChips(source,amount)
         TriggerClientEvent('DoShortHudText', src, 'Get the fuck out',2)
         return false
     end
-    if amount < 5001 then
+    if amount < 2001 then
     user:removeMoney(amount)
     return true
-    else if amount > 5000 then 
-     TriggerClientEvent('DoShortHudText', src, 'Max Betting is $5000',2)
+    else if amount > 2000 then 
+     TriggerClientEvent('DoShortHudText', src, 'Max Betting is $2000',2)
     end
     end
 end
