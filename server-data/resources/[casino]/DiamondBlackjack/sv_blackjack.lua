@@ -64,7 +64,7 @@ AddEventHandler("Blackjack:requestSitAtBlackjackTable", function(chairId)
         TriggerClientEvent("Blackjack:sendBlackjackTableData",-1,blackjackTables)
         TriggerClientEvent("Blackjack:sitAtBlackjackTable",source,chairId)
     else
-        TriggerClientEvent("blackjack:notify",source,"~r~Error, can't sit you down.")
+        TriggerClientEvent("DoLongHudText",source,"Error, can't sit you down.")
         --print("[casino catastrophe] id is nil what?")
     end
 end)
@@ -104,15 +104,15 @@ AddEventHandler("Blackjack:setBlackjackBet",function(gameId,betAmount,chairId)
                         --print("GameId: " .. tostring(gameId) .. " source: " .. tostring(source) .. " has placed a bet of " .. tostring(betAmount))
                         TriggerClientEvent("Blackjack:successBlackjackBet",source)
                         TriggerClientEvent("Blackjack:syncChipsPropBlackjack",-1,betAmount,chairId)
-                        TriggerClientEvent("blackjack:notify",source,"~g~Bet placed: " .. tostring(betAmount) .. " chips.")
+                        TriggerClientEvent("DoLongHudText",source,"Bet placed: " .. tostring(betAmount) .. " chips.")
                     else 
-                        TriggerClientEvent("blackjack:notify",source,"~r~Not enough chips!")
+                        TriggerEvent("DoLongHudText","Not enough chips!",2)
                     end
                 end
             end
         end
     else
-        TriggerClientEvent("blackjack:notify",source,"~r~Error betting!")
+        TriggerClientEvent("DoLongHudText",source,"Error betting!")
     end
 end)
 
@@ -259,7 +259,7 @@ for i=0,31,1 do
                                                     nextCardCount = 0
                                                     blackjackGameData[gameId][source]["status"] = "bust"
                                                     local lostAmount = blackjackGameData[gameId][source][1]
-                                                    TriggerClientEvent("blackjack:notify",source,"~r~-"..tostring(lostAmount).." chips")
+                                                    TriggerClientEvent("DoLongHudText",source,""..tostring(lostAmount).." chips")
                                                     if lostAmount > 10000000 then
                                                         TriggerClientEvent('chatMessage', -1, "Diamond Casino | " .. GetPlayerName(source) .. " has LOST " .. tostring(getMoneyStringFormatted(lostAmount)) .. " chips!")
                                                     end
@@ -370,7 +370,7 @@ for i=0,31,1 do
                                                     if playerPing ~= nil then
                                                         if playerPing > 0 then
                                                             TriggerClientEvent("Blackjack:blackjackWin",source,tableId)
-                                                            TriggerClientEvent("blackjack:notify",source,"~g~+"..tostring(potentialWinAmount).." chips")
+                                                            TriggerClientEvent("DoLongHudText",source,""..tostring(potentialWinAmount).." chips")
                                                             if potentialPushAmount > 10000000 then
                                                                 TriggerClientEvent('chatMessage', -1, "Diamond Casino | " .. GetPlayerName(source) .. " has WON " .. tostring(getMoneyStringFormatted(potentialPushAmount)) .. " chips!")
                                                             end
@@ -383,7 +383,7 @@ for i=0,31,1 do
                                                     if playerPing ~= nil then
                                                         if playerPing > 0 then
                                                             TriggerClientEvent("Blackjack:blackjackWin",source,tableId)
-                                                            TriggerClientEvent("blackjack:notify",source,"~g~+"..tostring(potentialWinAmount).." chips")
+                                                            TriggerClientEvent("DoLongHudText",source,""..tostring(potentialWinAmount).." chips")
                                                             if potentialPushAmount > 10000000 then
                                                                 TriggerClientEvent('chatMessage', -1, "Diamond Casino | " .. GetPlayerName(source) .. " has WON " .. tostring(getMoneyStringFormatted(potentialPushAmount)) .. " chips!")
                                                             end
@@ -395,7 +395,7 @@ for i=0,31,1 do
                                                     if playerPing ~= nil then
                                                         if playerPing > 0 then
                                                             TriggerClientEvent("Blackjack:blackjackPush",source,tableId)
-                                                            TriggerClientEvent("blackjack:notify",source,"~b~+0 chips")
+                                                            TriggerClientEvent("DoLongHudText",source,"chips")
                                                         end
                                                     end
                                                 else
@@ -403,7 +403,7 @@ for i=0,31,1 do
                                                     if playerPing ~= nil then
                                                         if playerPing > 0 then
                                                             TriggerClientEvent("Blackjack:blackjackLose",source,tableId)
-                                                            TriggerClientEvent("blackjack:notify",source,"~r~-"..tostring(potentialPushAmount).." chips")
+                                                            TriggerClientEvent("DoLongHudText",source,""..tostring(potentialPushAmount).." chips")
                                                             if potentialPushAmount > 10000000 then
                                                                 TriggerClientEvent('chatMessage', -1, "Diamond Casino | " .. GetPlayerName(source) .. " has LOST " .. tostring(getMoneyStringFormatted(potentialPushAmount)) .. " chips!")
                                                             end
