@@ -411,7 +411,7 @@ function togglePacanele(start, banuti) {
     setTimeout(function(){ rolling = 0; }, 4000);
   } else {
     allFile.css("display", "none");
-    $.post("http://prp_slots/exitWith", JSON.stringify({
+    $.post("http://mrp_slots/exitWith", JSON.stringify({
       coinAmount: backCoins / 2
     }));
     insertCoin(-coins); // Scoate toti banii din aparat

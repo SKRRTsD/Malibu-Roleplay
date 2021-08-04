@@ -77,13 +77,13 @@ Config.ShowTemp = false
 
 -- simple localization
 Config.Language = {
-    joining = "\xF0\x9F\x8E\x89Joining Pluto RP...",
-    connecting = "\xE2\x8F\xB3Connecting to Pluto RP...",
-    idrr = "\xE2\x9D\x97[PRPQueue] Error: Couldn't retrieve any of your id's, try restarting.",
-    err = "\xE2\x9D\x97[PRPQueue] There was an error",
+    joining = "\xF0\x9F\x8E\x89Joining Malibu RP...",
+    connecting = "\xE2\x8F\xB3Connecting to Malibu RP...",
+    idrr = "\xE2\x9D\x97[MRPQueue] Error: Couldn't retrieve any of your id's, try restarting.",
+    err = "\xE2\x9D\x97[MRPQueue] There was an error",
     pos = "\xF0\x9F\x90\x8CYou are %d/%d in queue \xF0\x9F\x95\x9C%s",
-    connectingerr = "\xE2\x9D\x97[PRPQueue] Error: Error adding you to connecting list",
-    timedout = "\xE2\x9D\x97[PRPQueue] Error: Timed out?",
-    wlonly = "\xE2\x9D\x97[PRPQueue] You must be whitelisted to join this server. To apply, head to : https://discord.gg/ew7B6HjshC",
-    steam = "\xE2\x9D\x97 [PRPQueue] Error: Steam must be running"
+    connectingerr = "\xE2\x9D\x97[MRPQueue] Error: Error adding you to connecting list",
+    timedout = "\xE2\x9D\x97[MRPQueue] Error: Timed out?",
+    wlonly = "\xE2\x9D\x97[MRPQueue] You must be whitelisted to join this server. To apply, head to : https://discord.gg/ew7B6HjshC",
+    steam = "\xE2\x9D\x97 [MRPQueue] Error: Steam must be running"
 }

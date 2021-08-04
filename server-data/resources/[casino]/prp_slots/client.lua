@@ -46,9 +46,9 @@ end
 -------------------------------------------------------------------------------
 -- NET EVENTS
 -------------------------------------------------------------------------------
-RegisterNetEvent("prp_slots:enterBets")
-AddEventHandler("prp_slots:enterBets", function ()
-    local bets = exports["prp-applications"]:KeyboardInput({
+RegisterNetEvent("mrp_slots:enterBets")
+AddEventHandler("mrp_slots:enterBets", function ()
+    local bets = exports["mrp-applications"]:KeyboardInput({
         header = "Bet Amount",
         rows = {
             {
@@ -63,7 +63,7 @@ AddEventHandler("prp_slots:enterBets", function ()
             currentBetAmount = bets
         end
         if tonumber(currentBetAmount) >= 0 then
-			TriggerServerEvent('prp_slots:BetsAndMoney', tonumber(bets))
+			TriggerServerEvent('mrp_slots:BetsAndMoney', tonumber(bets))
 
         else
 			TriggerEvent('DoLongHudText', "You need to enter numbers (9999 is max bet).")
@@ -73,8 +73,8 @@ end)
 
 
 
-RegisterNetEvent("prp_slots:UpdateSlots")
-AddEventHandler("prp_slots:UpdateSlots", function(lei)
+RegisterNetEvent("mrp_slots:UpdateSlots")
+AddEventHandler("mrp_slots:UpdateSlots", function(lei)
 	SetNuiFocus(true, true)
 	open = true
 	SendNUIMessage({
@@ -90,7 +90,7 @@ RegisterNUICallback('exitWith', function(data, cb)
 	cb('ok')
 	SetNuiFocus(false, false)
 	open = false
-	TriggerServerEvent("prp_slots:PayOutRewards", data.coinAmount)
+	TriggerServerEvent("mrp_slots:PayOutRewards", data.coinAmount)
 end)
 
 -------------------------------------------------------------------------------
@@ -129,7 +129,7 @@ Citizen.CreateThread(function ()
 			DisableControlAction(0, 142, true) -- MeleeAttackAlternate
 			DisableControlAction(0, 106, true) -- VehicleMouseControlOverride
 		elseif IsControlJustReleased(0, 38) and machine then
-			TriggerEvent('prp_slots:enterBets')
+			TriggerEvent('mrp_slots:enterBets')
 		else
 			TriggerEvent('DoLongHudText', 'Its closed', 2)
 		end
@@ -137,7 +137,7 @@ Citizen.CreateThread(function ()
 end)
 
 -- RegisterCommand("slot_toggle", function(source, args)
---     local myJob = exports["prp_manager"]:isPed("myJob")
+--     local myJob = exports["mrp_manager"]:isPed("myJob")
 --     if myJob == "best_buds" then
 --         enabled = not enabled
 --         TriggerEvent("DoLongHudText", ('Slot has been %s!'):format(enabled and 'Enabled' or 'Disabled')) 
@@ -151,7 +151,7 @@ end)
 
 
 RegisterNetEvent("attempt:change:slot", function()
-	if exports['prp_manager']:isPed("myjob") == "casino_dealer" then
+	if exports['mrp_manager']:isPed("myjob") == "casino_dealer" then
 		TriggerServerEvent("slot:toggle")
 	else
 		TriggerEvent("DoLongHudText", "This is only for Casino Dealer to use.", 2)

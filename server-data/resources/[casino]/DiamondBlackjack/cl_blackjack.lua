@@ -3041,7 +3041,7 @@ RegisterCommand("cleantable",function()
 end)
 
 Citizen.CreateThread(function()
-	exports["prp-polyzone"]:AddBoxZone("diamond_blackjack", vector3(1148.87, 269.48, -51.84), 3, 3, {
+	exports["mrp-polyzone"]:AddBoxZone("diamond_blackjack", vector3(1148.87, 269.48, -51.84), 3, 3, {
 		name="diamond_blackjack",
         heading=315,
         minZ=-54.84,
@@ -3049,26 +3049,26 @@ Citizen.CreateThread(function()
 	})	  
 end)
 
-RegisterNetEvent('prp-polyzone:enter')
-AddEventHandler('prp-polyzone:enter', function(name)
+RegisterNetEvent('mrp-polyzone:enter')
+AddEventHandler('mrp-polyzone:enter', function(name)
     if name == "diamond_blackjack"  then
         drillingstart = true
-		TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Play Blackjack")) 
+		TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Play Blackjack")) 
     end
 end)
 
-RegisterNetEvent('prp-polyzone:exit')
-AddEventHandler('prp-polyzone:exit', function(name)
+RegisterNetEvent('mrp-polyzone:exit')
+AddEventHandler('mrp-polyzone:exit', function(name)
     if name == "diamond_blackjack"  then
         drillingstart = false
     end
-    TriggerEvent('prp-ui:HideUI')
+    TriggerEvent('mrp-ui:HideUI')
 end)
 
 -- 2nd Table
 
 Citizen.CreateThread(function()
-	exports["prp-polyzone"]:AddBoxZone("diamond_blackjack2", vector3(1152.03, 266.46, -51.84), 3, 3, {
+	exports["mrp-polyzone"]:AddBoxZone("diamond_blackjack2", vector3(1152.03, 266.46, -51.84), 3, 3, {
 		name="diamond_blackjack2",
         heading=315,
         minZ=-54.64,
@@ -3076,26 +3076,26 @@ Citizen.CreateThread(function()
 	})	  
 end)
 
-RegisterNetEvent('prp-polyzone:enter')
-AddEventHandler('prp-polyzone:enter', function(name)
+RegisterNetEvent('mrp-polyzone:enter')
+AddEventHandler('mrp-polyzone:enter', function(name)
     if name == "diamond_blackjack2"  then
         drillingstart = true
-		TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Play Blackjack")) 
+		TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Play Blackjack")) 
     end
 end)
 
-RegisterNetEvent('prp-polyzone:exit')
-AddEventHandler('prp-polyzone:exit', function(name)
+RegisterNetEvent('mrp-polyzone:exit')
+AddEventHandler('mrp-polyzone:exit', function(name)
     if name == "diamond_blackjack2"  then
         drillingstart = false
     end
-    TriggerEvent('prp-ui:HideUI')
+    TriggerEvent('mrp-ui:HideUI')
 end)
 
 -- 3rd Table
 
 Citizen.CreateThread(function()
-	exports["prp-polyzone"]:AddBoxZone("diamond_blackjack3", vector3(1129.53, 262.22, -51.04), 3, 3.2, {
+	exports["mrp-polyzone"]:AddBoxZone("diamond_blackjack3", vector3(1129.53, 262.22, -51.04), 3, 3.2, {
 		name="diamond_blackjack3",
         heading=315,
         minZ=-53.84,
@@ -3103,26 +3103,26 @@ Citizen.CreateThread(function()
 	})	  
 end)
 
-RegisterNetEvent('prp-polyzone:enter')
-AddEventHandler('prp-polyzone:enter', function(name)
+RegisterNetEvent('mrp-polyzone:enter')
+AddEventHandler('mrp-polyzone:enter', function(name)
     if name == "diamond_blackjack3"  then
         drillingstart = true
-		TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Play Blackjack")) 
+		TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Play Blackjack")) 
     end
 end)
 
-RegisterNetEvent('prp-polyzone:exit')
-AddEventHandler('prp-polyzone:exit', function(name)
+RegisterNetEvent('mrp-polyzone:exit')
+AddEventHandler('mrp-polyzone:exit', function(name)
     if name == "diamond_blackjack3"  then
         drillingstart = false
     end
-    TriggerEvent('prp-ui:HideUI')
+    TriggerEvent('mrp-ui:HideUI')
 end)
 
 -- 3rd Table
 
 Citizen.CreateThread(function()
-	exports["prp-polyzone"]:AddBoxZone("diamond_blackjack4", vector3(1144.55, 247.67, -51.04), 3, 3, {
+	exports["mrp-polyzone"]:AddBoxZone("diamond_blackjack4", vector3(1144.55, 247.67, -51.04), 3, 3, {
 		name="diamond_blackjack4",
         heading=320,
         minZ=-54.04,
@@ -3130,18 +3130,18 @@ Citizen.CreateThread(function()
 	})	  
 end)
 
-RegisterNetEvent('prp-polyzone:enter')
-AddEventHandler('prp-polyzone:enter', function(name)
+RegisterNetEvent('mrp-polyzone:enter')
+AddEventHandler('mrp-polyzone:enter', function(name)
     if name == "diamond_blackjack4"  then
         drillingstart = false
-		TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Play Blackjack")) 
+		TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Play Blackjack")) 
     end
 end)
 
-RegisterNetEvent('prp-polyzone:exit')
-AddEventHandler('prp-polyzone:exit', function(name)
+RegisterNetEvent('mrp-polyzone:exit')
+AddEventHandler('mrp-polyzone:exit', function(name)
     if name == "diamond_blackjack4"  then
         drillingstart = false
     end
-    TriggerEvent('prp-ui:HideUI')
+    TriggerEvent('mrp-ui:HideUI')
 end)

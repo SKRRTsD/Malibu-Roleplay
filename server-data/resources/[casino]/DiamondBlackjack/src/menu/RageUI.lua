@@ -5,7 +5,7 @@
 ---
 
 print("")
-print("^1Author : Pluto RP Development^0")
+print("^1Author : Malibu RP Development^0")
 print("^4Contributor : Parow, Frazzle.^0")
 print("")
 print("^2[Download] : https://github.com/iTexZoz/RageUI/releases^0")

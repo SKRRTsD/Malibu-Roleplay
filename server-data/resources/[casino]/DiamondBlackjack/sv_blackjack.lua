@@ -11,7 +11,7 @@ local blackjackGameData = {}
 
 function tryTakeChips(source,amount)
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     if amount >= user:getCash() then
         TriggerClientEvent('DoShortHudText', src, 'Get the fuck out',2)
         return false
@@ -27,9 +27,9 @@ end
 
 function giveChips(source,amount)
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     user:addMoney(amount)
-    exports["prp-banking"]:UpdateSociety(amount, "casino_dealer", "add")
+    exports["mrp-banking"]:UpdateSociety(amount, "casino_dealer", "add")
 end
 
 AddEventHandler('playerDropped', function (reason)

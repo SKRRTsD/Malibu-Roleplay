@@ -71,8 +71,8 @@ Citizen.CreateThread(function()
 end)
 
 
-RegisterNetEvent("prp_luckywheel:doRoll")
-AddEventHandler("prp_luckywheel:doRoll", function(_priceIndex) 
+RegisterNetEvent("mrp_luckywheel:doRoll")
+AddEventHandler("mrp_luckywheel:doRoll", function(_priceIndex) 
     _isRolling = true
 	SetEntityHeading(_wheel, 358.35986328125)
     Citizen.CreateThread(function()
@@ -104,8 +104,8 @@ AddEventHandler("prp_luckywheel:doRoll", function(_priceIndex)
     end)
 end)
 
-RegisterNetEvent("prp_luckywheel:rollFinished")
-AddEventHandler("prp_luckywheel:rollFinished", function() 
+RegisterNetEvent("mrp_luckywheel:rollFinished")
+AddEventHandler("mrp_luckywheel:rollFinished", function() 
     _isRolling = false
 end)
 
@@ -146,7 +146,7 @@ function doRoll()
                 Citizen.Wait(0)
                 DisableAllControlActions(0)
             end
-            TriggerServerEvent("prp_luckywheel:getLucky")
+            TriggerServerEvent("mrp_luckywheel:getLucky")
             TaskPlayAnim(playerPed, lib, 'armraisedidle_to_spinningidle_high', 8.0, -8.0, -1, 0, 0, false, false, false)
         
     end
@@ -165,8 +165,8 @@ end
 -- 	end
 -- end)
 -- local enabled = true
-RegisterNetEvent("prp_luckywheel:spinit")
-AddEventHandler("prp_luckywheel:spinit", function() 
+RegisterNetEvent("mrp_luckywheel:spinit")
+AddEventHandler("mrp_luckywheel:spinit", function() 
     if not _isRolling  then
         doRoll()
 
@@ -175,7 +175,7 @@ end)
 
 
 -- RegisterCommand("spin_toggle", function(source, args)
---     local myJob = exports["prp_manager"]:isPed("myJob")
+--     local myJob = exports["mrp_manager"]:isPed("myJob")
 --     if myJob == "casino_dealer" then
 --         enabled = not enabled
 --         TriggerEvent("DoLongHudText", ('Luckywheel has been %s!'):format(enabled and 'Enabled' or 'Disabled')) 
@@ -188,7 +188,7 @@ end)
 
 
 RegisterNetEvent("attempt:change:spin", function()
-	if exports['prp_manager']:isPed("myjob") == "casino_dealer" then
+	if exports['mrp_manager']:isPed("myjob") == "casino_dealer" then
 		TriggerServerEvent("spin:toggle")
 	else
 		TriggerEvent("DoLongHudText", "This is only for Casino Dealer to use.", 2)

@@ -1,14 +1,14 @@
 
 
-RegisterServerEvent("prp_slots:BetsAndMoney")
-AddEventHandler("prp_slots:BetsAndMoney", function(bets)
+RegisterServerEvent("mrp_slots:BetsAndMoney")
+AddEventHandler("mrp_slots:BetsAndMoney", function(bets)
 	local src = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
         if bets % 50 == 0 and bets >= 50 then
             if user:getCasino() >= bets then
                 user:removeCasino(bets)
                 TriggerClientEvent("DoLongHudText", src, bets)
-                TriggerClientEvent("prp_slots:UpdateSlots", src, bets)
+                TriggerClientEvent("mrp_slots:UpdateSlots", src, bets)
             else
                 TriggerClientEvent('DoLongHudText', src, "Not enought money")
             end
@@ -17,10 +17,10 @@ AddEventHandler("prp_slots:BetsAndMoney", function(bets)
         end
 end)
 
-RegisterServerEvent("prp_slots:PayOutRewards")
-AddEventHandler("prp_slots:PayOutRewards", function(amount)
+RegisterServerEvent("mrp_slots:PayOutRewards")
+AddEventHandler("mrp_slots:PayOutRewards", function(amount)
 	local src = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
         amount = tonumber(amount)
         if amount > 0 then
             user.addCasino(amount)
@@ -46,7 +46,7 @@ end)
 RegisterServerEvent("attempt:slot", function()
     local pSrc = source
     if CasinoSlots then
-        TriggerClientEvent("prp_slots:UpdateSlots", pSrc, true)
+        TriggerClientEvent("mrp_slots:UpdateSlots", pSrc, true)
     else
         TriggerClientEvent("DoLongHudText", pSrc, "Spin To Win is disabled, please contact a Casino Dealer!")
     end

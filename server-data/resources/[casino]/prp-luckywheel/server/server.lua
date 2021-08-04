@@ -25,25 +25,25 @@ end
 RegisterServerEvent('casino_enter')
 AddEventHandler('casino_enter', function()
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
     local player = GetPlayerName(source)
     sendToDiscord5("Enter Casino Logs", "Player ID: ".. src ..", Steam: ".. player ..",  Just Enter The Casino")
 end)  
 
-RegisterServerEvent('prp_luckywheel:getLucky')
-AddEventHandler('prp_luckywheel:getLucky', function(money)
+RegisterServerEvent('mrp_luckywheel:getLucky')
+AddEventHandler('mrp_luckywheel:getLucky', function(money)
     local src = source
     local source = tonumber(source)
-    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
     local player = GetPlayerName(source)
     if not isRoll then
         if user ~= nil then
             if  user:getCash() >= amount  then
                 user:removeMoney(amount)
-                exports["prp-banking"]:UpdateSociety(250, "casino_dealer", "add")
+                exports["mrp-banking"]:UpdateSociety(250, "casino_dealer", "add")
 
                 -- local societyAccount
-                -- TriggerEvent('prp_addonaccount:getSharedAccount', 'society_diamondcasino', function(account)
+                -- TriggerEvent('mrp_addonaccount:getSharedAccount', 'society_diamondcasino', function(account)
                 --     societyAccount = account
                 -- end)
                 -- societyAccount.addMoney(amount)
@@ -186,11 +186,11 @@ AddEventHandler('prp_luckywheel:getLucky', function(money)
                         sendToDiscord5("Car Winner Logs", "Player ID: ".. src ..", Steam: ".. player ..",  Just WON THE CAR!!")
                         TriggerClientEvent('DoLongHudText', src, "You won a car!", 1)
                     end
-                    TriggerClientEvent("prp_luckywheel:rollFinished", -1)
+                    TriggerClientEvent("mrp_luckywheel:rollFinished", -1)
                 end)
-                TriggerClientEvent("prp_luckywheel:doRoll", -1, _priceIndex)
+                TriggerClientEvent("mrp_luckywheel:doRoll", -1, _priceIndex)
             else
-                TriggerClientEvent("prp_luckywheel:rollFinished", -1)  
+                TriggerClientEvent("mrp_luckywheel:rollFinished", -1)  
                 TriggerClientEvent('DoLongHudText', src, "You Need some cash FOO!", 2)
             end
         end
@@ -213,7 +213,7 @@ end)
 RegisterServerEvent("attempt:spin", function()
     local pSrc = source
     if CasinoSpin then
-        TriggerClientEvent("prp_luckywheel:spinit", pSrc, true)
+        TriggerClientEvent("mrp_luckywheel:spinit", pSrc, true)
     else
         TriggerClientEvent("DoLongHudText", pSrc, "Spin To Win is disabled, please contact a Casino Dealer!")
     end
