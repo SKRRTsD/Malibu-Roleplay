@@ -76,7 +76,7 @@
 -- RegisterServerEvent('housing:getGarage')
 -- AddEventHandler('housing:getGarage', function(house_id, house_model)
 --     local src = source
---     local cid = exports['prp-core']:GetPlayerCid(src)
+--     local cid = exports['mrp-core']:GetPlayerCid(src)
 --     exports.ghmattimysql:execute('SELECT * FROM __housekeys WHERE `house_id`= ? AND `house_model`= ?  AND `cid` = ?', {house_id, house_model, cid}, function(returnData)
 --         if returnData[1] ~= nil then
 --             TriggerClientEvent('sendGarges', src, json.decode(returnData[1].garages), returnData[1].house_id, returnData[1].housename)
@@ -155,7 +155,7 @@
 -- RegisterServerEvent('house:givekey')
 -- AddEventHandler('house:givekey', function(house_id,house_model,house_name,target)
 --     local src = source
---     local TargetCID = exports['prp-core']:GetPlayerCid(tonumber(target))
+--     local TargetCID = exports['mrp-core']:GetPlayerCid(tonumber(target))
 --     exports.ghmattimysql:execute('SELECT * FROM characters WHERE `id`= ?', {TargetCID}, function(targetshit)
 --         exports.ghmattimysql:execute('SELECT `house_id` FROM __housekeys WHERE `cid`= ?', {cid}, function(data)
 --             if data == nil then

@@ -1,7 +1,7 @@
 RegisterServerEvent('erp:idcard')
 AddEventHandler('erp:idcard', function()
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     if (tonumber(user:getCash()) >= 50) then
         user:removeMoney(50)
         TriggerClientEvent('courthouse:idbuy', src)
@@ -12,7 +12,7 @@ end)
 
 RegisterServerEvent('cash:remove')
 AddEventHandler('cash:remove', function(pSrc, amount)
-    local user = exports["prp-core"]:getModule("Player"):GetUser(tonumber(pSrc))
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(tonumber(pSrc))
 	if (tonumber(user:getCash()) >= amount) then
 		user:removeMoney(amount)
 	end

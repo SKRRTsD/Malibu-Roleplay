@@ -230,8 +230,8 @@ end)
 
 RegisterNetEvent("car:dopayment")
 AddEventHandler("car:dopayment", function(plate)
-	local rankCarshop = exports["prp_manager"]:GroupRank("car_shop")
-    local rankImport = exports["prp_manager"]:GroupRank("illegal_carshop")
+	local rankCarshop = exports["mrp_manager"]:GroupRank("car_shop")
+    local rankImport = exports["mrp_manager"]:GroupRank("illegal_carshop")
     local salesman = false
 	if rankCarshop > 0 or rankImport > 0 then
 		salesman = true
@@ -320,7 +320,7 @@ AddEventHandler('garages:SpawnVehicle', function(oof, vehicle, plate, state, Fue
 			SetModelAsNoLongerNeeded(car)
 			
 			-- if Fuel <= tonumber(5) then
-			-- 	exports['prp-carhud']:setFuel(veh, 20)
+			-- 	exports['mrp-carhud']:setFuel(veh, 20)
 			-- else
 			-- 	DecorSetInt(veh, "CurrentFuel", Fuel)
 			-- end
@@ -486,7 +486,7 @@ AddEventHandler('garages:SpawnVehicle:repo', function(oof, vehicle, plate, state
 		SetModelAsNoLongerNeeded(car)
 		
 		-- if Fuel <= tonumber(5) then
-		-- 	exports['prp-carhud']:setFuel(veh, 20)
+		-- 	exports['mrp-carhud']:setFuel(veh, 20)
 		-- else
 		-- 	DecorSetInt(veh, "CurrentFuel", Fuel)
 		-- end
@@ -663,7 +663,7 @@ end)
 
 RegisterNetEvent('gargages:update:functions')
 AddEventHandler('gargages:update:functions', function(cidsent)
-  local cid = exports["prp_manager"]:isPed("cid")
+  local cid = exports["mrp_manager"]:isPed("cid")
   if tonumber(cid) == tonumber(cidsent) then
     TriggerEvent("menu:update:vehicles") -- Resets menu  - garage store / take-out
 	TriggerServerEvent("garages:loaded:in") -- Updates Phone

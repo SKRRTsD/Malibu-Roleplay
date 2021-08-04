@@ -30,7 +30,7 @@ AddEventHandler('removespikes', function()
 end)
 
 RegisterCommand("spikes", function(source, args, raw)
-    local job = exports["prp_manager"]:isPed("myjob")
+    local job = exports["mrp_manager"]:isPed("myjob")
     local src = source
     if job == 'police' and not IsPedInAnyVehicle(PlayerPedId(), false) then
         CreateSpikes()
@@ -44,7 +44,7 @@ function Delete(object)
 end
 
 RegisterCommand("removespikes", function(source, args, raw)
-    local job = exports["prp_manager"]:isPed("myjob")
+    local job = exports["mrp_manager"]:isPed("myjob")
     local src = source
     local plypos = GetEntityCoords(PlayerPedId())
     if job == 'police' and not IsPedInAnyVehicle(PlayerPedId(), false) then

@@ -8,7 +8,7 @@ version '1.0.0'
 client_script{
 	'client.lua',
 	'gui.lua',
-	"@prp-errorlog/client/cl_errorlog.lua"
+	"@mrp-errorlog/client/cl_errorlog.lua"
 }
 
 server_script 'server.lua'

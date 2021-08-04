@@ -275,8 +275,8 @@ AddEventHandler("emote:setEmotesFromDB", function(emotesResult)
     currentKeys = emotesResult
 end)
 
-RegisterNetEvent("prp-adminmenu:currentDevmode")
-AddEventHandler("prp-adminmenu:currentDevmode", function(devmode)
+RegisterNetEvent("mrp-adminmenu:currentDevmode")
+AddEventHandler("mrp-adminmenu:currentDevmode", function(devmode)
     dToggle = devmode
 end)
 

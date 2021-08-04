@@ -175,7 +175,7 @@ local recentlysat = false
 RegisterNetEvent('animation:Chair2');
 AddEventHandler('animation:Chair2', function()
 	local ped = PlayerPedId()
-		if recentlysat or exports["prp_manager"]:isPed("disabled") or IsPedInAnyVehicle(PlayerPedId(), false) then
+		if recentlysat or exports["mrp_manager"]:isPed("disabled") or IsPedInAnyVehicle(PlayerPedId(), false) then
 			return
 		end
 		recentlysat = true

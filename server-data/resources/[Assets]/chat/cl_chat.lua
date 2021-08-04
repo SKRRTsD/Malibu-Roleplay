@@ -21,7 +21,7 @@ AddEventHandler('chatMessage', function(author, color, text, cmd)
   end
 
 
-  local hud = exports["prp_manager"]:isPed("hud")
+  local hud = exports["mrp_manager"]:isPed("hud")
   if color == 8 then
     TriggerEvent("phone:addnotification",author,text)
     return
@@ -64,7 +64,7 @@ AddEventHandler('chat:showCID', function(cidInformation, pid)
 end)
 
 AddEventHandler('chat:addMessage', function(message)
-  local hud = exports["prp_manager"]:isPed("hud")
+  local hud = exports["mrp_manager"]:isPed("hud")
     if hud then
       SendNUIMessage({
         type = 'ON_MESSAGE',

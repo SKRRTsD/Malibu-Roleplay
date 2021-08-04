@@ -210,7 +210,7 @@ myanim = "dead_a"
 
 function InVeh()
   local ply = PlayerPedId()
-  local intrunk = exports["prp_manager"]:isPed("intrunk")
+  local intrunk = exports["mrp_manager"]:isPed("intrunk")
   if IsPedSittingInAnyVehicle(ply) or intrunk then
     return true
   else
@@ -277,7 +277,7 @@ AddEventHandler('disableAllActions', function()
                 if not inveh then
                     inveh = true
                 end
-                local intrunk = exports["prp_manager"]:isPed("intrunk")
+                local intrunk = exports["mrp_manager"]:isPed("intrunk")
                 if not intrunk then
                     deadcaranim()
                 end
@@ -441,7 +441,7 @@ function deathTimer()
 
         if IsControlPressed(1, 74) then
             if not AlreadyCalled then
-                TriggerEvent("prp-dispatch:downplayer")
+                TriggerEvent("mrp-dispatch:downplayer")
                 TriggerEvent("DoLongHudText", "Distress Signal Sent!", 1)
                 AlreadyCalled = true
             else
@@ -461,7 +461,7 @@ AddEventHandler('trycpr', function()
         local penis = 0
         while penis < 10 do
             penis = penis + 1
-            local finished = exports["prp-taskbarplus"]:taskBar(math.random(2000,10000),math.random(5,20))
+            local finished = exports["mrp-taskbarplus"]:taskBar(math.random(2000,10000),math.random(5,20))
             if finished ~= 100 then
                 return
             end

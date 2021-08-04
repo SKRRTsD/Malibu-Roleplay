@@ -34,7 +34,7 @@ end)
 
 function openGui()
   local radio = hasRadio()
-  local job = exports['prp_manager']:isPed("myjob")
+  local job = exports['mrp_manager']:isPed("myjob")
   local Emergency = false
   if job == "police" then
     Emergency = true
@@ -60,19 +60,19 @@ local function handleConnectionEvent(pChannel)
 
   if newChannel < 1.0 then
     pRadioChannel = false
-    exports['prp-voice']:removePlayerFromRadio()
-    exports["prp-voice"]:setVoiceProperty("radioEnabled", false)
+    exports['mrp-voice']:removePlayerFromRadio()
+    exports["mrp-voice"]:setVoiceProperty("radioEnabled", false)
   else
     pRadioChannel = true
-    exports["prp-voice"]:setVoiceProperty("radioEnabled", true)
-    exports['prp-voice']:addPlayerToRadio(newChannel)
+    exports["mrp-voice"]:setVoiceProperty("radioEnabled", true)
+    exports['mrp-voice']:addPlayerToRadio(newChannel)
   end
 end
 local radioVolume = 0.5
 
 
 function hasRadio()
-    if exports["prp-inventory"]:hasEnoughOfItem("radio",1,false) then
+    if exports["mrp-inventory"]:hasEnoughOfItem("radio",1,false) then
       return true
     else
       return false
@@ -88,7 +88,7 @@ RegisterNUICallback('volumeUp', function(data, cb)
   if radioVolume >= 1.0 then
     radioVolume = 1.0
   end
-  TriggerEvent('prp-voice:SetRadioVolume', radioVolume)
+  TriggerEvent('mrp-voice:SetRadioVolume', radioVolume)
   TriggerEvent("DoLongHudText", "New volume + "..radioVolume)
 end)
 
@@ -97,7 +97,7 @@ RegisterNUICallback('volumeDown', function(data, cb)
   if radioVolume < 0.1 then
     radioVolume = 0.0
   end
-  TriggerEvent('prp-voice:SetRadioVolume', radioVolume)
+  TriggerEvent('mrp-voice:SetRadioVolume', radioVolume)
   TriggerEvent("DoLongHudText", "New volume - "..radioVolume)
 end)
 
@@ -115,8 +115,8 @@ end)
 
 RegisterNUICallback('poweredOff', function(data, cb)
   pRadioChannel = false
-  exports['prp-voice']:removePlayerFromRadio()
-  exports["prp-voice"]:setVoiceProperty("radioEnabled", false)
+  exports['mrp-voice']:removePlayerFromRadio()
+  exports["mrp-voice"]:setVoiceProperty("radioEnabled", false)
 end)
 
 function closeGui()

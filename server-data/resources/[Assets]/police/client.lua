@@ -37,7 +37,7 @@ end)
 Citizen.CreateThread(function()
 	while true do
 		local coords = GetEntityCoords(PlayerPedId())
-		TriggerServerEvent("prp-core:updatecoords",coords.x,coords.y,coords.z)
+		TriggerServerEvent("mrp-core:updatecoords",coords.x,coords.y,coords.z)
 		Wait(13000)
 	end
 end)
@@ -52,7 +52,7 @@ end)
 
 RegisterNetEvent('event:control:openpersonalpd')
 AddEventHandler('event:control:openpersonalpd', function()
-	local cid = exports["prp_manager"]:isPed("cid")
+	local cid = exports["mrp_manager"]:isPed("cid")
 	TriggerEvent("server-inventory-open", "1", "personalMRPD-"..cid)
 end)
 
@@ -70,7 +70,7 @@ end)
 -- 	if tonumber(arg) == nil then
 -- 		return
 -- 	end
--- 	local cid = exports["prp_manager"]:isPed("cid")
+-- 	local cid = exports["mrp_manager"]:isPed("cid")
 -- 	TriggerServerEvent("server-inventory-open", GetEntityCoords(PlayerPedId()), cid, "1", "Case-"..arg);
 -- end)
 
@@ -243,8 +243,8 @@ function getIsCuffed()
 	return handCuffed
 end
 
-RegisterNetEvent("prp-jobmanager:playerBecameJob")
-AddEventHandler("prp-jobmanager:playerBecameJob", function(job, name, notify)
+RegisterNetEvent("mrp-jobmanager:playerBecameJob")
+AddEventHandler("mrp-jobmanager:playerBecameJob", function(job, name, notify)
 	if isMedic and job ~= "ems" then isMedic = false isInService = false end
 	if isCop and job ~= "police" then isCop = false isInService = false end
 	if isNews and job ~= "news" then isNews = false isInService = false end
@@ -632,7 +632,7 @@ AddEventHandler('police:gsr', function(t)
 	t, distance = GetClosestPlayer()
 	if(distance ~= -1 and distance < 5) then
 		TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_STAND_MOBILE", 0, 1)
-		local finished = exports["prp-taskbar"]:taskBar(15000,"GSR Testing")
+		local finished = exports["mrp-taskbar"]:taskBar(15000,"GSR Testing")
 		if finished == 100 then
 			TriggerServerEvent("police:gsrGranted", GetPlayerServerId(t))
 		end
@@ -718,7 +718,7 @@ AddEventHandler('police:getArrested2', function(cuffer)
 
 	local finished = 0
 	if not isDead then
-		finished = exports["prp-taskbarplus"]:taskBar(1200,7)
+		finished = exports["mrp-taskbarplus"]:taskBar(1200,7)
 	end
 	
 	if #(GetEntityCoords( PlayerPedId()) - GetEntityCoords(cuffPed)) < 2.5 and finished ~= 100 then
@@ -1096,8 +1096,8 @@ Citizen.CreateThread(function()
 		DisableControlAction(1, 142, true) --Disables Melee Actions	
 		DisableControlAction(1, 37, true) --Disables INPUT_SELECT_WEAPON (tab) Actions
 		DisablePlayerFiring(PlayerPedId(), true) -- Disable weapon firing
-		local dead = exports["prp_manager"]:isPed("dead")
-		local intrunk = exports["prp_manager"]:isPed("intrunk")
+		local dead = exports["mrp_manager"]:isPed("dead")
+		local intrunk = exports["mrp_manager"]:isPed("intrunk")
 		if (not IsEntityPlayingAnim(PlayerPedId(), "mp_arresting", "idle", 3) and not dead and not intrunk) or (IsPedRagdoll(PlayerPedId()) and not dead and not intrunk) then
 	    	RequestAnimDict('mp_arresting')
 			while not HasAnimDictLoaded("mp_arresting") do
@@ -1209,9 +1209,9 @@ AddEventHandler("ems:heal", function()
 	if t ~= nil and t ~= -1 then
 		if(distance ~= -1 and distance < 5) then
 
-			local myjob = exports["prp_manager"]:isPed("myjob")
+			local myjob = exports["mrp_manager"]:isPed("myjob")
 			if myjob ~= "ems" and myjob ~= "doctor" then
-				local bandages = exports["prp-inventory"]:getQuantity("bandage")
+				local bandages = exports["mrp-inventory"]:getQuantity("bandage")
 				if bandages == 0 then
 					return
 				else
@@ -1230,7 +1230,7 @@ AddEventHandler("ems:stomachpump", function()
 	t, distance = GetClosestPlayerAny()
 	if t ~= nil and t ~= -1 then
 		if(distance ~= -1 and distance < 5) then
-			local finished = exports["prp-taskbar"]:taskBar(10000,"Inserting stomach pump 🤢", false, true)
+			local finished = exports["mrp-taskbar"]:taskBar(10000,"Inserting stomach pump 🤢", false, true)
 			TriggerEvent("animation:PlayAnimation","cpr")
 			if finished == 100 then
 				local particleDict = "scr_familyscenem"
@@ -1554,7 +1554,7 @@ end)
 
 RegisterNetEvent('unseatPlayerFinish')
 AddEventHandler('unseatPlayerFinish', function(x,y,z)
-	local intrunk = exports["prp_manager"]:isPed("intrunk")
+	local intrunk = exports["mrp_manager"]:isPed("intrunk")
 	if not intrunk then
 		local ped = PlayerPedId()  
 		ClearPedTasksImmediately(ped)
@@ -1589,7 +1589,7 @@ shitson = false
 
 RegisterNetEvent('dragPlayer')
 AddEventHandler('dragPlayer', function()
-	local handcuffed = exports["prp_manager"]:isPed("handcuffed")
+	local handcuffed = exports["mrp_manager"]:isPed("handcuffed")
 	if handcuffed then
 		TriggerEvent("DoLongHudText","You are in handcuffs!",2)
 		return
@@ -1615,7 +1615,7 @@ end)
 
 RegisterNetEvent('escortPlayer')
 AddEventHandler('escortPlayer', function()
-	local handcuffed = exports["prp_manager"]:isPed("handcuffed")
+	local handcuffed = exports["mrp_manager"]:isPed("handcuffed")
 	if handcuffed then
 		TriggerEvent("DoLongHudText","You are in handcuffs!",2)
 		return
@@ -1762,7 +1762,7 @@ Citizen.CreateThread(function()
 				LoadAnimationDictionary( "missfinale_c2mcs_1" ) 
 				TaskPlayAnim(PlayerPedId(), "missfinale_c2mcs_1", "fin_c2_mcs_1_camman", 1.0, 1.0, -1, 50, 0, 0, 0, 0)
 			end
-			local dead = exports["prp_manager"]:isPed("dead")
+			local dead = exports["mrp_manager"]:isPed("dead")
 			if dead or IsControlJustPressed(0, 38) or (`WEAPON_UNARMED` ~= GetSelectedPedWeapon(PlayerPedId())) then
 				dragging = false
 				ClearPedTasks(PlayerPedId())
@@ -1784,7 +1784,7 @@ end)
 
 RegisterNetEvent('FlipVehicle')
 AddEventHandler('FlipVehicle', function()
-	local finished = exports["prp-taskbar"]:taskBar(5000,"Flipping Vehicle Over",false,true)	
+	local finished = exports["mrp-taskbar"]:taskBar(5000,"Flipping Vehicle Over",false,true)	
 	if finished == 100 then
 		local playerped = PlayerPedId()
 	    local coordA = GetEntityCoords(playerped, 1)
@@ -1799,7 +1799,7 @@ AddEventHandler('FlipVehicle', function()
 end)
 
 RegisterCommand("impound", function(source, args)
-	local job = exports["prp_manager"]:isPed("myjob")
+	local job = exports["mrp_manager"]:isPed("myjob")
 	if job == 'police' or job == 'ems' then
 		TriggerEvent('impoundVeh')
 	end
@@ -1816,7 +1816,7 @@ end
 
 RegisterNetEvent('impoundVeh')
 AddEventHandler('impoundVeh', function()
-	local job = exports["prp_manager"]:isPed("myjob")
+	local job = exports["mrp_manager"]:isPed("myjob")
 	if job == 'hayes_autos' or job == 'harmony_autos' or job == 'auto_exotics' or job == 'tuner_shop' or job == "ems" or job == "police" or job == "car_shop" then
 		coordA = GetEntityCoords(PlayerPedId(), 1)
 		coordB = GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 100.0, 0.0)
@@ -1825,9 +1825,9 @@ AddEventHandler('impoundVeh', function()
 			licensePlate = GetVehicleNumberPlateText(vehicle)
 			TriggerEvent("animation:impound")
 			FreezeEntityPosition(PlayerPedId(),true)
-			local finished = exports["prp-taskbar"]:taskBar("6500","Impounding")
+			local finished = exports["mrp-taskbar"]:taskBar("6500","Impounding")
 			if finished == 100 then
-				TriggerServerEvent("prp-imp:ImpoundCar", licensePlate)
+				TriggerServerEvent("mrp-imp:ImpoundCar", licensePlate)
 				ClearPedTasks(PlayerPedId())
 				FreezeEntityPosition(PlayerPedId(),false)
 				deleteVeh(vehicle)
@@ -1842,7 +1842,7 @@ end)
 
 RegisterNetEvent('ImpoundVeh')
 AddEventHandler('ImpoundVeh', function()
-	TriggerEvent('prp-context:sendMenu', {
+	TriggerEvent('mrp-context:sendMenu', {
         {
             id = 1,
             header = "Police Impound Options",
@@ -1903,7 +1903,7 @@ end)
 
 RegisterNetEvent('duty')
 AddEventHandler('duty', function()
-	TriggerEvent('prp-context:sendMenu', {
+	TriggerEvent('mrp-context:sendMenu', {
         {
             id = 1,
             header = "Sign In / Off ",
@@ -1956,7 +1956,7 @@ end)
 
 RegisterNetEvent("police:bill")
 AddEventHandler("police:bill", function()
-    local bill = exports["prp-applications"]:KeyboardInput({
+    local bill = exports["mrp-applications"]:KeyboardInput({
         header = "Create Receipt",
         rows = {
             {
@@ -1975,7 +1975,7 @@ AddEventHandler("police:bill", function()
 end)
 
 RegisterCommand('bill', function(source)
-	local job = exports["prp_manager"]:isPed("myjob")
+	local job = exports["mrp_manager"]:isPed("myjob")
 	if job == 'police' then
 		TriggerEvent('police:bill')
 	end
@@ -1984,7 +1984,7 @@ end)
 
 RegisterNetEvent("serial:search")
 AddEventHandler("serial:search", function()
-    local serialS = exports["prp-applications"]:KeyboardInput({
+    local serialS = exports["mrp-applications"]:KeyboardInput({
         header = "Weapon Serial Lookup",
         rows = {
             {
@@ -2001,7 +2001,7 @@ end)
 
 RegisterCommand("fire", function(source, args)
 	local src = source
-	local job = exports["prp_manager"]:isPed("myjob")
+	local job = exports["mrp_manager"]:isPed("myjob")
 	local cid = tonumber(args[1])
 	if job ~= "Unemployed" then
 		TriggerServerEvent("fire:event", job, cid)
@@ -2010,10 +2010,10 @@ end)
 
 RegisterNetEvent("fired:success")
 AddEventHandler("fired:success", function(cidsent)
-	local cid = exports["prp_manager"]:isPed("cid")
+	local cid = exports["mrp_manager"]:isPed("cid")
 	if tonumber(cid) == tonumber(cidsent) then
 		TriggerEvent("DoLongHudText", "You just got fired")
-		TriggerEvent("prp-jobmanager:playerBecameJob", "Unemployed", "Unemployed", false)
+		TriggerEvent("mrp-jobmanager:playerBecameJob", "Unemployed", "Unemployed", false)
 	end
 end)
 
@@ -2021,7 +2021,7 @@ end)
 local near_evidence = false
 
 Citizen.CreateThread(function()
-    exports["prp-polyzone"]:AddBoxZone("evidence_spot", vector3(475.48, -1005.78, 26.27), 1.8, 2, {
+    exports["mrp-polyzone"]:AddBoxZone("evidence_spot", vector3(475.48, -1005.78, 26.27), 1.8, 2, {
 		name="evidence_spot",
 		heading=90,
 		--debugPoly=true,
@@ -2031,29 +2031,29 @@ Citizen.CreateThread(function()
 end)
 
 
-RegisterNetEvent('prp-polyzone:enter')
-AddEventHandler('prp-polyzone:enter', function(name)
+RegisterNetEvent('mrp-polyzone:enter')
+AddEventHandler('mrp-polyzone:enter', function(name)
     if name == "evidence_spot" then
-        local job = exports["prp_manager"]:isPed("myjob")
+        local job = exports["mrp_manager"]:isPed("myjob")
         if job == "police" then
             near_evidence = true
-            TriggerEvent('prp-textui:ShowUI', 'show', ("%s"):format("/evidence [number]"))
+            TriggerEvent('mrp-textui:ShowUI', 'show', ("%s"):format("/evidence [number]"))
         end
     end
 end)
 
-RegisterNetEvent('prp-polyzone:exit')
-AddEventHandler('prp-polyzone:exit', function(name)
+RegisterNetEvent('mrp-polyzone:exit')
+AddEventHandler('mrp-polyzone:exit', function(name)
     if name == "evidence_spot" then
         near_evidence = false
     end
-    TriggerEvent('prp-textui:HideUI')
+    TriggerEvent('mrp-textui:HideUI')
 end)
 
 
 
 RegisterCommand("evidence", function(source, args)
-	local job = exports["prp_manager"]:isPed("myjob")
+	local job = exports["mrp_manager"]:isPed("myjob")
 	if job == 'police' then
 		if near_evidence then
 			TriggerEvent("server-inventory-open", "1", "CASE ID: "..args[1])
@@ -2065,7 +2065,7 @@ end)
 
 RegisterNetEvent("Police:Keyfob")
 AddEventHandler("Police:Keyfob", function()
-	if exports["prp-inventory"]:hasEnoughOfItem('pdkeyfob',1,true) then 
+	if exports["mrp-inventory"]:hasEnoughOfItem('pdkeyfob',1,true) then 
     TriggerEvent("DoLongHudText", "You already have a keyfob you shitlord idiot", 2)
 else
 	TriggerEvent("player:receiveItem","pdkeyfob",1)

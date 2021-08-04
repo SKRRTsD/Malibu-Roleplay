@@ -735,7 +735,7 @@ end)
 
 RegisterNetEvent('mech:craft')
 AddEventHandler('mech:craft', function()
-	local job = exports["prp_manager"]:isPed("myJob")
+	local job = exports["mrp_manager"]:isPed("myJob")
 	if job == "hayes_autos" or job == "bennys" or job == 'harmony_autos' or job == 'auto_exotics' or job == 'tuner_shop' or job == "best_buds" or job == "bean_machine" then
 		TriggerEvent("server-inventory-open", "27", "Craft");	
 		Wait(1000)
@@ -746,7 +746,7 @@ end)
 
 RegisterNetEvent("open:storage")
 AddEventHandler("open:storage", function(shop)
-	local job = exports["prp_manager"]:isPed("myJob")
+	local job = exports["mrp_manager"]:isPed("myJob")
 	if job == "hayes_autos" or job == "gallery" or job == "digital_den" or job == "bennys" or job == 'harmony_autos' or job == 'auto_exotics' or job == 'tuner_shop' or job == "best_buds" or job == "bean_machine" or job == "burger_shot" or job == "bahamas_bar" or job == "best_buds" or job == "vanilla_unicorn" or job == "news" or job == "videogeddon_arcade" or job == "car_shop" or job == "sunrise_shop" then
 		TriggerEvent("server-inventory-open", "1", job);
 		Wait(1000)
@@ -849,7 +849,7 @@ end)
 
 RegisterNetEvent('arcade:order')
 AddEventHandler('arcade:order', function()
-	local rank = exports["prp_manager"]:GroupRank("videogeddon_arcade")
+	local rank = exports["mrp_manager"]:GroupRank("videogeddon_arcade")
     if rank > 3 then    
 		TriggerEvent("server-inventory-open", "656", "Shop");	
 		Wait(1000)
@@ -895,7 +895,7 @@ end)
 
 RegisterNetEvent('evidence:general')
 AddEventHandler('evidence:general', function()
-	local job = exports["prp_manager"]:isPed("myJob")
+	local job = exports["mrp_manager"]:isPed("myJob")
 	if (job == "police") then
 		TriggerEvent("server-inventory-open", "1", "trash-1")
 		TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 3.0, 'LockerOpen', 0.4)
@@ -905,8 +905,8 @@ end)
 
 RegisterNetEvent('personallocker:general')
 AddEventHandler('personallocker:general', function()
-	local cid = exports["prp_manager"]:isPed("cid")
-	local job = exports["prp_manager"]:isPed("myJob")
+	local cid = exports["mrp_manager"]:isPed("cid")
+	local job = exports["mrp_manager"]:isPed("myJob")
 	if (job == "police") then
 		TriggerEvent("server-inventory-open", "1", "personalMRPD-"..cid)
 		TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 3.0, 'LockerOpen', 0.4)
@@ -916,7 +916,7 @@ end)
 
 RegisterNetEvent('pmeth:general')
 AddEventHandler('pmeth:general', function()
-	local finished = exports["prp-taskbar"]:taskBar(60000,"Searching")
+	local finished = exports["mrp-taskbar"]:taskBar(60000,"Searching")
 	if (finished == 100) then
 		TriggerEvent("server-inventory-open", "25", "Shop")
 		Wait(1000)
@@ -925,7 +925,7 @@ end)
 
 RegisterNetEvent('prisonap:general')
 AddEventHandler('prisonap:general', function()
-	local finished = exports["prp-taskbar"]:taskBar(60000,"Searching")
+	local finished = exports["mrp-taskbar"]:taskBar(60000,"Searching")
 	if (finished == 100) then
 	  	TriggerEvent("server-inventory-open", "26", "Shop");
 	  	Wait(1000)
@@ -936,7 +936,7 @@ end)
 RegisterNetEvent('prisonlp:general')
 AddEventHandler('prisonlp:general', function()
 	ExecuteCommand("e search")
-	local finished = exports["prp-taskbar"]:taskBar(30000,"Searching Shelf")
+	local finished = exports["mrp-taskbar"]:taskBar(30000,"Searching Shelf")
 	if (finished == 100) then
 	  	TriggerEvent("server-inventory-open", "921", "Shop");
 	  	Wait(1000)
@@ -949,7 +949,7 @@ end)
 RegisterNetEvent('slushy:general')
 AddEventHandler('slushy:general', function()
 	FreezeEntityPosition(GetPlayerPed(-1),true)
-	local finished = exports["prp-taskbar"]:taskBar(30000,"Making a slushy")
+	local finished = exports["mrp-taskbar"]:taskBar(30000,"Making a slushy")
 	if (finished == 100) then
 		FreezeEntityPosition(GetPlayerPed(-1),false)
 		TriggerEvent("server-inventory-open", "998", "Shop")
@@ -961,7 +961,7 @@ end)
 
 -- RegisterNetEvent('lockpickshit:general')
 -- AddEventHandler('lockpickshit:general', function()
--- 	local finished = exports["prp-taskbar"]:taskBar(60000,"What dis????")
+-- 	local finished = exports["mrp-taskbar"]:taskBar(60000,"What dis????")
 -- 	if (finished == 100) then
 -- 		TriggerEvent("server-inventory-open", "205", "Shop")
 -- 		Wait(1000)
@@ -1006,7 +1006,7 @@ end)
 
 RegisterNetEvent('ems:general')
 AddEventHandler('ems:general', function()
-	local job = exports["prp_manager"]:isPed("myJob")
+	local job = exports["mrp_manager"]:isPed("myJob")
 	if (job == "ems" or job == "doctor") then
 		TriggerEvent("server-inventory-open", "15", "Shop");	
 	else
@@ -1016,7 +1016,7 @@ end)
 
 RegisterNetEvent('weapon:general')
 AddEventHandler('weapon:general', function()
-	local weaponslicence = exports["prp_manager"]:isPed("weaponslicence")
+	local weaponslicence = exports["mrp_manager"]:isPed("weaponslicence")
 	if weaponslicence ~= 0 then
 		TriggerEvent("server-inventory-open", "5", "Shop");
 		Wait(1000)
@@ -1097,7 +1097,7 @@ end)
 
 RegisterNetEvent("pillboxmenu")
 AddEventHandler("pillboxmenu", function()
-	TriggerEvent('prp-context:sendMenu', {
+	TriggerEvent('mrp-context:sendMenu', {
 		{
 			id = "1",
 			header = "Stun gun",
@@ -1135,7 +1135,7 @@ end)
 
 RegisterNetEvent('pillbox:stungun')
 AddEventHandler('pillbox:stungun', function()
-	if exports["prp-inventory"]:hasEnoughOfItem('911657153',1,true) then 
+	if exports["mrp-inventory"]:hasEnoughOfItem('911657153',1,true) then 
 		TriggerEvent("DoLongHudText", "You already have a stun gun!", 2)
 	else
 		TriggerEvent("player:receiveItem", "911657153", 1)
@@ -1144,7 +1144,7 @@ end)
 
 RegisterNetEvent('pillbox:ifak')
 AddEventHandler('pillbox:ifak', function()
-	if exports["prp-inventory"]:hasEnoughOfItem('IFAK',5,true) then 
+	if exports["mrp-inventory"]:hasEnoughOfItem('IFAK',5,true) then 
 		TriggerEvent("DoLongHudText", "You already have ifaks!", 2)
 	else
 		TriggerEvent("player:receiveItem", "IFAK", 5)
@@ -1153,7 +1153,7 @@ end)
 
 RegisterNetEvent('pillbox:painkiller')
 AddEventHandler('pillbox:painkiller', function()
-	if exports["prp-inventory"]:hasEnoughOfItem('painkiller',15,true) then 
+	if exports["mrp-inventory"]:hasEnoughOfItem('painkiller',15,true) then 
 		TriggerEvent("DoLongHudText", "You already have painkillers!", 2)
 	else
 		TriggerEvent("player:receiveItem", "painkiller", 15)

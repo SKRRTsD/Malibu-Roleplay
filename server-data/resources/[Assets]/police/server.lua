@@ -59,7 +59,7 @@ end)
 RegisterServerEvent('police:targetCheckBank')
 AddEventHandler('police:targetCheckBank', function(target)
 	local src = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(target)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(target)
 	local char = user:getCurrentCharacter()
 	balance = user:getBalance()
   	local strng = " Bank: "..balance
@@ -69,7 +69,7 @@ end)
 RegisterServerEvent('checkLicensePlate')
 AddEventHandler('checkLicensePlate', function(oof)
 	local source = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
 	local char = user:getCurrentCharacter()
 	local job = "Unemployed"
 	local message = ""
@@ -171,15 +171,15 @@ RegisterServerEvent('police:jailGranted')
 AddEventHandler('police:jailGranted', function(args)
 	local src = source
 	local player = tonumber(args[1])
-	local target = exports["prp-core"]:getModule("Player"):GetUser(player)
+	local target = exports["mrp-core"]:getModule("Player"):GetUser(player)
 	local character = target:getCurrentCharacter()
 	local playerName = character.first_name .. ' ' .. character.last_name
 
-	local pdunit = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local pdunit = exports["mrp-core"]:getModule("Player"):GetUser(src)
 	if not pdunit:getVar("job") == "police" then
 		local steamid, name = pdunit:getVar("name"), pdunit:getVar("steamid")
 
-		exports["prp-core"]:AddLog("Exploiter", pdunit, "User Attempted to jail player while not on pd", {target = playerName, cid = cid, time = tonumber(args[2]), src= src})
+		exports["mrp-core"]:AddLog("Exploiter", pdunit, "User Attempted to jail player while not on pd", {target = playerName, cid = cid, time = tonumber(args[2]), src= src})
 		DropPlayer(src, "")
 
 		return
@@ -189,7 +189,7 @@ AddEventHandler('police:jailGranted', function(args)
 	local date = os.date("%c")
 	TriggerClientEvent("drawScaleformJail", -1,tonumber(args[2]),playerName,character.id,date)
 	TriggerEvent("lastconviction", playerName .. " has been sentenced to " ..tonumber(args[2]) .. " months")
-	exports["prp-core"]:getModule("JobManager"):SetJob(target, "unemployed", true)
+	exports["mrp-core"]:getModule("JobManager"):SetJob(target, "unemployed", true)
 end)
 
 
@@ -203,7 +203,7 @@ end)
 RegisterServerEvent('police:hasShotRecently')
 AddEventHandler('police:hasShotRecently', function(shotRecently, copId)
 	local src = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
 	local character = user:getCurrentCharacter()
 	local msg = string.format("%s has returned %s for GSR testing", character.id, shotRecently and "positive" or "negative")
 	
@@ -231,7 +231,7 @@ end)
 RegisterServerEvent("police:targetCheckInventory")
 AddEventHandler("police:targetCheckInventory", function(target, status)
 	local src = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(target)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(target)
 	local char = user:getCurrentCharacter()
 	TriggerClientEvent("server-inventory-open", source, "1", "ply-"..char.id)
 end)
@@ -239,9 +239,9 @@ end)
 RegisterServerEvent('police:SeizeCash')
 AddEventHandler('police:SeizeCash', function(target)
 	local src = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local characterId = user:getVar("character").id
-	local userz = exports["prp-core"]:getModule("Player"):GetUser(target)
+	local userz = exports["mrp-core"]:getModule("Player"):GetUser(target)
 	if not user.job.name == 'police' then
 		return
 	end
@@ -330,7 +330,7 @@ RegisterServerEvent('bones:server:updateServer')
 AddEventHandler('bones:server:updateServer', function(bones)
 	local src = source
 
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
 	local characterId = user:getVar("character").id
 	local pastebones = json.encode(bones)
 	local bones = json.encode(bones)
@@ -343,14 +343,14 @@ AddEventHandler("police:bill:player", function(TargetID, amount)
 	local src = source
 	local target = tonumber(TargetID)
 	local fine = tonumber(amount)
-	local user = exports["prp-core"]:getModule("Player"):GetUser(target)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(target)
 	local characterId = user:getCurrentCharacter().id
 	if user ~= false then
 		if fine > 0 then
 			user:removeBank(fine)
 			TriggerClientEvent('DoLongHudText', target, "You have been billed for $"..fine, 1)
 			TriggerClientEvent('DoLongHudText', src, "You have successfully wrote a bill for $"..fine, 1)
-			exports["prp-banking"]:UpdateSociety(fine, "police", "add")
+			exports["mrp-banking"]:UpdateSociety(fine, "police", "add")
 		end
 	end
 end)
@@ -372,7 +372,7 @@ RegisterServerEvent("911")
 AddEventHandler("911", function(args)
 	local src = source
 
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
 	local char = user:getCurrentCharacter()
 	local job = user:getVar("job")
 	local message = ""
@@ -388,12 +388,12 @@ AddEventHandler("911", function(args)
 	TriggerClientEvent("animation:phonecall", src)
 	TriggerClientEvent("chatMessage", src, "911 | " .. char.first_name .. " | " .. char.last_name .. " # " .. phonenumber, 3, tostring(message))
 
-	local users = exports["prp-core"]:getModule("Player"):GetUsers()
+	local users = exports["mrp-core"]:getModule("Player"):GetUsers()
 
 	local emergencyPlayers = {}
 
 	for k,v in pairs(users) do
-		local user = exports["prp-core"]:getModule("Player"):GetUser(v)
+		local user = exports["mrp-core"]:getModule("Player"):GetUser(v)
 		local job = user:getVar("job")
 
 		if job == "ems" or job == "police" then
@@ -411,7 +411,7 @@ RegisterServerEvent("311")
 AddEventHandler("311", function(args)
 	local src = source
 
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
 	local char = user:getCurrentCharacter()
 	local job = user:getVar("job")
 	local message = ""
@@ -427,12 +427,12 @@ AddEventHandler("311", function(args)
 	TriggerClientEvent("animation:phonecall", src)
 	TriggerClientEvent("chatMessage", src, "311 | " .. char.first_name .. " | " .. char.last_name .. " # " .. phonenumber, { 33, 118, 255 }, tostring(message))
 
-	local users = exports["prp-core"]:getModule("Player"):GetUsers()
+	local users = exports["mrp-core"]:getModule("Player"):GetUsers()
 
 	local emergencyPlayers = {}
 
 	for k,v in pairs(users) do
-		local user = exports["prp-core"]:getModule("Player"):GetUser(v)
+		local user = exports["mrp-core"]:getModule("Player"):GetUser(v)
 		local job = user:getVar("job")
 
 		if job == "ems" or job == "police" then
@@ -459,7 +459,7 @@ AddEventHandler("911r", function(args)
 	if not args[1] or not tonumber(args[1]) then return end
 	local target = args[1]
 
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
 	local char = user:getCurrentCharacter()
 
 	local job = user:getVar("job")
@@ -478,12 +478,12 @@ AddEventHandler("911r", function(args)
 	end
 	TriggerClientEvent("animation:phonecall", src)
 
-	local users = exports["prp-core"]:getModule("Player"):GetUsers()
+	local users = exports["mrp-core"]:getModule("Player"):GetUsers()
 
 	local emergencyPlayers = {}
 
 	for k,v in pairs(users) do
-		local user = exports["prp-core"]:getModule("Player"):GetUser(v)
+		local user = exports["mrp-core"]:getModule("Player"):GetUser(v)
 		local job = user:getVar("job")
 
 		if job == "ems" or job == "police" then
@@ -507,7 +507,7 @@ AddEventHandler("311r", function(args)
 	if not args[1] or not tonumber(args[1]) then return end
 	local target = args[1]
 
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
 	local char = user:getCurrentCharacter()
 
 	local job = user:getVar("job")
@@ -526,12 +526,12 @@ AddEventHandler("311r", function(args)
 	end
 	TriggerClientEvent("animation:phonecall", src)
 
-	local users = exports["prp-core"]:getModule("Player"):GetUsers()
+	local users = exports["mrp-core"]:getModule("Player"):GetUsers()
 
 	local emergencyPlayers = {}
 
 	for k,v in pairs(users) do
-		local user = exports["prp-core"]:getModule("Player"):GetUser(v)
+		local user = exports["mrp-core"]:getModule("Player"):GetUser(v)
 		local job = user:getVar("job")
 
 		if job == "ems" or job == "police" then
@@ -551,7 +551,7 @@ end)
 RegisterServerEvent("police:dnaAsk")
 AddEventHandler("police:dnaAsk", function(t)
 	local src = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(t)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(t)
 	local character = user:getCurrentCharacter()
 	local dna = character.first_name.. ' ' ..character.last_name
 	TriggerClientEvent("evidence:addDnaSwab", src, dna)
@@ -564,7 +564,7 @@ end)
 RegisterServerEvent("police:targetCheckInventory")
 AddEventHandler("police:targetCheckInventory", function(t)
 	local src = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(t)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(t)
 	local character = user:getCurrentCharacter()
 	local cid = character.id
 	TriggerClientEvent("server-inventory-open", src, "1", 'ply-'..cid)
@@ -576,7 +576,7 @@ end)
  RegisterServerEvent('police:grantFirearms')
  AddEventHandler('police:grantFirearms', function(t)
  	local src = source
- 	local user = exports["prp-core"]:getModule("Player"):GetUser(t)
+ 	local user = exports["mrp-core"]:getModule("Player"):GetUser(t)
  	local character = user:getCurrentCharacter()
  	exports.ghmattimysql:execute('SELECT * FROM user_licenses WHERE `owner`= ? AND `type` = ? AND `status` = ?', {character.id, "Driver", "1"}, function(presearch)
  		if presearch[1] then
@@ -604,7 +604,7 @@ end)
 RegisterServerEvent('police:RevokeFirearms')
 AddEventHandler('police:RevokeFirearms', function(t)
 	local src = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(t)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(t)
 	local character = user:getCurrentCharacter()
 	exports.ghmattimysql:execute('SELECT * FROM user_licenses WHERE `owner`= ? AND `type` = ? AND `status` = ?', {character.id, "Firearm", "1"}, function(data)
 		if data[1] then
@@ -623,13 +623,13 @@ end)
 RegisterServerEvent('police:grantHunting')
 AddEventHandler('police:grantHunting', function(t)
 	local src = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
 	local character = user:getCurrentCharacter()
 	exports.ghmattimysql:execute('SELECT * FROM user_licenses WHERE `owner`= ? AND `type` = ? AND `status` = ?', {character.id, "Hunting", "0"}, function(data)
 		if data[1] then
 			exports.ghmattimysql:execute("UPDATE user_licenses SET `status` = @status WHERE `owner` = @owner AND `type` = @type", { ['status'] = "1", ['owner'] = character.id, ['type'] = "Hunting"})
 			TriggerClientEvent('DoLongHudText', src, 'Your\'re Hunting license has been validated.', 1)
-			TriggerClientEvent("prp-hunting:allowed", src, true)
+			TriggerClientEvent("mrp-hunting:allowed", src, true)
 			user:removeBank(250)
 		else
 			TriggerClientEvent('DoLongHudText', src, 'You already have a active hunting license.', 2)
@@ -641,14 +641,14 @@ end)
 -- RegisterServerEvent('police:grantFishing')
 -- AddEventHandler('police:grantFishing', function(t)
 -- 	local src = source
--- 	local user = exports["prp-core"]:getModule("Player"):GetUser(t)
+-- 	local user = exports["mrp-core"]:getModule("Player"):GetUser(t)
 -- 	local character = user:getCurrentCharacter()
 -- 	exports.ghmattimysql:execute('SELECT * FROM user_licenses WHERE `owner`= ? AND `type` = ? AND `status` = ?', {character.id, "Fishing", "0"}, function(data)
 -- 		if data[1] then
 -- 			exports.ghmattimysql:execute("UPDATE user_licenses SET `status` = @status WHERE `owner` = @owner AND `type` = @type", { ['status'] = "1", ['owner'] = character.id, ['type'] = "Fishing"})
 -- 			TriggerClientEvent('DoLongHudText', src, 'You have successfully validated their Fishing license.', 1)
 -- 			TriggerClientEvent('DoLongHudText', t, 'Your\'re Fishing license has been validated.', 1)
--- 			TriggerClientEvent("prp-fish:allowed", t, true)
+-- 			TriggerClientEvent("mrp-fish:allowed", t, true)
 -- 			user:removeBank(250)
 -- 			exports.ghmattimysql:execute("SELECT * FROM group_banking WHERE group_type = @id", {['id'] = "police"}, function(result)
 -- 				local updatedbalance = result[1].bank + "250"
@@ -664,14 +664,14 @@ end)
 -- RegisterServerEvent('police:RevokeFishing')
 -- AddEventHandler('police:RevokeFishing', function(t)
 -- 	local src = source
--- 	local user = exports["prp-core"]:getModule("Player"):GetUser(t)
+-- 	local user = exports["mrp-core"]:getModule("Player"):GetUser(t)
 -- 	local character = user:getCurrentCharacter()
 -- 	exports.ghmattimysql:execute('SELECT * FROM user_licenses WHERE `owner`= ? AND `type` = ? AND `status` = ?', {character.id, "Hunting", "1"}, function(data)
 -- 		if data[1] then
 -- 			exports.ghmattimysql:execute("UPDATE user_licenses SET `status` = @status WHERE `owner` = @owner AND `type` = @type", { ['status'] = "0", ['owner'] = character.id, ['type'] = "Fishing"})
 -- 			TriggerClientEvent('DoLongHudText', src, 'You have successfully revoked their Fishing license.', 1)
 -- 			TriggerClientEvent('DoLongHudText', t, 'Your\'re Fishing license has been revoked.', 1)
--- 			TriggerClientEvent("prp-fish:allowed", t, false)
+-- 			TriggerClientEvent("mrp-fish:allowed", t, false)
 -- 		else
 -- 			TriggerClientEvent('DoLongHudText', src, 'They dont have a active fishing license.', 2)
 -- 		end
@@ -680,7 +680,7 @@ end)
 
 RegisterServerEvent("serials:insert")
 AddEventHandler("serials:insert", function(srcID, serial)
-	local user = exports["prp-core"]:getModule("Player"):GetUser(srcID)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(srcID)
 	local ply = user:getCurrentCharacter()
 	local name = ply.first_name .. " " ..ply.last_name
 	exports.ghmattimysql:execute('INSERT INTO weapon_serials (serial, owner) VALUES (@serial, @owner)', {
@@ -716,7 +716,7 @@ end)
 
 RegisterServerEvent("doj:announce")
 AddEventHandler("doj:announce", function(srcID, args)
-	local user = exports["prp-core"]:getModule("Player"):GetUser(srcID)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(srcID)
 	local characterId = user:getCurrentCharacter().id
 	exports.ghmattimysql:execute("SELECT `pass_type` FROM character_passes WHERE cid = @cid AND rank = 3", {['cid'] = characterId}, function(result)
 		if result[1] then
@@ -734,7 +734,7 @@ end)
 RegisterServerEvent("fire:event")
 AddEventHandler("fire:event", function(pJob, Passid)
 	local src = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
 	local characterId = user:getCurrentCharacter().id
 	if Passid == characterId then
 		TriggerClientEvent("DoLongHudText", src, "You cant fire yourself, my guy", 2)

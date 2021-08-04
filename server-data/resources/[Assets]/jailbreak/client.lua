@@ -140,7 +140,7 @@ end)
 
 RegisterNetEvent("jailbreak:reclaimitems")
 AddEventHandler("jailbreak:reclaimitems", function()
-    TriggerServerEvent("server-jail-item", 'ply-'..exports["prp_manager"]:isPed("cid"), false)
+    TriggerServerEvent("server-jail-item", 'ply-'..exports["mrp_manager"]:isPed("cid"), false)
     TriggerEvent("DoLongHudText", "You have re-claimed your possessions.")
 end)
 
@@ -343,13 +343,13 @@ function runEscape()
           DrawMarkerRad(27,1643.5603027344,2585.4670410156,44.764853668213, 0, 0, 0, 0, 0, 0, 1.01, 1.01, 0.3, 255, 255, 0, 60, 0, 0, 2, 0, 0, 0, 0)
           DrawMarkerRad(27,1636.2059326172,2565.4235839844,44.76485748291, 0, 0, 0, 0, 0, 0, 1.01, 1.01, 0.3, 255, 255, 0, 60, 0, 0, 2, 0, 0, 0, 0)
           if #(vector3(1643.5603027344,2585.4670410156,45.564853668213) - GetEntityCoords(PlayerPedId())) < 1 then
-            exports["prp-core"]:getModule("Util"):MissionText("Enter Court Yard", 500)
+            exports["mrp-core"]:getModule("Util"):MissionText("Enter Court Yard", 500)
             if not teleported then
               teleported = true
               SetEntityCoords(PlayerPedId(),1636.2059326172,2565.4235839844,45.56485748291)
             end
           elseif #(vector3(1636.2059326172,2565.4235839844,45.56485748291) - GetEntityCoords(PlayerPedId())) < 1 then
-            exports["prp-core"]:getModule("Util"):MissionText("Exit Court Yard", 500)
+            exports["mrp-core"]:getModule("Util"):MissionText("Exit Court Yard", 500)
             if not teleported then
               teleported = true
               SetEntityCoords(PlayerPedId(),1643.5603027344,2585.4670410156,45.564853668213)
@@ -476,7 +476,7 @@ end)
 
 function JailIntro(name,years,cid,date)
     if tonumber(years) > 40 then
-        local cid = exports["prp_manager"]:isPed("cid")
+        local cid = exports["mrp_manager"]:isPed("cid")
         TriggerServerEvent("shops:jail:remove",cid)
     end
     DoScreenFadeOut(10)
@@ -538,7 +538,7 @@ outofrange = false
 minutes = 0
 function GroupRank(groupid)
   local rank = 0
-  local mypasses = exports["prp_manager"]:isPed("passes")
+  local mypasses = exports["mrp_manager"]:isPed("passes")
   for i=1, #mypasses do
     if mypasses[i]["pass_type"] == groupid then
 
@@ -552,7 +552,7 @@ function RoleplayStats()
 
     local totalroleplay = 0
 
-    if exports["prp-inventory"]:hasEnoughOfItem("slushy",1,false) then
+    if exports["mrp-inventory"]:hasEnoughOfItem("slushy",1,false) then
         totalroleplay = totalroleplay + 10
     end
 
@@ -565,15 +565,15 @@ function RoleplayStats()
 end
 
 function InmateHasAll()
-    if exports["prp-inventory"]:hasEnoughOfItem("slushy",1,false)
+    if exports["mrp-inventory"]:hasEnoughOfItem("slushy",1,false)
         and
-        exports["prp-inventory"]:hasEnoughOfItem("-1810795771",1,false)
+        exports["mrp-inventory"]:hasEnoughOfItem("-1810795771",1,false)
         and
-        exports["prp-inventory"]:hasEnoughOfItem("methbag",1,false)
+        exports["mrp-inventory"]:hasEnoughOfItem("methbag",1,false)
         and
-        exports["prp-inventory"]:hasEnoughOfItem("assphone",1,false)
+        exports["mrp-inventory"]:hasEnoughOfItem("assphone",1,false)
         and
-        exports["prp-inventory"]:hasEnoughOfItem("slushy",1,false)
+        exports["mrp-inventory"]:hasEnoughOfItem("slushy",1,false)
     then
         return true
     else
@@ -623,12 +623,12 @@ end
 
 RegisterNetEvent('beginJail')
 AddEventHandler('beginJail', function(skipintake,time,name,cid,date)
-    TriggerServerEvent('server-jail-item', 'ply-'..exports["prp_manager"]:isPed("cid"), true)
+    TriggerServerEvent('server-jail-item', 'ply-'..exports["mrp_manager"]:isPed("cid"), true)
     imjailed = false
     local playerPed = PlayerPedId()
-    local mycid = exports["prp_manager"]:isPed("cid")
+    local mycid = exports["mrp_manager"]:isPed("cid")
 
-    local gang = exports["prp_manager"]:isPed("gang")
+    local gang = exports["mrp_manager"]:isPed("gang")
     if gang == 4 then
         TriggerServerEvent("wipeweed")
     end    
@@ -710,8 +710,8 @@ AddEventHandler('swappingCharsLoop', function()
     TransitionToBlurred(500)
     DoScreenFadeOut(500)
     Citizen.Wait(1000)
-    TriggerEvent("prp-core:clearStates")
-    exports["prp-core"]:getModule("SpawnManager"):Initialize()
+    TriggerEvent("mrp-core:clearStates")
+    exports["mrp-core"]:getModule("SpawnManager"):Initialize()
     relogging = true
     imjailed = false
 

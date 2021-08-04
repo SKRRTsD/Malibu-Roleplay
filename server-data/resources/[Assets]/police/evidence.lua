@@ -708,7 +708,7 @@ AddEventHandler("Evidence:CurrentDamageListTarget",function(CurrentDamageListTar
 	for i = 1, #CurrentDamageListTarget do
 		TriggerEvent('chatMessage', 'STATUS ', 1, CurrentDamageListTarget[i])
 	end
-    local myJob = exports["prp_manager"]:isPed("myJob")
+    local myJob = exports["mrp_manager"]:isPed("myJob")
 	if myJob == "police" or myJob == "ems" or myJob == "doctor" then
     	boneIssuesTarget(bt,targetid)
     end

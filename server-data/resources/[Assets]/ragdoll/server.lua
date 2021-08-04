@@ -3,7 +3,7 @@ NancyEms = true
 RegisterServerEvent('police:isDead')
 AddEventHandler('police:isDead', function()
     -- local src = source
-	-- local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	-- local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     -- local characterId = user:getVar("character").id
     -- local q = [[SELECT is_dead FROM characters WHERE id = @cid;]]
     -- local v = {
@@ -22,7 +22,7 @@ end)
 RegisterServerEvent('kill:confirmed')
 AddEventHandler('kill:confirmed', function(targetplayer, data)
     -- local src = source
-	-- local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	-- local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     -- local characterId = user:getVar("character").id
     -- local q = [[UPDATE characters SET is_dead = @isDead WHERE id = @cid;]]
     -- local v = {
@@ -40,7 +40,7 @@ end)
 
 RegisterServerEvent('trycpr')
 AddEventHandler('trycpr', function()
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local price = 10000
     if user:getCash() >= price then
         user:removeMoney(price)
@@ -70,7 +70,7 @@ end)
 RegisterServerEvent("attempt:check-in", function()
     local pSrc = source
     if NancyEms then
-        TriggerClientEvent("prp-hospitalization:checkin", pSrc, true)
+        TriggerClientEvent("mrp-hospitalization:checkin", pSrc, true)
     else
         TriggerClientEvent("DoLongHudText", pSrc, "Nancy is disabled, please contact a doctor")
     end

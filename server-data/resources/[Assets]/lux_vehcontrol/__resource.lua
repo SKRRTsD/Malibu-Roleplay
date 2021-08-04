@@ -1,8 +1,8 @@
 resource_manifest_version '77731fab-63ca-442c-a67b-abc70f28dfa5'
 ui_page('html/index.html')
 
-client_script "@prp-infinity/client/cl_lib.lua"
-server_script "@prp-infinity/server/sv_lib.lua"
+client_script "@mrp-infinity/client/cl_lib.lua"
+server_script "@mrp-infinity/server/sv_lib.lua"
 
 files {
 	"html/index.html",

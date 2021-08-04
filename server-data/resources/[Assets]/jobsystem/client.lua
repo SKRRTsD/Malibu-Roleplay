@@ -91,14 +91,14 @@ end)
 
 RegisterNetEvent('jobssystem:current')
 AddEventHandler('jobssystem:current', function(cb)
-  LocalPlayer = exports["prp-core"]:getModule("LocalPlayer")
+  LocalPlayer = exports["mrp-core"]:getModule("LocalPlayer")
   cb(LocalPlayer:getVar("job"))
 end)
 
 local PaycheckSpot, called = false, false
 
 Citizen.CreateThread(function()
-	exports["prp-polyzone"]:AddBoxZone("paycheck_collect", vector3(-1082.48, -248.09, 37.76), 1.15, 2, {
+	exports["mrp-polyzone"]:AddBoxZone("paycheck_collect", vector3(-1082.48, -248.09, 37.76), 1.15, 2, {
     name="paycheck_collect",
     heading=30,
     --debugPoly=true,
@@ -108,21 +108,21 @@ Citizen.CreateThread(function()
 
 end)
 
-RegisterNetEvent('prp-polyzone:enter')
-AddEventHandler('prp-polyzone:enter', function(name)
+RegisterNetEvent('mrp-polyzone:enter')
+AddEventHandler('mrp-polyzone:enter', function(name)
   if name == "paycheck_collect" then
     PaycheckSpot = true
-    TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Collect Paycheck")) 
+    TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Collect Paycheck")) 
     PaycheckFunction()
   end
 end)
 
-RegisterNetEvent('prp-polyzone:exit')
-AddEventHandler('prp-polyzone:exit', function(name)
+RegisterNetEvent('mrp-polyzone:exit')
+AddEventHandler('mrp-polyzone:exit', function(name)
   if name == "paycheck_collect" then
     PaycheckSpot = false
   end
-  TriggerEvent('prp-textui:HideUI')
+  TriggerEvent('mrp-textui:HideUI')
 end)
 
 function PaycheckFunction()
@@ -130,11 +130,11 @@ function PaycheckFunction()
     while PaycheckSpot do
       Citizen.Wait(5)
       if IsControlJustReleased(0, 38) then
-        local finished = exports["prp-taskbar"]:taskBar(2000,"Collecting Your Paycheck")
+        local finished = exports["mrp-taskbar"]:taskBar(2000,"Collecting Your Paycheck")
         if finished == 100 then
           if called == false then
             called = true
-            TriggerServerEvent("paycheck:collect", exports["prp_manager"]:isPed("cid"))
+            TriggerServerEvent("paycheck:collect", exports["mrp_manager"]:isPed("cid"))
             Citizen.Wait(500)
             called = false
           end

@@ -129,8 +129,8 @@ hid = 0
 isForced = false
 roonType = 0
 
-RegisterNetEvent('prp-motels:clMotelUpdate')
-AddEventHandler('prp-motels:clMotelUpdate', function(rType)
+RegisterNetEvent('mrp-motels:clMotelUpdate')
+AddEventHandler('mrp-motels:clMotelUpdate', function(rType)
 	roomType = rType
 end)
 
@@ -183,7 +183,7 @@ end)
 
 RegisterNetEvent('integrity:confirmed')
 AddEventHandler('integrity:confirmed', function()
-	TriggerServerEvent('hotel:upgradeApartment', exports['prp_manager']:isPed('cid'), myRoomType, myRoomNumber)
+	TriggerServerEvent('hotel:upgradeApartment', exports['mrp_manager']:isPed('cid'), myRoomType, myRoomNumber)
 	TriggerEvent("hotel:myroomtype",myRoomType)
 end)
 
@@ -379,7 +379,7 @@ AddEventHandler('hotel:createRoom1', function(numMultiplier,roomType,mykeys,illn
 		myspawnpoints[#myspawnpoints + 1] = { ['x'] = 173.96,['y'] = -631.29,['z'] = 47.08,['h'] = 303.12, ['info'] = ' Apartments 3', ["typeSpawn"] = 2 }
 	end
 
-	--[[local rooster = exports["prp_manager"]:GroupRank("rooster_academy")
+	--[[local rooster = exports["mrp_manager"]:GroupRank("rooster_academy")
 	if rooster >= 2 then
 		myspawnpoints[#myspawnpoints + 1] = { ['x'] = -172.83,['y'] = 331.17,['z'] = 93.76,['h'] = 266.08, ['info'] = ' Rooster Cab', ["typeSpawn"] = 1 }
 	end]]--
@@ -473,7 +473,7 @@ function prisionSpawn()
 	Citizen.Wait(2000)
 	TriggerServerEvent("request-dropped-items")
 	TriggerServerEvent("HOWMUCHCASHUHGOT")
-	TriggerServerEvent("server-request-update",exports["prp_manager"]:isPed("cid"))
+	TriggerServerEvent("server-request-update",exports["mrp_manager"]:isPed("cid"))
 	TriggerServerEvent("jail:charecterFullySpawend")
 	if(DoesCamExist(cam)) then
 		DestroyCam(cam, false)
@@ -541,7 +541,7 @@ function confirmSpawning(isClothesSpawn)
 	elseif myspawnpoints[currentselection]["typeSpawn"] == 3 then
 		-- local house_id = myspawnpoints[currentselection]["house_id"]
 		-- local house_model = myspawnpoints[currentselection]["house_model"]
-		-- TriggerServerEvent("house:enterhouse",exports['prp_manager']:isPed('cid'),house_id,house_model)
+		-- TriggerServerEvent("house:enterhouse",exports['mrp_manager']:isPed('cid'),house_id,house_model)
 	end
 	
 	SetEntityInvincible(PlayerPedId(),false)
@@ -579,7 +579,7 @@ function doSpawn(array)
 			tableid = i,
 		})
 	end
-	TriggerServerEvent("prp-shops:getCharecter")
+	TriggerServerEvent("mrp-shops:getCharecter")
 	-- /halt script fill html and allow selection.
 end
 
@@ -704,7 +704,7 @@ function processBuildType(numMultiplier,roomType)
 	DoScreenFadeOut(1)
 	insideApartment = true
 	TriggerEvent("DensityModifierEnable",false)
-	TriggerEvent('prp-weathersync:client:DisableSync')
+	TriggerEvent('mrp-weathersync:client:DisableSync')
 	SetEntityInvincible(PlayerPedId(), true)
 	TriggerEvent("enabledamage",false)
 	--DoScreenFadeOut(1)
@@ -782,7 +782,7 @@ function CleanUpArea()
     EndFindObject(handle)
     curappartmentnumber = 0
     TriggerEvent("DensityModifierEnable",true)
-	TriggerEvent("prp-weathersync:client:EnableSync")
+	TriggerEvent("mrp-weathersync:client:EnableSync")
 end
 
 function buildRoom(numMultiplier,roomType)
@@ -1212,9 +1212,9 @@ Citizen.CreateThread(function()
 				if myRoomType == 2 then
 					if nearType2 then
 						if myRoomLock then
-							TriggerEvent('prp-textui:ShowUI', 'show', ("["..Controlkey["housingMain"][2].."] %s"):format("Enter | ["..Controlkey["housingSecondary"][2].."] UNLOCK"))
+							TriggerEvent('mrp-textui:ShowUI', 'show', ("["..Controlkey["housingMain"][2].."] %s"):format("Enter | ["..Controlkey["housingSecondary"][2].."] UNLOCK"))
 						else
-							TriggerEvent('prp-textui:ShowUI', 'show', ("["..Controlkey["housingMain"][2].."] %s"):format("Enter | ["..Controlkey["housingSecondary"][2].."] LOCK"))
+							TriggerEvent('mrp-textui:ShowUI', 'show', ("["..Controlkey["housingMain"][2].."] %s"):format("Enter | ["..Controlkey["housingSecondary"][2].."] LOCK"))
 						end
 					end
 				end
@@ -1261,14 +1261,14 @@ Citizen.CreateThread(function()
 
 			if #(vector3(myroomcoords.x-2, myroomcoords.y + 2.5, myroomcoords.z) - plyCoords) < 1.5 and curRoomType == 1 then
 				DrawText3Ds(myroomcoords.x-2, myroomcoords.y + 2.5, myroomcoords.z+1.5, '~g~'..Controlkey["housingSecondary"][2]..'~s~ to swap char or /outfits.')
-				TriggerEvent("prp-clothingmenu:enable", true)
+				TriggerEvent("mrp-clothingmenu:enable", true)
 				if IsControlJustReleased(1,Controlkey["housingSecondary"][1]) then
 					logout()
 				end
 			elseif #(vector3(myroomcoords.x+8, myroomcoords.y + 4, myroomcoords.z+0.4) - plyCoords) < 5.5 and curRoomType == 2 then
 
 				DrawText3Ds(myroomcoords.x+8, myroomcoords.y + 4, myroomcoords.z+2.4,  '[~g~'..Controlkey["housingSecondary"][2]..'~s~] - change characters | /outfits.')
-				TriggerEvent("prp-clothingmenu:enable", true)
+				TriggerEvent("mrp-clothingmenu:enable", true)
 				if IsControlJustReleased(1,Controlkey["housingSecondary"][1]) then
 					logout()
 				end
@@ -1283,12 +1283,12 @@ Citizen.CreateThread(function()
 				
 				if curRoomType == 2 then
 					DrawText3Ds(myroomcoords.x + 4.3,myroomcoords.y - 15.95,myroomcoords.z+2.42, '[~g~'..Controlkey["housingMain"][2]..'~s~] - Exit Apartment')
-					TriggerEvent("prp-clothingmenu:enable", false)
+					TriggerEvent("mrp-clothingmenu:enable", false)
 				elseif curRoomType == 3 then
 					DrawText3Ds(myroomcoords.x - 14.45,myroomcoords.y - 2.5,myroomcoords.z+7.3, '~g~'..Controlkey["housingMain"][2]..'~s~ to leave or ~g~'..Controlkey["housingSecondary"][2]..'~s~ to enter garage.')				
 				elseif curRoomType == 1 then
 					DrawText3Ds(myroomcoords.x - 1.15,myroomcoords.y - 4.2,myroomcoords.z+1.20, '~g~'..Controlkey["housingMain"][2]..'~s~ to leave')
-					TriggerEvent("prp-clothingmenu:enable", false)
+					TriggerEvent("mrp-clothingmenu:enable", false)
 				end
 
 				if IsControlJustReleased(1, Controlkey["housingMain"][1]) then
@@ -1351,7 +1351,7 @@ Citizen.CreateThread(function()
 						if not isForced then
 							TriggerServerEvent('hotel:getID')
 						end
-						TriggerEvent("server-inventory-open", "1", "motel"..curRoomType.."-".. exports["prp_manager"]:isPed("cid"))
+						TriggerEvent("server-inventory-open", "1", "motel"..curRoomType.."-".. exports["mrp_manager"]:isPed("cid"))
 
 						TriggerEvent("actionbar:setEmptyHanded")
 					else
@@ -1377,7 +1377,7 @@ Citizen.CreateThread(function()
 
 			if IsControlJustReleased(1, Controlkey["housingMain"][1]) then
 
-				local myJob = exports["prp_manager"]:isPed("myJob")
+				local myJob = exports["mrp_manager"]:isPed("myJob")
 				local LEO = false
 				if myJob == "police" or myJob == "judge" then
 					LEO = true
@@ -1458,13 +1458,13 @@ function logout()
     DoScreenFadeOut(500)
     CleanUpArea()
     Citizen.Wait(1000)   
-	TriggerEvent("prp-core:clearStates")
-    exports["prp-core"]:getModule("SpawnManager"):Initialize()
+	TriggerEvent("mrp-core:clearStates")
+    exports["mrp-core"]:getModule("SpawnManager"):Initialize()
 	Citizen.Wait(1000)
 end
 
 Citizen.CreateThread(function()
-    exports["prp-polyzone"]:AddBoxZone("apartment_enter", vector3(-1447.72, -537.35, 34.74), 2.0, 1, {
+    exports["mrp-polyzone"]:AddBoxZone("apartment_enter", vector3(-1447.72, -537.35, 34.74), 2.0, 1, {
 		name="apartment_enter",
 		heading=305,
 		--debugPoly=true,
@@ -1474,19 +1474,19 @@ Citizen.CreateThread(function()
 end)
 
 
-RegisterNetEvent('prp-polyzone:enter')
-AddEventHandler('prp-polyzone:enter', function(name)
+RegisterNetEvent('mrp-polyzone:enter')
+AddEventHandler('mrp-polyzone:enter', function(name)
     if name == "apartment_enter" then
         nearType2 = true
     end
 end)
 
-RegisterNetEvent('prp-polyzone:exit')
-AddEventHandler('prp-polyzone:exit', function(name)
+RegisterNetEvent('mrp-polyzone:exit')
+AddEventHandler('mrp-polyzone:exit', function(name)
     if name == "apartment_enter" then
         nearType2 = false
     end
-    TriggerEvent('prp-textui:HideUI')
+    TriggerEvent('mrp-textui:HideUI')
 end)
 
 RegisterNetEvent("apartments:leave", function()
@@ -1502,5 +1502,5 @@ RegisterNetEvent("apartments:leave", function()
 	TriggerEvent("dooranim")
 	TriggerEvent('InteractSound_CL:PlayOnOne','DoorClose', 0.2)
 	TriggerEvent("attachWeapons")
-	TriggerEvent("prp-clothingmenu:enable", false)
+	TriggerEvent("mrp-clothingmenu:enable", false)
 end)

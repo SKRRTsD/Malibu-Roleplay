@@ -139,7 +139,7 @@ function PutInTrunk(veh)
        -- TriggerEvent("animation:PlayAnimation","trunk")
         while intrunk do
             
-            HandCuffed = exports["prp_manager"]:isPed("HandCuffed")
+            HandCuffed = exports["mrp_manager"]:isPed("HandCuffed")
             CamTrunk()
             if HandCuffed then
                 Citizen.Wait(1)
@@ -164,7 +164,7 @@ function PutInTrunk(veh)
                 end                
             end
 
-            intrunk = exports["prp_manager"]:isPed("intrunk")
+            intrunk = exports["mrp_manager"]:isPed("intrunk")
 			if GetVehicleEngineHealth(veh) < 100.0 or not DoesEntityExist(veh) then
 		        TriggerEvent("ped:intrunk",false)
 		        SetVehicleDoorOpen(trunkveh, 5, 1, 1)
@@ -307,9 +307,9 @@ end)
 
 RegisterNetEvent('ped:releaseTrunkCheckSelf')
 AddEventHandler('ped:releaseTrunkCheckSelf', function()
-	local HandCuffed = exports["prp_manager"]:isPed("HandCuffed")
-	local dead = exports["prp_manager"]:isPed("dead")
-	local intrunk = exports["prp_manager"]:isPed("intrunk")
+	local HandCuffed = exports["mrp_manager"]:isPed("HandCuffed")
+	local dead = exports["mrp_manager"]:isPed("dead")
+	local intrunk = exports["mrp_manager"]:isPed("intrunk")
     if not HandCuffed and not dead and intrunk then
 	    TriggerServerEvent("ped:trunkAccepted",TrunkedPlate)
 	end

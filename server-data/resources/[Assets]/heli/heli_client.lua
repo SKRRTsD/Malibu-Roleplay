@@ -255,9 +255,9 @@ end
 
 job = "None"
 
---local myJob = exports["prp_manager"]:isPed("myJob")
-RegisterNetEvent("prp-jobmanager:playerBecameJob")
-AddEventHandler("prp-jobmanager:playerBecameJob", function(jobpassed, name, notify)
+--local myJob = exports["mrp_manager"]:isPed("myJob")
+RegisterNetEvent("mrp-jobmanager:playerBecameJob")
+AddEventHandler("mrp-jobmanager:playerBecameJob", function(jobpassed, name, notify)
 	job = jobpassed
     if not job then
         job = "None"

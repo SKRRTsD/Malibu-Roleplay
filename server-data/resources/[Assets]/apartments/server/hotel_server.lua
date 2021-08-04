@@ -5,7 +5,7 @@ AddEventHandler('character:loadspawns', function(cid)
     houses = {}
     local pSrc = source
     local pNum = math.random(1,88)
-    local user = exports["prp-core"]:getModule("Player"):GetUser(pSrc)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(pSrc)
     local cid = user:getCurrentCharacter().id
     exports.ghmattimysql:execute("SELECT * FROM __motels WHERE cid= ?", {cid}, function(result)
         pData = result
@@ -35,7 +35,7 @@ AddEventHandler('character:loadspawns', function(cid)
 
                 if pData[1] ~= nil then
                     TriggerClientEvent('hotel:createRoom1', pSrc, pData[1].roomNumber, pData[1].roomType, houses)
-                    TriggerEvent("prp-clothingmenu:get_character_current", pSrc)
+                    TriggerEvent("mrp-clothingmenu:get_character_current", pSrc)
                 else
                     exports.ghmattimysql:execute('INSERT INTO __motels(cid, roomType, roomNumber) VALUES(?, ?, ?)', {cid, "2", pNum})
                     TriggerClientEvent('hotel:createRoom1',  pSrc, pNum, 2, houses)
@@ -50,10 +50,10 @@ end)
 
 RegisterServerEvent("character:setup:new", function()
     local pSrc = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(pSrc)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(pSrc)
     local cid = user:getCurrentCharacter().id
     exports.ghmattimysql:execute("UPDATE characters SET `new` = @new WHERE `id` = @id", { ['new'] = "1", ['id'] = cid})
-    TriggerClientEvent("prp-clothingmenu:defaultReset", pSrc)
+    TriggerClientEvent("mrp-clothingmenu:defaultReset", pSrc)
 end)
 
 RegisterServerEvent("character:new:character", function(cid)

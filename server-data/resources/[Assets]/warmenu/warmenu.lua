@@ -422,7 +422,7 @@ function WarMenu.Display()
                     setMenuVisible("acategories", true)
                 else
                     if lastCatagory ~= "" then
-                        TriggerEvent("prp-adminmenu:drawLastCat",lastCatagory)
+                        TriggerEvent("mrp-adminmenu:drawLastCat",lastCatagory)
                     else
                         if menus[menus[currentMenu].previousMenu] then
                             PlaySoundFrontend(-1, "BACK", "HUD_FRONTEND_DEFAULT_SOUNDSET", true)

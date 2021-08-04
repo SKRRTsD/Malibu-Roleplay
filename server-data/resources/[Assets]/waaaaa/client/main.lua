@@ -19,12 +19,12 @@ end)
 
 function openGui()
   if hasRadio() then
-    local incall = exports["prp_manager"]:isPed("incall")
+    local incall = exports["mrp_manager"]:isPed("incall")
     if (incall) then
       TriggerEvent("DoShortHudText","You can not do that while in a call!",2)
       return
     end
-    local job = exports["prp_manager"]:isPed("myjob")
+    local job = exports["mrp_manager"]:isPed("myjob")
     local Emergency = false
     if job == "police" then
       Emergency = true
@@ -50,7 +50,7 @@ function openGui()
 end
 
 function hasRadio()
-  return exports["prp-inventory"]:hasEnoughOfItem("radio", 1, false)
+  return exports["mrp-inventory"]:hasEnoughOfItem("radio", 1, false)
 end
 
 RegisterNUICallback('click', function(data, cb)
@@ -70,7 +70,7 @@ RegisterNUICallback('volumeUp', function(data, cb)
     radioVolume = radioVolume + 0.1
     TriggerEvent('DoLongHudText',"Radio set to "..radioVolume.."")
   end
-  TriggerEvent('prp-voice:SetRadioVolume', radioVolume)
+  TriggerEvent('mrp-voice:SetRadioVolume', radioVolume)
   cb('ok')
 end)
 
@@ -86,7 +86,7 @@ RegisterNUICallback('volumeDown', function(data, cb)
     radioVolume = radioVolume - 0.1
     TriggerEvent('DoLongHudText',"Radio set to "..radioVolume.."")
   end
-  TriggerEvent('prp-voice:SetRadioVolume', radioVolume)
+  TriggerEvent('mrp-voice:SetRadioVolume', radioVolume)
   cb('ok')
 end)
 
@@ -106,16 +106,16 @@ RegisterNUICallback('poweredOn', function(data, cb)
   end
   TriggerEvent('DoLongHudText', 'Radio On')
 
-  exports['prp-voice']:addPlayerToRadio(fuckingidiot)
-  exports["prp-voice"]:setVoiceProperty("radioEnabled", true)
+  exports['mrp-voice']:addPlayerToRadio(fuckingidiot)
+  exports["mrp-voice"]:setVoiceProperty("radioEnabled", true)
 end)
 
 RegisterNUICallback('poweredOff', function(data, cb)
   TriggerEvent("InteractSound_CL:PlayOnOne","radiooff",0.6)
   TriggerEvent('DoLongHudText', 'Radio Off')
 
-  exports['prp-voice']:removePlayerFromRadio()
-  exports["prp-voice"]:setVoiceProperty("radioEnabled", false)
+  exports['mrp-voice']:removePlayerFromRadio()
+  exports["mrp-voice"]:setVoiceProperty("radioEnabled", false)
 end)
 
 local radioChannel = nil
@@ -128,12 +128,12 @@ RegisterNUICallback('close', function(data, cb)
 
   if fuckingidiot == 0 then
     TriggerEvent('DoLongHudText', 'Encrypted Channel', 2)
-    exports['prp-voice']:removePlayerFromRadio()
-    exports["prp-voice"]:setVoiceProperty("radioEnabled", false)
+    exports['mrp-voice']:removePlayerFromRadio()
+    exports["mrp-voice"]:setVoiceProperty("radioEnabled", false)
   else
     radioChannel = fuckingidiot
-    exports['prp-voice']:addPlayerToRadio(radioChannel)
-    exports["prp-voice"]:setVoiceProperty("radioEnabled", true)
+    exports['mrp-voice']:addPlayerToRadio(radioChannel)
+    exports["mrp-voice"]:setVoiceProperty("radioEnabled", true)
   end
 
   GuiOpened = false
@@ -144,8 +144,8 @@ RegisterNUICallback('close', function(data, cb)
 end)
 
 function toggleRadioAnimation(pState)
-  local isInTrunk = exports["prp_manager"]:isPed("intrunk")
-  local isDead = exports["prp_manager"]:isPed("dead")
+  local isInTrunk = exports["mrp_manager"]:isPed("intrunk")
+  local isDead = exports["mrp_manager"]:isPed("dead")
 
   if isInTrunk then return end
   if isDead then return end
