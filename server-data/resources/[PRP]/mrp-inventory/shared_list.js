@@ -1805,7 +1805,7 @@ itemList["joint2"] = {
     weight: 1,
     nonStack: false,
     model: "",
-    image: "joint.png",
+    image: "mrp_joint.png",
     information: "Its a Joint, man. ",
     deg: false
 }
