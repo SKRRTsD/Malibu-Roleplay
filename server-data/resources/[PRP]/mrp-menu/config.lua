@@ -32,8 +32,9 @@ rootMenuConfig =  {
         enableMenu = function()
             return (isPolice and not isDead)
         end,
-        subMenus = {"cuffs:remmask", "cuffs:checkinventory", "police:panic", "police:gsr", "police:dnaswab", "general:checktargetstates", "police:placespike", "police:removespike", "license:grantWeapon", "license:removeweapons"}
+        subMenus = {"cuffs:remmask", "bill:suspect", "cuffs:checkinventory", "police:panic", "police:gsr", "police:dnaswab", "general:checktargetstates", "police:placespike", "police:removespike", "license:grantWeapon", "license:removeweapons"}
     },
+
     
     {
         id = "police-vehicle",
@@ -576,6 +577,11 @@ newSubMenus = {
         title = "Remove Mask Hat",
         icon = "#cuffs-remove-mask",
         functionName = "police:remmask"
+    },
+    ['bill:suspect'] = {
+        title = "Fine Suspect",
+        icon = "#animation-money",
+        functionName = "police:bill"
     },
     ['cuffs:checkinventory'] = {
         title = "Search Person",
