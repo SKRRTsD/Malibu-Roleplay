@@ -44,12 +44,12 @@ svg.menu > g.sector > use {
 }
 
 svg.menu > g.sector.selected > path {
-    fill: #147efb;
+    fill: #9a05f1;
     fill-opacity: 0.6;
 }
 
 svg.menu > g.center:hover > circle {
-    fill:#147efb;
+    fill:#9a05f1;
     fill-opacity: 0.6;
 }
 

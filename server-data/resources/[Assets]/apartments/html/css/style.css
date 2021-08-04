@@ -36,7 +36,7 @@ body {
   border-radius: 20px;
   background:#9a05f1;
   color: #fff;
-  /* box-shadow: 0px 0px 0px #4d86c3; */
+  /* box-shadow: 0px 0px 0px #9a05f1; */
   text-decoration: none;
 
   margin:2%;
@@ -51,7 +51,7 @@ body {
 
 .button2:hover {
   left: 2px;
-  /* box-shadow: 0px 10px 10px #4d86c3; */
+  /* box-shadow: 0px 10px 10px #9a05f1; */
   -webkit-transform: rotateX(20deg);
   -moz-transform: rotateX(20deg);
   -ms-transform: rotateX(20deg);
@@ -80,7 +80,7 @@ body {
   border-radius: 20px;
   background: rgba( 1, 1, 1, 0.8 );
   color: #fff;
-  /* box-shadow: 0px 0px 0px #4d86c3; */
+  /* box-shadow: 0px 0px 0px #9a05f1; */
   text-decoration: none;
 
   margin:2%;
@@ -95,7 +95,7 @@ body {
 
 .button:hover {
   left: 2px;
-  /* box-shadow: 0px 10px 10px #4d86c3; */
+  /* box-shadow: 0px 10px 10px #9a05f1; */
   -webkit-transform: rotateX(20deg);
   -moz-transform: rotateX(20deg);
   -ms-transform: rotateX(20deg);
@@ -104,6 +104,6 @@ body {
 
 .button:active {
   top: 0px;
-  /* box-shadow: 0px 0px 0px #4d86c3; */
+  /* box-shadow: 0px 0px 0px #9a05f1; */
   background: rgba(68, 0, 255, 0.055);
 }
