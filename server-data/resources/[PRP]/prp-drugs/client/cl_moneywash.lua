@@ -1,7 +1,7 @@
 RegisterNetEvent('sk1c2:entersecret')
 AddEventHandler('sk1c2:entersecret', function()
         ExecuteCommand('e lapdance')
-        local cunt = exports["prp-taskbar"]:taskBar(13000,"Requesting Entry")
+        local cunt = exports["mrp-taskbar"]:taskBar(13000,"Requesting Entry")
         if cunt == 100 then
                 TriggerEvent("secret:enter")
                 ExecuteCommand('e c')
@@ -18,10 +18,10 @@ end)
 
 RegisterNetEvent('wash:rollcash:10')
 AddEventHandler('wash:rollcash:10', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("rollcash",5,false) then
+    if exports["mrp-inventory"]:hasEnoughOfItem("rollcash",5,false) then
         FreezeEntityPosition(GetPlayerPed(-1),true)
         ExecuteCommand("e mechanic")
-        local twat = exports["prp-taskbar"]:taskBar(50000,"Washing rolls of cash")
+        local twat = exports["mrp-taskbar"]:taskBar(50000,"Washing rolls of cash")
         if twat == 100 then
             TriggerEvent("inventory:removeItem", "rollcash", 5)
             TriggerServerEvent('sk1c2:rollcashitem')
@@ -41,9 +41,9 @@ end)
 RegisterNetEvent('process:rollcash:sk1c2')
 AddEventHandler('process:rollcash:sk1c2', function()
     FreezeEntityPosition(GetPlayerPed(-1),true)
-    if exports["prp-inventory"]:hasEnoughOfItem("wetcash",5,false) then
+    if exports["mrp-inventory"]:hasEnoughOfItem("wetcash",5,false) then
         ExecuteCommand("e search")
-        local sk1c2 = exports["prp-taskbar"]:taskBar(50000,"Processing rolls of cash")
+        local sk1c2 = exports["mrp-taskbar"]:taskBar(50000,"Processing rolls of cash")
         if sk1c2 == 100 then
             TriggerEvent("inventory:removeItem", "wetcash", 5)
             TriggerServerEvent( 'sk1c2:payout', math.random(300,500))
@@ -63,7 +63,7 @@ end)
 
 RegisterNetEvent("rollcash:menu")
 AddEventHandler("rollcash:menu", function()
-	TriggerEvent('prp-context:sendMenu', {
+	TriggerEvent('mrp-context:sendMenu', {
 		{
 			id = "1",
 			header = "Clean roll of cash",
@@ -89,7 +89,7 @@ end)
 
 RegisterNetEvent("stackcash:menu")
 AddEventHandler("stackcash:menu", function()
-	TriggerEvent('prp-context:sendMenu', {
+	TriggerEvent('mrp-context:sendMenu', {
 		{
 			id = "1",
 			header = "Clean stack of cash",
@@ -111,10 +111,10 @@ end)
 
 RegisterNetEvent('wash:cashstack:sk1c2')
 AddEventHandler('wash:cashstack:sk1c2', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("cashstack",5,false) then
+    if exports["mrp-inventory"]:hasEnoughOfItem("cashstack",5,false) then
         FreezeEntityPosition(GetPlayerPed(-1),true)
         ExecuteCommand("e mechanic")
-        local twat2 = exports["prp-taskbar"]:taskBar(50000,"Washing stack of cash")
+        local twat2 = exports["mrp-taskbar"]:taskBar(50000,"Washing stack of cash")
         if twat2 == 100 then
             TriggerEvent("inventory:removeItem", "cashstack", 5)
             TriggerServerEvent('sk1c2:stackcashitem')
@@ -133,9 +133,9 @@ end)
 RegisterNetEvent('process:cashstack:sk1c2')
 AddEventHandler('process:cashstack:sk1c2', function()
     FreezeEntityPosition(GetPlayerPed(-1),true)
-    if exports["prp-inventory"]:hasEnoughOfItem("wetcash2",5,false) then
+    if exports["mrp-inventory"]:hasEnoughOfItem("wetcash2",5,false) then
         ExecuteCommand("e search")
-        local sk1c2 = exports["prp-taskbar"]:taskBar(50000,"Processing wet cash stack")
+        local sk1c2 = exports["mrp-taskbar"]:taskBar(50000,"Processing wet cash stack")
         if sk1c2 == 100 then
             TriggerEvent("inventory:removeItem", "wetcash2", 5)
             TriggerServerEvent( 'sk1c2:payout', math.random(2500,4000))
@@ -155,9 +155,9 @@ end)
 RegisterNetEvent('process:band:sk1c2')
 AddEventHandler('process:band:sk1c2', function()
     FreezeEntityPosition(GetPlayerPed(-1),true)
-    if exports["prp-inventory"]:hasEnoughOfItem("wetcash3",5,false) then
+    if exports["mrp-inventory"]:hasEnoughOfItem("wetcash3",5,false) then
         ExecuteCommand("e search")
-        local sk1c2 = exports["prp-taskbar"]:taskBar(50000,"Processing wet band")
+        local sk1c2 = exports["mrp-taskbar"]:taskBar(50000,"Processing wet band")
         if sk1c2 == 100 then
             TriggerEvent("inventory:removeItem", "wetcash3", 5)
             TriggerServerEvent( 'sk1c2:payout', math.random(2000,3500))
@@ -179,7 +179,7 @@ end)
 
 RegisterNetEvent("bandnotes:menu")
 AddEventHandler("bandnotes:menu", function()
-	TriggerEvent('prp-context:sendMenu', {
+	TriggerEvent('mrp-context:sendMenu', {
 		{
 			id = "1",
 			header = "Clean Band of notes",
@@ -201,10 +201,10 @@ end)
 
 RegisterNetEvent('wash:bandofnotes:sk1c2')
 AddEventHandler('wash:bandofnotes:sk1c2', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("band",5,false) then
+    if exports["mrp-inventory"]:hasEnoughOfItem("band",5,false) then
         FreezeEntityPosition(GetPlayerPed(-1),true)
         ExecuteCommand("e mechanic")
-        local twat2 = exports["prp-taskbar"]:taskBar(50000,"Processing wet band of notes")
+        local twat2 = exports["mrp-taskbar"]:taskBar(50000,"Processing wet band of notes")
         if twat2 == 100 then
             TriggerEvent("inventory:removeItem", "band", 5)
             TriggerServerEvent('sk1c2:banditem')

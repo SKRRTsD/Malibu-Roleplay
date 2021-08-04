@@ -7,10 +7,10 @@ local DISCORD_IMAGE = "https://i.imgur.com/zviw6oW.png" -- default is FiveM logo
 PerformHttpRequest(DISCORD_WEBHOOK6, function(err, text, headers) end, 'POST', json.encode({username = DISCORD_NAME6, avatar_url = DISCORD_IMAGE}), { ['Content-Type'] = 'application/json' })
 
 
-RegisterNetEvent('prp-garbage:pay')
-AddEventHandler('prp-garbage:pay', function(jobStatus)
+RegisterNetEvent('mrp-garbage:pay')
+AddEventHandler('mrp-garbage:pay', function(jobStatus)
     local _source = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(_source)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(_source)
     local identity = GetPlayerIdentifiers(_source)
     if jobStatus then
         if user ~= nil then
@@ -24,8 +24,8 @@ AddEventHandler('prp-garbage:pay', function(jobStatus)
 end)
 
 
-RegisterNetEvent('prp-garbage:reward')
-AddEventHandler('prp-garbage:reward', function(rewardStatus)
+RegisterNetEvent('mrp-garbage:reward')
+AddEventHandler('mrp-garbage:reward', function(rewardStatus)
     print("in server side")
     local _source = source
     local matherino = math.random(0, 6)

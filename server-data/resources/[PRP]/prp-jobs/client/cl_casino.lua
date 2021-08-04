@@ -5,7 +5,7 @@ end)
 
 RegisterNetEvent("casino-menu")
 AddEventHandler("casino-menu", function()
-	TriggerEvent('prp-context:sendMenu', {
+	TriggerEvent('mrp-context:sendMenu', {
         {
 			id = "1",
 			header = "Casino",

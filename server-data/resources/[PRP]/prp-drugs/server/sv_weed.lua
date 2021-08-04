@@ -7,7 +7,7 @@ CreateThread(function()
         exports.ghmattimysql:execute('DELETE FROM weed WHERE `time` - '..currTime..' < -86400', {}, function(res)
             exports.ghmattimysql:execute("SELECT `id`, `x`, `y`, `z`, `growth`, `type`, `time` FROM weed", {}, function(data)
                 knownData = data
-                TriggerClientEvent('prp-weed:knownCrops', -1, data, currTime)
+                TriggerClientEvent('mrp-weed:knownCrops', -1, data, currTime)
             end)
         end)
         Wait(90000)
@@ -16,18 +16,18 @@ end)
 
 RegisterNetEvent('playerJoining')
 AddEventHandler('playerJoining', function()
-    TriggerClientEvent('prp-weed:knownCrops', source, knownData, os.time()) 
+    TriggerClientEvent('mrp-weed:knownCrops', source, knownData, os.time()) 
 end)
 
-RegisterNetEvent('prp-weed:killplant')
-AddEventHandler('prp-weed:killplant', function(sentId) 
+RegisterNetEvent('mrp-weed:killplant')
+AddEventHandler('mrp-weed:killplant', function(sentId) 
     exports.ghmattimysql:execute("DELETE FROM weed WHERE id = @id", {['@id'] = sentId}, function()
-            TriggerClientEvent('prp-weed:updatePlant', -1, 0, sentId)
+            TriggerClientEvent('mrp-weed:updatePlant', -1, 0, sentId)
     end) 
 end)
 
-RegisterNetEvent('prp-weed:newplant')
-AddEventHandler('prp-weed:newplant', function(sentCoords, sentType)
+RegisterNetEvent('mrp-weed:newplant')
+AddEventHandler('mrp-weed:newplant', function(sentCoords, sentType)
     local source = source
     local time = (os.time() - 86400) + 300
     exports.ghmattimysql:execute("INSERT INTO weed (x, y, z, type, time) VALUES (@x, @y, @z, @type, @time)", { 
@@ -48,15 +48,15 @@ AddEventHandler('prp-weed:newplant', function(sentCoords, sentType)
                     ['status'] = 3,
                     ['time'] = time
                 }
-                TriggerClientEvent('prp-weed:updatePlant', -1, 3, affectedRows.insertId, 0, 0, 3, sentNewInfo, os.time())
+                TriggerClientEvent('mrp-weed:updatePlant', -1, 3, affectedRows.insertId, 0, 0, 3, sentNewInfo, os.time())
                 TriggerClientEvent("DoLongHudText", source, "Planted!", 1)
             end
         end
     end)
 end)
 
-RegisterNetEvent('prp-weed:updateStatus')
-AddEventHandler('prp-weed:updateStatus', function(updateType, sentId, sentData, sentItem)
+RegisterNetEvent('mrp-weed:updateStatus')
+AddEventHandler('mrp-weed:updateStatus', function(updateType, sentId, sentData, sentItem)
     if updateType == 'update' and sentData then
         local newTime = 0
 
@@ -69,7 +69,7 @@ AddEventHandler('prp-weed:updateStatus', function(updateType, sentId, sentData, 
             ['@growth'] = sentData,
             ['@time'] = newTime-- 12 hours
         }, function(sentInfo)
-                TriggerClientEvent('prp-weed:updatePlant', -1, 1, sentId, sentData, newTime, 1, {}, tonumber(os.time()))
+                TriggerClientEvent('mrp-weed:updatePlant', -1, 1, sentId, sentData, newTime, 1, {}, tonumber(os.time()))
         end)
     end
 end)

@@ -8,5 +8,5 @@ server_script 'config.lua'
 server_script 'blips_server.lua'
 
 
-client_script "@prp-infinity/client/cl_lib.lua"
-server_script "@prp-infinity/server/sv_lib.lua"
+client_script "@mrp-infinity/client/cl_lib.lua"
+server_script "@mrp-infinity/server/sv_lib.lua"

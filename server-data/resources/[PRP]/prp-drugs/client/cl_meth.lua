@@ -8,11 +8,11 @@ AddEventHandler("meth:start", function()
 	local playerped = PlayerPedId()
 	local plyCoords = GetEntityCoords(PlayerPedId())
 	local distance = (GetDistanceBetweenCoords(plyCoords.x, plyCoords.y, plyCoords.z, 1005.694152832, -3201.3181152344, -38.84700012207, false))		
-	if exports["prp-inventory"]:hasEnoughOfItem("acetone",5,false) and exports["prp-inventory"]:hasEnoughOfItem("sudafed",2,false) and exports["prp-inventory"]:hasEnoughOfItem("antifreeze",3,false) and ongoing == false then
+	if exports["mrp-inventory"]:hasEnoughOfItem("acetone",5,false) and exports["mrp-inventory"]:hasEnoughOfItem("sudafed",2,false) and exports["mrp-inventory"]:hasEnoughOfItem("antifreeze",3,false) and ongoing == false then
 		Cooking()
 		FreezeEntityPosition(PlayerPedId(),true)
 		SetEntityHeading(PlayerPedId(), 179.97245788574)
-		local finished = exports["prp-taskbar"]:taskBar(115000,"Mixing Something Nice!")
+		local finished = exports["mrp-taskbar"]:taskBar(115000,"Mixing Something Nice!")
 		if (finished == 100) then
 			FreezeEntityPosition(PlayerPedId(),false)
 			TriggerEvent("inventory:removeItem","acetone", 5)
@@ -37,11 +37,11 @@ AddEventHandler("meth:packing", function()
 	local playerped = PlayerPedId()
 	local plyCoords = GetEntityCoords(PlayerPedId())
 	local distance = (GetDistanceBetweenCoords(plyCoords.x, plyCoords.y, plyCoords.z, 1016.3265991211, -3194.9626464844, -38.993156433105, false))	
-	if exports["prp-inventory"]:hasEnoughOfItem("methraw",5,false) and ongoing == false then
+	if exports["mrp-inventory"]:hasEnoughOfItem("methraw",5,false) and ongoing == false then
 		Packing()
 		FreezeEntityPosition(PlayerPedId(),true)
 		SetEntityHeading(PlayerPedId(), 359.97235107422)
-		local finished = exports["prp-taskbar"]:taskBar(30000,"Breaking Meth!")
+		local finished = exports["mrp-taskbar"]:taskBar(30000,"Breaking Meth!")
 		if (finished == 100) then
 			FreezeEntityPosition(PlayerPedId(),false)
 			TriggerEvent("inventory:removeItem","methraw", 5)
@@ -64,11 +64,11 @@ AddEventHandler("meth:finish", function()
 	local playerped = PlayerPedId()
 	local plyCoords = GetEntityCoords(PlayerPedId())
 	local distance = (GetDistanceBetweenCoords(plyCoords.x, plyCoords.y, plyCoords.z, 1012.0330200195, -3194.8596191406, -38.99312210083, false))	
-	if exports["prp-inventory"]:hasEnoughOfItem("methbrick",2,false) and exports["prp-inventory"]:hasEnoughOfItem("drugbaggy",1,false) and ongoing == false then
+	if exports["mrp-inventory"]:hasEnoughOfItem("methbrick",2,false) and exports["mrp-inventory"]:hasEnoughOfItem("drugbaggy",1,false) and ongoing == false then
 		Scaling()
 		FreezeEntityPosition(PlayerPedId(),true)
 		SetEntityHeading(PlayerPedId(), 1.2570070028305)
-		local finished = exports["prp-taskbar"]:taskBar(32000,"Packing Crystals!")
+		local finished = exports["mrp-taskbar"]:taskBar(32000,"Packing Crystals!")
 		if (finished == 100) then
 			FreezeEntityPosition(PlayerPedId(),false)
 			TriggerEvent("inventory:removeItem","methbrick", 2)
@@ -122,10 +122,10 @@ end)
 
 RegisterNetEvent("meth:sell")
 AddEventHandler("meth:sell", function()
-	if exports["prp-inventory"]:hasEnoughOfItem("1gmeth",1,false) then
+	if exports["mrp-inventory"]:hasEnoughOfItem("1gmeth",1,false) then
 		LoadDict('mp_safehouselost@')
 		TaskPlayAnim(GetPlayerPed(-1), "mp_safehouselost@", "package_dropoff", 8.0, 1.0, -1, 16, 0, 0, 0, 0 )
-		local finished = exports["prp-taskbar"]:taskBar(3000,"Handing Over Something")
+		local finished = exports["mrp-taskbar"]:taskBar(3000,"Handing Over Something")
 		if (finished == 100) then
 			local meth = math.random(120, 160)
 			TriggerServerEvent("meth:givemoney", meth)

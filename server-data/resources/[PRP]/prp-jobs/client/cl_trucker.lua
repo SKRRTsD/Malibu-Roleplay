@@ -95,7 +95,7 @@ function DepositTruckDocks()
      
 
       if GetEntityModel(vehFront) == GetHashKey(trailer) then
-        local finished = exports["prp-taskbar"]:taskBar(25000,"Storing Trailer Contents")
+        local finished = exports["mrp-taskbar"]:taskBar(25000,"Storing Trailer Contents")
         if finished == 100 then
             TriggerServerEvent("inv:delete","Trunk-"..GetVehicleNumberPlateText(vehFront))
         end
@@ -407,7 +407,7 @@ AddEventHandler("trucker:confirmation", function()
         local t, distance = GetClosestPlayer()
         if(distance ~= -1 and distance < 5) then
             TriggerEvent("DoLongHudText","Requesting Acceptance from person.",1)
-            TriggerServerEvent("prp-shops:checkOwner",GetPlayerServerId(t),currentJobs[currentJobPos].shopId)
+            TriggerServerEvent("mrp-shops:checkOwner",GetPlayerServerId(t),currentJobs[currentJobPos].shopId)
         else
           TriggerEvent("DoLongHudText", "No player near you!",2)
         end   
@@ -639,8 +639,8 @@ end
 --------------------------------------
 --------------------------------------
 
-RegisterNetEvent("prp-core:characterLoaded")
-AddEventHandler("prp-core:characterLoaded", function()
+RegisterNetEvent("mrp-core:characterLoaded")
+AddEventHandler("mrp-core:characterLoaded", function()
     TriggerServerEvent("trucker:returnCurrentJobs")
 end)
 
@@ -815,7 +815,7 @@ function spawnTruck(i)
       TriggerServerEvent('garges:addJobPlate', plate)
 
       SetPedIntoVehicle(playerPed, existingVeh, -1)
-      local finished = exports["prp-taskbar"]:taskBar(3000,"Checking Vehicle")
+      local finished = exports["mrp-taskbar"]:taskBar(3000,"Checking Vehicle")
       if finished == 100 then
       SetVehicleEngineHealth(spawned_car, 1000.0)
       SetVehicleBodyHealth(spawned_car, 1000.0)

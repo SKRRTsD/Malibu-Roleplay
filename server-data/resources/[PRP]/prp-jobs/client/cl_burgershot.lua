@@ -1,15 +1,15 @@
-RegisterNetEvent("prp-burgershot:startprocess3")
-AddEventHandler("prp-burgershot:startprocess3", function()
+RegisterNetEvent("mrp-burgershot:startprocess3")
+AddEventHandler("mrp-burgershot:startprocess3", function()
     local rank = exports["prp_manager"]:GroupRank("burger_shot")
     if rank > 0 then    
-        if exports["prp-inventory"]:hasEnoughOfItem("rawpatty", 1) then 
+        if exports["mrp-inventory"]:hasEnoughOfItem("rawpatty", 1) then 
             local dict = 'amb@prop_human_bbq@male@idle_a'
             LoadDict(dict)
             FreezeEntityPosition(GetPlayerPed(-1),true)
             TaskStartScenarioInPlace(PlayerPedId(), "PROP_HUMAN_BBQ", 0, false)
             Citizen.Wait(2500)
             SetEntityHeading(GetPlayerPed(-1), 124.72439575195)
-            local finished = exports['prp-taskbar']:taskBar(25000, 'Cooking the Patty')
+            local finished = exports['mrp-taskbar']:taskBar(25000, 'Cooking the Patty')
             if (finished == 100) then
                 TriggerEvent("inventory:removeItem", "rawpatty", 1)
                 TriggerEvent('player:receiveItem', 'patty', 2)
@@ -27,17 +27,17 @@ AddEventHandler("prp-burgershot:startprocess3", function()
     end
 end)
 
-RegisterNetEvent("prp-burgershot:startfryer")
-AddEventHandler("prp-burgershot:startfryer", function()
+RegisterNetEvent("mrp-burgershot:startfryer")
+AddEventHandler("mrp-burgershot:startfryer", function()
     local rank = exports["prp_manager"]:GroupRank("burger_shot")
     if rank > 0 then  
-        if exports["prp-inventory"]:hasEnoughOfItem("potato", 1) then
+        if exports["mrp-inventory"]:hasEnoughOfItem("potato", 1) then
             local dict = 'missfinale_c2ig_11'
             LoadDict(dict)
             FreezeEntityPosition(GetPlayerPed(-1),true)
             TaskPlayAnim(GetPlayerPed(-1), dict, "pushcar_offcliff_f", 3.0, -8, -1, 63, 0, 0, 0, 0 )
             SetEntityHeading(GetPlayerPed(-1), 124.72439575195)
-            local finished = exports['prp-taskbar']:taskBar(20000, 'Dropping Fries')
+            local finished = exports['mrp-taskbar']:taskBar(20000, 'Dropping Fries')
             if (finished == 100) then
                 TriggerEvent('player:receiveItem', 'fries', 2)
                 TriggerEvent("inventory:removeItem", "potato", 1)
@@ -55,17 +55,17 @@ AddEventHandler("prp-burgershot:startfryer", function()
     end
 end)
 
-RegisterNetEvent("prp-burgershot:makeshake")
-AddEventHandler("prp-burgershot:makeshake", function()
+RegisterNetEvent("mrp-burgershot:makeshake")
+AddEventHandler("mrp-burgershot:makeshake", function()
     local rank = exports["prp_manager"]:GroupRank("burger_shot")
     if rank > 0 then
-        if exports["prp-inventory"]:hasEnoughOfItem("milkshakeformula", 1) then
+        if exports["mrp-inventory"]:hasEnoughOfItem("milkshakeformula", 1) then
             local dict = 'mp_ped_interaction'
             LoadDict(dict)
             FreezeEntityPosition(GetPlayerPed(-1),true)
             TaskPlayAnim(GetPlayerPed(-1), dict, "handshake_guy_a", 3.0, -8, -1, 63, 0, 0, 0, 0 )
             SetEntityHeading(GetPlayerPed(-1), 124.72439575195)
-            local finished = exports['prp-taskbar']:taskBar(10000, 'Making Milk Shake')
+            local finished = exports['mrp-taskbar']:taskBar(10000, 'Making Milk Shake')
             if (finished == 100) then
                 TriggerEvent('player:receiveItem', 'mshake', 2)
                 TriggerEvent("inventory:removeItem", "milkshakeformula", 1)
@@ -83,17 +83,17 @@ AddEventHandler("prp-burgershot:makeshake", function()
     end
 end)
 
-RegisterNetEvent("prp-burgershot:getcola")
-AddEventHandler("prp-burgershot:getcola", function()
+RegisterNetEvent("mrp-burgershot:getcola")
+AddEventHandler("mrp-burgershot:getcola", function()
     local rank = exports["prp_manager"]:GroupRank("burger_shot")
     if rank > 0 then
-        if exports["prp-inventory"]:hasEnoughOfItem("hfcs", 1) then   
+        if exports["mrp-inventory"]:hasEnoughOfItem("hfcs", 1) then   
             local dict = 'mp_ped_interaction'
             LoadDict(dict)
             FreezeEntityPosition(GetPlayerPed(-1),true)
             TaskPlayAnim(GetPlayerPed(-1), dict, "handshake_guy_a", 3.0, -8, -1, 63, 0, 0, 0, 0 )
             SetEntityHeading(GetPlayerPed(-1), 124.72439575195)
-            local finished = exports['prp-taskbar']:taskBar(5000, 'Getting Coke')
+            local finished = exports['mrp-taskbar']:taskBar(5000, 'Getting Coke')
             if (finished == 100) then
                 TriggerEvent('player:receiveItem', 'softdrink', 2)
                 TriggerEvent("inventory:removeItem", "hfcs", 1)
@@ -115,7 +115,7 @@ RegisterNetEvent("burgershot:register")
 AddEventHandler("burgershot:register", function(registerID)
     local myJob = exports["prp_manager"]:isPed("myJob")
     if myJob == "burger_shot" then
-        local order = exports["prp-applications"]:KeyboardInput({
+        local order = exports["mrp-applications"]:KeyboardInput({
             header = "Create Receipt",
             rows = {
                 {

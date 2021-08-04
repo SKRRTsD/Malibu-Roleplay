@@ -24,12 +24,12 @@ AddEventHandler("house:InHouse", function(value)
 	isInHouse = value
 end)
 
-RegisterNetEvent('prp-weed:knownCrops')
-AddEventHandler('prp-weed:knownCrops', function(sentInfo, currentTime)
+RegisterNetEvent('mrp-weed:knownCrops')
+AddEventHandler('mrp-weed:knownCrops', function(sentInfo, currentTime)
 
     local hellYeah = {}
 
-    TriggerEvent('prp-weed:DeleteKnownCrops')
+    TriggerEvent('mrp-weed:DeleteKnownCrops')
     knownCrops = hellYeah
 
     for i=1, #sentInfo do
@@ -60,7 +60,7 @@ AddEventHandler('prp-weed:knownCrops', function(sentInfo, currentTime)
     knownCrops = hellYeah
 end)
 
-AddEventHandler('prp-weed:DeleteKnownCrops', function()
+AddEventHandler('mrp-weed:DeleteKnownCrops', function()
     for i = 1, #knownCrops do
         if knownCrops[i] ~= nil then
             local ObjectFound = knownCrops[i]["object"]
@@ -138,8 +138,8 @@ AddEventHandler("inhouse", function(status)
     inhouse = status
 end)
 
-RegisterNetEvent('prp-weed:plantSeed')
-AddEventHandler('prp-weed:plantSeed', function(sentType)
+RegisterNetEvent('mrp-weed:plantSeed')
+AddEventHandler('mrp-weed:plantSeed', function(sentType)
     if not isBusy and inhouse then
         local veh = GetVehiclePedIsIn(PlayerPedId(), false)
         if veh == 0 then
@@ -156,9 +156,9 @@ AddEventHandler('prp-weed:plantSeed', function(sentType)
             end
             
             if success then
-                if exports["prp-inventory"]:hasEnoughOfItem(sentType,1,false) and exports["prp-inventory"]:hasEnoughOfItem("plantpot", 1) then
+                if exports["mrp-inventory"]:hasEnoughOfItem(sentType,1,false) and exports["mrp-inventory"]:hasEnoughOfItem("plantpot", 1) then
                 TriggerEvent("animation:farm")
-                local finished = exports["prp-taskbar"]:taskBar(10000,"Planting Seed",true,false,playerVeh)
+                local finished = exports["mrp-taskbar"]:taskBar(10000,"Planting Seed",true,false,playerVeh)
                 if (finished == 100) then
                         TriggerEvent("inventory:removeItem", sentType, 1)
                         TriggerEvent("inventory:removeItem", "plantpot", 1)
@@ -176,8 +176,8 @@ AddEventHandler('prp-weed:plantSeed', function(sentType)
     end
 end)
 
-RegisterNetEvent('prp-weed:destroyPlant')
-AddEventHandler('prp-weed:destroyPlant', function(sentType)
+RegisterNetEvent('mrp-weed:destroyPlant')
+AddEventHandler('mrp-weed:destroyPlant', function(sentType)
     if not isBusy then
         plyCoords = GetEntityCoords(plyPed)
         isBusy = true
@@ -200,7 +200,7 @@ AddEventHandler('prp-weed:destroyPlant', function(sentType)
 
         if knownInfo['id'] > 0 and knownInfo['dist'] < 4 then
             if knownCrops[knownInfo['id']]['object'] and DoesEntityExist(knownCrops[knownInfo['id']]['object']) then
-                TriggerServerEvent("prp-weed:killplant", knownCrops[knownInfo['id']]['knownId'])
+                TriggerServerEvent("mrp-weed:killplant", knownCrops[knownInfo['id']]['knownId'])
             end
         end
 
@@ -211,7 +211,7 @@ end)
 
 
 function NewPlant(sentType)
-	TriggerServerEvent("prp-weed:newplant", GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 0.4, 0.0), sentType)
+	TriggerServerEvent("mrp-weed:newplant", GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 0.4, 0.0), sentType)
 end
 
 --[[
@@ -223,8 +223,8 @@ end
     3 = New
 ]]
 
-RegisterNetEvent('prp-weed:updatePlant')
-AddEventHandler('prp-weed:updatePlant', function(updateType, sentId, sentGrowth, sentTime, sentStatus, sentNewInfo, currentTime)
+RegisterNetEvent('mrp-weed:updatePlant')
+AddEventHandler('mrp-weed:updatePlant', function(updateType, sentId, sentGrowth, sentTime, sentStatus, sentNewInfo, currentTime)
     if updateType == 0 then
         for i=1, #knownCrops do
             if knownCrops[i] ~= nil then
@@ -362,13 +362,13 @@ CreateThread(function()
                     if IsControlJustReleased(0, 38) then
                         if closestInfo["growth"] >= 100 then
                             TaskPlayAnim(GetPlayerPed(-1),"missexile3","ex03_dingy_search_case_a_michael",2.0, -8, 1800000,49, 0, 0, 0, 0)
-                            local finished = exports["prp-taskbar"]:taskBar(1000,"Picking",false,false)
+                            local finished = exports["mrp-taskbar"]:taskBar(1000,"Picking",false,false)
                             if (finished == 100) then
                                 ClearPedTasks(GetPlayerPed(-1))
                                 if currCrop and currCrop["knownId"] then
-                                    TriggerEvent("prp-weed:destroyPlant")
-                                    TriggerEvent("prp-weed:DeleteKnownCrops")
-                                    TriggerServerEvent('prp-weed:killplant', currCrop["knownId"])
+                                    TriggerEvent("mrp-weed:destroyPlant")
+                                    TriggerEvent("mrp-weed:DeleteKnownCrops")
+                                    TriggerServerEvent('mrp-weed:killplant', currCrop["knownId"])
                                     DeleteObject(ObjectFound)
                                     DeleteEntity(ObjectFound)
                                   
@@ -396,11 +396,11 @@ CreateThread(function()
                         elseif num == 1 then 
 							TriggerEvent('DoLongHudText', "This Crop Does Not Need To Be Cared For!", 2)
                         elseif num == 2 then
-                            if exports["prp-inventory"]:hasEnoughOfItem("water",1,false) then
+                            if exports["mrp-inventory"]:hasEnoughOfItem("water",1,false) then
                                 TriggerEvent("inventory:removeItem", "water", 1)
                                 local nerfer = ShouldDeduct(currCrop["type"])
                                 local new = math.ceil(currCrop["growth"] + math.random(14,17) / nerfer)
-                                TriggerServerEvent("prp-weed:updateStatus", 'update', currCrop["knownId"], new, 'water')
+                                TriggerServerEvent("mrp-weed:updateStatus", 'update', currCrop["knownId"], new, 'water')
                                 TriggerEvent("DoLongHudText", "Watering")
                             else
 								TriggerEvent('DoLongHudText', "You're Missing Water", 2)

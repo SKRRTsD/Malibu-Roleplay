@@ -29,8 +29,8 @@ DecorRegister("GetVehicleCurrentFuel", 3)
 
 
 
-RegisterNetEvent("prp-hud:EnableHud")
-AddEventHandler("prp-hud:EnableHud", function()
+RegisterNetEvent("mrp-hud:EnableHud")
+AddEventHandler("mrp-hud:EnableHud", function()
     isLoggedIn = true
 end)
 
@@ -46,7 +46,7 @@ RegisterNetEvent("RefuelCarServerReturn")
 AddEventHandler("RefuelCarServerReturn",function()
     local timer = (100 - vehicleCurrentFuel) * 400
     refillVehicle()
-    local finished = exports["prp-taskbar"]:taskBar(timer,"Refueling")
+    local finished = exports["mrp-taskbar"]:taskBar(timer,"Refueling")
     local veh = getVehicleClosestToMe()
 
     if finished == 100 then
@@ -94,8 +94,8 @@ function rangePercent(min, max, amt)
 	return (((amt - min) * 100) / (max - min)) / 100
 end
 
-RegisterNetEvent("prp-hud:changeRange")
-AddEventHandler("prp-hud:changeRange", function(pRange)
+RegisterNetEvent("mrp-hud:changeRange")
+AddEventHandler("mrp-hud:changeRange", function(pRange)
     voice = pRange or 2
 end)
 
@@ -107,7 +107,7 @@ end)
 Citizen.CreateThread(function ()
 	while true do
 		local isTalking = NetworkIsPlayerTalking(PlayerId())
-        local pRadioActive = exports['prp-voice']:pRadioActive()
+        local pRadioActive = exports['mrp-voice']:pRadioActive()
 		if isTalking and pRadioActive == false then
             SendNUIMessage({talking = true})
         elseif pRadioActive == true then 
@@ -132,18 +132,18 @@ AddEventHandler("harness", function(belt)
 end)
 
 local DevMode = false
-RegisterNetEvent("prp-adminmenu:currentDevmode", function(pOn)
+RegisterNetEvent("mrp-adminmenu:currentDevmode", function(pOn)
 	DevMode = pOn
 end)
 
 local DebugMode = false
-RegisterNetEvent("prp-adminmenu:currentDebug", function(pOn)
+RegisterNetEvent("mrp-adminmenu:currentDebug", function(pOn)
 	DebugMode = pOn
 end)
 
 pShowLocation = false
-RegisterNetEvent("prp-inventory:watch:status")
-AddEventHandler("prp-inventory:watch:status", function()
+RegisterNetEvent("mrp-inventory:watch:status")
+AddEventHandler("mrp-inventory:watch:status", function()
 	pShowLocation = not pShowLocation
 end)
 
@@ -196,7 +196,7 @@ Citizen.CreateThread(function()
                 local Mph = math.ceil(GetEntitySpeed(veh) * 2.236936)
                 local vehhash = GetEntityModel(veh)
                 local maxspeed = GetVehicleModelMaxSpeed(vehhash) * 3.6
-                TriggerEvent('prp-map:ShowMap')
+                TriggerEvent('mrp-map:ShowMap')
                 SendNUIMessage({showCarUi = true})
                 SendNUIMessage({checkseatbelt = seatbelt})
                 SendNUIMessage({speed = Mph, maxspeed = maxspeed, street = area, street2 = street, engine = engine})
@@ -209,7 +209,7 @@ Citizen.CreateThread(function()
 				SendNUIMessage({DebugMode = DebugMode})
 				SendNUIMessage({ShowLocation = pShowLocation, street = area, street2 = street})
                 SendNUIMessage({showCarUi = false})
-                TriggerEvent('prp-map:HideMap')
+                TriggerEvent('mrp-map:HideMap')
             end
 
 
@@ -263,14 +263,14 @@ Citizen.CreateThread(function()
 
             if IsPauseMenuActive() then
                 SendNUIMessage({showUi = false})
-                TriggerEvent('prp-map:HideMap')
+                TriggerEvent('mrp-map:HideMap')
             elseif not IsPauseMenuActive() then
                 SendNUIMessage({showUi = true})
             end
 		
         else
             DisplayRadar(false)
-            TriggerEvent('prp-map:HideMap')
+            TriggerEvent('mrp-map:HideMap')
             SendNUIMessage({showUi = false})
             SendNUIMessage({showCarUi = false})
 			SendNUIMessage({ShowLocation = false})
@@ -435,8 +435,8 @@ Citizen.CreateThread(function()
 end)
 
 
-RegisterNetEvent('prp-gas:checkpump')
-AddEventHandler('prp-gas:checkpump', function()
+RegisterNetEvent('mrp-gas:checkpump')
+AddEventHandler('mrp-gas:checkpump', function()
     local ped = PlayerPedId()
 	local vehicle = GetPlayersLastVehicle()
 	local vehicleCoords = GetEntityCoords(vehicle)
@@ -659,7 +659,7 @@ end)
 
 
 local crouched = false
-exports["prp-keymapping"]:registerKeyMapping("Crouch", "Player", "Toggle Crouch", "+Crouch", "-Crouch", "LCONTROL", true)
+exports["mrp-keymapping"]:registerKeyMapping("Crouch", "Player", "Toggle Crouch", "+Crouch", "-Crouch", "LCONTROL", true)
 RegisterCommand("+Crouch", function()
     local ped = PlayerPedId()
 
@@ -842,7 +842,7 @@ AddEventHandler('client:anchor', function()
         if vehModel ~= nil and vehModel ~= 0 then
             if DoesEntityExist(currVeh) then
                 if IsThisModelABoat(vehModel) or IsThisModelAJetski(vehModel) or IsThisModelAnAmphibiousCar(vehModel) or IsThisModelAnAmphibiousQuadbike(vehModel) then
-                	local finished = exports["prp-taskbar"]:taskBar(2000,"Toggling Anchor")
+                	local finished = exports["mrp-taskbar"]:taskBar(2000,"Toggling Anchor")
 					if (finished ~= 100) then
 					    return
 					end
@@ -1322,8 +1322,8 @@ AddEventHandler("stress:timed2",function(alteredValue,scenario)
 end)
 
 
-RegisterNetEvent("prp-adminmenu:currentDevmode")
-AddEventHandler("prp-adminmenu:currentDevmode", function(devmode)
+RegisterNetEvent("mrp-adminmenu:currentDevmode")
+AddEventHandler("mrp-adminmenu:currentDevmode", function(devmode)
     isBlocked = devmode
 end)
 
@@ -1365,13 +1365,13 @@ AddEventHandler("police:setClientMeta",function(meta)
 	SetPedArmour(PlayerPedId(),meta.armour)
 end)
 
-RegisterNetEvent("prp-adminmenu:currentDevmode")
-AddEventHandler("prp-adminmenu:currentDevmode", function(devmode)
+RegisterNetEvent("mrp-adminmenu:currentDevmode")
+AddEventHandler("mrp-adminmenu:currentDevmode", function(devmode)
     currentValues["devmode"] = devmode
 end)
 
-RegisterNetEvent("prp-adminmenu:currentDebug")
-AddEventHandler("prp-adminmenu:currentDebug", function(debugToggle)
+RegisterNetEvent("mrp-adminmenu:currentDebug")
+AddEventHandler("mrp-adminmenu:currentDebug", function(debugToggle)
     currentValues["devdebug"] = debugToggle
 end)
 

@@ -56,29 +56,29 @@ local Dumpsters = {
 }
 
 Citizen.CreateThread(function()
-    exports["prp-polyzone"]:AddBoxZone("garbage_start", vector3(-322.24060058594, -1545.8980712891, 31.019908905029), 2, 2, {
+    exports["mrp-polyzone"]:AddBoxZone("garbage_start", vector3(-322.24060058594, -1545.8980712891, 31.019908905029), 2, 2, {
         name="garbage_start",
         heading=0,
     })
 end)
 
 
-RegisterNetEvent('prp-polyzone:enter')
-AddEventHandler('prp-polyzone:enter', function(name)
+RegisterNetEvent('mrp-polyzone:enter')
+AddEventHandler('mrp-polyzone:enter', function(name)
     if name == "garbage_start" then
         AtGarbageSpot = true     
     end
 end)
 
-RegisterNetEvent('prp-polyzone:exit')
-AddEventHandler('prp-polyzone:exit', function(name)
+RegisterNetEvent('mrp-polyzone:exit')
+AddEventHandler('mrp-polyzone:exit', function(name)
     if name == "garbage_start" then
         AtGarbageSpot = false     
     end
 end)
 
-RegisterNetEvent('prp-garbage:starting')
-AddEventHandler('prp-garbage:starting', function()
+RegisterNetEvent('mrp-garbage:starting')
+AddEventHandler('mrp-garbage:starting', function()
 if AtGarbageSpot then
     if not truckTaken then 
         truckTaken = true
@@ -124,16 +124,16 @@ function submit()
                     local plate = GetVehicleNumberPlateText(truck)
                     if distance < 2.0 then
                        -- ShowHelpNotification("Press ~INPUT_CONTEXT~ to drop off trash", true, true, 5000)
-                      -- TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("to drop off trash")) 
+                      -- TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("to drop off trash")) 
                         if IsControlJustReleased(1,46) and not pressed then
                             truckTaken = false
                             pressed = true
                             RemoveBlip(submitBlip)
                             if plate == truckplate then
                                 jobCompleted = true
-                                local finished = exports["prp-taskbar"]:taskBar(5000,"Dropping off trash")
+                                local finished = exports["mrp-taskbar"]:taskBar(5000,"Dropping off trash")
                                 if finished == 100 then
-                                    TriggerServerEvent('prp-garbage:pay', jobCompleted)
+                                    TriggerServerEvent('mrp-garbage:pay', jobCompleted)
                                     jobCompleted = false
                                     DeleteVehicle(truck)
                                     for i=1,200,1 do 
@@ -232,7 +232,7 @@ function findtrashbins(coordVec,xtruck,pickup)
                         DrawMarker(20, dumpCoords + vector3(0.0,0.0,2.5), 0.0, 0.0, 0.0, 0, 0.0, 0.0, 2.0, 2.0, 1.0, 0, 120, 0, 200, false, true, 2, false, false, false, false)
                         if userDist < 2 then
                            -- ShowHelpNotification("Press ~INPUT_CONTEXT~ to collect trash", true, true, 5000)
-                           -- TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("to collect trash")) 
+                           -- TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("to collect trash")) 
                             if IsControlJustReleased(1,46) then
                                 local geeky = CreateObject(GetHashKey("hei_prop_heist_binbag"), 0, 0, 0, true, true, true)
                                 AttachEntityToEntity(geeky, playerPed, boneindex, 0.12, 0.0, 0.00, 25.0, 270.0, 180.0, true, true, false, true, 1, true)
@@ -287,10 +287,10 @@ function collectedtrash(geeky,vehicle,location,pickup)
             DrawMarker(20, trunkcoord + vector3(0.0,0.0,0.5), 0.0, 0.0, 0.0, 0, 0.0, 0.0, 1.0, 1.0, 1.0, 0, 120, 0, 200, false, true, 2, false, false, false, false)
             if tdistance < 2 then
                -- ShowHelpNotification("Press ~INPUT_CONTEXT~ to throw trash", true, true, 5000)
-              --  TriggerEvent('prp-textui:ShowUI', 'show', ("Throw trash bag in back of truck"):format("")) 
+              --  TriggerEvent('mrp-textui:ShowUI', 'show', ("Throw trash bag in back of truck"):format("")) 
                 if IsControlJustReleased(1, 46) and not pressed then
                     pressed = true
-                    TriggerServerEvent('prp-garbage:reward', true)
+                    TriggerServerEvent('mrp-garbage:reward', true)
                     trashCollected = false
                     ClearPedTasksImmediately(PlayerPedId())
                     TaskPlayAnim(PlayerPedId(), 'anim@heists@narcotics@trash', 'throw_b', 1.0, -1.0,-1,2,0,0, 0,0)

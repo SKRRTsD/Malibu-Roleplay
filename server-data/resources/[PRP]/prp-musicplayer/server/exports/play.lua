@@ -1,5 +1,5 @@
 function PlayUrl(source, name_, url_, volume_, loop_)
-    TriggerClientEvent("prp-musicplayer:stateSound", source, "play", {
+    TriggerClientEvent("mrp-musicplayer:stateSound", source, "play", {
         soundId = name_,
         url = url_,
         volume = volume_,
@@ -10,7 +10,7 @@ end
 exports('PlayUrl', PlayUrl)
 
 function PlayUrlPos(source, name_, url_, volume_, pos, loop_)
-    TriggerClientEvent("prp-musicplayer:stateSound", source, "playpos", {
+    TriggerClientEvent("mrp-musicplayer:stateSound", source, "playpos", {
         soundId = name_,
         position = pos,
         url = url_,
@@ -22,7 +22,7 @@ end
 exports('PlayUrlPos', PlayUrlPos)
 
 function TextToSpeech(source, name_, lang, text, volume_, loop_)
-    TriggerClientEvent("prp-musicplayer:stateSound", source, "texttospeech", {
+    TriggerClientEvent("mrp-musicplayer:stateSound", source, "texttospeech", {
         soundId = name_,
         url = text,
         lang = lang,
@@ -34,7 +34,7 @@ end
 exports('TextToSpeech', TextToSpeech)
 
 function TextToSpeechPos(source, name_, lang, text, volume_, pos, loop_)
-    TriggerClientEvent("prp-musicplayer:stateSound", source, "texttospeechpos", {
+    TriggerClientEvent("mrp-musicplayer:stateSound", source, "texttospeechpos", {
         soundId = name_,
         lang = lang,
         position = pos,
@@ -55,7 +55,7 @@ RegisterServerEvent("vanilla:request:song:sv", function(url)
         soundId = "VU",
         distance =  22,
     }
-    TriggerClientEvent("prp-musicplayer:stateSound", -1, "distance", data)
+    TriggerClientEvent("mrp-musicplayer:stateSound", -1, "distance", data)
 end)
 
 
@@ -65,7 +65,7 @@ RegisterServerEvent("vanilla:change:volume", function(volume)
         soundId = "VU",
         volume =  volume/100,
     }
-    TriggerClientEvent("prp-musicplayer:stateSound", -1, "volume", data)
+    TriggerClientEvent("mrp-musicplayer:stateSound", -1, "volume", data)
 end)
 
 RegisterServerEvent("bahamas:request:song:sv", function(url)
@@ -75,7 +75,7 @@ RegisterServerEvent("bahamas:request:song:sv", function(url)
         soundId = "BH",
         distance =  40,
     }
-    TriggerClientEvent("prp-musicplayer:stateSound", -1, "distance", data)
+    TriggerClientEvent("mrp-musicplayer:stateSound", -1, "distance", data)
 end)
 
 
@@ -85,7 +85,7 @@ RegisterServerEvent("bahamas:change:volume", function(volume)
         soundId = "BH",
         volume =  volume/100,
     }
-    TriggerClientEvent("prp-musicplayer:stateSound", -1, "volume", data)
+    TriggerClientEvent("mrp-musicplayer:stateSound", -1, "volume", data)
 end)
 
 RegisterServerEvent("casino:request:song:sv", function(url)
@@ -95,7 +95,7 @@ RegisterServerEvent("casino:request:song:sv", function(url)
         soundId = "CS",
         distance =  100,
     }
-    TriggerClientEvent("prp-musicplayer:stateSound", -1, "distance", data)
+    TriggerClientEvent("mrp-musicplayer:stateSound", -1, "distance", data)
 end)
 
 
@@ -105,7 +105,7 @@ RegisterServerEvent("casino:change:volume", function(volume)
         soundId = "CS",
         volume =  volume/100,
     }
-    TriggerClientEvent("prp-musicplayer:stateSound", -1, "volume", data)
+    TriggerClientEvent("mrp-musicplayer:stateSound", -1, "volume", data)
 end)
 
 RegisterServerEvent("arcade:request:song:sv", function(url)
@@ -115,7 +115,7 @@ RegisterServerEvent("arcade:request:song:sv", function(url)
         soundId = "CS",
         distance =  100,
     }
-    TriggerClientEvent("prp-musicplayer:stateSound", -1, "distance", data)
+    TriggerClientEvent("mrp-musicplayer:stateSound", -1, "distance", data)
 end)
 
 RegisterServerEvent("arcade:change:volume", function(volume)
@@ -124,6 +124,6 @@ RegisterServerEvent("arcade:change:volume", function(volume)
         soundId = "CS",
         volume =  volume/100,
     }
-    TriggerClientEvent("prp-musicplayer:stateSound", -1, "volume", data)
+    TriggerClientEvent("mrp-musicplayer:stateSound", -1, "volume", data)
 end)
 

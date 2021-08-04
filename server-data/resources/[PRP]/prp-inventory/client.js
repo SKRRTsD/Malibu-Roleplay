@@ -114,8 +114,8 @@ function ScanJailContainers() {
     }
 }
 
-RegisterNetEvent('prp-core:playerSpawned')
-on('prp-core:playerSpawned', (broughtData) => {
+RegisterNetEvent('mrp-core:playerSpawned')
+on('mrp-core:playerSpawned', (broughtData) => {
 	let cid = exports.prp_manager.isPed("cid")
 	emitNet("server-request-update",cid)
 	SendNuiMessage(JSON.stringify({ response: "SendItemList", list: itemList}))
@@ -295,7 +295,7 @@ on('__cfx_nui:dropIncorrectItems', (data, cb) => {
     }, 2000);
 });
 
-//  $.post("http://prp-inventory/SlotJustUsed", JSON.stringify({target: targetSlot, origin: originSlot, itemid: itemidsent }));
+//  $.post("http://mrp-inventory/SlotJustUsed", JSON.stringify({target: targetSlot, origin: originSlot, itemid: itemidsent }));
 let recentused = [];
 RegisterNuiCallbackType('SlotJustUsed');
 on('__cfx_nui:SlotJustUsed', (data, cb) => {
@@ -574,8 +574,8 @@ function Scan(row) {
     return distancea < checkDistance;
 }
 
-// RegisterNetEvent('prp-items:SetAmmo');
-// on('prp-items:SetAmmo', (sentammoTable) => {
+// RegisterNetEvent('mrp-items:SetAmmo');
+// on('mrp-items:SetAmmo', (sentammoTable) => {
 //     if (sentammoTable) {
 //         ammoTable = sentammoTable;
 //     }

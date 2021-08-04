@@ -17,7 +17,7 @@ end)
 RegisterServerEvent("weedstore:retreive:receipt")
 AddEventHandler("weedstore:retreive:receipt", function(regID)
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
     if Registers[regID] then
         for i = 1, #Registers[regID] do
@@ -25,7 +25,7 @@ AddEventHandler("weedstore:retreive:receipt", function(regID)
                 local amount = Registers[regID][i].price
                 if (tonumber(user:getCash()) >= tonumber(amount)) then
                     user:removeMoney(tonumber(amount))
-                    local owner = exports["prp-core"]:getModule("Player"):GetUser(Registers[regID][i].owner)
+                    local owner = exports["mrp-core"]:getModule("Player"):GetUser(Registers[regID][i].owner)
                     local char = owner:getCurrentCharacter()
                     information = {
                         ["Price"] = tonumber(amount),
@@ -57,7 +57,7 @@ end)
 RegisterServerEvent("weedstore:update:pay")
 AddEventHandler("weedstore:update:pay", function(cid)
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local characterId = user:getVar("character").id
     local invname = 'ply-'..characterId
     exports.ghmattimysql:execute("SELECT `slot`, `information` FROM user_inventory2 WHERE name = ? AND `item_id` = ? ORDER BY slot DESC", {invname, "ownerreceipt"}, function(data)
@@ -82,7 +82,7 @@ end)
 RegisterServerEvent('rolexdelivery:server')
 AddEventHandler('rolexdelivery:server', function(money)
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
 
 	if user:getCash() >= money then
         user:removeMoney(money)

@@ -4,10 +4,10 @@ local callBip = nil
 local zones = { ['AIRP'] = "Los Santos International Airport", ['ALAMO'] = "Alamo Sea", ['ALTA'] = "Alta", ['ARMYB'] = "Fort Zancudo", ['BANHAMC'] = "Banham Canyon Dr", ['BANNING'] = "Banning", ['BEACH'] = "Vespucci Beach", ['BHAMCA'] = "Banham Canyon", ['BRADP'] = "Braddock Pass", ['BRADT'] = "Braddock Tunnel", ['BURTON'] = "Burton", ['CALAFB'] = "Calafia Bridge", ['CANNY'] = "Raton Canyon", ['CCREAK'] = "Cassidy Creek", ['CHAMH'] = "Chamberlain Hills", ['CHIL'] = "Vinewood Hills", ['CHU'] = "Chumash", ['CMSW'] = "Chiliad Mountain State Wilderness", ['CYPRE'] = "Cypress Flats", ['DAVIS'] = "Davis", ['DELBE'] = "Del Perro Beach", ['DELPE'] = "Del Perro", ['DELSOL'] = "La Puerta", ['DESRT'] = "Grand Senora Desert", ['DOWNT'] = "Downtown", ['DTVINE'] = "Downtown Vinewood", ['EAST_V'] = "East Vinewood", ['EBURO'] = "El Burro Heights", ['ELGORL'] = "El Gordo Lighthouse", ['ELYSIAN'] = "Elysian Island", ['GALFISH'] = "Galilee", ['GOLF'] = "GWC and Golfing Society", ['GRAPES'] = "Grapeseed", ['GREATC'] = "Great Chaparral", ['HARMO'] = "Harmony", ['HAWICK'] = "Hawick", ['HORS'] = "Vinewood Racetrack", ['HUMLAB'] = "Humane Labs and Research", ['JAIL'] = "Bolingbroke Penitentiary", ['KOREAT'] = "Little Seoul", ['LACT'] = "Land Act Reservoir", ['LAGO'] = "Lago Zancudo", ['LDAM'] = "Land Act Dam", ['LEGSQU'] = "Legion Square", ['LMESA'] = "La Mesa", ['LOSPUER'] = "La Puerta", ['MIRR'] = "Mirror Park", ['MORN'] = "Morningwood", ['MOVIE'] = "Richards Majestic", ['MTCHIL'] = "Mount Chiliad", ['MTGORDO'] = "Mount Gordo", ['MTJOSE'] = "Mount Josiah", ['MURRI'] = "Murrieta Heights", ['NCHU'] = "North Chumash", ['NOOSE'] = "N.O.O.S.E", ['OCEANA'] = "Pacific Ocean", ['PALCOV'] = "Paleto Cove", ['PALETO'] = "Paleto Bay", ['PALFOR'] = "Paleto Forest", ['PALHIGH'] = "Palomino Highlands", ['PALMPOW'] = "Palmer-Taylor Power Station", ['PBLUFF'] = "Pacific Bluffs", ['PBOX'] = "Pillbox Hill", ['PROCOB'] = "Procopio Beach", ['RANCHO'] = "Rancho", ['RGLEN'] = "Richman Glen", ['RICHM'] = "Richman", ['ROCKF'] = "Rockford Hills", ['RTRAK'] = "Redwood Lights Track", ['SANAND'] = "San Andreas", ['SANCHIA'] = "San Chianski Mountain Range", ['SANDY'] = "Sandy Shores", ['SKID'] = "Mission Row", ['SLAB'] = "Stab City", ['STAD'] = "Maze Bank Arena", ['STRAW'] = "Strawberry", ['TATAMO'] = "Tataviam Mountains", ['TERMINA'] = "Terminal", ['TEXTI'] = "Textile City", ['TONGVAH'] = "Tongva Hills", ['TONGVAV'] = "Tongva Valley", ['VCANA'] = "Vespucci Canals", ['VESP'] = "Vespucci", ['VINE'] = "Vinewood", ['WINDF'] = "Ron Alternates Wind Farm", ['WVINE'] = "West Vinewood", ['ZANCUDO'] = "Zancudo River", ['ZP_ORT'] = "Port of South Los Santos", ['ZQ_UAR'] = "Davis Quartz" }
 
 
-TriggerServerEvent("prp-mdt:getOffensesAndOfficer")
+TriggerServerEvent("mrp-mdt:getOffensesAndOfficer")
 
-RegisterNetEvent("prp-mdt:toggleVisibilty")
-AddEventHandler("prp-mdt:toggleVisibilty", function(reports, warrants, officer, job)
+RegisterNetEvent("mrp-mdt:toggleVisibilty")
+AddEventHandler("mrp-mdt:toggleVisibilty", function(reports, warrants, officer, job)
     local playerPed = PlayerPedId()
     if not isVisible then
         local dict = "amb@world_human_seat_wall_tablet@female@base"
@@ -35,16 +35,16 @@ AddEventHandler("prp-mdt:toggleVisibilty", function(reports, warrants, officer, 
         department = job
     })
     ToggleGUI()
-    TriggerServerEvent("prp-mdt:getOffensesAndOfficer")
+    TriggerServerEvent("mrp-mdt:getOffensesAndOfficer")
 end)
 
-RegisterNetEvent("prp-mdt:hotKeyOpen")
-AddEventHandler("prp-mdt:hotKeyOpen", function()
+RegisterNetEvent("mrp-mdt:hotKeyOpen")
+AddEventHandler("mrp-mdt:hotKeyOpen", function()
     local myjob = exports["prp_manager"]:isPed("myjob")
     if myjob == "police" then
-        TriggerServerEvent('prp-mdt:Open', "police")
+        TriggerServerEvent('mrp-mdt:Open', "police")
     elseif myjob == "DOJ" then
-        TriggerServerEvent('prp-mdt:Open', "DOJ")
+        TriggerServerEvent('mrp-mdt:Open', "DOJ")
     end
 end)
 
@@ -58,99 +58,99 @@ RegisterNUICallback("close", function(data, cb)
 end)
 
 RegisterNUICallback("performOffenderSearch", function(data, cb)
-    TriggerServerEvent("prp-mdt:performOffenderSearch", data.query)
+    TriggerServerEvent("mrp-mdt:performOffenderSearch", data.query)
     cb('ok')
 end)
 
 RegisterNUICallback("viewOffender", function(data, cb)
-    TriggerServerEvent("prp-mdt:getOffenderDetails", data.offender)
+    TriggerServerEvent("mrp-mdt:getOffenderDetails", data.offender)
     cb('ok')
 end)
 
 RegisterNUICallback("saveOffenderChanges", function(data, cb)
-    TriggerServerEvent("prp-mdt:saveOffenderChanges", data.id, data.changes, data.identifier)
+    TriggerServerEvent("mrp-mdt:saveOffenderChanges", data.id, data.changes, data.identifier)
     cb('ok')
 end)
 
 RegisterNUICallback("submitNewReport", function(data, cb)
-    TriggerServerEvent("prp-mdt:submitNewReport", data)
+    TriggerServerEvent("mrp-mdt:submitNewReport", data)
     cb('ok')
 end)
 
 RegisterNUICallback("performReportSearch", function(data, cb)
-    TriggerServerEvent("prp-mdt:performReportSearch", data.query)
+    TriggerServerEvent("mrp-mdt:performReportSearch", data.query)
     cb('ok')
 end)
 
 RegisterNUICallback("getOffender", function(data, cb)
-    TriggerServerEvent("prp-mdt:getOffenderDetailsById", data.char_id)
+    TriggerServerEvent("mrp-mdt:getOffenderDetailsById", data.char_id)
 
     cb('ok')
 end)
 
 RegisterNUICallback("deleteReport", function(data, cb)
-    TriggerServerEvent("prp-mdt:deleteReport", data.id)
-    TriggerServerEvent("prp-mdt:delreport")
+    TriggerServerEvent("mrp-mdt:deleteReport", data.id)
+    TriggerServerEvent("mrp-mdt:delreport")
     cb('ok')
 end)
 
 RegisterNUICallback("saveReportChanges", function(data, cb)
-    TriggerServerEvent("prp-mdt:saveReportChanges", data)
+    TriggerServerEvent("mrp-mdt:saveReportChanges", data)
     cb('ok')
 end)
 
 -- RegisterNUICallback("vehicleSearch", function(data, cb)
---     TriggerServerEvent("prp-mdt:performVehicleSearch", data.plate)
+--     TriggerServerEvent("mrp-mdt:performVehicleSearch", data.plate)
 --     cb('ok')
 -- end)
 
 -- RegisterNUICallback("getVehicle", function(data, cb)
---     TriggerServerEvent("prp-mdt:getVehicle", data.vehicle)
+--     TriggerServerEvent("mrp-mdt:getVehicle", data.vehicle)
 --     cb('ok')
 -- end)
 
 RegisterNUICallback("getWarrants", function(data, cb)
-    TriggerServerEvent("prp-mdt:getWarrants")
+    TriggerServerEvent("mrp-mdt:getWarrants")
 end)
 
 RegisterNUICallback("submitNewWarrant", function(data, cb)
-    TriggerServerEvent("prp-mdt:submitNewWarrant", data)
+    TriggerServerEvent("mrp-mdt:submitNewWarrant", data)
     cb('ok')
 end)
 
 RegisterNUICallback("deleteWarrant", function(data, cb)
-    TriggerServerEvent("prp-mdt:deleteWarrant", data.id)
-    TriggerServerEvent('prp-mdt:delwarrant')
+    TriggerServerEvent("mrp-mdt:deleteWarrant", data.id)
+    TriggerServerEvent('mrp-mdt:delwarrant')
     cb('ok')
 end)
 
 RegisterNUICallback("getReport", function(data, cb)
-    TriggerServerEvent("prp-mdt:getReportDetailsById", data.id)
+    TriggerServerEvent("mrp-mdt:getReportDetailsById", data.id)
     cb('ok')
 end)
 
 -- RegisterNUICallback("saveVehicleChanges", function(data, cb)
---     TriggerServerEvent("prp-mdt:saveVehicleChanges", data)
+--     TriggerServerEvent("mrp-mdt:saveVehicleChanges", data)
 --     cb('ok')
 -- end)
 
-RegisterNetEvent("prp-mdt:returnOffenderSearchResults")
-AddEventHandler("prp-mdt:returnOffenderSearchResults", function(results)
+RegisterNetEvent("mrp-mdt:returnOffenderSearchResults")
+AddEventHandler("mrp-mdt:returnOffenderSearchResults", function(results)
     SendNUIMessage({
         type = "returnedPersonMatches",
         matches = results
     })
 end)
 
-RegisterNetEvent("prp-mdt:closeModal")
-AddEventHandler("prp-mdt:closeModal", function()
+RegisterNetEvent("mrp-mdt:closeModal")
+AddEventHandler("mrp-mdt:closeModal", function()
     SendNUIMessage({
         type = "closeModal"
     })
 end)
 
-RegisterNetEvent("prp-mdt:returnOffenderDetails")
-AddEventHandler("prp-mdt:returnOffenderDetails", function(data)
+RegisterNetEvent("mrp-mdt:returnOffenderDetails")
+AddEventHandler("mrp-mdt:returnOffenderDetails", function(data)
     -- for i = 1, #data.vehicles do
     --     data.vehicles[i].model = GetLabelText(GetDisplayNameFromVehicleModel(data.vehicles[i].model))
     -- end
@@ -160,8 +160,8 @@ AddEventHandler("prp-mdt:returnOffenderDetails", function(data)
     })
 end)
 
-RegisterNetEvent("prp-mdt:returnOffensesAndOfficer")
-AddEventHandler("prp-mdt:returnOffensesAndOfficer", function(data, name)
+RegisterNetEvent("mrp-mdt:returnOffensesAndOfficer")
+AddEventHandler("mrp-mdt:returnOffensesAndOfficer", function(data, name)
     SendNUIMessage({
         type = "offensesAndOfficerLoaded",
         offenses = data,
@@ -169,16 +169,16 @@ AddEventHandler("prp-mdt:returnOffensesAndOfficer", function(data, name)
     })
 end)
 
-RegisterNetEvent("prp-mdt:returnReportSearchResults")
-AddEventHandler("prp-mdt:returnReportSearchResults", function(results)
+RegisterNetEvent("mrp-mdt:returnReportSearchResults")
+AddEventHandler("mrp-mdt:returnReportSearchResults", function(results)
     SendNUIMessage({
         type = "returnedReportMatches",
         matches = results
     })
 end)
 
--- RegisterNetEvent("prp-mdt:returnVehicleSearchInFront")
--- AddEventHandler("prp-mdt:returnVehicleSearchInFront", function(results, plate)
+-- RegisterNetEvent("mrp-mdt:returnVehicleSearchInFront")
+-- AddEventHandler("mrp-mdt:returnVehicleSearchInFront", function(results, plate)
 --     SendNUIMessage({
 --         type = "returnedVehicleMatchesInFront",
 --         matches = results,
@@ -186,16 +186,16 @@ end)
 --     })
 -- end)
 
--- RegisterNetEvent("prp-mdt:returnVehicleSearchResults")
--- AddEventHandler("prp-mdt:returnVehicleSearchResults", function(results)
+-- RegisterNetEvent("mrp-mdt:returnVehicleSearchResults")
+-- AddEventHandler("mrp-mdt:returnVehicleSearchResults", function(results)
 --     SendNUIMessage({
 --         type = "returnedVehicleMatches",
 --         matches = results
 --     })
 -- end)
 
--- RegisterNetEvent("prp-mdt:returnVehicleDetails")
--- AddEventHandler("prp-mdt:returnVehicleDetails", function(data)
+-- RegisterNetEvent("mrp-mdt:returnVehicleDetails")
+-- AddEventHandler("mrp-mdt:returnVehicleDetails", function(data)
 --     if type(data.model) == 'number' then
 --         data.model = GetLabelText(GetDisplayNameFromVehicleModel(data.model))
 --     end
@@ -205,36 +205,36 @@ end)
 --     })
 -- end)
 
-RegisterNetEvent("prp-mdt:returnWarrants")
-AddEventHandler("prp-mdt:returnWarrants", function(data)
+RegisterNetEvent("mrp-mdt:returnWarrants")
+AddEventHandler("mrp-mdt:returnWarrants", function(data)
     SendNUIMessage({
         type = "returnedWarrants",
         warrants = data
     })
 end)
 
-RegisterNetEvent("prp-mdt:completedWarrantAction")
-AddEventHandler("prp-mdt:completedWarrantAction", function(data)
+RegisterNetEvent("mrp-mdt:completedWarrantAction")
+AddEventHandler("mrp-mdt:completedWarrantAction", function(data)
     SendNUIMessage({
         type = "completedWarrantAction"
     })
 end)
 
-RegisterNetEvent("prp-mdt:returnReportDetails")
-AddEventHandler("prp-mdt:returnReportDetails", function(data)
+RegisterNetEvent("mrp-mdt:returnReportDetails")
+AddEventHandler("mrp-mdt:returnReportDetails", function(data)
     SendNUIMessage({
         type = "returnedReportDetails",
         details = data
     })
 end)
 
-RegisterNetEvent("prp-mdt:sendNUIMessage")
-AddEventHandler("prp-mdt:sendNUIMessage", function(messageTable)
+RegisterNetEvent("mrp-mdt:sendNUIMessage")
+AddEventHandler("mrp-mdt:sendNUIMessage", function(messageTable)
     SendNUIMessage(messageTable)
 end)
 
-RegisterNetEvent("prp-mdt:sendNotification")
-AddEventHandler("prp-mdt:sendNotification", function(message)
+RegisterNetEvent("mrp-mdt:sendNotification")
+AddEventHandler("mrp-mdt:sendNotification", function(message)
     SendNUIMessage({
         type = "sendNotification",
         message = message
@@ -257,7 +257,7 @@ end
 
 RegisterCommand('mdt', function()
     if exports["prp_manager"]:isPed("myjob") == 'police' then
-        TriggerEvent('prp-mdt:hotKeyOpen')
+        TriggerEvent('mrp-mdt:hotKeyOpen')
     else
         TriggerEvent('DoLongHudText', 'You are not a police officer!', 2)
    end

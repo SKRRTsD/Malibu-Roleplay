@@ -53,7 +53,7 @@ Citizen.CreateThread(function ()
 								TaskPlayAnim(p, "missheist_jewel", "smash_case", 8.0, 1.0, -1, 2, 0, 0, 0, 0 ) 
 								Citizen.Wait(5000)
 								ClearPedTasksImmediately(p)
-								TriggerServerEvent('prp-jewelrobbery:AwardItems')
+								TriggerServerEvent('mrp-jewelrobbery:AwardItems')
 							else
 								TriggerEvent('DoLongHudText', 'You are missing a weapon!', 2)							
 							end
@@ -109,10 +109,10 @@ AddEventHandler('av_vangelico:bomba', function()
 			DeleteObject(prop)
 			seguridad = false
 			FreezeEntityPosition(PlayerPedId(),false)
-			TriggerServerEvent("prp-doors:alterlockstate", 96)
-			TriggerServerEvent("prp-doors:alterlockstate", 97)
+			TriggerServerEvent("mrp-doors:alterlockstate", 96)
+			TriggerServerEvent("mrp-doors:alterlockstate", 97)
 			TriggerEvent('DoLongHudText', 'You started the robbery')
-			TriggerEvent("prp-dispatch:jewelrobbery")
+			TriggerEvent("mrp-dispatch:jewelrobbery")
 			TriggerServerEvent('av_vangelico:gas')
 			TriggerServerEvent('jewelrobbery:log')
 end)
@@ -181,11 +181,11 @@ end
 RegisterNetEvent('jewel:card')
 AddEventHandler('jewel:card', function()
 	if exports["prp_manager"]:isPed("countpolice") >= 3 then
-		local thermite = exports["prp-inventory"]:hasEnoughOfItem("Gruppe6Card3",1,false) and exports["prp-inventory"]:hasEnoughOfItem("thermalcharge",1,false)
+		local thermite = exports["mrp-inventory"]:hasEnoughOfItem("Gruppe6Card3",1,false) and exports["mrp-inventory"]:hasEnoughOfItem("thermalcharge",1,false)
 		if thermite then
 			TriggerEvent("inventory:removeItem","Gruppe6Card3", 1)
 			TriggerEvent("inventory:removeItem","thermalcharge", 1)      
-			if exports['prp-thermite']:startGame(18,1,7,500) then
+			if exports['mrp-thermite']:startGame(18,1,7,500) then
 				seguridad = true
 				bomba = true
 				TriggerEvent('av_vangelico:bomba')
@@ -207,7 +207,7 @@ end)
 RegisterNetEvent('jewel:disconnect')
 AddEventHandler('jewel:disconnect', function()
 	if exports["prp_manager"]:isPed("countpolice") >= 4 then
-		if exports["prp-inventory"]:hasEnoughOfItem("heavydutydrill",1,false) then
+		if exports["mrp-inventory"]:hasEnoughOfItem("heavydutydrill",1,false) then
 			local ped = GetPlayerPed(-1)
 			local x,y,z = table.unpack(GetEntityCoords(ped, true))
 			drillingClient = true
@@ -261,10 +261,10 @@ AddEventHandler('jewel:disconnect', function()
 			ShakeGameplayCam("ROAD_VIBRATION_SHAKE", 1.0)
 
 			
-			local cutting = exports['prp-taskbar']:taskBar(20000, 'cutting')
+			local cutting = exports['mrp-taskbar']:taskBar(20000, 'cutting')
 			if cutting == 100 then
 				TriggerEvent('inventory:removeItem', 'heavydutydrill', 1)			
-				TriggerServerEvent("prp-doors:alterlockstate", 98)
+				TriggerServerEvent("mrp-doors:alterlockstate", 98)
 				drillingClient = false
 				ClearPedTasksImmediately(ped)
 				FreezeEntityPosition(ped, false)
@@ -289,13 +289,13 @@ end)
 
 RegisterNetEvent('jewel:hack')
 AddEventHandler('jewel:hack', function()
-	if exports["prp-inventory"]:hasEnoughOfItem("usbdevice", 1) then
+	if exports["mrp-inventory"]:hasEnoughOfItem("usbdevice", 1) then
 		local dict = 'mp_prison_break'
 		anim(dict)
 		FreezeEntityPosition(GetPlayerPed(-1),true)
 		TaskPlayAnim(GetPlayerPed(-1), dict, "hack_loop", 3.0, -8, -1, 63, 0, 0, 0, 0 )
 		SetEntityHeading(GetPlayerPed(-1), 222.48672485352)
-		local finished = exports['prp-taskbar']:taskBar(20000, 'Hacking Hard Drive!')
+		local finished = exports['mrp-taskbar']:taskBar(20000, 'Hacking Hard Drive!')
 		if (finished == 100) then
 			TriggerEvent("mhacking:show")
 			TriggerEvent("mhacking:start",7,15, Onhack )
@@ -307,7 +307,7 @@ AddEventHandler('jewel:hack', function()
 	else
 		TriggerEvent('DoLongHudText', 'You need something to hack', 1)
 	end
-	TriggerEvent("prp-dispatch:jewelrobbery")
+	TriggerEvent("mrp-dispatch:jewelrobbery")
 		
 end)
 

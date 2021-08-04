@@ -94,7 +94,7 @@ function StartDive()
                             TaskStartScenarioAtPosition(PlayerPedId(), 'WORLD_HUMAN_WELDING', value['x'], value['y'], value['z'], GetEntityHeading(PlayerPedId()), 1000, 0, 1) --10000
                             Citizen.Wait(10000) --10000
                             ClearPedTasksImmediately(PlayerPedId())
-                            TriggerServerEvent('prp-scuba:findTreasure')
+                            TriggerServerEvent('mrp-scuba:findTreasure')
                         end
                     end
                 else
@@ -156,9 +156,9 @@ end)
 
 
 function SellItems()
-    if exports["prp-inventory"]:hasEnoughOfItem("ironbar",10,false) then 
+    if exports["mrp-inventory"]:hasEnoughOfItem("ironbar",10,false) then 
         TriggerEvent("inventory:removeItem", "ironbar", 10)
-        TriggerServerEvent('prp-scuba:paySalvage', 950)
+        TriggerServerEvent('mrp-scuba:paySalvage', 950)
     else
         TriggerEvent('DoLongHudText', 'You dont have enough Material in your pockets to sell!', 2)
     end

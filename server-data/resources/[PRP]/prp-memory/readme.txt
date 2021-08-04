@@ -1,7 +1,7 @@
 Onyx Memory Minigame
 
 Use:
-exports['prp-memory']:StartMinigame({
+exports['mrp-memory']:StartMinigame({
     success = 'success:event:example',
     fail = 'fail:event:example'
 })

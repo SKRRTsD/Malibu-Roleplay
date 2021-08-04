@@ -82,7 +82,7 @@ end)
 RegisterNetEvent("vanilla:request:song", function()
     local job = exports["prp_manager"]:isPed("myjob")
     if job == "vanilla_unicorn" then
-        local url = exports["prp-applications"]:KeyboardInput({
+        local url = exports["mrp-applications"]:KeyboardInput({
             header = "Place the song URL below.",
             rows = {
                 {
@@ -105,7 +105,7 @@ RegisterNetEvent("play:song", function(SongURL, coords, place)
 end)
 
 RegisterNetEvent("attemt:play:song", function()
-    local pUrl = exports["prp-applications"]:KeyboardInput({
+    local pUrl = exports["mrp-applications"]:KeyboardInput({
         header = "Place the song URL below.",
         rows = {
             {
@@ -130,16 +130,16 @@ RegisterNetEvent("attemt:play:song", function()
             soundId = "headPhones",
             volume =  pUrl[2].input/100,
         }
-        TriggerEvent("prp-musicplayer:stateSound", "volume", data)
+        TriggerEvent("mrp-musicplayer:stateSound", "volume", data)
         TriggerEvent("DoLongHudText", "New Volume: " ..pUrl[2].input/100 .. " %")
     elseif pUrl[1].input then
         TriggerEvent("DoLongHudText", "Song is begining to play!")
         PlayUrl("headPhones", pUrl[1].input, 0.2, false, false)
     elseif string.lower(pUrl[3].input) == "true" then
-        exports['prp-musicplayer']:Pause("headPhones")
+        exports['mrp-musicplayer']:Pause("headPhones")
         TriggerEvent("DoLongHudText", "Song is now paused!")
     elseif string.lower(pUrl[3].input) == "false" then
-        exports['prp-musicplayer']:Resume("headPhones")
+        exports['mrp-musicplayer']:Resume("headPhones")
         TriggerEvent("DoLongHudText", "Song is now resumed!")
 
     elseif not pUrl[1].input or not pUrl[2].input then
@@ -152,7 +152,7 @@ end)
 RegisterNetEvent("vanilla:change:volume", function()
     local job = exports["prp_manager"]:isPed("myjob")
     if job == "vanilla_unicorn" then
-        local url = exports["prp-applications"]:KeyboardInput({
+        local url = exports["mrp-applications"]:KeyboardInput({
             header = "Settings: 0 - 100",
             rows = {
                 {
@@ -172,7 +172,7 @@ end)
 RegisterNetEvent("bahamas:request:song", function()
     local job = exports["prp_manager"]:isPed("myjob")
     if job == "bahamas_bar" then
-        local url = exports["prp-applications"]:KeyboardInput({
+        local url = exports["mrp-applications"]:KeyboardInput({
             header = "Place the song URL below.",
             rows = {
                 {
@@ -193,7 +193,7 @@ end)
 RegisterNetEvent("bahamas:change:volume", function()
     local job = exports["prp_manager"]:isPed("myjob")
     if job == "bahamas_bar" then
-        local url = exports["prp-applications"]:KeyboardInput({
+        local url = exports["mrp-applications"]:KeyboardInput({
             header = "Settings: 0 - 100",
             rows = {
                 {
@@ -213,7 +213,7 @@ end)
 RegisterNetEvent("casino:request:song", function()
     local job = exports["prp_manager"]:isPed("myjob")
     if job == "casino_dealer" then
-        local url = exports["prp-applications"]:KeyboardInput({
+        local url = exports["mrp-applications"]:KeyboardInput({
             header = "Place the song URL below.",
             rows = {
                 {
@@ -234,7 +234,7 @@ end)
 RegisterNetEvent("casino:change:volume", function()
     local job = exports["prp_manager"]:isPed("myjob")
     if job == "casino_dealer" then
-        local url = exports["prp-applications"]:KeyboardInput({
+        local url = exports["mrp-applications"]:KeyboardInput({
             header = "Settings: 0 - 100",
             rows = {
                 {
@@ -254,7 +254,7 @@ end)
 RegisterNetEvent("arcade:request:song", function()
     local job = exports["prp_manager"]:isPed("myjob")
     if job == "videogeddon_arcade" then
-        local url = exports["prp-applications"]:KeyboardInput({
+        local url = exports["mrp-applications"]:KeyboardInput({
             header = "Place the song URL below.",
             rows = {
                 {
@@ -275,7 +275,7 @@ end)
 RegisterNetEvent("arcade:change:volume", function()
     local job = exports["prp_manager"]:isPed("myjob")
     if job == "videogeddon_arcade" then
-        local url = exports["prp-applications"]:KeyboardInput({
+        local url = exports["mrp-applications"]:KeyboardInput({
             header = "Settings: 0 - 100",
             rows = {
                 {

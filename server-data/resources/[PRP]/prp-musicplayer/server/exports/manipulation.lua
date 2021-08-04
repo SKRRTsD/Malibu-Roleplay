@@ -1,5 +1,5 @@
 function Position(source, name_, pos)
-    TriggerClientEvent("prp-musicplayer:stateSound", source, "position", {
+    TriggerClientEvent("mrp-musicplayer:stateSound", source, "position", {
         soundId = name_,
         position = pos,
     })
@@ -8,7 +8,7 @@ end
 exports('Position', Position)
 
 function Distance(source, name_, distance_)
-    TriggerClientEvent("prp-musicplayer:stateSound", source, "distance", {
+    TriggerClientEvent("mrp-musicplayer:stateSound", source, "distance", {
         soundId = name_,
         distance = distance_,
     })
@@ -17,7 +17,7 @@ end
 exports('Distance', Distance)
 
 function Destroy(source, name_)
-    TriggerClientEvent("prp-musicplayer:stateSound", source, "destroy", {
+    TriggerClientEvent("mrp-musicplayer:stateSound", source, "destroy", {
         soundId = name_,
     })
 end
@@ -25,7 +25,7 @@ end
 exports('Destroy', Destroy)
 
 function Pause(source, name_)
-    TriggerClientEvent("prp-musicplayer:stateSound", source, "pause", {
+    TriggerClientEvent("mrp-musicplayer:stateSound", source, "pause", {
         soundId = name_,
     })
 end
@@ -33,7 +33,7 @@ end
 exports('Pause', Pause)
 
 function Resume(source, name_)
-    TriggerClientEvent("prp-musicplayer:stateSound", source, "resume", {
+    TriggerClientEvent("mrp-musicplayer:stateSound", source, "resume", {
         soundId = name_,
     })
 end
@@ -41,7 +41,7 @@ end
 exports('Resume', Resume)
 
 function setVolume(source, name_, vol)
-    TriggerClientEvent("prp-musicplayer:stateSound", source, "volume", {
+    TriggerClientEvent("mrp-musicplayer:stateSound", source, "volume", {
         soundId = name_,
         volume = vol,
     })
@@ -50,7 +50,7 @@ end
 exports('setVolume', setVolume)
 
 function setTimeStamp(source, name_, time_)
-    TriggerClientEvent("prp-musicplayer:stateSound", source, "timestamp", {
+    TriggerClientEvent("mrp-musicplayer:stateSound", source, "timestamp", {
         soundId = name_,
         time = time_
     })
@@ -59,7 +59,7 @@ end
 exports('setTimeStamp', setTimeStamp)
 
 function destroyOnFinish(id, bool)
-    TriggerClientEvent("prp-musicplayer:stateSound", source, "destroyOnFinish", {
+    TriggerClientEvent("mrp-musicplayer:stateSound", source, "destroyOnFinish", {
         soundId = id,
         value = bool
     })

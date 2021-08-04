@@ -2,7 +2,7 @@ RegisterServerEvent('sk1c2:payout')
 AddEventHandler('sk1c2:payout', function(money)
     local source = source
     local player = GetPlayerName(source)
-    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
     if money ~= nil then
         user:addMoney(money)
         TriggerClientEvent('DoLongHudText', source, 'You got $'.. money .. '!', 1)

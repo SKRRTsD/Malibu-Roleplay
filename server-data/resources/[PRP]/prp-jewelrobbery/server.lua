@@ -16,8 +16,8 @@ AddEventHandler('av_vangelico:gas', function()
 end)
 
 
-RegisterServerEvent("prp-jewelrobbery:AwardItems")
-AddEventHandler('prp-jewelrobbery:AwardItems', function()
+RegisterServerEvent("mrp-jewelrobbery:AwardItems")
+AddEventHandler('mrp-jewelrobbery:AwardItems', function()
 	local src = source
 	--[[if math.random(25) == 20 then
         local myluck = math.random(5)

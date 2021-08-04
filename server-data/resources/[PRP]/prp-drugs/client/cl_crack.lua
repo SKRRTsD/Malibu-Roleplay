@@ -76,10 +76,10 @@ end)
 
 RegisterNetEvent("crack:sell")
 AddEventHandler("crack:sell", function()
-	if exports["prp-inventory"]:hasEnoughOfItem("1gcrack",1,false) then
+	if exports["mrp-inventory"]:hasEnoughOfItem("1gcrack",1,false) then
 		LoadDict('mp_safehouselost@')
 		TaskPlayAnim(GetPlayerPed(-1), "mp_safehouselost@", "package_dropoff", 8.0, 1.0, -1, 16, 0, 0, 0, 0 )
-		local finished = exports["prp-taskbar"]:taskBar(3000,"Handing Over Something")
+		local finished = exports["mrp-taskbar"]:taskBar(3000,"Handing Over Something")
 		if (finished == 100) then
 			local crack = 245
 			TriggerServerEvent("meth:givemoney", crack)
@@ -95,10 +95,10 @@ end)
 
 RegisterNetEvent("makecrack")
 AddEventHandler("makecrack", function()
-	if exports["prp-inventory"]:hasEnoughOfItem("bakingsoda",5,false) and exports["prp-inventory"]:hasEnoughOfItem("chloroform",2,false) and exports["prp-inventory"]:hasEnoughOfItem("dye",3,false) and ongoing == false then
+	if exports["mrp-inventory"]:hasEnoughOfItem("bakingsoda",5,false) and exports["mrp-inventory"]:hasEnoughOfItem("chloroform",2,false) and exports["mrp-inventory"]:hasEnoughOfItem("dye",3,false) and ongoing == false then
 	TriggerEvent("crack:animation")
 	FreezeEntityPosition(GetPlayerPed(-1),true)
-	local finished = exports["prp-taskbar"]:taskBar(15000,"Making Crack")
+	local finished = exports["mrp-taskbar"]:taskBar(15000,"Making Crack")
 	if (finished == 100) then
 		TriggerEvent("inventory:removeItem","bakingsoda", 5)
 		TriggerEvent("inventory:removeItem","chloroform", 2)
@@ -116,7 +116,7 @@ end)
 
 RegisterNetEvent('crack:menu')
 AddEventHandler('crack:menu', function()
-	TriggerEvent('prp-context:sendMenu', {
+	TriggerEvent('mrp-context:sendMenu', {
         {
             id = 1,
             header = "Crack Menu",

@@ -31,12 +31,12 @@ local function closeMenu()
 end
 
 local function disconnect()
-    TriggerServerEvent("prp-login:disconnectPlayer")
+    TriggerServerEvent("mrp-login:disconnectPlayer")
 end
 
 local function nuiCallBack(data)
     Citizen.Wait(60)
-    local events = exports["prp-core"]:getModule("Events")
+    local events = exports["mrp-core"]:getModule("Events")
 
     if data.close then closeMenu() end
     if data.disconnect then disconnect() end
@@ -44,7 +44,7 @@ local function nuiCallBack(data)
     if data.setcursorloc then SetCursorLocation(data.setcursorloc.x, data.setcursorloc.y) end
     
     if data.fetchdata then
-        events:Trigger("prp-core:loginPlayer", nil, function(data)
+        events:Trigger("mrp-core:loginPlayer", nil, function(data)
             if type(data) == "table" and data.err then
                 sendMessage({err = data})
                 return
@@ -57,7 +57,7 @@ local function nuiCallBack(data)
     if data.newchar then
         if not data.chardata then return end
 
-        events:Trigger("prp-core:createCharacter", data.chardata, function(created)
+        events:Trigger("mrp-core:createCharacter", data.chardata, function(created)
             if not created then
                 created = {
                     err = true,
@@ -78,7 +78,7 @@ local function nuiCallBack(data)
     end
 
     if data.fetchcharacters then
-        events:Trigger("prp-core:fetchPlayerCharacters", nil, function(data)
+        events:Trigger("mrp-core:fetchPlayerCharacters", nil, function(data)
             if data.err then
                 sendMessage({err = data})
                 return
@@ -98,17 +98,17 @@ local function nuiCallBack(data)
     if data.deletecharacter then
         if not data.deletecharacter then return end
 
-        events:Trigger("prp-core:deleteCharacter", data.deletecharacter, function(deleted)
+        events:Trigger("mrp-core:deleteCharacter", data.deletecharacter, function(deleted)
             sendMessage({reload = true})
         end)
     end
 
     if data.selectcharacter then
-        events:Trigger("prp-core:selectCharacter", data.selectcharacter, function(data)
+        events:Trigger("mrp-core:selectCharacter", data.selectcharacter, function(data)
            
             if not data.loggedin or not data.chardata then sendMessage({err = {err = true, msg = "There was a problem logging in as that character, if the problem persists, contact an administrator <br/> Cid: " .. tostring(data.selectcharacter)}}) return end
 
-            local LocalPlayer = exports["prp-core"]:getModule("LocalPlayer")
+            local LocalPlayer = exports["mrp-core"]:getModule("LocalPlayer")
             LocalPlayer:setCurrentCharacter(data.chardata)
             local cid = LocalPlayer:getCurrentCharacter().id
             TriggerEvent('updatecid', cid)
@@ -119,7 +119,7 @@ local function nuiCallBack(data)
             SetPlayerInvincible(PlayerPedId(), true)
 
 
-            TriggerEvent("prp-core:firstSpawn")
+            TriggerEvent("mrp-core:firstSpawn")
             closeMenu()
             Citizen.Wait(5000)
             TriggerEvent("Relog")
@@ -132,8 +132,8 @@ end
 
 RegisterNUICallback("nuiMessage", nuiCallBack)
 
-RegisterNetEvent("prp-core:spawnInitialized")
-AddEventHandler("prp-core:spawnInitialized", function()
+RegisterNetEvent("mrp-core:spawnInitialized")
+AddEventHandler("mrp-core:spawnInitialized", function()
     openMenu()
 end)
 
@@ -146,17 +146,17 @@ end)
 RegisterNetEvent("character:finishedLoadingChar", function()
     -- Main events leave alone 
     TriggerServerEvent('character:loadspawns')
-    TriggerEvent("prp-core:playerSpawned")
+    TriggerEvent("mrp-core:playerSpawned")
     TriggerEvent("loadedinafk")
     TriggerEvent("playerSpawned")
-    TriggerEvent("prp-weathersync:spawned")
+    TriggerEvent("mrp-weathersync:spawned")
     TriggerEvent("fx:clear")
     TriggerServerEvent('tattoos:retrieve')
     TriggerServerEvent('Blemishes:retrieve')
     TriggerServerEvent("currentconvictions")
     TriggerServerEvent("banking-loaded-in")
-    TriggerServerEvent('prp-doors:requestlatest')
-    TriggerServerEvent("prp-weapons:getAmmo")
+    TriggerServerEvent('mrp-doors:requestlatest')
+    TriggerServerEvent("mrp-weapons:getAmmo")
     
     Wait(3000)
     TriggerServerEvent("bones:server:requestServer")
@@ -173,8 +173,8 @@ RegisterNetEvent("character:finishedLoadingChar", function()
 
     -- shit
     TriggerServerEvent("asset_portals:get:coords")
-    TriggerServerEvent('prp-scoreboard:AddPlayer')
-    TriggerServerEvent('prp-adminmenu:AddPlayer')
+    TriggerServerEvent('mrp-scoreboard:AddPlayer')
+    TriggerServerEvent('mrp-adminmenu:AddPlayer')
     TriggerServerEvent("police:getAnimData")
     TriggerServerEvent("trucker:returnCurrentJobs")
     TriggerEvent("reviveFunction")
@@ -185,8 +185,8 @@ end)
 
 
 
-RegisterNetEvent("prp-login:finishedClothing")
-AddEventHandler("prp-login:finishedClothing", function(endType)
+RegisterNetEvent("mrp-login:finishedClothing")
+AddEventHandler("mrp-login:finishedClothing", function(endType)
     local playerped = PlayerPedId()
     local playerCoords = GetEntityCoords(playerped)
     local pos = vector3(-470.23648071289, -675.15026855469, 11.805932044983)
@@ -194,15 +194,15 @@ AddEventHandler("prp-login:finishedClothing", function(endType)
     if distance <= 10 then
     	if endType == "Finished" then
             TriggerEvent("erp:afk:update", false)
-            TriggerEvent("prp-clothingmenu:Spawning", false)
+            TriggerEvent("mrp-clothingmenu:Spawning", false)
             DestroyAllCams(true)
             RenderScriptCams(false, true, 1, true, true)
             TriggerServerEvent("character:new:character", exports["prp_manager"]:isPed("cid"))
-            TriggerEvent("prp-core:playerSpawned")
+            TriggerEvent("mrp-core:playerSpawned")
             Citizen.Wait(500)
-            TriggerServerEvent("prp-login:licenses")
+            TriggerServerEvent("mrp-login:licenses")
     	else
-    		TriggerEvent("prp-core:RefreshSpawn")
+    		TriggerEvent("mrp-core:RefreshSpawn")
     	end
     end	
 end)

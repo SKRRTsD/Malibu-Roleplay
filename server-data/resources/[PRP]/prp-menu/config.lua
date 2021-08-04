@@ -115,7 +115,7 @@ rootMenuConfig =  {
         displayName = "Cuff Actions",
         icon = "#cuffs",
         enableMenu = function()
-            return (not isDead and not isHandcuffed and not isHandcuffedAndWalking and (exports["prp-inventory"]:hasEnoughOfItem("cuffs",1,false)))
+            return (not isDead and not isHandcuffed and not isHandcuffedAndWalking and (exports["mrp-inventory"]:hasEnoughOfItem("cuffs",1,false)))
         end,
         subMenus = { "cuffs:uncuff", "cuffs:cuff", "cuffs:remmask"}
     },
@@ -219,7 +219,7 @@ rootMenuConfig =  {
         id = "mdt",
         displayName = "MDT",
         icon = "#mdt",
-        functionName = "prp-mdt:hotKeyOpen",
+        functionName = "mrp-mdt:hotKeyOpen",
         enableMenu = function()
             return ((isPolice or exports["prp_manager"]:isPed("myjob") == "DOJ") and not isDead)
         end
@@ -874,8 +874,8 @@ AddEventHandler("isJudgeOff", function()
     isJudge = false
 end)
 
-RegisterNetEvent("prp-jobmanager:playerBecameJob")
-AddEventHandler("prp-jobmanager:playerBecameJob", function(job, name, notify)
+RegisterNetEvent("mrp-jobmanager:playerBecameJob")
+AddEventHandler("mrp-jobmanager:playerBecameJob", function(job, name, notify)
     if isMedic and job ~= "ems" then isMedic = false end
     if isPolice and job ~= "police" then isPolice = false end
     if isDoctor and job ~= "doctor" then isDoctor = false end

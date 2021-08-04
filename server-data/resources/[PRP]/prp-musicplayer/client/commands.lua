@@ -3,13 +3,13 @@
 RegisterCommand("streamermode", function(source, args, rawCommand)
     disableMusic = not disableMusic
     if disableMusic then
-        TriggerEvent('chat:addMessage', { args = { "^1[prp-musicplayer]", config.Messages["streamer_on"] } })
+        TriggerEvent('chat:addMessage', { args = { "^1[mrp-musicplayer]", config.Messages["streamer_on"] } })
 
         for k, v in pairs(soundInfo) do
             Destroy(v.id)
         end
 
     else
-        TriggerEvent('chat:addMessage', { args = { "^1[prp-musicplayer]", config.Messages["streamer_off"] } })
+        TriggerEvent('chat:addMessage', { args = { "^1[mrp-musicplayer]", config.Messages["streamer_off"] } })
     end
 end, false)

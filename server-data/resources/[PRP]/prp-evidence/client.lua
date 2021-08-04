@@ -729,7 +729,7 @@ Citizen.CreateThread(
         end
         if IsControlJustReleased(0,38) and minScan < 2.0 then
           local myjob = exports["prp_manager"]:isPed("myjob")
-          local finished = exports["prp-taskbar"]:taskBar(3000,"Picking Up Item","What?",true)
+          local finished = exports["mrp-taskbar"]:taskBar(3000,"Picking Up Item","What?",true)
           if finished == 100 then
             if myjob ~= "police" then
               Wait(3000)

@@ -12,8 +12,8 @@ local bollards = {
     },
 }
 
-RegisterNetEvent('prp-doors:states')
-AddEventHandler('prp-doors:states', function(pDoors)
+RegisterNetEvent('mrp-doors:states')
+AddEventHandler('mrp-doors:states', function(pDoors)
     for k, door in pairs(pDoors) do
         doors[k] = door
       end
@@ -38,8 +38,8 @@ AddEventHandler('prp-doors:states', function(pDoors)
   end)
   
 
-RegisterNetEvent('prp-doors:changeLock-status')
-AddEventHandler('prp-doors:changeLock-status', function(pDoorId, pDoorLockState, pDoorForceUnlock)
+RegisterNetEvent('mrp-doors:changeLock-status')
+AddEventHandler('mrp-doors:changeLock-status', function(pDoorId, pDoorLockState, pDoorForceUnlock)
     if doors and doors[pDoorId] then
         doors[pDoorId].lock = pDoorLockState
         doors[pDoorId].forceUnlocked = pDoorForceUnlock
@@ -67,7 +67,7 @@ local function listenForKeypress()
         --local isHidden = doors[currentDoorId].hidden
 
         if not hasAccess and currentDoorLockState and not isHidden then
-            exports["prp-doors"]:showInteraction('Locked', 'error')
+            exports["mrp-doors"]:showInteraction('Locked', 'error')
         end
 
         while listening do
@@ -82,7 +82,7 @@ local function listenForKeypress()
                 if #(GetOffsetFromEntityGivenWorldCoords(PlayerPedId(), currentDoorCoords)) <= 1.2 then
                     newLockState = currentDoorLockState
                     if hasAccess and not isHidden then
-                        exports["prp-doors"]:showInteraction(("[E] %s"):format(newLockState and 'Locked' or 'Unlocked'), newLockState and 'error' or 'success')
+                        exports["mrp-doors"]:showInteraction(("[E] %s"):format(newLockState and 'Locked' or 'Unlocked'), newLockState and 'error' or 'success')
                     else
                     end
                 else
@@ -94,13 +94,13 @@ local function listenForKeypress()
                 loadAnimDict("anim@heists@keycard@")
                 TaskPlayAnim(PlayerPedId(), "anim@heists@keycard@", "exit", 8.0, 1.0, -1, 48, 0, 0, 0, 0)
                 PlaySoundFromEntity(-1, "Keycard_Success", PlayerPedId(), "DLC_HEISTS_BIOLAB_FINALE_SOUNDS", 1, 5.0);
-                TriggerServerEvent("prp-doors:changeLock-status", currentDoorId, not currentDoorLockState)
+                TriggerServerEvent("mrp-doors:changeLock-status", currentDoorId, not currentDoorLockState)
             end
 
             Wait(idle)
         end
 
-        exports["prp-doors"]:hideInteraction((not hasAccess or newLockState) and 'error' or 'success')
+        exports["mrp-doors"]:hideInteraction((not hasAccess or newLockState) and 'error' or 'success')
     end)
 end
 
@@ -122,7 +122,7 @@ end
 
 exports('GetTargetDoorId', GetTargetDoorId)
 
-AddEventHandler("prp-target:inFront", function(pEntity, pEntityType, pEntityCoords)
+AddEventHandler("mrp-target:inFront", function(pEntity, pEntityType, pEntityCoords)
     if pEntityType == nil or pEntityType ~= 3 then
         listening, currentDoorCoords, currentDoorId, currentDoorLockState = nil
         return
@@ -140,14 +140,14 @@ AddEventHandler("prp-target:inFront", function(pEntity, pEntityType, pEntityCoor
     end
 end)
 
-AddEventHandler("prp-doors:doorKeyFob", function()
+AddEventHandler("mrp-doors:doorKeyFob", function()
     local doorId, isBollard = -1, false
 
     if currentZone ~= nil and bollards[currentZone].inside then
         doorId = bollards[currentZone].doorId
         isBollard = true
     else
-        local entity = exports['prp-target']:GetEntityPlayerIsLookingAt(10.0, 2.0, 16)
+        local entity = exports['mrp-target']:GetEntityPlayerIsLookingAt(10.0, 2.0, 16)
 
         if not entity then
             return TriggerEvent("DoLongHudText","Door not found.",2)
@@ -176,36 +176,36 @@ AddEventHandler("prp-doors:doorKeyFob", function()
 
     local isLocked = (DoorSystemGetDoorState(doorId) ~= 0 and true or false)
     PlaySoundFromEntity(-1, "Keycard_Success", PlayerPedId(), "DLC_HEISTS_BIOLAB_FINALE_SOUNDS", 1, 5.0);
-    TriggerServerEvent("prp-doors:changeLock-status", doorId, isBollard and (not isLocked and 6 or 0) or (not isLocked))
+    TriggerServerEvent("mrp-doors:changeLock-status", doorId, isBollard and (not isLocked and 6 or 0) or (not isLocked))
     Citizen.Wait(4000)
-    TriggerServerEvent("prp-doors:changeLock-status", doorId, true)
+    TriggerServerEvent("mrp-doors:changeLock-status", doorId, true)
 end)
 
 
 Citizen.CreateThread(function()
-    exports["prp-polyzone"]:AddBoxZone("mrpd_bollards_01", vector3(411.66, -1027.95, 29.24), 7.8, 23.4, {
+    exports["mrp-polyzone"]:AddBoxZone("mrpd_bollards_01", vector3(411.66, -1027.95, 29.24), 7.8, 23.4, {
         heading=0,
         minZ=28.14,
         maxZ=32.14
     })
-    exports["prp-polyzone"]:AddBoxZone("mrpd_bollards_02", vector3(411.66, -1020.09, 29.34), 7.8, 23.4, {
+    exports["mrp-polyzone"]:AddBoxZone("mrpd_bollards_02", vector3(411.66, -1020.09, 29.34), 7.8, 23.4, {
         heading=0,
         minZ=28.14,
         maxZ=32.14
     })
     doors = prp_DOORS
-    TriggerServerEvent("prp-doors:request-lock-state")
+    TriggerServerEvent("mrp-doors:request-lock-state")
 end)
 
 
-AddEventHandler("prp-polyzone:enter", function(zone, data)
+AddEventHandler("mrp-polyzone:enter", function(zone, data)
     if zone == "mrpd_bollards_01" or zone == "mrpd_bollards_02" then
         bollards[zone].inside = true
         currentZone = zone
     end
 end)
 
-AddEventHandler("prp-polyzone:exit", function(zone)
+AddEventHandler("mrp-polyzone:exit", function(zone)
     if zone == "mrpd_bollards_01" or zone == "mrpd_bollards_02" then
         bollards[zone].inside = false
         currentZone = nil

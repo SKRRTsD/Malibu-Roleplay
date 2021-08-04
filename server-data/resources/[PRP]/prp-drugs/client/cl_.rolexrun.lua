@@ -183,7 +183,7 @@ AddEventHandler("rolexdelivery:client", function()
 			if IsControlJustReleased(0,38) then
 				TaskTurnPedToFaceEntity(deliveryPed, PlayerPedId(), 1.0)
 				PlayAmbientSpeech1(deliveryPed, "Generic_Hi", "Speech_Params_Force")
-				local finished = exports["prp-taskbar"]:taskBar(2000,"Making An Exchange")
+				local finished = exports["mrp-taskbar"]:taskBar(2000,"Making An Exchange")
 				if finished == 100 then 
 					DoDropOff()
 					tasking = false
@@ -246,7 +246,7 @@ end
 RolexSpot = false
 
 Citizen.CreateThread(function()
-	exports["prp-polyzone"]:AddBoxZone("rolex_run_start", vector3(-614.21, 324.11, 82.26), 1.6, 1, {
+	exports["mrp-polyzone"]:AddBoxZone("rolex_run_start", vector3(-614.21, 324.11, 82.26), 1.6, 1, {
 		name="rolex_run_start",
 		heading=355,
 		minZ=79.06,
@@ -255,24 +255,24 @@ Citizen.CreateThread(function()
 	  
 end)
 
-RegisterNetEvent('prp-polyzone:enter')
-AddEventHandler('prp-polyzone:enter', function(name)
+RegisterNetEvent('mrp-polyzone:enter')
+AddEventHandler('mrp-polyzone:enter', function(name)
     if name == "rolex_run_start" then
         RolexSpot = true     
         LuckyDrawPlace()
 		if not RolexRun then
-			TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Start Run ($500s)")) 
+			TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Start Run ($500s)")) 
 		else
-			TriggerEvent('prp-textui:ShowUI', 'show', ("%s"):format("Finish Your Run")) 
+			TriggerEvent('mrp-textui:ShowUI', 'show', ("%s"):format("Finish Your Run")) 
 		end
     end
 end)
 
-RegisterNetEvent('prp-polyzone:exit')
-AddEventHandler('prp-polyzone:exit', function(name)
+RegisterNetEvent('mrp-polyzone:exit')
+AddEventHandler('mrp-polyzone:exit', function(name)
     if name == "rolex_run_start" then
         RolexSpot = false  
-		TriggerEvent('prp-textui:HideUI')   
+		TriggerEvent('mrp-textui:HideUI')   
     end
 end)
 
@@ -281,7 +281,7 @@ function LuckyDrawPlace()
         while RolexSpot do
             Citizen.Wait(5)
 			if IsControlJustReleased(0, 38) then
-                if exports["prp-inventory"]:hasEnoughOfItem("rolexwatch",5) or exports ["prp-inventory"]:hasEnoughOfItem("goldbar",5)  then     
+                if exports["mrp-inventory"]:hasEnoughOfItem("rolexwatch",5) or exports ["mrp-inventory"]:hasEnoughOfItem("goldbar",5)  then     
                     if not RolexRun then
                         TriggerServerEvent("rolexdelivery:server", 500)
                     end
@@ -482,47 +482,47 @@ function DoDropOff(requestMoney)
 
 			if RolexRun then
 				cashPayment = math.random(90,125)
-		        if exports["prp-inventory"]:hasEnoughOfItem("rolexwatch",rolexcount) then     
+		        if exports["mrp-inventory"]:hasEnoughOfItem("rolexwatch",rolexcount) then     
 		            TriggerEvent("inventory:removeItem","rolexwatch", 10)   
 		            cashPayment = cashPayment + rolexcashprice             
 		            TriggerEvent("DoLongHudText","Thanks for the extra sauce!") 
                     TriggerServerEvent('mission:finished', "rolexwatch", cashPayment)         
-				elseif exports["prp-inventory"]:hasEnoughOfItem("goldbar",goldbarcount) then     
+				elseif exports["mrp-inventory"]:hasEnoughOfItem("goldbar",goldbarcount) then     
 					TriggerEvent("inventory:removeItem","goldbar", 5)   
 					cashPayment = cashPayment + goldbarprice  
                     TriggerServerEvent('mission:finished', "goldbar", cashPayment)                  
 					TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
-				elseif exports["prp-inventory"]:hasEnoughOfItem("bdiamond",bdiamondcount) then     
+				elseif exports["mrp-inventory"]:hasEnoughOfItem("bdiamond",bdiamondcount) then     
 					TriggerEvent("inventory:removeItem","bdiamond", 1)   
 					cashPayment = cashPayment + bdiamondprice  
                     TriggerServerEvent('mission:finished', "bdiamond", cashPayment)                  
 					TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
-				elseif exports["prp-inventory"]:hasEnoughOfItem("erpring",erpringcount) then     
+				elseif exports["mrp-inventory"]:hasEnoughOfItem("erpring",erpringcount) then     
 					TriggerEvent("inventory:removeItem","erpring", 5)   
 					cashPayment = cashPayment + erpringprice  
                     TriggerServerEvent('mission:finished', "erpring", cashPayment)                  
 					TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
 
 
-				elseif exports["prp-inventory"]:hasEnoughOfItem("stolen8ctchain",stolen8ctchaincount) then     
+				elseif exports["mrp-inventory"]:hasEnoughOfItem("stolen8ctchain",stolen8ctchaincount) then     
 					TriggerEvent("inventory:removeItem","stolen8ctchain", 5)   
 					cashPayment = cashPayment + stolen8ctchainprice  
                     TriggerServerEvent('mission:finished', "stolen8ctchain", cashPayment)                  
 					TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
 
-				elseif exports["prp-inventory"]:hasEnoughOfItem("stolen10ctchain",stolen10ctchaincount) then     
+				elseif exports["mrp-inventory"]:hasEnoughOfItem("stolen10ctchain",stolen10ctchaincount) then     
 					TriggerEvent("inventory:removeItem","stolen10ctchain", 5)   
 					cashPayment = cashPayment + stolen10ctchainprice  
                     TriggerServerEvent('mission:finished', "stolen10ctchain", cashPayment)                  
 					TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
 
-				elseif exports["prp-inventory"]:hasEnoughOfItem("stolen2ctchain",stolen2ctchaincount) then     
+				elseif exports["mrp-inventory"]:hasEnoughOfItem("stolen2ctchain",stolen2ctchaincount) then     
 					TriggerEvent("inventory:removeItem","stolen2ctchain", 5)   
 					cashPayment = cashPayment + stolen2ctchainprice  
                     TriggerServerEvent('mission:finished', "stolen2ctchain", cashPayment)                  
 					TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
 
-				elseif exports["prp-inventory"]:hasEnoughOfItem("goldcoin",goldcoincount) then     
+				elseif exports["mrp-inventory"]:hasEnoughOfItem("goldcoin",goldcoincount) then     
 					TriggerEvent("inventory:removeItem","goldcoin", 5)   
 					cashPayment = cashPayment + goldcoinprice  
                     TriggerServerEvent('mission:finished', "goldcoin", cashPayment)                  

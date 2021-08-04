@@ -11,7 +11,7 @@ local cachedData = {}
 RegisterServerEvent('oxydelivery:server')
 AddEventHandler('oxydelivery:server', function(money)
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
 
 	if user:getCash() >= money then
         user:removeMoney(money)
@@ -26,7 +26,7 @@ RegisterServerEvent('mission:finished')
 AddEventHandler('mission:finished', function(type, money)    
     local src = source
     local player = GetPlayerName(source)
-    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
     if money ~= nil then
         user:addMoney(money)
         if money > 300 then
@@ -38,7 +38,7 @@ end)
 RegisterServerEvent('drugdelivery:server')
 AddEventHandler('drugdelivery:server', function(money)
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
 
 	if user:getCash() >= money then
         user:removeMoney(money)

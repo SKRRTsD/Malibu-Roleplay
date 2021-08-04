@@ -1,7 +1,7 @@
 local pWeedFieldSpot = false
 
 Citizen.CreateThread(function()
-    exports["prp-polyzone"]:AddBoxZone("weed_field", vector3(2224.47, 5577.01, 53.81), 15, 5, {
+    exports["mrp-polyzone"]:AddBoxZone("weed_field", vector3(2224.47, 5577.01, 53.81), 15, 5, {
         name="weed_field",
         heading=265,
         --debugPoly=true,
@@ -11,21 +11,21 @@ Citizen.CreateThread(function()
 end)
 
 
-RegisterNetEvent('prp-polyzone:enter')
-AddEventHandler('prp-polyzone:enter', function(name)
+RegisterNetEvent('mrp-polyzone:enter')
+AddEventHandler('mrp-polyzone:enter', function(name)
     if name == "weed_field" then
         pWeedFieldSpot = true
         WeedFieldSpot()
-		TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Pick Weed")) 
+		TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Pick Weed")) 
     end
 end)
 
-RegisterNetEvent('prp-polyzone:exit')
-AddEventHandler('prp-polyzone:exit', function(name)
+RegisterNetEvent('mrp-polyzone:exit')
+AddEventHandler('mrp-polyzone:exit', function(name)
     if name == "weed_field" then
         pWeedFieldSpot = false
     end
-    TriggerEvent('prp-ui:HideUI')
+    TriggerEvent('mrp-ui:HideUI')
 end)
 
 
@@ -43,7 +43,7 @@ function WeedFieldSpot()
 					end
 
 					TriggerEvent("animation:farm")
-					local finished = exports["prp-taskbar"]:taskBar(4000,"Picking Weed")
+					local finished = exports["mrp-taskbar"]:taskBar(4000,"Picking Weed")
 					if (finished == 100) then
 						TriggerEvent("player:receiveItem","wetbud", math.random(1,3))
 						TriggerEvent("client:newStress",true,50)
@@ -60,7 +60,7 @@ end
 local pWeedSell = false
 
 Citizen.CreateThread(function()
-    exports["prp-polyzone"]:AddBoxZone("smokeonwater", vector3(-1172.01, -1571.89, 4.33), 0.5, 1, {
+    exports["mrp-polyzone"]:AddBoxZone("smokeonwater", vector3(-1172.01, -1571.89, 4.33), 0.5, 1, {
         name="smokeonwater",
         heading=305,
         --debugPoly=true,
@@ -69,31 +69,31 @@ Citizen.CreateThread(function()
     })  
 end)
 
-RegisterNetEvent('prp-polyzone:enter')
-AddEventHandler('prp-polyzone:enter', function(name)
+RegisterNetEvent('mrp-polyzone:enter')
+AddEventHandler('mrp-polyzone:enter', function(name)
     if name == "smokeonwater" then
         pWeedSell = true
         WeedSellSpot()
-		TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Sell Weed")) 
+		TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Sell Weed")) 
     end
 end)
 
-RegisterNetEvent('prp-polyzone:exit')
-AddEventHandler('prp-polyzone:exit', function(name)
+RegisterNetEvent('mrp-polyzone:exit')
+AddEventHandler('mrp-polyzone:exit', function(name)
     if name == "smokeonwater" then
         pWeedSell = false
     end
-    TriggerEvent('prp-ui:HideUI')
+    TriggerEvent('mrp-ui:HideUI')
 end)
 
 function WeedSellSpot()
     Citizen.CreateThread(function()
         while pWeedSell do
             Citizen.Wait(5)
-			local wetbud = exports["prp-inventory"]:hasEnoughOfItem("smallbud",3,false)
+			local wetbud = exports["mrp-inventory"]:hasEnoughOfItem("smallbud",3,false)
 			if wetbud then
 				if IsControlJustPressed(1, 38) and IsPedInAnyVehicle(GetPlayerPed(-1), false) ~= 1 then
-					local finished = exports["prp-taskbar"]:taskBar(6500,"Selling Weed")
+					local finished = exports["mrp-taskbar"]:taskBar(6500,"Selling Weed")
 					if (finished == 100) then
 						TriggerEvent("inventory:removeItem", "smallbud", math.random(1,6))
 						TriggerServerEvent( 'sk1c2:payout', math.random(136,183))
@@ -155,7 +155,7 @@ end)
 local pWeedProcess = false
 
 Citizen.CreateThread(function()
-    exports["prp-polyzone"]:AddBoxZone("process_weed", vector3(3802.85, 4442.67, 4.41), 7, 7, {
+    exports["mrp-polyzone"]:AddBoxZone("process_weed", vector3(3802.85, 4442.67, 4.41), 7, 7, {
         name="process_weed",
         heading=0,
         -- debugPoly=true,
@@ -164,31 +164,31 @@ Citizen.CreateThread(function()
     })  
 end)
 
-RegisterNetEvent('prp-polyzone:enter')
-AddEventHandler('prp-polyzone:enter', function(name)
+RegisterNetEvent('mrp-polyzone:enter')
+AddEventHandler('mrp-polyzone:enter', function(name)
     if name == "process_weed" then
         pWeedProcess = true
         WeedProcessSpot()
-		TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Process Wet Bud")) 
+		TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Process Wet Bud")) 
     end
 end)
 
-RegisterNetEvent('prp-polyzone:exit')
-AddEventHandler('prp-polyzone:exit', function(name)
+RegisterNetEvent('mrp-polyzone:exit')
+AddEventHandler('mrp-polyzone:exit', function(name)
     if name == "process_weed" then
         pWeedProcess = false
     end
-    TriggerEvent('prp-ui:HideUI')
+    TriggerEvent('mrp-ui:HideUI')
 end)
 
 function WeedProcessSpot()
     Citizen.CreateThread(function()
         while pWeedProcess do
             Citizen.Wait(5)
-			local wetbud = exports["prp-inventory"]:hasEnoughOfItem("wetbud",3,false)
+			local wetbud = exports["mrp-inventory"]:hasEnoughOfItem("wetbud",3,false)
 			if wetbud then
 				if IsControlJustPressed(1, 38) and IsPedInAnyVehicle(GetPlayerPed(-1), false) ~= 1 then
-					local finished = exports["prp-taskbar"]:taskBar(6500,"Processing Wet Bud")
+					local finished = exports["mrp-taskbar"]:taskBar(6500,"Processing Wet Bud")
 					if (finished == 100) then
 						TriggerEvent("inventory:removeItem", "wetbud", math.random(1,3))
 						TriggerEvent("player:receiveItem","smallbud", math.random(1,3))

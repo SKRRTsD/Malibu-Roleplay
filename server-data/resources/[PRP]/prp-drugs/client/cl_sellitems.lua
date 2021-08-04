@@ -1,7 +1,7 @@
 RegisterNetEvent('sellgamingpc')
 AddEventHandler('sellgamingpc', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("gamingpc",1,false) then
-        local finished = exports["prp-taskbar"]:taskBar(10000,"Selling gaming pc")
+    if exports["mrp-inventory"]:hasEnoughOfItem("gamingpc",1,false) then
+        local finished = exports["mrp-taskbar"]:taskBar(10000,"Selling gaming pc")
         if finished == 100 then
             TriggerEvent('inventory:removeItem', 'gamingpc', 1)
             TriggerServerEvent( 'sk1c2:payout', math.random(320,610))
@@ -17,8 +17,8 @@ end)
 
 RegisterNetEvent('sellgamingmouse')
 AddEventHandler('sellgamingmouse', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("gamingmouse",1,false) then
-        local finished = exports["prp-taskbar"]:taskBar(10000,"Selling gaming mouse")
+    if exports["mrp-inventory"]:hasEnoughOfItem("gamingmouse",1,false) then
+        local finished = exports["mrp-taskbar"]:taskBar(10000,"Selling gaming mouse")
         if finished == 100 then
             TriggerEvent('inventory:removeItem', 'gamingmouse', 1)
             TriggerServerEvent( 'sk1c2:payout', math.random(100,265))
@@ -34,8 +34,8 @@ end)
 
 RegisterNetEvent('sellgamingkeyboard')
 AddEventHandler('sellgamingkeyboard', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("gamingkeyboard",1,false) then
-        local finished = exports["prp-taskbar"]:taskBar(10000,"Selling gaming keyboard")
+    if exports["mrp-inventory"]:hasEnoughOfItem("gamingkeyboard",1,false) then
+        local finished = exports["mrp-taskbar"]:taskBar(10000,"Selling gaming keyboard")
         if finished == 100 then
             TriggerEvent('inventory:removeItem', 'gamingkeyboard', 1)
             TriggerServerEvent( 'sk1c2:payout', math.random(150,267))
@@ -51,8 +51,8 @@ end)
 
 RegisterNetEvent('sellnitendos')
 AddEventHandler('sellnitendos', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("nitendoswitch",1,false) then
-        local finished = exports["prp-taskbar"]:taskBar(10000,"Selling Nitendo Switch")
+    if exports["mrp-inventory"]:hasEnoughOfItem("nitendoswitch",1,false) then
+        local finished = exports["mrp-taskbar"]:taskBar(10000,"Selling Nitendo Switch")
         if finished == 100 then
             TriggerEvent('inventory:removeItem', 'nitendoswitch', 1)
             TriggerServerEvent( 'sk1c2:payout', math.random(200,356))
@@ -68,8 +68,8 @@ end)
 
 RegisterNetEvent('sellps5')
 AddEventHandler('sellps5', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("ps5",1,false) then
-        local finished = exports["prp-taskbar"]:taskBar(10000,"Selling ps5")
+    if exports["mrp-inventory"]:hasEnoughOfItem("ps5",1,false) then
+        local finished = exports["mrp-taskbar"]:taskBar(10000,"Selling ps5")
         if finished == 100 then
             TriggerEvent('inventory:removeItem', 'ps5', 1)
             TriggerServerEvent( 'sk1c2:payout', math.random(310,610))
@@ -87,8 +87,8 @@ end)
 
 RegisterNetEvent('sellcarhood')
 AddEventHandler('sellcarhood', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("carhood",1,false) then
-        local finished = exports["prp-taskbar"]:taskBar(10000,"Selling car hood")
+    if exports["mrp-inventory"]:hasEnoughOfItem("carhood",1,false) then
+        local finished = exports["mrp-taskbar"]:taskBar(10000,"Selling car hood")
         if finished == 100 then
             TriggerEvent('inventory:removeItem', 'carhood', 1)
             TriggerServerEvent( 'sk1c2:payout', math.random(330,960))
@@ -104,8 +104,8 @@ end)
 
 RegisterNetEvent('sellcarbattery')
 AddEventHandler('sellcarbattery', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("carbattery",1,false) then
-        local finished = exports["prp-taskbar"]:taskBar(10000,"Selling car battery")
+    if exports["mrp-inventory"]:hasEnoughOfItem("carbattery",1,false) then
+        local finished = exports["mrp-taskbar"]:taskBar(10000,"Selling car battery")
         if finished == 100 then
             TriggerEvent('inventory:removeItem', 'carbattery', 1)
             TriggerServerEvent( 'sk1c2:payout', math.random(330,960))
@@ -123,8 +123,8 @@ end)
 
 RegisterNetEvent('sellturtle')
 AddEventHandler('sellturtle', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("turtle",1,false) then
-        local finished = exports["prp-taskbar"]:taskBar(10000,"Selling turtle")
+    if exports["mrp-inventory"]:hasEnoughOfItem("turtle",1,false) then
+        local finished = exports["mrp-taskbar"]:taskBar(10000,"Selling turtle")
         if finished == 100 then
             TriggerEvent('inventory:removeItem', 'turtle', 1)
             TriggerServerEvent( 'sk1c2:payout', math.random(90,120))
@@ -140,8 +140,8 @@ end)
 
 RegisterNetEvent('sellbobross')
 AddEventHandler('sellbobross', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("bobross",1,false) then
-        local finished = exports["prp-taskbar"]:taskBar(10000,"Selling Bob Ross")
+    if exports["mrp-inventory"]:hasEnoughOfItem("bobross",1,false) then
+        local finished = exports["mrp-taskbar"]:taskBar(10000,"Selling Bob Ross")
         if finished == 100 then
             TriggerEvent('inventory:removeItem', 'bobross', 1)
             TriggerServerEvent( 'sk1c2:payout', math.random(25,75))
@@ -161,7 +161,7 @@ end)
 
 RegisterNetEvent("fishingmenu")
 AddEventHandler("fishingmenu", function()
-	TriggerEvent('prp-context:sendMenu', {
+	TriggerEvent('mrp-context:sendMenu', {
         {
 			id = "1",
 			header = "Fishing Selling",
@@ -196,8 +196,8 @@ end)
 
 RegisterNetEvent('sellfish')
 AddEventHandler('sellfish', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("fish",5,false) then
-        local finished = exports["prp-taskbar"]:taskBar(10000,"Selling Fish")
+    if exports["mrp-inventory"]:hasEnoughOfItem("fish",5,false) then
+        local finished = exports["mrp-taskbar"]:taskBar(10000,"Selling Fish")
         if finished == 100 then
             TriggerEvent('inventory:removeItem', 'fish', 5)
             TriggerServerEvent( 'sk1c2:payout', math.random(50,150))
@@ -211,8 +211,8 @@ end)
 
 RegisterNetEvent('sellmackerel')
 AddEventHandler('sellmackerel', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("fishingmackerel",5,false) then
-        local finished = exports["prp-taskbar"]:taskBar(10000,"Selling Mackerel")
+    if exports["mrp-inventory"]:hasEnoughOfItem("fishingmackerel",5,false) then
+        local finished = exports["mrp-taskbar"]:taskBar(10000,"Selling Mackerel")
         if finished == 100 then
             TriggerEvent('inventory:removeItem', 'fishingmackerel', 5)
             TriggerServerEvent( 'sk1c2:payout', math.random(75,175))

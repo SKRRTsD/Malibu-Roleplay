@@ -27,7 +27,7 @@ end)
 
 RegisterNetEvent('emsduty')
 AddEventHandler('emsduty', function()
-	TriggerEvent('prp-context:sendMenu', {
+	TriggerEvent('mrp-context:sendMenu', {
         {
             id = 1,
             header = "Sign In / Off ",

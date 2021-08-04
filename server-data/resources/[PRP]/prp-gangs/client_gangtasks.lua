@@ -535,7 +535,7 @@ AddEventHandler('drugs:corner', function()
     MyStreetName = GetStreetNameFromHashKey(currentStreetHash)
     local dst = #(vector3(plyCoords) - vector3(143.62,-1766.86,28.4))
 
-    if (MyStreetName == "Forum Dr" or MyStreetName == "Brouge Ave" or MyStreetName == "Grove St") and exports["prp-inventory"]:hasEnoughOfItem("weedq",1,false) and dst < 500.0 then
+    if (MyStreetName == "Forum Dr" or MyStreetName == "Brouge Ave" or MyStreetName == "Grove St") and exports["mrp-inventory"]:hasEnoughOfItem("weedq",1,false) and dst < 500.0 then
 
 	    TriggerEvent("DoShortHudText", "You are corner selling something.",1)
 	    sellingweed = true
@@ -808,28 +808,28 @@ function SellDrugs(NPC,saleprice, amount)
 		return
 	end
 
-	local crack = exports["prp-inventory"]:hasEnoughOfItem("1gcrack",amount,false)
+	local crack = exports["mrp-inventory"]:hasEnoughOfItem("1gcrack",amount,false)
 	if crack and sellingcrack then
 		TriggerEvent("inventory:removeItem", "1gcrack", amount)
 	end
 
-	local meth = exports["prp-inventory"]:hasEnoughOfItem("1gmeth",amount,false)
+	local meth = exports["mrp-inventory"]:hasEnoughOfItem("1gmeth",amount,false)
 	if meth and sellingmeth then
 		TriggerEvent("inventory:removeItem", "1gmeth", amount)
 	end
 
-	local methbad = exports["prp-inventory"]:hasEnoughOfItem("methbag",amount,false)
+	local methbad = exports["mrp-inventory"]:hasEnoughOfItem("methbag",amount,false)
 	if methbad and sellingmethbad then
 		TriggerEvent("inventory:removeItem", "methbag", amount)
 	end
 
-	local weedbaggies = exports["prp-inventory"]:hasEnoughOfItem("weedq",amount,false)
+	local weedbaggies = exports["mrp-inventory"]:hasEnoughOfItem("weedq",amount,false)
 	if weedbaggies and sellingweed then
 		TriggerEvent("inventory:removeItem", "weedq", amount)
 	end
 
 
-	local cocaine = exports["prp-inventory"]:hasEnoughOfItem("1gcocaine",amount,false) 
+	local cocaine = exports["mrp-inventory"]:hasEnoughOfItem("1gcocaine",amount,false) 
 	if cocaine and sellingcocaine then
 		TriggerEvent("inventory:removeItem", "1gcocaine", amount)
 	end
@@ -880,7 +880,7 @@ function SellDrugs(NPC,saleprice, amount)
 
 
 		if math.random(24) < 5 then
-			TriggerEvent("prp-dispatch:drugsales")
+			TriggerEvent("mrp-dispatch:drugsales")
 		end
 
 
@@ -954,7 +954,7 @@ end
 
 
 Citizen.CreateThread(function()
-	exports['prp-target']:AddBoxZone("smallshit",vector3(1509.13, 3573.66, 38.74), 0.8, 1, {
+	exports['mrp-target']:AddBoxZone("smallshit",vector3(1509.13, 3573.66, 38.74), 0.8, 1, {
 		name="smallshit",
 		heading=350,
 		minZ=35.54,
@@ -971,7 +971,7 @@ Citizen.CreateThread(function()
 		distance = 1.5
 	})
 
-	exports['prp-target']:AddBoxZone("bigshit",	vector3(1795.01, 4602.61, 37.68), 1.5, 0.5, {
+	exports['mrp-target']:AddBoxZone("bigshit",	vector3(1795.01, 4602.61, 37.68), 1.5, 0.5, {
 		name="bigshit",
 		heading=275,
 		minZ=35.08,
@@ -988,7 +988,7 @@ Citizen.CreateThread(function()
 		distance = 1.5
 	})
 
-	exports['prp-target']:AddBoxZone("hoyabig",	vector3(-2176.28, 4295.2, 49.05), 1.4, 1, {
+	exports['mrp-target']:AddBoxZone("hoyabig",	vector3(-2176.28, 4295.2, 49.05), 1.4, 1, {
 		name="hoyabig",
 		heading=330,
 		minZ=46.65,
@@ -1005,7 +1005,7 @@ Citizen.CreateThread(function()
 		distance = 1.5
 	})
 
-	exports['prp-target']:AddBoxZone("hoyasmall",vector3(-31.04, 1955.23, 190.19), 0.7, 0.5, {
+	exports['mrp-target']:AddBoxZone("hoyasmall",vector3(-31.04, 1955.23, 190.19), 0.7, 0.5, {
 		name="small meth",
 		heading=280,
 		minZ=186.99,
@@ -1052,10 +1052,10 @@ end)
 
 RegisterNetEvent('break:smallcoke')
 AddEventHandler('break:smallcoke', function()
-	if exports['prp-inventory']:hasEnoughOfItem('coke50g', 1) then
-		if exports['prp-inventory']:hasEnoughOfItem('drugbaggy', 20) then
+	if exports['mrp-inventory']:hasEnoughOfItem('coke50g', 1) then
+		if exports['mrp-inventory']:hasEnoughOfItem('drugbaggy', 20) then
 			amountofcrack = math.random(3, 7)
-			exports["prp-taskbar"]:taskBar(15000,"Dividing")
+			exports["mrp-taskbar"]:taskBar(15000,"Dividing")
 			TriggerEvent("inventory:removeItem",'coke50g', 1)
 			Citizen.Wait(1000)
 			TriggerEvent("inventory:removeItem",'drugbaggy', 20)
@@ -1073,8 +1073,8 @@ end)
 
 RegisterNetEvent('break:bigcoke')
 AddEventHandler('break:bigcoke', function()
-	if exports['prp-inventory']:hasEnoughOfItem('coke50g', 1) then
-		exports["prp-taskbar"]:taskBar(15000,"Dividing")
+	if exports['mrp-inventory']:hasEnoughOfItem('coke50g', 1) then
+		exports["mrp-taskbar"]:taskBar(15000,"Dividing")
 		TriggerEvent("inventory:removeItem",'coke50g', 1)
 		TriggerEvent('player:receiveItem', '1gcocaine', 10)
 		TriggerEvent('DoLongHudText', "Later, homie!")
@@ -1085,10 +1085,10 @@ end)
 
 RegisterNetEvent('break:smallmeth')
 AddEventHandler('break:smallmeth', function()
-	if exports['prp-inventory']:hasEnoughOfItem('methbrick', 1) then
-		if exports['prp-inventory']:hasEnoughOfItem('drugbaggy', 20)  then
+	if exports['mrp-inventory']:hasEnoughOfItem('methbrick', 1) then
+		if exports['mrp-inventory']:hasEnoughOfItem('drugbaggy', 20)  then
 			amountofmethbad = math.random(2, 4)
-			exports["prp-taskbar"]:taskBar(15000,"Dividing")
+			exports["mrp-taskbar"]:taskBar(15000,"Dividing")
 			TriggerEvent("inventory:removeItem",'methbrick', 1)
 			Citizen.Wait(1000)
 			TriggerEvent("inventory:removeItem",'drugbaggy', 20)
@@ -1105,8 +1105,8 @@ end)
 
 RegisterNetEvent('break:bigmeth')
 AddEventHandler('break:bigmeth', function()
-	if exports['prp-inventory']:hasEnoughOfItem('methbrick', 1) then
-		exports["prp-taskbar"]:taskBar(15000,"Dividing")
+	if exports['mrp-inventory']:hasEnoughOfItem('methbrick', 1) then
+		exports["mrp-taskbar"]:taskBar(15000,"Dividing")
 		TriggerEvent("inventory:removeItem",'methbrick', 1)
 		TriggerEvent('player:receiveItem', '1gmeth', 6)
 		TriggerEvent('DoLongHudText', "Later, homie!")

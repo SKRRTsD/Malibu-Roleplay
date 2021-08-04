@@ -2,41 +2,41 @@ NearScubaBoatRental, NearReturnBoat, IronSellSpot, SellUnknown, ProcessFish, Nea
 CutFish, SellSpotF, ChickenStart, ChickenSpot, MeltingSpot, WashingSpot, NearChopShop, AtChopSell ,Miningstart = false, false, false, false, false, false, false, false
 Citizen.CreateThread(function()
     -- Mining
-    exports["prp-polyzone"]:AddBoxZone("melting_spot", vector3(1084.69, -2001.75, 30.88), 3, 3, {
+    exports["mrp-polyzone"]:AddBoxZone("melting_spot", vector3(1084.69, -2001.75, 30.88), 3, 3, {
         name="melting_spot",
         heading=325,
         minZ=28.08,
         maxZ=32.08
     })  
-    exports["prp-polyzone"]:AddBoxZone("washing_spot", vector3(1987.53, 551.72, 161.79), 9.4, 4, {
+    exports["mrp-polyzone"]:AddBoxZone("washing_spot", vector3(1987.53, 551.72, 161.79), 9.4, 4, {
         name="washing_spot",
         heading=325,
         minZ=159.59,
         maxZ=162.79
     })  
     -- Scuba
-    exports["prp-polyzone"]:AddBoxZone("scuba_get_boat", vector3(-1612.81, 5261.71, 3.97), 2.3, 1.5, {
+    exports["mrp-polyzone"]:AddBoxZone("scuba_get_boat", vector3(-1612.81, 5261.71, 3.97), 2.3, 1.5, {
         name="scuba_get_boat",
         heading=115,
         --debugPoly=true,
         minZ=2.97,
         maxZ=4.97
     })  
-    exports["prp-polyzone"]:AddBoxZone("scuba_return_boat", vector3(-1602.02, 5260.31, 2.09), 7.4, 5, {
+    exports["mrp-polyzone"]:AddBoxZone("scuba_return_boat", vector3(-1602.02, 5260.31, 2.09), 7.4, 5, {
         name="scuba_return_boat",
         heading=25,
         --debugPoly=true,
         minZ=-1.11,
         maxZ=3.89
     })  
-    exports["prp-polyzone"]:AddBoxZone("sell_iron_bars", vector3(2341.04, 3128.18, 48.21), 1.8, 1, {
+    exports["mrp-polyzone"]:AddBoxZone("sell_iron_bars", vector3(2341.04, 3128.18, 48.21), 1.8, 1, {
         name="sell_iron_bars",
         heading=260,
         --debugPoly=true,
         minZ=47.21,
         maxZ=49.21
     }) 
-    exports["prp-polyzone"]:AddBoxZone("sell_unknown_material", vector3(-1459.32, -413.59, 35.75), 1.8, 1, {
+    exports["mrp-polyzone"]:AddBoxZone("sell_unknown_material", vector3(-1459.32, -413.59, 35.75), 1.8, 1, {
         name="sell_unknown_material",
         heading=75,
         --debugPoly=true,
@@ -44,21 +44,21 @@ Citizen.CreateThread(function()
         maxZ=36.95
     }) 
     -- Fishing 
-    exports["prp-polyzone"]:AddBoxZone("fishing_sushi", vector3(-3248.21, 992.68, 12.49), 8.4, 5, {
+    exports["mrp-polyzone"]:AddBoxZone("fishing_sushi", vector3(-3248.21, 992.68, 12.49), 8.4, 5, {
         name="fishing_sushi",
         heading=85,
         --debugPoly=true,
         minZ=11.49,
         maxZ=13.44
     }) 
-    exports["prp-polyzone"]:AddBoxZone("fishing_cut", vector3(-3426.17, 974.33, 8.35), 9.4, 4, {
+    exports["mrp-polyzone"]:AddBoxZone("fishing_cut", vector3(-3426.17, 974.33, 8.35), 9.4, 4, {
         name="fishing_cut",
         heading=0,
         --debugPoly=true,
         minZ=7.35,
         maxZ=9.2
     }) 
-    exports["prp-polyzone"]:AddBoxZone("fishing_sell", vector3(-1039.5, -1396.63, 5.42), 4.8, 4, {
+    exports["mrp-polyzone"]:AddBoxZone("fishing_sell", vector3(-1039.5, -1396.63, 5.42), 4.8, 4, {
         name="fishing_sell",
         heading=345,
         --debugPoly=true,
@@ -66,19 +66,19 @@ Citizen.CreateThread(function()
         maxZ=6.42
     }) 
     -- Chicken
-    exports["prp-polyzone"]:AddBoxZone("chicken_sell", vector3(-593.25, -893.08, 25.56), 5, 5, {
+    exports["mrp-polyzone"]:AddBoxZone("chicken_sell", vector3(-593.25, -893.08, 25.56), 5, 5, {
         name="chicken_sell",
         heading=0,
         minZ=22.96,
         maxZ=26.96
     })
-    exports["prp-polyzone"]:AddBoxZone("chicken_start", vector3(2388.54, 5044.33, 45.99), 4.8, 2, {
+    exports["mrp-polyzone"]:AddBoxZone("chicken_start", vector3(2388.54, 5044.33, 45.99), 4.8, 2, {
         name="chicken_start",
         heading=315,
         minZ=43.39,
         maxZ=47.79
     })
-    exports["prp-polyzone"]:AddBoxZone("idcard", vector3(256.27, -369.48, -44.14), 2.4, 1, {
+    exports["mrp-polyzone"]:AddBoxZone("idcard", vector3(256.27, -369.48, -44.14), 2.4, 1, {
         name="idcard",
         heading=70,
         --debugPoly=true,
@@ -86,7 +86,7 @@ Citizen.CreateThread(function()
         maxZ=-43.54
     }) 
     -- Weazel News Job
-    exports["prp-polyzone"]:AddBoxZone("Weazel", vector3(-598.17, -929.75, 25.34), 2.9, 5, {
+    exports["mrp-polyzone"]:AddBoxZone("Weazel", vector3(-598.17, -929.75, 25.34), 2.9, 5, {
         name="Weazel",
         heading=91,
         --debugPoly=true,
@@ -95,7 +95,7 @@ Citizen.CreateThread(function()
     })
 
     -- mining 
-    exports["prp-polyzone"]:AddBoxZone("mining_quarry", vector3(-592.03, 2073.39, 131.41), 25, 4, {
+    exports["mrp-polyzone"]:AddBoxZone("mining_quarry", vector3(-592.03, 2073.39, 131.41), 25, 4, {
         name="mining_quarry",
         heading=15,
         --debugPoly=true,
@@ -105,63 +105,63 @@ Citizen.CreateThread(function()
 
 end)
 
-RegisterNetEvent('prp-polyzone:enter')
-AddEventHandler('prp-polyzone:enter', function(name)
+RegisterNetEvent('mrp-polyzone:enter')
+AddEventHandler('mrp-polyzone:enter', function(name)
     if name == "scuba_get_boat" then
         NearScubaBoatRental = true
         NearScubaBoat()
         if not canSpawn then
-            TriggerEvent('prp-textui:ShowUI', 'show', ("%s"):format("Boat rented already")) 
+            TriggerEvent('mrp-textui:ShowUI', 'show', ("%s"):format("Boat rented already")) 
         else
-            TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Rent Boat ($400)")) 
+            TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Rent Boat ($400)")) 
         end
     elseif name == 'scuba_return_boat' then
         if veh ~= 0 then
-            TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Return Boat")) 
+            TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Return Boat")) 
             NearReturnBoat = true
             AtReturnSpot()
         end
     elseif name == "sell_iron_bars" then
         IronSellSpot = true
-        TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Sell Items")) 
+        TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Sell Items")) 
         IronSell()
     elseif name == "sell_unknown_material" then
         SellUnknown = true
-        TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Sell Items")) 
+        TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Sell Items")) 
         SellUnknownSpot()
     elseif name == "chicken_sell" then
         ChickenSpot = true
-        TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Sell Chicken")) 
+        TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Sell Chicken")) 
         SellSpotChicken()
     elseif name == "chicken_start" then
         ChickenStart = true
-        TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Start Catching Chicken")) 
+        TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Start Catching Chicken")) 
         StartSpotChicken()
     elseif name == "Weazel" then
         NearWeazelNews = true
         NearWeazelNews2()
-        TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Record The News!"))
+        TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Record The News!"))
     elseif name == "idcard" then
         NearCourthouse = true
         NearCourthouse2()
-        TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("To purchase an ID ($50)"))
+        TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("To purchase an ID ($50)"))
     elseif name == "melting_spot" then
         MeltingSpot = true
         Meltmaterials()
-        TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Melt!"))
+        TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Melt!"))
     elseif name == "washing_spot" then
         WashingSpot = true
         WashStones()
-        TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Wash Stones!"))
+        TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Wash Stones!"))
     elseif name == "mining_quarry" then
         Miningstart = true
         Minego()
-        TriggerEvent('prp-textui:ShowUI', 'show', ("%s"):format("Mining"))
+        TriggerEvent('mrp-textui:ShowUI', 'show', ("%s"):format("Mining"))
     end
 end)
 
-RegisterNetEvent('prp-polyzone:exit')
-AddEventHandler('prp-polyzone:exit', function(name)
+RegisterNetEvent('mrp-polyzone:exit')
+AddEventHandler('mrp-polyzone:exit', function(name)
     if name == "scuba_get_boat" then
         NearScubaBoatRental = false
     elseif name == "melting_spot" then
@@ -191,7 +191,7 @@ AddEventHandler('prp-polyzone:exit', function(name)
     elseif name == "mining_quarry" then
         Miningstart = false
     end
-    TriggerEvent('prp-textui:HideUI')
+    TriggerEvent('mrp-textui:HideUI')
 end)
 
 function NearScubaBoat()
@@ -199,10 +199,10 @@ function NearScubaBoat()
         while NearScubaBoatRental do
             Citizen.Wait(5)
             if IsControlJustReleased(0, 38) then
-                if exports["prp-inventory"]:hasEnoughOfItem('oxygentank',1,false) or oxyOn then
+                if exports["mrp-inventory"]:hasEnoughOfItem('oxygentank',1,false) or oxyOn then
                     if canSpawn then
                         TriggerEvent("fuckoffdinghyomfgwhyisntitspawning")
-                        TriggerServerEvent('prp-scuba:checkAndTakeDepo')
+                        TriggerServerEvent('mrp-scuba:checkAndTakeDepo')
                         Citizen.Wait(500)
                         canSpawn = false
                         SetEntityAsMissionEntity(vehicle, true, true)
@@ -229,7 +229,7 @@ function AtReturnSpot()
                 TriggerEvent('DoLongHudText', 'Thanks For Returning The Vehicles, Heres some of the Money Back!.', 1)
                 RemoveBlip(allBlips)
                 RemoveBlip(allBlipsSprite)
-                TriggerServerEvent('prp-scuba:returnDepo')
+                TriggerServerEvent('mrp-scuba:returnDepo')
                 SetEntityCoords(GetPlayerPed(-1), -1605.7166748047, 5259.1162109375, 2.0883903503418)
                 SetEntityHeading(GetPlayerPed(-1), 23.752769470215)
                 Citizen.Wait(2000)
@@ -245,8 +245,8 @@ function IronSell()
         while IronSellSpot do
             Citizen.Wait(5)
             if IsControlJustReleased(0, 38) then
-                if exports["prp-inventory"]:hasEnoughOfItem('ironbar',10,false) then
-                    local finished = exports["prp-taskbar"]:taskBar(2000,"Selling Iron")
+                if exports["mrp-inventory"]:hasEnoughOfItem('ironbar',10,false) then
+                    local finished = exports["mrp-taskbar"]:taskBar(2000,"Selling Iron")
                     if (finished == 100) then
                         SellItems()
                     end
@@ -263,11 +263,11 @@ function SellUnknownSpot()
         while SellUnknown do
             Citizen.Wait(5)
             if IsControlJustReleased(0, 38) then
-                if exports["prp-inventory"]:hasEnoughOfItem('umetal',10,false) then
-                    local finished = exports["prp-taskbar"]:taskBar(5000,"Trading")
+                if exports["mrp-inventory"]:hasEnoughOfItem('umetal',10,false) then
+                    local finished = exports["mrp-taskbar"]:taskBar(5000,"Trading")
                     if (finished == 100 and payed == false) then
                         payed = true
-                        TriggerServerEvent('prp-scuba:makeGold')
+                        TriggerServerEvent('mrp-scuba:makeGold')
                         Citizen.Wait(500)
                         payed = false
                     end

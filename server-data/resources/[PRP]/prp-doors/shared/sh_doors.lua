@@ -435,7 +435,7 @@ AddEventHandler( "erp:Door:alterState", function(alterNum,num)
 	PRP.DoorCoords[alterNum]["lock"] = num
 end)
 
-RegisterNetEvent("prp-doors:alterlockstateclient")
-AddEventHandler("prp-doors:alterlockstateclient", function(doorCoords)
+RegisterNetEvent("mrp-doors:alterlockstateclient")
+AddEventHandler("mrp-doors:alterlockstateclient", function(doorCoords)
     PRP.DoorCoords = doorCoords
 end)

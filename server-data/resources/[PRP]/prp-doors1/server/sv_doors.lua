@@ -3,24 +3,24 @@ character = {}
 Citizen.CreateThread(function()
     while true do
         Wait(1000)
-        TriggerClientEvent('prp-doors:states',-1,prp_DOORS)
+        TriggerClientEvent('mrp-doors:states',-1,prp_DOORS)
     end
 end)
 
-RegisterNetEvent('prp-doors:changeLock-status')
-AddEventHandler('prp-doors:changeLock-status', function(doorId,state)
+RegisterNetEvent('mrp-doors:changeLock-status')
+AddEventHandler('mrp-doors:changeLock-status', function(doorId,state)
     prp_DOORS[doorId]["lock"] = state
     if doorId == 93 or doorId == 94 then
         prp_DOORS[doorId]["lock"] = false
         prp_DOORS[doorId]["forceUnlocked"] = true
     end
     Wait(1000)
-    TriggerClientEvent('prp-doors:changeLock-status',-1,tonumber(doorId),state,true)
+    TriggerClientEvent('mrp-doors:changeLock-status',-1,tonumber(doorId),state,true)
 end)
 
 RPC.register("GetEmploymentInformation", function(source, data)
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
     local cid = data.character.id
     local employment = {}
@@ -36,7 +36,7 @@ end)
 
 RPC.register("IsEmployedAtBusiness", function(source, data)
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
     local cid = data.character.id
     local business = data.business.id
@@ -55,7 +55,7 @@ end)
 
 RPC.register("getCharacterPasses", function(source)
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
     local cid = char.id
     local res = {}

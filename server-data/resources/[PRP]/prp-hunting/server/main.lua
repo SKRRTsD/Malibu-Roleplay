@@ -8,18 +8,18 @@ PerformHttpRequest(DISCORD_WEBHOOK5, function(err, text, headers) end, 'POST', j
 
 local cachedData = {}
 
-RegisterServerEvent('prp-hunting:huntingreturnree')
-AddEventHandler('prp-hunting:huntingreturnree', function()
-    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+RegisterServerEvent('mrp-hunting:huntingreturnree')
+AddEventHandler('mrp-hunting:huntingreturnree', function()
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
     local money = tonumber(user:getCash())
     user:addMoney(500)
 end)
 
-RegisterServerEvent('prp-hunting:sell')
-AddEventHandler('prp-hunting:sell', function(money)
+RegisterServerEvent('mrp-hunting:sell')
+AddEventHandler('mrp-hunting:sell', function(money)
     local source = source
     local player = GetPlayerName(source)
-    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
     if money ~= nil then
         user:addMoney(money)
         if money > 80 then
@@ -28,40 +28,40 @@ AddEventHandler('prp-hunting:sell', function(money)
 	end
 end)
 
-RegisterServerEvent('prp-hunting:starthoe')
-AddEventHandler('prp-hunting:starthoe', function()
+RegisterServerEvent('mrp-hunting:starthoe')
+AddEventHandler('mrp-hunting:starthoe', function()
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local character = user:getCurrentCharacter()
     local money = tonumber(user:getCash())
     if money >= 100 then
         user:removeMoney(500)
-        TriggerClientEvent('prp-hunting:start2', src)
+        TriggerClientEvent('mrp-hunting:start2', src)
     else
         TriggerClientEvent('DoLongHudText', src, 'You dont have enough money on you!', 2)
     end
 end)
 
-RegisterServerEvent('prp-hunting:giveloadout')
-AddEventHandler('prp-hunting:giveloadout', function()
+RegisterServerEvent('mrp-hunting:giveloadout')
+AddEventHandler('mrp-hunting:giveloadout', function()
     TriggerClientEvent('player:receiveItem', source, '100416529', 1)
     TriggerClientEvent('player:receiveItem', source, '2578778090', 1)
 end)
 
-RegisterServerEvent('prp-hunting:removeloadout')
-AddEventHandler('prp-hunting:removeloadout', function()
+RegisterServerEvent('mrp-hunting:removeloadout')
+AddEventHandler('mrp-hunting:removeloadout', function()
     TriggerClientEvent('inventory:removeItem', source, '100416529', 1)
     TriggerClientEvent('inventory:removeItem', source, '2578778090', 1)
 end)
 
-RegisterServerEvent("prp-hunting:retreive:license")
-AddEventHandler("prp-hunting:retreive:license", function()
+RegisterServerEvent("mrp-hunting:retreive:license")
+AddEventHandler("mrp-hunting:retreive:license", function()
     local src = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
 	local character = user:getCurrentCharacter()
     exports.ghmattimysql:execute('SELECT * FROM user_licenses WHERE `owner`= ? AND `type` = ? AND `status` = ?', {character.id, "Hunting", "1"}, function(data)
 		if data[1] then
-            TriggerClientEvent("prp-hunting:allowed", src, true)
+            TriggerClientEvent("mrp-hunting:allowed", src, true)
         end
     end)
 end)

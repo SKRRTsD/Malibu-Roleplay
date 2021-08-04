@@ -13,12 +13,12 @@ local hspLocs = {
 	[9] = { ["x"] = 353.38198852539, ["y"] = -588.38922119141, ["z"] = 43.315010070801, ["h"] = 61.995723724365, ["name"] = "None", ["fnc"] = "aiSCAN" },
 }
 
-RegisterNetEvent("prp-hospitalization:checkin")
-AddEventHandler("prp-hospitalization:checkin", function(allowed)
+RegisterNetEvent("mrp-hospitalization:checkin")
+AddEventHandler("mrp-hospitalization:checkin", function(allowed)
 	if allowed then
 		loadAnimDict('anim@narcotics@trash')
 		TaskPlayAnim(PlayerPedId(),'anim@narcotics@trash', 'drop_front',1.0, 1.0, -1, 1, 0, 0, 0, 0)
-		local finished = exports["prp-taskbar"]:taskBar(2500,"Checking Credentials")
+		local finished = exports["mrp-taskbar"]:taskBar(2500,"Checking Credentials")
 		if finished == 100 then
 			TriggerEvent("reviveFunction")
 			Citizen.Wait(500)
@@ -41,12 +41,12 @@ RegisterNetEvent("attempt:change:check-in", function()
 	end
 end)
 
-RegisterNetEvent("prp-hospitalization:page")
-AddEventHandler("prp-hospitalization:page", function()
+RegisterNetEvent("mrp-hospitalization:page")
+AddEventHandler("mrp-hospitalization:page", function()
 	if exports["prp_manager"]:isPed("countems") >= 1 then 
 		loadAnimDict('anim@narcotics@trash')
 		TaskPlayAnim(PlayerPedId(),'anim@narcotics@trash', 'drop_front',1.0, 1.0, -1, 1, 0, 0, 0, 0)
-		local finished = exports["prp-taskbar"]:taskBar(2500,"Paging a Doctor")
+		local finished = exports["mrp-taskbar"]:taskBar(2500,"Paging a Doctor")
 		if finished == 100 then
 			if exports["prp_manager"]:isPed("countems") >= 1 and not isTriageEnabled then
 				TriggerEvent("DoLongHudText","A doctor has been paged. Please take a seat and wait.",2)
@@ -155,8 +155,8 @@ function ICUscreen(dying)
 end
 
 function logout()
-	TriggerEvent("prp-core:clearStates")
-	exports["prp-core"]:getModule("SpawnManager"):Initialize()
+	TriggerEvent("mrp-core:clearStates")
+	exports["mrp-core"]:getModule("SpawnManager"):Initialize()
 end
 
 Citizen.CreateThread( function()

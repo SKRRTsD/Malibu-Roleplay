@@ -11,8 +11,8 @@ local cidDoctorsCopAccess = {
    1
 }
 
-RegisterNetEvent("prp-jobmanager:playerBecameJob")
-AddEventHandler("prp-jobmanager:playerBecameJob", function(job, name, notify)
+RegisterNetEvent("mrp-jobmanager:playerBecameJob")
+AddEventHandler("mrp-jobmanager:playerBecameJob", function(job, name, notify)
     if isMedic and job ~= "ems" then isMedic = false isInService = false end
     if isCop and job ~= "police" or job ~= "offpolice" then isCop = false isInService = false end
     if isDoc and job ~= "doctor" then isDoc = false isInService = false end
@@ -46,7 +46,7 @@ end)
 RegisterNetEvent( 'cell:doors' )
 AddEventHandler( 'cell:doors', function(num)
     TriggerEvent("dooranim")
-    TriggerServerEvent("prp-doors:alterlockstate",tonumber(num))
+    TriggerServerEvent("mrp-doors:alterlockstate",tonumber(num))
 end)
 
 
@@ -338,7 +338,7 @@ Citizen.CreateThread(function()
 
             if currentTargetDist < drawdist then
                 if isKeyDoor(curClosestNum) then
-                    TriggerEvent('prp-doors:show', 'show', ("[E] %s"):format(closestString))
+                    TriggerEvent('mrp-doors:show', 'show', ("[E] %s"):format(closestString))
                 end
 
 
@@ -366,7 +366,7 @@ Citizen.CreateThread(function()
                                     locked, heading = GetStateOfClosestDoorOfType(GetHashKey(targetDoor["doorType"]), doorCoords["x"], doorCoords["y"], doorCoords["z"]) 
                                     heading = math.ceil(heading * 100) 
           
-                                    -- TriggerEvent('prp-doors:show', 'show', ("%s"):format("LOCKING"))
+                                    -- TriggerEvent('mrp-doors:show', 'show', ("%s"):format("LOCKING"))
                                     local dist = #(plyCoords - vector3(targetDoor["x"], targetDoor["y"], targetDoor["z"]))
                                     local dst2 = #(plyCoords - vector3(1830.45, 2607.56, 45.59))
 
@@ -384,7 +384,7 @@ Citizen.CreateThread(function()
                                 local swingcount = 0
                                 while active do
                                     Citizen.Wait(1)
-                                    -- TriggerEvent('prp-doors:show', 'show', ("%s"):format("UNLOCKING"))
+                                    -- TriggerEvent('mrp-doors:show', 'show', ("%s"):format("UNLOCKING"))
                                     swingcount = swingcount + 1
                                     if swingcount > 1 then
                                         active = false
@@ -392,13 +392,13 @@ Citizen.CreateThread(function()
                                 end
 
                             end
-                            TriggerServerEvent("prp-doors:alterlockstate",curClosestNum)
+                            TriggerServerEvent("mrp-doors:alterlockstate",curClosestNum)
                      
                         end
                     end
                 end 
             else
-                TriggerEvent('prp-doors:hide')
+                TriggerEvent('mrp-doors:hide')
             end     
         end
     end
@@ -406,7 +406,7 @@ end)
 
 function OpenCheck(curClosestNum)
     --local gangType = exports["prp_manager"]:isPed("gang")
-    local job = exports["prp-core"]:getModule("LocalPlayer"):getVar("job")
+    local job = exports["mrp-core"]:getModule("LocalPlayer"):getVar("job")
 
     -- MRPD
     if (job == "police") and (curClosestNum >= 1 or curClosestNum <= 53) then

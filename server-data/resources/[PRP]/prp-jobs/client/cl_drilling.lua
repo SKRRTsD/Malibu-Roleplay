@@ -1,7 +1,7 @@
 drillingstart = false
 
 Citizen.CreateThread(function()
-	exports["prp-polyzone"]:AddBoxZone("quarry_drill1", vector3(2938.28, 2814.25, 43.98),42.2, 11.0, {
+	exports["mrp-polyzone"]:AddBoxZone("quarry_drill1", vector3(2938.28, 2814.25, 43.98),42.2, 11.0, {
 		name="quarry_drill1",
 		heading=110,
         minZ=41.38,
@@ -9,21 +9,21 @@ Citizen.CreateThread(function()
 	})	  
 end)
 
-RegisterNetEvent('prp-polyzone:enter')
-AddEventHandler('prp-polyzone:enter', function(name)
+RegisterNetEvent('mrp-polyzone:enter')
+AddEventHandler('mrp-polyzone:enter', function(name)
     if name == "quarry_drill1"  then
         drillingstart = true
         PlutoRPstartdrillingyo()
-		TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format(" Start Drilling")) 
+		TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format(" Start Drilling")) 
     end
 end)
 
-RegisterNetEvent('prp-polyzone:exit')
-AddEventHandler('prp-polyzone:exit', function(name)
+RegisterNetEvent('mrp-polyzone:exit')
+AddEventHandler('mrp-polyzone:exit', function(name)
     if name == "quarry_drill1"  then
         drillingstart = false
     end
-    TriggerEvent('prp-ui:HideUI')
+    TriggerEvent('mrp-ui:HideUI')
 end)
 
 function PlutoRPstartdrillingyo()
@@ -65,8 +65,8 @@ end)
 
 RegisterNetEvent('sellgoldenore')
 AddEventHandler('sellgoldenore', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("goldore",1,false) then
-        local finished = exports["prp-taskbar"]:taskBar(10000,"Selling Gold Ore!")
+    if exports["mrp-inventory"]:hasEnoughOfItem("goldore",1,false) then
+        local finished = exports["mrp-taskbar"]:taskBar(10000,"Selling Gold Ore!")
         if finished == 100 then
             TriggerEvent('inventory:removeItem', 'goldore', 1)
             TriggerServerEvent( 'sk1c2:payout', math.random(90,190))
@@ -82,8 +82,8 @@ end)
 
 RegisterNetEvent('sellgoldenore')
 AddEventHandler('sellgoldenore', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("goldore",1,false) then
-        local finished = exports["prp-taskbar"]:taskBar(10000,"Selling goldore!")
+    if exports["mrp-inventory"]:hasEnoughOfItem("goldore",1,false) then
+        local finished = exports["mrp-taskbar"]:taskBar(10000,"Selling goldore!")
         if finished == 100 then
             TriggerEvent('inventory:removeItem', 'goldore', 1)
             TriggerServerEvent( 'sk1c2:payout', math.random(90,190))
@@ -99,8 +99,8 @@ end)
 
 RegisterNetEvent('selluncutsapphire')
 AddEventHandler('selluncutsapphire', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("uncutsapphire",1,false) then
-        local finished = exports["prp-taskbar"]:taskBar(10000,"Selling Uncut Sapphire!")
+    if exports["mrp-inventory"]:hasEnoughOfItem("uncutsapphire",1,false) then
+        local finished = exports["mrp-taskbar"]:taskBar(10000,"Selling Uncut Sapphire!")
         if finished == 100 then
             TriggerEvent('inventory:removeItem', 'uncutsapphire', 1)
             TriggerServerEvent( 'sk1c2:payout', math.random(90,310))
@@ -116,8 +116,8 @@ end)
 
 RegisterNetEvent('sellsilverore')
 AddEventHandler('sellsilverore', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("silverore",1,false) then
-        local finished = exports["prp-taskbar"]:taskBar(10000,"Selling Silver Ore!")
+    if exports["mrp-inventory"]:hasEnoughOfItem("silverore",1,false) then
+        local finished = exports["mrp-taskbar"]:taskBar(10000,"Selling Silver Ore!")
         if finished == 100 then
             TriggerEvent('inventory:removeItem', 'silverore', 1)
             TriggerServerEvent( 'sk1c2:payout', math.random(90,310))

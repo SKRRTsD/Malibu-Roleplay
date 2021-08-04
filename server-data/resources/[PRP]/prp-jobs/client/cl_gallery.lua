@@ -1,6 +1,6 @@
 RegisterNetEvent("gallery-menu")
 AddEventHandler("gallery-menu", function()
-	TriggerEvent('prp-context:sendMenu', {
+	TriggerEvent('mrp-context:sendMenu', {
         {
 			id = "1",
 			header = "Gallery Insides",
@@ -91,8 +91,8 @@ end)
 
 RegisterNetEvent('sellrolex')
 AddEventHandler('sellrolex', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("rolexwatch",5,false) then
-        local finished = exports["prp-taskbar"]:taskBar(10000,"Selling Rolex Watches")
+    if exports["mrp-inventory"]:hasEnoughOfItem("rolexwatch",5,false) then
+        local finished = exports["mrp-taskbar"]:taskBar(10000,"Selling Rolex Watches")
         if finished == 100 then
             TriggerEvent('inventory:removeItem', 'rolexwatch', 5)
             TriggerServerEvent( 'sk1c2:payout', math.random(350,500))
@@ -106,8 +106,8 @@ end)
 
 RegisterNetEvent('sellgoldbar')
 AddEventHandler('sellgoldbar', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("goldbar",5,false) then
-        local finished = exports["prp-taskbar"]:taskBar(10000,"Selling Gold Bars")
+    if exports["mrp-inventory"]:hasEnoughOfItem("goldbar",5,false) then
+        local finished = exports["mrp-taskbar"]:taskBar(10000,"Selling Gold Bars")
         if finished == 100 then
             TriggerEvent('inventory:removeItem', 'goldbar', 5)
             TriggerServerEvent( 'sk1c2:payout', math.random(750,1500))
@@ -121,8 +121,8 @@ end)
 
 RegisterNetEvent('selldiamond')
 AddEventHandler('selldiamond', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("bdiamond",5,false) then
-        local finished = exports["prp-taskbar"]:taskBar(10000,"Selling diamonds")
+    if exports["mrp-inventory"]:hasEnoughOfItem("bdiamond",5,false) then
+        local finished = exports["mrp-taskbar"]:taskBar(10000,"Selling diamonds")
         if finished == 100 then
             TriggerEvent('inventory:removeItem', 'bdiamond', 5)
             TriggerServerEvent( 'sk1c2:payout', math.random(1000,2000))
@@ -136,8 +136,8 @@ end)
 
 RegisterNetEvent('sellring')
 AddEventHandler('sellring', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("erpring",5,false) then
-        local finished = exports["prp-taskbar"]:taskBar(10000,"Selling Rings")
+    if exports["mrp-inventory"]:hasEnoughOfItem("erpring",5,false) then
+        local finished = exports["mrp-taskbar"]:taskBar(10000,"Selling Rings")
         if finished == 100 then
             TriggerEvent('inventory:removeItem', 'erpring', 5)
             TriggerServerEvent( 'sk1c2:payout', math.random(1500,2500))
@@ -151,8 +151,8 @@ end)
 
 RegisterNetEvent('10ctgoldchain')
 AddEventHandler('10ctgoldchain', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("stolen10ctchain",5,false) then
-        local finished = exports["prp-taskbar"]:taskBar(10000,"Selling 10ct Gold Chain")
+    if exports["mrp-inventory"]:hasEnoughOfItem("stolen10ctchain",5,false) then
+        local finished = exports["mrp-taskbar"]:taskBar(10000,"Selling 10ct Gold Chain")
         if finished == 100 then
             TriggerEvent('inventory:removeItem', 'stolen10ctchain', 5)
             TriggerServerEvent( 'sk1c2:payout', math.random(1250,2250))
@@ -166,8 +166,8 @@ end)
 
 RegisterNetEvent('sellstolen8ctchain')
 AddEventHandler('sellstolen8ctchain', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("stolen8ctchain",5,false) then
-        local finished = exports["prp-taskbar"]:taskBar(10000,"Selling 8ct Gold Chain")
+    if exports["mrp-inventory"]:hasEnoughOfItem("stolen8ctchain",5,false) then
+        local finished = exports["mrp-taskbar"]:taskBar(10000,"Selling 8ct Gold Chain")
         if finished == 100 then
             TriggerEvent('inventory:removeItem', 'stolen8ctchain', 5)
             TriggerServerEvent( 'sk1c2:payout', math.random(750,1250))
@@ -181,8 +181,8 @@ end)
 
 RegisterNetEvent('sellstolen2ctchain')
 AddEventHandler('sellstolen2ctchain', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("stolen2ctchain",5,false) then
-        local finished = exports["prp-taskbar"]:taskBar(10000,"Selling 2ct Gold Chain")
+    if exports["mrp-inventory"]:hasEnoughOfItem("stolen2ctchain",5,false) then
+        local finished = exports["mrp-taskbar"]:taskBar(10000,"Selling 2ct Gold Chain")
         if finished == 100 then
             TriggerEvent('inventory:removeItem', 'stolen2ctchain', 5)
             TriggerServerEvent( 'sk1c2:payout', math.random(250,500))
@@ -196,8 +196,8 @@ end)
 
 RegisterNetEvent('sellgoldcoin')
 AddEventHandler('sellgoldcoin', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("goldcoin",5,false) then
-        local finished = exports["prp-taskbar"]:taskBar(10000,"Selling Gold Coin")
+    if exports["mrp-inventory"]:hasEnoughOfItem("goldcoin",5,false) then
+        local finished = exports["mrp-taskbar"]:taskBar(10000,"Selling Gold Coin")
         if finished == 100 then
             TriggerEvent('inventory:removeItem', 'goldcoin', 5)
             TriggerServerEvent( 'sk1c2:payout', math.random(250,500))
@@ -211,8 +211,8 @@ end)
 
 RegisterNetEvent('sellanime')
 AddEventHandler('sellanime', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("anime",5,false) then
-        local finished = exports["prp-taskbar"]:taskBar(10000,"Selling Anime Poster")
+    if exports["mrp-inventory"]:hasEnoughOfItem("anime",5,false) then
+        local finished = exports["mrp-taskbar"]:taskBar(10000,"Selling Anime Poster")
         if finished == 100 then
             TriggerEvent('inventory:removeItem', 'anime', 5)
             TriggerServerEvent( 'sk1c2:payout', math.random(100,350))

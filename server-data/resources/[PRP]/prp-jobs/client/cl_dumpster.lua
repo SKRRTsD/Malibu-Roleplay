@@ -18,8 +18,8 @@ function checkforGarbage()
     return false
 end
   
-RegisterNetEvent('prp-dumpster')
-AddEventHandler('prp-dumpster', function() 
+RegisterNetEvent('mrp-dumpster')
+AddEventHandler('mrp-dumpster', function() 
     local ped = GetPlayerPed(-1)
     local pos = GetEntityCoords(ped)
     local dumpsterFound = false
@@ -41,7 +41,7 @@ AddEventHandler('prp-dumpster', function()
                     LoadDict(dict)
                     FreezeEntityPosition(GetPlayerPed(-1),true)
                     TaskPlayAnim(GetPlayerPed(-1), dict, 'base', 3.0, -8, -1, 63, 0, 0, 0, 0 )
-                    local finished = exports ['prp-taskbar']:taskBar(10000, 'searching dumpster')
+                    local finished = exports ['mrp-taskbar']:taskBar(10000, 'searching dumpster')
                     if (finished ==100) then
                         TriggerServerEvent('prp:giveDumpsterReward')
                         TriggerServerEvent('prp:startDumpsterTimer', dumpster)
@@ -58,8 +58,8 @@ AddEventHandler('prp-dumpster', function()
     end
 end)
 
-RegisterNetEvent('prp-dumpster2')
-AddEventHandler('prp-dumpster2', function() 
+RegisterNetEvent('mrp-dumpster2')
+AddEventHandler('mrp-dumpster2', function() 
     local ped = GetPlayerPed(-1)
     local pos = GetEntityCoords(ped)
     local dumpsterFound = false
@@ -81,7 +81,7 @@ AddEventHandler('prp-dumpster2', function()
                     LoadDict(dict)
                     FreezeEntityPosition(GetPlayerPed(-1),true)
                     TaskPlayAnim(GetPlayerPed(-1), dict, 'base', 3.0, -8, -1, 63, 0, 0, 0, 0 )
-                    local finished = exports ['prp-taskbar']:taskBar(10000, 'searching dumpster')
+                    local finished = exports ['mrp-taskbar']:taskBar(10000, 'searching dumpster')
                     if (finished ==100) then
                         TriggerServerEvent('prp:giveDumpsterReward')
                         TriggerServerEvent('prp:startDumpsterTimer', dumpster2)
@@ -98,8 +98,8 @@ AddEventHandler('prp-dumpster2', function()
     end
 end)
 
-RegisterNetEvent('prp-dumpster3')
-AddEventHandler('prp-dumpster3', function() 
+RegisterNetEvent('mrp-dumpster3')
+AddEventHandler('mrp-dumpster3', function() 
     local ped = GetPlayerPed(-1)
     local pos = GetEntityCoords(ped)
     local dumpsterFound = false
@@ -121,7 +121,7 @@ AddEventHandler('prp-dumpster3', function()
                     LoadDict(dict)
                     FreezeEntityPosition(GetPlayerPed(-1),true)
                     TaskPlayAnim(GetPlayerPed(-1), dict, 'base', 3.0, -8, -1, 63, 0, 0, 0, 0 )
-                    local finished = exports ['prp-taskbar']:taskBar(10000, 'searching dumpster')
+                    local finished = exports ['mrp-taskbar']:taskBar(10000, 'searching dumpster')
                     if (finished ==100) then
                         TriggerServerEvent('prp:giveDumpsterReward')
                         TriggerServerEvent('prp:startDumpsterTimer', dumpster3)

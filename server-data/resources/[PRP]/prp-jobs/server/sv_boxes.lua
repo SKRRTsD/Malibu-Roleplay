@@ -18,7 +18,7 @@ RegisterServerEvent('prp:giveboxReward')
 AddEventHandler('prp:giveboxReward', function()
     local source = tonumber(source)
     local item = {}
-    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
     local gotID = {}
 
     for i = 1, math.random (1,2) do

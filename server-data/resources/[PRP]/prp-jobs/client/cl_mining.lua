@@ -26,7 +26,7 @@ local pFarmed = 0
 
 RegisterNetEvent("start-mining")
 AddEventHandler("start-mining", function()
-	if exports["prp-inventory"]:hasEnoughOfItem("pickaxe",1,false) and not currentlyMining then 
+	if exports["mrp-inventory"]:hasEnoughOfItem("pickaxe",1,false) and not currentlyMining then 
         currentlyMining = true
         local playerPed = PlayerPedId()
         local coords = GetEntityCoords(playerPed)
@@ -57,11 +57,11 @@ AddEventHandler("start-mining", function()
             TaskPlayAnim(PlayerPedId(), anim, action, 3.0, -3.0, -1, 31, 0, false, false, false)
             -- SetEntityHeading(PlayerPedId(), 294.89007568359)
 
-            local finished = exports ["prp-taskbarplus"]:taskBar(18000,math.random(10,20))
+            local finished = exports ["mrp-taskbarplus"]:taskBar(18000,math.random(10,20))
             if (finished == 100) then
-                local finished = exports ["prp-taskbarplus"]:taskBar(18000,math.random(10,20))
+                local finished = exports ["mrp-taskbarplus"]:taskBar(18000,math.random(10,20))
                 if (finished == 100) then
-                    local finished = exports ["prp-taskbarplus"]:taskBar(18000,math.random(10,20))
+                    local finished = exports ["mrp-taskbarplus"]:taskBar(18000,math.random(10,20))
                     if (finished == 100) then
                         TriggerEvent('player:receiveItem', "stone", math.random(1,5))
                         pFarmed = pFarmed + 1    
@@ -107,8 +107,8 @@ end)
 
 RegisterNetEvent("washerevent")
 AddEventHandler("washerevent", function()
-    if exports['prp-inventory']:hasEnoughOfItem("washedpan", 1) and exports['prp-inventory']:hasEnoughOfItem("stone", 1) then
-        local bitch = exports['prp-inventory']:getQuantity("stone")
+    if exports['mrp-inventory']:hasEnoughOfItem("washedpan", 1) and exports['mrp-inventory']:hasEnoughOfItem("stone", 1) then
+        local bitch = exports['mrp-inventory']:getQuantity("stone")
         if bitch >= 1 then
             local playerPed = PlayerPedId()
             local coords = GetEntityCoords(playerPed)
@@ -117,10 +117,10 @@ AddEventHandler("washerevent", function()
             SetCurrentPedWeapon(playerPed, GetHashKey('WEAPON_UNARMED'))
             Citizen.Wait(200)
             
-            local pHasStone = exports['prp-inventory']:getQuantity("stone")
+            local pHasStone = exports['mrp-inventory']:getQuantity("stone")
             if pHasStone >= 1 then
                 TaskStartScenarioInPlace(playerPed, "PROP_HUMAN_BUM_BIN", 0, true)
-                local finished = exports["prp-taskbar"]:taskBar(10000,"Washing Stones")
+                local finished = exports["mrp-taskbar"]:taskBar(10000,"Washing Stones")
                 if finished == 100 then
                     TriggerEvent("inventory:removeItem","stone", 5)
                     TriggerEvent('player:receiveItem', math.random(1,8))	                    
@@ -142,7 +142,7 @@ end)
 
 RegisterNetEvent("SmeltingEvent")
 AddEventHandler("SmeltingEvent", function()
-    local bitch = exports['prp-inventory']:getQuantity("washedstone")
+    local bitch = exports['mrp-inventory']:getQuantity("washedstone")
     if bitch >= 1 then        
         currentlySmelting = true
         local playerPed = PlayerPedId()
@@ -152,16 +152,16 @@ AddEventHandler("SmeltingEvent", function()
         SetCurrentPedWeapon(playerPed, GetHashKey('WEAPON_UNARMED'))
         Citizen.Wait(200)
                 
-        local finished = exports["prp-taskbar"]:taskBar(10000,"Smelting Washed Stone")
+        local finished = exports["mrp-taskbar"]:taskBar(10000,"Smelting Washed Stone")
         if finished == 100 then
             TriggerEvent("inventory:removeItem","washedstone", 1)
                 
-            local itemLimit1 = exports['prp-inventory']:getQuantity("goldbar")
-            local itemLimit2 = exports['prp-inventory']:getQuantity("silverbar")
-            local itemLimit3 = exports['prp-inventory']:getQuantity("goldbar")
-            local itemLimit4 = exports['prp-inventory']:getQuantity("silverbar")
-            local itemLimit5 = exports['prp-inventory']:getQuantity("copperbar")
-            local itemLimit6 = exports['prp-inventory']:getQuantity("ironbar")
+            local itemLimit1 = exports['mrp-inventory']:getQuantity("goldbar")
+            local itemLimit2 = exports['mrp-inventory']:getQuantity("silverbar")
+            local itemLimit3 = exports['mrp-inventory']:getQuantity("goldbar")
+            local itemLimit4 = exports['mrp-inventory']:getQuantity("silverbar")
+            local itemLimit5 = exports['mrp-inventory']:getQuantity("copperbar")
+            local itemLimit6 = exports['mrp-inventory']:getQuantity("ironbar")
             
             local rewardChance = math.random(1,10)
 
@@ -217,9 +217,9 @@ end)
 
 
 RegisterNetEvent("mining:sell", function(pType)
-    local pAmont = exports['prp-inventory']:getQuantity(pType)
+    local pAmont = exports['mrp-inventory']:getQuantity(pType)
     local pTaskbarTimer = pAmont * 2500
-    local pFinished = exports["prp-taskbar"]:taskBar(pTaskbarTimer, "Selling Items")
+    local pFinished = exports["mrp-taskbar"]:taskBar(pTaskbarTimer, "Selling Items")
     if (pFinished == 100) then
         TriggerServerEvent("mining-sell:items", pAmont, pType)
     else
@@ -232,7 +232,7 @@ end)
 
 RegisterNetEvent("miningmenu")
 AddEventHandler("miningmenu", function()
-	TriggerEvent('prp-context:sendMenu', {
+	TriggerEvent('mrp-context:sendMenu', {
 		{
 			id = "1",
 			header = "Level 1 Mine",

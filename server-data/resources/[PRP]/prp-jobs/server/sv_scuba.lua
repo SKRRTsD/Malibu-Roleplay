@@ -1,19 +1,19 @@
-RegisterServerEvent('prp-scuba:checkAndTakeDepo')
-AddEventHandler('prp-scuba:checkAndTakeDepo', function()
+RegisterServerEvent('mrp-scuba:checkAndTakeDepo')
+AddEventHandler('mrp-scuba:checkAndTakeDepo', function()
 local src = source
-local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     user:removeMoney(400)
 end)
 
-RegisterServerEvent('prp-scuba:returnDepo')
-AddEventHandler('prp-scuba:returnDepo', function()
+RegisterServerEvent('mrp-scuba:returnDepo')
+AddEventHandler('mrp-scuba:returnDepo', function()
 local src = source
-local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     user:addMoney(200)
 end)
 
-RegisterServerEvent('prp-scuba:findTreasure')
-AddEventHandler('prp-scuba:findTreasure', function()
+RegisterServerEvent('mrp-scuba:findTreasure')
+AddEventHandler('mrp-scuba:findTreasure', function()
 local source = source
     local roll = math.random(1,8)
     if roll == 1 then
@@ -39,17 +39,17 @@ local source = source
     end
 end)
 
-RegisterServerEvent('prp-scuba:paySalvage')
-AddEventHandler('prp-scuba:paySalvage', function(money)
+RegisterServerEvent('mrp-scuba:paySalvage')
+AddEventHandler('mrp-scuba:paySalvage', function(money)
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     if money ~= nil then
         user:addMoney(tonumber(money))
     end
 end)
 
-RegisterServerEvent('prp-scuba:makeGold')
-AddEventHandler('prp-scuba:makeGold', function()
+RegisterServerEvent('mrp-scuba:makeGold')
+AddEventHandler('mrp-scuba:makeGold', function()
  local source = source
  TriggerClientEvent('inventory:removeItem', source, 'umetal', 10)
  TriggerClientEvent("player:receiveItem", source, "goldbar", 1)

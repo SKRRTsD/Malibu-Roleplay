@@ -19,4 +19,4 @@ server_scripts {
 }
 
 client_script "cl_mdt.lua"
-client_script "@prp-errorlog/client/cl_errorlog.lua"
+client_script "@mrp-errorlog/client/cl_errorlog.lua"

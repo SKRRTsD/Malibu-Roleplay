@@ -9,11 +9,11 @@ PerformHttpRequest(DISCORD_WEBHOOK5, function(err, text, headers) end, 'POST', j
 local cachedData = {}
 
 
-RegisterServerEvent('prp-fish:sellfish')
-AddEventHandler('prp-fish:sellfish', function(money)
+RegisterServerEvent('mrp-fish:sellfish')
+AddEventHandler('mrp-fish:sellfish', function(money)
     local source = source
     local player = GetPlayerName(source)
-    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
     if money ~= nil then
         user:addMoney(money)
         if money > 45 then

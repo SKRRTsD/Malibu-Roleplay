@@ -187,7 +187,7 @@ end
 OxySpot = false
 
 Citizen.CreateThread(function()
-	exports["prp-polyzone"]:AddBoxZone("oxy_run_start", vector3(-1487.02, -909.79, 10.02), 1.8, 1, {
+	exports["mrp-polyzone"]:AddBoxZone("oxy_run_start", vector3(-1487.02, -909.79, 10.02), 1.8, 1, {
 		name="oxy_run_start",
 		heading=230,
 		minZ=6.82,
@@ -196,24 +196,24 @@ Citizen.CreateThread(function()
 	})
 end)
 
-RegisterNetEvent('prp-polyzone:enter')
-AddEventHandler('prp-polyzone:enter', function(name)
+RegisterNetEvent('mrp-polyzone:enter')
+AddEventHandler('mrp-polyzone:enter', function(name)
     if name == "oxy_run_start" then
         OxySpot = true     
         LuckyDrawPlace()
 		if not OxyRun then
-			TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Start Run ($750)")) 
+			TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Start Run ($750)")) 
 		else
-			TriggerEvent('prp-textui:ShowUI', 'show', ("%s"):format("Finish Your Run")) 
+			TriggerEvent('mrp-textui:ShowUI', 'show', ("%s"):format("Finish Your Run")) 
 		end
     end
 end)
 
-RegisterNetEvent('prp-polyzone:exit')
-AddEventHandler('prp-polyzone:exit', function(name)
+RegisterNetEvent('mrp-polyzone:exit')
+AddEventHandler('mrp-polyzone:exit', function(name)
     if name == "oxy_run_start" then
         OxySpot = false  
-		TriggerEvent('prp-textui:HideUI')   
+		TriggerEvent('mrp-textui:HideUI')   
     end
 end)
 

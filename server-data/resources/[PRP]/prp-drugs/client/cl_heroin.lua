@@ -1,7 +1,7 @@
 local pHerionSpot = false
 
 Citizen.CreateThread(function()
-    exports["prp-polyzone"]:AddBoxZone("Herion_Spot", vector3(-2574.32, 2534.42, 1.84), 25.0, 30, {
+    exports["mrp-polyzone"]:AddBoxZone("Herion_Spot", vector3(-2574.32, 2534.42, 1.84), 25.0, 30, {
         name="Herion_Spot",
         heading=0,
         --debugPoly=true,
@@ -11,21 +11,21 @@ Citizen.CreateThread(function()
 end)
 
 
-RegisterNetEvent('prp-polyzone:enter')
-AddEventHandler('prp-polyzone:enter', function(name)
+RegisterNetEvent('mrp-polyzone:enter')
+AddEventHandler('mrp-polyzone:enter', function(name)
     if name == "Herion_Spot" then
         pHerionSpot = true
         NearHerionSpot()
-		TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Pick opium poppy")) 
+		TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Pick opium poppy")) 
     end
 end)
 
-RegisterNetEvent('prp-polyzone:exit')
-AddEventHandler('prp-polyzone:exit', function(name)
+RegisterNetEvent('mrp-polyzone:exit')
+AddEventHandler('mrp-polyzone:exit', function(name)
     if name == "Herion_Spot" then
         pHerionSpot = false
     end
-    TriggerEvent('prp-ui:HideUI')
+    TriggerEvent('mrp-ui:HideUI')
 end)
 
 
@@ -43,7 +43,7 @@ function NearHerionSpot()
 					end
 
 					TriggerEvent("animation:farm")
-					local finished = exports["prp-taskbar"]:taskBar(4000,"Picking")
+					local finished = exports["mrp-taskbar"]:taskBar(4000,"Picking")
 					if (finished == 100) then
 						TriggerEvent("player:receiveItem","opiumpoppy", math.random(1,2))
 						TriggerEvent("client:newStress",true,50)

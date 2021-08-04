@@ -274,7 +274,7 @@ Citizen.CreateThread( function()
           if GetPedInVehicleSeat(veh, -1) == playerped then           
               -- if (latestveh ~= veh) then
               --   TriggerEvent("tuner:setDriver")
-              -- Moved to prp-oVehicleMod
+              -- Moved to mrp-oVehicleMod
               -- end
               if (latestveh ~= veh and not hasKey(plate)) or not hasKey(plate) then
                 TriggerEvent("keys:shutoffengine")
@@ -331,7 +331,7 @@ function shutoffenginesearch()
           fuckingRETARDED = false
           return
         end
-        local finished = exports["prp-taskbar"]:taskBar(5000,"Searching")
+        local finished = exports["mrp-taskbar"]:taskBar(5000,"Searching")
         Citizen.Wait(100)
 
         local luck = math.random(50,69)
@@ -341,7 +341,7 @@ function shutoffenginesearch()
           return
         end
         if luck == 69 and finished == 100 then
-          local finished = exports["prp-taskbar"]:taskBar(2000,"Found and Using Keys")
+          local finished = exports["mrp-taskbar"]:taskBar(2000,"Found and Using Keys")
           SetVehicleEngineOn(veh,0,1,1)
           SetVehicleUndriveable(veh,false)
           TriggerEvent("keys:addNew",veh,GetVehicleNumberPlateText(veh))
@@ -351,14 +351,14 @@ function shutoffenginesearch()
           return
         end        
         luck = math.random(100)
-        local finished = exports["prp-taskbar"]:taskBar(5000,"Searching Backseat")
+        local finished = exports["mrp-taskbar"]:taskBar(5000,"Searching Backseat")
         if luck > 75 and finished then
           if not IsPedInAnyVehicle(PlayerPedId(), false) then
             fuckingRETARDED = false
             return
           end
 
-          local finished = exports["prp-taskbar"]:taskBar(2000,"Found Content")
+          local finished = exports["mrp-taskbar"]:taskBar(2000,"Found Content")
           DropItemPed()
         end
 
@@ -392,7 +392,7 @@ function shutoffenginehotwire()
           return
         end
 
-        local finished = exports["prp-taskbar"]:taskBar(math.random(10000, 12500),"Attempting Hotwire")
+        local finished = exports["mrp-taskbar"]:taskBar(math.random(10000, 12500),"Attempting Hotwire")
           if finished == 100 then
             local luck = math.random(1,100)
             if not IsPedInAnyVehicle(PlayerPedId(), false) then
@@ -463,7 +463,7 @@ Citizen.CreateThread( function()
               if IsEntityDead(pedDriver) then
 
   
-                local finished = exports["prp-taskbar"]:taskBar(3000,"Taking Keys",false)
+                local finished = exports["mrp-taskbar"]:taskBar(3000,"Taking Keys",false)
                 if finished == 100 then
                  -- SetEntityAsMissionEntity(curveh,false,true)
                   TriggerEvent("keys:addNew",curveh,plate1)
@@ -485,7 +485,7 @@ Citizen.CreateThread( function()
                   if math.random(100) > 95 then
 
             
-                      local finished = exports["prp-taskbar"]:taskBar(3000,"Taking Keys")
+                      local finished = exports["mrp-taskbar"]:taskBar(3000,"Taking Keys")
                       if finished == 100 then
                        -- SetEntityAsMissionEntity(curveh,false,true)
                         TriggerEvent("keys:addNew",curveh,plate1)

@@ -1,14 +1,14 @@
-RegisterNetEvent("prp-weedstore:startpicking")
-AddEventHandler("prp-weedstore:startpicking", function()
+RegisterNetEvent("mrp-weedstore:startpicking")
+AddEventHandler("mrp-weedstore:startpicking", function()
     local rank = exports["prp_manager"]:GroupRank("best_buds")
     if rank > 0 then  
-        if exports['prp-inventory']:hasEnoughOfItem("qualityscales", 1) then
+        if exports['mrp-inventory']:hasEnoughOfItem("qualityscales", 1) then
             local dict = 'missfinale_c2ig_11'
             LoadDict(dict)
             FreezeEntityPosition(GetPlayerPed(-1),true)
             TaskPlayAnim(GetPlayerPed(-1), dict, "pushcar_offcliff_f", 3.0, -8, -1, 63, 0, 0, 0, 0 )
             SetEntityHeading(GetPlayerPed(-1), 355.69338989258)
-            local finished = exports['prp-taskbar']:taskBar(20000, 'Harvesting')
+            local finished = exports['mrp-taskbar']:taskBar(20000, 'Harvesting')
             if (finished == 100) then
                 TriggerEvent('player:receiveItem', 'driedbud', 6)
                 FreezeEntityPosition(GetPlayerPed(-1),false)
@@ -23,17 +23,17 @@ AddEventHandler("prp-weedstore:startpicking", function()
         TriggerEvent('DoLongHudText', 'You need a license', 2)
     end
 end)
-RegisterNetEvent("prp-weedstore:startpacking")
-AddEventHandler("prp-weedstore:startpacking", function()
+RegisterNetEvent("mrp-weedstore:startpacking")
+AddEventHandler("mrp-weedstore:startpacking", function()
     local rank = exports["prp_manager"]:GroupRank("best_buds")
     if rank > 0 then  
-        if exports['prp-inventory']:hasEnoughOfItem("driedbud", 50) and exports['prp-inventory']:hasEnoughOfItem("plastic", 25) then
+        if exports['mrp-inventory']:hasEnoughOfItem("driedbud", 50) and exports['mrp-inventory']:hasEnoughOfItem("plastic", 25) then
             local dict = 'missfinale_c2ig_11'
             LoadDict(dict)
             FreezeEntityPosition(GetPlayerPed(-1),true)
             TaskPlayAnim(GetPlayerPed(-1), dict, "pushcar_offcliff_f", 3.0, -8, -1, 63, 0, 0, 0, 0 )
             SetEntityHeading(GetPlayerPed(-1), 186.32456970215)
-            local finished = exports['prp-taskbar']:taskBar(20000, 'Packaging')
+            local finished = exports['mrp-taskbar']:taskBar(20000, 'Packaging')
             if (finished == 100) then
                 TriggerEvent('player:receiveItem', 'boxofweed', 1)
                 TriggerEvent("inventory:removeItem", "plastic", 25)
@@ -55,7 +55,7 @@ RegisterNetEvent("weedstore:register")
 AddEventHandler("weedstore:register", function(registerID)
     local myJob = exports["prp_manager"]:isPed("myJob")
     if myJob == "best_buds" then
-        local order = exports["prp-applications"]:KeyboardInput({
+        local order = exports["mrp-applications"]:KeyboardInput({
             header = "Create Receipt",
             rows = {
                 {

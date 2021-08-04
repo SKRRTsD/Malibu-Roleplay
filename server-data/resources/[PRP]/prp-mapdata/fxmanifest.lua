@@ -5,7 +5,7 @@ this_is_a_map 'yes'
 
 client_script {
   'gabz_entitysets_mods_1.lua',
-  '@prp-errorlog/client/cl_errorlog.lua',
+  '@mrp-errorlog/client/cl_errorlog.lua',
   'client.lua',
   'afterhours.lua'
 }

@@ -13,8 +13,8 @@ local Keys = {
 local timer = 0
 local GunQuantity = 0
 
-RegisterNetEvent("prp-core:playerSessionStarted")
-AddEventHandler("prp-core:playerSessionStarted", function()
+RegisterNetEvent("mrp-core:playerSessionStarted")
+AddEventHandler("mrp-core:playerSessionStarted", function()
 	ScriptLoaded()
 end)
 
@@ -141,25 +141,25 @@ function LoadMarkers()
 
 end
 
-RegisterNetEvent("prp-hunting:start")
-AddEventHandler("prp-hunting:start", function()
-	TriggerServerEvent('prp-hunting:starthoe')
+RegisterNetEvent("mrp-hunting:start")
+AddEventHandler("mrp-hunting:start", function()
+	TriggerServerEvent('mrp-hunting:starthoe')
 	LoadMarkers()
 end)
 
-RegisterNetEvent("prp-hunting:start2")
-AddEventHandler("prp-hunting:start2", function()
+RegisterNetEvent("mrp-hunting:start2")
+AddEventHandler("mrp-hunting:start2", function()
 	StartHuntingSession()
 end)
 
-RegisterNetEvent("prp-hunting:stop")
-AddEventHandler("prp-hunting:stop", function()
+RegisterNetEvent("mrp-hunting:stop")
+AddEventHandler("mrp-hunting:stop", function()
 	if OnGoingHuntSession then
 		TriggerEvent('hunting:onxhair', true)
-		if exports["prp-inventory"]:getQuantity(100416529) then
+		if exports["mrp-inventory"]:getQuantity(100416529) then
 			OnGoingHuntSession = false
-			TriggerServerEvent('prp-hunting:removeloadout')
-			TriggerServerEvent('prp-hunting:huntingreturnree')
+			TriggerServerEvent('mrp-hunting:removeloadout')
+			TriggerServerEvent('mrp-hunting:huntingreturnree')
 			if DoesEntityExist(HuntCar) then
 				DeleteEntity(HuntCar)
 			end
@@ -174,14 +174,14 @@ AddEventHandler("prp-hunting:stop", function()
 	end
 end)
 
-RegisterNetEvent("prp-hunting:sellcarcass1")
-AddEventHandler("prp-hunting:sellcarcass1", function()
-	if exports["prp-inventory"]:getQuantity("huntingcarcass1") >= 1 then
+RegisterNetEvent("mrp-hunting:sellcarcass1")
+AddEventHandler("mrp-hunting:sellcarcass1", function()
+	if exports["mrp-inventory"]:getQuantity("huntingcarcass1") >= 1 then
 		playerAnim()
-		local finished = exports["prp-taskbar"]:taskBar(4000,"Selling 1 Star",true,false,playerVeh)
+		local finished = exports["mrp-taskbar"]:taskBar(4000,"Selling 1 Star",true,false,playerVeh)
 		if (finished == 100) then
 			local carcass = math.random(90, 160)
-			TriggerServerEvent("prp-hunting:sell", carcass)
+			TriggerServerEvent("mrp-hunting:sell", carcass)
 			ClearPedTasksImmediately(PlayerPedId())
 			TriggerEvent('inventory:removeItem', 'huntingcarcass1', 1)
 		end
@@ -190,14 +190,14 @@ AddEventHandler("prp-hunting:sellcarcass1", function()
 	end
 end)
 
-RegisterNetEvent("prp-hunting:sellcarcass2")
-AddEventHandler("prp-hunting:sellcarcass2", function()
-	if exports["prp-inventory"]:getQuantity("huntingcarcass2") >= 1 then
+RegisterNetEvent("mrp-hunting:sellcarcass2")
+AddEventHandler("mrp-hunting:sellcarcass2", function()
+	if exports["mrp-inventory"]:getQuantity("huntingcarcass2") >= 1 then
 		playerAnim()
-		local finished = exports["prp-taskbar"]:taskBar(4000,"Selling 2 Star",true,false,playerVeh)
+		local finished = exports["mrp-taskbar"]:taskBar(4000,"Selling 2 Star",true,false,playerVeh)
 		if (finished == 100) then
 			local carcass2 = math.random(130, 190)
-			TriggerServerEvent("prp-hunting:sell", carcass2)
+			TriggerServerEvent("mrp-hunting:sell", carcass2)
 			ClearPedTasksImmediately(PlayerPedId())
 			TriggerEvent('inventory:removeItem', 'huntingcarcass2', 1)
 		end
@@ -206,14 +206,14 @@ AddEventHandler("prp-hunting:sellcarcass2", function()
 	end
 end)
 
-RegisterNetEvent("prp-hunting:sellcarcass3")
-AddEventHandler("prp-hunting:sellcarcass3", function()
-	if exports["prp-inventory"]:getQuantity("huntingcarcass3") >= 1 then
+RegisterNetEvent("mrp-hunting:sellcarcass3")
+AddEventHandler("mrp-hunting:sellcarcass3", function()
+	if exports["mrp-inventory"]:getQuantity("huntingcarcass3") >= 1 then
 		playerAnim()
-		local finished = exports["prp-taskbar"]:taskBar(4000,"Selling 3 Star",true,false,playerVeh)
+		local finished = exports["mrp-taskbar"]:taskBar(4000,"Selling 3 Star",true,false,playerVeh)
 		if (finished == 100) then
 			local carcass3 = math.random(180, 260)
-			TriggerServerEvent("prp-hunting:sell", carcass3)
+			TriggerServerEvent("mrp-hunting:sell", carcass3)
 			ClearPedTasksImmediately(PlayerPedId())
 			TriggerEvent('inventory:removeItem', 'huntingcarcass3', 1)
 		end
@@ -222,14 +222,14 @@ AddEventHandler("prp-hunting:sellcarcass3", function()
 	end
 end)
 
-RegisterNetEvent("prp-hunting:sellcarcass4")
-AddEventHandler("prp-hunting:sellcarcass4", function()
-	if exports["prp-inventory"]:getQuantity("huntingcarcass4") >= 1 then
+RegisterNetEvent("mrp-hunting:sellcarcass4")
+AddEventHandler("mrp-hunting:sellcarcass4", function()
+	if exports["mrp-inventory"]:getQuantity("huntingcarcass4") >= 1 then
 		playerAnim()
-		local finished = exports["prp-taskbar"]:taskBar(4000,"Selling Red 3 Star",true,false,playerVeh)
+		local finished = exports["mrp-taskbar"]:taskBar(4000,"Selling Red 3 Star",true,false,playerVeh)
 		if finished == 100 then
 			local carcass4 = math.random(340, 460)
-			TriggerServerEvent("prp-hunting:sell", carcass4)
+			TriggerServerEvent("mrp-hunting:sell", carcass4)
 			ClearPedTasksImmediately(PlayerPedId())
 			TriggerEvent('inventory:removeItem', 'huntingcarcass4', 1)
 			TriggerEvent('player:receiveItem', 'rollcash', math.random(1, 15))
@@ -259,7 +259,7 @@ function StartHuntingSession()
 				HuntCar = spawned_car
 				local plate = GetVehicleNumberPlateText(HuntCar)
 				TriggerEvent("keys:addNew", spawned_car, plate)
-				TriggerServerEvent('prp-hunting:giveloadout')
+				TriggerServerEvent('mrp-hunting:giveloadout')
 				TaskWarpPedIntoVehicle(PlayerPedId() , HuntCar, -1)
 				Citizen.Wait(3000)
 
@@ -417,7 +417,7 @@ function StartHuntingSession()
 												table.remove(AnimalsInSession, index)
 												TaskPlayAnim(PlayerPedId(), "amb@medic@standing@kneel@base" ,"base" ,8.0, -8.0, -1, 1, 0, false, false, false )
 												TaskPlayAnim(PlayerPedId(), "anim@gangops@facility@servers@bodysearch@" ,"player_search" ,8.0, -8.0, -1, 48, 0, false, false, false )
-												local finished = exports["prp-taskbar"]:taskBar(10000,"Skinning")
+												local finished = exports["mrp-taskbar"]:taskBar(10000,"Skinning")
 												TaskPlayAnim(PlayerPedId(), "amb@medic@standing@kneel@base" ,"base" ,8.0, -8.0, -1, 1, 0, false, false, false )
 												TaskPlayAnim(PlayerPedId(), "anim@gangops@facility@servers@bodysearch@" ,"player_search" ,8.0, -8.0, -1, 48, 0, false, false, false )
 													if finished == 100 then
@@ -505,7 +505,7 @@ Citizen.CreateThread(function()
 				SetAmmoInClip(PlayerPedId(), 'WEAPON_SNIPERRIFLE', 10)
 				SetPedInfiniteAmmo(PlayerPedId(), true, GetHashKey('WEAPON_SNIPERRIFLE'))
 			if timer > 380000 then 
-				TriggerServerEvent('prp-hunting:removeloadout')
+				TriggerServerEvent('mrp-hunting:removeloadout')
 				TriggerEvent('DoLongHudText', 'Uh oh! you ran out of time, yoink!', 2)
 				timer = 0
 				OnGoingHuntSession = false
@@ -521,7 +521,7 @@ Citizen.CreateThread(function()
 					RemoveWeaponFromPed(PlayerPedId(), GetHashKey('WEAPON_SNIPERRIFLE'))
 					SetPedInfiniteAmmo(PlayerPedId(), false, GetHashKey('WEAPON_SNIPERRIFLE'))
 					TriggerEvent('DoLongHudText', 'This weapon may only be used for hunting!', 2)
-					TriggerServerEvent('prp-hunting:removeloadout')
+					TriggerServerEvent('mrp-hunting:removeloadout')
 					TriggerEvent('hunting:onxhair', false)
 				end
 				TriggerEvent('hunting:onxhair', true)
@@ -585,7 +585,7 @@ Citizen.CreateThread(function()
 			SetAmmoInClip(PlayerPedId(), 'WEAPON_SNIPERRIFLE', 10)
 			SetPedInfiniteAmmo(PlayerPedId(), true, GetHashKey('WEAPON_SNIPERRIFLE'))
 		if timer > 380000 then 
-			TriggerServerEvent('prp-hunting:removeloadout')
+			TriggerServerEvent('mrp-hunting:removeloadout')
 			TriggerEvent('DoLongHudText', 'Uh oh! you ran out of time, yoink!', 2)
 			timer = 0
 			OnGoingHuntSession = false
@@ -605,13 +605,13 @@ end)
 
 RegisterNetEvent("hunting:sell")
 AddEventHandler("hunting:sell", function()
-	TriggerEvent('prp-context:sendMenu', {
+	TriggerEvent('mrp-context:sendMenu', {
 		{
 			id = "1",
 			header = "Sell Carcass 1",
 			txt = "1 Carcass",
 			params = {
-				event = "prp-hunting:sellcarcass1",
+				event = "mrp-hunting:sellcarcass1",
 			}
 		},
         {
@@ -619,7 +619,7 @@ AddEventHandler("hunting:sell", function()
 			header = "Sell Carcass 2",
 			txt = "2 Carcass",
 			params = {
-				event = "prp-hunting:sellcarcass2",
+				event = "mrp-hunting:sellcarcass2",
 			}
 		},
         {
@@ -627,7 +627,7 @@ AddEventHandler("hunting:sell", function()
 			header = "Sell Carcass 3",
 			txt = "3 Carcass",
 			params = {
-				event = "prp-hunting:sellcarcass3",
+				event = "mrp-hunting:sellcarcass3",
 			}
 		},
 		{
@@ -635,7 +635,7 @@ AddEventHandler("hunting:sell", function()
 			header = "Sell Carcass 3(RED)",
 			txt = "3 Carcass(RED)",
 			params = {
-				event = "prp-hunting:sellcarcass4",
+				event = "mrp-hunting:sellcarcass4",
 			}
 		},
 		{

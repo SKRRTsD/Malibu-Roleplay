@@ -86,7 +86,7 @@ class SoundPlayer
   
 	create()
 	{
-	    $.post('https://prp-musicplayer/events', JSON.stringify(
+	    $.post('https://mrp-musicplayer/events', JSON.stringify(
 	    {
             type: "onLoading",
             id: this.getName(),

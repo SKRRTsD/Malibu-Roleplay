@@ -18,7 +18,7 @@ end)
 RegisterServerEvent("Best_buds:retreive:receipt")
 AddEventHandler("Best_buds:retreive:receipt", function(regID)
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
     if Best_buds[regID] then
         for i = 1, #Best_buds[regID] do
@@ -26,7 +26,7 @@ AddEventHandler("Best_buds:retreive:receipt", function(regID)
                 local amount = Best_buds[regID][i].price
                 if (tonumber(user:getCash()) >= tonumber(amount)) then
                     user:removeMoney(tonumber(amount))
-                    local owner = exports["prp-core"]:getModule("Player"):GetUser(Best_buds[regID][i].owner)
+                    local owner = exports["mrp-core"]:getModule("Player"):GetUser(Best_buds[regID][i].owner)
                     local char = owner:getCurrentCharacter()
                     information = {
                         ["Price"] = tonumber(amount),
@@ -58,7 +58,7 @@ end)
 RegisterServerEvent("Best_buds:update:pay")
 AddEventHandler("Best_buds:update:pay", function(cid)
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local characterId = user:getVar("character").id
     local invname = 'ply-'..characterId
     exports.ghmattimysql:execute("SELECT `slot`, `information` FROM user_inventory2 WHERE name = ? AND `item_id` = ? ORDER BY slot DESC", {invname, "ownerreceipt"}, function(data)

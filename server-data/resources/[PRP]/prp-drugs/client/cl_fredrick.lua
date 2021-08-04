@@ -1,9 +1,9 @@
 RegisterNetEvent('speaktofredrick1')
 AddEventHandler('speaktofredrick1', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("vpnxj",1,false) then
+    if exports["mrp-inventory"]:hasEnoughOfItem("vpnxj",1,false) then
         FreezeEntityPosition(GetPlayerPed(-1),true)
         ExecuteCommand("e argue")
-        local finished = exports["prp-taskbar"]:taskBar(13000,"Speaking to fredrick")
+        local finished = exports["mrp-taskbar"]:taskBar(13000,"Speaking to fredrick")
         if finished == 100 then
             FreezeEntityPosition(GetPlayerPed(-1),false)
             TriggerEvent("fredrickmenu")
@@ -25,7 +25,7 @@ RegisterNetEvent('basiclaptop1')
 AddEventHandler('basiclaptop1', function()
 	FreezeEntityPosition(GetPlayerPed(-1),true)
 	ExecuteCommand("e think2")
-	local finished = exports["prp-taskbar"]:taskBar(13000,"Fredrick - Give me a sec")
+	local finished = exports["mrp-taskbar"]:taskBar(13000,"Fredrick - Give me a sec")
 	if finished == 100 then
 		FreezeEntityPosition(GetPlayerPed(-1),false)
 		TriggerEvent("player:receiveItem", "jimpass", 1)
@@ -41,7 +41,7 @@ end)
 
 RegisterNetEvent('jim:laptop1')
 AddEventHandler('jim:laptop1', function()
-	if exports["prp-inventory"]:hasEnoughOfItem("jimpass",1,false) then
+	if exports["mrp-inventory"]:hasEnoughOfItem("jimpass",1,false) then
 		FreezeEntityPosition(GetPlayerPed(-1),true)
 		ExecuteCommand("e think")
 		TriggerEvent("mt:missiontext", "Yo dawg you want a laptop?", "1")
@@ -64,7 +64,7 @@ end)
 RegisterNetEvent('buy:laptop1')
 AddEventHandler('buy:laptop1', function()
 	FreezeEntityPosition(GetPlayerPed(-1),true)
-	local finished = exports["prp-taskbar"]:taskBar(6000,"ight dawg slide me 5k")
+	local finished = exports["mrp-taskbar"]:taskBar(6000,"ight dawg slide me 5k")
 	if finished == 100 then
 		FreezeEntityPosition(GetPlayerPed(-1),false)
 		TriggerServerEvent("laptop1cash")
@@ -86,7 +86,7 @@ end)
 
 RegisterNetEvent("fredrickmenu")
 AddEventHandler("fredrickmenu", function()
-	TriggerEvent('prp-context:sendMenu', {
+	TriggerEvent('mrp-context:sendMenu', {
 		{
 			id = "1",
 			header = "Basic Laptop",
@@ -110,7 +110,7 @@ end)
 
 RegisterNetEvent("jimmenu")
 AddEventHandler("jimmenu", function()
-	TriggerEvent('prp-context:sendMenu', {
+	TriggerEvent('mrp-context:sendMenu', {
 		{
 			id = "1",
 			header = "Yer",
@@ -157,7 +157,7 @@ end)
 
 RegisterNetEvent("Karen-Menu")
 AddEventHandler("Karen-Menu", function()
-	TriggerEvent('prp-context:sendMenu', {
+	TriggerEvent('mrp-context:sendMenu', {
         {
 			id = "1",
 			header = "Karen!",
@@ -186,10 +186,10 @@ end)
 
 RegisterNetEvent('kaarensahhoe')
 AddEventHandler('kaarensahhoe', function()
-    if exports["prp-inventory"]:hasEnoughOfItem("rollcash",250,false) then
+    if exports["mrp-inventory"]:hasEnoughOfItem("rollcash",250,false) then
         FreezeEntityPosition(GetPlayerPed(-1),true)
         ExecuteCommand("e think")
-        local finished = exports["prp-taskbar"]:taskBar(13000,"Speaking to Karen")
+        local finished = exports["mrp-taskbar"]:taskBar(13000,"Speaking to Karen")
         if finished == 100 then
 			TriggerEvent('inventory:removeItem', 'rollcash', 250)
             FreezeEntityPosition(GetPlayerPed(-1),false)

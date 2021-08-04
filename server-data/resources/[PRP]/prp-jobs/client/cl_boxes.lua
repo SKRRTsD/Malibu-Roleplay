@@ -16,8 +16,8 @@ function checkforBoxes()
     return false
 end
   
-RegisterNetEvent('prp-boxes')
-AddEventHandler('prp-boxes', function() 
+RegisterNetEvent('mrp-boxes')
+AddEventHandler('mrp-boxes', function() 
     local ped = GetPlayerPed(-1)
     local pos = GetEntityCoords(ped)
     local boxFound = false
@@ -38,7 +38,7 @@ AddEventHandler('prp-boxes', function()
                     LoadDict(dict)
                     FreezeEntityPosition(GetPlayerPed(-1),true)
                     TaskPlayAnim(GetPlayerPed(-1), dict, 'base', 3.0, -8, -1, 63, 0, 0, 0, 0 )
-                    local finished = exports ['prp-taskbar']:taskBar(10000, 'searching box')
+                    local finished = exports ['mrp-taskbar']:taskBar(10000, 'searching box')
                     if (finished ==100) then
                         TriggerServerEvent('prp:giveboxReward')
                         TriggerServerEvent('prp:startboxTimer', box)
@@ -58,8 +58,8 @@ AddEventHandler('prp-boxes', function()
     end
 end)
 
-RegisterNetEvent('prp-boxes2')
-AddEventHandler('prp-boxes2', function() 
+RegisterNetEvent('mrp-boxes2')
+AddEventHandler('mrp-boxes2', function() 
     local ped = GetPlayerPed(-1)
     local pos = GetEntityCoords(ped)
     local boxFound = false
@@ -80,7 +80,7 @@ AddEventHandler('prp-boxes2', function()
                     LoadDict(dict)
                     FreezeEntityPosition(GetPlayerPed(-1),true)
                     TaskPlayAnim(GetPlayerPed(-1), dict, 'base', 3.0, -8, -1, 63, 0, 0, 0, 0 )
-                    local finished = exports ['prp-taskbar']:taskBar(10000, 'searching box')
+                    local finished = exports ['mrp-taskbar']:taskBar(10000, 'searching box')
                     if (finished ==100) then
                         TriggerServerEvent('prp:giveboxReward')
                         TriggerServerEvent('prp:startboxTimer', box2)
@@ -96,8 +96,8 @@ AddEventHandler('prp-boxes2', function()
     end
 end)
 
-RegisterNetEvent('prp-boxes3')
-AddEventHandler('prp-boxes3', function() 
+RegisterNetEvent('mrp-boxes3')
+AddEventHandler('mrp-boxes3', function() 
     local ped = GetPlayerPed(-1)
     local pos = GetEntityCoords(ped)
     local boxFound = false
@@ -118,7 +118,7 @@ AddEventHandler('prp-boxes3', function()
                     LoadDict(dict)
                     FreezeEntityPosition(GetPlayerPed(-1),true)
                     TaskPlayAnim(GetPlayerPed(-1), dict, 'base', 3.0, -8, -1, 63, 0, 0, 0, 0 )
-                    local finished = exports ['prp-taskbar']:taskBar(10000, 'searching box')
+                    local finished = exports ['mrp-taskbar']:taskBar(10000, 'searching box')
                     if (finished ==100) then
                         TriggerServerEvent('prp:giveboxReward')
                         TriggerServerEvent('prp:startboxTimer', box3)

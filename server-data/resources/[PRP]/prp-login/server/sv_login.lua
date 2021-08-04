@@ -1,13 +1,13 @@
-RegisterServerEvent('prp-login:disconnectPlayer')
-AddEventHandler('prp-login:disconnectPlayer', function()
+RegisterServerEvent('mrp-login:disconnectPlayer')
+AddEventHandler('mrp-login:disconnectPlayer', function()
     local src = source
     DropPlayer(src, "You have been disconnected from the server")
 end)
 
-RegisterServerEvent("prp-login:licenses")
-AddEventHandler("prp-login:licenses", function()
+RegisterServerEvent("mrp-login:licenses")
+AddEventHandler("mrp-login:licenses", function()
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local char = user:getVar("character")
     exports.ghmattimysql:execute("INSERT INTO user_licenses (type, owner) VALUES (@type, @owner)", {['@type'] = "Firearm",['@owner'] = char.id})
     exports.ghmattimysql:execute("INSERT INTO user_licenses (type, owner, status) VALUES (@type, @owner, @status)", {['@type'] = "Driver", ['@owner'] = char.id, ['@status'] = "1"})

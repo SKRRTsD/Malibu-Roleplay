@@ -1,7 +1,7 @@
-RegisterServerEvent("prp-mdt:Open")
-AddEventHandler("prp-mdt:Open", function(type)
+RegisterServerEvent("mrp-mdt:Open")
+AddEventHandler("mrp-mdt:Open", function(type)
 	local usource = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(usource)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(usource)
     local characterId = user:getVar("character").id
 	if type == "police" then
 		exports.ghmattimysql:execute("SELECT * FROM character_passes WHERE cid = @cid", {['cid'] = characterId}, function(result)
@@ -16,7 +16,7 @@ AddEventHandler("prp-mdt:Open", function(type)
 						end
 
 						local officer = GetCharacterName(usource)
-						TriggerClientEvent('prp-mdt:toggleVisibilty', usource, reports, warrants, officer, "Police")
+						TriggerClientEvent('mrp-mdt:toggleVisibilty', usource, reports, warrants, officer, "Police")
 					end)
 				end)
 			end
@@ -34,7 +34,7 @@ AddEventHandler("prp-mdt:Open", function(type)
 						end
 
 						local officer = GetCharacterName(usource)
-						TriggerClientEvent('prp-mdt:toggleVisibilty', usource, reports, warrants, officer, "Police")
+						TriggerClientEvent('mrp-mdt:toggleVisibilty', usource, reports, warrants, officer, "Police")
 					end)
 				end)
 			end
@@ -42,8 +42,8 @@ AddEventHandler("prp-mdt:Open", function(type)
 	end
 end)
 
-RegisterServerEvent("prp-mdt:getOffensesAndOfficer")
-AddEventHandler("prp-mdt:getOffensesAndOfficer", function()
+RegisterServerEvent("mrp-mdt:getOffensesAndOfficer")
+AddEventHandler("mrp-mdt:getOffensesAndOfficer", function()
 	local usource = source
 	local charges = {}
 	MySQL.Async.fetchAll('SELECT * FROM fine_types', {
@@ -56,12 +56,12 @@ AddEventHandler("prp-mdt:getOffensesAndOfficer", function()
 
 		local officer = GetCharacterName(usource)
 
-		TriggerClientEvent("prp-mdt:returnOffensesAndOfficer", usource, charges, officer)
+		TriggerClientEvent("mrp-mdt:returnOffensesAndOfficer", usource, charges, officer)
 	end)
 end)
 
-RegisterServerEvent("prp-mdt:performOffenderSearch")
-AddEventHandler("prp-mdt:performOffenderSearch", function(query)
+RegisterServerEvent("mrp-mdt:performOffenderSearch")
+AddEventHandler("mrp-mdt:performOffenderSearch", function(query)
 	local usource = source
 	local matches = {}
 	MySQL.Async.fetchAll("SELECT * FROM `characters` WHERE LOWER(`first_name`) LIKE @query OR LOWER(`last_name`) LIKE @query OR CONCAT(LOWER(`first_name`), ' ', LOWER(`last_name`)) LIKE @query", {
@@ -72,12 +72,12 @@ AddEventHandler("prp-mdt:performOffenderSearch", function(query)
 			table.insert(matches, data)
 		end
 
-		TriggerClientEvent("prp-mdt:returnOffenderSearchResults", usource, matches)
+		TriggerClientEvent("mrp-mdt:returnOffenderSearchResults", usource, matches)
 	end)
 end)
 
-RegisterServerEvent("prp-mdt:getOffenderDetails")
-AddEventHandler("prp-mdt:getOffenderDetails", function(offender)
+RegisterServerEvent("mrp-mdt:getOffenderDetails")
+AddEventHandler("mrp-mdt:getOffenderDetails", function(offender)
 	local usource = source
 	local result = MySQL.Sync.fetchAll('SELECT * FROM `user_mdt` WHERE `char_id` = @id', {
 		['@id'] = offender.id
@@ -136,11 +136,11 @@ AddEventHandler("prp-mdt:getOffenderDetails", function(offender)
 	-- end
 	-- offender.vehicles = vehicles
 
-	TriggerClientEvent("prp-mdt:returnOffenderDetails", usource, offender)
+	TriggerClientEvent("mrp-mdt:returnOffenderDetails", usource, offender)
 end)
 
-RegisterServerEvent("prp-mdt:getOffenderDetailsById")
-AddEventHandler("prp-mdt:getOffenderDetailsById", function(char_id)
+RegisterServerEvent("mrp-mdt:getOffenderDetailsById")
+AddEventHandler("mrp-mdt:getOffenderDetailsById", function(char_id)
 	local usource = source
 
 	local result = MySQL.Sync.fetchAll('SELECT * FROM `characters` WHERE `id` = @id', {
@@ -149,8 +149,8 @@ AddEventHandler("prp-mdt:getOffenderDetailsById", function(char_id)
 	local offender = result[1]
 
 	if not offender then
-		TriggerClientEvent("prp-mdt:closeModal", usource)
-		TriggerClientEvent("prp-mdt:sendNotification", usource, "This person no longer exists.")
+		TriggerClientEvent("mrp-mdt:closeModal", usource)
+		TriggerClientEvent("mrp-mdt:sendNotification", usource, "This person no longer exists.")
 		return
 	end
 
@@ -211,11 +211,11 @@ AddEventHandler("prp-mdt:getOffenderDetailsById", function(char_id)
 	-- end
 	-- offender.vehicles = vehicles
 
-	TriggerClientEvent("prp-mdt:returnOffenderDetails", usource, offender)
+	TriggerClientEvent("mrp-mdt:returnOffenderDetails", usource, offender)
 end)
 
-RegisterServerEvent("prp-mdt:saveOffenderChanges")
-AddEventHandler("prp-mdt:saveOffenderChanges", function(id, changes, identifier)
+RegisterServerEvent("mrp-mdt:saveOffenderChanges")
+AddEventHandler("mrp-mdt:saveOffenderChanges", function(id, changes, identifier)
 	local usource = source
 	MySQL.Async.fetchAll('SELECT * FROM `user_mdt` WHERE `char_id` = @id', {
 		['@id']  = id
@@ -253,30 +253,30 @@ AddEventHandler("prp-mdt:saveOffenderChanges", function(id, changes, identifier)
 			})
 		end
 
-		TriggerClientEvent("prp-mdt:sendNotification", usource, "Offender changes have been saved.")
+		TriggerClientEvent("mrp-mdt:sendNotification", usource, "Offender changes have been saved.")
 	end)
 end)
 
-RegisterServerEvent("prp-mdt:saveReportChanges")
-AddEventHandler("prp-mdt:saveReportChanges", function(data)
+RegisterServerEvent("mrp-mdt:saveReportChanges")
+AddEventHandler("mrp-mdt:saveReportChanges", function(data)
 	MySQL.Async.execute('UPDATE `mdt_reports` SET `title` = @title, `incident` = @incident WHERE `id` = @id', {
 		['@id'] = data.id,
 		['@title'] = data.title,
 		['@incident'] = data.incident
 	})
-	TriggerClientEvent("prp-mdt:sendNotification", source, "Report changes have been saved.")
+	TriggerClientEvent("mrp-mdt:sendNotification", source, "Report changes have been saved.")
 end)
 
-RegisterServerEvent("prp-mdt:deleteReport")
-AddEventHandler("prp-mdt:deleteReport", function(id)
+RegisterServerEvent("mrp-mdt:deleteReport")
+AddEventHandler("mrp-mdt:deleteReport", function(id)
 	MySQL.Async.execute('DELETE FROM `mdt_reports` WHERE `id` = @id', {
 		['@id']  = id
 	})
-	TriggerClientEvent("prp-mdt:sendNotification", source, "Report has been successfully deleted.")
+	TriggerClientEvent("mrp-mdt:sendNotification", source, "Report has been successfully deleted.")
 end)
 
-RegisterServerEvent("prp-mdt:submitNewReport")
-AddEventHandler("prp-mdt:submitNewReport", function(data)
+RegisterServerEvent("mrp-mdt:submitNewReport")
+AddEventHandler("mrp-mdt:submitNewReport", function(data)
 	local usource = source
 	local author = GetCharacterName(source)
 	if tonumber(data.sentence) and tonumber(data.sentence) > 0 then
@@ -296,8 +296,8 @@ AddEventHandler("prp-mdt:submitNewReport", function(data)
 		['@date'] = data.date,
 		['@sentence'] = data.sentence
 	}, function(id)
-		TriggerEvent("prp-mdt:getReportDetailsById", id, usource)
-		TriggerClientEvent("prp-mdt:sendNotification", usource, "A new report has been submitted.")
+		TriggerEvent("mrp-mdt:getReportDetailsById", id, usource)
+		TriggerClientEvent("mrp-mdt:sendNotification", usource, "A new report has been submitted.")
 	end)
 
 	for offense, count in pairs(data.charges) do
@@ -322,8 +322,8 @@ AddEventHandler("prp-mdt:submitNewReport", function(data)
 	end
 end)
 
-RegisterServerEvent("prp-mdt:performReportSearch")
-AddEventHandler("prp-mdt:performReportSearch", function(query)
+RegisterServerEvent("mrp-mdt:performReportSearch")
+AddEventHandler("mrp-mdt:performReportSearch", function(query)
 	local usource = source
 	local matches = {}
 	MySQL.Async.fetchAll("SELECT * FROM `mdt_reports` WHERE `id` LIKE @query OR LOWER(`title`) LIKE @query OR LOWER(`name`) LIKE @query OR LOWER(`author`) LIKE @query or LOWER(`charges`) LIKE @query", {
@@ -335,12 +335,12 @@ AddEventHandler("prp-mdt:performReportSearch", function(query)
 			table.insert(matches, data)
 		end
 
-		TriggerClientEvent("prp-mdt:returnReportSearchResults", usource, matches)
+		TriggerClientEvent("mrp-mdt:returnReportSearchResults", usource, matches)
 	end)
 end)
 
--- RegisterServerEvent("prp-mdt:performVehicleSearch")
--- AddEventHandler("prp-mdt:performVehicleSearch", function(query)
+-- RegisterServerEvent("mrp-mdt:performVehicleSearch")
+-- AddEventHandler("mrp-mdt:performVehicleSearch", function(query)
 -- 	local usource = source
 -- 	local matches = {}
 -- 	MySQL.Async.fetchAll("SELECT * FROM `characters_cars` WHERE LOWER(`license_plate`) LIKE @query", {
@@ -359,14 +359,14 @@ end)
 -- 			table.insert(matches, data)
 -- 		end
 
--- 		TriggerClientEvent("prp-mdt:returnVehicleSearchResults", usource, matches)
+-- 		TriggerClientEvent("mrp-mdt:returnVehicleSearchResults", usource, matches)
 -- 	end)
 -- end)
 
--- RegisterServerEvent("prp-mdt:performVehicleSearchInFront")
--- AddEventHandler("prp-mdt:performVehicleSearchInFront", function(query)
+-- RegisterServerEvent("mrp-mdt:performVehicleSearchInFront")
+-- AddEventHandler("mrp-mdt:performVehicleSearchInFront", function(query)
 -- 	local usource = source
--- 	local user = exports["prp-core"]:getModule("Player"):GetUser(usource)
+-- 	local user = exports["mrp-core"]:getModule("Player"):GetUser(usource)
 --     local characterId = user:getVar("character").id
 -- 	exports.ghmattimysql:execute("SELECT * FROM character_passes WHERE cid = @cid", {['cid'] = characterId}, function(result)
 -- 		if result[1].pass_type == 'police' or result[1].pass_type == 'DOJ' then
@@ -382,8 +382,8 @@ end)
 -- 						['@query'] = query
 -- 					}, function(result)
 -- 						local officer = GetCharacterName(usource)
--- 						TriggerClientEvent('prp-mdt:toggleVisibilty', usource, reports, warrants, officer, "Police")
--- 						TriggerClientEvent("prp-mdt:returnVehicleSearchInFront", usource, result, query)
+-- 						TriggerClientEvent('mrp-mdt:toggleVisibilty', usource, reports, warrants, officer, "Police")
+-- 						TriggerClientEvent("mrp-mdt:returnVehicleSearchInFront", usource, result, query)
 -- 					end)
 -- 				end)
 -- 			end)
@@ -391,8 +391,8 @@ end)
 -- 	end)
 -- end)
 
--- RegisterServerEvent("prp-mdt:getVehicle")
--- AddEventHandler("prp-mdt:getVehicle", function(vehicle)
+-- RegisterServerEvent("mrp-mdt:getVehicle")
+-- AddEventHandler("mrp-mdt:getVehicle", function(vehicle)
 -- 	local usource = source
 -- 	local result = MySQL.Sync.fetchAll("SELECT * FROM `characters` WHERE `id` = @query", {
 -- 		['@query'] = vehicle.cid
@@ -426,23 +426,23 @@ end)
 -- 	if bail and bail[1] and bail[1].bail == 1 then vehicle.bail = true else vehicle.bail = false end
 
 -- 	vehicle.type = types[vehicle.type]
--- 	TriggerClientEvent("prp-mdt:returnVehicleDetails", usource, vehicle)
+-- 	TriggerClientEvent("mrp-mdt:returnVehicleDetails", usource, vehicle)
 -- end)
 
-RegisterServerEvent("prp-mdt:getWarrants")
-AddEventHandler("prp-mdt:getWarrants", function()
+RegisterServerEvent("mrp-mdt:getWarrants")
+AddEventHandler("mrp-mdt:getWarrants", function()
 	local usource = source
 	MySQL.Async.fetchAll("SELECT * FROM `mdt_warrants`", {}, function(warrants)
 		for i = 1, #warrants do
 			warrants[i].expire_time = ""
 			warrants[i].charges = json.decode(warrants[i].charges)
 		end
-		TriggerClientEvent("prp-mdt:returnWarrants", usource, warrants)
+		TriggerClientEvent("mrp-mdt:returnWarrants", usource, warrants)
 	end)
 end)
 
-RegisterServerEvent("prp-mdt:submitNewWarrant")
-AddEventHandler("prp-mdt:submitNewWarrant", function(data)
+RegisterServerEvent("mrp-mdt:submitNewWarrant")
+AddEventHandler("mrp-mdt:submitNewWarrant", function(data)
 	local usource = source
 	data.charges = json.encode(data.charges)
 	data.author = GetCharacterName(source)
@@ -458,24 +458,24 @@ AddEventHandler("prp-mdt:submitNewWarrant", function(data)
 		['@notes'] = data.notes,
 		['@author'] = data.author
 	}, function()
-		TriggerClientEvent("prp-mdt:completedWarrantAction", usource)
-		TriggerClientEvent("prp-mdt:sendNotification", usource, "A new warrant has been created.")
+		TriggerClientEvent("mrp-mdt:completedWarrantAction", usource)
+		TriggerClientEvent("mrp-mdt:sendNotification", usource, "A new warrant has been created.")
 	end)
 end)
 
-RegisterServerEvent("prp-mdt:deleteWarrant")
-AddEventHandler("prp-mdt:deleteWarrant", function(id)
+RegisterServerEvent("mrp-mdt:deleteWarrant")
+AddEventHandler("mrp-mdt:deleteWarrant", function(id)
 	local usource = source
 	MySQL.Async.execute('DELETE FROM `mdt_warrants` WHERE `id` = @id', {
 		['@id']  = id
 	}, function()
-		TriggerClientEvent("prp-mdt:completedWarrantAction", usource)
+		TriggerClientEvent("mrp-mdt:completedWarrantAction", usource)
 	end)
-	TriggerClientEvent("prp-mdt:sendNotification", usource, "Warrant has been successfully deleted.")
+	TriggerClientEvent("mrp-mdt:sendNotification", usource, "Warrant has been successfully deleted.")
 end)
 
-RegisterServerEvent("prp-mdt:getReportDetailsById")
-AddEventHandler("prp-mdt:getReportDetailsById", function(query, _source)
+RegisterServerEvent("mrp-mdt:getReportDetailsById")
+AddEventHandler("mrp-mdt:getReportDetailsById", function(query, _source)
 	if _source then source = _source end
 	local usource = source
 	MySQL.Async.fetchAll("SELECT * FROM `mdt_reports` WHERE `id` = @query", {
@@ -483,16 +483,16 @@ AddEventHandler("prp-mdt:getReportDetailsById", function(query, _source)
 	}, function(result)
 		if result and result[1] then
 			result[1].charges = json.decode(result[1].charges)
-			TriggerClientEvent("prp-mdt:returnReportDetails", usource, result[1])
+			TriggerClientEvent("mrp-mdt:returnReportDetails", usource, result[1])
 		else
-			TriggerClientEvent("prp-mdt:closeModal", usource)
-			TriggerClientEvent("prp-mdt:sendNotification", usource, "This report cannot be found.")
+			TriggerClientEvent("mrp-mdt:closeModal", usource)
+			TriggerClientEvent("mrp-mdt:sendNotification", usource, "This report cannot be found.")
 		end
 	end)
 end)
 
--- RegisterServerEvent("prp-mdt:saveVehicleChanges")
--- AddEventHandler("prp-mdt:saveVehicleChanges", function(data)
+-- RegisterServerEvent("mrp-mdt:saveVehicleChanges")
+-- AddEventHandler("mrp-mdt:saveVehicleChanges", function(data)
 -- 	if data.stolen then data.stolen = 1 else data.stolen = 0 end
 -- 	local usource = source
 -- 	MySQL.Async.fetchAll('SELECT * FROM `vehicle_mdt` WHERE `plate` = @plate', {
@@ -512,12 +512,12 @@ end)
 -- 			})
 -- 		end
 		
--- 		TriggerClientEvent("prp-mdt:sendNotification", usource, "Vehicle changes have been saved.")
+-- 		TriggerClientEvent("mrp-mdt:sendNotification", usource, "Vehicle changes have been saved.")
 -- 	end)
 -- end)
 
 function GetCharacterName(source)
-	local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
 	if user ~= false then
 		local characterId = user:getVar("character").id
 		local result = MySQL.Sync.fetchAll('SELECT first_name, last_name FROM characters WHERE id = @id', {

@@ -903,5 +903,5 @@ RegisterServerEvent("inv:playerSpawned")
 onNet("inv:playerSpawned", () => {
     db(`DELETE FROM user_inventory2 WHERE name like '%Drop%' OR name like '%Hidden%' OR name like '%trash-1%'`)
     db(`DELETE FROM user_inventory2 WHERE quality like '0'`)
-    console.log("[prp-inventory] Drops & broken items were deleted.")
+    console.log("[mrp-inventory] Drops & broken items were deleted.")
 });

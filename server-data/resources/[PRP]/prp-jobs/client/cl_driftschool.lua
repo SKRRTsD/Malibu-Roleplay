@@ -51,7 +51,7 @@ end)
 
 RegisterNetEvent('drift:garage')
 AddEventHandler('drift:garage', function()
-    TriggerEvent('prp-context:sendMenu', {
+    TriggerEvent('mrp-context:sendMenu', {
         {
             id = 1,
             header = "Rental Garage",

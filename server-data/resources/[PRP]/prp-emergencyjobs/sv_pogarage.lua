@@ -3,8 +3,8 @@ local activepolice, activeEMS = 0, 0
 RegisterServerEvent('attemptduty')
 AddEventHandler('attemptduty', function(src, pJobType)
 	if src == nil or src == 0 then src = source end
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
-	local jobs = exports["prp-core"]:getModule("JobManager")
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
+	local jobs = exports["mrp-core"]:getModule("JobManager")
 	local job = pJobType and pJobType or 'police'
 	jobs:SetJob(user, job, false, function()
 		TriggerClientEvent('nowCopGarage', src)
@@ -27,15 +27,15 @@ AddEventHandler("police:officerOffDuty", function()
 	end
 	TriggerClientEvent("job:counts", -1, activepolice, activeEMS)
 	TriggerEvent('badBlips:server:removePlayerBlipGroup', src, 'police')
- 	TriggerClientEvent("prp-jobmanager:playerBecameJob", src, "unemployed", "unemployed", true)
+ 	TriggerClientEvent("mrp-jobmanager:playerBecameJob", src, "unemployed", "unemployed", true)
 end)
 
 
 RegisterServerEvent('attemptdutym')
 AddEventHandler('attemptdutym', function(src)
 	if src == nil or src == 0 then src = source end
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
-	local jobs = exports["prp-core"]:getModule("JobManager")
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
+	local jobs = exports["mrp-core"]:getModule("JobManager")
 	local job = 'ems'
 	jobs:SetJob(user, job, false, function()
 		TriggerEvent('badBlips:server:registerPlayerBlipGroup', src, 'ems')
@@ -49,7 +49,7 @@ end)
 RegisterServerEvent('reset:blips')
 AddEventHandler('reset:blips', function()
 	local src = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
 	local characterID = user:getCurrentCharacter().id
 	exports.ghmattimysql:execute("SELECT * FROM character_passes WHERE cid = @cid", {['cid'] = characterID}, function(result)
         if result[1] then
@@ -84,7 +84,7 @@ AddEventHandler("police:EMSOffDuty", function()
 		activeEMS = 0
 	end
 	TriggerClientEvent("job:counts", -1, activepolice, activeEMS)
- 	TriggerClientEvent("prp-jobmanager:playerBecameJob", src, "unemployed", "unemployed", true)
+ 	TriggerClientEvent("mrp-jobmanager:playerBecameJob", src, "unemployed", "unemployed", true)
 end)
 
 RegisterServerEvent("duty:reset:number", function(pJob)

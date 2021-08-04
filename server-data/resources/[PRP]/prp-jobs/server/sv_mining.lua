@@ -1,7 +1,7 @@
 
 RegisterServerEvent("mining-sell:items", function(pAmount, pItem)
   local pSrc = source
-  local user = exports["prp-core"]:getModule("Player"):GetUser(pSrc)
+  local user = exports["mrp-core"]:getModule("Player"):GetUser(pSrc)
 
   if pAmount <= 0 then
     TriggerClientEvent("DoLongHudText", pSrc, "You dont have anything to sell", 2)

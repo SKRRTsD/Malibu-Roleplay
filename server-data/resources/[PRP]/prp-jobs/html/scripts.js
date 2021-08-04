@@ -76,7 +76,7 @@ $(document).ready(function(){
         var element = $('<div class="bubble-container2"> Delivery to ' + item.street2 + ' </div> <div class="bubble-container3"> Click to accept. </div> <hr> ');  
         
         element.click(function(){  
-          $.post('http://prp-jobs/selectedJob', JSON.stringify({jobType: item.jobType ,jobId: item.jobId}));  
+          $.post('http://mrp-jobs/selectedJob', JSON.stringify({jobType: item.jobType ,jobId: item.jobId}));  
         });  
         $(".container2").append(element);
 
@@ -106,7 +106,7 @@ $(document).ready(function(){
   // On 'Esc' call close method
   document.onkeyup = function (data) {
     if (data.which == 27 ) {
-      $.post('http://prp-jobs/close', JSON.stringify({}));
+      $.post('http://mrp-jobs/close', JSON.stringify({}));
     }
   };
 });

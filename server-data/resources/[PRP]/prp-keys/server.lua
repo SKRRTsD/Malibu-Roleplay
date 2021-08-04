@@ -6,7 +6,7 @@ end)
 RegisterServerEvent('enteredMyVehicle')
 AddEventHandler('enteredMyVehicle', function(plate)
   local source = tonumber(source)
-  local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+  local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
   local char = user:getCurrentCharacter()
   exports.ghmattimysql:execute("SELECT * FROM characters_cars WHERE cid = @cid AND license_plate = @license_plate", {
     ['@cid'] = char.id,
@@ -23,7 +23,7 @@ end)
 
 RegisterServerEvent("login:get:keys", function(cid)
   local pSrc = source
-  local user = exports["prp-core"]:getModule("Player"):GetUser(pSrc)
+  local user = exports["mrp-core"]:getModule("Player"):GetUser(pSrc)
   exports.ghmattimysql:execute("SELECT `license_plate` FROM characters_cars WHERE cid = ?", {cid}, function(data)
     if data[1] ~= nil then
       for i = 1, #data do

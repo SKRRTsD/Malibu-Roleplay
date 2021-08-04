@@ -1,6 +1,6 @@
 RegisterServerEvent("grandmas:attemt:checkin", function()
   local src = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
   if (user:getBalance() >= 1000) then
     TriggerClientEvent("grandmas:success:attemt", src)
   else
@@ -10,6 +10,6 @@ end)
 
 RegisterServerEvent("grandmas:bill", function()
   local src = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
   user:removeBank(1000)
 end)

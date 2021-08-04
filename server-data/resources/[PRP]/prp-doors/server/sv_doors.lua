@@ -4,8 +4,8 @@ local steamIds = {
     ["steam:110000118e95cb4"] = true, -- Kalxie
 }
 
-RegisterServerEvent('prp-doors:alterlockstate2')
-AddEventHandler('prp-doors:alterlockstate2', function()
+RegisterServerEvent('mrp-doors:alterlockstate2')
+AddEventHandler('mrp-doors:alterlockstate2', function()
     PRP.DoorCoords[10]["lock"] = 0
     PRP.DoorCoords[11]["lock"] = 0
     PRP.DoorCoords[12]["lock"] = 0
@@ -27,29 +27,29 @@ AddEventHandler('prp-doors:alterlockstate2', function()
     PRP.DoorCoords[55]["lock"] = 0
     PRP.DoorCoords[56]["lock"] = 0
 
-    TriggerClientEvent('prp-doors:alterlockstateclient', source, PRP.DoorCoords)
+    TriggerClientEvent('mrp-doors:alterlockstateclient', source, PRP.DoorCoords)
 
 end)
 
-RegisterServerEvent('prp-doors:alterlockstate')
-AddEventHandler('prp-doors:alterlockstate', function(alterNum)
+RegisterServerEvent('mrp-doors:alterlockstate')
+AddEventHandler('mrp-doors:alterlockstate', function(alterNum)
     PRP.alterState(alterNum)
 end)
 
-RegisterServerEvent('prp-doors:ForceLockState')
-AddEventHandler('prp-doors:ForceLockState', function(alterNum, state)
+RegisterServerEvent('mrp-doors:ForceLockState')
+AddEventHandler('mrp-doors:ForceLockState', function(alterNum, state)
     PRP.DoorCoords[alterNum]["lock"] = state
     TriggerClientEvent('erp:Door:alterState', -1, alterNum, state)
 end)
 
-RegisterServerEvent('prp-doors:requestlatest')
-AddEventHandler('prp-doors:requestlatest', function()
+RegisterServerEvent('mrp-doors:requestlatest')
+AddEventHandler('mrp-doors:requestlatest', function()
     local src = source 
     local steamcheck = GetPlayerIdentifiers(source)[1]
     if steamIds[steamcheck] then
         TriggerClientEvent('doors:HasKeys',src,true)
     end
-    TriggerClientEvent('prp-doors:alterlockstateclient', source,PRP.DoorCoords)
+    TriggerClientEvent('mrp-doors:alterlockstateclient', source,PRP.DoorCoords)
 end)
 
 function isDoorLocked(door)

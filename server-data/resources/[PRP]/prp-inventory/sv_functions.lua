@@ -18,7 +18,7 @@ end)
 RegisterServerEvent('people-search')
 AddEventHandler('people-search', function(target)
     local source = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(target)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(target)
     local characterId = user:getVar("character").id
 	TriggerClientEvent("server-inventory-open", source, "1", 'ply-'.. characterId)
 end)
@@ -26,18 +26,18 @@ end)
 RegisterServerEvent('Stealtheybread')
 AddEventHandler('Stealtheybread', function(target)
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
-    local targetply = exports["prp-core"]:getModule("Player"):GetUser(target)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
+    local targetply = exports["mrp-core"]:getModule("Player"):GetUser(target)
     user:addMoney(targetply:getCash())
     targetply:removeMoney(targetply:getCash())
 end)
 
 
-RegisterNetEvent('prp-weapons:getAmmo')
-AddEventHandler('prp-weapons:getAmmo', function()
+RegisterNetEvent('mrp-weapons:getAmmo')
+AddEventHandler('mrp-weapons:getAmmo', function()
     local ammoTable = {}
     local src = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
     exports.ghmattimysql:execute("SELECT type, ammo FROM characters_weapons WHERE id = @id", {['id'] = char.id}, function(result)
         for i = 1, #result do
@@ -47,14 +47,14 @@ AddEventHandler('prp-weapons:getAmmo', function()
                 ammoTable["" .. result[i].type .. ""]["type"] = ""..result[i].type..""
             end
         end
-        TriggerClientEvent('prp-items:SetAmmo', src, ammoTable)
+        TriggerClientEvent('mrp-items:SetAmmo', src, ammoTable)
     end)
 end)
 
-RegisterNetEvent('prp-weapons:updateAmmo')
-AddEventHandler('prp-weapons:updateAmmo', function(newammo,ammoType,ammoTable)
+RegisterNetEvent('mrp-weapons:updateAmmo')
+AddEventHandler('mrp-weapons:updateAmmo', function(newammo,ammoType,ammoTable)
     local src = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
     exports.ghmattimysql:execute('SELECT ammo FROM characters_weapons WHERE type = @type AND id = @identifier',{['@type'] = ammoType, ['@identifier'] = char.id}, function(result)
         if result[1] == nil then
@@ -78,7 +78,7 @@ end)
 
 RegisterServerEvent("inventory:deg:item", function(pItem)
     local pSrc = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(pSrc)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(pSrc)
     local char = user:getCurrentCharacter()
     local pInventoryName = "ply-"..char.id
 

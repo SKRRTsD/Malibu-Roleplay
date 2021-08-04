@@ -12,7 +12,7 @@ RegisterServerEvent('chickenpayment:pay')
 AddEventHandler('chickenpayment:pay', function(money)
     local source = source
     local player = GetPlayerName(source)
-    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
     if money ~= nil then
         user:addMoney(money)
         if money > 150 then

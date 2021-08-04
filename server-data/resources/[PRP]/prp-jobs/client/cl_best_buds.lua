@@ -2,7 +2,7 @@ RegisterNetEvent("Best_buds:register")
 AddEventHandler("Best_buds:register", function(registerID)
     local myJob = exports["prp_manager"]:isPed("myJob")
     if myJob == "best_buds" then
-        local order = exports["prp-applications"]:KeyboardInput({
+        local order = exports["mrp-applications"]:KeyboardInput({
             header = "Create Receipt",
             rows = {
                 {

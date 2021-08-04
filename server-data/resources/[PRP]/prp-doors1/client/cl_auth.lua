@@ -20,8 +20,8 @@ function clearAccessCache()
     end
 end
 
-RegisterNetEvent("prp-jobmanager:playerBecameJob")
-AddEventHandler("prp-jobmanager:playerBecameJob", function(job, name, notify)
+RegisterNetEvent("mrp-jobmanager:playerBecameJob")
+AddEventHandler("mrp-jobmanager:playerBecameJob", function(job, name, notify)
     if isPolice and job ~= "police" then isPolice = false end
     if isEMS and job ~= "ems" then isEMS = false end
     if isDoc and job ~= "ems" then isDoc = false end
@@ -75,7 +75,7 @@ function hasSecuredAccess(pId, pType)
     if authorized.access.item ~= nil then
         accessCheckCacheTimer[pType][pId] = 0
         for i, v in pairs(authorized.access.item) do
-            if exports["prp-inventory"]:hasEnoughOfItem(i, 1, false) then
+            if exports["mrp-inventory"]:hasEnoughOfItem(i, 1, false) then
                 return true
             end
         end

@@ -110,7 +110,7 @@ end
 
 RegisterNetEvent("packingchicken")
 AddEventHandler("packingchicken", function(position)
-	if exports["prp-inventory"]:hasEnoughOfItem("slaughtered_chicken", 2) then
+	if exports["mrp-inventory"]:hasEnoughOfItem("slaughtered_chicken", 2) then
 		SetEntityHeading(GetPlayerPed(-1), 40.0)
 		local PedCoords = GetEntityCoords(GetPlayerPed(-1))
 		local meat = CreateObject(GetHashKey('prop_cs_steak'),PedCoords.x, PedCoords.y,PedCoords.z, true, true, true)
@@ -121,7 +121,7 @@ AddEventHandler("packingchicken", function(position)
 		LoadDict("anim@heists@ornate_bank@grab_cash_heels")
 		TaskPlayAnim(PlayerPedId(), "anim@heists@ornate_bank@grab_cash_heels", "grab", 8.0, -8.0, -1, 1, 0, false, false, false)
 		FreezeEntityPosition(GetPlayerPed(-1), true)
-		local finishedpacking = exports['prp-taskbar']:taskBar(7500, 'Putting the chicken in the box')
+		local finishedpacking = exports['mrp-taskbar']:taskBar(7500, 'Putting the chicken in the box')
 		if (finishedpacking ==100 )then 
 			FreezeEntityPosition(GetPlayerPed(-1),false)
 			TriggerEvent('inventory:removeItem', "slaughtered_chicken", 2)
@@ -139,7 +139,7 @@ end)
 
 RegisterNetEvent("portionthechicken")
 AddEventHandler("portionthechicken", function(position)
-	if exports["prp-inventory"]:hasEnoughOfItem("alive_chicken", 1) then
+	if exports["mrp-inventory"]:hasEnoughOfItem("alive_chicken", 1) then
 		local dict = 'anim@amb@business@coc@coc_unpack_cut_left@'
 		LoadDict(dict)
 		FreezeEntityPosition(GetPlayerPed(-1),true)
@@ -151,7 +151,7 @@ AddEventHandler("portionthechicken", function(position)
 		local x,y,z = table.unpack(GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 0.5, 1))
 		local chicken = CreateObject(GetHashKey('prop_int_cf_chick_01'), x, y, z,  true,  false, false)
 		SetEntityHeading(chicken, GetEntityHeading(GetPlayerPed(-1)))
-		local finished = exports['prp-taskbar']:taskBar(10000, 'Cutting the Chicken')
+		local finished = exports['mrp-taskbar']:taskBar(10000, 'Cutting the Chicken')
 		if (finished == 100) then
 			TriggerEvent('DoLongHudText', 'You slaughtered a chicken!', 1)
 			FreezeEntityPosition(GetPlayerPed(-1),false)
@@ -318,8 +318,8 @@ Citizen.CreateThread(function()
 	Citizen.Wait(0)
 		if ragdoll then
 			SetEntityHealth(PlayerPedId(), 200)
-			TriggerEvent('prp-hospital:client:ResetLimbs')
-            TriggerEvent('prp-hospital:client:RemoveBleed')
+			TriggerEvent('mrp-hospital:client:ResetLimbs')
+            TriggerEvent('mrp-hospital:client:RemoveBleed')
 			ragdoll = false
 		end
 	end
@@ -327,13 +327,13 @@ end)
 
 RegisterNetEvent("Sellchicken")
 AddEventHandler("Sellchicken", function()
-	if exports["prp-inventory"]:hasEnoughOfItem("packaged_chicken",2,false) then 
+	if exports["mrp-inventory"]:hasEnoughOfItem("packaged_chicken",2,false) then 
 		local x,y,z = table.unpack(GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 0.9, -0.98))
 		local prop = CreateObject(GetHashKey('hei_prop_heist_box'), x, y, z,  true,  false, false)
 		SetEntityHeading(prop, GetEntityHeading(GetPlayerPed(-1)))
 		LoadDict('amb@medic@standing@tendtodead@idle_a')
 		TaskPlayAnim(GetPlayerPed(-1), 'amb@medic@standing@tendtodead@idle_a', 'idle_a', 8.0, -8.0, -1, 1, 0.0, 0, 0, 0)
-		local finished = exports['prp-taskbar']:taskBar(5000, 'Selling the chicken!')
+		local finished = exports['mrp-taskbar']:taskBar(5000, 'Selling the chicken!')
 		LoadDict('amb@medic@standing@tendtodead@exit')
 		TaskPlayAnim(GetPlayerPed(-1), 'amb@medic@standing@tendtodead@exit', 'exit', 8.0, -8.0, -1, 1, 0.0, 0, 0, 0)
 		if (finished == 100) then

@@ -1,13 +1,13 @@
 crabcatch = false
 
 Citizen.CreateThread(function()
-	exports["prp-polyzone"]:AddBoxZone("crab_catch1", vector3(2258.89, 4574.31, 32.04), 80, 6, {
+	exports["mrp-polyzone"]:AddBoxZone("crab_catch1", vector3(2258.89, 4574.31, 32.04), 80, 6, {
 		name="crab_catch1",
 		heading=100,
         minZ=27.64,
         maxZ=31.64
 	})
-    exports["prp-polyzone"]:AddBoxZone("crab_catch2", vector3(2218.81, 4580.45, 31.02), 20, 8, {
+    exports["mrp-polyzone"]:AddBoxZone("crab_catch2", vector3(2218.81, 4580.45, 31.02), 20, 8, {
 		name="crab_catch2",
 		heading=10,
         minZ=28.42,
@@ -16,21 +16,21 @@ Citizen.CreateThread(function()
 	  
 end)
 
-RegisterNetEvent('prp-polyzone:enter')
-AddEventHandler('prp-polyzone:enter', function(name)
+RegisterNetEvent('mrp-polyzone:enter')
+AddEventHandler('mrp-polyzone:enter', function(name)
     if name == "crab_catch1" or name == "crab_catch2" then
         crabcatch = true
         plutorpcrabsyo()
-		TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Start Catching Crabs")) 
+		TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Start Catching Crabs")) 
     end
 end)
 
-RegisterNetEvent('prp-polyzone:exit')
-AddEventHandler('prp-polyzone:exit', function(name)
+RegisterNetEvent('mrp-polyzone:exit')
+AddEventHandler('mrp-polyzone:exit', function(name)
     if name == "crab_catch1" or name == "crab_catch2" then
         crabcatch = false
     end
-    TriggerEvent('prp-ui:HideUI')
+    TriggerEvent('mrp-ui:HideUI')
 end)
 
 
@@ -39,11 +39,11 @@ function plutorpcrabsyo()
         while crabcatch do
             Citizen.Wait(5)
             if IsControlJustPressed(1, 38) and IsPedInAnyVehicle(GetPlayerPed(-1), false) ~= 1 then
-                local cunt = exports["prp-inventory"]:hasEnoughOfItem("crabcage",1,false) 
+                local cunt = exports["mrp-inventory"]:hasEnoughOfItem("crabcage",1,false) 
                 if cunt then
                     FreezeEntityPosition(GetPlayerPed(-1),true)
                     ExecuteCommand("e gardening")
-                    local finished = exports["prp-taskbar"]:taskBar(15000,"Searching for crabs")
+                    local finished = exports["mrp-taskbar"]:taskBar(15000,"Searching for crabs")
                     if (finished == 100) then
                         if math.random(3) == 2 then
                             TriggerEvent("player:receiveItem","crab", math.random(1,2))	
@@ -69,7 +69,7 @@ end
 local crabsell = false
 
 Citizen.CreateThread(function()
-    exports["prp-polyzone"]:AddBoxZone("crab_sell", vector3(903.15, -1723.39, 32.16), 3, 3, {
+    exports["mrp-polyzone"]:AddBoxZone("crab_sell", vector3(903.15, -1723.39, 32.16), 3, 3, {
         name="crab_sell",
         heading=0,
         minZ=29.36,
@@ -77,32 +77,32 @@ Citizen.CreateThread(function()
     })  
 end)
 
-RegisterNetEvent('prp-polyzone:enter')
-AddEventHandler('prp-polyzone:enter', function(name)
+RegisterNetEvent('mrp-polyzone:enter')
+AddEventHandler('mrp-polyzone:enter', function(name)
     if name == "crab_sell" then
         crabsell = true
         plutorpsellyocrabs()
-		TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Sell Crabs")) 
+		TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Sell Crabs")) 
     end
 end)
 
-RegisterNetEvent('prp-polyzone:exit')
-AddEventHandler('prp-polyzone:exit', function(name)
+RegisterNetEvent('mrp-polyzone:exit')
+AddEventHandler('mrp-polyzone:exit', function(name)
     if name == "crab_sell" then
         crabsell = false
     end
-    TriggerEvent('prp-ui:HideUI')
+    TriggerEvent('mrp-ui:HideUI')
 end)
 
 function plutorpsellyocrabs()
     Citizen.CreateThread(function()
         while crabsell do
             Citizen.Wait(5)
-			if exports["prp-inventory"]:hasEnoughOfItem("crab",1,false) then
+			if exports["mrp-inventory"]:hasEnoughOfItem("crab",1,false) then
                 if IsControlJustPressed(1, 38) and IsPedInAnyVehicle(GetPlayerPed(-1), false) ~= 1 then
                         FreezeEntityPosition(GetPlayerPed(-1),true)
                         ExecuteCommand("e id")
-                        local finished = exports["prp-taskbar"]:taskBar(5000,"Selling Crabs")
+                        local finished = exports["mrp-taskbar"]:taskBar(5000,"Selling Crabs")
                         if finished == 100 then
                             TriggerEvent('inventory:removeItem', 'crab', 1)
                             TriggerServerEvent( 'sk1c2:payout', math.random(110,160))

@@ -4,7 +4,7 @@ TryToFish = function()
     local waterValidated, castLocation = IsInWater()
 
     if waterValidated then
-        local twat = exports["prp-inventory"]:hasEnoughOfItem("fishbait",1,false) 
+        local twat = exports["mrp-inventory"]:hasEnoughOfItem("fishbait",1,false) 
         if twat then
             local fishingRod = GenerateFishingRod(PlayerPedId())
             poleTimer = 5
@@ -330,8 +330,8 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterNetEvent("prp-fish:tryToFish")
-AddEventHandler("prp-fish:tryToFish", function()
+RegisterNetEvent("mrp-fish:tryToFish")
+AddEventHandler("mrp-fish:tryToFish", function()
     if poleTimer == 0 then 
         TryToFish()
     end

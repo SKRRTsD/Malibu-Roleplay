@@ -188,7 +188,7 @@ $(document).ready(function () {
 
         //Send post message with new settings
         $.post(
-            'https://prp-inventory/UpdateSettings',
+            'https://mrp-inventory/UpdateSettings',
             JSON.stringify({
                 holdToDrag: holdToDrag,
                 closeOnClick: closeOnClick,
@@ -405,7 +405,7 @@ $(document).ready(function () {
         } else if (item.response == 'GiveItemChecks') {
             if (itemList[item.id]) {
                 $.post(
-                    'https://prp-inventory/GiveItem',
+                    'https://mrp-inventory/GiveItem',
                     JSON.stringify([
                         item.id,
                         item.amount,
@@ -418,7 +418,7 @@ $(document).ready(function () {
                 );
             } else {
                 $.post(
-                    'https://prp-inventory/GiveItem',
+                    'https://mrp-inventory/GiveItem',
                     JSON.stringify([
                         item.id,
                         item.amount,
@@ -732,7 +732,7 @@ function invStack(
         PlayerStore,
         amountRemaining,
     ];
-    $.post('https://prp-inventory/stack', JSON.stringify(arr));
+    $.post('https://mrp-inventory/stack', JSON.stringify(arr));
 }
 
 function invMove(
@@ -760,18 +760,18 @@ function invMove(
         weapon,
         PlayerStore,
     ];
-    $.post('https://prp-inventory/move', JSON.stringify(arr));
+    $.post('https://mrp-inventory/move', JSON.stringify(arr));
 }
 
 function invSwap(targetSlot, targetInventory, originSlot, originInventory, itemid1, metainformation1, itemid2, metainformation2) {
     let arr = [targetSlot, targetInventory, originSlot, originInventory, itemid1, metainformation1, itemid2, metainformation2];
-    $.post('https://prp-inventory/swap', JSON.stringify(arr));
+    $.post('https://mrp-inventory/swap', JSON.stringify(arr));
 }
 
 function removeCraftItems(itemid, moveAmount) {
     let arr = itemList[itemid].craft;
     let amount = moveAmount;
-    $.post('https://prp-inventory/removeCraftItems', JSON.stringify([arr, amount]));
+    $.post('https://mrp-inventory/removeCraftItems', JSON.stringify([arr, amount]));
 }
 
 function CreateEmptyPersonalSlot(slotLimit) {
@@ -977,7 +977,7 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
 
 function BuildDrop(brokenSlots) {
     $.post(
-        'https://prp-inventory/dropIncorrectItems',
+        'https://mrp-inventory/dropIncorrectItems',
         JSON.stringify({
             slots: brokenSlots,
         }),
@@ -1154,7 +1154,7 @@ function DisplayInventory(sqlInventory, itemCount, invName, main) {
                     itemMaxed = "class='perfect'";
                 }
 
-                $.post("http://prp-inventory/updateMyQuality", JSON.stringify({
+                $.post("http://mrp-inventory/updateMyQuality", JSON.stringify({
                     itemid: itemid,
                     slot: slot,
                     quality: quality
@@ -1495,7 +1495,7 @@ function UpdateSetWeights(secondaryName) {
     }
 
     $.post(
-        'https://prp-inventory/Weight',
+        'https://mrp-inventory/Weight',
         JSON.stringify({
             weight: personalWeight.toFixed(2),
         }),
@@ -1620,7 +1620,7 @@ function DragToggle(fromSlot, isUsing, mouseEvent) {
             isDragging = true;
             draggingid = fromSlot;
 
-            $.post('https://prp-inventory/SlotInuse', JSON.stringify(parseInt(draggingid.replace(/\D/g, ''))));
+            $.post('https://mrp-inventory/SlotInuse', JSON.stringify(parseInt(draggingid.replace(/\D/g, ''))));
 
             let draggedItemHtml = document.getElementById(draggingid).innerHTML;
             document.getElementById('draggedItem').innerHTML = draggedItemHtml;
@@ -1662,7 +1662,7 @@ function DragToggle(fromSlot, isUsing, mouseEvent) {
         }
 
         if (!occupiedslot && isDragging) {
-            $.post('https://prp-inventory/SlotInuse', JSON.stringify(parseInt(draggingid.replace(/\D/g, ''))));
+            $.post('https://mrp-inventory/SlotInuse', JSON.stringify(parseInt(draggingid.replace(/\D/g, ''))));
             /* Here we are droping an item to an open slot - I guess we should check waits etc to confirm this is allowed before doing so. */
             AttemptDropInEmptySlot(fromSlot, false);
         }
@@ -1706,7 +1706,7 @@ function FindNextSlotAndMove(half) {
         //Stack items
         AttemptDropInFilledSlot(stackSlot);
     } else if (firstEmpty) {
-        $.post('https://prp-inventory/SlotInuse', JSON.stringify(parseInt(draggingid.replace(/\D/g, ''))));
+        $.post('https://mrp-inventory/SlotInuse', JSON.stringify(parseInt(draggingid.replace(/\D/g, ''))));
         AttemptDropInEmptySlot(firstEmpty, false, half);
     }
 }
@@ -1822,7 +1822,7 @@ function DropItem(slot, amountDropped) {
 
     //InventoryLog("Dropped: " + name + " x(" + amountDropped + ") from slot " + slotusing + " of " + inventoryUsedNameText)
 
-    // $.post('https://prp-inventory/dropitem', JSON.stringify({
+    // $.post('https://mrp-inventory/dropitem', JSON.stringify({
     //  currentInventory: currentInventory,
     //  weight: weight,
     //  amount: amount,
@@ -1835,11 +1835,11 @@ function DropItem(slot, amountDropped) {
 }
 
 function ErrorMove() {
-    // $.post('https://prp-inventory/move:fail', JSON.stringify({}));
+    // $.post('https://mrp-inventory/move:fail', JSON.stringify({}));
 }
 
 function SuccessMove() {
-    // $.post('https://prp-inventory/move:success', JSON.stringify({}));
+    // $.post('https://mrp-inventory/move:success', JSON.stringify({}));
 }
 
 // we are splitting items from inv2,slot2,amount2 over to inv1,slot1,amount1
@@ -1874,7 +1874,7 @@ function CompileStacks(
     }
 
     $.post(
-        'https://prp-inventory/SlotJustUsed',
+        'https://mrp-inventory/SlotJustUsed',
         JSON.stringify({
             targetslot: targetSlot,
             origin: originSlot,
@@ -1931,7 +1931,7 @@ function MoveStack(targetSlot, originSlot, inv1, inv2, purchase, itemCosts, item
     }
 
     $.post(
-        'https://prp-inventory/SlotJustUsed',
+        'https://mrp-inventory/SlotJustUsed',
         JSON.stringify({
             targetslot: targetSlot,
             origin: originSlot,
@@ -1970,7 +1970,7 @@ function MoveStack(targetSlot, originSlot, inv1, inv2, purchase, itemCosts, item
 
 // slot2 is the object being moved originally, slot 1 is the item it is replacing with.
 function SwapStacks(targetSlot, originSlot, inv1, inv2, itemid1, metainformation1, itemid2, metainformation2) {
-    // $.post('https://prp-inventory/swapstack', JSON.stringify({
+    // $.post('https://mrp-inventory/swapstack', JSON.stringify({
     //   slot1: slot1,
     //   slot2: slot2,
     //   inv1: inv1,
@@ -1993,7 +1993,7 @@ function SwapStacks(targetSlot, originSlot, inv1, inv2, itemid1, metainformation
 
     RequestItemData();
     $.post(
-        'https://prp-inventory/SlotJustUsed',
+        'https://mrp-inventory/SlotJustUsed',
         JSON.stringify({
             targetslot: targetSlot,
             origin: originSlot,
@@ -2016,7 +2016,7 @@ function closeInv(pIsItemUsed = false) {
     if (isDragging) EndDrag(draggingid);
 
     $.post(
-        'https://prp-inventory/ServerCloseInventory',
+        'https://mrp-inventory/ServerCloseInventory',
         JSON.stringify({
             name: TargetInventoryName,
         }),
@@ -2024,7 +2024,7 @@ function closeInv(pIsItemUsed = false) {
     TargetInventoryName = 'none';
 
     $.post(
-        'https://prp-inventory/Close',
+        'https://mrp-inventory/Close',
         JSON.stringify({
             isItemUsed: pIsItemUsed,
         }),
@@ -2810,7 +2810,7 @@ function useitem() {
     }
     if (inventoryUsedName == PlayerInventoryName) {
         let arr = [inventoryUsedName, itemid, slotusing, isWeapon, itemusinginfo];
-        $.post('https://prp-inventory/invuse', JSON.stringify(arr));
+        $.post('https://mrp-inventory/invuse', JSON.stringify(arr));
         //InventoryLog("Using item: " + name + "(" + amount + ") from " + inventoryUsedName + " | slot " + slotusing)
     }
     EndDrag(slotusing);

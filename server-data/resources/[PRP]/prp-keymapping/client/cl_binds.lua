@@ -1,5 +1,5 @@
 local shouldExecuteBind = true
-AddEventHandler("prp-binds:should-execute", function(shouldExecute)
+AddEventHandler("mrp-binds:should-execute", function(shouldExecute)
   shouldExecuteBind = shouldExecute
 end)
 
@@ -24,12 +24,12 @@ exports('registerKeyMapping', function(name, category, description, onKeyDownCom
     cmdStringUp = "-cmd_wrapper__" .. onKeyDownCommand
     RegisterCommand(cmdStringDown, function()
       if not shouldExecuteBind then return end
-      if event then TriggerEvent("prp-binds:keyEvent", name, true) end
+      if event then TriggerEvent("mrp-binds:keyEvent", name, true) end
       ExecuteCommand(onKeyDownCommand)
     end, false)
     RegisterCommand(cmdStringUp, function()
       if not shouldExecuteBind then return end
-      if event then TriggerEvent("prp-binds:keyEvent", name, false) end
+      if event then TriggerEvent("mrp-binds:keyEvent", name, false) end
       ExecuteCommand(onKeyUpCommand)
     end, false)
     RegisterKeyMapping(cmdStringDown, desc, type, default)

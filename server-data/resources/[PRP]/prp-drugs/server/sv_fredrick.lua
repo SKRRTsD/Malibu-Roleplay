@@ -1,13 +1,13 @@
 RegisterServerEvent('laptop1cash')
 AddEventHandler('laptop1cash', function()
 local src = source
-local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     user:removeMoney(2500)
 end)
 
 RegisterServerEvent('jimpass')
 AddEventHandler('jimpass', function()
 local src = source
-local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     user:removeMoney(2500)
 end)

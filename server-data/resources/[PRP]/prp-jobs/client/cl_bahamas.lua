@@ -2,7 +2,7 @@ RegisterNetEvent("bahamas:register")
 AddEventHandler("bahamas:register", function(registerID)
     local myJob = exports["prp_manager"]:isPed("myJob")
     if myJob == "bahamas_bar" then
-        local order = exports["prp-applications"]:KeyboardInput({
+        local order = exports["mrp-applications"]:KeyboardInput({
             header = "Create Receipt",
             rows = {
                 {

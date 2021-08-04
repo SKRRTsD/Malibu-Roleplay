@@ -13,7 +13,7 @@ Citizen.CreateThread(function()
         local ting = GetEntityCoords(source)
 
         TriggerClientEvent('erp:infinity:player:coords', -1, ting)
-        TriggerEvent("prp-core:updatecoords", ting.x, ting.y, ting.z)
-       -- print("[^2prp-infinity^0]^3 Sync Successful.^0")
+        TriggerEvent("mrp-core:updatecoords", ting.x, ting.y, ting.z)
+       -- print("[^2mrp-infinity^0]^3 Sync Successful.^0")
     end
 end)

@@ -113,7 +113,7 @@ function ClickSquare(e) {
             $('.memory-wrapper').fadeOut(250, () => {
                 $('.help-text').fadeIn(250);
                 setTimeout(() => {
-                    $.post('http://prp-memory/success')
+                    $.post('http://mrp-memory/success')
                     $('.memory-container').fadeOut(500);
                 }, 2000);
             });
@@ -127,7 +127,7 @@ function ClickSquare(e) {
         $('.memory-wrapper').fadeOut(250, () => {
             $('.help-text').fadeIn(250);
             setTimeout(() => {
-                $.post('http://prp-memory/fail')
+                $.post('http://mrp-memory/fail')
                 $('.memory-container').fadeOut(500);
             }, 2000);
         });

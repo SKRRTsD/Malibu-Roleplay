@@ -4,7 +4,7 @@ RegisterNUICallback("data_status", function(data)
             if not soundInfo[data.id].loop then
                 soundInfo[data.id].playing = false
             end
-            TriggerEvent("prp-musicplayer:songStopPlaying", data.id)
+            TriggerEvent("mrp-musicplayer:songStopPlaying", data.id)
         end
         if data.type == "maxDuration" then
             soundInfo[data.id].timeStamp = 0
@@ -46,8 +46,8 @@ RegisterNUICallback("events", function(data)
     end
 end)
 
-RegisterNetEvent("prp-musicplayer:stateSound")
-AddEventHandler("prp-musicplayer:stateSound", function(state, data)
+RegisterNetEvent("mrp-musicplayer:stateSound")
+AddEventHandler("mrp-musicplayer:stateSound", function(state, data)
     local soundId = data.soundId
 
     if state == "destroyOnFinish" then

@@ -29,7 +29,7 @@ end)
 RegisterServerEvent('carfill:checkmoney')
 AddEventHandler('carfill:checkmoney', function(costs)
 	local src = source
-	local player = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local player = exports["mrp-core"]:getModule("Player"):GetUser(src)
 
 	if player:getCash() >= costs then
 		TriggerClientEvent("RefuelCarServerReturn", src)
@@ -43,7 +43,7 @@ end)
 RegisterServerEvent('server:alterStress')
 AddEventHandler('server:alterStress',function(positive, alteredValue)
 	local src = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
 	local characterId = user:getCurrentCharacter().id
 	exports.ghmattimysql:execute("SELECT * FROM characters WHERE id = ?", {characterId}, function(result)
 		local myStress = result[1].stress_level
@@ -68,7 +68,7 @@ end)
 RegisterServerEvent("police:update:hud")
 AddEventHandler("police:update:hud", function(health, armour, thirst, hunger)
     local src = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
 	local characterId = user:getCurrentCharacter().id
 	if user ~= false then
 		meta = { 
@@ -86,7 +86,7 @@ end)
 RegisterServerEvent('police:SetMeta')
 AddEventHandler('police:SetMeta', function()
     local src = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
 	local cid = user:getCurrentCharacter().id
 	exports.ghmattimysql:execute("SELECT * FROM characters WHERE id = ?", {cid}, function(result)
         TriggerClientEvent("police:setClientMeta", src, json.decode(result[1].metaData))
@@ -99,7 +99,7 @@ end)
 RegisterServerEvent('police:setEmoteData')
 AddEventHandler('police:setEmoteData', function(emoteTable)
 	local src = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
 	local emote = json.encode(emoteTable)
 	exports.ghmattimysql:execute("UPDATE characters SET `emotes` = @emotes WHERE id = @cid", {['emotes'] = emote, ['cid'] = char.id})
@@ -108,7 +108,7 @@ end)
 RegisterServerEvent('police:setAnimData')
 AddEventHandler('police:setAnimData', function(AnimSet)
 	local src = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
 	local metaData = json.encode(AnimSet)
 	exports.ghmattimysql:execute("UPDATE characters SET `meta` = @metaData WHERE id = @cid", {['metaData'] = metaData, ['cid'] = char.id})
@@ -119,7 +119,7 @@ end)
 RegisterServerEvent('police:getAnimData')
 AddEventHandler('police:getAnimData', function()
 	local src = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
 
 	exports.ghmattimysql:execute("SELECT meta FROM characters WHERE id = @cid", {['cid'] = char.id}, function(result)

@@ -1,13 +1,13 @@
-RegisterNetEvent('prp-doors:show')
-AddEventHandler('prp-doors:show', function(action, text)
+RegisterNetEvent('mrp-doors:show')
+AddEventHandler('mrp-doors:show', function(action, text)
 	SendNUIMessage({
 		action = action,
 		text = text,
 	})
 end)
 
-RegisterNetEvent('prp-doors:hide')
-AddEventHandler('prp-doors:hide', function()
+RegisterNetEvent('mrp-doors:hide')
+AddEventHandler('mrp-doors:hide', function()
 	SendNUIMessage({
 		action = 'hide'
 	})

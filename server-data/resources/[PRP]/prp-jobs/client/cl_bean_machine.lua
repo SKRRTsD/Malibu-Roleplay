@@ -2,7 +2,7 @@ RegisterNetEvent("bean:register")
 AddEventHandler("bean:register", function(registerID)
     local myJob = exports["prp_manager"]:isPed("myJob")
     if myJob == "bean_machine" then
-        local order = exports["prp-applications"]:KeyboardInput({
+        local order = exports["mrp-applications"]:KeyboardInput({
             header = "Create Receipt",
             rows = {
                 {
