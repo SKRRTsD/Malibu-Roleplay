@@ -114,7 +114,7 @@ AddEventHandler('mrp-robbery:usb', function()
                 if dist < 1.5 then				
                     if not Config.SmallBanks[closestBank]["isOpened"] then 
                         if exports['mrp-inventory']:hasEnoughOfItem('laptop1', 1) and exports['mrp-inventory']:hasEnoughOfItem('Gruppe6Card22', 1) and exports['mrp-inventory']:hasEnoughOfItem('fcadrive', 1) then
-                            if police >= 0 then
+                            if police >= 4 then
                                 exports['mrp-dispatch']:SendAlert("AlertFleecaRobbery")
                                 StartHeistFleecaPanel()
                                 local card = exports["mrp-taskbar"]:taskBar(9000,"Hooking up equipment")
