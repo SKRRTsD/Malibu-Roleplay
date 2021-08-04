@@ -152,6 +152,7 @@ button.button-menu.active {
     scale: 1;
     -webkit-transition: scale 0.2s ease-in-out;
     transition: scale 0.2s ease-in-out;
+    border-radius: 20px;
 }
 .color_palette:hover {
     scale: 0.95
@@ -164,17 +165,18 @@ button.button-menu.active {
     background-color: #272727 !important;
     color: #e7e7e7 !important;
     border: rgb(60,60,60) solid !important;
-    border-radius: 0px;
+    border-radius: 20px;
 }
 .collapsible-header {
     background-color: #00000044 !important;
     color: #e7e7e7 !important;
     border: rgb(60,60,60) solid !important;
+    border-radius: 20px;
 }
 .collapsible-body {
     border-color: #272727 !important;
     padding: 15px !important;
-    border-radius: 5px;
+    border-radius: 20px;
 }
 
 
