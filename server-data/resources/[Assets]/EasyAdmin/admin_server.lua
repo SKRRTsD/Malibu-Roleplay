@@ -856,12 +856,12 @@ Citizen.CreateThread(function()
 					for i,_ in pairs(OnlineAdmins) do 
 						TriggerClientEvent('chat:addMessage', i, { 
 							template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(253, 53, 53, 0.6); border-radius: 5px;"><i class="fas fa-user-crown"></i> {0} </div>',
-							args = { "^3!!EasyAdmin Report!!^7\n"..string.format(string.gsub(GetLocalisedText("playerreportedplayer"), "```", ""), getName(source), source, getName(id, true), id, reason, #PlayerReports[id], minimumreports) }, color = { 255, 255, 255 } 
+							args = { "^3Report^7\n"..string.format(string.gsub(GetLocalisedText("playerreportedplayer"), "```", ""), getName(source), source, getName(id, true), id, reason, #PlayerReports[id], minimumreports) }, color = { 255, 255, 255 } 
 						})
 					end
 					TriggerClientEvent('chat:addMessage', source, { 
 						template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(253, 53, 53, 0.6); border-radius: 5px;"><i class="fas fa-user-crown"></i> {0}:<br> {1}</div>',
-						args = { "^3EasyAdmin^7", GetLocalisedText("successfullyreported") }, color = { 255, 255, 255 } 
+						-- args = { "^3EasyAdmin^7", GetLocalisedText("successfullyreported") }, color = { 255, 255, 255 } 
 					})
 					if #PlayerReports[id] >= minimumreports then
 						TriggerEvent("EasyAdmin:addBan", id, string.format(GetLocalisedText("reportbantext"), minimumreports), os.time()+GetConvarInt("ea_ReportBanTime", 86400))
@@ -869,14 +869,9 @@ Citizen.CreateThread(function()
 				else
 					TriggerClientEvent('chat:addMessage', source, { 
 						template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(253, 53, 53, 0.6); border-radius: 5px;"><i class="fas fa-user-crown"></i> {0}:<br> {1}</div>',
-						args = { "^3EasyAdmin^7", GetLocalisedText("alreadyreported") }, color = { 255, 255, 255 } 
+						-- args = { "^3Admin^7", GetLocalisedText("alreadyreported") }, color = { 255, 255, 255 } 
 					})
 				end
-			else
-				TriggerClientEvent('chat:addMessage', source, { 
-					template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(253, 53, 53, 0.6); border-radius: 5px;"><i class="fas fa-user-crown"></i> {0}:<br> {1}</div>',
-					args = { "^3EasyAdmin^7", GetLocalisedText("reportedusageerror") }, color = { 255, 255, 255 } 
-				})
 			end
 		end
 	end, false)
