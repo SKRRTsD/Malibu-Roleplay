@@ -6,5 +6,5 @@ server_scripts {
 
 client_scripts {
     "client/*.lua",
-    "@prp-errorlog/client/cl_errorlog.lua"
+    "@mrp-errorlog/client/cl_errorlog.lua"
 }

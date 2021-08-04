@@ -14,8 +14,8 @@ Citizen.CreateThread(function()
 		local pedCoords = GetEntityCoords(ped)
         if GotLocAndCar == false then
             if IsControlJustReleased(0,38) then
-                    TriggerServerEvent("prp-chopshop:chopCostMoney")
-                TriggerEvent("prp-chopshop:start")
+                    TriggerServerEvent("mrp-chopshop:chopCostMoney")
+                TriggerEvent("mrp-chopshop:start")
                 Citizen.Wait(1000)
             end
         end
@@ -79,7 +79,7 @@ Citizen.CreateThread(function()
       if GotinChopCar == true then
           if GetDistanceBetweenCoords(currentRoute.SellboxCoordinates, pedCoords) < 10.0 then
                 if IsControlJustReleased(0,38) and hasbox == true then
-                    TriggerServerEvent("prp-chopshop:serverPay")
+                    TriggerServerEvent("mrp-chopshop:serverPay")
                     DropBox()
                     hasbox = false
                 end
@@ -110,9 +110,9 @@ local chopcarPick = {
 }
 
 
-RegisterNetEvent("prp-chopshop:menu")
-AddEventHandler("prp-chopshop:menu", function()
-	TriggerEvent('prp-context:sendMenu', {
+RegisterNetEvent("mrp-chopshop:menu")
+AddEventHandler("mrp-chopshop:menu", function()
+	TriggerEvent('mrp-context:sendMenu', {
         {
             id = 1,
             header = "< Go Back",
@@ -126,7 +126,7 @@ AddEventHandler("prp-chopshop:menu", function()
             header = "Chop Front Left Door",
             txt = "Chop Front Left Door",
 			params = {
-                event = "prp-chopshop:startChop",
+                event = "mrp-chopshop:startChop",
                 args = {
                     part = 0,
                     number = 1,
@@ -139,7 +139,7 @@ AddEventHandler("prp-chopshop:menu", function()
             header = "Chop Front Right Door",
             txt = "Chop Front Right Door",
 			params = {
-                event = "prp-chopshop:startChop",
+                event = "mrp-chopshop:startChop",
                 args = {
                     part = 1,
                     number = 1,
@@ -152,7 +152,7 @@ AddEventHandler("prp-chopshop:menu", function()
             header = "Chop Back Left Door",
             txt = "Chop Back Left Door",
 			params = {
-                event = "prp-chopshop:startChop",
+                event = "mrp-chopshop:startChop",
                 args = {
                     part = 2,
                     number = 1,
@@ -165,7 +165,7 @@ AddEventHandler("prp-chopshop:menu", function()
             header = "Chop Back Right Door",
             txt = "Chop Back Right Door",
 			params = {
-                event = "prp-chopshop:startChop",
+                event = "mrp-chopshop:startChop",
                 args = {
                     part = 3,
                     number = 1,
@@ -178,7 +178,7 @@ AddEventHandler("prp-chopshop:menu", function()
             header = "Chop Trunk",
             txt = "Chop Trunk",
 			params = {
-                event = "prp-chopshop:startChop",
+                event = "mrp-chopshop:startChop",
                 args = {
                     part = 5,
                     number = 1,
@@ -191,7 +191,7 @@ AddEventHandler("prp-chopshop:menu", function()
             header = "Chop Hood",
             txt = "Chop Hood",
 			params = {
-                event = "prp-chopshop:startChop",
+                event = "mrp-chopshop:startChop",
                 args = {
                     part = 4,
                     number = 1,
@@ -205,7 +205,7 @@ AddEventHandler("prp-chopshop:menu", function()
             header = "Chop Engine",
             txt = "Chop Engine",
 			params = {
-                event = "prp-chopshop:startChop",
+                event = "mrp-chopshop:startChop",
                 args = {
                     part = 6,
                     number = 1,
@@ -228,8 +228,8 @@ BackLeftDoor = false
 FrontRightDoor = false
 FrontLeftDoor = false
 
-RegisterNetEvent("prp-chopshop:startChop")
-AddEventHandler("prp-chopshop:startChop", function(data)
+RegisterNetEvent("mrp-chopshop:startChop")
+AddEventHandler("mrp-chopshop:startChop", function(data)
     local ped = PlayerPedId()
     local number = data.part
 
@@ -351,12 +351,12 @@ function DropBox()
 end
 
 
-RegisterNetEvent("prp-chopshop:startChopshop")
-AddEventHandler("prp-chopshop:startChopshop", function()
-    TriggerEvent("prp-chopshop:start")
+RegisterNetEvent("mrp-chopshop:startChopshop")
+AddEventHandler("mrp-chopshop:startChopshop", function()
+    TriggerEvent("mrp-chopshop:start")
 end)
 
 RegisterNetEvent("chopshop:start:event", function()
-    TriggerServerEvent("prp-chopshop:chopCostMoney", 120)
+    TriggerServerEvent("mrp-chopshop:chopCostMoney", 120)
 end)
 

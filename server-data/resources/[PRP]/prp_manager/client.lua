@@ -33,9 +33,9 @@ local drivingInstructor = false
 activeTasks = {
   --[1] = { ["Gang"] = 2, ["TaskType"] = 1, ["TaskState"] = 2, ["TaskOwner"] = 12(cid), ["TaskInfo"] = , ["location"] = { ['x'] = -1248.52,['y'] = -1141.12,['z'] = 7.74,['h'] = 284.71, ['info'] = 'Down at Smokies on the Beach' }, }
 }
---local NearNPC = exports["prp_manager"]:GetClosestNPC()
---local handcuffed = exports["prp_manager"]:isPed("handcuffed")
---local NearNPC = exports["prp_manager"]:GetRandomNPC()
+--local NearNPC = exports["mrp_manager"]:GetClosestNPC()
+--local handcuffed = exports["mrp_manager"]:isPed("handcuffed")
+--local NearNPC = exports["mrp_manager"]:GetRandomNPC()
 
 function GlobalObject(object)
   --  NetworkRegisterEntityAsNetworked(object)
@@ -496,13 +496,13 @@ AddEventHandler("disableHUD", function(passedinfo)
   HudStage = passedinfo
 end)
 
--- local countpolice = exports["prp_manager"]:isPed("femaleclothes")
+-- local countpolice = exports["mrp_manager"]:isPed("femaleclothes")
 RegisterNetEvent('pd:deathcheck')
 AddEventHandler('pd:deathcheck', function()
 	dead = not dead
 end)
 
--- local handcuffed = exports["prp_manager"]:isPed("handcuffed")
+-- local handcuffed = exports["mrp_manager"]:isPed("handcuffed")
 RegisterNetEvent('police:currentHandCuffedState')
 AddEventHandler('police:currentHandCuffedState', function(handCuffed,handCuffedWalking)
 	handcuffed = handCuffed
@@ -514,9 +514,9 @@ AddEventHandler('pagerStatus', function(PassedPagerStatus)
     PagerStatus = PassedPagerStatus
 end)
 
---local myJob = exports["prp_manager"]:isPed("myJob")
-RegisterNetEvent("prp-jobmanager:playerBecameJob")
-AddEventHandler("prp-jobmanager:playerBecameJob", function(jobpassed, name, notify)
+--local myJob = exports["mrp_manager"]:isPed("myJob")
+RegisterNetEvent("mrp-jobmanager:playerBecameJob")
+AddEventHandler("mrp-jobmanager:playerBecameJob", function(jobpassed, name, notify)
 	job = jobpassed
     if not job then
         job = "None"
@@ -544,18 +544,18 @@ AddEventHandler('isPed:UpdateCasino', function(amount)
 	casino = math.ceil(amount)
 end)
 
-RegisterNetEvent('prp-core:addedMoney')
-AddEventHandler('prp-core:addedMoney', function(blah,amount)
+RegisterNetEvent('mrp-core:addedMoney')
+AddEventHandler('mrp-core:addedMoney', function(blah,amount)
   cash = math.ceil(amount)
 end)
 
-RegisterNetEvent('prp-core:addedCasino')
-AddEventHandler('prp-core:addedCasino', function(blah,amount)
+RegisterNetEvent('mrp-core:addedCasino')
+AddEventHandler('mrp-core:addedCasino', function(blah,amount)
   casino = math.ceil(amount)
 end)
 
-RegisterNetEvent('prp-core:removedMoney')
-AddEventHandler('prp-core:removedMoney', function(blah,amount)
+RegisterNetEvent('mrp-core:removedMoney')
+AddEventHandler('mrp-core:removedMoney', function(blah,amount)
   cash = math.ceil(amount)
 end)
 

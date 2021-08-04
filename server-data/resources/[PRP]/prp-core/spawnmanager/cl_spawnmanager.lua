@@ -29,8 +29,8 @@ function PRP.SpawnManager.Initialize(self)
 
         Citizen.Wait(500)
 
-        TriggerEvent("prp-core:spawnInitialized")
-        TriggerServerEvent("prp-core:spawnInitialized")
+        TriggerEvent("mrp-core:spawnInitialized")
+        TriggerServerEvent("mrp-core:spawnInitialized")
 
     end)
 end
@@ -50,7 +50,7 @@ function PRP.SpawnManager.InitialSpawn(self)
         local new = character.new == 0
 
         --Tells raid clothes to set ped to correct skin
-        TriggerEvent("prp-core:initialSpawnModelLoaded")
+        TriggerEvent("mrp-core:initialSpawnModelLoaded")
 
       
 
@@ -90,7 +90,7 @@ function PRP.SpawnManager.InitialSpawn(self)
     end)
 end
 
-AddEventHandler("prp-core:firstSpawn", function()
+AddEventHandler("mrp-core:firstSpawn", function()
     PRP.SpawnManager:InitialSpawn()
 
 
@@ -103,17 +103,17 @@ AddEventHandler("prp-core:firstSpawn", function()
 end)
 
 
-AddEventHandler("prp-core:RefreshSpawn", function()
+AddEventHandler("mrp-core:RefreshSpawn", function()
     PRP.SpawnManager:Initialize()
 end)
 
-RegisterNetEvent('prp-core:clearStates')
-AddEventHandler('prp-core:clearStates', function()
+RegisterNetEvent('mrp-core:clearStates')
+AddEventHandler('mrp-core:clearStates', function()
     TriggerServerEvent("reset:blips")
     TriggerEvent("nowEMSDeathOff")
     TriggerEvent("nowCopDeathOff")
     TriggerEvent("stopSpeedo")
     TriggerEvent("wk:disableRadar")
-    exports['prp-voice']:removePlayerFromRadio()
-    exports["prp-voice"]:setVoiceProperty("radioEnabled", false)
+    exports['mrp-voice']:removePlayerFromRadio()
+    exports["mrp-voice"]:setVoiceProperty("radioEnabled", false)
 end)

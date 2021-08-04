@@ -72,7 +72,7 @@ function SubmitData() {
 
 
 const PostData = (data) => {
-    return $.post(`https://prp-applications/dataPost`, JSON.stringify(data))
+    return $.post(`https://mrp-applications/dataPost`, JSON.stringify(data))
 }
 
 const CancelMenu = () => {
@@ -80,7 +80,7 @@ const CancelMenu = () => {
         var id = RowsData[i].id
         $(Rows[id]).remove();
     }
-    $.post(`https://prp-applications/cancel`)
+    $.post(`https://mrp-applications/cancel`)
     return CloseMenu();
 }
 

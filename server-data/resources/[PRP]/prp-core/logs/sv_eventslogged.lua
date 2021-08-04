@@ -12,7 +12,7 @@ local Events = {
 -- RegisterServerEvent('mission:finished')
 -- AddEventHandler('mission:finished', function(type, amount)    
 --     local pSrc = source
---     local user = exports["prp-core"]:getModule("Player"):GetUser(pSrc)
+--     local user = exports["mrp-core"]:getModule("Player"):GetUser(pSrc)
 --     user:addMoney(amount)
 --     local EventName = tonumber(type)
 --     if EventName then
@@ -65,7 +65,7 @@ local Events = {
 
 -- function ConfirmedCheaterDawg(pSrc)
 --     local LogInfo = "Confirmed Cheater"
---     exports['prp-core']:DiscordLog("https://discord.com/api/webhooks/840746349866647592/fumXXTs4swshcYYNW-R4qOaU5mk7DId18ibT5K1El4RfgWiv_2Eaiur8XjEZaIug-pFY", pSrc, "Triggering Events", "Triggering Events", LogInfo)
+--     exports['mrp-core']:DiscordLog("https://discord.com/api/webhooks/840746349866647592/fumXXTs4swshcYYNW-R4qOaU5mk7DId18ibT5K1El4RfgWiv_2Eaiur8XjEZaIug-pFY", pSrc, "Triggering Events", "Triggering Events", LogInfo)
 --     DropPlayer(pSrc, "[Anti-Cheat]: You have been permanently banned for [Triggering Events]")
 --     return
 -- end

@@ -12,11 +12,11 @@ local function checkExistenceFace(cid, cb)
     end)
 end
 
-RegisterServerEvent("prp-clothingmenu:insert_character_current")
-AddEventHandler("prp-clothingmenu:insert_character_current",function(data)
+RegisterServerEvent("mrp-clothingmenu:insert_character_current")
+AddEventHandler("mrp-clothingmenu:insert_character_current",function(data)
     if not data then return end
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local characterId = user:getCurrentCharacter().id
     if not characterId then return end
     checkExistenceClothes(characterId, function(exists)
@@ -43,12 +43,12 @@ AddEventHandler("prp-clothingmenu:insert_character_current",function(data)
     end)
 end)
 
-RegisterServerEvent("prp-clothingmenu:insert_character_face")
-AddEventHandler("prp-clothingmenu:insert_character_face",function(data)
+RegisterServerEvent("mrp-clothingmenu:insert_character_face")
+AddEventHandler("mrp-clothingmenu:insert_character_face",function(data)
     if not data then return end
     local src = source
 
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local characterId = user:getCurrentCharacter().id
 
     if not characterId then return end
@@ -81,10 +81,10 @@ AddEventHandler("prp-clothingmenu:insert_character_face",function(data)
     end)
 end)
 
-RegisterServerEvent("prp-clothingmenu:get_character_face")
-AddEventHandler("prp-clothingmenu:get_character_face",function(pSrc)
+RegisterServerEvent("mrp-clothingmenu:get_character_face")
+AddEventHandler("mrp-clothingmenu:get_character_face",function(pSrc)
     local src = (not pSrc and source or pSrc)
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local characterId = user:getCurrentCharacter().id
 
     if not characterId then return end
@@ -99,18 +99,18 @@ AddEventHandler("prp-clothingmenu:get_character_face",function(pSrc)
             }
             local model = tonumber(result[1].model)
             if model == 1885233650 or model == -1667301416 then
-                TriggerClientEvent("prp-clothingmenu:setpedfeatures", src, temp_data)
+                TriggerClientEvent("mrp-clothingmenu:setpedfeatures", src, temp_data)
             end
         else
-            TriggerClientEvent("prp-clothingmenu:setpedfeatures", src, false)
+            TriggerClientEvent("mrp-clothingmenu:setpedfeatures", src, false)
         end
 	end)
 end)
 
-RegisterServerEvent("prp-clothingmenu:get_character_current")
-AddEventHandler("prp-clothingmenu:get_character_current",function(pSrc)
+RegisterServerEvent("mrp-clothingmenu:get_character_current")
+AddEventHandler("mrp-clothingmenu:get_character_current",function(pSrc)
     local src = (not pSrc and source or pSrc)
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
     local cid = char.id
     if not cid then return end
@@ -122,41 +122,41 @@ AddEventHandler("prp-clothingmenu:get_character_current",function(pSrc)
             drawtextures = json.decode(result[1].drawtextures),
             proptextures = json.decode(result[1].proptextures),
         }
-        TriggerClientEvent("prp-clothingmenu:setclothes", src, temp_data, 0)
+        TriggerClientEvent("mrp-clothingmenu:setclothes", src, temp_data, 0)
 	end)
 end)
 
-RegisterServerEvent("prp-clothingmenu:retrieve_tats")
-AddEventHandler("prp-clothingmenu:retrieve_tats", function(pSrc)
+RegisterServerEvent("mrp-clothingmenu:retrieve_tats")
+AddEventHandler("mrp-clothingmenu:retrieve_tats", function(pSrc)
     local src = (not pSrc and source or pSrc)
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
 	exports.ghmattimysql:execute("SELECT * FROM playersTattoos WHERE identifier = @identifier", {['identifier'] = char.id}, function(result)
         if(#result == 1) then
-			TriggerClientEvent("prp-clothingmenu:settattoos", src, json.decode(result[1].tattoos))
+			TriggerClientEvent("mrp-clothingmenu:settattoos", src, json.decode(result[1].tattoos))
 		else
 			local tattooValue = "{}"
 			exports.ghmattimysql:execute("INSERT INTO playersTattoos (identifier, tattoos) VALUES (@identifier, @tattoo)", {['identifier'] = char.id, ['tattoo'] = tattooValue})
-			TriggerClientEvent("prp-clothingmenu:settattoos", src, {})
+			TriggerClientEvent("mrp-clothingmenu:settattoos", src, {})
 		end
 	end)
 end)
 
-RegisterServerEvent("prp-clothingmenu:set_tats")
-AddEventHandler("prp-clothingmenu:set_tats", function(tattoosList)
+RegisterServerEvent("mrp-clothingmenu:set_tats")
+AddEventHandler("mrp-clothingmenu:set_tats", function(tattoosList)
 	local src = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
 	exports.ghmattimysql:execute("UPDATE playersTattoos SET tattoos = @tattoos WHERE identifier = @identifier", {['tattoos'] = json.encode(tattoosList), ['identifier'] = char.id})
 end)
 
 
-RegisterServerEvent("prp-clothingmenu:get_outfit")
-AddEventHandler("prp-clothingmenu:get_outfit",function(slot)
+RegisterServerEvent("mrp-clothingmenu:get_outfit")
+AddEventHandler("mrp-clothingmenu:get_outfit",function(slot)
     if not slot then return end
     local src = source
 
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local characterId = user:getCurrentCharacter().id
 
     if not characterId then return end
@@ -180,7 +180,7 @@ AddEventHandler("prp-clothingmenu:get_outfit",function(slot)
                 hairColor = json.decode(result[1].hairColor)
             }
 
-            TriggerClientEvent("prp-clothingmenu:setclothes", src, data , 0)
+            TriggerClientEvent("mrp-clothingmenu:setclothes", src, data , 0)
 
             local values = {
                 ["cid"] = characterId,
@@ -200,12 +200,12 @@ AddEventHandler("prp-clothingmenu:get_outfit",function(slot)
 	end)
 end)
 
-RegisterServerEvent("prp-clothingmenu:set_outfit")
-AddEventHandler("prp-clothingmenu:set_outfit",function(slot, name, data)
+RegisterServerEvent("mrp-clothingmenu:set_outfit")
+AddEventHandler("mrp-clothingmenu:set_outfit",function(slot, name, data)
     if not slot then return end
     local src = source
 
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local characterId = user:getCurrentCharacter().id
 
     if not characterId then return end
@@ -253,11 +253,11 @@ AddEventHandler("prp-clothingmenu:set_outfit",function(slot, name, data)
 end)
 
 
-RegisterServerEvent("prp-clothingmenu:remove_outfit")
-AddEventHandler("prp-clothingmenu:remove_outfit",function(slot)
+RegisterServerEvent("mrp-clothingmenu:remove_outfit")
+AddEventHandler("mrp-clothingmenu:remove_outfit",function(slot)
 
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local cid = user:getCurrentCharacter().id
     local slot = slot
 
@@ -267,23 +267,23 @@ AddEventHandler("prp-clothingmenu:remove_outfit",function(slot)
     TriggerClientEvent("DoLongHudText", src,"Removed slot " .. slot .. ".",1)
 end)
 
-RegisterServerEvent("prp-clothingmenu:list_outfits")
-AddEventHandler("prp-clothingmenu:list_outfits",function()
+RegisterServerEvent("mrp-clothingmenu:list_outfits")
+AddEventHandler("mrp-clothingmenu:list_outfits",function()
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local cid = user:getCurrentCharacter().id
     local slot = slot
     local name = name
     if not cid then return end
     exports.ghmattimysql:execute("SELECT slot, name FROM character_outfits WHERE cid = @cid", {['cid'] = cid}, function(skincheck)  
         for i = 1, #skincheck do
-            TriggerClientEvent('prp-context:sendMenu', src, {
+            TriggerClientEvent('mrp-context:sendMenu', src, {
                 {
                     id = skincheck[i].slot,
                     header = "Outfit Name: " ..skincheck[i].name,
                     txt = "slot | "..skincheck[i].slot,
                     params = {
-                        event = "prp-clothingmenu:list:outfits",
+                        event = "mrp-clothingmenu:list:outfits",
                         args = {
                             slot = skincheck[i].slot
                         }
@@ -294,9 +294,9 @@ AddEventHandler("prp-clothingmenu:list_outfits",function()
 	end)
 end)
 
-RegisterServerEvent("prp-clothingmenu:attempt:change", function(pSlot, pNewName)
+RegisterServerEvent("mrp-clothingmenu:attempt:change", function(pSlot, pNewName)
     local pSrc = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(pSrc)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(pSrc)
     local cid = user:getCurrentCharacter().id
 
     exports.ghmattimysql:execute('UPDATE character_outfits SET name = @name WHERE cid = @cid AND slot = @slot', {
@@ -308,19 +308,19 @@ RegisterServerEvent("prp-clothingmenu:attempt:change", function(pSlot, pNewName)
 
     TriggerClientEvent("DoLongHudText", pSrc, "You have successfully re-named a outfit")
     Citizen.Wait(100)
-    TriggerClientEvent("prp-clothingmenu:return", pSrc)
+    TriggerClientEvent("mrp-clothingmenu:return", pSrc)
 
 end)
 
-RegisterServerEvent("prp-clothingmenu:options:oufits", function(pSlot)
+RegisterServerEvent("mrp-clothingmenu:options:oufits", function(pSlot)
     local src = source
-    TriggerClientEvent('prp-context:sendMenu', src, {
+    TriggerClientEvent('mrp-context:sendMenu', src, {
 		{
 			id = 1,
 			header = "< Go Back",
 			txt = "",
 			params = {
-				event = "prp-clothingmenu:return"
+				event = "mrp-clothingmenu:return"
 			}
 		},
 		{
@@ -328,7 +328,7 @@ RegisterServerEvent("prp-clothingmenu:options:oufits", function(pSlot)
 			header = "Use Outfit",
 			txt = "Change your current clothes to this saved outfit",
 			params = {
-				event = "prp-clothingmenu:use:outfit",
+				event = "mrp-clothingmenu:use:outfit",
 				args = {
 					slot = pSlot
 				}
@@ -340,7 +340,7 @@ RegisterServerEvent("prp-clothingmenu:options:oufits", function(pSlot)
 			header = "Delete Outfit",
 			txt = "Delete the outfit from the wardrobe",
 			params = {
-				event = "prp-clothingmenu:remove:outfit",
+				event = "mrp-clothingmenu:remove:outfit",
 				args = {
 					slot = pSlot
 				}
@@ -352,7 +352,7 @@ RegisterServerEvent("prp-clothingmenu:options:oufits", function(pSlot)
 			header = "Rename Outfit",
 			txt = "Change the name of the current outfit selected",
 			params = {
-				event = "prp-clothingmenu:attempt:change",
+				event = "mrp-clothingmenu:attempt:change",
 				args = {
 					slot = pSlot
 				}
@@ -366,7 +366,7 @@ end)
 RegisterServerEvent("clothing:checkIfNew")
 AddEventHandler("clothing:checkIfNew", function()
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local cid = user:getCurrentCharacter().id
     local dateCreated = user:getCurrentCharacter()
 
@@ -388,9 +388,9 @@ AddEventHandler("clothing:checkIfNew", function()
                         TriggerClientEvent("hotel:createRoom", src, true, true)
                     end
                 end)
-                TriggerEvent("prp-clothingmenu:get_character_current", src)
+                TriggerEvent("mrp-clothingmenu:get_character_current", src)
             end
-            TriggerClientEvent("prp-clothingmenu:inService",src,isService)
+            TriggerClientEvent("mrp-clothingmenu:inService",src,isService)
     	end)
     end)
 end)
@@ -398,7 +398,7 @@ end)
 RegisterServerEvent("clothing:checkMoney")
 AddEventHandler("clothing:checkMoney", function(askingPrice)
     local src = source
-    local target = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local target = exports["mrp-core"]:getModule("Player"):GetUser(src)
 
     if not askingPrice then
         askingPrice = 0

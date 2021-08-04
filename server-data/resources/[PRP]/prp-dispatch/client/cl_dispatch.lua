@@ -216,7 +216,7 @@ end
 
 RegisterNetEvent('dispatch:clNotify')
 AddEventHandler('dispatch:clNotify', function(pNotificationData)
-  local job = exports["prp_manager"]:isPed("myjob")
+  local job = exports["mrp_manager"]:isPed("myjob")
     if pNotificationData ~= nil then
         if pNotificationData.recipientList then
             for key, value in pairs(pNotificationData.recipientList) do
@@ -270,8 +270,8 @@ end)
 
 
 
-RegisterNetEvent('prp-binds:keyEvent')
-AddEventHandler('prp-binds:keyEvent', function(name,onDown)
+RegisterNetEvent('mrp-binds:keyEvent')
+AddEventHandler('mrp-binds:keyEvent', function(name,onDown)
     if name ~= "ShowRecentDispatch" then return end
     if onDown then 
       DispatchLog()
@@ -280,7 +280,7 @@ end)
 
 
 function DispatchLog()
-  local job = exports["prp_manager"]:isPed("myjob")
+  local job = exports["mrp_manager"]:isPed("myjob")
   if job == 'police' or job == 'ems' or job == 'news' then
     showDispatchLog = not showDispatchLog
     SetNuiFocus(showDispatchLog, showDispatchLog)
@@ -509,7 +509,7 @@ end
 
 RegisterNetEvent('civilian:alertPolice')
 AddEventHandler("civilian:alertPolice",function(basedistance,alertType,objPassed,isGunshot,isSpeeder)
-  local job = exports["prp_manager"]:isPed("myjob")
+  local job = exports["mrp_manager"]:isPed("myjob")
     local pd = false
     if job == "police" then
         pd = true
@@ -770,7 +770,7 @@ AddEventHandler('police:tenThirteenA', function()
 				z = pos.z
 			  }
 		})
-		TriggerEvent('prp-alerts:1013A')
+		TriggerEvent('mrp-alerts:1013A')
 end)
 
 
@@ -793,7 +793,7 @@ AddEventHandler('police:tenThirteenB', function()
 				z = pos.z
 			}
 		})
-		TriggerEvent('prp-alerts:1013B')
+		TriggerEvent('mrp-alerts:1013B')
 end)
 
 RegisterNetEvent('police:panic')
@@ -816,7 +816,7 @@ AddEventHandler('police:panic', function()
 				z = pos.z
 			}
 		})
-		TriggerEvent('prp-alerts:policepanic')
+		TriggerEvent('mrp-alerts:policepanic')
 end)
 
 RegisterNetEvent("police:tenForteenA")
@@ -838,7 +838,7 @@ AddEventHandler("police:tenForteenA", function()
 			z = pos.z
 		}
 	})
-		TriggerEvent('prp-alerts:1014A')
+		TriggerEvent('mrp-alerts:1014A')
 end)
 
 RegisterNetEvent("police:tenForteenB")
@@ -860,7 +860,7 @@ AddEventHandler("police:tenForteenB", function()
 			z = pos.z
 		}
 	})
-		TriggerEvent('prp-alerts:1014B')
+		TriggerEvent('mrp-alerts:1014B')
 end)
 
 RegisterNetEvent("police:1047")
@@ -881,7 +881,7 @@ AddEventHandler("police:1047", function()
 			z = pos.z
 		}
 	})
-		TriggerEvent('prp-alerts:downguy')
+		TriggerEvent('mrp-alerts:downguy')
 end)
 
 RegisterNetEvent('TriggerAIRunning')
@@ -978,7 +978,7 @@ function AlertGunShot()
         },
         dispatchMessage = "Shots Fired in Progress",
       })
-      TriggerEvent('prp-alerts:gunshot')
+      TriggerEvent('mrp-alerts:gunshot')
       Wait(math.random(5000,10000))
 
     if math.random(1,10) > 3 and IsPedInAnyVehicle(PlayerPedId()) and not isInVehicle then
@@ -1007,7 +1007,7 @@ function AlertGunShot()
           z = plyPos.z
         }
       })
-      TriggerEvent('prp-alerts:gunshot')
+      TriggerEvent('mrp-alerts:gunshot')
     end
   end)
 end
@@ -1037,7 +1037,7 @@ function AlertpersonRobbed(vehicle)
       z = plyPos.z
     }
   })
-  TriggerEvent('prp-alerts:robstore')
+  TriggerEvent('mrp-alerts:robstore')
   Wait(math.random(5000,15000))
 
   if math.random(1,10) > 3 and IsPedInAnyVehicle(PlayerPedId()) then
@@ -1065,7 +1065,7 @@ function AlertpersonRobbed(vehicle)
         z = plyPos.z
       }
     })
-    TriggerEvent('prp-alerts:robstore')
+    TriggerEvent('mrp-alerts:robstore')
   end
 end
 
@@ -1095,7 +1095,7 @@ function AlertCheckRobbery2()
     }
   })
 
-  TriggerEvent('prp-alerts:robhouse')
+  TriggerEvent('mrp-alerts:robhouse')
   Wait(math.random(5000,15000))
 
   if math.random(1,10) > 3 and IsPedInAnyVehicle(PlayerPedId()) and not isInVehicle then
@@ -1123,7 +1123,7 @@ function AlertCheckRobbery2()
         z = plyPos.z
       }
     })
-    TriggerEvent('prp-alerts:robhouse')
+    TriggerEvent('mrp-alerts:robhouse')
   end
 end
 
@@ -1153,7 +1153,7 @@ function DrugSales()
     }
   })
 
-  TriggerEvent('prp-alerts:sellingdrugs')
+  TriggerEvent('mrp-alerts:sellingdrugs')
   Wait(math.random(5000,15000))
 
   if math.random(1,10) > 3 and IsPedInAnyVehicle(PlayerPedId()) and not isInVehicle then
@@ -1181,7 +1181,7 @@ function DrugSales()
         z = plyPos.z
       }
     })
-    TriggerEvent('prp-alerts:sellingdrugs')
+    TriggerEvent('mrp-alerts:sellingdrugs')
   end
 end
 
@@ -1211,7 +1211,7 @@ function AlertBankTruck()
     }
   })
   
-  TriggerEvent('prp-alerts:bankt')
+  TriggerEvent('mrp-alerts:bankt')
   Wait(math.random(5000,15000))
 
   if math.random(1,10) > 3 and IsPedInAnyVehicle(PlayerPedId()) and not isInVehicle then
@@ -1239,7 +1239,7 @@ function AlertBankTruck()
         z = plyPos.z
       }
     })
-    TriggerEvent('prp-alerts:bankt')
+    TriggerEvent('mrp-alerts:bankt')
   end
 end
 
@@ -1268,7 +1268,7 @@ function AlertJewelRob()
     }
   })
   
-  TriggerEvent('prp-alerts:jewrob')
+  TriggerEvent('mrp-alerts:jewrob')
   Wait(math.random(5000,15000))
 
   if math.random(1,10) > 3 and IsPedInAnyVehicle(PlayerPedId()) and not isInVehicle then
@@ -1296,11 +1296,11 @@ function AlertJewelRob()
         z = plyPos.z
       }
     })
-    TriggerEvent('prp-alerts:jewrob')
+    TriggerEvent('mrp-alerts:jewrob')
   end
 end
 
-RegisterNetEvent("prp-dispatch:alert", function(pType)
+RegisterNetEvent("mrp-dispatch:alert", function(pType)
   if pType == "AlertFleecaRobbery" then
     AlertFleecaRobbery()
   end
@@ -1332,7 +1332,7 @@ function AlertFleecaRobbery()
     }
   })
   
-  TriggerEvent("prp-dispatch:fleeca:bank", plyPos)
+  TriggerEvent("mrp-dispatch:fleeca:bank", plyPos)
 end
 
 
@@ -1340,10 +1340,10 @@ end
 
 
 exports("SendAlert", function(pAlertType)
-  TriggerEvent("prp-dispatch:alert", pAlertType)
+  TriggerEvent("mrp-dispatch:alert", pAlertType)
 end)
 
 
 RegisterCommand("2", function(src, args, raw)
-  exports['prp-dispatch']:SendAlert("AlertFleecaRobbery")
+  exports['mrp-dispatch']:SendAlert("AlertFleecaRobbery")
 end)

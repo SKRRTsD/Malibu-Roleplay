@@ -7,25 +7,25 @@ tattoosShops = {
 
 Citizen.CreateThread(function()
 
-	exports["prp-polyzone"]:AddBoxZone("tattoo_shop", vector3(1323.0, -1652.8, 52.28), 4.2, 6.8, {
+	exports["mrp-polyzone"]:AddBoxZone("tattoo_shop", vector3(1323.0, -1652.8, 52.28), 4.2, 6.8, {
 		heading=40,
 		minZ=51.95,
 		maxZ=53.95
 	})
 	
-	exports["prp-polyzone"]:AddBoxZone("tattoo_shop", vector3(-1154.29, -1426.76, 4.95), 4.8, 7.2, {
+	exports["mrp-polyzone"]:AddBoxZone("tattoo_shop", vector3(-1154.29, -1426.76, 4.95), 4.8, 7.2, {
 		heading=32,
 		minZ=3.95,
 		maxZ=7.95
 	})
 	
-	exports["prp-polyzone"]:AddBoxZone("tattoo_shop", vector3(323.34, 180.65, 103.59), 5.2, 6.4, {
+	exports["mrp-polyzone"]:AddBoxZone("tattoo_shop", vector3(323.34, 180.65, 103.59), 5.2, 6.4, {
 		heading=337,
 		minZ=102.24,
 		maxZ=106.64
 	})
 	
-	exports["prp-polyzone"]:AddBoxZone("tattoo_shop", vector3(-3170.18, 1076.27, 20.83), 7.0, 4.8, {
+	exports["mrp-polyzone"]:AddBoxZone("tattoo_shop", vector3(-3170.18, 1076.27, 20.83), 7.0, 4.8, {
 		heading=335,
 		minZ=19.83,
 		maxZ=24.03

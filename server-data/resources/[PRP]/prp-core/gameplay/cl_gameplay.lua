@@ -58,7 +58,7 @@ end
 
 local gamePlayStarted = false
 
-AddEventHandler("prp-core:playerSessionStarted", function()
+AddEventHandler("mrp-core:playerSessionStarted", function()
     if gamePlayStarted then return end
     gamePlayStarted = true
     SetGamePlayVars()

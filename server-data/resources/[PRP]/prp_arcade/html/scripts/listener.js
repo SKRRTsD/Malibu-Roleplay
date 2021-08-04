@@ -86,13 +86,13 @@ setTimeout(progress, 100);
 
 $(document).keyup(function(e) {
     if (e.keyCode === 27){
-        $.post('http://prp_arcade/exit', JSON.stringify({}));
+        $.post('http://mrp_arcade/exit', JSON.stringify({}));
     }
 });
 
 
 $( "#off_pc" ).click(function() {
-    $.post('http://prp_arcade/exit', JSON.stringify({}));
+    $.post('http://mrp_arcade/exit', JSON.stringify({}));
 });
 function loadIframe(give,url) {
 	url_game = url;

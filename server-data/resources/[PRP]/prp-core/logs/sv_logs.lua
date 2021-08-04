@@ -2,7 +2,7 @@ function AddLog(lType, user, log, data)
     if not lType then lType = "None" else lType = tostring(lType) end
     
     if lType == "Exploiter" then
-        exports["prp-core"]:getModule("Admin"):ExploitAlertDiscord(user, log)
+        exports["mrp-core"]:getModule("Admin"):ExploitAlertDiscord(user, log)
     end
 
     local steamId = (user and type(user) ~= "string") and user["steamid"] or (user and user or "Unknown")
@@ -27,7 +27,7 @@ end
 
 
 function DiscordLog(wh, pSrc, reason, pBanReason, pLogData)
-    local user = exports["prp-core"]:getModule("Player"):GetUser(pSrc)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(pSrc)
     if user ~= false then
         hexId = user:getVar("hexid")
     else

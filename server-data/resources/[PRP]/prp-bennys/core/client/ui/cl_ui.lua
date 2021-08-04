@@ -250,7 +250,7 @@ function InitiateMenus(isMotorcycle, vehicleHealth)
     if vehicleHealth < 1000.0 then
         local repairCost = math.ceil(1000 - vehicleHealth)
 
-        TriggerServerEvent("prp-bennys:updateRepairCost", repairCost)
+        TriggerServerEvent("mrp-bennys:updateRepairCost", repairCost)
         createMenu("repairMenu", "Welcome to Benny's Original Motorworks", "Repair Vehicle")
         populateMenu("repairMenu", -1, "Repair", "$" .. repairCost)
         finishPopulatingMenu("repairMenu")

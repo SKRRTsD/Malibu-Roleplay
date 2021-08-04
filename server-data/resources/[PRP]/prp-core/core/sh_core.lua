@@ -9,8 +9,8 @@ function PRP.Core.ConsoleLog(self, msg, mod)
 
 end
 
-RegisterNetEvent("prp-core:consoleLog")
-AddEventHandler("prp-core:consoleLog", function(msg, mod)
+RegisterNetEvent("mrp-core:consoleLog")
+AddEventHandler("mrp-core:consoleLog", function(msg, mod)
     PRP.Core:ConsoleLog(msg, mod)
 end)
 
@@ -35,8 +35,8 @@ function PRP.Core.WaitForExports(self)
     Citizen.CreateThread(function()
         while true do
             Citizen.Wait(0)
-            if exports and exports["prp-core"] then
-                TriggerEvent("prp-core:exportsReady")
+            if exports and exports["mrp-core"] then
+                TriggerEvent("mrp-core:exportsReady")
                 PRP.Core.ExportsReady = true
                 return
             end

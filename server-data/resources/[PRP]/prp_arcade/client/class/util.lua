@@ -7,7 +7,7 @@ end
 function playerBuyTicketMenu()
 
 
-    TriggerEvent('prp-context:sendMenu', {
+    TriggerEvent('mrp-context:sendMenu', {
         {
             id = 1,
             header = "Arcade Booth",
@@ -19,7 +19,7 @@ function playerBuyTicketMenu()
             header = "Bronze (Blue Ticket)",
 			txt = "Purchase Blue Ticket",
 			params = {
-                event = "prp-arcade:buyTicket",
+                event = "mrp-arcade:buyTicket",
                 args = '1'
             }
         },
@@ -29,7 +29,7 @@ function playerBuyTicketMenu()
             header = "Silver (Pink Tikcet)",
 			txt = "Purchase Pink Ticket",
 			params = {
-                event = "prp-arcade:buyTicket",
+                event = "mrp-arcade:buyTicket",
                 args = '2'
 
             }
@@ -40,7 +40,7 @@ function playerBuyTicketMenu()
             header = "Gold (Gold Ticket)",
 			txt = "Purchase Gold Ticket",
 			params = {
-                event = "prp-arcade:buyTicket",
+                event = "mrp-arcade:buyTicket",
                 args = '3'
 
             }
@@ -58,27 +58,27 @@ function playerBuyTicketMenu()
 
 end
 
-RegisterNetEvent('prp-arcade:buyTicket')
-AddEventHandler('prp-arcade:buyTicket', function(args)
+RegisterNetEvent('mrp-arcade:buyTicket')
+AddEventHandler('mrp-arcade:buyTicket', function(args)
     local args = tonumber(args)
     if args == 1 then 
-        if exports["prp-inventory"]:hasEnoughOfItem("blueticket",1) then
+        if exports["mrp-inventory"]:hasEnoughOfItem("blueticket",1) then
             TriggerEvent("inventory:removeItem","blueticket", 1)
-            TriggerServerEvent("prp_arcade:buyTicket", 'bronz')
+            TriggerServerEvent("mrp_arcade:buyTicket", 'bronz')
         else
             TriggerEvent("DoLongHudText", "You need to buy a ticket!", 2)
         end
     elseif args == 2 then 
-        if exports["prp-inventory"]:hasEnoughOfItem("pinkticket",1) then
+        if exports["mrp-inventory"]:hasEnoughOfItem("pinkticket",1) then
             TriggerEvent("inventory:removeItem","pinkticket", 1)
-            TriggerServerEvent("prp_arcade:buyTicket", 'silver')
+            TriggerServerEvent("mrp_arcade:buyTicket", 'silver')
         else
             TriggerEvent("DoLongHudText", "You need to buy a ticket!", 2)
         end
     else
-        if exports["prp-inventory"]:hasEnoughOfItem("goldticket",1) then
+        if exports["mrp-inventory"]:hasEnoughOfItem("goldticket",1) then
             TriggerEvent("inventory:removeItem","goldticket", 1)
-            TriggerServerEvent("prp_arcade:buyTicket", 'gold')
+            TriggerServerEvent("mrp_arcade:buyTicket", 'gold')
         else
             TriggerEvent("DoLongHudText", "You need to buy a ticket!", 2)
         end
@@ -86,8 +86,8 @@ AddEventHandler('prp-arcade:buyTicket', function(args)
 
 end)
 
-RegisterNetEvent('prp-arcade:returnticket')
-AddEventHandler('prp-arcade:returnticket', function(args)
+RegisterNetEvent('mrp-arcade:returnticket')
+AddEventHandler('mrp-arcade:returnticket', function(args)
     local args = tonumber(args)
     if args == 1 then 
         minutes = 0
@@ -100,7 +100,7 @@ AddEventHandler('prp-arcade:returnticket', function(args)
 end)
 
 function returnTicketMenu()
-    TriggerEvent('prp-context:sendMenu', {
+    TriggerEvent('mrp-context:sendMenu', {
         {
             id = 1,
             header = "Arcade Booth",
@@ -112,7 +112,7 @@ function returnTicketMenu()
             header = "Return Ticket",
 			txt = "Stop using arcade",
 			params = {
-                event = "prp-arcade:returnticket",
+                event = "mrp-arcade:returnticket",
                 args = '1'
             }
         },
@@ -188,8 +188,8 @@ function requestModel(modelName, cb)
     end
 end
 
-RegisterNetEvent('prp-arcade:playArcade')
-AddEventHandler('prp-arcade:playArcade', function(args)
+RegisterNetEvent('mrp-arcade:playArcade')
+AddEventHandler('mrp-arcade:playArcade', function(args)
     local args = tonumber(args)
     if args == 1 then 
         SendNUIMessage({
@@ -265,7 +265,7 @@ function openComputerMenu(listGames, computer_)
         TriggerEvent('DoLongHudText', 'You do not have a ticket', 2)
         return
     end
-    TriggerEvent('prp-context:sendMenu', {
+    TriggerEvent('mrp-context:sendMenu', {
         {
             id = 1,
             header = "Game Selection",
@@ -277,7 +277,7 @@ function openComputerMenu(listGames, computer_)
             header = "Play Pacman",
 			txt = "",
 			params = {
-                event = "prp-arcade:playArcade",
+                event = "mrp-arcade:playArcade",
                 args = '1'
             }
         },
@@ -287,7 +287,7 @@ function openComputerMenu(listGames, computer_)
             header = "Play Tetris",
 			txt = "",
 			params = {
-                event = "prp-arcade:playArcade",
+                event = "mrp-arcade:playArcade",
                 args = '2'
 
             }
@@ -298,7 +298,7 @@ function openComputerMenu(listGames, computer_)
             header = "Play PingPong",
 			txt = "",
 			params = {
-                event = "prp-arcade:playArcade",
+                event = "mrp-arcade:playArcade",
                 args = '3'
 
             }
@@ -309,7 +309,7 @@ function openComputerMenu(listGames, computer_)
             header = "Play Slide a Lama",
 			txt = "",
 			params = {
-                event = "prp-arcade:playArcade",
+                event = "mrp-arcade:playArcade",
                 args = '4'
 
             }
@@ -321,7 +321,7 @@ function openComputerMenu(listGames, computer_)
             header = "Play Uno",
 			txt = "",
 			params = {
-                event = "prp-arcade:playArcade",
+                event = "mrp-arcade:playArcade",
                 args = '5'
 
             }
@@ -331,7 +331,7 @@ function openComputerMenu(listGames, computer_)
             header = "Play Ants",
 			txt = "",
 			params = {
-                event = "prp-arcade:playArcade",
+                event = "mrp-arcade:playArcade",
                 args = '6'
 
             }
@@ -342,7 +342,7 @@ function openComputerMenu(listGames, computer_)
             header = "Play FlappyParrot",
 			txt = "",
 			params = {
-                event = "prp-arcade:playArcade",
+                event = "mrp-arcade:playArcade",
                 args = '7'
 
             }
@@ -353,7 +353,7 @@ function openComputerMenu(listGames, computer_)
             header = "Play Zoopaloola",
 			txt = "",
 			params = {
-                event = "prp-arcade:playArcade",
+                event = "mrp-arcade:playArcade",
                 args = '8'
 
             }

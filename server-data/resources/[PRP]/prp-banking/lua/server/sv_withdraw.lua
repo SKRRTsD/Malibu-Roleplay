@@ -1,7 +1,7 @@
 RegisterServerEvent('Pluto:Bank:Withdraw')
 AddEventHandler('Pluto:Bank:Withdraw', function(account, amount, note, fSteamID)
     local source = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
     local char = user:getCurrentCharacter()
     local pName = char.first_name .. " " .. char.last_name
     local pSteam = GetPlayerName(source)
@@ -28,14 +28,14 @@ AddEventHandler('Pluto:Bank:Withdraw', function(account, amount, note, fSteamID)
         TriggerClientEvent('isPed:UpdateCash', source, user:getCash())
 
         pLogData = pSteam .. " Withdrew $"..amount .. " [Personal Account]"
-        exports['prp-core']:k_log(source, "withdraw", pLogData)
+        exports['mrp-core']:k_log(source, "withdraw", pLogData)
     end
 
     if(account == "business") then     
         exports.ghmattimysql:execute("SELECT `pass_type` FROM character_passes WHERE cid= ? AND rank >= 4", {char.id}, function(data)
             if data[1] then
                 pbussinessName = data[1].pass_type
-                exports['prp-banking']:UpdateSociety(amount, pbussinessName, "remove")            
+                exports['mrp-banking']:UpdateSociety(amount, pbussinessName, "remove")            
                 user:addMoney(amount)
 
                 TriggerClientEvent("Pluto:Bank:Notify", source, "info", "You have withdrew $"..format_int(amount).." from ".. pbussinessName.."'s business account.") 
@@ -44,7 +44,7 @@ AddEventHandler('Pluto:Bank:Withdraw', function(account, amount, note, fSteamID)
             end
         end)
         pLogData = pSteam .. " Withdrew $"..amount .. " [Business Account: " .. pbussinessName .. "]"
-        exports['prp-core']:k_log(source, "withdraw", pLogData)
+        exports['mrp-core']:k_log(source, "withdraw", pLogData)
 
     end
 end)

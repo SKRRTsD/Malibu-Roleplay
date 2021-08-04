@@ -48,12 +48,12 @@ $(document).click(function(event){
 })
 
 const PostData = (id) => {
-    $.post(`https://prp-context/dataPost`, JSON.stringify(Button[id]))
+    $.post(`https://mrp-context/dataPost`, JSON.stringify(Button[id]))
     return CloseMenu();
 }
 
 const CancelMenu = () => {
-    $.post(`https://prp-context/cancel`)
+    $.post(`https://mrp-context/cancel`)
     return CloseMenu();
 }
 

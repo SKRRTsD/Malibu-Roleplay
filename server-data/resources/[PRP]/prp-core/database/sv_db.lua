@@ -93,7 +93,7 @@ function PRP.DB.PlayerExistsDB(self, src, callback)
 end
 
 function PRP.DB.PhoneNumberExists(self, src, phone_number, callback)
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
 
     callback = callback and callback or function() return end
 
@@ -329,7 +329,7 @@ end
 
 function PRP.DB.UpdateControls(self, src, controlsTable, callback)
     callback = callback and callback or function() return end
-        local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+        local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
         if not user then callback(false,true) return end
     
         local hexId = user:getVar("hexid")
@@ -350,7 +350,7 @@ end
 
 function PRP.DB.GetControls(self, src, callback)
     callback = callback and callback or function() return end
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
         Citizen.Wait(3000)
         if not user then callback(false, true) return end
 
@@ -371,7 +371,7 @@ end
     
 function PRP.DB.UpdateSettings(self, src, settingsTable, callback)
     callback = callback and callback or function() return end
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
         if not user then callback(false,true) return end
     
         local hexId = user:getVar("hexid")
@@ -392,7 +392,7 @@ end
 
 function PRP.DB.GetSettings(self, src, callback)
     callback = callback and callback or function() return end
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     if not user then callback(false, true) return end
 
     local hexId = user:getVar("hexid")

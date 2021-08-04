@@ -181,7 +181,7 @@ function checkInputRotation()
   end)
 end
 
-AddEventHandler("prp-adminmenu:noClipToggle", function(pIsEnabled)
+AddEventHandler("mrp-adminmenu:noClipToggle", function(pIsEnabled)
   noClipEnabled = pIsEnabled
   inputRotEnabled = pIsEnabled
 

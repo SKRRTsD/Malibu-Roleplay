@@ -1,6 +1,6 @@
 RegisterNetEvent("Pluto:AddToMoneyLog")
 AddEventHandler("Pluto:AddToMoneyLog", function(source, sAccount, iAmount, sType, sReceiver, sMessage)
-    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
     local char = user:getCurrentCharacter()
 
 

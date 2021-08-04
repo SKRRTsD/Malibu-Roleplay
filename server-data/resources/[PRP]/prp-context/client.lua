@@ -16,7 +16,7 @@ RegisterNUICallback("cancel", function()
 end)
 
 
-RegisterNetEvent('prp-context:sendMenu', function(data)
+RegisterNetEvent('mrp-context:sendMenu', function(data)
     if not data then return end
     SetNuiFocus(true, true)
     PlaySoundFrontend(-1, 'Highlight_Cancel','DLC_HEIST_PLANNING_BOARD_SOUNDS', 1)

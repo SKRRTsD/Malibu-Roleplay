@@ -323,13 +323,13 @@ function PRP.DataControls.setBindTable(controlTable,shouldSend)
 	if controlTable == nil then
 		PRP.Controls.Current  = PRP.DataControls.toUpper(PRP.Controls.Default) 
 		PRP.DataControls.setSecondaryBindTable(PRP.Controls.Current)
-		TriggerServerEvent('prp-core:sv:player_control_set',PRP.Controls.Current)
+		TriggerServerEvent('mrp-core:sv:player_control_set',PRP.Controls.Current)
 		PRP.DataControls.checkForMissing()
 	else
 		if shouldSend then 
 			PRP.Controls.Current = PRP.DataControls.toUpper(controlTable)
 			PRP.DataControls.setSecondaryBindTable(PRP.Controls.Current)
-			TriggerServerEvent('prp-core:sv:player_control_set',PRP.Controls.Current)
+			TriggerServerEvent('mrp-core:sv:player_control_set',PRP.Controls.Current)
 			PRP.DataControls.checkForMissing()
 		else
 			PRP.Controls.Current = PRP.DataControls.toUpper(controlTable)
@@ -441,7 +441,7 @@ function PRP.DataControls.checkForMissing()
 
 	if isMissing then
 		PRP.DataControls.setSecondaryBindTable(PRP.Controls.Current)
-		TriggerServerEvent('prp-core:sv:player_control_set',PRP.Controls.Current)
+		TriggerServerEvent('mrp-core:sv:player_control_set',PRP.Controls.Current)
 	end
 
 
@@ -632,8 +632,8 @@ Citizen.CreateThread(function()
 end)
 
 
-RegisterNetEvent("prp-core:cl:player_control")
-AddEventHandler("prp-core:cl:player_control", function(controlTable)
+RegisterNetEvent("mrp-core:cl:player_control")
+AddEventHandler("mrp-core:cl:player_control", function(controlTable)
 	PRP.DataControls.setBindTable(controlTable,false)
 end)
 
@@ -651,7 +651,7 @@ Keys = {
 
 
 
-RegisterNetEvent('prp-core:setcontrols')
-AddEventHandler('prp-core:setcontrols', function()
-	TriggerServerEvent('prp-core:sv:player_controls')
+RegisterNetEvent('mrp-core:setcontrols')
+AddEventHandler('mrp-core:setcontrols', function()
+	TriggerServerEvent('mrp-core:sv:player_controls')
 end)

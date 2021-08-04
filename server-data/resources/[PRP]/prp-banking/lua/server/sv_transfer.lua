@@ -1,7 +1,7 @@
 RegisterServerEvent('Pluto:Bank:Transfer')
 AddEventHandler('Pluto:Bank:Transfer', function(target, account, amount, note, fSteamID)
     local source = source
-    local pPlayer = exports["prp-core"]:getModule("Player"):GetUser(tonumber(source))
+    local pPlayer = exports["mrp-core"]:getModule("Player"):GetUser(tonumber(source))
     local pchar = pPlayer:getCurrentCharacter()
     local pName = pchar.first_name .. " " .. pchar.last_name
     local pSteam = GetPlayerName(source)
@@ -16,7 +16,7 @@ AddEventHandler('Pluto:Bank:Transfer', function(target, account, amount, note, f
     amount = tonumber(amount)
 
 
-    local tPlayer = exports["prp-core"]:getModule("Player"):GetUser(target)
+    local tPlayer = exports["mrp-core"]:getModule("Player"):GetUser(target)
     local tchar = tPlayer:getCurrentCharacter()
     local tName = tchar.first_name .. " " .. tchar.last_name
 
@@ -47,7 +47,7 @@ AddEventHandler('Pluto:Bank:Transfer', function(target, account, amount, note, f
         TriggerClientEvent("Pluto:Bank:RefreshAccounts", source)
 
         pLogData = pSteam .. " transferred $"..amount .. " to " .. TargetSteam .. " [Personal Account]"
-        exports['prp-core']:k_log(source, "transfer", pLogData)
+        exports['mrp-core']:k_log(source, "transfer", pLogData)
 
 
     end
@@ -59,13 +59,13 @@ AddEventHandler('Pluto:Bank:Transfer', function(target, account, amount, note, f
                 
                 tPlayer:addBank(amount)
                 Wait(50)   
-                exports['prp-banking']:UpdateSociety(amount, pbussinessName, "remove")
+                exports['mrp-banking']:UpdateSociety(amount, pbussinessName, "remove")
                 TriggerClientEvent("Pluto:Bank:Notify", source, "info", "You have transfered $" .. format_int(amount) .. " from " .. pbussinessName .. "'s account")
                 TriggerEvent("Pluto:AddToMoneyLog", source, "personal", -amount, "transfer", tName, "Transfered $" .. format_int(amount) .. " to " .. tName .. " from " .. pbussinessName .. "'s account")
                 TriggerEvent("Pluto:AddToMoneyLog", target, "personal", amount, "transfer", pName, "Received $" .. format_int(amount) .. " from " .. pName .. " of " .. pbussinessName)
                 TriggerClientEvent("Pluto:Bank:RefreshAccounts", source)
                 pLogData = pSteam .. " transferred $"..amount .. " to " .. TargetSteam .. " [Business Account: " .. pbussinessName .. "]"
-                exports['prp-core']:k_log(source, "transfer", pLogData)
+                exports['mrp-core']:k_log(source, "transfer", pLogData)
 
             end
         end)

@@ -5,7 +5,7 @@
   if (GetCurrentResourceName() ~= resourceName) then
     return
   end
-  TriggerServerEvent("prp-commands:buildCommands","")
+  TriggerServerEvent("mrp-commands:buildCommands","")
 end)
 
 RegisterCommand("cpr", function(source, args, rawCommand)

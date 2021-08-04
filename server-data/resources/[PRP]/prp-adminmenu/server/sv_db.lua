@@ -1,7 +1,7 @@
 -- PRP.Admin.DB = PRP.Admin.DB or {}
 
--- RegisterServerEvent('prp-adminmenu:searchRequest')
--- AddEventHandler('prp-adminmenu:searchRequest', function()
+-- RegisterServerEvent('mrp-adminmenu:searchRequest')
+-- AddEventHandler('mrp-adminmenu:searchRequest', function()
 --     local q = [[SELECT hex_id FROM users WHERE hex_id = @id LIMIT 1;]]
 --     local v = {["id"] = hexId}
 
@@ -40,7 +40,7 @@
 -- end
 
 -- function PRP.Admin.DB.IsPlayerBanned(target, callback)
---     local user = exports["prp-core"]:getModule("Player"):GetUser(target)
+--     local user = exports["mrp-core"]:getModule("Player"):GetUser(target)
 --     local steamid = user:getVar("hexid")
 
 --     local q = [[SELECT * FROM user_bans WHERE steam_id = @id LIMIT 1;]]

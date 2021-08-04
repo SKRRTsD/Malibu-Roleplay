@@ -26,7 +26,7 @@ RegisterNetEvent("banking:recieve:data", function(data, friends, transactions)
     end
 
     SetNuiFocus(true, true)
-    SendNUIMessage({type = 'OpenUI', accounts = PlayerBanks, friends = json.encode(FriendsData), transactions = json.encode(transactions), name = exports['prp_manager']:isPed("fullname")})
+    SendNUIMessage({type = 'OpenUI', accounts = PlayerBanks, friends = json.encode(FriendsData), transactions = json.encode(transactions), name = exports['mrp_manager']:isPed("fullname")})
 end)
 
 RegisterNUICallback("CloseATM", function()

@@ -115,9 +115,9 @@ end)
 
 RegisterNetEvent("arcade:register")
 AddEventHandler("arcade:register", function(registerID)
-    local myJob = exports["prp_manager"]:isPed("myJob")
+    local myJob = exports["mrp_manager"]:isPed("myJob")
     if myJob == "videogeddon_arcade" then
-        local order = exports["prp-applications"]:KeyboardInput({
+        local order = exports["mrp-applications"]:KeyboardInput({
             header = "Create Receipt",
             rows = {
                 {
@@ -145,7 +145,7 @@ end)
 
 RegisterNetEvent('arcade:cash:in')
 AddEventHandler('arcade:cash:in', function()
-    local cid = exports["prp_manager"]:isPed("cid")
+    local cid = exports["mrp_manager"]:isPed("cid")
     TriggerServerEvent("arcade:update:pay", cid)
 end)
 
@@ -176,13 +176,13 @@ end)
 local barricade = "prop_mb_sandblock_03"
 
 RegisterCommand('addblock', function()
-    local rank = exports["prp_manager"]:GroupRank("videogeddon_arcade")
+    local rank = exports["mrp_manager"]:GroupRank("videogeddon_arcade")
     if rank > 4 then
         local src = source
         local plypos = GetEntityCoords(PlayerPedId())
         if not IsPedInAnyVehicle(PlayerPedId(), false) then
             TriggerEvent("animation:impound")
-            local finished = exports["prp-taskbar"]:taskBar("5000","Completing Task")
+            local finished = exports["mrp-taskbar"]:taskBar("5000","Completing Task")
             if finished == 100 then
                 local place = CreateObject(GetHashKey(barricade), 718.06799316406, -767.62799072266, 24.904331207275 -1.10, 1, 1, 1)
                 FreezeEntityPosition(place,true)
@@ -197,13 +197,13 @@ RegisterCommand('addblock', function()
 end)
 
 RegisterCommand('deleteblock', function()
-    local rank = exports["prp_manager"]:GroupRank("videogeddon_arcade")
+    local rank = exports["mrp_manager"]:GroupRank("videogeddon_arcade")
     if rank > 4 then
         local src = source
         local plypos = GetEntityCoords(PlayerPedId())
         if not IsPedInAnyVehicle(PlayerPedId(), false) then
             TriggerEvent("animation:impound")
-            local finished = exports["prp-taskbar"]:taskBar("5000","Completing Task")
+            local finished = exports["mrp-taskbar"]:taskBar("5000","Completing Task")
             if finished == 100 then
                 local shit = GetClosestObjectOfType(plypos.x, plypos.y, plypos.z, 20.0, GetHashKey(barricade), 1, 1, 1)
                 Delete(shit)
@@ -224,7 +224,7 @@ local clothes = false
 
 
 Citizen.CreateThread(function()
-    exports["prp-polyzone"]:AddBoxZone("changeclothes", vector3(734.78, -807.76, 16.28), 1.2, 1, {
+    exports["mrp-polyzone"]:AddBoxZone("changeclothes", vector3(734.78, -807.76, 16.28), 1.2, 1, {
 		name="changeclothes",
         heading=0,
         minZ=13.48,
@@ -232,21 +232,21 @@ Citizen.CreateThread(function()
     }) 
 end)
 
-RegisterNetEvent('prp-polyzone:enter')
-AddEventHandler('prp-polyzone:enter', function(name)
+RegisterNetEvent('mrp-polyzone:enter')
+AddEventHandler('mrp-polyzone:enter', function(name)
     if name == "changeclothes" then
         clothes = true
-        TriggerEvent('prp-textui:ShowUI', 'show', ("[/outfits] %s"):format("Change Outfits")) 
-        TriggerEvent("prp-clothingmenu:enable", true)
+        TriggerEvent('mrp-textui:ShowUI', 'show', ("[/outfits] %s"):format("Change Outfits")) 
+        TriggerEvent("mrp-clothingmenu:enable", true)
     end
 end)
 
-RegisterNetEvent('prp-polyzone:exit')
-AddEventHandler('prp-polyzone:exit', function(name)
+RegisterNetEvent('mrp-polyzone:exit')
+AddEventHandler('mrp-polyzone:exit', function(name)
   if name == "changeclothes" then
     clothes = false
   end
-  TriggerEvent('prp-textui:HideUI')
+  TriggerEvent('mrp-textui:HideUI')
 end)
 
 

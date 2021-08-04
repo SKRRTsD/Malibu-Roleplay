@@ -104,7 +104,7 @@ end
 
 function PRP.Admin.Menu.DrawJobs(self, cmd, cb)
     WarMenu.OpenMenu("jobmenu")
-    local jobs = exports["prp-core"]:getModule("JobManager").ValidJobs;
+    local jobs = exports["mrp-core"]:getModule("JobManager").ValidJobs;
     Citizen.CreateThread(function()
         while WarMenu.IsMenuOpened("jobmenu") do
             Citizen.Wait(0)
@@ -268,11 +268,11 @@ Citizen.CreateThread(function()
         local userRank = PRP.Admin:GetPlayerRank()
         if WarMenu.Button("Dev mode: " .. (PRP._Admin.Menu.DevMode and "Disable" or "Enable")) and userRank == "dev" then 
             PRP._Admin.Menu.DevMode = not PRP._Admin.Menu.DevMode 
-            TriggerEvent("prp-adminmenu:currentDevmode",PRP._Admin.Menu.DevMode)
+            TriggerEvent("mrp-adminmenu:currentDevmode",PRP._Admin.Menu.DevMode)
         end
         if WarMenu.Button("Dev debug: " .. (PRP._Admin.Menu.DevDebug and "Disable" or "Enable")) and userRank == "dev" then 
             PRP._Admin.Menu.DevDebug = not PRP._Admin.Menu.DevDebug 
-            TriggerEvent("prp-adminmenu:currentDebug",PRP._Admin.Menu.DevDebug)
+            TriggerEvent("mrp-adminmenu:currentDebug",PRP._Admin.Menu.DevDebug)
             TriggerServerEvent("server:enablehuddebug", nil,PRP._Admin.Menu.DevDebug)
         end
         if WarMenu.MenuButton("Back", "amenu") then return end
@@ -312,7 +312,7 @@ Citizen.CreateThread(function()
     --                 if string.gsub(result, " ", "") == "" or result == "" then result = nil end
     --             end
 
-    --             TriggerServerEvent("prp-adminmenu:searchRequest", PRP._Admin.SearchOptions.type, result)
+    --             TriggerServerEvent("mrp-adminmenu:searchRequest", PRP._Admin.SearchOptions.type, result)
     --         end)
     --     end
 
@@ -338,8 +338,8 @@ Citizen.CreateThread(function()
         ["ranklist"] = false
     }
 
-    TriggerEvent("prp-adminmenu:currentDevmode",PRP._Admin.Menu.DevMode)
-    TriggerEvent("prp-adminmenu:currentDebug",PRP._Admin.Menu.DevDebug)
+    TriggerEvent("mrp-adminmenu:currentDevmode",PRP._Admin.Menu.DevMode)
+    TriggerEvent("mrp-adminmenu:currentDebug",PRP._Admin.Menu.DevDebug)
 
     while true do
         Citizen.Wait(0)
@@ -354,27 +354,27 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterNetEvent("prp-adminmenu:openMenu")
-AddEventHandler("prp-adminmenu:openMenu", function()
+RegisterNetEvent("mrp-adminmenu:openMenu")
+AddEventHandler("mrp-adminmenu:openMenu", function()
     WarMenu.OpenMenu("amenu")
 end)
 
-RegisterNetEvent("prp-adminmenu:drawLastCat")
-AddEventHandler("prp-adminmenu:drawLastCat", function(sentCat)
+RegisterNetEvent("mrp-adminmenu:drawLastCat")
+AddEventHandler("mrp-adminmenu:drawLastCat", function(sentCat)
     cat = sentCat
     WarMenu.OpenMenu("acommands")
 end)
 
-RegisterNetEvent("prp-adminmenu:currentDebug")
-AddEventHandler("prp-adminmenu:currentDebug", function(debugToggle)
+RegisterNetEvent("mrp-adminmenu:currentDebug")
+AddEventHandler("mrp-adminmenu:currentDebug", function(debugToggle)
     PRP._Admin.Menu.DevDebug = debugToggle
 end)
 
 RegisterCommand('menu', function()
-    TriggerEvent('prp-adminmenu:openMenu')
+    TriggerEvent('mrp-adminmenu:openMenu')
 end)
 
 Citizen.CreateThread(function()
-    TriggerServerEvent("prp-scoreboard:AddPlayer")
-    TriggerServerEvent('prp-adminmenu:AddPlayer')
+    TriggerServerEvent("mrp-scoreboard:AddPlayer")
+    TriggerServerEvent('mrp-adminmenu:AddPlayer')
 end)

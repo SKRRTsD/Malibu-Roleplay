@@ -22,8 +22,8 @@ function PRP.LocalPlayer.getCurrentCharacter(self)
     return GetUser():getVar("character")
 end
 
-RegisterNetEvent("prp-core:networkVar")
-AddEventHandler("prp-core:networkVar", function(var, val)
+RegisterNetEvent("mrp-core:networkVar")
+AddEventHandler("mrp-core:networkVar", function(var, val)
     PRP.LocalPlayer:setVar(var, val)
 end)
 

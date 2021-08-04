@@ -7,12 +7,12 @@ function PRP.Core.ConsoleLog(self, msg, mod, ply)
 	if not pMsg then return end
 
 	if ply and tonumber(ply) then
-		TriggerClientEvent("prp-core:consoleLog", ply, msg, mod)
+		TriggerClientEvent("mrp-core:consoleLog", ply, msg, mod)
 	end
 end
 
 AddEventHandler("onResourceStart", function(resource)
-	TriggerClientEvent("prp-core:waitForExports", -1)
+	TriggerClientEvent("mrp-core:waitForExports", -1)
 
 	if not PRP.Core.ExportsReady then return end
 
@@ -20,7 +20,7 @@ AddEventHandler("onResourceStart", function(resource)
 		while true do 
 			Citizen.Wait(0)
 			if PRP.Core.ExportsReady then
-				TriggerEvent("prp-core:exportsReady")
+				TriggerEvent("mrp-core:exportsReady")
 				return
 			else
 			end
@@ -28,15 +28,15 @@ AddEventHandler("onResourceStart", function(resource)
 	end)
 end)
 
-RegisterNetEvent("prp-core:playerSessionStarted")
-AddEventHandler("prp-core:playerSessionStarted", function()
+RegisterNetEvent("mrp-core:playerSessionStarted")
+AddEventHandler("mrp-core:playerSessionStarted", function()
 
 	local src = source
 	local name = GetPlayerName(src)
 	local user = PRP.Player:GetUser(src)
 end)
 
-AddEventHandler("prp-core:characterLoaded", function(user, char)
+AddEventHandler("mrp-core:characterLoaded", function(user, char)
 	local src = source
 	local hexId = user:getVar("hexid")
 
@@ -63,14 +63,14 @@ Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait((60 * 1000) * 45) -- 45 mins
 		TriggerClientEvent('paycheck:client:call', -1)
-		print("^1[prp-core] Paychecks Sent^0")
+		print("^1[mrp-core] Paychecks Sent^0")
 	end
 end)
 
 RegisterServerEvent('paycheck:server:send')
 AddEventHandler('paycheck:server:send', function(cid)
 	local src = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
 	local job = user:getVar("job")
 	if user ~= false then
 		if job == "unemployed" or job == "drift_school" then -- Bum Jobs 
@@ -100,7 +100,7 @@ end)
 RegisterServerEvent("paycheck:collect")
 AddEventHandler("paycheck:collect", function(cid)
 	local src = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
 	exports.ghmattimysql:execute('SELECT `paycheck` FROM characters WHERE `id`= ?', {cid}, function(data)
 		local amount = tonumber(data[1].paycheck)
 		if amount >= 1 then

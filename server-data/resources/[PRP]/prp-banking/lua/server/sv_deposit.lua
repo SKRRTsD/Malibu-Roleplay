@@ -2,7 +2,7 @@ RegisterServerEvent('Pluto:Bank:Deposit')
 AddEventHandler('Pluto:Bank:Deposit', function(account, amount, note, fSteamID)
     local source = source
     -- local xPlayer = ESX.GetPlayerFromId(source)
-    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
     local char = user:getCurrentCharacter()
     local pSteam = GetPlayerName(source)
     if(not source or source == -1) then
@@ -35,7 +35,7 @@ AddEventHandler('Pluto:Bank:Deposit', function(account, amount, note, fSteamID)
 
 
         pLogData = pSteam .. " Deposited $"..amount .. " [Personal Account]"
-        exports['prp-core']:k_log(source, "deposit", pLogData)
+        exports['mrp-core']:k_log(source, "deposit", pLogData)
         return
     end
 
@@ -45,13 +45,13 @@ AddEventHandler('Pluto:Bank:Deposit', function(account, amount, note, fSteamID)
                 pbussinessName = data[1].pass_type
                 user:removeMoney(amount)
                 Wait(500)   
-                exports['prp-banking']:UpdateSociety(amount, pbussinessName, "add")
+                exports['mrp-banking']:UpdateSociety(amount, pbussinessName, "add")
                 TriggerClientEvent("Pluto:Bank:Notify", source, "info", "You have deposited $"..format_int(amount).." into ".. pbussinessName.."'s business account.") 
                 TriggerEvent("Pluto:AddToMoneyLog", source, "business", amount, "deposit", pbussinessName, (note ~= "" and note or "Deposited $"..format_int(amount).." cash into ".. pbussinessName .."'s business account."))
                 TriggerClientEvent("Pluto:Bank:RefreshAccounts", source)
 
                 pLogData = pSteam .. " Deposited $"..amount .. " [Business Account: " .. pbussinessName .. "]"
-                exports['prp-core']:k_log(source, "deposit", pLogData)
+                exports['mrp-core']:k_log(source, "deposit", pLogData)
 
                 
             end

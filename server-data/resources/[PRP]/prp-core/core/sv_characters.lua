@@ -1,5 +1,5 @@
 function PRP.Core.LoginPlayer(self, args, src, callback)
-    TriggerEvent("prp-core:playerAttemptLogin", src)
+    TriggerEvent("mrp-core:playerAttemptLogin", src)
 
     local user = PRP.Player:CreatePlayer(src, false)
 
@@ -34,7 +34,7 @@ function PRP.Core.LoginPlayer(self, args, src, callback)
 
             callback(data)
 
-            if not err then TriggerEvent("prp-core:playerLoggedIn", user) TriggerClientEvent("prp-core:playerLoggedIn", src) end
+            if not err then TriggerEvent("mrp-core:playerLoggedIn", user) TriggerClientEvent("mrp-core:playerLoggedIn", src) end
         end)
     end
 
@@ -61,7 +61,7 @@ function PRP.Core.LoginPlayer(self, args, src, callback)
 		fetchData()
 	end)
 end
-PRP.Events:AddEvent(PRP.Core, PRP.Core.LoginPlayer, "prp-core:loginPlayer")
+PRP.Events:AddEvent(PRP.Core, PRP.Core.LoginPlayer, "mrp-core:loginPlayer")
 
 function PRP.Core.FetchPlayerCharacters(self, args, src, callback)
 	local user = PRP.Player:GetUser(src)
@@ -77,14 +77,14 @@ function PRP.Core.FetchPlayerCharacters(self, args, src, callback)
 		else
 			user:setCharacters(data)
 			user:setVar("charactersLoaded", true)
-			TriggerEvent("prp-core:charactersLoaded", user, data)
-			TriggerClientEvent("prp-core:charactersLoaded", src, data)
+			TriggerEvent("mrp-core:charactersLoaded", user, data)
+			TriggerClientEvent("mrp-core:charactersLoaded", src, data)
 		end
 
 		callback(data)
 	end)
 end
-PRP.Events:AddEvent(PRP.Core, PRP.Core.FetchPlayerCharacters, "prp-core:fetchPlayerCharacters")
+PRP.Events:AddEvent(PRP.Core, PRP.Core.FetchPlayerCharacters, "mrp-core:fetchPlayerCharacters")
 
 function PRP.Core.CreatePhoneNumber(self, src, callback)
 	Citizen.CreateThread(function()
@@ -166,7 +166,7 @@ function PRP.Core.CreateCharacter(self, charData, src, callback)
 		end
 	end)
 end
-PRP.Events:AddEvent(PRP.Core, PRP.Core.CreateCharacter, "prp-core:createCharacter")
+PRP.Events:AddEvent(PRP.Core, PRP.Core.CreateCharacter, "mrp-core:createCharacter")
 
 function PRP.Core.DeleteCharacter(self, id, src, callback)
 	local user = PRP.Player:GetUser(src)
@@ -184,7 +184,7 @@ function PRP.Core.DeleteCharacter(self, id, src, callback)
 		callback(deleted)
 	end)
 end
-PRP.Events:AddEvent(PRP.Core, PRP.Core.DeleteCharacter, "prp-core:deleteCharacter")
+PRP.Events:AddEvent(PRP.Core, PRP.Core.DeleteCharacter, "mrp-core:deleteCharacter")
 
 function PRP.Core.SelectCharacter(self, id, src, callback)
 	local user = PRP.Player:GetUser(src)
@@ -204,11 +204,11 @@ function PRP.Core.SelectCharacter(self, id, src, callback)
 	TriggerClientEvent('banking:updateBalance', src, selectedCharacter.bank, true)
 	TriggerClientEvent('banking:updateCash', src, selectedCharacter.cash, true)
 	TriggerClientEvent('banking:updateCasino', src, selectedCharacter.casino, true)
-	TriggerClientEvent('prp-core:setcontrols', src)
+	TriggerClientEvent('mrp-core:setcontrols', src)
 	TriggerClientEvent('updatepasses', src)
-	TriggerEvent("prp-core:characterLoaded", user, selectedCharacter)
-	TriggerClientEvent("prp-core:characterLoaded", src, selectedCharacter)
+	TriggerEvent("mrp-core:characterLoaded", user, selectedCharacter)
+	TriggerClientEvent("mrp-core:characterLoaded", src, selectedCharacter)
 
 	callback({loggedin = true, chardata = selectedCharacter})
 end
-PRP.Events:AddEvent(PRP.Core, PRP.Core.SelectCharacter, "prp-core:selectCharacter")
+PRP.Events:AddEvent(PRP.Core, PRP.Core.SelectCharacter, "mrp-core:selectCharacter")

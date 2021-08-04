@@ -91,15 +91,15 @@ Config.RetroMachine = {
     },
     {
         name = "DOOM",
-        link = string.format("nui://prp_arcade/html/msdos.html?url=%s&params=%s", "https://www.retrogames.cz/dos/zip/Doom.zip", "./DOOM.EXE"),
+        link = string.format("nui://mrp_arcade/html/msdos.html?url=%s&params=%s", "https://www.retrogames.cz/dos/zip/Doom.zip", "./DOOM.EXE"),
     },
     {
         name = "Duke Nukem 3D",
-        link = string.format("nui://prp_arcade/html/msdos.html?url=%s&params=%s", "https://www.retrogames.cz/dos/zip/duke3d.zip", "./DUKE3D.EXE"),
+        link = string.format("nui://mrp_arcade/html/msdos.html?url=%s&params=%s", "https://www.retrogames.cz/dos/zip/duke3d.zip", "./DUKE3D.EXE"),
     },
     {
         name = "Wolfenstein 3D",
-        link = string.format("nui://prp_arcade/html/msdos.html?url=%s&params=%s", "https://www.retrogames.cz/dos/zip/Wolfenstein3D.zip", "./WOLF3D.EXE"),
+        link = string.format("nui://mrp_arcade/html/msdos.html?url=%s&params=%s", "https://www.retrogames.cz/dos/zip/Wolfenstein3D.zip", "./WOLF3D.EXE"),
     },
 }
 

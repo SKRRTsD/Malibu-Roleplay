@@ -56,27 +56,27 @@ function PRP.Admin.CheckForSessions(self)
     -- end)
 end
 
-RegisterNetEvent("prp-adminmenu:setStatus")
-AddEventHandler("prp-adminmenu:setStatus", function(src, status)
+RegisterNetEvent("mrp-adminmenu:setStatus")
+AddEventHandler("mrp-adminmenu:setStatus", function(src, status)
     local player = PRP._Admin.Players[src]
     if not player then return else PRP._Admin.Players[src].status = status end
 end)
 
-RegisterNetEvent("prp-adminmenu:sendPlayerInfo")
-AddEventHandler("prp-adminmenu:sendPlayerInfo", function(data, discData)
+RegisterNetEvent("mrp-adminmenu:sendPlayerInfo")
+AddEventHandler("mrp-adminmenu:sendPlayerInfo", function(data, discData)
     PRP._Admin.Players = data
     PRP._Admin.DiscPlayers = discData
 end)
 
-RegisterNetEvent("prp-adminmenu:RemovePlayer")
-AddEventHandler("prp-adminmenu:RemovePlayer", function(src)
+RegisterNetEvent("mrp-adminmenu:RemovePlayer")
+AddEventHandler("mrp-adminmenu:RemovePlayer", function(src)
     local data = PRP._Admin.Players[src]
     PRP._Admin.DiscPlayers[src] = data
     PRP._Admin.Players[src] = nil
 end)
 
-RegisterNetEvent("prp-adminmenu:AddPlayer")
-AddEventHandler("prp-adminmenu:AddPlayer", function(player)
+RegisterNetEvent("mrp-adminmenu:AddPlayer")
+AddEventHandler("mrp-adminmenu:AddPlayer", function(player)
     PRP._Admin.Players[player.source] = player
 end)
 
@@ -86,33 +86,33 @@ AddEventHandler('event:control:adminDev', function(useID)
     if not devmodeToggle then return end
     if PRP.Admin:GetPlayerRank() == "dev" then
         if useID == 1 then
-            TriggerEvent("prp-adminmenu:openMenu")
+            TriggerEvent("mrp-adminmenu:openMenu")
         elseif useID == 2 then
             local bool = not isInNoclip
             PRP.Admin.RunNclp(nil,bool)
-            TriggerEvent("prp-adminmenu:noClipToggle",bool)
+            TriggerEvent("mrp-adminmenu:noClipToggle",bool)
             TriggerServerEvent("admin:noclipFromClient",bool)
         elseif useID == 3 then
-            TriggerEvent("prp-adminmenu:CloakRemote")
+            TriggerEvent("mrp-adminmenu:CloakRemote")
         elseif useID == 4 then
             PRP.Admin.teleportMarker(nil)
         end
     end
 end)
 
-RegisterNetEvent("prp-adminmenu:currentDevmode")
-AddEventHandler("prp-adminmenu:currentDevmode", function(devmode)
+RegisterNetEvent("mrp-adminmenu:currentDevmode")
+AddEventHandler("mrp-adminmenu:currentDevmode", function(devmode)
     devmodeToggle = devmode
 end)
 
-RegisterNetEvent("prp-adminmenu:AddPlayer")
-AddEventHandler("prp-adminmenu:AddPlayer", function(player)
+RegisterNetEvent("mrp-adminmenu:AddPlayer")
+AddEventHandler("mrp-adminmenu:AddPlayer", function(player)
     PRP._Admin.Players[player.source] = player
 end)
 
 function PRP.Admin.RunCommand(self, args)
     if not args or not args.command then return end
-    TriggerServerEvent("prp-adminmenu:runCommand", args)
+    TriggerServerEvent("mrp-adminmenu:runCommand", args)
 end
 
 function PRP.Admin.RunClCommand(self, cmd, args)
@@ -183,7 +183,7 @@ function PRP.Admin.RunNclp(self,bool)
     if bool and isInNoclip then return end
     isInNoclip = bool
     
-    TriggerEvent("prp-adminmenu:noClipToggle", isInNoclip)
+    TriggerEvent("mrp-adminmenu:noClipToggle", isInNoclip)
 end
 
 function GetPlayers()
@@ -198,21 +198,21 @@ function GetPlayers()
     return players
 end
 
-RegisterNetEvent("prp-adminmenu:RunClCommand")
-AddEventHandler("prp-adminmenu:RunClCommand", function(cmd, args)
+RegisterNetEvent("mrp-adminmenu:RunClCommand")
+AddEventHandler("mrp-adminmenu:RunClCommand", function(cmd, args)
     PRP.Admin:RunClCommand(cmd, args)
 end)
 
-RegisterNetEvent("prp-adminmenu:updateData")
-AddEventHandler("prp-adminmenu:updateData", function(src, type, data)
+RegisterNetEvent("mrp-adminmenu:updateData")
+AddEventHandler("mrp-adminmenu:updateData", function(src, type, data)
     if not src or not type or not data then return end
     if not PRP._Admin.Players[src] then return end
     
     PRP._Admin.Players[src][type] = data
 end)
 
-RegisterNetEvent("prp-adminmenu:noLongerAdmin")
-AddEventHandler("prp-adminmenu:noLongerAdmin", function()
+RegisterNetEvent("mrp-adminmenu:noLongerAdmin")
+AddEventHandler("mrp-adminmenu:noLongerAdmin", function()
     PRP._Admin.Players = {}
     
     for k,v in pairs(PRP._Admin.Menu.Menus) do
@@ -220,8 +220,8 @@ AddEventHandler("prp-adminmenu:noLongerAdmin", function()
     end
 end)
 
-RegisterNetEvent("prp-adminmenu:bringPlayer")
-AddEventHandler("prp-adminmenu:bringPlayer", function(targPos)
+RegisterNetEvent("mrp-adminmenu:bringPlayer")
+AddEventHandler("mrp-adminmenu:bringPlayer", function(targPos)
     Citizen.CreateThread(function()
         RequestCollisionAtCoord(targPos.x, targPos.y, targPos.z)
         SetEntityCoordsNoOffset(PlayerPedId(), targPos.x, targPos.y, targPos.z, 0, 0, 2.0)
@@ -241,8 +241,8 @@ AddEventHandler("prp-adminmenu:bringPlayer", function(targPos)
 end)
 
 local LastVehicle = nil
-RegisterNetEvent("prp-adminmenu:runSpawnCommand")
-AddEventHandler("prp-adminmenu:runSpawnCommand", function(model, livery)
+RegisterNetEvent("mrp-adminmenu:runSpawnCommand")
+AddEventHandler("mrp-adminmenu:runSpawnCommand", function(model, livery)
     Citizen.CreateThread(function()
 
         local hash = GetHashKey(model)
@@ -285,8 +285,8 @@ AddEventHandler("prp-adminmenu:runSpawnCommand", function(model, livery)
 end)
 
 
-RegisterNetEvent("prp-adminmenu:SeatIntoLast")
-AddEventHandler("prp-adminmenu:SeatIntoLast", function()
+RegisterNetEvent("mrp-adminmenu:SeatIntoLast")
+AddEventHandler("mrp-adminmenu:SeatIntoLast", function()
     local rank = PRP.Admin:GetPlayerRank()
     local rankData = PRP.Admin:GetRankData(rank)
 
@@ -298,8 +298,8 @@ AddEventHandler("prp-adminmenu:SeatIntoLast", function()
     end
 end)
 
-RegisterNetEvent("prp-adminmenu:ReviveInDistance")
-AddEventHandler("prp-adminmenu:ReviveInDistance", function()
+RegisterNetEvent("mrp-adminmenu:ReviveInDistance")
+AddEventHandler("mrp-adminmenu:ReviveInDistance", function()
     local rank = PRP.Admin:GetPlayerRank()
     local rankData = PRP.Admin:GetRankData(rank)
 
@@ -338,8 +338,8 @@ AddEventHandler('admin:RegetGroup', function()
     PRP.Admin:GetPlayerRank()
 end) 
 
-RegisterNetEvent("prp-adminmenu:bringPlayer")
-AddEventHandler("prp-adminmenu:bringPlayer", function(targPos)
+RegisterNetEvent("mrp-adminmenu:bringPlayer")
+AddEventHandler("mrp-adminmenu:bringPlayer", function(targPos)
     Citizen.CreateThread(function()
         RequestCollisionAtCoord(targPos.x, targPos.y, targPos.z)
         SetEntityCoordsNoOffset(PlayerPedId(), targPos.x, targPos.y, targPos.z, 0, 0, 2.0)
@@ -429,7 +429,7 @@ AddEventHandler("admin:attach", function(tSrc, toggle)
                 DrawPlayerInfo(targId)
                 AttachEntityToEntity(ped, targPed, 11816, 0.0, -1.48, 2.0, 0.0, 0.0, 0.0, false, false, false, false, 2, true)
             else
-                print("[prp-adminmenu]: No Target Coords")
+                print("[mrp-adminmenu]: No Target Coords")
             end
         else
             TargetC = nil

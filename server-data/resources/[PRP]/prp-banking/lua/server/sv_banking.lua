@@ -1,5 +1,5 @@
 function RefreshTransactions(source)
-    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
     local characterId = user:getVar("character").id
 
     MySQL.Async.fetchAll("SELECT * FROM `transaction_history` WHERE `identifier` = @myID AND DATE(date) > (NOW() - INTERVAL "..SimpleBanking.Config["Days_Transaction_History"].." DAY) ORDER BY `id` ASC;",
@@ -16,7 +16,7 @@ end
 RegisterServerEvent("banking:get:data", function()
     local pSrc = source
 
-    local user = exports["prp-core"]:getModule("Player"):GetUser(pSrc)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(pSrc)
     local characterId = user:getVar("character").id
 
     local PlayerBank = user:getBalance() or 0
@@ -104,22 +104,22 @@ end)
   
 RegisterServerEvent('bank:givemecash')
 AddEventHandler('bank:givemecash', function(sender, reciever, amount)
-    local user = exports["prp-core"]:getModule("Player"):GetUser(sender)
-    local player = exports["prp-core"]:getModule("Player"):GetUser(tonumber(reciever))
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(sender)
+    local player = exports["mrp-core"]:getModule("Player"):GetUser(tonumber(reciever))
     if tonumber(amount) <= user:getCash() then
         user:removeMoney(amount)
         player:addMoney(amount)    
         TriggerClientEvent("DoLongHudText", user.source, "You have handed $" ..amount.. " to ID: " ..reciever)
         TriggerClientEvent("DoLongHudText", player.source, "You have been handed $"..amount.." from ID: " ..sender)
         pLogData = "Sender: " ..GetPlayerName(sender) .. " | HANDED | Receiver: " .. GetPlayerName(reciever) .. "    | $"..amount
-        exports['prp-core']:k_log(sender, "give_cash", pLogData)
+        exports['mrp-core']:k_log(sender, "give_cash", pLogData)
     else
         TriggerClientEvent('DoShortHudText', sender, 'Not enough money', 2)
     end
 end)
 
 RegisterServerEvent("cash:remove", function(pSrc, pAmount)
-    local user = exports["prp-core"]:getModule("Player"):GetUser(pSrc)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(pSrc)
     user:removeMoney(amt)
     Wait(50)
     TriggerClientEvent('isPed:UpdateCash', pSrc, user:getCash())
@@ -127,7 +127,7 @@ end)
 
 RegisterServerEvent("banking-loaded-in", function()
     local pSrc = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(pSrc)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(pSrc)
     TriggerClientEvent('isPed:UpdateCash', pSrc, user:getCash())
 end)
 
@@ -145,14 +145,14 @@ exports('UpdateSociety', UpdateSociety)
 
 RegisterCommand("cash", function(source, args, raw)
     local pSrc = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(pSrc)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(pSrc)
     TriggerClientEvent('banking:updateCash', pSrc, user:getCash(), true)
 end)
   
   
 RegisterCommand("bank", function(source, args, raw)
     local pSrc = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(pSrc)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(pSrc)
     TriggerClientEvent('banking:updateBalance', pSrc, user:getBalance(), true)
 
 end)

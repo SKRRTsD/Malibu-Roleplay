@@ -70,7 +70,7 @@ end
 function cmd.RunClCommand(args)
     cmd.vars.enable = args.toggle
     if not args.toggle then SetPlayerInvincible(PlayerId(), false) end
-    TriggerEvent("prp-hud:godCheck",args.toggle)
+    TriggerEvent("mrp-hud:godCheck",args.toggle)
 end
 
 function cmd.DrawCommand()
@@ -248,8 +248,8 @@ end
 function cmd.Init()
     if IsDuplicityVersion() then return end
 
-    RegisterNetEvent("prp-adminmenu:NoclipState")
-    AddEventHandler("prp-adminmenu:NoclipState", function(toggle)
+    RegisterNetEvent("mrp-adminmenu:NoclipState")
+    AddEventHandler("mrp-adminmenu:NoclipState", function(toggle)
         cmd.vars.toggle = toggle
     end)
 end
@@ -287,8 +287,8 @@ end
 function cmd.Init()
     if IsDuplicityVersion() then return end
 
-    RegisterNetEvent("prp-adminmenu:NoclipState")
-    AddEventHandler("prp-adminmenu:NoclipState", function(toggle)
+    RegisterNetEvent("mrp-adminmenu:NoclipState")
+    AddEventHandler("mrp-adminmenu:NoclipState", function(toggle)
         cmd.vars.toggle = toggle
     end)
 end
@@ -464,7 +464,7 @@ cmd = {
 
 function cmd.RunCommand(caller, args)
     if not args.reason then args.reason = "" end
-    TriggerEvent("prp-adminmenu:update:vehicle", caller.source, args.reason)
+    TriggerEvent("mrp-adminmenu:update:vehicle", caller.source, args.reason)
 end
 
 function cmd.DrawCommand()
@@ -547,7 +547,7 @@ function cmd.RunCommand(caller, args)
 
     if args.toggle == true then cmd.vars.cloaked[src] = true else cmd.vars.cloaked[src] = nil end
 
-    TriggerClientEvent("prp-adminmenu:Cloak", -1, src, args.toggle)
+    TriggerClientEvent("mrp-adminmenu:Cloak", -1, src, args.toggle)
 
     local log = string.format("%s [%s] set cloak: %s", caller:getVar("name"), caller:getVar("steamid"), args.toggle and "true" or "false")
     PRP.Admin:Log(log, caller)
@@ -558,15 +558,15 @@ function cmd.Init()
     cmd.vars.cloakedVeh = {}
 
     if IsDuplicityVersion() then 
-        AddEventHandler("prp-core:characterLoaded", function(user, char)
+        AddEventHandler("mrp-core:characterLoaded", function(user, char)
             local src = user:getVar("source")
-            TriggerClientEvent("prp-adminmenu:Cloak", src, cmd.vars.cloaked)
+            TriggerClientEvent("mrp-adminmenu:Cloak", src, cmd.vars.cloaked)
         end)
 
         AddEventHandler("playerDropped", function()
             local src = source
             if cmd.vars.cloaked[src] then
-                TriggerClientEvent("prp-adminmenu:Cloak", -1, src, false)
+                TriggerClientEvent("mrp-adminmenu:Cloak", -1, src, false)
                 cmd.vars.cloaked[src] = nil
             end
         end)
@@ -577,16 +577,16 @@ function cmd.Init()
 
     
 
-    RegisterNetEvent("prp-adminmenu:CloakRemote")
-    AddEventHandler("prp-adminmenu:CloakRemote", function()
+    RegisterNetEvent("mrp-adminmenu:CloakRemote")
+    AddEventHandler("mrp-adminmenu:CloakRemote", function()
         if PRP.Admin:GetPlayerRank() == "dev" then
             cmd.vars.toggle = not cmd.vars.toggle
             PRP.Admin:GetCommandData(cmd.command).runcommand({toggle = cmd.vars.toggle})
         end
     end)
 
-    RegisterNetEvent("prp-adminmenu:Cloak")
-    AddEventHandler("prp-adminmenu:Cloak", function(player, toggle)
+    RegisterNetEvent("mrp-adminmenu:Cloak")
+    AddEventHandler("mrp-adminmenu:Cloak", function(player, toggle)
         if type(player) == "table" then
             cmd.vars.cloaked = player
             TriggerEvent("hud:HidePlayer", player)
@@ -754,7 +754,7 @@ function cmd.RunCommand(caller, args)
     if not args.message then return end
     local src = caller:getVar("source")
     TriggerEvent("admin:attempt:spawn:car",src,args.message)
-    exports["prp-core"]:AddLog("Admin", caller, "Spawned car", {car = tostring(args.message)}) 
+    exports["mrp-core"]:AddLog("Admin", caller, "Spawned car", {car = tostring(args.message)}) 
     PRP.Admin:Log(log, caller)
 end
 
@@ -770,7 +770,7 @@ function cmd.DrawCommand()
             cmd.vars.message = result
         end)
     end 
-    if WarMenu.Button("Seat into Vehicle") then TriggerEvent("prp-adminmenu:SeatIntoLast") end
+    if WarMenu.Button("Seat into Vehicle") then TriggerEvent("mrp-adminmenu:SeatIntoLast") end
 
     if cmd.vars.message then if WarMenu.Button("Spawn model: " .. cmd.vars.message) then PRP.Admin:GetCommandData(cmd.command).runcommand({message = cmd.vars.message}) end end
 end
@@ -844,7 +844,7 @@ function cmd.RunCommand(caller, args)
     if not args.amount then args.amount = 1 end
     local src = caller:getVar("source")
     TriggerEvent('admin:attempt:spawn:item', src, args.message, args.amount)
-    exports["prp-core"]:AddLog("Admin", caller, "Spawned item", {item = tostring(args.message),amount = tostring(args.amount)}) 
+    exports["mrp-core"]:AddLog("Admin", caller, "Spawned item", {item = tostring(args.message),amount = tostring(args.amount)}) 
     PRP.Admin:Log(log, caller)
 end
 
@@ -897,16 +897,16 @@ function cmd.RunCommand(caller, args)
     local src = caller:getVar("source")
 
     if args.time ~= nil and args.time ~= 0 then
-        TriggerEvent("prp-weathersync:server:setTime",args.time)
+        TriggerEvent("mrp-weathersync:server:setTime",args.time)
         -- TriggerEvent("weather:time",src,args.time)
     end
 
     if args.weather ~= nil and args.weather ~= "" then
-        TriggerEvent("prp-weathersync:server:setWeather", args.weather)
+        TriggerEvent("mrp-weathersync:server:setWeather", args.weather)
     end
 
 
-    exports["prp-core"]:AddLog("Admin", caller, "Changed weather/time/Cycle", {time = args.time, weather = args.weather,  blackout = args.blackout}) 
+    exports["mrp-core"]:AddLog("Admin", caller, "Changed weather/time/Cycle", {time = args.time, weather = args.weather,  blackout = args.blackout}) 
     local log = string.format("%s [%s] Changed weather/time/Cycle: %s", caller:getVar("name"), caller:getVar("steamid"), json.encode({time = args.time, weather = args.weather, blackout = args.blackout}))
     PRP.Admin:Log(log, caller)
 
@@ -979,8 +979,8 @@ cmd = {
 function cmd.RunCommand(caller, args)
     if not args.message then return end
     local src = caller:getVar("source")
-    TriggerClientEvent('prp-clothingmenu:AdminSetModel', src, args.message)
-    exports["prp-core"]:AddLog("Admin", caller, "Set Model", {item = tostring(args.message)}) 
+    TriggerClientEvent('mrp-clothingmenu:AdminSetModel', src, args.message)
+    exports["mrp-core"]:AddLog("Admin", caller, "Set Model", {item = tostring(args.message)}) 
     PRP.Admin:Log(log, caller)
 end
 
@@ -1075,7 +1075,7 @@ function cmd.DrawCommand()
     end) end
 
     if WarMenu.Button("Revive in Distance") then 
-        TriggerEvent("prp-adminmenu:ReviveInDistance")
+        TriggerEvent("mrp-adminmenu:ReviveInDistance")
     end
 
 
@@ -1491,7 +1491,7 @@ PRP.Admin:AddCommand(cmd)
         if not PRP.Admin:IsValidUser(target) then return end
 
         local args = {
-            target = exports["prp-core"]:getModule("Player"):getUser(target),
+            target = exports["mrp-core"]:getModule("Player"):getUser(target),
             rank = rank
         }
 

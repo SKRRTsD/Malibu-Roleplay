@@ -348,7 +348,7 @@ local function ToggleClothingToLoadPed()
 end
 
 local inSpawn = false
-AddEventHandler("prp-clothingmenu:inSpawn", function(pInSpawn)
+AddEventHandler("mrp-clothingmenu:inSpawn", function(pInSpawn)
     inSpawn = pInSpawn
 end)
 
@@ -730,7 +730,7 @@ RegisterNUICallback('escape', function(data, cb)
     local shouldSave = data['save'] or false
     if shouldSave and currentPrice > 0 then
         TriggerServerEvent("clothing:checkMoney", currentPrice)
-        if exports["prp_manager"]:isPed("mycash") < currentPrice then 
+        if exports["mrp_manager"]:isPed("mycash") < currentPrice then 
             shouldSave = false
         end
     end
@@ -849,10 +849,10 @@ function Save(save, close)
         
 
         if not startingMenu or passedClothing then
-            TriggerServerEvent("prp-clothingmenu:insert_character_current", data)
-            TriggerServerEvent("prp-clothingmenu:insert_character_face", data)
-            TriggerServerEvent("prp-clothingmenu:set_tats", currentTats)
-            TriggerEvent("prp-login:finishedClothing","Finished")
+            TriggerServerEvent("mrp-clothingmenu:insert_character_current", data)
+            TriggerServerEvent("mrp-clothingmenu:insert_character_face", data)
+            TriggerServerEvent("mrp-clothingmenu:set_tats", currentTats)
+            TriggerEvent("mrp-login:finishedClothing","Finished")
         elseif not passedClothing then 
             passedClothing = true
             Wait(2000)
@@ -861,7 +861,7 @@ function Save(save, close)
         end
         
     else
-        TriggerEvent("prp-login:finishedClothing","Old")
+        TriggerEvent("mrp-login:finishedClothing","Old")
         LoadPed(oldPed)
     end
 
@@ -873,7 +873,7 @@ function Save(save, close)
     TriggerEvent("ressurection:relationships:norevive")
     TriggerEvent("gangs:setDefaultRelations")
     TriggerEvent("facewear:update")
-    TriggerEvent('prp-weapons:getAmmo')
+    TriggerEvent('mrp-weapons:getAmmo')
     CustomCamera('torso',true)
     startingMenu = false
 end
@@ -905,19 +905,19 @@ function addBlips()
     TriggerEvent('hairDresser:ToggleHair')
 end
 
-AddEventHandler("prp-core:initialSpawnModelLoaded", function()
+AddEventHandler("mrp-core:initialSpawnModelLoaded", function()
     TriggerServerEvent("clothing:checkIfNew")
 end)
 
-RegisterNetEvent("prp-clothingmenu:inService")
-AddEventHandler("prp-clothingmenu:inService", function(service)
+RegisterNetEvent("mrp-clothingmenu:inService")
+AddEventHandler("mrp-clothingmenu:inService", function(service)
     isService = service
 end)
 
-RegisterNetEvent("prp-clothingmenu:hasEnough")
-AddEventHandler("prp-clothingmenu:hasEnough", function(menu)
+RegisterNetEvent("mrp-clothingmenu:hasEnough")
+AddEventHandler("mrp-clothingmenu:hasEnough", function(menu)
     if menu == "tattoo_shop" then
-        TriggerServerEvent("prp-clothingmenu:retrieve_tats")
+        TriggerServerEvent("mrp-clothingmenu:retrieve_tats")
         while currentTats == nil do
             Citizen.Wait(1)
         end
@@ -926,8 +926,8 @@ AddEventHandler("prp-clothingmenu:hasEnough", function(menu)
     OpenMenu(menu)
 end)
 
-RegisterNetEvent("prp-clothingmenu:setclothes")
-AddEventHandler("prp-clothingmenu:setclothes", function(data,alreadyExist)
+RegisterNetEvent("mrp-clothingmenu:setclothes")
+AddEventHandler("mrp-clothingmenu:setclothes", function(data,alreadyExist)
     player = PlayerPedId()
     local function setDefault()
         --- decapritated function
@@ -944,24 +944,24 @@ AddEventHandler("prp-clothingmenu:setclothes", function(data,alreadyExist)
     SetClothing(data.drawables, data.props, data.drawtextures, data.proptextures)
     Citizen.Wait(500)
 	TriggerEvent("facewear:update")
-    TriggerServerEvent("prp-clothingmenu:get_character_face")
-    TriggerServerEvent("prp-clothingmenu:retrieve_tats")
+    TriggerServerEvent("mrp-clothingmenu:get_character_face")
+    TriggerServerEvent("mrp-clothingmenu:retrieve_tats")
     TriggerServerEvent("police:getAnimData")
     TriggerServerEvent("police:SetMeta")
 
 end)
 
-RegisterNetEvent("prp-clothingmenu:AdminSetModel")
-AddEventHandler("prp-clothingmenu:AdminSetModel", function(model)
+RegisterNetEvent("mrp-clothingmenu:AdminSetModel")
+AddEventHandler("mrp-clothingmenu:AdminSetModel", function(model)
     local hashedModel = GetHashKey(model)
     if not IsModelInCdimage(hashedModel) or not IsModelValid(hashedModel) then return end
     SetSkin(hashedModel, true)
 end)
 
-RegisterNetEvent("prp-clothingmenu:defaultReset")
-AddEventHandler("prp-clothingmenu:defaultReset", function()
+RegisterNetEvent("mrp-clothingmenu:defaultReset")
+AddEventHandler("mrp-clothingmenu:defaultReset", function()
     DoScreenFadeOut(10)
-    local LocalPlayer = exports["prp-core"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["mrp-core"]:getModule("LocalPlayer")
     local gender = LocalPlayer:getCurrentCharacter().gender
     if gender ~= 0 then
         SetSkin(`mp_f_freemode_01`, true)
@@ -972,18 +972,18 @@ AddEventHandler("prp-clothingmenu:defaultReset", function()
     SetEntityCoords(PlayerPedId(), -474.53564453125, -670.66833496094, 11.809024810791)
     SetEntityHeading(PlayerPedId(), 359.04397583008)
 
-    TriggerEvent("prp-clothingmenu:openClothing")
-    TriggerEvent("prp-clothingmenu:inSpawn", true)
+    TriggerEvent("mrp-clothingmenu:openClothing")
+    TriggerEvent("mrp-clothingmenu:inSpawn", true)
 end)
 
-RegisterNetEvent("prp-clothingmenu:settattoos")
-AddEventHandler("prp-clothingmenu:settattoos", function(playerTattoosList)
+RegisterNetEvent("mrp-clothingmenu:settattoos")
+AddEventHandler("mrp-clothingmenu:settattoos", function(playerTattoosList)
     currentTats = playerTattoosList
     SetTats(GetTats())
 end)
 
-RegisterNetEvent("prp-clothingmenu:setpedfeatures")
-AddEventHandler("prp-clothingmenu:setpedfeatures", function(data)
+RegisterNetEvent("mrp-clothingmenu:setpedfeatures")
+AddEventHandler("mrp-clothingmenu:setpedfeatures", function(data)
     player = PlayerPedId()
     if data == false then
         SetSkin(GetEntityModel(PlayerPedId()), true)
@@ -1048,22 +1048,22 @@ local function listenForKeypress(zoneName, zoneData, isFree)
         while listening do
             if IsControlJustReleased(0, 244) then
                 if zoneName == "tattoo_shop" then
-                    TriggerServerEvent("prp-clothingmenu:retrieve_tats")
+                    TriggerServerEvent("mrp-clothingmenu:retrieve_tats")
                     while currentTats == nil do
                         Citizen.Wait(0)
                     end
                 end
                 OpenMenu(zoneName, 0, 0)
 
-                TriggerEvent('prp-textui:HideUI')
+                TriggerEvent('mrp-textui:HideUI')
             end
             Wait(0)
         end
     end)
 end
 
-RegisterNetEvent('prp-clothingmenu:openClothing')
-AddEventHandler('prp-clothingmenu:openClothing', function(pDontShowBarber, pShouldCost)
+RegisterNetEvent('mrp-clothingmenu:openClothing')
+AddEventHandler('mrp-clothingmenu:openClothing', function(pDontShowBarber, pShouldCost)
     if pShouldCost ~= nil and pShouldCost then
         OpenMenu("clothing_shop", 0, 0)
         startingMenu = false
@@ -1075,37 +1075,37 @@ AddEventHandler('prp-clothingmenu:openClothing', function(pDontShowBarber, pShou
     passedClothing = pDontShowBarber or false
 end)
 
-AddEventHandler("prp-polyzone:enter", function(zone, data)
+AddEventHandler("mrp-polyzone:enter", function(zone, data)
     local currentZone = MenuData[zone]
     if currentZone then
-        TriggerEvent('prp-textui:ShowUI', 'show', ("[M] %s"):format(currentZone.text))
-        TriggerEvent("prp-clothingmenu:enable", true)
+        TriggerEvent('mrp-textui:ShowUI', 'show', ("[M] %s"):format(currentZone.text))
+        TriggerEvent("mrp-clothingmenu:enable", true)
         listenForKeypress(zone, currentZone, ((data and data.isFree) and true or false))
     end
 end)
 
-AddEventHandler("prp-polyzone:exit", function(zone)
+AddEventHandler("mrp-polyzone:exit", function(zone)
     local currentZone = MenuData[zone]
     if currentZone then
         listening = false
-        TriggerEvent('prp-textui:HideUI')
-        TriggerEvent("prp-clothingmenu:enable", false)
+        TriggerEvent('mrp-textui:HideUI')
+        TriggerEvent("mrp-clothingmenu:enable", false)
     end
 end)
 
-RegisterNetEvent('prp-clothingmenu:outfits')
-AddEventHandler('prp-clothingmenu:outfits', function(pAction, pId, pName)
+RegisterNetEvent('mrp-clothingmenu:outfits')
+AddEventHandler('mrp-clothingmenu:outfits', function(pAction, pId, pName)
     if pAction == 1 then
-        TriggerServerEvent("prp-clothingmenu:set_outfit",pId, pName, GetCurrentPed())
+        TriggerServerEvent("mrp-clothingmenu:set_outfit",pId, pName, GetCurrentPed())
     elseif pAction == 2 then
-        TriggerServerEvent("prp-clothingmenu:remove_outfit",pId)
+        TriggerServerEvent("mrp-clothingmenu:remove_outfit",pId)
     elseif pAction == 3 then 
         TriggerEvent('item:deleteClothesDna')
         TriggerEvent('InteractSound_CL:PlayOnOne','Clothes1', 0.6)
-        TriggerServerEvent("prp-clothingmenu:get_outfit", pId)
+        TriggerServerEvent("mrp-clothingmenu:get_outfit", pId)
     else
         TriggerEvent("hud:saveCurrentMeta")
-        TriggerServerEvent("prp-clothingmenu:list_outfits")
+        TriggerServerEvent("mrp-clothingmenu:list_outfits")
     end
 end)
 
@@ -1150,15 +1150,15 @@ RegisterCommand("h0", function(source, args, rawCommand)
 end, false)
 
 
-RegisterNetEvent('prp-clothingmenu:enable')
-AddEventHandler('prp-clothingmenu:enable', function(status)
+RegisterNetEvent('mrp-clothingmenu:enable')
+AddEventHandler('mrp-clothingmenu:enable', function(status)
     actionDress = status
 end)
 
 RegisterCommand("outfitadd", function(source, args, rawCommand)
     if actionDress == true then
         if args[1] and args[2] then
-            TriggerEvent('prp-clothingmenu:outfits', 1, args[1], args[2])
+            TriggerEvent('mrp-clothingmenu:outfits', 1, args[1], args[2])
         else
             TriggerEvent('DoLongHudText', "You need to do something like /outfitadd 1 party | 1 being the slot id, party is the name of your outfit", 1)
         end
@@ -1169,7 +1169,7 @@ end, false)
 
 RegisterCommand("outfits", function(source, args, rawCommand)
     if actionDress == true then
-        TriggerEvent('prp-clothingmenu:outfits', 4)
+        TriggerEvent('mrp-clothingmenu:outfits', 4)
     else
         TriggerEvent('DoLongHudText', "You are not near a wardrobe", 2)
     end
@@ -1177,30 +1177,30 @@ end, false)
 
 
 
-RegisterNetEvent("prp-clothingmenu:list:outfits")
-AddEventHandler("prp-clothingmenu:list:outfits", function(data)
-    TriggerServerEvent("prp-clothingmenu:options:oufits", data.slot)
+RegisterNetEvent("mrp-clothingmenu:list:outfits")
+AddEventHandler("mrp-clothingmenu:list:outfits", function(data)
+    TriggerServerEvent("mrp-clothingmenu:options:oufits", data.slot)
 end)
 
 
-RegisterNetEvent("prp-clothingmenu:use:outfit")
-AddEventHandler("prp-clothingmenu:use:outfit", function(data)
-    TriggerServerEvent("prp-clothingmenu:get_outfit", data.slot)
+RegisterNetEvent("mrp-clothingmenu:use:outfit")
+AddEventHandler("mrp-clothingmenu:use:outfit", function(data)
+    TriggerServerEvent("mrp-clothingmenu:get_outfit", data.slot)
 end)
 
-RegisterNetEvent("prp-clothingmenu:remove:outfit")
-AddEventHandler("prp-clothingmenu:remove:outfit", function(data)
-    TriggerServerEvent("prp-clothingmenu:remove_outfit", data.slot)
+RegisterNetEvent("mrp-clothingmenu:remove:outfit")
+AddEventHandler("mrp-clothingmenu:remove:outfit", function(data)
+    TriggerServerEvent("mrp-clothingmenu:remove_outfit", data.slot)
 end)
 
 
-RegisterNetEvent("prp-clothingmenu:return", function()
+RegisterNetEvent("mrp-clothingmenu:return", function()
     TriggerEvent("hud:saveCurrentMeta")
-    TriggerServerEvent("prp-clothingmenu:list_outfits")
+    TriggerServerEvent("mrp-clothingmenu:list_outfits")
 end)
 
-RegisterNetEvent("prp-clothingmenu:attempt:change", function(data)
-    local pNewName = exports["prp-applications"]:KeyboardInput({
+RegisterNetEvent("mrp-clothingmenu:attempt:change", function(data)
+    local pNewName = exports["mrp-applications"]:KeyboardInput({
         header = "New outfit name",
         rows = {
             {
@@ -1210,7 +1210,7 @@ RegisterNetEvent("prp-clothingmenu:attempt:change", function(data)
         }
     })
     if pNewName then
-        TriggerServerEvent('prp-clothingmenu:attempt:change',  data.slot, pNewName[1].input)
+        TriggerServerEvent('mrp-clothingmenu:attempt:change',  data.slot, pNewName[1].input)
     else
         TriggerEvent("DoLongHudText", "Name cannot be blank", 2)
     end
@@ -1298,7 +1298,7 @@ end)
 
 RegisterNetEvent("facewear:adjust")
 AddEventHandler("facewear:adjust",function(faceType,remove)
-	local handcuffed = exports["prp_manager"]:isPed("handcuffed")
+	local handcuffed = exports["mrp_manager"]:isPed("handcuffed")
 	if handcuffed then return end
 	local AnimSet = "none"
 	local AnimationOn = "none"

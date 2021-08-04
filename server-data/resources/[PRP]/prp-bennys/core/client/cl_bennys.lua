@@ -131,7 +131,7 @@ function AttemptPurchase(type, upgradeLevel)
     if upgradeLevel ~= nil then
         upgradeLevel = upgradeLevel + 2
     end
-    TriggerServerEvent("prp-bennys:attemptPurchase",cheap, type, upgradeLevel)
+    TriggerServerEvent("mrp-bennys:attemptPurchase",cheap, type, upgradeLevel)
 
     attemptingPurchase = true
 
@@ -764,16 +764,16 @@ RegisterNetEvent('event:control:bennys')
 AddEventHandler('event:control:bennys', function(useID)
     if IsPedInAnyVehicle(PlayerPedId(), false) then
         bennyHeading = 319.73135375977
-        if useID == 1 and not isPlyInBennys and exports["prp_manager"]:isPed("myJob") == "harmony_autos" then -- Bennys
+        if useID == 1 and not isPlyInBennys and exports["mrp_manager"]:isPed("myJob") == "harmony_autos" then -- Bennys
             bennyHeading = 342.16030883789
             enterLocation(harmonyautos)
-        elseif useID == 2 and not isPlyInBennys and exports["prp_manager"]:isPed("myJob") == "tuner_shop" then
+        elseif useID == 2 and not isPlyInBennys and exports["mrp_manager"]:isPed("myJob") == "tuner_shop" then
             bennyHeading = 265.4372253418
             enterLocation(bennyLocationTuner)
-        elseif useID == 3 and not isPlyInBennys and exports["prp_manager"]:isPed("myJob") == "police" then
+        elseif useID == 3 and not isPlyInBennys and exports["mrp_manager"]:isPed("myJob") == "police" then
             bennyHeading = 89.437484741211
             enterLocation(hayesautos)
-        elseif useID == 4 and not isPlyInBennys and exports["prp_manager"]:isPed("myJob") == "auto_exotics" then
+        elseif useID == 4 and not isPlyInBennys and exports["mrp_manager"]:isPed("myJob") == "auto_exotics" then
             bennyHeading = 91.957901000977
             enterLocation(AutoExoticsPlace)
         end
@@ -860,7 +860,7 @@ Citizen.CreateThread(function()
             nearHarmony = isNear(plyPos, harmonyautos, 5)
             nearAutoExotics = isNear(plyPos, AutoExoticsPlace, 5)
             if nearTuner or nearHarmony or nearHayes or nearAutoExotics then
-                local job = exports["prp_manager"]:isPed("myJob")
+                local job = exports["mrp_manager"]:isPed("myJob")
  
                 -- Harmony Auto
                 if nearHarmony and job == "harmony_autos" then
@@ -924,14 +924,14 @@ Citizen.CreateThread(function()
 end)
 
 --#[Event Handlers]#--
-RegisterNetEvent("prp-bennys:purchaseSuccessful")
-AddEventHandler("prp-bennys:purchaseSuccessful", function()
+RegisterNetEvent("mrp-bennys:purchaseSuccessful")
+AddEventHandler("mrp-bennys:purchaseSuccessful", function()
     isPurchaseSuccessful = true
     attemptingPurchase = false
 end)
 
-RegisterNetEvent("prp-bennys:purchaseFailed")
-AddEventHandler("prp-bennys:purchaseFailed", function()
+RegisterNetEvent("mrp-bennys:purchaseFailed")
+AddEventHandler("mrp-bennys:purchaseFailed", function()
     isPurchaseSuccessful = false
     attemptingPurchase = false
 end)
@@ -940,7 +940,7 @@ end)
 local NearCiv = false
 
 Citizen.CreateThread(function()
-    exports["prp-polyzone"]:AddBoxZone("Civ_repair", vector3(-211.6117401123, -1323.6309814453, 30.479585647583), 6.8, 10, {
+    exports["mrp-polyzone"]:AddBoxZone("Civ_repair", vector3(-211.6117401123, -1323.6309814453, 30.479585647583), 6.8, 10, {
         name="Civ_repair",
         heading=160,
         debugPoly=false,
@@ -948,7 +948,7 @@ Citizen.CreateThread(function()
         maxZ=31.4
     }) 
 
-    exports["prp-polyzone"]:AddBoxZone("arcade_repair", vector3(714.36, -790.48, 16.47), 13.8, 4, {
+    exports["mrp-polyzone"]:AddBoxZone("arcade_repair", vector3(714.36, -790.48, 16.47), 13.8, 4, {
         name="arcade_repair",
         heading=270,
         minZ=14.07,
@@ -957,14 +957,14 @@ Citizen.CreateThread(function()
 
 end)
 
-RegisterNetEvent('prp-polyzone:enter')
-AddEventHandler('prp-polyzone:enter', function(name)
+RegisterNetEvent('mrp-polyzone:enter')
+AddEventHandler('mrp-polyzone:enter', function(name)
     local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
     if name == "Civ_repair" then
         if vehicle ~= 0 then
             NearCiv = true
             CivRepairFunction()
-            TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Repair ($350)"))
+            TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Repair ($350)"))
         end
     end
 
@@ -972,20 +972,20 @@ AddEventHandler('prp-polyzone:enter', function(name)
         if vehicle ~= 0 then
             NearCiv = true
             arcadeRepairFunction()
-            TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Repair ($150)"))
+            TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Repair ($150)"))
         end
     end
 end)
 
-RegisterNetEvent('prp-polyzone:exit')
-AddEventHandler('prp-polyzone:exit', function(name)
+RegisterNetEvent('mrp-polyzone:exit')
+AddEventHandler('mrp-polyzone:exit', function(name)
     if name == "Civ_repair" then
         NearCiv = false
     end
     if name == "arcade_repair" then
         NearCiv = false
     end
-    TriggerEvent('prp-textui:HideUI')
+    TriggerEvent('mrp-textui:HideUI')
 end)
 
 function CivRepairFunction()
@@ -995,7 +995,7 @@ function CivRepairFunction()
             local car = GetVehiclePedIsIn(PlayerPedId(), false)
             if IsControlJustReleased(0, 38) then
                 if car ~= 0 then
-                    TriggerServerEvent("prp-bennys:repairciv", 350)
+                    TriggerServerEvent("mrp-bennys:repairciv", 350)
                 end
             end
         end
@@ -1009,7 +1009,7 @@ function arcadeRepairFunction()
             local car = GetVehiclePedIsIn(PlayerPedId(), false)
             if IsControlJustReleased(0, 38) then
                 if car ~= 0 then
-                    TriggerServerEvent("prp-bennys:repairciv", 150)
+                    TriggerServerEvent("mrp-bennys:repairciv", 150)
                 end
             end
         end
@@ -1020,7 +1020,7 @@ RegisterNetEvent("bennys:civ:repair:cl", function()
     local car = GetVehiclePedIsIn(PlayerPedId(), false)
     if car ~= 0 then
         FreezeEntityPosition(car, true)
-        local finished = exports["prp-taskbar"]:taskBar(math.random(15000, 20000),"Repairing Vehicle")
+        local finished = exports["mrp-taskbar"]:taskBar(math.random(15000, 20000),"Repairing Vehicle")
         if finished == 100 then
             SetVehicleFixed(car)
             SetVehicleDirtLevel(car, 0)

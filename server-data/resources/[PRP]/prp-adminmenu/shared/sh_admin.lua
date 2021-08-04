@@ -62,7 +62,7 @@ end
 
 function PRP.Admin.GetPlayerRank(self, user)
     if not IsDuplicityVersion() then
-        return exports["prp-core"]:getModule("LocalPlayer"):getVar("rank")
+        return exports["mrp-core"]:getModule("LocalPlayer"):getVar("rank")
     else
         if not user then return false end
 
@@ -160,7 +160,7 @@ function PRP.Admin.IsValidUser(self, user)
 
     if not steamid or not license or not src then return false end
 
-    local util = exports["prp-core"]:getModule("Util")
+    local util = exports["mrp-core"]:getModule("Util")
     if not util:IsSteamId(steamid) then return false end
 
     return true
@@ -335,20 +335,20 @@ function PRP.Admin.SetStatus(self, status, src)
         if not player then else PRP._Admin.Players[src].status = status end
 
         for k,v in pairs(PRP._Admin.CurAdmins) do
-            TriggerClientEvent("prp-adminmenu:setStatus", k, src, status)
+            TriggerClientEvent("mrp-adminmenu:setStatus", k, src, status)
         end
 
         return
     end
 
-    TriggerServerEvent("prp-adminmenu:setStatus", status)
+    TriggerServerEvent("mrp-adminmenu:setStatus", status)
 end
 
 function PRP.Admin.DumpCurrentPlayers(self)
     TriggerServerEvent("admin:dumpCurrentPlayers",PRP._Admin.Players,PRP._Admin.DiscPlayers)
 end
 
-AddEventHandler("prp-core:exportsReady", function()
-    exports["prp-core"]:addModule("Admin", PRP.Admin)
-    exports["prp-core"]:addModule("_Admin", PRP._Admin)
+AddEventHandler("mrp-core:exportsReady", function()
+    exports["mrp-core"]:addModule("Admin", PRP.Admin)
+    exports["mrp-core"]:addModule("_Admin", PRP._Admin)
 end)

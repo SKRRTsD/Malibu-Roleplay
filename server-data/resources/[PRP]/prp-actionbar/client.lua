@@ -72,7 +72,7 @@ AddEventHandler('baseevents:onPlayerKilled', function(killedBy, data)
 		local weapon = GetSelectedPedWeapon(killer)
 		for i,v in ipairs(weaponCheck) do
 			if v == weapon then
-				local cid = exports["prp_manager"]:isPed("cid")
+				local cid = exports["mrp_manager"]:isPed("cid")
 				local DNA = "DNA-"..cid
 				TriggerServerEvent('Evidence:DNAWeapon',GetPlayerServerId(GetClosestPlayer()),DNA)
 			end
@@ -112,8 +112,8 @@ AddEventHandler('RemoveServiceWeapons', function()
 
 end)
 
-RegisterNetEvent("prp-jobmanager:playerBecameJob")
-AddEventHandler("prp-jobmanager:playerBecameJob", function(jobpassed, name, notify)
+RegisterNetEvent("mrp-jobmanager:playerBecameJob")
+AddEventHandler("mrp-jobmanager:playerBecameJob", function(jobpassed, name, notify)
 	job = jobpassed
     if not job then
         job = "None"
@@ -135,8 +135,8 @@ end
 
 
 
-RegisterNetEvent('prp-items:SetAmmo')
-AddEventHandler('prp-items:SetAmmo', function(sentammoTable)
+RegisterNetEvent('mrp-items:SetAmmo')
+AddEventHandler('mrp-items:SetAmmo', function(sentammoTable)
 	if sentammoTable ~= nil then
 		ammoTable = sentammoTable
 		GiveAmmoNow()
@@ -178,7 +178,7 @@ Citizen.CreateThread( function()
 
 			local weapon = "".. hash ..""
 			if throwableWeapons[weapon] then
-				if exports["prp-inventory"]:hasEnoughOfItem(weapon,1,false) then
+				if exports["mrp-inventory"]:hasEnoughOfItem(weapon,1,false) then
 					TriggerEvent("inventory:removeItem", weapon, 1)
 					Citizen.Wait(3000)
 				end
@@ -229,7 +229,7 @@ Citizen.CreateThread( function()
 		end
 
 		if (IsControlJustPressed(0,Controlkey["actionBar"][1]) or IsDisabledControlJustPressed(0,Controlkey["actionBar"][1])) then
-			TriggerServerEvent("server-request-update", exports["prp_manager"]:isPed("cid"))
+			TriggerServerEvent("server-request-update", exports["mrp_manager"]:isPed("cid"))
 			TriggerEvent("inventory-bar",true)
 			ExecuteCommand("cash")
 		end
@@ -243,7 +243,7 @@ Citizen.CreateThread( function()
 		end
 
 		if IsPedPlantingBomb(ped) then
-			if exports["prp-inventory"]:hasEnoughOfItem("741814745",1,false) then
+			if exports["mrp-inventory"]:hasEnoughOfItem("741814745",1,false) then
 
 				TriggerEvent("inventory:removeItem", 741814745, 1)
 				Citizen.Wait(3000)
@@ -309,7 +309,7 @@ end)
 RegisterNetEvent('brokenWeapon')
 AddEventHandler('brokenWeapon', function()
 
-	local dead = exports["prp_manager"]:isPed("dead")
+	local dead = exports["mrp_manager"]:isPed("dead")
 	if dead then
 		return
 	end
@@ -350,12 +350,12 @@ AddEventHandler('actionbar:ammo', function(hash,amount,addition)
 	ammoTypeCheck(ammoType)
 
 	if ammoTable == nil then
-		TriggerServerEvent("prp-weapons:getAmmo")
+		TriggerServerEvent("mrp-weapons:getAmmo")
 		Citizen.Wait(2000)
 	end
 
 	if ammoTable["" .. ammoType .. ""] == nil then
-		TriggerServerEvent("prp-weapons:getAmmo")
+		TriggerServerEvent("mrp-weapons:getAmmo")
 		Citizen.Wait(2000)
 	end
 
@@ -423,7 +423,7 @@ function updateAmmoClient()
 		ammoTable["" .. ammoType .. ""]["ammo"] = newammo
 	end
 
-	TriggerEvent("prp-items:SetAmmo",ammoTable)
+	TriggerEvent("mrp-items:SetAmmo",ammoTable)
 end
 
 function updateAmmoNow()
@@ -454,7 +454,7 @@ function updateAmmoNow()
 			newammo = 150
 		end
 
-		TriggerServerEvent("prp-weapons:updateAmmo",newammo,ammoType,ammoTable)
+		TriggerServerEvent("mrp-weapons:updateAmmo",newammo,ammoType,ammoTable)
 
 	end
 
@@ -503,7 +503,7 @@ function updateAmmo()
 			newammo = 150
 		end
 
-		TriggerServerEvent("prp-weapons:updateAmmo",newammo,ammoType,ammoTable)
+		TriggerServerEvent("mrp-weapons:updateAmmo",newammo,ammoType,ammoTable)
 
 	end
 
@@ -532,8 +532,8 @@ function getAmmo(hash)
 	return newammo
 end
 
-RegisterNetEvent('prp-item:CheckClientAmmo')
-AddEventHandler('prp-item:CheckClientAmmo', function(weapons)
+RegisterNetEvent('mrp-item:CheckClientAmmo')
+AddEventHandler('mrp-item:CheckClientAmmo', function(weapons)
 	local ped = PlayerPedId()
 	local ammoType = Citizen.InvokeNative(0x7FEAD38B326B9F74, ped, weapons)
 	local newammo = 0
@@ -575,7 +575,7 @@ function unholster1h(weaponHash)
 
 	local dict = "reaction@intimidation@1h"
 	local anim = "intro"
-	local myJob = exports["prp_manager"]:isPed("myJob")
+	local myJob = exports["mrp_manager"]:isPed("myJob")
 	local ped = PlayerPedId()
 
 	if myJob == "police" then
@@ -657,48 +657,48 @@ end
 
 function AttachmentCheck(weaponhash)
 
-	if exports["prp-inventory"]:hasEnoughOfItem("silencer_l",1,false) then
+	if exports["mrp-inventory"]:hasEnoughOfItem("silencer_l",1,false) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_AT_AR_SUPP` )
 	end
 
-	if exports["prp-inventory"]:hasEnoughOfItem("silencer_l2",1,false) then
+	if exports["mrp-inventory"]:hasEnoughOfItem("silencer_l2",1,false) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_AT_AR_SUPP_02` )
 	end
 
-	if exports["prp-inventory"]:hasEnoughOfItem("silencer_s",1,false) then
+	if exports["mrp-inventory"]:hasEnoughOfItem("silencer_s",1,false) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_AT_PI_SUPP` )
 	end
 
-	if exports["prp-inventory"]:hasEnoughOfItem("silencer_s2",1,false) then
+	if exports["mrp-inventory"]:hasEnoughOfItem("silencer_s2",1,false) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_AT_PI_SUPP_02` )	
 	end
 
-	if exports["prp-inventory"]:hasEnoughOfItem("extended_ap",1,false) then
+	if exports["mrp-inventory"]:hasEnoughOfItem("extended_ap",1,false) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_APPISTOL_CLIP_02` )	
 	end
 
-	if exports["prp-inventory"]:hasEnoughOfItem("extended_sns",1,false) then
+	if exports["mrp-inventory"]:hasEnoughOfItem("extended_sns",1,false) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_SNSPISTOL_CLIP_02` )	
 	end
 
-	if exports["prp-inventory"]:hasEnoughOfItem("extended_micro",1,false) then
+	if exports["mrp-inventory"]:hasEnoughOfItem("extended_micro",1,false) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_MICROSMG_CLIP_02` )	
 	end
 
-	if exports["prp-inventory"]:hasEnoughOfItem("MediumScope",1,false) then
+	if exports["mrp-inventory"]:hasEnoughOfItem("MediumScope",1,false) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_AT_SCOPE_MEDIUM` )	
 	end
 
-	if exports["prp-inventory"]:hasEnoughOfItem("SmallScope",1,false) then
+	if exports["mrp-inventory"]:hasEnoughOfItem("SmallScope",1,false) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_AT_SCOPE_SMALL` )	
 	end
 
 
-	if exports["prp-inventory"]:hasEnoughOfItem("TinyScope",1,false) then
+	if exports["mrp-inventory"]:hasEnoughOfItem("TinyScope",1,false) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_AT_SCOPE_MACRO` )	
 	end
 
-	if exports["prp-inventory"]:hasEnoughOfItem("extended_tec9",1,false) then
+	if exports["mrp-inventory"]:hasEnoughOfItem("extended_tec9",1,false) then
 		GiveWeaponComponentToPed( PlayerPedId(), weaponhash, `COMPONENT_MACHINEPISTOL_CLIP_02` )	
 	end
 
@@ -750,7 +750,7 @@ function holster1h()
 	unholsteringactive = true
 	local dict = "reaction@intimidation@1h"
 	local anim = "outro"
-	local myJob = exports["prp_manager"]:isPed("myJob")
+	local myJob = exports["mrp_manager"]:isPed("myJob")
 	if myJob == "police" then
 		copholster()
 		Citizen.Wait(600)
@@ -809,7 +809,7 @@ function grab2h(weaponHash)
 	SetCurrentPedWeapon(ped, weaponHash, 1)
     ClearPedTasks(ped)
 
-    local myJob = exports["prp_manager"]:isPed("myJob")
+    local myJob = exports["mrp_manager"]:isPed("myJob")
 	if myJob == "police" then
 	    if weaponHash == 2210333304 then
 			GiveWeaponComponentToPed( ped, 2210333304, `COMPONENT_AT_AR_FLSH` )

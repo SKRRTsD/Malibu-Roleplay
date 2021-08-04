@@ -30,7 +30,7 @@ local function AddMethod(player)
     
     function player.networkVar(self, var, data)
         self:setVar(var, data)
-        TriggerClientEvent("prp-core:networkVar", GetUser(self):getVar("source"), var, data)
+        TriggerClientEvent("mrp-core:networkVar", GetUser(self):getVar("source"), var, data)
     end
 
     function player.getRank(self)
@@ -128,7 +128,7 @@ local function AddMethod(player)
             if updatedMoney then
                 TriggerClientEvent("banking:addCasino", GetUser(self).source, amt)
                 TriggerClientEvent("banking:updateCasino", GetUser(self).source, GetUser(self):getCasino(), amt)
-                exports["prp-core"]:AddLog("Casino Chips Added", GetUser(self), "Money added to user, amount: " .. tostring(amt))
+                exports["mrp-core"]:AddLog("Casino Chips Added", GetUser(self), "Money added to user, amount: " .. tostring(amt))
             end
         end)
     end
@@ -148,7 +148,7 @@ local function AddMethod(player)
                 if updatedMoney then
                     TriggerClientEvent("banking:removeCasino", GetUser(self).source, amt)
                     TriggerClientEvent("banking:updateCasino", GetUser(self).source, GetUser(self):getCasino(), amt)
-                    exports["prp-core"]:AddLog("Casino Removed", GetUser(self), "Money removed from user, amount: " .. tostring(amt))
+                    exports["mrp-core"]:AddLog("Casino Removed", GetUser(self), "Money removed from user, amount: " .. tostring(amt))
                 end
             end)
     end
@@ -167,7 +167,7 @@ local function AddMethod(player)
             if updatedMoney then
                 TriggerClientEvent("banking:addCash", GetUser(self).source, amt)
                 TriggerClientEvent("banking:updateCash", GetUser(self).source, GetUser(self):getCash(), amt)
-                exports["prp-core"]:AddLog("Cash Added", GetUser(self), "Money added to user, amount: " .. tostring(amt))
+                exports["mrp-core"]:AddLog("Cash Added", GetUser(self), "Money added to user, amount: " .. tostring(amt))
             end
         end)
     end
@@ -187,7 +187,7 @@ local function AddMethod(player)
                 if updatedMoney then
                     TriggerClientEvent("banking:removeCash", GetUser(self).source, amt)
                     TriggerClientEvent("banking:updateCash", GetUser(self).source, GetUser(self):getCash(), amt)
-                    exports["prp-core"]:AddLog("Cash Removed", GetUser(self), "Money removed from user, amount: " .. tostring(amt))
+                    exports["mrp-core"]:AddLog("Cash Removed", GetUser(self), "Money removed from user, amount: " .. tostring(amt))
                 end
             end)
     end
@@ -207,7 +207,7 @@ local function AddMethod(player)
             if updatedMoney then
                 TriggerClientEvent("banking:removeBalance", GetUser(self).source, amt)
                 TriggerClientEvent("banking:updateBalance", GetUser(self).source, GetUser(self):getBalance(), amt)
-                exports["prp-core"]:AddLog("Bank Removed", GetUser(self), "Bank removed from user, amount: " .. tostring(amt))
+                exports["mrp-core"]:AddLog("Bank Removed", GetUser(self), "Bank removed from user, amount: " .. tostring(amt))
             end
         end)
     end
@@ -226,7 +226,7 @@ local function AddMethod(player)
             if updatedMoney then
                 TriggerClientEvent("banking:addBalance", GetUser(self).source, amt)
                 TriggerClientEvent("banking:updateBalance", GetUser(self).source, GetUser(self):getBalance(), amt)
-                exports["prp-core"]:AddLog("Bank Added", GetUser(self), "Bank added to user, amount: " .. tostring(amt))
+                exports["mrp-core"]:AddLog("Bank Added", GetUser(self), "Bank added to user, amount: " .. tostring(amt))
             end
         end)
     end
@@ -316,8 +316,8 @@ function PRP.Player.CreatePlayer(self, src, recrate)
 end
 
 local pos = {}
-RegisterServerEvent('prp-core:updatecoords')
-AddEventHandler('prp-core:updateCoords', function(x,y,z)
+RegisterServerEvent('mrp-core:updatecoords')
+AddEventHandler('mrp-core:updateCoords', function(x,y,z)
     local src = source
     pos[src] = {x,y,z}
 end)
@@ -325,7 +325,7 @@ end)
 RegisterServerEvent("retreive:licenes:server")
 AddEventHandler("retreive:licenes:server", function()
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local characterId = user:getVar("character").id
     exports.ghmattimysql:execute('SELECT * FROM user_licenses WHERE owner = ? AND type = ?', {characterId, "Firearm"}, function(callback)
         TriggerClientEvent("wtflols", src, callback[1].status)
@@ -350,7 +350,7 @@ AddEventHandler("playerDropped", function(reason)
     local posE = json.encode(pos[src])
     pos[src] = nil
 
-    local pUser = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local pUser = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local char = pUser:getVar("character")
     local userjob = user:getVar("job") or "Unemployed"
     if userjob == "police" or userjob == "ems" then
@@ -359,6 +359,6 @@ AddEventHandler("playerDropped", function(reason)
 
     PRP.Users[src] = nil
 
-    TriggerEvent('prp-core:playerDropped', src, user)
+    TriggerEvent('mrp-core:playerDropped', src, user)
 end)
 

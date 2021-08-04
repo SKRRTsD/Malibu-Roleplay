@@ -607,10 +607,10 @@ end)
 
 RegisterNetEvent('houseRobberies:attempt')
 AddEventHandler('houseRobberies:attempt', function()
-  -- local police = exports["prp_manager"]:isPed("countpolice")
+  -- local police = exports["mrp_manager"]:isPed("countpolice")
   -- if police >= 2 then
     if isRobbing and DoesEntityExist(safe) then
-      if exports["prp-inventory"]:hasEnoughOfItem('lockpick',1,false) then
+      if exports["mrp-inventory"]:hasEnoughOfItem('lockpick',1,false) then
         local playerCoords = GetEntityCoords(PlayerPedId(), true)
         if GetDistanceBetweenCoords(playerCoords, safepos.x, safepos.y, safepos.z, true) <= 3.0 then
           if safeLockpick == false then
@@ -627,7 +627,7 @@ AddEventHandler('houseRobberies:attempt', function()
         end
       end
 
-      if exports["prp-inventory"]:hasEnoughOfItem('lockpick',1,false) then 
+      if exports["mrp-inventory"]:hasEnoughOfItem('lockpick',1,false) then 
           if isNight() and  not isRobbing then
         local playerCoords = GetEntityCoords(PlayerPedId(), true)
         for id,v in pairs(robbableHouses) do
@@ -642,7 +642,7 @@ AddEventHandler('houseRobberies:attempt', function()
               TriggerEvent('DoLongHudText', 'You have already robbed this house', 2)
               return
             end
-            local finished = exports["prp-lockpicking"]:lockpick(100,5,2,10)
+            local finished = exports["mrp-lockpicking"]:lockpick(100,5,2,10)
             if finished == 100 then 
               isLockpicking = false
               safeLockpick = false
@@ -660,7 +660,7 @@ AddEventHandler('houseRobberies:attempt', function()
             end
           end
         end
-      elseif not isRobbing and not exports["prp-inventory"]:hasEnoughOfItem('lockpick',1,false) then
+      elseif not isRobbing and not exports["mrp-inventory"]:hasEnoughOfItem('lockpick',1,false) then
         TriggerEvent('DoLongHudText', 'No Lockpick', 2)
       elseif not isNight() and not isRobbing then
       
@@ -711,13 +711,13 @@ AddEventHandler('houseRobberies:createHouse', function(id)
   local playerCoords = GetEntityCoords(PlayerPedId(), true)
 
   if GetDistanceBetweenCoords(playerCoords, house.x+3.6, house.y-15, house.z-50, true) < 2.5 then
-    TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Leave House"))
+    TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Leave House"))
     if IsControlJustPressed(0, 38) then
-      TriggerEvent('prp-textui:HideUI')
+      TriggerEvent('mrp-textui:HideUI')
       TriggerEvent('houseRobberies:deleteHouse', id)
     end
   else
-    TriggerEvent('prp-textui:HideUI')
+    TriggerEvent('mrp-textui:HideUI')
   end
  end
 end)
@@ -833,7 +833,7 @@ Citizen.CreateThread(function()
             end
             TriggerEvent('SearchAnimation')
             FreezeEntityPosition(GetPlayerPed(-1),true)
-            local finished = exports["prp-taskbar"]:taskBar(15000, "Searching "..myRobbableItems[i]['name'])
+            local finished = exports["mrp-taskbar"]:taskBar(15000, "Searching "..myRobbableItems[i]['name'])
             if finished == 100 then
               TriggerServerEvent('houseRobberies:searchItem')
               FreezeEntityPosition(GetPlayerPed(-1),false)
@@ -866,7 +866,7 @@ Citizen.CreateThread(function()
       if not isAgro then
        agroNPC()
         if not isPolice then
-          TriggerEvent('prp-dispatch:houserobbery')
+          TriggerEvent('mrp-dispatch:houserobbery')
         end
       end
      end
@@ -1273,7 +1273,7 @@ AddEventHandler('houseRobberies:createDog', function()
    Citizen.Wait(100)
   end
   if not isPolice then
-    TriggerEvent('prp-dispatch:houserobbery')
+    TriggerEvent('mrp-dispatch:houserobbery')
     attackDog = CreatePed(GetPedType(model), model, curHouseCoords.x+3.70339700, curHouseCoords.y+-3.80026800, curHouseCoords.z+2.29917900, 90, 1, 0)
     Citizen.Wait(1500)
     TaskCombatPed(attackDog, GetPlayerPed(-1), 0, 16)
@@ -1309,14 +1309,14 @@ AddEventHandler('safe:houserobbery', function()
 end)
 
 RegisterCommand('breach', function(source)
-  local job = exports["prp_manager"]:isPed("myjob")
+  local job = exports["mrp_manager"]:isPed("myjob")
   local playerCoords = GetEntityCoords(PlayerPedId(), true)
   if job == "police" then
     for id, v in pairs(robbableHouses) do
       if GetDistanceBetweenCoords(playerCoords, v.x, v.y, v.z, true) <= 2.5 then
         TriggerEvent('HouseRobbery:build', id)
         TriggerEvent("doAnim","kickindoor")
-        local finished = exports["prp-taskbar"]:taskBar(2000,"Breaching the house")
+        local finished = exports["mrp-taskbar"]:taskBar(2000,"Breaching the house")
         if (finished == 100) then
           TriggerEvent('houseRobberies:createHouse', id)
           isPolice = true

@@ -137,11 +137,11 @@ $(function () {
     })
 
     function CloseMenu(save) {
-        $.post('https://prp-clothingmenu/escape', JSON.stringify({save:save}));
+        $.post('https://mrp-clothingmenu/escape', JSON.stringify({save:save}));
     }
 
     $(document).on('contextmenu', function() {
-        $.post('https://prp-clothingmenu/togglecursor', JSON.stringify({}));
+        $.post('https://mrp-clothingmenu/togglecursor', JSON.stringify({}));
     })
 
     $('.button-menu').on('click', function () {
@@ -232,7 +232,7 @@ $(function () {
 
     $('#skin_string').find('input').keypress(function (e) {
         if (e.which == 13) {
-            $.post('https://prp-clothingmenu/customskin', JSON.stringify($(this).val()));
+            $.post('https://mrp-clothingmenu/customskin', JSON.stringify($(this).val()));
         }
     })
 
@@ -282,7 +282,7 @@ $(function () {
             }
 
             if ($(ele).parents('.panel').attr('id') == "skins") {
-                $.post('https://prp-clothingmenu/setped', JSON.stringify({
+                $.post('https://mrp-clothingmenu/setped', JSON.stringify({
                     "name": $(ele).attr('id'),
                     "value": $(ele).val()
                 }))
@@ -293,7 +293,7 @@ $(function () {
                     nameId = "hair"
                 else
                     nameId = $(ele).parent().parent().parent().attr('id').split('#')[0]
-                $.post('https://prp-clothingmenu/updateclothes', JSON.stringify({
+                $.post('https://mrp-clothingmenu/updateclothes', JSON.stringify({
                     "name": nameId,
                     "value": inputs.eq(0).val(),
                     "texture": inputs.eq(1).val()
@@ -352,7 +352,7 @@ $(function () {
             categEles.each(function () {
                 tats[$(this).attr('id')] = $(this).find('.input-number').val();
             })
-            $.post('https://prp-clothingmenu/settats', JSON.stringify({tats}))
+            $.post('https://mrp-clothingmenu/settats', JSON.stringify({tats}))
         }
     }
 
@@ -385,23 +385,23 @@ $(function () {
 
     $('.tog_head').on('click', function() {
         toggleCam($(this));
-        $.post('https://prp-clothingmenu/switchcam', JSON.stringify({name: 'head'}))
+        $.post('https://mrp-clothingmenu/switchcam', JSON.stringify({name: 'head'}))
     })
     $('.tog_torso').on('click', function() {
         toggleCam($(this));
-        $.post('https://prp-clothingmenu/switchcam', JSON.stringify({name: 'torso'}))
+        $.post('https://mrp-clothingmenu/switchcam', JSON.stringify({name: 'torso'}))
     })
     $('.tog_leg').on('click', function() {
         toggleCam($(this));
-        $.post('https://prp-clothingmenu/switchcam', JSON.stringify({name: 'leg'}))
+        $.post('https://mrp-clothingmenu/switchcam', JSON.stringify({name: 'leg'}))
     })
     $('.tog_cam').on('click', function() {
         toggleCam($(this));
-        $.post('https://prp-clothingmenu/switchcam', JSON.stringify({name: 'cam'}))
+        $.post('https://mrp-clothingmenu/switchcam', JSON.stringify({name: 'cam'}))
     })
 
     $('.backup_save').on('click', function() {
-        $.post('https://prp-clothingmenu/getPlayerFace')
+        $.post('https://mrp-clothingmenu/getPlayerFace')
     })
 
     $('.backup_empty').on('click', function() {
@@ -409,34 +409,34 @@ $(function () {
     })
     
     $('.backup_load').on('click', function() {
-        $.post('https://prp-clothingmenu/setPlayerFace',$("#backupJsonInput").val())
+        $.post('https://mrp-clothingmenu/setPlayerFace',$("#backupJsonInput").val())
     })
 
     $('.tog_hat').on('click', function() {
-        $.post('https://prp-clothingmenu/toggleclothes', JSON.stringify({name: "hats"}))
+        $.post('https://mrp-clothingmenu/toggleclothes', JSON.stringify({name: "hats"}))
     })
     $('.tog_glasses').on('click', function() {
-        $.post('https://prp-clothingmenu/toggleclothes', JSON.stringify({name: "glasses"}))
+        $.post('https://mrp-clothingmenu/toggleclothes', JSON.stringify({name: "glasses"}))
     })
     $('.tog_tops').on('click', function() {
         // dont look at this :)
-        $.post('https://prp-clothingmenu/toggleclothes', JSON.stringify({name: "jackets"}))
-        $.post('https://prp-clothingmenu/toggleclothes', JSON.stringify({name: "undershirts"}))
-        $.post('https://prp-clothingmenu/toggleclothes', JSON.stringify({name: "torsos"}))
-        $.post('https://prp-clothingmenu/toggleclothes', JSON.stringify({name: "vest"}))
-        $.post('https://prp-clothingmenu/toggleclothes', JSON.stringify({name: "bags"}))
-        $.post('https://prp-clothingmenu/toggleclothes', JSON.stringify({name: "neck"}))
-        $.post('https://prp-clothingmenu/toggleclothes', JSON.stringify({name: "decals"}))
+        $.post('https://mrp-clothingmenu/toggleclothes', JSON.stringify({name: "jackets"}))
+        $.post('https://mrp-clothingmenu/toggleclothes', JSON.stringify({name: "undershirts"}))
+        $.post('https://mrp-clothingmenu/toggleclothes', JSON.stringify({name: "torsos"}))
+        $.post('https://mrp-clothingmenu/toggleclothes', JSON.stringify({name: "vest"}))
+        $.post('https://mrp-clothingmenu/toggleclothes', JSON.stringify({name: "bags"}))
+        $.post('https://mrp-clothingmenu/toggleclothes', JSON.stringify({name: "neck"}))
+        $.post('https://mrp-clothingmenu/toggleclothes', JSON.stringify({name: "decals"}))
     })
     $('.tog_legs').on('click', function() {
-        $.post('https://prp-clothingmenu/toggleclothes', JSON.stringify({name: "legs"}))
+        $.post('https://mrp-clothingmenu/toggleclothes', JSON.stringify({name: "legs"}))
     })
     $('.tog_mask').on('click', function() {
-        $.post('https://prp-clothingmenu/toggleclothes', JSON.stringify({name: "masks"}))
+        $.post('https://mrp-clothingmenu/toggleclothes', JSON.stringify({name: "masks"}))
     })
 
     $('#reset').on('click', function() {
-        $.post('https://prp-clothingmenu/resetped', JSON.stringify({}))
+        $.post('https://mrp-clothingmenu/resetped', JSON.stringify({}))
     })
 
 
@@ -464,7 +464,7 @@ $(function () {
         }
 
         if (_key) {
-            $.post('https://prp-clothingmenu/rotate', JSON.stringify({key: _key}))
+            $.post('https://mrp-clothingmenu/rotate', JSON.stringify({key: _key}))
         }
     }, 50))
 
@@ -512,11 +512,11 @@ $(function () {
         headBlend["shapeMix"] = $("#shapeMix").val()
         headBlend["skinMix"] = $("#skinMix").val()
         headBlend["thirdMix"] = $("#thirdMix").val()
-        $.post('https://prp-clothingmenu/saveheadblend', JSON.stringify(headBlend))
+        $.post('https://mrp-clothingmenu/saveheadblend', JSON.stringify(headBlend))
     }
 
     function SaveFaceShape(ele) {
-        $.post('https://prp-clothingmenu/savefacefeatures', JSON.stringify({name: ele.attr('data-value'), scale: ele.val()}))
+        $.post('https://mrp-clothingmenu/savefacefeatures', JSON.stringify({name: ele.attr('data-value'), scale: ele.val()}))
     }
 
     function SetupHeadStructure(data) {
@@ -547,7 +547,7 @@ $(function () {
         var id = ele.parents('.panel').attr('id')
         var inputs = ele.parents('.panel-bottom').find('input')
         let opacity = inputs.eq(1).val() ? inputs.eq(1).val() : 0
-        $.post('https://prp-clothingmenu/saveheadoverlay', JSON.stringify({
+        $.post('https://mrp-clothingmenu/saveheadoverlay', JSON.stringify({
             name: id,
             value: inputs.eq(0).val(),
             opacity: opacity
@@ -572,13 +572,13 @@ $(function () {
             $(this).addClass('active')
 
             if ($(this).parents('.panel').hasClass('hair')) {
-                $.post('https://prp-clothingmenu/savehaircolor', JSON.stringify({
+                $.post('https://mrp-clothingmenu/savehaircolor', JSON.stringify({
                     firstColour: palettes.eq(0).find('.active').attr('value'),
                     secondColour: palettes.eq(1).find('.active').attr('value')
                 }));
             }
             else {
-                $.post('https://prp-clothingmenu/saveheadoverlaycolor', JSON.stringify({
+                $.post('https://mrp-clothingmenu/saveheadoverlaycolor', JSON.stringify({
                     firstColour: palettes.eq(0).find('.active').attr('value'),
                     secondColour: palettes.eq(1).find('.active').attr('value'),
                     name: $(this).parents('.panel').attr('id')

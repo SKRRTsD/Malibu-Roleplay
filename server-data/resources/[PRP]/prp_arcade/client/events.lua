@@ -1,5 +1,5 @@
-RegisterNetEvent("prp_arcade:ticketResult")
-AddEventHandler("prp_arcade:ticketResult", function(ticket)
+RegisterNetEvent("mrp_arcade:ticketResult")
+AddEventHandler("mrp_arcade:ticketResult", function(ticket)
     showNotification(_U("bought_ticket", ticket, Config.ticketPrice[ticket].time))
 
     -- Will set time player can be in arcade from Config
@@ -10,8 +10,8 @@ AddEventHandler("prp_arcade:ticketResult", function(ticket)
     gotTicket = true
 end)
 
-RegisterNetEvent("prp_arcade:nomoney")
-AddEventHandler("prp_arcade:nomoney", function()
+RegisterNetEvent("mrp_arcade:nomoney")
+AddEventHandler("mrp_arcade:nomoney", function()
     TriggerEvent("DoLongHudText", "You dont have enough money!", 2)
 end)
 

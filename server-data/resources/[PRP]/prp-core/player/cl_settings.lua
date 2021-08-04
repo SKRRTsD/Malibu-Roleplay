@@ -25,12 +25,12 @@ PRP.Settings.Default = {
 function PRP.SettingsData.setSettingsTable(settingsTable, shouldSend)
   if settingsTable == nil then
     PRP.Settings.Current = PRP.Settings.Default
-    TriggerServerEvent('prp-core:sv:player_settings_set',PRP.Settings.Current)
+    TriggerServerEvent('mrp-core:sv:player_settings_set',PRP.Settings.Current)
     PRP.SettingsData.checkForMissing()
   else
     if shouldSend then
       PRP.Settings.Current = settingsTable
-      TriggerServerEvent('prp-core:sv:player_settings_set',PRP.Settings.Current)
+      TriggerServerEvent('mrp-core:sv:player_settings_set',PRP.Settings.Current)
       PRP.SettingsData.checkForMissing()
     else
        PRP.Settings.Current = settingsTable
@@ -52,7 +52,7 @@ end
 
 function PRP.SettingsData.setVarible(self,tablename,atrr,val)
   PRP.Settings.Current[tablename][atrr] = val
-  TriggerServerEvent('prp-core:sv:player_settings_set',PRP.Settings.Current)
+  TriggerServerEvent('mrp-core:sv:player_settings_set',PRP.Settings.Current)
 end
 
 function PRP.SettingsData.getVarible(self,tablename,atrr)
@@ -78,20 +78,20 @@ function PRP.SettingsData.checkForMissing()
   
 
   if isMissing then
-    TriggerServerEvent('prp-core:sv:player_settings_set',PRP.Settings.Current)
+    TriggerServerEvent('mrp-core:sv:player_settings_set',PRP.Settings.Current)
   end
 
 
 end
 
-RegisterNetEvent("prp-core:cl:player_settings")
-AddEventHandler("prp-core:cl:player_settings", function(settingsTable)
+RegisterNetEvent("mrp-core:cl:player_settings")
+AddEventHandler("mrp-core:cl:player_settings", function(settingsTable)
   PRP.SettingsData.setSettingsTable(settingsTable,false)
 end)
 
 
-RegisterNetEvent("prp-core:cl:player_reset")
-AddEventHandler("prp-core:cl:player_reset", function(tableName)
+RegisterNetEvent("mrp-core:cl:player_reset")
+AddEventHandler("mrp-core:cl:player_reset", function(tableName)
   if PRP.Settings.Default[tableName] then
       if PRP.Settings.Current[tableName] then
         PRP.Settings.Current[tableName] = PRP.Settings.Default[tableName]

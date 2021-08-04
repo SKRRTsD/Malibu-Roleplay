@@ -5,8 +5,8 @@ function PRP.Core.Initialize(self)
     Citizen.CreateThread(function()
         while true do
             if NetworkIsSessionStarted() then
-                TriggerEvent("prp-core:playerSessionStarted")
-                TriggerServerEvent("prp-core:playerSessionStarted")
+                TriggerEvent("mrp-core:playerSessionStarted")
+                TriggerServerEvent("mrp-core:playerSessionStarted")
                 break
             end
         end
@@ -14,7 +14,7 @@ function PRP.Core.Initialize(self)
 end
 PRP.Core:Initialize()
 
-AddEventHandler("prp-core:playerSessionStarted", function()
+AddEventHandler("mrp-core:playerSessionStarted", function()
     while not PRP.Core.hasLoaded do
         --print("waiting in loop")
         Wait(100)
@@ -23,14 +23,14 @@ AddEventHandler("prp-core:playerSessionStarted", function()
     PRP.SpawnManager:Initialize()
 end)
 
-RegisterNetEvent("prp-core:waitForExports")
-AddEventHandler("prp-core:waitForExports", function()
+RegisterNetEvent("mrp-core:waitForExports")
+AddEventHandler("mrp-core:waitForExports", function()
     if not PRP.Core.ExportsReady then return end
 
     while true do
         Citizen.Wait(0)
-        if exports and exports["prp-core"] then
-            TriggerEvent("prp-core:exportsReady")
+        if exports and exports["mrp-core"] then
+            TriggerEvent("mrp-core:exportsReady")
             return
         end
     end
@@ -56,6 +56,6 @@ end)
 
 RegisterNetEvent("paycheck:client:call")
 AddEventHandler("paycheck:client:call", function()
-    local cid = exports["prp_manager"]:isPed("cid")
+    local cid = exports["mrp_manager"]:isPed("cid")
     TriggerServerEvent("paycheck:server:send", cid)
 end)

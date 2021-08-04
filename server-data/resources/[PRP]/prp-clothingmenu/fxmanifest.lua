@@ -2,7 +2,7 @@ fx_version 'cerulean'
 games { 'gta5' }
 
 --[[ dependencies {
-  "prp-lib"
+  "mrp-lib"
 } ]]--
 
 ui_page 'client/html/index.html'
@@ -20,7 +20,7 @@ files {
 }
 
 client_scripts {
-  '@prp-errorlog/client/cl_errorlog.lua',
+  '@mrp-errorlog/client/cl_errorlog.lua',
   'client/cl_tattooshop.lua',
   'client/cl_*.lua',
 }

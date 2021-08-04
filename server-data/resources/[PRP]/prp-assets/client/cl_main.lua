@@ -9,7 +9,7 @@ RegisterCommand('coords', function(source, args, rawCommand)
 end)
 
 RegisterCommand("cid", function(source, args)
-    local cid = exports["prp_manager"]:isPed("cid")
+    local cid = exports["mrp_manager"]:isPed("cid")
     TriggerEvent("DoLongHudText", "Your CID: "..cid)
 end)
 

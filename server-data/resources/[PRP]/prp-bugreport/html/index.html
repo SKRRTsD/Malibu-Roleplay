@@ -66,7 +66,7 @@
                 if (e.key === "Escape") {
                     $("#container").slideUp();
                     setTimeout(function(){
-                        $.post(`http://prp-bugreport/exit`, JSON.stringify({}));
+                        $.post(`http://mrp-bugreport/exit`, JSON.stringify({}));
                     }, 300);
                 }
 
@@ -80,10 +80,10 @@
                 }
                 $("#container").slideUp();
                     setTimeout(function(){
-                        $.post(`http://prp-bugreport/exit`, JSON.stringify({}));
+                        $.post(`http://mrp-bugreport/exit`, JSON.stringify({}));
                     }, 100);
                
-                  $.post(`http://prp-bugreport/sumbit`,
+                  $.post(`http://mrp-bugreport/sumbit`,
                     JSON.stringify({
                       title: $("#title").val(),     
                       description: $("#description").val(),

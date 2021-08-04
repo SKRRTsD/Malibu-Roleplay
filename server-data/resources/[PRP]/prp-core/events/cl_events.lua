@@ -12,11 +12,11 @@ function PRP.Events.Trigger(self, event, args, callback)
 
     PRP.Events.Active[id] = {cb = callback}
     
-    TriggerServerEvent("prp-events:listenEvent", id, event, args)
+    TriggerServerEvent("mrp-events:listenEvent", id, event, args)
 end
 
-RegisterNetEvent("prp-events:listenEvent")
-AddEventHandler("prp-events:listenEvent", function(id, data)
+RegisterNetEvent("mrp-events:listenEvent")
+AddEventHandler("mrp-events:listenEvent", function(id, data)
     local ev = PRP.Events.Active[id]
     
     if ev then

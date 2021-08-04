@@ -29,7 +29,7 @@ local blips = {
 }
 
 
-AddEventHandler("prp-core:playerSessionStarted", function()
+AddEventHandler("mrp-core:playerSessionStarted", function()
     Citizen.CreateThread(function()
         for k,v in ipairs(blips) do
             PRP.BlipManager:CreateBlip(v.id, v)

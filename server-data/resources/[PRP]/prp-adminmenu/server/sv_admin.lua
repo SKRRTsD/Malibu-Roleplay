@@ -6,34 +6,34 @@ PRP._Admin.DiscPlayers = {}
 
 local Players = {}
 
-RegisterServerEvent('prp-adminmenu:Disconnect')
-AddEventHandler('prp-adminmenu:Disconnect', function(reason)
+RegisterServerEvent('mrp-adminmenu:Disconnect')
+AddEventHandler('mrp-adminmenu:Disconnect', function(reason)
     DropPlayer(source, reason)
 end)
 
 RegisterServerEvent('admin:isFlying')
 AddEventHandler('admin:isFlying', function(data)
-    TriggerEvent('prp-adminmenu:NoclipState', data)
+    TriggerEvent('mrp-adminmenu:NoclipState', data)
 end)
 
 RegisterServerEvent('admin:bringPlayer')
 AddEventHandler('admin:bringPlayer', function(pSrc, target)
     local pTarget = tonumber(target)
     local coords = GetEntityCoords(GetPlayerPed(tonumber(pSrc)))
-    TriggerClientEvent('prp-adminmenu:bringPlayer', pTarget, coords)
+    TriggerClientEvent('mrp-adminmenu:bringPlayer', pTarget, coords)
     TriggerClientEvent('DoLongHudText', tonumber(pSrc), 'Player Brought!')
 end)
 
 RegisterServerEvent("admin:attempt:spawn:item", function(pSrc, ItemName, ItemAmount)
     local info =  "Item Name: " ..string.upper(ItemName) .. " Item Amount: " ..ItemAmount
     TriggerClientEvent('player:receiveItem', pSrc, ItemName, ItemAmount)
-    exports["prp-core"]:k_log(pSrc, "Spawned:items", info)
+    exports["mrp-core"]:k_log(pSrc, "Spawned:items", info)
 end)
 
 RegisterServerEvent("admin:attempt:spawn:car", function(pSrc, Model, livery)
     local info =  "Vehicle Spawned: " ..string.upper(Model)
-    TriggerClientEvent('prp-adminmenu:runSpawnCommand', pSrc, Model, livery)
-    exports["prp-core"]:k_log(pSrc, "Spawned:car", info)
+    TriggerClientEvent('mrp-adminmenu:runSpawnCommand', pSrc, Model, livery)
+    exports["mrp-core"]:k_log(pSrc, "Spawned:car", info)
 end)
 
 RegisterServerEvent("admin:getCoords")
@@ -53,14 +53,14 @@ AddEventHandler("admin:getCoords", function(Lsrc, target, toggle)
         pTog = "stopped"
     end
     local info = pName .. " " .. pTog .. " Spectating " ..tName
-    exports["prp-core"]:k_log(pSrc, "Spectating", info)
+    exports["mrp-core"]:k_log(pSrc, "Spectating", info)
     TriggerClientEvent("admin:attach", pSrc, tSrc, toggle)
     TriggerClientEvent("admin:sendCoords", pSrc, coords)
 end)
 
 RegisterServerEvent("admin:search")
 AddEventHandler("admin:search", function(pSrc, tSrc)
-    local user = exports["prp-core"]:getModule("Player"):GetUser(tSrc)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(tSrc)
     local cid = user:getCurrentCharacter().id
 
     local pName = GetPlayerName(pSrc)
@@ -68,7 +68,7 @@ AddEventHandler("admin:search", function(pSrc, tSrc)
     TriggerClientEvent("server-inventory-open", pSrc, "1", 'ply-'..cid)
 
     local info = pName .. " Searched " ..tName
-    exports["prp-core"]:k_log(pSrc, "Searching", info)
+    exports["mrp-core"]:k_log(pSrc, "Searching", info)
 
 end)
 
@@ -77,21 +77,21 @@ AddEventHandler("admin:DropPlayer", function(target, pReason)
     DropPlayer(target, "You were kicked | Reason: " ..pReason)
 end)
 
-RegisterServerEvent('prp-adminmenu:setcloak')
-AddEventHandler('prp-adminmenu:setcloak', function(args)
+RegisterServerEvent('mrp-adminmenu:setcloak')
+AddEventHandler('mrp-adminmenu:setcloak', function(args)
     TriggerClientEvent('cloak', source, args)
 end)
 
-RegisterServerEvent('prp-adminmenu:kick')
-AddEventHandler('prp-adminmenu:kick', function(kickid, reason)
+RegisterServerEvent('mrp-adminmenu:kick')
+AddEventHandler('mrp-adminmenu:kick', function(kickid, reason)
     DropPlayer(kickid, reason)
 end)
 
 
-RegisterServerEvent('prp-adminmenu:AddPlayer')
-AddEventHandler("prp-adminmenu:AddPlayer", function()
+RegisterServerEvent('mrp-adminmenu:AddPlayer')
+AddEventHandler("mrp-adminmenu:AddPlayer", function()
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     if user ~= false then
         local licenses
         local identifiers, steamIdentifier = GetPlayerIdentifiers(source)
@@ -116,7 +116,7 @@ AddEventHandler("prp-adminmenu:AddPlayer", function()
         local ping = GetPlayerPing(source)
         local data = { source = source, steamid = stid, comid = scomid, name = ply, hexid = user:getVar("hexid"), rank = PRP.Admin:GetPlayerRank(user), license = licenseid, ping = ping}
         table.insert(Players, source)
-        TriggerClientEvent("prp-adminmenu:AddPlayer", -1, data )
+        TriggerClientEvent("mrp-adminmenu:AddPlayer", -1, data )
         PRP.Admin.AddAllPlayers()
     end
 end)
@@ -148,7 +148,7 @@ function PRP.Admin.AddAllPlayers(self)
         local scomid = steamIdentifier:gsub("steam:", "")
         local data = { src = tonumber(_PlayerId), steamid = stid, comid = scomid, name = ply, ip = ip, license = licenseid, ping = ping }
 
-        TriggerClientEvent("prp-adminmenu:AddAllPlayers", source, data)
+        TriggerClientEvent("mrp-adminmenu:AddAllPlayers", source, data)
 
     end
 end
@@ -181,9 +181,9 @@ AddEventHandler("playerDropped", function()
     local ping = GetPlayerPing(source)
     local data = { src = source, steamid = stid, comid = scomid, name = ply, ip = ip, license = licenseid, ping = ping}
 
-    TriggerClientEvent("prp-adminmenu:RemovePlayer", -1, data )
+    TriggerClientEvent("mrp-adminmenu:RemovePlayer", -1, data )
     Wait(600000)
-    TriggerClientEvent("prp-adminmenu:RemoveRecent", -1, data)
+    TriggerClientEvent("mrp-adminmenu:RemoveRecent", -1, data)
 end)
 
 function HexIdToSteamId(hexId)
@@ -197,7 +197,7 @@ end
 
 RegisterServerEvent('admin:setGroup')
 AddEventHandler('admin:setGroup', function(pSrc, target, rank)
-    local user = exports["prp-core"]:getModule("Player"):GetUser(target)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(target)
     local hexId = user:getVar("hexid")
     exports.ghmattimysql:execute("UPDATE users SET `rank` = @rank WHERE `hex_id` = @hex_id", {
         ['rank'] = rank, 
@@ -213,19 +213,19 @@ AddEventHandler("server:enablehuddebug", function(enable)
     debug = not debug
     local src = source
     if debug then
-        exports["prp-core"]:AddLog("Admin", GetPlayerName(src), "Dev Debug", {item = tostring("Enabled")}) 
+        exports["mrp-core"]:AddLog("Admin", GetPlayerName(src), "Dev Debug", {item = tostring("Enabled")}) 
         TriggerClientEvent('hud:enabledebug', src)
     else
-        exports["prp-core"]:AddLog("Admin", GetPlayerName(src), "Dev Debug", {item = tostring("Disabled")}) 
+        exports["mrp-core"]:AddLog("Admin", GetPlayerName(src), "Dev Debug", {item = tostring("Disabled")}) 
         TriggerClientEvent('hud:enabledebug', src)
     end
 end)
 
 
-RegisterServerEvent('prp-adminmenu:runCommand')
-AddEventHandler('prp-adminmenu:runCommand', function(data)
+RegisterServerEvent('mrp-adminmenu:runCommand')
+AddEventHandler('mrp-adminmenu:runCommand', function(data)
     local src = source
-    TriggerClientEvent('prp-adminmenu:RunClCommand', src, data.command, data)
+    TriggerClientEvent('mrp-adminmenu:RunClCommand', src, data.command, data)
     if PRP._Admin.Commands[data.command].runcommand then
         local caller = {
             source = src,
@@ -246,14 +246,14 @@ RegisterServerEvent('admin:teleportToPlayer')
 AddEventHandler('admin:teleportToPlayer', function(target)
     local src = source
     local coords = GetEntityCoords(GetPlayerPed(target))
-    TriggerClientEvent('prp-adminmenu:bringPlayer', src, coords)
+    TriggerClientEvent('mrp-adminmenu:bringPlayer', src, coords)
     TriggerClientEvent('DoLongHudText', src, 'You teleported to this player.')
 end)
 
 
 
-RegisterServerEvent("prp-adminmenu:update:vehicle")
-AddEventHandler("prp-adminmenu:update:vehicle", function(pSrc, vPlate)
+RegisterServerEvent("mrp-adminmenu:update:vehicle")
+AddEventHandler("mrp-adminmenu:update:vehicle", function(pSrc, vPlate)
     exports.ghmattimysql:execute("SELECT * FROM characters_cars WHERE license_plate = @id", {['id'] = vPlate}, function(data)
         if data[1] then
             if data[1].vehicle_state == "In" then

@@ -1,7 +1,7 @@
 PRP.Commands = PRP.Commands or {}
 
-RegisterNetEvent("prp-commands:meCommand")
-AddEventHandler("prp-commands:meCommand", function(user, msg)
+RegisterNetEvent("mrp-commands:meCommand")
+AddEventHandler("mrp-commands:meCommand", function(user, msg)
     if DoesPlayerExist(user) then
         local monid = PlayerId()
         local sonid = GetPlayerFromServerId(user)

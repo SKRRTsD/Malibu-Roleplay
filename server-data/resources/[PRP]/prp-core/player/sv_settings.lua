@@ -1,5 +1,5 @@
-RegisterServerEvent("prp-core:sv:player_settings_set")
-AddEventHandler("prp-core:sv:player_settings_set", function(settingsTable)
+RegisterServerEvent("mrp-core:sv:player_settings_set")
+AddEventHandler("mrp-core:sv:player_settings_set", function(settingsTable)
     local src = source
     PRP.DB:UpdateSettings(src, settingsTable, function(UpdateSettings, err)
             if UpdateSettings then
@@ -8,14 +8,14 @@ AddEventHandler("prp-core:sv:player_settings_set", function(settingsTable)
     end)
 end)
 
-RegisterServerEvent("prp-core:sv:player_settings")
-AddEventHandler("prp-core:sv:player_settings", function()
+RegisterServerEvent("mrp-core:sv:player_settings")
+AddEventHandler("mrp-core:sv:player_settings", function()
     local src = source
     PRP.DB:GetSettings(src, function(loadedSettings, err)
         if loadedSettings ~= nil then 
-            TriggerClientEvent("prp-core:cl:player_settings", src, loadedSettings) 
+            TriggerClientEvent("mrp-core:cl:player_settings", src, loadedSettings) 
         else 
-            TriggerClientEvent("prp-core:cl:player_settings",src, nil) 
+            TriggerClientEvent("mrp-core:cl:player_settings",src, nil) 
         end
     end)
 end)

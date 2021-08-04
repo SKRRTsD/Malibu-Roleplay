@@ -1,6 +1,6 @@
-RegisterNetEvent('prp-outlawalert:gunshotInProgress')
-AddEventHandler('prp-outlawalert:gunshotInProgress', function(targetCoords)
-	local job = exports["prp_manager"]:isPed("myjob")
+RegisterNetEvent('mrp-outlawalert:gunshotInProgress')
+AddEventHandler('mrp-outlawalert:gunshotInProgress', function(targetCoords)
+	local job = exports["mrp_manager"]:isPed("myjob")
 	if job == 'police' or job == 'news' then
 		local alpha = 250
 		local gunshotBlip = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
@@ -27,17 +27,17 @@ AddEventHandler('prp-outlawalert:gunshotInProgress', function(targetCoords)
 	end
 end)
 
-AddEventHandler('prp-alerts:gunshot', function()
+AddEventHandler('mrp-alerts:gunshot', function()
 	local pos = GetEntityCoords(PlayerPedId(), true)
-	TriggerServerEvent('prp-alerts:shoot', {x = pos.x, y = pos.y, z = pos.z})
+	TriggerServerEvent('mrp-alerts:shoot', {x = pos.x, y = pos.y, z = pos.z})
 end)
 
 
 ---- 10-13s Officer Down ----
 
-RegisterNetEvent('prp-alerts:policealertA')
-AddEventHandler('prp-alerts:policealertA', function(targetCoords)
-	local job = exports["prp_manager"]:isPed("myjob")
+RegisterNetEvent('mrp-alerts:policealertA')
+AddEventHandler('mrp-alerts:policealertA', function(targetCoords)
+	local job = exports["mrp_manager"]:isPed("myjob")
 	if job == 'police' or job == 'ems' or job == 'news' then
 		local alpha = 250
 		local policedown = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
@@ -64,14 +64,14 @@ AddEventHandler('prp-alerts:policealertA', function(targetCoords)
   end
 end)
 
-AddEventHandler('prp-alerts:1013A', function()
+AddEventHandler('mrp-alerts:1013A', function()
 	local pos = GetEntityCoords(PlayerPedId(), true)
-	TriggerServerEvent('prp-alerts:teenA', {x = pos.x, y = pos.y, z = pos.z})
+	TriggerServerEvent('mrp-alerts:teenA', {x = pos.x, y = pos.y, z = pos.z})
 end)
 
-RegisterNetEvent('prp-alerts:policealertB')
-AddEventHandler('prp-alerts:policealertB', function(targetCoords)
-	local job = exports["prp_manager"]:isPed("myjob")
+RegisterNetEvent('mrp-alerts:policealertB')
+AddEventHandler('mrp-alerts:policealertB', function(targetCoords)
+	local job = exports["mrp_manager"]:isPed("myjob")
 	if job == 'police' or job == 'ems' or job == 'news' then
 		local alpha = 250
 		local policedown2 = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
@@ -98,15 +98,15 @@ AddEventHandler('prp-alerts:policealertB', function(targetCoords)
   end
 end)
 
-AddEventHandler('prp-alerts:1013B', function()
+AddEventHandler('mrp-alerts:1013B', function()
 	local pos = GetEntityCoords(PlayerPedId(), true)
-	TriggerServerEvent('prp-alerts:teenB', {x = pos.x, y = pos.y, z = pos.z})
+	TriggerServerEvent('mrp-alerts:teenB', {x = pos.x, y = pos.y, z = pos.z})
 end)
 
 
-RegisterNetEvent('prp-alerts:panic')
-AddEventHandler('prp-alerts:panic', function(targetCoords)
-	local job = exports["prp_manager"]:isPed("myjob")
+RegisterNetEvent('mrp-alerts:panic')
+AddEventHandler('mrp-alerts:panic', function(targetCoords)
+	local job = exports["mrp_manager"]:isPed("myjob")
 	if job == 'police' or job == 'ems' or job == 'news' then
 		local alpha = 250
 		local panic = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
@@ -132,17 +132,17 @@ AddEventHandler('prp-alerts:panic', function(targetCoords)
   end
 end)
 
-AddEventHandler('prp-alerts:policepanic', function()
+AddEventHandler('mrp-alerts:policepanic', function()
 	local pos = GetEntityCoords(PlayerPedId(), true)
-	TriggerServerEvent('prp-alerts:teenpanic', {x = pos.x, y = pos.y, z = pos.z})
+	TriggerServerEvent('mrp-alerts:teenpanic', {x = pos.x, y = pos.y, z = pos.z})
 end)
 
 
 ---- 10-14 EMS ----
 
-RegisterNetEvent('prp-alerts:tenForteenA')
-AddEventHandler('prp-alerts:tenForteenA', function(targetCoords)
-	local job = exports["prp_manager"]:isPed("myjob")
+RegisterNetEvent('mrp-alerts:tenForteenA')
+AddEventHandler('mrp-alerts:tenForteenA', function(targetCoords)
+	local job = exports["mrp_manager"]:isPed("myjob")
 	if job == 'police' or job == 'ems' or job == 'news' then
 		local alpha = 250
 		local medicDown = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
@@ -169,15 +169,15 @@ AddEventHandler('prp-alerts:tenForteenA', function(targetCoords)
   end
 end)
 
-AddEventHandler('prp-alerts:1014A', function()
+AddEventHandler('mrp-alerts:1014A', function()
 	local pos = GetEntityCoords(PlayerPedId(), true)
-	TriggerServerEvent('prp-alerts:fourA', {x = pos.x, y = pos.y, z = pos.z})
+	TriggerServerEvent('mrp-alerts:fourA', {x = pos.x, y = pos.y, z = pos.z})
 end)
 
 
-RegisterNetEvent('prp-alerts:tenForteenB')
-AddEventHandler('prp-alerts:tenForteenB', function(targetCoords)
-	local job = exports["prp_manager"]:isPed("myjob")
+RegisterNetEvent('mrp-alerts:tenForteenB')
+AddEventHandler('mrp-alerts:tenForteenB', function(targetCoords)
+	local job = exports["mrp_manager"]:isPed("myjob")
 	if job == 'police' or job == 'ems' or job == 'news' then
 		local alpha = 250
 		local medicDown2 = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
@@ -204,16 +204,16 @@ AddEventHandler('prp-alerts:tenForteenB', function(targetCoords)
   end
 end)
 
-AddEventHandler('prp-alerts:1014B', function()
+AddEventHandler('mrp-alerts:1014B', function()
 	local pos = GetEntityCoords(PlayerPedId(), true)
-	TriggerServerEvent('prp-alerts:fourB', {x = pos.x, y = pos.y, z = pos.z})
+	TriggerServerEvent('mrp-alerts:fourB', {x = pos.x, y = pos.y, z = pos.z})
 end)
 
 ---- Down Person ----
 
-RegisterNetEvent('prp-alerts:downalert')
-AddEventHandler('prp-alerts:downalert', function(targetCoords)
-	local job = exports["prp_manager"]:isPed("myjob")
+RegisterNetEvent('mrp-alerts:downalert')
+AddEventHandler('mrp-alerts:downalert', function(targetCoords)
+	local job = exports["mrp_manager"]:isPed("myjob")
 	if job == 'police' or job == 'ems' or job == 'news' then
 		local alpha = 250
 		local injured = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
@@ -240,15 +240,15 @@ AddEventHandler('prp-alerts:downalert', function(targetCoords)
   end
 end)
 
-AddEventHandler('prp-alerts:downguy', function()
+AddEventHandler('mrp-alerts:downguy', function()
 	local pos = GetEntityCoords(PlayerPedId(), true)
-	TriggerServerEvent('prp-alerts:downperson', {x = pos.x, y = pos.y, z = pos.z})
+	TriggerServerEvent('mrp-alerts:downperson', {x = pos.x, y = pos.y, z = pos.z})
 end)
 
 ---- assistance ----
-RegisterNetEvent('prp-alerts:assistance')
-AddEventHandler('prp-alerts:assistance', function(targetCoords)
-	local job = exports["prp_manager"]:isPed("myjob")
+RegisterNetEvent('mrp-alerts:assistance')
+AddEventHandler('mrp-alerts:assistance', function(targetCoords)
+	local job = exports["mrp_manager"]:isPed("myjob")
 	if job == 'police' or job == 'ems' or job == 'news' then	
 		local alpha = 250
 		local assistance = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
@@ -276,9 +276,9 @@ AddEventHandler('prp-alerts:assistance', function(targetCoords)
 end)
 
 
-RegisterNetEvent('prp-alerts:vehiclecrash')
-AddEventHandler('prp-alerts:vehiclecrash', function()
-	local job = exports["prp_manager"]:isPed("myjob")
+RegisterNetEvent('mrp-alerts:vehiclecrash')
+AddEventHandler('mrp-alerts:vehiclecrash', function()
+	local job = exports["mrp_manager"]:isPed("myjob")
 	if job == 'police' or job == 'ems' or job == 'news' then
 		local alpha = 250
 		local targetCoords = GetEntityCoords(PlayerPedId(), true)
@@ -307,9 +307,9 @@ AddEventHandler('prp-alerts:vehiclecrash', function()
 end)
 
 ---- Store Robbery ----
-RegisterNetEvent('prp-alerts:storerobbery')
-AddEventHandler('prp-alerts:storerobbery', function(targetCoords)
-	local job = exports["prp_manager"]:isPed("myjob")
+RegisterNetEvent('mrp-alerts:storerobbery')
+AddEventHandler('mrp-alerts:storerobbery', function(targetCoords)
+	local job = exports["mrp_manager"]:isPed("myjob")
 	if job == 'police' or job == 'news' then
 		local alpha = 250
 		local store = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
@@ -337,16 +337,16 @@ AddEventHandler('prp-alerts:storerobbery', function(targetCoords)
   end
 end)
 
-AddEventHandler('prp-alerts:robstore', function()
+AddEventHandler('mrp-alerts:robstore', function()
 	local pos = GetEntityCoords(PlayerPedId(), true)
-	TriggerServerEvent('prp-alerts:storerob', {x = pos.x, y = pos.y, z = pos.z})
+	TriggerServerEvent('mrp-alerts:storerob', {x = pos.x, y = pos.y, z = pos.z})
 end)
 
 ---- House Robbery ----
 
-RegisterNetEvent('prp-alerts:houserobbery')
-AddEventHandler('prp-alerts:houserobbery', function(targetCoords)
-	local job = exports["prp_manager"]:isPed("myjob")
+RegisterNetEvent('mrp-alerts:houserobbery')
+AddEventHandler('mrp-alerts:houserobbery', function(targetCoords)
+	local job = exports["mrp_manager"]:isPed("myjob")
 	if job == 'police' or job == 'news' then
 		local alpha = 250
 		local burglary = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
@@ -374,16 +374,16 @@ AddEventHandler('prp-alerts:houserobbery', function(targetCoords)
   end
 end)
 
-AddEventHandler('prp-alerts:robhouse', function()
+AddEventHandler('mrp-alerts:robhouse', function()
 	local pos = GetEntityCoords(PlayerPedId(), true)
-	TriggerServerEvent('prp-alerts:houserob', {x = pos.x, y = pos.y, z = pos.z})
+	TriggerServerEvent('mrp-alerts:houserob', {x = pos.x, y = pos.y, z = pos.z})
 end)
 
 ---- Bank Truck ----
 
-RegisterNetEvent('prp-alerts:banktruck')
-AddEventHandler('prp-alerts:banktruck', function(targetCoords)
-	local job = exports["prp_manager"]:isPed("myjob")
+RegisterNetEvent('mrp-alerts:banktruck')
+AddEventHandler('mrp-alerts:banktruck', function(targetCoords)
+	local job = exports["mrp_manager"]:isPed("myjob")
 	if job == 'police' or job == 'news' then
 		local alpha = 250
 		local truck = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
@@ -410,16 +410,16 @@ AddEventHandler('prp-alerts:banktruck', function(targetCoords)
   end
 end)
 
-AddEventHandler('prp-alerts:bankt', function()
+AddEventHandler('mrp-alerts:bankt', function()
 	local pos = GetEntityCoords(PlayerPedId(), true)
-	TriggerServerEvent('prp-alerts:tbank', {x = pos.x, y = pos.y, z = pos.z})
+	TriggerServerEvent('mrp-alerts:tbank', {x = pos.x, y = pos.y, z = pos.z})
 end)
 
 ---- Jewerly Store ----
 
-RegisterNetEvent('prp-alerts:jewelrobbey')
-AddEventHandler('prp-alerts:jewelrobbey', function()
-	local job = exports["prp_manager"]:isPed("myjob")
+RegisterNetEvent('mrp-alerts:jewelrobbey')
+AddEventHandler('mrp-alerts:jewelrobbey', function()
+	local job = exports["mrp_manager"]:isPed("myjob")
 	if job == 'police' or job == 'news' then
 		local alpha = 250
 		local jew = AddBlipForCoord(-634.02, -239.49, 38)
@@ -446,13 +446,13 @@ AddEventHandler('prp-alerts:jewelrobbey', function()
   end
 end)
 
-AddEventHandler('prp-alerts:jewrob', function()
-	TriggerServerEvent('prp-alerts:robjew')
+AddEventHandler('mrp-alerts:jewrob', function()
+	TriggerServerEvent('mrp-alerts:robjew')
 end)
 
-RegisterNetEvent('prp-dispatch:fleeca:bank:receive')
-AddEventHandler('prp-dispatch:fleeca:bank:receive', function(pCoords)
-	local job = exports["prp_manager"]:isPed("myjob")
+RegisterNetEvent('mrp-dispatch:fleeca:bank:receive')
+AddEventHandler('mrp-dispatch:fleeca:bank:receive', function(pCoords)
+	local job = exports["mrp_manager"]:isPed("myjob")
 	if job == 'police' then
 		local alpha = 250
 		local pLocation = AddBlipForCoord(pCoords.x, pCoords.y, pCoords.z)
@@ -479,14 +479,14 @@ AddEventHandler('prp-dispatch:fleeca:bank:receive', function(pCoords)
   end
 end)
 
-AddEventHandler('prp-dispatch:fleeca:bank', function(pCoords)
-	TriggerServerEvent('prp-dispatch:fleeca:bank', pCoords)
+AddEventHandler('mrp-dispatch:fleeca:bank', function(pCoords)
+	TriggerServerEvent('mrp-dispatch:fleeca:bank', pCoords)
 end)
 
 --drug sales--
-RegisterNetEvent('prp-alerts:drugsales')
-AddEventHandler('prp-alerts:drugsales', function(targetCoords)
-	local job = exports["prp_manager"]:isPed("myjob")
+RegisterNetEvent('mrp-alerts:drugsales')
+AddEventHandler('mrp-alerts:drugsales', function(targetCoords)
+	local job = exports["mrp_manager"]:isPed("myjob")
 	if job == 'police' or job == 'news' then
 		local alpha = 250
 		local drugsales = AddBlipForCoord(targetCoords.x, targetCoords.y, targetCoords.z)
@@ -514,58 +514,58 @@ AddEventHandler('prp-alerts:drugsales', function(targetCoords)
   end
 end)
 
-AddEventHandler('prp-alerts:sellingdrugs', function()
+AddEventHandler('mrp-alerts:sellingdrugs', function()
 	local pos = GetEntityCoords(PlayerPedId(), true)
-	TriggerServerEvent('prp-alerts:drugsselling', {x = pos.x, y = pos.y, z = pos.z})
+	TriggerServerEvent('mrp-alerts:drugsselling', {x = pos.x, y = pos.y, z = pos.z})
 end)
 
 
 
 
-RegisterNetEvent('prp-dispatch:methexplosion')
-AddEventHandler("prp-dispatch:methexplosion",function()
+RegisterNetEvent('mrp-dispatch:methexplosion')
+AddEventHandler("mrp-dispatch:methexplosion",function()
   AlertMeth()
 end)
 
-RegisterNetEvent('prp-dispatch:pacific')
-AddEventHandler("prp-dispatch:pacific",function()
+RegisterNetEvent('mrp-dispatch:pacific')
+AddEventHandler("mrp-dispatch:pacific",function()
   AlertPacific()
 end)
 
 
-RegisterNetEvent('prp-dispatch:jailbreak')
-AddEventHandler("prp-dispatch:jailbreak",function()
+RegisterNetEvent('mrp-dispatch:jailbreak')
+AddEventHandler("mrp-dispatch:jailbreak",function()
   AlertJailBreak()
 end)
 
-RegisterNetEvent('prp-dispatch:jewelrobbery')
-AddEventHandler("prp-dispatch:jewelrobbery",function()
+RegisterNetEvent('mrp-dispatch:jewelrobbery')
+AddEventHandler("mrp-dispatch:jewelrobbery",function()
   AlertJewelRob()
   return
 end)
 
 
-RegisterNetEvent('prp-dispatch:houserobbery')
-AddEventHandler("prp-dispatch:houserobbery",function()
+RegisterNetEvent('mrp-dispatch:houserobbery')
+AddEventHandler("mrp-dispatch:houserobbery",function()
   AlertCheckRobbery2()
 end)
 
-RegisterNetEvent('prp-dispatch:drugsales')
-AddEventHandler("prp-dispatch:drugsales",function()
+RegisterNetEvent('mrp-dispatch:drugsales')
+AddEventHandler("mrp-dispatch:drugsales",function()
 	DrugSales()
 end)
 
-RegisterNetEvent('prp-dispatch:storerobbery')
-AddEventHandler("prp-dispatch:storerobbery",function()
+RegisterNetEvent('mrp-dispatch:storerobbery')
+AddEventHandler("mrp-dispatch:storerobbery",function()
   AlertpersonRobbed(vehicle)
 end)
 
-RegisterNetEvent('prp-dispatch:carjacking')
-AddEventHandler("prp-dispatch:carjacking",function()
+RegisterNetEvent('mrp-dispatch:carjacking')
+AddEventHandler("mrp-dispatch:carjacking",function()
   AlertCheckLockpick(object)
 end)
 
-RegisterNetEvent('prp-dispatch:downplayer')
-AddEventHandler("prp-dispatch:downplayer",function()
+RegisterNetEvent('mrp-dispatch:downplayer')
+AddEventHandler("mrp-dispatch:downplayer",function()
 	TriggerEvent("police:1047")
 end)

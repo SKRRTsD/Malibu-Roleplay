@@ -9,43 +9,43 @@ barberShops = {
 }
 
 Citizen.CreateThread(function()
-	exports["prp-polyzone"]:AddBoxZone("barber_shop", vector3(1931.27, 3730.69, 32.84), 4.8, 4.6, {
+	exports["mrp-polyzone"]:AddBoxZone("barber_shop", vector3(1931.27, 3730.69, 32.84), 4.8, 4.6, {
 		heading=30,
 		minZ=31.84,
 		maxZ=34.64
 	})
 	
-	exports["prp-polyzone"]:AddBoxZone("barber_shop", vector3(-277.51, 6227.35, 31.7), 5.6, 5.0, {
+	exports["mrp-polyzone"]:AddBoxZone("barber_shop", vector3(-277.51, 6227.35, 31.7), 5.6, 5.0, {
 		heading=45,
 		minZ=30.7,
 		maxZ=33.7
 	})
 	
-	exports["prp-polyzone"]:AddBoxZone("barber_shop", vector3(1213.32, -473.15, 66.21), 6.8, 5.4, {
+	exports["mrp-polyzone"]:AddBoxZone("barber_shop", vector3(1213.32, -473.15, 66.21), 6.8, 5.4, {
 		heading=75,
 		minZ=65.01,
 		maxZ=68.01
 	})
 	
-	exports["prp-polyzone"]:AddBoxZone("barber_shop", vector3(-33.67, -153.46, 57.08), 5.2, 7.2, {
+	exports["mrp-polyzone"]:AddBoxZone("barber_shop", vector3(-33.67, -153.46, 57.08), 5.2, 7.2, {
 		heading=70,
 		minZ=55.88,
 		maxZ=58.88
 	})
 	
-	exports["prp-polyzone"]:AddBoxZone("barber_shop", vector3(137.73, -1707.2, 29.29), 5.6, 7.0, {
+	exports["mrp-polyzone"]:AddBoxZone("barber_shop", vector3(137.73, -1707.2, 29.29), 5.6, 7.0, {
 		heading=50,
 		minZ=28.09,
 		maxZ=31.29
 	})
 	
-	exports["prp-polyzone"]:AddBoxZone("barber_shop", vector3(-813.86, -184.15, 37.57), 7.4, 8.6, {
+	exports["mrp-polyzone"]:AddBoxZone("barber_shop", vector3(-813.86, -184.15, 37.57), 7.4, 8.6, {
 		heading=30,
 		minZ=36.57,
 		maxZ=39.37
 	})
 	
-	exports["prp-polyzone"]:AddBoxZone("barber_shop", vector3(-1281.76, -1117.41, 6.99), 6.0, 7.0, {
+	exports["mrp-polyzone"]:AddBoxZone("barber_shop", vector3(-1281.76, -1117.41, 6.99), 6.0, 7.0, {
 		heading=0,
 		minZ=5.99,
 		maxZ=8.99
