@@ -1974,12 +1974,12 @@ AddEventHandler("police:bill", function()
     end
 end)
 
-RegisterCommand('bill', function(source)
-	local job = exports["mrp_manager"]:isPed("myjob")
-	if job == 'police' then
-		TriggerEvent('police:bill')
-	end
-end)
+-- RegisterCommand('bill', function(source)
+-- 	local job = exports["mrp_manager"]:isPed("myjob")
+-- 	if job == 'police' then
+-- 		TriggerEvent('police:bill')
+-- 	end
+-- end)
 
 
 RegisterNetEvent("serial:search")
