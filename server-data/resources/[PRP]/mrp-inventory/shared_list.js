@@ -664,7 +664,7 @@ itemList["324215364"] = {
     weight: 15,
     nonStack: true,
     model: "",
-    image: "micro-smg.png",
+    image: "micro-smg2.png",
     weapon: true,
     deg: true
 }
@@ -1409,7 +1409,7 @@ itemList["rifleammo"] = {
     weight: 7,
     nonStack: false,
     model: "",
-    image: "rifle-ammo.png",
+    image: "mrp_rifle-ammo.png",
     deg: false
 }
 
@@ -1431,7 +1431,7 @@ itemList["rifleammocrim"] = {
     weight: 7,
     nonStack: false,
     model: "",
-    image: "rifle-ammo.png",
+    image: "mrp_rifle-ammo.png",
     deg: false
 }
 
@@ -3245,7 +3245,7 @@ itemList["armor"] = {
     weight: 23,
     nonStack: false,
     model: "",
-    image: "armor.png",
+    image: "mrp_chest-armor.png",
     information: "Protects your chest more!",
     deg: false
 }
@@ -5846,7 +5846,7 @@ itemList["lockpick"] = {
     weight: 1,
     nonStack: false,
     model: "",
-    image: "lockpick.png",
+    image: "lockpick-set.png",
     deg: false
 }
 
@@ -6383,7 +6383,7 @@ itemList["mobilephone"] = {
     }],
     nonStack: false,
     model: "",
-    image: "mobile-phone.png",
+    image: "pixel-2-phone.png",
     deg: false
 }
 
