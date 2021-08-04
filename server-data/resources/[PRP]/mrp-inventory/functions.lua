@@ -892,8 +892,14 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
         local finished = exports["mrp-taskbar"]:taskBar(7500,"Unzipping Backpack")
         if (finished == 100) then
             remove = true
-            TriggerServerEvent("backpack:give:items")
-            TriggerEvent()
+            TriggerEvent("player:receiveItem", "mobilephone", 1) 
+            TriggerEvent("player:receiveItem", "radio", 1)
+            TriggerEvent("player:receiveItem", "sandwich", 2)
+            TriggerEvent("player:receiveItem", "water", 2)
+            TriggerEvent("player:receiveItem", "fishingrod", 1)
+            TriggerEvent("player:receiveItem", "shiningpack", 1)
+            TriggerEvent("player:receiveItem", "fountain", 1)
+            TriggerEvent("DoLongHudText", "Welcome to the City if you are new we hope you enjoy your stay!", 1)
         end
     end
 
