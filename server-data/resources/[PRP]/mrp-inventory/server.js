@@ -406,7 +406,7 @@ onNet("server-inventory-open", async (coords, player, secondInventory, targetNam
         } else if (secondInventory == "10") {
             var targetinvname = targetName;
             var shopArray = PoliceArmory();
-            var shopAmount = 16;
+            var shopAmount = 11;
             emitNet("inventory-open-target", src, [invArray, arrayCount, playerinvname, shopArray, shopAmount, targetinvname, 500, false]);
         } else if (secondInventory == "15") {
             var targetinvname = targetName;

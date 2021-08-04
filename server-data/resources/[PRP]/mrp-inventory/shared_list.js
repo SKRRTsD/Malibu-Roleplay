@@ -629,7 +629,7 @@ itemList["3218215474"] = {
 itemList["3219281620"] = {
     fullyDegrades: false,
     decayrate: 1.0,
-    displayname: "Glock",
+    displayname: "PD Glock",
     price: 10,
     craft: [{
         itemid: "aluminium",
@@ -644,7 +644,7 @@ itemList["3219281620"] = {
     weight: 13,
     nonStack: true,
     model: "",
-    image: "weapon_glock.png",
+    image: "glock.png",
     weapon: true,
     deg: true
 }
