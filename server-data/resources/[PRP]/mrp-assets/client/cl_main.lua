@@ -35,10 +35,10 @@ end)
 
 Citizen.CreateThread(function()
     TriggerServerEvent('rich:GetPlayers')
-    SetDiscordRichPresenceAsset(GetConvar("RichAssetId", "Pluto RP"))
+    SetDiscordRichPresenceAsset(GetConvar("RichAssetId", "Malibu RP"))
     while true do
         Citizen.Wait(2000)
-        SetDiscordRichPresenceAssetText("PlutoRP")
+        SetDiscordRichPresenceAssetText("MalibuRP")
         SetRichPresence(onlinePlayers.."/48 Players")
     end
 end)
