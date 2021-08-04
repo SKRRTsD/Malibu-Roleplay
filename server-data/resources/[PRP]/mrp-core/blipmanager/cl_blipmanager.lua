@@ -1,7 +1,7 @@
-PRP.BlipManager = PRP.BlipManager or {}
-PRP.Blips = PRP.Blips or {}
+MRP.BlipManager = MRP.BlipManager or {}
+MRP.Blips = MRP.Blips or {}
 
-function PRP.BlipManager.CreateBlip(self, id, data)
+function MRP.BlipManager.CreateBlip(self, id, data)
     local blip = AddBlipForCoord(data.x, data.y, data.z)
 
     if data.sprite then SetBlipSprite(blip, data.sprite) end
@@ -22,23 +22,23 @@ function PRP.BlipManager.CreateBlip(self, id, data)
     AddTextComponentString(data.name)
     EndTextCommandSetBlipName(blip)
 
-    PRP.Blips[id] = {blip = blip, data = data}
+    MRP.Blips[id] = {blip = blip, data = data}
 end
 
-function PRP.BlipManager.RemoveBlip(self, id)
-    local blip = PRP.Blips[id]
+function MRP.BlipManager.RemoveBlip(self, id)
+    local blip = MRP.Blips[id]
     if blip then RemoveBlip(blip.blip) end
-    PRP.Blips[id] = nil
+    MRP.Blips[id] = nil
 end
 
-function PRP.BlipManager.HideBlip(self, id, toggle)
-    local blip = PRP.Blips[id]
+function MRP.BlipManager.HideBlip(self, id, toggle)
+    local blip = MRP.Blips[id]
     if not blip then return end
     if toggle then SetBlipAlpha(blip, 0) else SetBlipAlpha(blip, 255) end
 end
 
-function PRP.BlipManager.GetBlip(self, id)
-    local blip = PRP.Blips[id]
+function MRP.BlipManager.GetBlip(self, id)
+    local blip = MRP.Blips[id]
     if not blip then return false end
     return blip
 end

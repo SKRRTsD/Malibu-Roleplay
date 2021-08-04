@@ -1,7 +1,7 @@
-PRP.Core.hasLoaded = false
+MRP.Core.hasLoaded = false
 
 
-function PRP.Core.Initialize(self)
+function MRP.Core.Initialize(self)
     Citizen.CreateThread(function()
         while true do
             if NetworkIsSessionStarted() then
@@ -12,20 +12,20 @@ function PRP.Core.Initialize(self)
         end
     end)
 end
-PRP.Core:Initialize()
+MRP.Core:Initialize()
 
 AddEventHandler("mrp-core:playerSessionStarted", function()
-    while not PRP.Core.hasLoaded do
+    while not MRP.Core.hasLoaded do
         --print("waiting in loop")
         Wait(100)
     end
     ShutdownLoadingScreen()
-    PRP.SpawnManager:Initialize()
+    MRP.SpawnManager:Initialize()
 end)
 
 RegisterNetEvent("mrp-core:waitForExports")
 AddEventHandler("mrp-core:waitForExports", function()
-    if not PRP.Core.ExportsReady then return end
+    if not MRP.Core.ExportsReady then return end
 
     while true do
         Citizen.Wait(0)
@@ -44,8 +44,8 @@ end)
 
 RegisterNetEvent("base:disableLoading")
 AddEventHandler("base:disableLoading", function()
-    if not PRP.Core.hasLoaded then
-         PRP.Core.hasLoaded = true
+    if not MRP.Core.hasLoaded then
+         MRP.Core.hasLoaded = true
     end
 end)
 

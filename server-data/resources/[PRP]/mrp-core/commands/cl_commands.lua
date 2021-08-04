@@ -1,4 +1,4 @@
-PRP.Commands = PRP.Commands or {}
+MRP.Commands = MRP.Commands or {}
 
 RegisterNetEvent("mrp-commands:meCommand")
 AddEventHandler("mrp-commands:meCommand", function(user, msg)

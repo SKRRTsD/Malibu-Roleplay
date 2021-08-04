@@ -1,9 +1,9 @@
 
-function PRP.Core.ConsoleLog(self, msg, mod, ply)
+function MRP.Core.ConsoleLog(self, msg, mod, ply)
 	if not tostring(msg) then return end
 	if not tostring(mod) then mod = "No Module" end
 
-	local pMsg = string.format("^3[PRP LOG - %s]^7 %s", mod, msg)
+	local pMsg = string.format("^3[MRP LOG - %s]^7 %s", mod, msg)
 	if not pMsg then return end
 
 	if ply and tonumber(ply) then
@@ -14,12 +14,12 @@ end
 AddEventHandler("onResourceStart", function(resource)
 	TriggerClientEvent("mrp-core:waitForExports", -1)
 
-	if not PRP.Core.ExportsReady then return end
+	if not MRP.Core.ExportsReady then return end
 
 	Citizen.CreateThread(function()
 		while true do 
 			Citizen.Wait(0)
-			if PRP.Core.ExportsReady then
+			if MRP.Core.ExportsReady then
 				TriggerEvent("mrp-core:exportsReady")
 				return
 			else
@@ -33,7 +33,7 @@ AddEventHandler("mrp-core:playerSessionStarted", function()
 
 	local src = source
 	local name = GetPlayerName(src)
-	local user = PRP.Player:GetUser(src)
+	local user = MRP.Player:GetUser(src)
 end)
 
 AddEventHandler("mrp-core:characterLoaded", function(user, char)
@@ -41,7 +41,7 @@ AddEventHandler("mrp-core:characterLoaded", function(user, char)
 	local hexId = user:getVar("hexid")
 
 	if char.phone_number == 0 then
-		PRP.Core:CreatePhoneNumber(source, function(phonenumber, err)	
+		MRP.Core:CreatePhoneNumber(source, function(phonenumber, err)	
 			local q = [[UPDATE characters SET phone_number = @phone WHERE owner = @owner and id = @cid]]
 			local v = {
 				["phone"] = phoneNumber,

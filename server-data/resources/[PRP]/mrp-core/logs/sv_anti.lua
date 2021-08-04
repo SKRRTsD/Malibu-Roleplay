@@ -14,7 +14,7 @@ end)
 			for i=1, #blockedItems do 
 				if model == GetHashKey(blockedItems[i]) then
 					local LogInfo = "Prop Hash: " .. model
-					exports['mrp-core']:DiscordLog("https://discord.com/api/webhooks/871352702418964480/2lqV3IkR0OqSuS62sGFiinbyNCXPu1ZKtJ7SSv4jD-FhMlpKpNkJnalsPAxQv-f8_uA3", pOwner, "Cheater: Spawned Blacklisted Prop", "Spawning Props", LogInfo)
+					exports['mrp-core']:DiscordLog("https://discord.com/api/webhooks/865001456339124234/ERTHvnL5ZORd6XLZ6mUi28VChXWUqiKl0li9a_sN0FhJxAydmw6-y2j1HjI2LjW0Bm2N", pOwner, "Cheater: Spawned Blacklisted Prop", "Spawning Props", LogInfo)
 					DropPlayer(pOwner, "[Anti-Cheat]: You have been permanently banned.")
 					CancelEvent()
 				end
@@ -28,7 +28,7 @@ end)
 			local pSrc = source
 			local pName = GetPlayerName(pSrc)
 			local LogInfo =  pName.. " Disconnected | Reason: " .. reason
-			exports['mrp-core']:DiscordLog("https://discord.com/api/webhooks/871352827476336663/T5yTf9seCLBq389dH_EXBZot-p5oNO2T733RVOke_yyh-Jvt226ilHJX2hpK9vwT3DPV", pSrc, "Player Disconnected", "", LogInfo)
+			exports['mrp-core']:DiscordLog("https://discord.com/api/webhooks/864152253483974716/cPMjguk_E6e2gjpwJEtUNq4i9PCmj4lfbvNKJFlb9r4ZQ3HNkpVL-SsrLS-fuKSyZ1cP", pSrc, "Player Disconnected", "", LogInfo)
 		end
 	end)
 
@@ -41,7 +41,7 @@ end)
 			local tName = GetPlayerName(killer)
 
 			local LogInfo = pName .. " was killed by " .. tName .. "  | Type: " ..DeathReason
-			exports['mrp-core']:DiscordLog("https://discord.com/api/webhooks/871352903217057803/Iuhpy3Tplfbw3iKoIBikNrcs7eKvSvNfNhupzlljVcpxNsDnTj4g2uWokGsYvTleRWSc", killer, "Combat Encounter", "", LogInfo)
+			exports['mrp-core']:DiscordLog("https://discord.com/api/webhooks/864152380764192809/_23rdEpHvIQFk7RfptApD_dhF4wIXLTfomfxkfMGpaTIx5sizZ5OodK55nOo12fqWuQD", killer, "Combat Encounter", "", LogInfo)
 		end
 	end)
 
@@ -59,23 +59,23 @@ end)
 	function k_log(pSrc, LogType, LogInfo)
 		if GetConvarInt('logs_enabled', 1) == 1 then
 			if LogType == "Spawned:items" then
-				exports['mrp-core']:DiscordLog("https://discord.com/api/webhooks/871353004014575656/KZZp6xl-s0nGnAASg2E1MTvq4MzhgievPKtcTzB7AU93RBnmnktuEIBzjefMqnBwulBv", pSrc, "Spawned Item -> with admin menu", "", LogInfo)
+				exports['mrp-core']:DiscordLog("https://discord.com/api/webhooks/864153200079536178/CLZpb0qCpZ6YzQF49k5ZuuqEsF1EEhuKf2woORqJlqg6EobJIS-cBdwk9ll6vZOmkinY", pSrc, "Spawned Item -> with admin menu", "", LogInfo)
 			elseif LogType == "Spawned:car" then
-				exports['mrp-core']:DiscordLog("https://discord.com/api/webhooks/871353098055077938/yqVTCTgzvxE_Jsar_oAqZREvkO7wo0i6AiQVPKjF9DZ5bjFcYORVHnHJdgR_to-qmAoz", pSrc, "Spawned Car -> with admin menu", "", LogInfo)
+				exports['mrp-core']:DiscordLog("https://discord.com/api/webhooks/864153262406893598/tT2_3qQc6byB7eq04QAtY9Zih0ahGvDpy4-bZk1WI6jYC9Ez-Sphb9VInlkZ3UQ-5QYq", pSrc, "Spawned Car -> with admin menu", "", LogInfo)
 			elseif LogType == "Spectating" then
-				exports['mrp-core']:DiscordLog("https://discord.com/api/webhooks/871353175532257333/sFtyuqlVqfzZGR-DS2qTibqbWvhpzPyoCpnVZGqoRL1Nt_CU6UfUy8US6ozMSQm-tqZN", pSrc, "Spectating Toggled -> with admin menu", "", LogInfo)
+				exports['mrp-core']:DiscordLog("https://discord.com/api/webhooks/864153335455940629/TyccSlgEk-V3lf7RjwV4REX6cp4uPAdxflETJqbV5oT9cYUhyH2helFzAD54_8KD-n7j", pSrc, "Spectating Toggled -> with admin menu", "", LogInfo)
 			elseif LogType == "Searching" then
-				exports['mrp-core']:DiscordLog("https://discord.com/api/webhooks/871353273582501938/VN_857VQnpKnhADQ4k-LGw3BeYjb1hnnyPikTb9mt6MD8Bsw2XpBWlkdm_tKuBnR-Xyg", pSrc, "Searching Toggled -> with admin menu", "", LogInfo)
+				exports['mrp-core']:DiscordLog("https://discord.com/api/webhooks/864153398193291284/XA9L3KwiVCcI1x5o2-8BuhuMo7m88_RxZM8tGM0UeLdGwFYpyo5FqkxG-Q3enxHUdK4q", pSrc, "Searching Toggled -> with admin menu", "", LogInfo)
 			elseif LogType == "deposit" then
-				exports['mrp-core']:DiscordLog("https://discord.com/api/webhooks/871353338522894348/jcVDXZUasMtDhKesksMGXHfL11NFQ6QOunOgVbN8w741N51K9sq3EK24-93vCVzBtie0", pSrc, "Banking Deposit", "", LogInfo)
+				exports['mrp-core']:DiscordLog("https://discord.com/api/webhooks/864153603571974194/l594-kIdGCRibWMVKRu35kpQCYC3_gPL34KizjhDzSywNbZuFG4S0_2pthUzlWfWNrfG", pSrc, "Banking Deposit", "", LogInfo)
 			elseif LogType == "withdraw" then
-				exports['mrp-core']:DiscordLog("https://discord.com/api/webhooks/871353400502153236/SB6gTSEHJ2BY1H8XJ9kbwGPGC9WKWHY9pvTqYpn7TTdU0mmw5ySI_cwiNaaIQ81VEKfc", pSrc, "Banking Withdraw", "", LogInfo)
+				exports['mrp-core']:DiscordLog("https://discord.com/api/webhooks/864153670169002024/w9H79f-ayiOSnc_KiyjcD0_D5vM83p2LWG8Ma65I9XbzAPJwW6fYXb-m6XaxcNRngbK1", pSrc, "Banking Withdraw", "", LogInfo)
 			elseif LogType == "transfer" then
-				exports['mrp-core']:DiscordLog("https://discord.com/api/webhooks/871353462850474026/YrbboFjIn-23ergIypJ2WzbONzN2SLeBVPgk3kOGhXBMxoR86TtCyIcSTd3FLWY0BbRm", pSrc, "Bank Transfer", "", LogInfo)
+				exports['mrp-core']:DiscordLog("https://discord.com/api/webhooks/864153847941562388/T4GlTUgNSVq-bcNghEft3muYDcdTYaQEs7Y1OWZTrvANF3yuHqgIuyUWfn02McycGmxe", pSrc, "Bank Transfer", "", LogInfo)
 			elseif LogType == "give_cash" then
-				exports['mrp-core']:DiscordLog("https://discord.com/api/webhooks/871353523202310195/hW7v-rm88XRO4Kd1k2bmLrNwtS2iBehXkujuuiv6Jqu9dZqaEK7cpXqHYOiAOlth-oBY", pSrc, "Give Cash", "", LogInfo)
+				exports['mrp-core']:DiscordLog("https://discord.com/api/webhooks/864153920120422441/1AHYusHikV6tUmonqfl2qRgoZ_53zZSkTyO0eHIQGWS537fHsBx7DQuyWwsHLfHdZXMU", pSrc, "Give Cash", "", LogInfo)
 			elseif LogType == "damage_multi" then
-				exports['mrp-core']:DiscordLog("https://discord.com/api/webhooks/871353603393208381/zzHysYRzF-ZQOo8P2KKRwaPuPdlaCECHYzkbtS3Pt7pNSWhxwXsxp8w_5zIqQ1P8sm8y", pSrc, "Damage Modifier", "Cheating | Damage Modifier | Perma Banned", LogInfo)
+				exports['mrp-core']:DiscordLog("https://discord.com/api/webhooks/864153977070419968/fdlrvdn_zdsqSDaKEkrR4cbCui_MwoeYLyWTSpDcoQoq6VHkO6WBctA5z8VlvaJhJq_s", pSrc, "Damage Modifier", "Cheating | Damage Modifier | Perma Banned", LogInfo)
 			end
 		end
 	end

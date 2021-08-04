@@ -1,9 +1,9 @@
-PRP.SettingsData = PRP.SettingsData or {}
-PRP.Settings = PRP.Settings or {}
+MRP.SettingsData = MRP.SettingsData or {}
+MRP.Settings = MRP.Settings or {}
 
-PRP.Settings.Current = {}
+MRP.Settings.Current = {}
 -- Current bind name and keys
-PRP.Settings.Default = {
+MRP.Settings.Default = {
   ["tokovoip"] = {
     ["stereoAudio"] = true,
     ["localClickOn"] = true,
@@ -22,54 +22,54 @@ PRP.Settings.Default = {
 }
 
 
-function PRP.SettingsData.setSettingsTable(settingsTable, shouldSend)
+function MRP.SettingsData.setSettingsTable(settingsTable, shouldSend)
   if settingsTable == nil then
-    PRP.Settings.Current = PRP.Settings.Default
-    TriggerServerEvent('mrp-core:sv:player_settings_set',PRP.Settings.Current)
-    PRP.SettingsData.checkForMissing()
+    MRP.Settings.Current = MRP.Settings.Default
+    TriggerServerEvent('mrp-core:sv:player_settings_set',MRP.Settings.Current)
+    MRP.SettingsData.checkForMissing()
   else
     if shouldSend then
-      PRP.Settings.Current = settingsTable
-      TriggerServerEvent('mrp-core:sv:player_settings_set',PRP.Settings.Current)
-      PRP.SettingsData.checkForMissing()
+      MRP.Settings.Current = settingsTable
+      TriggerServerEvent('mrp-core:sv:player_settings_set',MRP.Settings.Current)
+      MRP.SettingsData.checkForMissing()
     else
-       PRP.Settings.Current = settingsTable
-       PRP.SettingsData.checkForMissing()
+       MRP.Settings.Current = settingsTable
+       MRP.SettingsData.checkForMissing()
     end
   end
 
-  TriggerEvent("event:settings:update",PRP.Settings.Current)
+  TriggerEvent("event:settings:update",MRP.Settings.Current)
 
 end
 
-function PRP.SettingsData.setSettingsTableGlobal(self, settingsTable)
-  PRP.SettingsData.setSettingsTable(settingsTable,true);
+function MRP.SettingsData.setSettingsTableGlobal(self, settingsTable)
+  MRP.SettingsData.setSettingsTable(settingsTable,true);
 end
 
-function PRP.SettingsData.getSettingsTable()
-    return PRP.Settings.Current
+function MRP.SettingsData.getSettingsTable()
+    return MRP.Settings.Current
 end
 
-function PRP.SettingsData.setVarible(self,tablename,atrr,val)
-  PRP.Settings.Current[tablename][atrr] = val
-  TriggerServerEvent('mrp-core:sv:player_settings_set',PRP.Settings.Current)
+function MRP.SettingsData.setVarible(self,tablename,atrr,val)
+  MRP.Settings.Current[tablename][atrr] = val
+  TriggerServerEvent('mrp-core:sv:player_settings_set',MRP.Settings.Current)
 end
 
-function PRP.SettingsData.getVarible(self,tablename,atrr)
-  return PRP.Settings.Current[tablename][atrr]
+function MRP.SettingsData.getVarible(self,tablename,atrr)
+  return MRP.Settings.Current[tablename][atrr]
 end
 
-function PRP.SettingsData.checkForMissing()
+function MRP.SettingsData.checkForMissing()
   local isMissing = false
 
-  for j,h in pairs(PRP.Settings.Default) do
-    if PRP.Settings.Current[j] == nil then
+  for j,h in pairs(MRP.Settings.Default) do
+    if MRP.Settings.Current[j] == nil then
       isMissing = true
-      PRP.Settings.Current[j] = h
+      MRP.Settings.Current[j] = h
     else
       for k,v in pairs(h) do
-        if  PRP.Settings.Current[j][k] == nil then
-           PRP.Settings.Current[j][k] = v
+        if  MRP.Settings.Current[j][k] == nil then
+           MRP.Settings.Current[j][k] = v
            isMissing = true
         end
       end
@@ -78,7 +78,7 @@ function PRP.SettingsData.checkForMissing()
   
 
   if isMissing then
-    TriggerServerEvent('mrp-core:sv:player_settings_set',PRP.Settings.Current)
+    TriggerServerEvent('mrp-core:sv:player_settings_set',MRP.Settings.Current)
   end
 
 
@@ -86,16 +86,16 @@ end
 
 RegisterNetEvent("mrp-core:cl:player_settings")
 AddEventHandler("mrp-core:cl:player_settings", function(settingsTable)
-  PRP.SettingsData.setSettingsTable(settingsTable,false)
+  MRP.SettingsData.setSettingsTable(settingsTable,false)
 end)
 
 
 RegisterNetEvent("mrp-core:cl:player_reset")
 AddEventHandler("mrp-core:cl:player_reset", function(tableName)
-  if PRP.Settings.Default[tableName] then
-      if PRP.Settings.Current[tableName] then
-        PRP.Settings.Current[tableName] = PRP.Settings.Default[tableName]
-        PRP.SettingsData.setSettingsTable(PRP.Settings.Current,true)
+  if MRP.Settings.Default[tableName] then
+      if MRP.Settings.Current[tableName] then
+        MRP.Settings.Current[tableName] = MRP.Settings.Default[tableName]
+        MRP.SettingsData.setSettingsTable(MRP.Settings.Current,true)
       end
   end
 end)

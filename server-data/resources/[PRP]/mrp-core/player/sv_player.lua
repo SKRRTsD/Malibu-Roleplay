@@ -1,14 +1,14 @@
-PRP.Users = PRP.Users or {}
-PRP.Player = PRP.Player or {}
+MRP.Users = MRP.Users or {}
+MRP.Player = MRP.Player or {}
 
-function PRP.Player.GetUser(self, id)
-    return PRP.Users[id] and PRP.Users[id] or false
+function MRP.Player.GetUser(self, id)
+    return MRP.Users[id] and MRP.Users[id] or false
 end
 
-function PRP.Player.GetUsers(self)
+function MRP.Player.GetUsers(self)
     local tmp = {}
 
-    for k, v in pairs(PRP.Users) do
+    for k, v in pairs(MRP.Users) do
         tmp[#tmp+1]= k
     end
 
@@ -16,7 +16,7 @@ function PRP.Player.GetUsers(self)
 end
 
 local function GetUser(user)
-    return PRP.Users[user.source]
+    return MRP.Users[user.source]
 end
 
 local function AddMethod(player)
@@ -83,7 +83,7 @@ local function AddMethod(player)
 
         GetUser(self).character.dirty_money = amt
 
-        PRP.DB:UpdateCharacterDirtyMoney(GetUser(self), characterId, amt, function(updatedMoney, err)
+        MRP.DB:UpdateCharacterDirtyMoney(GetUser(self), characterId, amt, function(updatedMoney, err)
             if updatedMoney then
                 --We are good here.
             end
@@ -95,7 +95,7 @@ local function AddMethod(player)
 
         GetUser(self).character.stress_level = amt
 
-        PRP.DB:UpdateCharacterStressLevel(GetUser(self), characterId, amt, function(updatedMoney, err)
+        MRP.DB:UpdateCharacterStressLevel(GetUser(self), characterId, amt, function(updatedMoney, err)
             if updatedMoney then
                 --We are good here.
             end
@@ -107,7 +107,7 @@ local function AddMethod(player)
 
         GetUser(self).character.dirty_money = 0
 
-        PRP.DB:UpdateCharacterDirtyMoney(GetUser(self), characterId, 0, function(updatedMoney, err)
+        MRP.DB:UpdateCharacterDirtyMoney(GetUser(self), characterId, 0, function(updatedMoney, err)
             if updatedMoney then
                 --We are good here.
             end
@@ -124,7 +124,7 @@ local function AddMethod(player)
 
         GetUser(self).character.casino = casino
 
-        PRP.DB:UpdateCharacterCasino(GetUser(self), characterId, casino, function(updatedMoney, err) 
+        MRP.DB:UpdateCharacterCasino(GetUser(self), characterId, casino, function(updatedMoney, err) 
             if updatedMoney then
                 TriggerClientEvent("banking:addCasino", GetUser(self).source, amt)
                 TriggerClientEvent("banking:updateCasino", GetUser(self).source, GetUser(self):getCasino(), amt)
@@ -144,7 +144,7 @@ local function AddMethod(player)
         GetUser(self).character.casino = GetUser(self).character.casino - amt
 
 
-            PRP.DB:UpdateCharacterCasino(GetUser(self), characterId, casino, function(updatedMoney, err) 
+            MRP.DB:UpdateCharacterCasino(GetUser(self), characterId, casino, function(updatedMoney, err) 
                 if updatedMoney then
                     TriggerClientEvent("banking:removeCasino", GetUser(self).source, amt)
                     TriggerClientEvent("banking:updateCasino", GetUser(self).source, GetUser(self):getCasino(), amt)
@@ -163,7 +163,7 @@ local function AddMethod(player)
 
         GetUser(self).character.cash = cash
 
-        PRP.DB:UpdateCharacterMoney(GetUser(self), characterId, cash, function(updatedMoney, err) 
+        MRP.DB:UpdateCharacterMoney(GetUser(self), characterId, cash, function(updatedMoney, err) 
             if updatedMoney then
                 TriggerClientEvent("banking:addCash", GetUser(self).source, amt)
                 TriggerClientEvent("banking:updateCash", GetUser(self).source, GetUser(self):getCash(), amt)
@@ -183,7 +183,7 @@ local function AddMethod(player)
         GetUser(self).character.cash = GetUser(self).character.cash - amt
 
 
-            PRP.DB:UpdateCharacterMoney(GetUser(self), characterId, cash, function(updatedMoney, err) 
+            MRP.DB:UpdateCharacterMoney(GetUser(self), characterId, cash, function(updatedMoney, err) 
                 if updatedMoney then
                     TriggerClientEvent("banking:removeCash", GetUser(self).source, amt)
                     TriggerClientEvent("banking:updateCash", GetUser(self).source, GetUser(self):getCash(), amt)
@@ -203,7 +203,7 @@ local function AddMethod(player)
 
         GetUser(self).character.bank = GetUser(self).character.bank - amt
 
-        PRP.DB:UpdateCharacterBank(GetUser(self), characterId, bank, function(updatedMoney, err) 
+        MRP.DB:UpdateCharacterBank(GetUser(self), characterId, bank, function(updatedMoney, err) 
             if updatedMoney then
                 TriggerClientEvent("banking:removeBalance", GetUser(self).source, amt)
                 TriggerClientEvent("banking:updateBalance", GetUser(self).source, GetUser(self):getBalance(), amt)
@@ -222,7 +222,7 @@ local function AddMethod(player)
 
         GetUser(self).character.bank = bank
 
-        PRP.DB:UpdateCharacterBank(GetUser(self), characterId, bank, function(updatedMoney, err) 
+        MRP.DB:UpdateCharacterBank(GetUser(self), characterId, bank, function(updatedMoney, err) 
             if updatedMoney then
                 TriggerClientEvent("banking:addBalance", GetUser(self).source, amt)
                 TriggerClientEvent("banking:updateBalance", GetUser(self).source, GetUser(self):getBalance(), amt)
@@ -280,16 +280,16 @@ end
 
         self.source = src
         self.name = GetPlayerName(src)
-        self.hexid = PRP.Util:GetHexId(src)
+        self.hexid = MRP.Util:GetHexId(src)
         
         if not self.hexid then
             DropPlayer(src, "Error fetching steamid")
             return
         end
 
-        self.comid = PRP.Util:HexIdToComId(self.hexid)
-        self.steamid = PRP.Util:HexIdToSteamId(self.hexid)
-        self.license = PRP.Util:GetLicense(src)
+        self.comid = MRP.Util:HexIdToComId(self.hexid)
+        self.steamid = MRP.Util:HexIdToSteamId(self.hexid)
+        self.license = MRP.Util:GetLicense(src)
         self.ip = GetPlayerEP(src)
         self.rank = "user"
 
@@ -301,16 +301,16 @@ end
 
         local methods = AddMethod(self)
 
-        PRP.Users[src] = methods
+        MRP.Users[src] = methods
 
         return methods
     end
 
 
-function PRP.Player.CreatePlayer(self, src, recrate)
-    if recreate then PRP.Users[src] = nil end
+function MRP.Player.CreatePlayer(self, src, recrate)
+    if recreate then MRP.Users[src] = nil end
     
-    if PRP.Users[src] then return PRP.Users[src] end
+    if MRP.Users[src] then return MRP.Users[src] end
 
     return CreatePlayer(src)
 end
@@ -346,7 +346,7 @@ end)
 AddEventHandler("playerDropped", function(reason)
     local src = source
     if reason == nil then reason = "Unknown" end
-    local user = PRP.Player:GetUser(src)
+    local user = MRP.Player:GetUser(src)
     local posE = json.encode(pos[src])
     pos[src] = nil
 
@@ -357,7 +357,7 @@ AddEventHandler("playerDropped", function(reason)
 		TriggerEvent("duty:reset:number", userjob)
     end
 
-    PRP.Users[src] = nil
+    MRP.Users[src] = nil
 
     TriggerEvent('mrp-core:playerDropped', src, user)
 end)

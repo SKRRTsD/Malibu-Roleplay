@@ -1,6 +1,6 @@
-PRP.SpawnManager = {}
+MRP.SpawnManager = {}
 
-function PRP.SpawnManager.Initialize(self)
+function MRP.SpawnManager.Initialize(self)
     Citizen.CreateThread(function()
 
         FreezeEntityPosition(PlayerPedId(), true)
@@ -35,7 +35,7 @@ function PRP.SpawnManager.Initialize(self)
     end)
 end
 
-function PRP.SpawnManager.InitialSpawn(self)
+function MRP.SpawnManager.InitialSpawn(self)
     Citizen.CreateThread(function()
         DisableAllControlActions(0)
 
@@ -46,7 +46,7 @@ function PRP.SpawnManager.InitialSpawn(self)
             Citizen.Wait(0)
         end
 
-        local character = PRP.LocalPlayer:getCurrentCharacter()
+        local character = MRP.LocalPlayer:getCurrentCharacter()
         local new = character.new == 0
 
         --Tells raid clothes to set ped to correct skin
@@ -91,7 +91,7 @@ function PRP.SpawnManager.InitialSpawn(self)
 end
 
 AddEventHandler("mrp-core:firstSpawn", function()
-    PRP.SpawnManager:InitialSpawn()
+    MRP.SpawnManager:InitialSpawn()
 
 
     Citizen.CreateThread(function()
@@ -104,7 +104,7 @@ end)
 
 
 AddEventHandler("mrp-core:RefreshSpawn", function()
-    PRP.SpawnManager:Initialize()
+    MRP.SpawnManager:Initialize()
 end)
 
 RegisterNetEvent('mrp-core:clearStates')

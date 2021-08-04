@@ -1,6 +1,6 @@
-PRP.Util = PRP.Util or {}
+MRP.Util = MRP.Util or {}
 
-function PRP.Util.HexIdToSteamId(self, hexid)
+function MRP.Util.HexIdToSteamId(self, hexid)
     local cid = self:HexIdToComId(hexid)
     local steam64 = math.floor(tonumber(string.sub( cid, 2)))
 	local a = steam64 % 2 == 0 and 0 or 1
@@ -9,11 +9,11 @@ function PRP.Util.HexIdToSteamId(self, hexid)
     return sid
 end
 
-function PRP.Util.HexIdToComId(self, hexid)
+function MRP.Util.HexIdToComId(self, hexid)
     return math.floor(tonumber(string.sub(hexid, 7), 16))
 end
 
-function PRP.Util.GetHexId(self, src)
+function MRP.Util.GetHexId(self, src)
     for k,v in ipairs(GetPlayerIdentifiers(src)) do
         if string.sub(v, 1, 5) == "steam" then
             return v
@@ -23,7 +23,7 @@ function PRP.Util.GetHexId(self, src)
     return false
 end
 
-function PRP.Util.GetLicense(self, src)
+function MRP.Util.GetLicense(self, src)
     for k,v in ipairs(GetPlayerIdentifiers(src)) do
         if string.sub(v, 1, 7) == "license" then
             return v
@@ -33,7 +33,7 @@ function PRP.Util.GetLicense(self, src)
     return false
 end
 
-function PRP.Util.GetIdType(self, src, type)
+function MRP.Util.GetIdType(self, src, type)
     local len = string.len(type)
     
     for k,v in ipairs(GetPlayerIdentifiers(src)) do
@@ -45,7 +45,7 @@ function PRP.Util.GetIdType(self, src, type)
     return false
 end
 
-function PRP.Util.Stringsplit(self, inputstr, sep)
+function MRP.Util.Stringsplit(self, inputstr, sep)
     if sep == nil then
         sep = "%s"
     end
@@ -60,13 +60,13 @@ function PRP.Util.Stringsplit(self, inputstr, sep)
     return t
 end
 
-function PRP.Util.IsSteamId(self, id)
+function MRP.Util.IsSteamId(self, id)
     id = tostring(id)
     if not id then return false end
     if string.match(id, "^STEAM_[01]:[01]:%d+$") then return true else return false end
 end
 
-function PRP.Util.CommaValue(self, n)
+function MRP.Util.CommaValue(self, n)
 	local left,num,right = string.match(n,'^([^%d]*%d)(%d*)(.-)$')
 	return left..(num:reverse():gsub('(%d%d%d)','%1,'):reverse())..right
 end

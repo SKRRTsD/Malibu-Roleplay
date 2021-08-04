@@ -1,29 +1,29 @@
-PRP.Player = PRP.Player or {}
-PRP.LocalPlayer = PRP.LocalPlayer or {}
+MRP.Player = MRP.Player or {}
+MRP.LocalPlayer = MRP.LocalPlayer or {}
 
 local function GetUser()
-    return PRP.LocalPlayer
+    return MRP.LocalPlayer
 end
 
-function PRP.LocalPlayer.setVar(self, var, data)
+function MRP.LocalPlayer.setVar(self, var, data)
     GetUser()[var] = data
 end
 
-function PRP.LocalPlayer.getVar(self, var)
+function MRP.LocalPlayer.getVar(self, var)
     return GetUser()[var]
 end
 
-function PRP.LocalPlayer.setCurrentCharacter(self, data)
+function MRP.LocalPlayer.setCurrentCharacter(self, data)
     if not data then return end
     GetUser():setVar("character", data)
 end
 
-function PRP.LocalPlayer.getCurrentCharacter(self)
+function MRP.LocalPlayer.getCurrentCharacter(self)
     return GetUser():getVar("character")
 end
 
 RegisterNetEvent("mrp-core:networkVar")
 AddEventHandler("mrp-core:networkVar", function(var, val)
-    PRP.LocalPlayer:setVar(var, val)
+    MRP.LocalPlayer:setVar(var, val)
 end)
 

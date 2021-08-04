@@ -1,10 +1,10 @@
-function PRP.Core.LoginPlayer(self, args, src, callback)
+function MRP.Core.LoginPlayer(self, args, src, callback)
     TriggerEvent("mrp-core:playerAttemptLogin", src)
 
-    local user = PRP.Player:CreatePlayer(src, false)
+    local user = MRP.Player:CreatePlayer(src, false)
 
     if not user then
-        user = PRP.Player:CreatePlayer(src, false)
+        user = MRP.Player:CreatePlayer(src, false)
 
         if not user then DropPlayer(src, "There was an error while creating your player object, if this persists, contact an administrator") return end
     end
@@ -22,7 +22,7 @@ function PRP.Core.LoginPlayer(self, args, src, callback)
             return
         end
 
-        PRP.DB:FetchPlayerData(src, function(data, err)
+        MRP.DB:FetchPlayerData(src, function(data, err)
             if err then
                 data = {
                     err = true,
@@ -39,14 +39,14 @@ function PRP.Core.LoginPlayer(self, args, src, callback)
     end
 
 
-	PRP.DB:PlayerExistsDB(src, function(exists, err)
+	MRP.DB:PlayerExistsDB(src, function(exists, err)
 		if err then
 			fetchData("Error checking player existence, there is a problem with the database")
 			return -- my stepsister stuck
 		end -- my mother stuck
 
 		if not exists then
-			PRP.DB:CreateNewPlayer(src, function(created)
+			MRP.DB:CreateNewPlayer(src, function(created)
 				if not created then
 					fetchData("Error creating new user, there is a problem with the database")
 					return
@@ -61,14 +61,14 @@ function PRP.Core.LoginPlayer(self, args, src, callback)
 		fetchData()
 	end)
 end
-PRP.Events:AddEvent(PRP.Core, PRP.Core.LoginPlayer, "mrp-core:loginPlayer")
+MRP.Events:AddEvent(MRP.Core, MRP.Core.LoginPlayer, "mrp-core:loginPlayer")
 
-function PRP.Core.FetchPlayerCharacters(self, args, src, callback)
-	local user = PRP.Player:GetUser(src)
+function MRP.Core.FetchPlayerCharacters(self, args, src, callback)
+	local user = MRP.Player:GetUser(src)
 
 	if not user then return end
 
-	PRP.DB:FetchCharacterData(user, function(data, err)
+	MRP.DB:FetchCharacterData(user, function(data, err)
 		if err then
 			data = {
 				err = true,
@@ -84,9 +84,9 @@ function PRP.Core.FetchPlayerCharacters(self, args, src, callback)
 		callback(data)
 	end)
 end
-PRP.Events:AddEvent(PRP.Core, PRP.Core.FetchPlayerCharacters, "mrp-core:fetchPlayerCharacters")
+MRP.Events:AddEvent(MRP.Core, MRP.Core.FetchPlayerCharacters, "mrp-core:fetchPlayerCharacters")
 
-function PRP.Core.CreatePhoneNumber(self, src, callback)
+function MRP.Core.CreatePhoneNumber(self, src, callback)
 	Citizen.CreateThread(function()
 		while true do 
 			Citizen.Wait(1000)
@@ -102,7 +102,7 @@ function PRP.Core.CreatePhoneNumber(self, src, callback)
 			if phoneNumber then 
 				phoneNumber = tostring(phoneNumber)
 				if phoneNumber then
-					PRP.DB:PhoneNumberExists(src, phoneNumber, function(exists, err)
+					MRP.DB:PhoneNumberExists(src, phoneNumber, function(exists, err)
 						if err then callback(false, true) success = true querying = false return end
 						if not exists then callback(phoneNumber) success = true end
 						querying = false
@@ -117,8 +117,8 @@ function PRP.Core.CreatePhoneNumber(self, src, callback)
 	end)
 end
 
-function PRP.Core.CreateCharacter(self, charData, src, callback)
-	local user = PRP.Player:GetUser(src)
+function MRP.Core.CreateCharacter(self, charData, src, callback)
+	local user = MRP.Player:GetUser(src)
 
 	if not user or not user:getVar("charactersLoaded") then return end
 	if user:getNumCharacters() >= 8 then return end
@@ -152,7 +152,7 @@ function PRP.Core.CreateCharacter(self, charData, src, callback)
 				end
 				local hexId = user:getVar("hexid")
 				charData.phonenumber = phoneNumber
-				PRP.DB:CreateNewCharacter(user, charData, hexId, phoneNumber, function(created, err)
+				MRP.DB:CreateNewCharacter(user, charData, hexId, phoneNumber, function(created, err)
 					if not created or err then
 						created = {
 							err = true,
@@ -166,10 +166,10 @@ function PRP.Core.CreateCharacter(self, charData, src, callback)
 		end
 	end)
 end
-PRP.Events:AddEvent(PRP.Core, PRP.Core.CreateCharacter, "mrp-core:createCharacter")
+MRP.Events:AddEvent(MRP.Core, MRP.Core.CreateCharacter, "mrp-core:createCharacter")
 
-function PRP.Core.DeleteCharacter(self, id, src, callback)
-	local user = PRP.Player:GetUser(src)
+function MRP.Core.DeleteCharacter(self, id, src, callback)
+	local user = MRP.Player:GetUser(src)
 
 	if not user or not user:getVar("charactersLoaded") then return end
 
@@ -180,14 +180,14 @@ function PRP.Core.DeleteCharacter(self, id, src, callback)
 
 	if not ownsCharacter then return end
 
-	PRP.DB:DeleteCharacter(user, id, function(deleted)
+	MRP.DB:DeleteCharacter(user, id, function(deleted)
 		callback(deleted)
 	end)
 end
-PRP.Events:AddEvent(PRP.Core, PRP.Core.DeleteCharacter, "mrp-core:deleteCharacter")
+MRP.Events:AddEvent(MRP.Core, MRP.Core.DeleteCharacter, "mrp-core:deleteCharacter")
 
-function PRP.Core.SelectCharacter(self, id, src, callback)
-	local user = PRP.Player:GetUser(src)
+function MRP.Core.SelectCharacter(self, id, src, callback)
+	local user = MRP.Player:GetUser(src)
 	if not user then callback(false) return end
 	if not user:getCharacters() or user:getNumCharacters() <= 0 then callback(false) return end
 
@@ -211,4 +211,4 @@ function PRP.Core.SelectCharacter(self, id, src, callback)
 
 	callback({loggedin = true, chardata = selectedCharacter})
 end
-PRP.Events:AddEvent(PRP.Core, PRP.Core.SelectCharacter, "mrp-core:selectCharacter")
+MRP.Events:AddEvent(MRP.Core, MRP.Core.SelectCharacter, "mrp-core:selectCharacter")

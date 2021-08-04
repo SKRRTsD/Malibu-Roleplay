@@ -1,11 +1,11 @@
-PRP.DataControls = PRP.DataControls or {}
-PRP.Controls = PRP.Controls or {}
-PRP.Controls.EventHolder = {}
+MRP.DataControls = MRP.DataControls or {}
+MRP.Controls = MRP.Controls or {}
+MRP.Controls.EventHolder = {}
 
 
-PRP.Controls.Current = {}
+MRP.Controls.Current = {}
 -- Current bind name and keys
-PRP.Controls.Default = {
+MRP.Controls.Default = {
   ["tokoptt"] = "CAPS",
   ["loudSpeaker"] = "-",
   ["distanceChange"] = "G",
@@ -57,7 +57,7 @@ PRP.Controls.Default = {
 }
 
 -- Bindable attributes
-PRP.Controls.events = {
+MRP.Controls.events = {
 	["lowActionItems"] = {
 		[0] = {["event"] = "",["bind"] = "",["id"] = 3},
 	},
@@ -114,10 +114,10 @@ PRP.Controls.events = {
 	},
 }
 
-PRP.Controls.secondaryBinds = {}
+MRP.Controls.secondaryBinds = {}
 
-PRP.Controls.Distcheck = {}
-PRP.Controls.Distcheck.use = {
+MRP.Controls.Distcheck = {}
+MRP.Controls.Distcheck.use = {
 	-- create fake id
 	[0] = {["pos"] = {2063.89,2990.74,-67.7},	["r"] = 1.7,["event"] = "cid",["id"] = 0,["maxwait"] = 200},
 	-- bar Sign on 
@@ -253,7 +253,7 @@ PRP.Controls.Distcheck.use = {
 		[82] = {["pos"] = {110.8, 6626.46, 31.89},	["r"] = 2,["event"] = "bennys",["id"] = 5,["maxwait"] = 200},	
 	}
 
-PRP.Controls.Distcheck.useSecondary = {
+MRP.Controls.Distcheck.useSecondary = {
 	-- boradcaster sign OFF 
 	[0] = {["pos"] = {1989.08,-1753.94,-158.86},["r"] = 2,["event"] = "broadcast",["id"] = 2,["maxwait"] = 300},
 
@@ -266,7 +266,7 @@ PRP.Controls.Distcheck.useSecondary = {
 
 }
 
-PRP.Controls.Distcheck.useThird = {
+MRP.Controls.Distcheck.useThird = {
 	-- hospital garage
 	[0] = {["pos"] = {-475.67,-356.32,34.10},["r"] = 2,["event"] = "hospitalGarage",["id"] = 3,["maxwait"] = 300},
 	[1] = {["pos"] = {364.68, -590.98, 28.69},["r"] = 2,["event"] = "hospitalGarage",["id"] = 3,["maxwait"] = 300},
@@ -287,11 +287,11 @@ PRP.Controls.Distcheck.useThird = {
 
 -- Set / Getting info functions
 
-function PRP.DataControls.getBindTable()
+function MRP.DataControls.getBindTable()
 
 	local i = 1
 	local controlTable = {}
-	for k,v in pairs(PRP.Controls.Current) do
+	for k,v in pairs(MRP.Controls.Current) do
 		controlTable[i] = {k,v}
 		i = i+1
 	end
@@ -299,17 +299,17 @@ function PRP.DataControls.getBindTable()
     return controlTable
 end
 
-function PRP.DataControls.encodeSetBindTable(self, bindTable)
+function MRP.DataControls.encodeSetBindTable(self, bindTable)
 
 	local controlTable = {}
 	for k,v in pairs(bindTable) do
 		controlTable[v[1]] = v[2]
 	end
 
-	PRP.DataControls.setBindTable(controlTable,true)
+	MRP.DataControls.setBindTable(controlTable,true)
 end
 
-function PRP.DataControls.toUpper(table)
+function MRP.DataControls.toUpper(table)
 
 	local controlTable = {}
 	for k,v in pairs(table) do
@@ -319,30 +319,30 @@ function PRP.DataControls.toUpper(table)
     return controlTable
 end
 
-function PRP.DataControls.setBindTable(controlTable,shouldSend)
+function MRP.DataControls.setBindTable(controlTable,shouldSend)
 	if controlTable == nil then
-		PRP.Controls.Current  = PRP.DataControls.toUpper(PRP.Controls.Default) 
-		PRP.DataControls.setSecondaryBindTable(PRP.Controls.Current)
-		TriggerServerEvent('mrp-core:sv:player_control_set',PRP.Controls.Current)
-		PRP.DataControls.checkForMissing()
+		MRP.Controls.Current  = MRP.DataControls.toUpper(MRP.Controls.Default) 
+		MRP.DataControls.setSecondaryBindTable(MRP.Controls.Current)
+		TriggerServerEvent('mrp-core:sv:player_control_set',MRP.Controls.Current)
+		MRP.DataControls.checkForMissing()
 	else
 		if shouldSend then 
-			PRP.Controls.Current = PRP.DataControls.toUpper(controlTable)
-			PRP.DataControls.setSecondaryBindTable(PRP.Controls.Current)
-			TriggerServerEvent('mrp-core:sv:player_control_set',PRP.Controls.Current)
-			PRP.DataControls.checkForMissing()
+			MRP.Controls.Current = MRP.DataControls.toUpper(controlTable)
+			MRP.DataControls.setSecondaryBindTable(MRP.Controls.Current)
+			TriggerServerEvent('mrp-core:sv:player_control_set',MRP.Controls.Current)
+			MRP.DataControls.checkForMissing()
 		else
-			PRP.Controls.Current = PRP.DataControls.toUpper(controlTable)
-			PRP.DataControls.setSecondaryBindTable(PRP.Controls.Current)
-			PRP.DataControls.checkForMissing()
+			MRP.Controls.Current = MRP.DataControls.toUpper(controlTable)
+			MRP.DataControls.setSecondaryBindTable(MRP.Controls.Current)
+			MRP.DataControls.checkForMissing()
 		end
 	end
-	TriggerEvent("event:control:update",PRP.DataControls.getTableInKeyNumbers())
+	TriggerEvent("event:control:update",MRP.DataControls.getTableInKeyNumbers())
 end
 
-function PRP.DataControls.setSecondaryBindTable(bindtable)
+function MRP.DataControls.setSecondaryBindTable(bindtable)
 
-	PRP.Controls.secondaryBinds = {}
+	MRP.Controls.secondaryBinds = {}
 	local i = 0
 	for k,v in pairs(bindtable) do
 		local keyString = string.upper(v)
@@ -353,14 +353,14 @@ function PRP.DataControls.setSecondaryBindTable(bindtable)
 			local control2 = Keys[result[2]]
 
 			local valid = true
-			for i=1,#PRP.Controls.secondaryBinds  do
-				if PRP.Controls.secondaryBinds[i] and PRP.Controls.secondaryBinds[i][1] == control1 then valid = false end
+			for i=1,#MRP.Controls.secondaryBinds  do
+				if MRP.Controls.secondaryBinds[i] and MRP.Controls.secondaryBinds[i][1] == control1 then valid = false end
 			end
 
 			if valid then 
-				PRP.Controls.secondaryBinds[i] = {}
-				PRP.Controls.secondaryBinds[i][1] = control1
-				PRP.Controls.secondaryBinds[i][2] = control2
+				MRP.Controls.secondaryBinds[i] = {}
+				MRP.Controls.secondaryBinds[i][1] = control1
+				MRP.Controls.secondaryBinds[i][2] = control2
 				i = i + 1
 			end
 				
@@ -368,11 +368,11 @@ function PRP.DataControls.setSecondaryBindTable(bindtable)
 	end
 end
 
-function PRP.DataControls.getTableInKeyNumbers()
+function MRP.DataControls.getTableInKeyNumbers()
 
 	
 	local controlTable = {}
-	for k,v in pairs(PRP.Controls.Current) do
+	for k,v in pairs(MRP.Controls.Current) do
 		controlTable[k] = {}
 		controlTable[k][1] = Keys[string.upper(v)]
 		controlTable[k][2] = string.upper(v)
@@ -382,9 +382,9 @@ function PRP.DataControls.getTableInKeyNumbers()
 end
 
 
-function PRP.DataControls.getBindByID(bindID)
+function MRP.DataControls.getBindByID(bindID)
 	local found = "none"
-	for k,v in pairs(PRP.Controls.Current) do
+	for k,v in pairs(MRP.Controls.Current) do
 		if k == bindID then
 			found = v
 			break
@@ -395,8 +395,8 @@ end
 
 -- Action functions
 
-function PRP.DataControls.distanceCall(distcheckName)
-	local distanceTable = PRP.Controls.Distcheck[distcheckName]
+function MRP.DataControls.distanceCall(distcheckName)
+	local distanceTable = MRP.Controls.Distcheck[distcheckName]
 	local found = -1
 
 	local pedpos = GetEntityCoords(PlayerPedId()) -- to be changed to player data pos at later date
@@ -417,53 +417,53 @@ function PRP.DataControls.distanceCall(distcheckName)
 		local hasTimer = 99999
 
 		local key = distanceTable[found].event.."_"..distanceTable[found].id
-		if PRP.Controls.EventHolder[key] then
-			hasTimer = (GetGameTimer()-PRP.Controls.EventHolder[key])
+		if MRP.Controls.EventHolder[key] then
+			hasTimer = (GetGameTimer()-MRP.Controls.EventHolder[key])
 		end
 		if  hasTimer >= distanceTable[found].maxwait then
-			PRP.Controls.EventHolder[key] = GetGameTimer();
+			MRP.Controls.EventHolder[key] = GetGameTimer();
 			TriggerEvent("event:control:"..distanceTable[found].event,distanceTable[found].id)
 		end
 	end
 end
 
 
-function PRP.DataControls.checkForMissing()
+function MRP.DataControls.checkForMissing()
 	local isMissing = false
 
-	for j,h in pairs(PRP.Controls.Default) do
-		if PRP.Controls.Current[j] == nil then
+	for j,h in pairs(MRP.Controls.Default) do
+		if MRP.Controls.Current[j] == nil then
 			isMissing = true
-			PRP.Controls.Current[j] = h
+			MRP.Controls.Current[j] = h
 		end
 	end
 	
 
 	if isMissing then
-		PRP.DataControls.setSecondaryBindTable(PRP.Controls.Current)
-		TriggerServerEvent('mrp-core:sv:player_control_set',PRP.Controls.Current)
+		MRP.DataControls.setSecondaryBindTable(MRP.Controls.Current)
+		TriggerServerEvent('mrp-core:sv:player_control_set',MRP.Controls.Current)
 	end
 
 
 end
 
-function PRP.DataControls.validEvent(event,id,eventID)
-	local v = PRP.Controls.events["general"][eventID]
+function MRP.DataControls.validEvent(event,id,eventID)
+	local v = MRP.Controls.events["general"][eventID]
 	local hasTimer = 999999
 	local eventKey = event.."_"..id
 
-	if PRP.Controls.EventHolder[eventKey] then
-		hasTimer = (GetGameTimer()-PRP.Controls.EventHolder[eventKey])
+	if MRP.Controls.EventHolder[eventKey] then
+		hasTimer = (GetGameTimer()-MRP.Controls.EventHolder[eventKey])
 	end
 
-	if PRP.Controls.EventHolder[eventKey] and hasTimer ~= 999999 then
+	if MRP.Controls.EventHolder[eventKey] and hasTimer ~= 999999 then
 		if hasTimer >= v.maxwait then
-			PRP.Controls.EventHolder[eventKey] = GetGameTimer();
+			MRP.Controls.EventHolder[eventKey] = GetGameTimer();
 			TriggerEvent("event:control:"..event,id)
 		end
 	else
 		if hasTimer >= 1000 then
-			PRP.Controls.EventHolder[eventKey] = GetGameTimer();
+			MRP.Controls.EventHolder[eventKey] = GetGameTimer();
 			TriggerEvent("event:control:"..event,id)
 		end
 
@@ -477,18 +477,18 @@ local eventTimer = {}
 Citizen.CreateThread(function()
 	while true do
 		
-		if PRP.Controls.Current["tokoptt"] then
-			for i=0,#PRP.Controls.events["general"] do
-				local v = PRP.Controls.events["general"][i]
-				local keyString = PRP.Controls.Current[v["bind"]]
+		if MRP.Controls.Current["tokoptt"] then
+			for i=0,#MRP.Controls.events["general"] do
+				local v = MRP.Controls.events["general"][i]
+				local keyString = MRP.Controls.Current[v["bind"]]
 				local key = Keys[keyString]
 
 				if key == 199 then
 					if IsDisabledControlJustReleased(1,key) then
 						local isConflicted = -1
-						for i=0,#PRP.Controls.secondaryBinds do
-							if IsControlPressed(1,PRP.Controls.secondaryBinds[i][1]) or IsDisabledControlPressed(1,PRP.Controls.secondaryBinds[i][1]) then
-								isConflicted = PRP.Controls.secondaryBinds[i][1]
+						for i=0,#MRP.Controls.secondaryBinds do
+							if IsControlPressed(1,MRP.Controls.secondaryBinds[i][1]) or IsDisabledControlPressed(1,MRP.Controls.secondaryBinds[i][1]) then
+								isConflicted = MRP.Controls.secondaryBinds[i][1]
 							end
 						end
 
@@ -496,13 +496,13 @@ Citizen.CreateThread(function()
 							Wait(100)
 							if IsControlPressed(1,isConflicted) or IsDisabledControlPressed(1,isConflicted) then
 								local eventBind, idEvent = findBind(key,isConflicted)
-								PRP.DataControls.validEvent(eventBind,idEvent,i)
+								MRP.DataControls.validEvent(eventBind,idEvent,i)
 							else
-								PRP.DataControls.validEvent(v.event,v.id,i)
+								MRP.DataControls.validEvent(v.event,v.id,i)
 							end
 						else
 							if (GetGameTimer()-timer) > 400 then
-								PRP.DataControls.validEvent(v.event,v.id,i)
+								MRP.DataControls.validEvent(v.event,v.id,i)
 							end
 						end
 					end
@@ -517,9 +517,9 @@ Citizen.CreateThread(function()
 							end
 							if validTrigger then
 								local isConflicted = -1
-								for i=0,#PRP.Controls.secondaryBinds do
-									if IsControlPressed(1,PRP.Controls.secondaryBinds[i][2]) or IsDisabledControlPressed(1,PRP.Controls.secondaryBinds[i][2]) then
-										isConflicted = PRP.Controls.secondaryBinds[i][2]
+								for i=0,#MRP.Controls.secondaryBinds do
+									if IsControlPressed(1,MRP.Controls.secondaryBinds[i][2]) or IsDisabledControlPressed(1,MRP.Controls.secondaryBinds[i][2]) then
+										isConflicted = MRP.Controls.secondaryBinds[i][2]
 									end
 								end
 
@@ -529,12 +529,12 @@ Citizen.CreateThread(function()
 									if IsControlPressed(1,isConflicted) or IsDisabledControlPressed(1,isConflicted) then
 										local eventBind, idEvent = findBind(key,isConflicted)
 										timer = GetGameTimer();
-										PRP.DataControls.validEvent(eventBind,idEvent,i)
+										MRP.DataControls.validEvent(eventBind,idEvent,i)
 									else
-										PRP.DataControls.validEvent(v.event,v.id,i)
+										MRP.DataControls.validEvent(v.event,v.id,i)
 									end
 								else
-									PRP.DataControls.validEvent(v.event,v.id,i)
+									MRP.DataControls.validEvent(v.event,v.id,i)
 								end
 							end
 						end
@@ -554,15 +554,15 @@ function findBind(first,last)
 
 	if first == nil then return end
 
-	for i=0,#PRP.Controls.events["general"] do
+	for i=0,#MRP.Controls.events["general"] do
 		local firstCorrect = false
 		local secondCorrect = false
 
 
 
 
-		local v = PRP.Controls.events["general"][i]
-		local keyString = PRP.Controls.Current[v["bind"]]
+		local v = MRP.Controls.events["general"][i]
+		local keyString = MRP.Controls.Current[v["bind"]]
 
 		if string.match(keyString, "+")  then
 			local result = split(keyString, "+")
@@ -612,10 +612,10 @@ Citizen.CreateThread(function()
 	while true do
 
 		DisableControlAction(1, 199, true)
-		if PRP.Controls.Current["tokoptt"] then
-			for i=0,#PRP.Controls.events["general-dist"] do
-				local v = PRP.Controls.events["general-dist"][i]
-				local key = Keys[PRP.Controls.Current[v["bind"]]]
+		if MRP.Controls.Current["tokoptt"] then
+			for i=0,#MRP.Controls.events["general-dist"] do
+				local v = MRP.Controls.events["general-dist"][i]
+				local key = Keys[MRP.Controls.Current[v["bind"]]]
 				local hasTimer = 99999;
 				if eventTimer[key] then
 					hasTimer = (GetGameTimer()-eventTimer[key])
@@ -623,7 +623,7 @@ Citizen.CreateThread(function()
 
 				if IsControlJustPressed(1,key) and hasTimer > 500 then	
 					eventTimer[key] = GetGameTimer();		
-					PRP.DataControls.distanceCall(v["distanceName"])
+					MRP.DataControls.distanceCall(v["distanceName"])
 				end	
 			end
 		end
@@ -634,7 +634,7 @@ end)
 
 RegisterNetEvent("mrp-core:cl:player_control")
 AddEventHandler("mrp-core:cl:player_control", function(controlTable)
-	PRP.DataControls.setBindTable(controlTable,false)
+	MRP.DataControls.setBindTable(controlTable,false)
 end)
 
 Keys = {

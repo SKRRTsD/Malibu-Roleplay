@@ -1,6 +1,6 @@
-PRP.Enums = PRP.Enums or {}
+MRP.Enums = MRP.Enums or {}
 
-PRP.Enums.SpawnLocations = {
+MRP.Enums.SpawnLocations = {
 	Hospital = {
 		{340.0, -1391.0, 35.0, 100.0},
 		{337.0, -1397.0, 35.0, 100.0},
@@ -54,7 +54,7 @@ PRP.Enums.SpawnLocations = {
 	}
 }
 
-PRP.Enums.PedModels = {
+MRP.Enums.PedModels = {
 	Female = {
 		"mp_f_freemode_01", "a_f_m_beach_01", "a_f_m_bevhills_01", "a_f_m_bevhills_02", "a_f_m_bodybuild_01",
 		"a_f_m_business_02", "a_f_m_downtown_01", "a_f_m_eastsa_01", "a_f_m_eastsa_02", "a_f_m_fatbla_01",
@@ -150,7 +150,7 @@ PRP.Enums.PedModels = {
 	}
 }
 
-PRP.Enums.Weapons = {
+MRP.Enums.Weapons = {
 	"WEAPON_KNIFE", "WEAPON_NIGHTSTICK", "WEAPON_HAMMER", "WEAPON_BAT", "WEAPON_GOLFCLUB",
 	"WEAPON_CROWBAR", "WEAPON_PISTOL", "WEAPON_COMBATPISTOL", "WEAPON_APPISTOL", "WEAPON_PISTOL50",
 	"WEAPON_MICROSMG", "WEAPON_SMG", "WEAPON_ASSAULTSMG", "WEAPON_ASSAULTRIFLE",

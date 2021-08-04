@@ -1,14 +1,14 @@
-PRP.DB = PRP.DB or {}
+MRP.DB = MRP.DB or {}
 
-function PRP.DB.CreateNewPlayer(self, src, callback)
-    local hexid = PRP.Util:GetHexId(src)
+function MRP.DB.CreateNewPlayer(self, src, callback)
+    local hexid = MRP.Util:GetHexId(src)
     callback = callback and callback or function() return end
 
     local data = {
         hexid = hexid,
-        communityid = PRP.Util:HexIdToComId(hexid),
-        steamid = PRP.Util:HexIdToSteamId(hexid),
-        license = PRP.Util:GetLicense(src),
+        communityid = MRP.Util:HexIdToComId(hexid),
+        steamid = MRP.Util:HexIdToSteamId(hexid),
+        license = MRP.Util:GetLicense(src),
         name = GetPlayerName(src),
         rank = "user"
     }
@@ -38,7 +38,7 @@ function PRP.DB.CreateNewPlayer(self, src, callback)
         callback(created)
     end)
 end
-function PRP.DB.CreateNewCharacter(self, src, data2, hexid, ph, callback)
+function MRP.DB.CreateNewCharacter(self, src, data2, hexid, ph, callback)
     local hexid = hexid
     callback = callback and callback or function() return end
 
@@ -74,8 +74,8 @@ function PRP.DB.CreateNewCharacter(self, src, data2, hexid, ph, callback)
 end
 
     
-function PRP.DB.PlayerExistsDB(self, src, callback)
-    local hexId = PRP.Util:GetHexId(src)
+function MRP.DB.PlayerExistsDB(self, src, callback)
+    local hexId = MRP.Util:GetHexId(src)
     callback = callback and callback or function() return end
     
     if not hexId or hexId == "" then callback(false, true) return end
@@ -92,7 +92,7 @@ function PRP.DB.PlayerExistsDB(self, src, callback)
     end)
 end
 
-function PRP.DB.PhoneNumberExists(self, src, phone_number, callback)
+function MRP.DB.PhoneNumberExists(self, src, phone_number, callback)
     local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
 
     callback = callback and callback or function() return end
@@ -121,8 +121,8 @@ end
 
 
 
-function PRP.DB.FetchPlayerData(self, src, callback)
-    local hexId = PRP.Util:GetHexId(src)
+function MRP.DB.FetchPlayerData(self, src, callback)
+    local hexId = MRP.Util:GetHexId(src)
     callback = callback and callback or function() return end
 
     if not hexId or hexId == "" then callback(false, true) return end
@@ -141,7 +141,7 @@ function PRP.DB.FetchPlayerData(self, src, callback)
     end)
 end
 
-function PRP.DB.FetchCharacterData(self, user, callback)
+function MRP.DB.FetchCharacterData(self, user, callback)
     callback = callback and callback or function() return end
 
     if not user then callback(false, true) return end
@@ -160,7 +160,7 @@ function PRP.DB.FetchCharacterData(self, user, callback)
     end)
 end
 
-function PRP.DB.DeleteCharacter(self, user, id, callback)
+function MRP.DB.DeleteCharacter(self, user, id, callback)
     callback = callback and callback or function() return end
 
     if not user then callback(false, true) return end
@@ -185,7 +185,7 @@ function PRP.DB.DeleteCharacter(self, user, id, callback)
      end)
 end
 
--- function PRP.DB.DeleteCharacter(self, user, id, callback)
+-- function MRP.DB.DeleteCharacter(self, user, id, callback)
 --     callback = callback and callback or function() return end
 
 --     if not user then callback(false, true) return end
@@ -210,7 +210,7 @@ end
 --      end)
 -- end
 
-function PRP.DB.UpdateCharacterStressLevel(self, user, characterId, newLevel, callback)
+function MRP.DB.UpdateCharacterStressLevel(self, user, characterId, newLevel, callback)
     callback = callback and callback or function() return end
     if not user then callback(false,true) return end
     if not characterId or type(characterId) ~= "number" then callback(false, true) return end
@@ -234,7 +234,7 @@ function PRP.DB.UpdateCharacterStressLevel(self, user, characterId, newLevel, ca
 end
 
 
-function PRP.DB.UpdateCharacterDirtyMoney(self, user, characterId, amount, callback)
+function MRP.DB.UpdateCharacterDirtyMoney(self, user, characterId, amount, callback)
 callback = callback and callback or function() return end
     if not user then callback(false,true) return end
     if not characterId or type(characterId) ~= "number" then callback(false, true) return end
@@ -257,7 +257,7 @@ callback = callback and callback or function() return end
     end)
 end
 
-function PRP.DB.UpdateCharacterCasino(self, user, characterId, amount, callback)
+function MRP.DB.UpdateCharacterCasino(self, user, characterId, amount, callback)
     callback = callback and callback or function() return end
         if not user then callback(false,true) return end
         if not characterId or type(characterId) ~= "number" then callback(false, true) return end
@@ -281,7 +281,7 @@ function PRP.DB.UpdateCharacterCasino(self, user, characterId, amount, callback)
 end
 
 
-function PRP.DB.UpdateCharacterMoney(self, user, characterId, amount, callback)
+function MRP.DB.UpdateCharacterMoney(self, user, characterId, amount, callback)
     callback = callback and callback or function() return end
         if not user then callback(false,true) return end
         if not characterId or type(characterId) ~= "number" then callback(false, true) return end
@@ -304,7 +304,7 @@ function PRP.DB.UpdateCharacterMoney(self, user, characterId, amount, callback)
         end)
 end
 
-function PRP.DB.UpdateCharacterBank(self, user, characterId, amount, callback)
+function MRP.DB.UpdateCharacterBank(self, user, characterId, amount, callback)
     callback = callback and callback or function() return end
         if not user then callback(false,true) return end
         if not characterId or type(characterId) ~= "number" then callback(false, true) return end
@@ -327,7 +327,7 @@ function PRP.DB.UpdateCharacterBank(self, user, characterId, amount, callback)
         end)
 end
 
-function PRP.DB.UpdateControls(self, src, controlsTable, callback)
+function MRP.DB.UpdateControls(self, src, controlsTable, callback)
     callback = callback and callback or function() return end
         local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
         if not user then callback(false,true) return end
@@ -348,7 +348,7 @@ function PRP.DB.UpdateControls(self, src, controlsTable, callback)
 end
 
 
-function PRP.DB.GetControls(self, src, callback)
+function MRP.DB.GetControls(self, src, callback)
     callback = callback and callback or function() return end
     local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
         Citizen.Wait(3000)
@@ -369,7 +369,7 @@ function PRP.DB.GetControls(self, src, callback)
 end
 
     
-function PRP.DB.UpdateSettings(self, src, settingsTable, callback)
+function MRP.DB.UpdateSettings(self, src, settingsTable, callback)
     callback = callback and callback or function() return end
     local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
         if not user then callback(false,true) return end
@@ -390,7 +390,7 @@ function PRP.DB.UpdateSettings(self, src, settingsTable, callback)
 end
 
 
-function PRP.DB.GetSettings(self, src, callback)
+function MRP.DB.GetSettings(self, src, callback)
     callback = callback and callback or function() return end
     local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     if not user then callback(false, true) return end
