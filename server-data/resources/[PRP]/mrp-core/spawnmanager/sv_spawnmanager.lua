@@ -23,7 +23,7 @@ function OnPlayerConnecting(name, setKickReason, deferrals)
 
                 if GetConvarInt('logs_enabled', 1) == 1 then
                     local LogInfo =  pName.. " is loading into the server"
-                    exports['mrp-core']:DiscordLog("https://discord.com/api/webhooks/866271471293693972/oL8ZjirLDh6Jvy_jUBAzTE-SMkWpAU9GkHTVoTO2lQweBxExyZK6sFoqhyRj1xqv0FW-", pSrc, "Player Joining", "", LogInfo)
+                    exports['mrp-core']:DiscordLog("https://discord.com/api/webhooks/872527661195493437/SxFzLlWZ77nnDjThPEF8aecmbCCnBwK8jL5_89dMl6BPe_F76YP1GpCszjzRKacmvW5A", pSrc, "Player Joining", "", LogInfo)
                 end
             end
         end)
