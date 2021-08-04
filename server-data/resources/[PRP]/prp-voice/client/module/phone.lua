@@ -8,18 +8,18 @@ local function createPhoneThread()
 			if NetworkIsPlayerTalking(PlayerId()) and not changed then
 				changed = true
 				playerTargets(radioPressed and radioData or {}, callData)
-				TriggerServerEvent('prp-voice:setTalkingOnCall', true)
+				TriggerServerEvent('mrp-voice:setTalkingOnCall', true)
 			elseif changed and NetworkIsPlayerTalking(PlayerId()) ~= 1 then
 				changed = false
 				MumbleClearVoiceTargetPlayers(1)
-				TriggerServerEvent('prp-voice:setTalkingOnCall', false)
+				TriggerServerEvent('mrp-voice:setTalkingOnCall', false)
 			end
 			Wait(0)
 		end
 	end)
 end
 
-RegisterNetEvent('prp-voice:syncCallData', function(callTable, channel)
+RegisterNetEvent('mrp-voice:syncCallData', function(callTable, channel)
 	callData = callTable
 	for tgt, enabled in pairs(callTable) do
 		if tgt ~= playerServerId then
@@ -28,18 +28,18 @@ RegisterNetEvent('prp-voice:syncCallData', function(callTable, channel)
 	end
 end)
 
-RegisterNetEvent('prp-voice:setTalkingOnCall', function(tgt, enabled)
+RegisterNetEvent('mrp-voice:setTalkingOnCall', function(tgt, enabled)
 	if tgt ~= playerServerId then
 		callData[tgt] = enabled
 		toggleVoice(tgt, enabled, 'phone')
 	end
 end)
 
-RegisterNetEvent('prp-voice:addPlayerToCall', function(plySource)
+RegisterNetEvent('mrp-voice:addPlayerToCall', function(plySource)
 	callData[plySource] = false
 end)
 
-RegisterNetEvent('prp-voice:removePlayerFromCall', function(plySource)
+RegisterNetEvent('mrp-voice:removePlayerFromCall', function(plySource)
 	if plySource == playerServerId then
 		for tgt, enabled in pairs(callData) do
 			if tgt ~= playerServerId then
@@ -62,7 +62,7 @@ end)
 
 function setCallChannel(channel)
 	if GetConvarInt('voice_enablePhones', 1) ~= 1 then return end
-	TriggerServerEvent('prp-voice:setPlayerCall', channel)
+	TriggerServerEvent('mrp-voice:setPlayerCall', channel)
 	callChannel = channel
 	plyState:set('callChannel', channel, GetConvarInt('voice_syncData', 0) == 1)
 	if GetConvarInt('voice_enableUi', 0) == 1 then
@@ -86,7 +86,7 @@ exports('removePlayerFromCall', function()
 	setCallChannel(0)
 end)
 
-RegisterNetEvent('prp-voice:clSetPlayerCall', function(_callChannel)
+RegisterNetEvent('mrp-voice:clSetPlayerCall', function(_callChannel)
 	if GetConvarInt('voice_enablePhones', 1) ~= 1 then return end
 	callChannel = _callChannel
 	plyState:set('callChannel', _callChannel, GetConvarInt('voice_syncData', 0) == 1)

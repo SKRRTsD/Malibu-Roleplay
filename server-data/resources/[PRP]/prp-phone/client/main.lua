@@ -50,7 +50,7 @@ end)
 
 RegisterNetEvent('Yougotpaid')
 AddEventHandler('Yougotpaid', function(cidsent)
-  local cid = exports["prp_manager"]:isPed("cid")
+  local cid = exports["mrp_manager"]:isPed("cid")
   if tonumber(cid) == tonumber(cidsent) then
     TriggerEvent("DoLongHudText","Life Invader Payslip Generated.", 1)
   end
@@ -272,7 +272,7 @@ end)
 
 RegisterNUICallback('btnProperty2', function(data, cb)
   loading()
-  TriggerServerEvent("ReturnHouseKeys", exports['prp_manager']:isPed('cid'))
+  TriggerServerEvent("ReturnHouseKeys", exports['mrp_manager']:isPed('cid'))
 end)
 
 RegisterNUICallback('btnPayMortgage', function(data, cb)
@@ -302,7 +302,7 @@ end)
 
 
 RegisterNUICallback('removeSharedKey', function(data, cb)
-  local cid = exports["prp_manager"]:isPed("cid")
+  local cid = exports["mrp_manager"]:isPed("cid")
   TriggerServerEvent("houses:removeSharedKey", data.house_id, cid)
   cb('ok')
 end)
@@ -375,7 +375,7 @@ end)
 
 function GroupName(groupid)
   local name = "Error Retrieving Name"
-  local mypasses = exports["prp_manager"]:isPed("passes")
+  local mypasses = exports["mrp_manager"]:isPed("passes")
   for i=1, #mypasses do
     if mypasses[i]["pass_type"] == groupid then
       name = mypasses[i]["business_name"]
@@ -386,7 +386,7 @@ end
 
   function GroupRank(groupid)
     local rank = 0
-    local mypasses = exports["prp_manager"]:isPed("passes")
+    local mypasses = exports["mrp_manager"]:isPed("passes")
     for i=1, #mypasses do
       if mypasses[i]["pass_type"] == groupid then
         rank = mypasses[i]["rank"]
@@ -424,7 +424,7 @@ end)
 
 RegisterNUICallback('btnTaskGroups', function()
 
-  local mypasses = exports["prp_manager"]:isPed("passes")
+  local mypasses = exports["mrp_manager"]:isPed("passes")
 
   local groupObject = {}
   for i = 1, #mypasses do
@@ -746,7 +746,7 @@ RegisterNetEvent("phone:Garage")
 AddEventHandler("phone:Garage", function(plyvehs)
 
   local showCarPayments = false
-  local rankCarshop = exports["prp_manager"]:GroupRank("car_shop")
+  local rankCarshop = exports["mrp_manager"]:GroupRank("car_shop")
 
   if rankCarshop > 0 then
     showCarPayments = true
@@ -1311,7 +1311,7 @@ function isRealEstateAgent()
 end
 
 function hasDecrypt2()
-    if exports["prp-inventory"]:hasEnoughOfItem("vpnxj",1,false) and not exports["prp_manager"]:isPed("disabled") then
+    if exports["mrp-inventory"]:hasEnoughOfItem("vpnxj",1,false) and not exports["mrp_manager"]:isPed("disabled") then
       return true
     else
       return false
@@ -1320,7 +1320,7 @@ end
 
 
 function hasDecrypt()
-    if exports["prp-inventory"]:hasEnoughOfItem("decrypterenzo",1,false) or exports["prp-inventory"]:hasEnoughOfItem("decryptersess",1,false) or exports["prp-inventory"]:hasEnoughOfItem("decrypterfv2",1,false) and not exports["prp_manager"]:isPed("disabled") or exports["prp-inventory"]:hasEnoughOfItem(80,1,false) and not exports["prp_manager"]:isPed("disabled") then
+    if exports["mrp-inventory"]:hasEnoughOfItem("decrypterenzo",1,false) or exports["mrp-inventory"]:hasEnoughOfItem("decryptersess",1,false) or exports["mrp-inventory"]:hasEnoughOfItem("decrypterfv2",1,false) and not exports["mrp_manager"]:isPed("disabled") or exports["mrp-inventory"]:hasEnoughOfItem(80,1,false) and not exports["mrp_manager"]:isPed("disabled") then
       return true
     else
       return false
@@ -1328,7 +1328,7 @@ function hasDecrypt()
 end
 
 function hasDevice()
-    if exports["prp-inventory"]:hasEnoughOfItem("mk2usbdevice",1,false) and not exports["prp_manager"]:isPed("disabled") then
+    if exports["mrp-inventory"]:hasEnoughOfItem("mk2usbdevice",1,false) and not exports["mrp_manager"]:isPed("disabled") then
       return true
     else
       return false
@@ -1338,13 +1338,13 @@ end
 function hasPhone()
     if
       (
-      (exports["prp-inventory"]:hasEnoughOfItem("mobilephone",1,false) or 
-      exports["prp-inventory"]:hasEnoughOfItem("stoleniphone",1,false) or 
-      exports["prp-inventory"]:hasEnoughOfItem("assphone",1,false) or
-      exports["prp-inventory"]:hasEnoughOfItem("samsungs8",1,false) or
-      exports["prp-inventory"]:hasEnoughOfItem("stolenpixel3",1,false) or
-      exports["prp-inventory"]:hasEnoughOfItem("boomerphone",1,false))
-      and not exports["prp_manager"]:isPed("disabled") and not exports["prp_manager"]:isPed("handcuffed")
+      (exports["mrp-inventory"]:hasEnoughOfItem("mobilephone",1,false) or 
+      exports["mrp-inventory"]:hasEnoughOfItem("stoleniphone",1,false) or 
+      exports["mrp-inventory"]:hasEnoughOfItem("assphone",1,false) or
+      exports["mrp-inventory"]:hasEnoughOfItem("samsungs8",1,false) or
+      exports["mrp-inventory"]:hasEnoughOfItem("stolenpixel3",1,false) or
+      exports["mrp-inventory"]:hasEnoughOfItem("boomerphone",1,false))
+      and not exports["mrp_manager"]:isPed("disabled") and not exports["mrp_manager"]:isPed("handcuffed")
       ) 
     then
       return true
@@ -1354,7 +1354,7 @@ function hasPhone()
 end
 
 function hasRadio()
-    if exports["prp-inventory"]:hasEnoughOfItem("radio",1,false) and not exports["prp_manager"]:isPed("disabled") then
+    if exports["mrp-inventory"]:hasEnoughOfItem("radio",1,false) and not exports["mrp_manager"]:isPed("disabled") then
       return true
     else
       return false
@@ -1406,7 +1406,7 @@ function openGuiNow()
     doTimeUpdate()
   else
     closeGui()
-    if not exports["prp_manager"]:isPed("disabled") then
+    if not exports["mrp_manager"]:isPed("disabled") then
       TriggerEvent("DoLongHudText","You do not have a phone.",2)
     else
       TriggerEvent("DoLongHudText","You cannot use your phone right now.",2)
@@ -1465,7 +1465,7 @@ function openGui()
     doTimeUpdate()
   else
     closeGui()
-    if not exports["prp_manager"]:isPed("disabled") then
+    if not exports["mrp_manager"]:isPed("disabled") then
       TriggerEvent("DoLongHudText","You do not have a phone.",2)
     else
       TriggerEvent("DoLongHudText","You cannot use your phone right now.",2)
@@ -1494,7 +1494,7 @@ end)
 
 
 function miTrabajo()
-    return exports['prp_manager']:isPed('job')
+    return exports['mrp_manager']:isPed('job')
 end
 
 RegisterNUICallback('deleteYP', function()
@@ -1866,7 +1866,7 @@ end
 ShowText("Race Starting on " .. customMaps[map]["track_name"] .. " with " ..
 laps .. " laps in " .. counter .. " seconds!")
 racesStarted = racesStarted + 1
-local cid = exports["prp_manager"]:isPed("cid")
+local cid = exports["mrp_manager"]:isPed("cid")
 local uniqueid = cid .. "-" .. racesStarted
 
 local s1, s2 = GetStreetNameAtCoord(mapCheckpoints[checkPointIndex].x,mapCheckpoints[checkPointIndex].y, mapCheckpoints[checkPointIndex].z)
@@ -2018,8 +2018,8 @@ function SaveMap(name,description)
 end
 
 RegisterNUICallback('racing:events:list', function()
-  if (exports["prp-inventory"]:hasEnoughOfItem("racingusb1", 1) or exports["prp-inventory"]:hasEnoughOfItem("racingusb0", 1, true)) then
-      if exports["prp-inventory"]:hasEnoughOfItem("racingusb1", 1) then
+  if (exports["mrp-inventory"]:hasEnoughOfItem("racingusb1", 1) or exports["mrp-inventory"]:hasEnoughOfItem("racingusb0", 1, true)) then
+      if exports["mrp-inventory"]:hasEnoughOfItem("racingusb1", 1) then
           SendNUIMessage({
               openSection = "racing:events:list",
                 races = currentRaces,
@@ -2228,7 +2228,7 @@ end)
 -- SMS Callbacks
 RegisterNUICallback('messages', function(data, cb)
   loading()
-  TriggerServerEvent('phone:getSMS', exports['prp_manager']:isPed('cid'))
+  TriggerServerEvent('phone:getSMS', exports['mrp_manager']:isPed('cid'))
   cb('ok')
 end)
 
@@ -2280,7 +2280,7 @@ AddEventHandler("TokoVoip:UpVolume", setVolumeUp);
 
 RegisterNetEvent('refreshContacts')
 AddEventHandler('refreshContacts', function()
-  TriggerServerEvent('getContacts', exports['prp_manager']:isPed('cid'))
+  TriggerServerEvent('getContacts', exports['mrp_manager']:isPed('cid'))
   SendNUIMessage({openSection = "contacts"})
 end)
 
@@ -2295,7 +2295,7 @@ end)
 
 RegisterNetEvent('refreshSMS')
 AddEventHandler('refreshSMS', function()
-  TriggerServerEvent('phone:getSMS', exports['prp_manager']:isPed('cid'))
+  TriggerServerEvent('phone:getSMS', exports['mrp_manager']:isPed('cid'))
   Citizen.Wait(250)
   SendNUIMessage({openSection = "messages"})
 end)
@@ -2415,7 +2415,7 @@ AddEventHandler('phone:makecall', function(pnumber)
     TriggerEvent('phone:setCallState', isDialing, dialingName)
     TriggerEvent("animation:phonecallstart")
     recentcalls[#recentcalls + 1] = { ["type"] = 2, ["number"] = pnumber, ["name"] = dialingName }
-    TriggerServerEvent('phone:callContact', exports['prp_manager']:isPed('cid'), pnumber, true)
+    TriggerServerEvent('phone:callContact', exports['mrp_manager']:isPed('cid'), pnumber, true)
   else
     TriggerEvent("It appears you are already in a call, injured or with out a phone, please type /hangup to reset your calls.", 2)
   end
@@ -2459,7 +2459,7 @@ AddEventHandler('phone:makepayphonecall', function(pnumber)
       TriggerEvent('phone:setCallState', isDialing)
       TriggerEvent("animation:phonecallstart")
       TriggerEvent("InteractSound_CL:PlayOnOne","payphonestart",0.5)
-      TriggerServerEvent('phone:callContact', exports['prp_manager']:isPed('cid'), pnumber, false)
+      TriggerServerEvent('phone:callContact', exports['mrp_manager']:isPed('cid'), pnumber, false)
       TriggerServerEvent("phone:RemovePayPhoneMoney")
     else
       TriggerEvent("DoLongHudText","It appears you are already in a call, injured or with out a phone, please type /hangup to reset your calls.",2)
@@ -2471,7 +2471,7 @@ end)
 
 RegisterNetEvent("payphone:ui")
 AddEventHandler("payphone:ui", function()
-  local ph = exports["prp-applications"]:KeyboardInput({
+  local ph = exports["mrp-applications"]:KeyboardInput({
     header = "Payphone",
     rows = {
       {
@@ -2497,7 +2497,7 @@ RegisterNUICallback('callContact', function(data, cb)
   if callStatus == isNotInCall and not isDead and hasPhone() then
     TriggerEvent('phone:setCallState', isDialing, data.name == "" and data.number or data.name)
     TriggerEvent("animation:phonecallstart")
-    TriggerServerEvent('phone:callContact', exports['prp_manager']:isPed('cid'), data.number, true)
+    TriggerServerEvent('phone:callContact', exports['mrp_manager']:isPed('cid'), data.number, true)
   else
     TriggerEvent("DoLongHudText","It appears you are already in a call, injured or with out a phone, please type /hangup to reset your calls.",2)
   end
@@ -2587,7 +2587,7 @@ end)
 
 RegisterNetEvent('phone:addToCall')
 AddEventHandler('phone:addToCall', function(voipchannel)
-  exports['prp-voice']:addPlayerToCall(tonumber(voipchannel))
+  exports['mrp-voice']:addPlayerToCall(tonumber(voipchannel))
 end)
 
 RegisterNetEvent('phone:callFullyInitiated')
@@ -2735,7 +2735,7 @@ end
 
 RegisterNetEvent('phone:removefromToko')
 AddEventHandler('phone:removefromToko', function(playerRadioChannel)
-  exports['prp-voice']:removePlayerFromCall()
+  exports['mrp-voice']:removePlayerFromCall()
 end)
 
 function endCall()
@@ -2879,7 +2879,7 @@ local currentTwats = {}
 RegisterNetEvent('Client:UpdateTweet')
 AddEventHandler('Client:UpdateTweet', function(tweet)
 
-    local handle = exports["prp_manager"]:isPed("twitterhandle")
+    local handle = exports["mrp_manager"]:isPed("twitterhandle")
     currentTwats[#currentTwats+1] = tweet 
     
     if not hasPhone() then
@@ -2936,7 +2936,7 @@ end)
 local lastTime = 0;
 RegisterNetEvent('phone:triggerPager')
 AddEventHandler('phone:triggerPager', function()
-  local job = exports["prp_manager"]:isPed("myjob")
+  local job = exports["mrp_manager"]:isPed("myjob")
   if job == "doctor" or job == "ems" then
     local currentTime = GetGameTimer()
     if lastTime == 0 or lastTime + (5 * 60 * 1000) < currentTime then
@@ -3013,12 +3013,12 @@ end)
 
 
 RegisterNUICallback('btnTwatter', function()
-  local handle = exports["prp_manager"]:isPed("twitterhandle")
+  local handle = exports["mrp_manager"]:isPed("twitterhandle")
   SendNUIMessage({openSection = "twatter", twats = currentTwats, myhandle = handle})
 end)
 
 RegisterNUICallback('newTwatSubmit', function(data, cb)
-  local handle = exports["prp_manager"]:isPed("twitterhandle")
+  local handle = exports["mrp_manager"]:isPed("twitterhandle")
   TriggerServerEvent('Tweet', handle, data.twat, data.time)   
 end)
 
@@ -3080,22 +3080,22 @@ RegisterNUICallback('btnPagerToggle', function()
 end)
 
 RegisterNUICallback('accountInformation', function()
-  TriggerServerEvent("account:information:sv", exports['prp_manager']:isPed('cid'))
+  TriggerServerEvent("account:information:sv", exports['mrp_manager']:isPed('cid'))
 end)
 
 
 RegisterNetEvent("account:information:cl")
 AddEventHandler("account:information:cl", function(licences, paycheck, pChips)
   local responseObject = {
-    cid = exports["prp_manager"]:isPed("cid"),
+    cid = exports["mrp_manager"]:isPed("cid"),
     paycheck = paycheck,
     pChips = pChips,
-    cash = exports["prp_manager"]:isPed("mycash"),
-    bank = exports["prp_manager"]:isPed("mybank"),
-    job = exports["prp_manager"]:isPed("myjob"),
-    secondaryJob = exports["prp_manager"]:isPed("secondaryjob"),
+    cash = exports["mrp_manager"]:isPed("mycash"),
+    bank = exports["mrp_manager"]:isPed("mybank"),
+    job = exports["mrp_manager"]:isPed("myjob"),
+    secondaryJob = exports["mrp_manager"]:isPed("secondaryjob"),
     licenses = licences, 
-    pagerStatus = exports["prp_manager"]:isPed("pagerstatus")
+    pagerStatus = exports["mrp_manager"]:isPed("pagerstatus")
   }
   SendNUIMessage({openSection = "accountInformation", response = responseObject})
 
@@ -3109,7 +3109,7 @@ AddEventHandler('phone:newSMS', function(id, number, message, mypn, date, recip)
     SendNUIMessage({
         openSection = "newsms"
     })
-      TriggerServerEvent('phone:getSMS', exports['prp_manager']:isPed('cid')) 
+      TriggerServerEvent('phone:getSMS', exports['mrp_manager']:isPed('cid')) 
     if phoneNotifications then
       TriggerEvent("DoLongHudText", "You just received a new SMS.", 1)
       PlaySound(-1, "Event_Start_Text", "GTAO_FM_Events_Soundset", 0, 0, 1)
@@ -3149,9 +3149,9 @@ end)
 RegisterNetEvent('phone:sendSMS')
 AddEventHandler('phone:sendSMS', function(number, message)
   if(number ~= nil and message ~= nil) then
-    TriggerServerEvent('phone:sendSMS', exports['prp_manager']:isPed('cid'), number, message)
+    TriggerServerEvent('phone:sendSMS', exports['mrp_manager']:isPed('cid'), number, message)
     Citizen.Wait(1000)
-    TriggerServerEvent('phone:getSMSc', exports['prp_manager']:isPed('cid'))
+    TriggerServerEvent('phone:getSMSc', exports['mrp_manager']:isPed('cid'))
   else
     phoneMsg("You must fill in a number and message!")
   end
@@ -3209,7 +3209,7 @@ end)
 RegisterNetEvent('phone:reply')
 AddEventHandler('phone:reply', function(message)
   if lastnumber ~= 0 then
-    TriggerServerEvent('phone:sendSMS', exports['prp_manager']:isPed('cid'), lastnumber, message)
+    TriggerServerEvent('phone:sendSMS', exports['mrp_manager']:isPed('cid'), lastnumber, message)
     TriggerEvent("chatMessagess", "You", 6, message)
   else
     phoneMsg("No user has recently SMS'd you.")
@@ -3473,25 +3473,25 @@ function PRP.SettingsData.getSettingsTable()
 end
 
 RegisterNUICallback('settings', function()
-  local controls = exports["prp-core"]:getModule("DataControls"):getBindTable()
-  local settings = exports["prp-core"]:getModule("SettingsData"):getSettingsTable()
+  local controls = exports["mrp-core"]:getModule("DataControls"):getBindTable()
+  local settings = exports["mrp-core"]:getModule("SettingsData"):getSettingsTable()
   SendNUIMessage({openSection = "settings", currentControls = controls, currentSettings = settings})
 end)
 
 RegisterNUICallback('settingsUpdateToko', function(data, cb)
   if data.tag == "settings" then
-    exports["prp-core"]:getModule("SettingsData"):setSettingsTableGlobal(data.settings, true)
+    exports["mrp-core"]:getModule("SettingsData"):setSettingsTableGlobal(data.settings, true)
   elseif data.tag == "controlUpdate" then
-    exports["prp-core"]:getModule("DataControls"):encodeSetBindTable(data.controls)
+    exports["mrp-core"]:getModule("DataControls"):encodeSetBindTable(data.controls)
   end
 end)
 
 RegisterNUICallback('settingsResetToko', function()
-  TriggerEvent("prp-core:cl:player_reset", "tokovoip")
+  TriggerEvent("mrp-core:cl:player_reset", "tokovoip")
 end)
 
 RegisterNUICallback('settingsResetControls', function()
-  TriggerEvent("prp-core:cl:player_control", nil)
+  TriggerEvent("mrp-core:cl:player_control", nil)
 end)
 
 RegisterNetEvent('sendMessagePhoneN')
@@ -3533,7 +3533,7 @@ end
 
 RegisterNetEvent("Passes:RequestUpdate")
 AddEventHandler("Passes:RequestUpdate", function(cidsent)
-  local cid = exports["prp_manager"]:isPed("cid")
+  local cid = exports["mrp_manager"]:isPed("cid")
   if tonumber(cid) == tonumber(cidsent) then
     TriggerServerEvent("server:currentpasses")
     TriggerEvent("DoLongHudText", "Your job has been updated!", 1)
@@ -3553,7 +3553,7 @@ local blipgps = {}
 RegisterNetEvent('GPSTrack:Accepted')
 AddEventHandler('GPSTrack:Accepted', function(x,y,z,srcid,stage)
 
-	local job = exports["prp_manager"]:isPed("myjob")
+	local job = exports["mrp_manager"]:isPed("myjob")
 	if job == "police" or job == "ems" then
 		if blipgps.srcid then
 			RemoveBlip(blipgps.srcid)

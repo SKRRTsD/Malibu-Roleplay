@@ -104,16 +104,16 @@ $(document).ready(function() {
     $('.collapsible').collapsible();
     $('.modal').modal();
 
-    $.post('http://prp-phone/getWeather', JSON.stringify({}));
+    $.post('http://mrp-phone/getWeather', JSON.stringify({}));
 
     setInterval(function() {
-        $.post('http://prp-phone/getWeather', JSON.stringify({}));
+        $.post('http://mrp-phone/getWeather', JSON.stringify({}));
     }, 60 * 1000);
 
     document.onkeyup = function(data) {
   
         if (data.which == 27) {
-            $.post('http://prp-phone/close', JSON.stringify({}));
+            $.post('http://mrp-phone/close', JSON.stringify({}));
         }
     }
 
@@ -139,24 +139,24 @@ $(document).ready(function() {
         if (action !== undefined) {
             switch (action) {
                 case "yellow-pages-delete":
-                    $.post('http://prp-phone/deleteYP', JSON.stringify({}));
+                    $.post('http://mrp-phone/deleteYP', JSON.stringify({}));
                     break;
                 case "racing-create":
                     $('racing-map-creation').fadeIn(150);
                     break;
                 case "newPostSubmit":
                     e.preventDefault();
-                    $.post('http://prp-phone/newPostSubmit', JSON.stringify({
+                    $.post('http://mrp-phone/newPostSubmit', JSON.stringify({
                         advert: escapeHtml($("#yellow-pages-form #yellow-pages-form-advert").val())
                     }));
                     $("#yellow-pages-form #yellow-pages-form-advert").attr("style", "").val('')
                     break;
                 case "group-manage":
-                    $.post('http://prp-phone/manageGroup', JSON.stringify({ GroupID: $(this).data('action-data'), GroupID2: $(this).data('action-data-name'), GroupID3: $(this).data('action-data-rank') }));
+                    $.post('http://mrp-phone/manageGroup', JSON.stringify({ GroupID: $(this).data('action-data'), GroupID2: $(this).data('action-data-name'), GroupID3: $(this).data('action-data-rank') }));
                     break;
                 case "btnTaskGang":
                     manageGroup = $(this).data('action-data');
-                    $.post('http://prp-phone/btnTaskGang', JSON.stringify({}));
+                    $.post('http://mrp-phone/btnTaskGang', JSON.stringify({}));
                     break;
                 case "group-manage-pay-external":
                     $('#group-manage-pay-modal').modal('open');
@@ -177,13 +177,13 @@ $(document).ready(function() {
                     if (callStates[currentCallState] === "isCallInProgress" && currentContainer !== "incoming-call")
                         openContainer("incoming-call");
                     else
-                        $.post('http://prp-phone/' + action, JSON.stringify({}));
+                        $.post('http://mrp-phone/' + action, JSON.stringify({}));
                     break;
                 case "dabcoin":
                     //openBrowser('http://nopixel.online/dabcoin/login.php');
                     break;
                 default:
-                    $.post('http://prp-phone/' + action, JSON.stringify({}));
+                    $.post('http://mrp-phone/' + action, JSON.stringify({}));
                     break;
             }
         }
@@ -483,7 +483,7 @@ $(document).ready(function() {
                         curCheckpoint = maxCheckpoints;
                         this.clearInterval(drawRaceStatsIntervalId);
                         drawRaceStats();
-                        $.post('http://prp-phone/race:completed', JSON.stringify({
+                        $.post('http://mrp-phone/race:completed', JSON.stringify({
                             fastestlap: moment(fastestLapTime).valueOf(),
                             overall: moment(endTime - startTime).valueOf(),
                             sprint: isSprint,
@@ -910,7 +910,7 @@ function addGurgleEntries(pGurgleEntries) {
 function openBrowser(url) {
     $("#browser object").attr("data", url);
     closePhoneShell();
-    $.post('http://prp-phone/btnCamera', JSON.stringify({}));
+    $.post('http://mrp-phone/btnCamera', JSON.stringify({}));
     $("#browser").fadeIn(300);
 }
 
@@ -1219,7 +1219,7 @@ function addMessage(item) {
     var element = $('<div class="row messages-entry"> <div class="col s2 white-text"> <i class="far fa-user-circle fa-2x"></i> </div> <div class="col s10 messages-entry-details"> <div class="row no-padding"> <div class="col s8 messages-entry-details-sender">' + item.msgDisplayName + '</div> <div class="col s4 messages-entry-details-date right-align">' + moment(date).local().fromNow() + '</div> </div> <div class="row "> <div class="col s12 messages-entry-body">' + item.message + '</div> </div> </div> </div>');
     element.id = item.id;
     element.click(function () {
-        $.post('http://prp-phone/messageRead', JSON.stringify({ sender: item.sender, receiver: item.receiver, displayName: item.msgDisplayName }));
+        $.post('http://mrp-phone/messageRead', JSON.stringify({ sender: item.sender, receiver: item.receiver, displayName: item.msgDisplayName }));
     });
     $(".messages-entries").prepend(element);
 }
@@ -1231,7 +1231,7 @@ function addMessageOther(item) {
     var element = $('<div class="row messages-entry"> <div class="col s2 white-text"> <i class="far fa-user-circle fa-2x"></i> </div> <div class="col s10 messages-entry-details"> <div class="row no-padding"> <div class="col s8 messages-entry-details-sender">' + item.msgDisplayName + '</div> <div class="col s4 messages-entry-details-date right-align">' + moment(date).local().fromNow() + '</div> </div> <div class="row "> <div class="col s12 messages-entry-body">' + item.message + '</div> </div> </div> </div>');
     element.id = item.id;
     element.click(function () {
-        $.post('http://prp-phone/messageRead', JSON.stringify({ sender: item.sender, receiver: item.receiver, displayName: receiver, clientPhone: item.clientNumber }));
+        $.post('http://mrp-phone/messageRead', JSON.stringify({ sender: item.sender, receiver: item.receiver, displayName: receiver, clientPhone: item.clientNumber }));
     });
     $(".messages-entries").prepend(element);
 }
@@ -1471,7 +1471,7 @@ function updateSettings()
             updateTokoSettings();
             break;
         case "control":
-            $.post('http://prp-phone/settingsUpdateToko', JSON.stringify({tag: "controlUpdate",controls: currentBinds}));
+            $.post('http://mrp-phone/settingsUpdateToko', JSON.stringify({tag: "controlUpdate",controls: currentBinds}));
             break;
         case "browser":
             break;
@@ -1486,10 +1486,10 @@ function ResetSettings()
 {
     switch (currentSettingWindow) {
         case "tokovoip":
-            $.post('http://prp-phone/settingsResetToko', JSON.stringify());
+            $.post('http://mrp-phone/settingsResetToko', JSON.stringify());
             break;
         case "control":
-            $.post('http://prp-phone/settingsResetControls', JSON.stringify());
+            $.post('http://mrp-phone/settingsResetControls', JSON.stringify());
             break;
         case "browser":
             break;
@@ -1693,7 +1693,7 @@ async function updateTokoSettings()
     }
 
     await delayedLog();
-    $.post('http://prp-phone/settingsUpdateToko', JSON.stringify({
+    $.post('http://mrp-phone/settingsUpdateToko', JSON.stringify({
         tag: "settings",
         settings: currentSettings,
     }));
@@ -1875,14 +1875,14 @@ $('#group-manage-search').keyup(debounce(function () {
 }, 500));
 
 $('#racing-create-form').on('reset', function (e) {
-    $.post('http://prp-phone/racing:map:cancel', JSON.stringify({}));
+    $.post('http://mrp-phone/racing:map:cancel', JSON.stringify({}));
 });
 
 $('#racing-start-tracks').on('change', function (e) {
     let selectedMap = $(this).val();
     if(maps[selectedMap] !== undefined) {
-        $.post('http://prp-phone/racing:map:removeBlips', JSON.stringify({}));
-        $.post('http://prp-phone/racing:map:load', JSON.stringify({ id: selectedMap}));
+        $.post('http://mrp-phone/racing:map:removeBlips', JSON.stringify({}));
+        $.post('http://mrp-phone/racing:map:load', JSON.stringify({ id: selectedMap}));
         $('#racing-start-map-creator').text(maps[selectedMap].creator);
         $('#racing-start-map-distance').text(maps[selectedMap].distance);
         $('#racing-start-description').text(maps[selectedMap].description);
@@ -1891,7 +1891,7 @@ $('#racing-start-tracks').on('change', function (e) {
 
 $('#racing-start').submit(function (e) {
     e.preventDefault();
-    $.post('http://prp-phone/racing:event:start', JSON.stringify({
+    $.post('http://mrp-phone/racing:event:start', JSON.stringify({
         raceMap: $('#racing-start-tracks').val(),
         raceLaps: $('#racing-start-laps').val(),
         raceStartTime: moment.utc().add($('#racing-start-time').val(), 'seconds'),
@@ -1905,7 +1905,7 @@ $('#racing-start').submit(function (e) {
 
 $('#racing-create-form').submit(function (e) {
     e.preventDefault();
-    $.post('http://prp-phone/racing:map:save', JSON.stringify({
+    $.post('http://mrp-phone/racing:map:save', JSON.stringify({
         name: escapeHtml($('#racing-create-name').val()),
         desc: escapeHtml($('#racing-create-description').val()),
     }));
@@ -1913,7 +1913,7 @@ $('#racing-create-form').submit(function (e) {
 
 $("#real-estate-sell-form").submit(function (e) {
     e.preventDefault();
-    $.post('http://prp-phone/btnAttemptHouseSale', JSON.stringify({
+    $.post('http://mrp-phone/btnAttemptHouseSale', JSON.stringify({
         cid: escapeHtml($("#real-estate-sell-form #real-estate-sell-id").val()),
         price: escapeHtml($("#real-estate-sell-form #real-estate-sell-amount").val()),
     }));
@@ -1924,7 +1924,7 @@ $("#real-estate-sell-form").submit(function (e) {
 
 $('#real-estate-transfer-form').submit(function (e) {
     e.preventDefault();
-    $.post('http://prp-phone/btnTransferHouse', JSON.stringify({
+    $.post('http://mrp-phone/btnTransferHouse', JSON.stringify({
         cid: escapeHtml($("#real-estate-transfer-form #real-estate-transfer-id").val()),
     }));
     $('#real-estate-transfer-form').trigger('reset');
@@ -1935,7 +1935,7 @@ $("#group-manage-pay-form").submit(function (e) {
     e.preventDefault();
 
     let cashToPay = escapeHtml($("#group-manage-pay-form #group-manage-amount").val());
-    $.post('http://prp-phone/payGroup', JSON.stringify({
+    $.post('http://mrp-phone/payGroup', JSON.stringify({
         gangid: escapeHtml($(".group-manage-company-name").data('group-id')),
         cid: escapeHtml($("#group-manage-pay-form #group-manage-id").val()),
         cashamount: cashToPay
@@ -1951,7 +1951,7 @@ $("#group-manage-pay-form").submit(function (e) {
 
 $("#group-manage-rank-form").submit(function (e) {
     e.preventDefault();
-    $.post('http://prp-phone/promoteGroup', JSON.stringify({
+    $.post('http://mrp-phone/promoteGroup', JSON.stringify({
         gangid: escapeHtml($(".group-manage-company-name").data('group-id')),
         cid: escapeHtml($("#group-manage-rank-form #group-manage-rank-id").val()),
         newrank: escapeHtml($("#group-manage-rank-form #group-manage-rank").val()),
@@ -1963,7 +1963,7 @@ $("#group-manage-rank-form").submit(function (e) {
 $("#group-manage-bank-form").submit(function (e) {
     e.preventDefault();
     let cashToAdd = escapeHtml($("#group-manage-bank-form #group-manage-bank-amount").val());
-    $.post('http://prp-phone/bankGroup', JSON.stringify({
+    $.post('http://mrp-phone/bankGroup', JSON.stringify({
         gangid: escapeHtml($(".group-manage-company-name").data('group-id')),
         cashamount: cashToAdd,
     }));
@@ -1977,7 +1977,7 @@ $("#group-manage-bank-form").submit(function (e) {
 $("#group-tasks-assign-modal-form").submit(function (e) {
     e.preventDefault();
 
-    $.post('http://prp-phone/btnGiveTaskToPlayer', JSON.stringify({
+    $.post('http://mrp-phone/btnGiveTaskToPlayer', JSON.stringify({
         taskid: escapeHtml($("#group-tasks-assign-modal-form #group-task-id").val()),
         targetid: escapeHtml($("#group-tasks-assign-modal-form #group-task-target").val()),
     }));
@@ -1991,7 +1991,7 @@ $("#contacts-form").submit(function (e) {
     var escapedName = escapeHtml($("#contacts-form #contacts-new-name").val());
     var clean = escapedName.replace(/[^0-9A-Z]+/gi, "");
 
-    $.post('http://prp-phone/newContactSubmit', JSON.stringify({
+    $.post('http://mrp-phone/newContactSubmit', JSON.stringify({
         name: clean,
         number: escapeHtml($("#contacts-form #contacts-new-number").val())
     }));
@@ -2007,7 +2007,7 @@ $("#contacts-form").submit(function (e) {
 
 $("#stock-form").submit(function (event) {
     event.preventDefault();
-    $.post('http://prp-phone/stocksTradeToPlayer', JSON.stringify({
+    $.post('http://mrp-phone/stocksTradeToPlayer', JSON.stringify({
         identifier: escapeHtml($("#stock-form #stock-id").val()),
         playerid: escapeHtml($("#stock-form #stock-target-id").val()),
         amount: escapeHtml($("#stock-form #stock-amount").val()),
@@ -2018,7 +2018,7 @@ $("#stock-form").submit(function (event) {
 
 $("#twat-form").submit(function (event) {
     event.preventDefault();
-    $.post('http://prp-phone/newTwatSubmit', JSON.stringify({
+    $.post('http://mrp-phone/newTwatSubmit', JSON.stringify({
         twat: escapeHtml($("#twat-form #twat-body").val()),
         time: moment.utc()
     }));
@@ -2028,7 +2028,7 @@ $("#twat-form").submit(function (event) {
 
 $("#call-form").submit(function (event) {
     event.preventDefault();
-    $.post('http://prp-phone/callContact', JSON.stringify({
+    $.post('http://mrp-phone/callContact', JSON.stringify({
         name: '',
         number: escapeHtml($("#call-form #call-number").val())
     }));
@@ -2038,7 +2038,7 @@ $("#call-form").submit(function (event) {
 
 $("#yellow-pages-form").submit(function (event) {
     event.preventDefault();
-    $.post('http://prp-phone/newPostSubmit', JSON.stringify({
+    $.post('http://mrp-phone/newPostSubmit', JSON.stringify({
         advert: escapeHtml($("#yellow-pages-form #yellow-pages-body").val())
     }));
     $("#yellow-pages-form #yellow-pages-body").attr("style", "").val('')
@@ -2048,7 +2048,7 @@ $("#yellow-pages-form").submit(function (event) {
 $("#new-message-form").submit(function (event) {
     event.preventDefault();
 
-    $.post('http://prp-phone/newMessageSubmit', JSON.stringify({
+    $.post('http://mrp-phone/newMessageSubmit', JSON.stringify({
         number: escapeHtml($("#new-message-form #new-message-number").val()),
         message: escapeHtml($("#new-message-form #new-message-body").val())
     }));
@@ -2062,12 +2062,12 @@ $("#new-message-form").submit(function (event) {
                 let sender = $('.message-entries').data("sender");
                 let receiver = $('.message-entries').data("clientNumber")
                 let displayName = $('.message-entries').data("displayName")
-                $.post('http://prp-phone/messageRead', JSON.stringify({ sender: sender, receiver: receiver, displayName: displayName }));
+                $.post('http://mrp-phone/messageRead', JSON.stringify({ sender: sender, receiver: receiver, displayName: displayName }));
             }, 300);
             break;
         case "messages":
             setTimeout(function () {
-                $.post('http://prp-phone/messages', JSON.stringify({}));
+                $.post('http://mrp-phone/messages', JSON.stringify({}));
             }, 300);
             break;
     }
@@ -2089,7 +2089,7 @@ $('.racing-map-delete').click(function () {
 
 $('.racing-map-delete-confirm').click(function () {  
     let raceMap = $('#racing-map-selected').val()
-    $.post('http://prp-phone/racing:map:delete', JSON.stringify({ id: raceMap }));
+    $.post('http://mrp-phone/racing:map:delete', JSON.stringify({ id: raceMap }));
     $('.racing-delete-confirm').fadeOut(150)
 
     $('.racing-map-creation').fadeOut(150)
@@ -2099,12 +2099,12 @@ $('.racing-map-delete-confirm').click(function () {
 //
 
 $('#real-estate-evict-modal-accept').click(function () {
-    $.post('http://prp-phone/btnEvictHouse', JSON.stringify({}));
+    $.post('http://mrp-phone/btnEvictHouse', JSON.stringify({}));
     $('#real-estate-evict-modal-').modal('close');
 });
 
 $('.btn-racing-clear').click(function() {
-    $.post('http://prp-phone/racing:map:removeBlips', JSON.stringify({}));
+    $.post('http://mrp-phone/racing:map:removeBlips', JSON.stringify({}));
 });
 
 $('.racing-create').click(function () {
@@ -2147,7 +2147,7 @@ $('.message-send-new').click(function () {
 });
 
 $('.messages-call-contact').click(function () {
-    $.post('http://prp-phone/callContact', JSON.stringify({
+    $.post('http://mrp-phone/callContact', JSON.stringify({
         name: $('.message-entries').data('displayName'),
         number: $('.message-entries').data('sender')
     }));
@@ -2162,11 +2162,11 @@ $('.messages-add-new-contact').click(function () {
 $('.twatter-toggle-notification').click(function () {
     icon = $(this).find("i");
     icon.toggleClass("fa-bell fa-bell-slash")
-    $.post('http://prp-phone/btnNotifyToggle', JSON.stringify({}));
+    $.post('http://mrp-phone/btnNotifyToggle', JSON.stringify({}));
 });
 
 $('.account-information-toggle-pager').click(function () {
-    $.post('http://prp-phone/btnPagerToggle', JSON.stringify({}));
+    $.post('http://mrp-phone/btnPagerToggle', JSON.stringify({}));
     $(this).toggleClass("red-text green-text");
 });
 
@@ -2211,15 +2211,15 @@ $('.racing-entries').on('click', '.racing-entries-entrants', function () {
 });
 
 $('.racing-entries').on('click', '.racing-entries-join', function () {
-    $.post('http://prp-phone/racing:event:join', JSON.stringify({ identifier: $(this).data('id') }));
+    $.post('http://mrp-phone/racing:event:join', JSON.stringify({ identifier: $(this).data('id') }));
 });
 
 $('.keys-entries').on('click', '.manage-keys', function () {
-    $.post('http://prp-phone/retrieveHouseKeys', JSON.stringify({}));
+    $.post('http://mrp-phone/retrieveHouseKeys', JSON.stringify({}));
 });
 
 $('.keys-entries').on('click', '.remove-shared-key', function(e) {
-    $.post('http://prp-phone/removeSharedKey', JSON.stringify({
+    $.post('http://mrp-phone/removeSharedKey', JSON.stringify({
         house_id: $(this).data('house-id'),
         house_model: $(this).data('house-model')
     }))
@@ -2227,14 +2227,14 @@ $('.keys-entries').on('click', '.remove-shared-key', function(e) {
 });
 
 $('.manage-keys-entries').on('click', '.manage-keys-remove', function () {
-    $.post('http://prp-phone/removeHouseKey', JSON.stringify({
+    $.post('http://mrp-phone/removeHouseKey', JSON.stringify({
         targetId: $(this).data('target-id')
     }))
-    $.post('http://prp-phone/retrieveHouseKeys', JSON.stringify({}));
+    $.post('http://mrp-phone/retrieveHouseKeys', JSON.stringify({}));
 })
 
 $('.yellow-pages-entries').on('click', '.yellow-pages-call', function () {
-    $.post('http://prp-phone/callContact', JSON.stringify({
+    $.post('http://mrp-phone/callContact', JSON.stringify({
         name: '',
         number: $(this).data('number')
     }));
@@ -2266,11 +2266,11 @@ $('.group-manage-entries').on('click', '.group-manage-rank', function () {
 });
 
 $('.group-tasks-entries').on('click', '.group-tasks-track', function () {
-    $.post('http://prp-phone/trackTaskLocation', JSON.stringify({ TaskIdentifier: $(this).data('id') }));
+    $.post('http://mrp-phone/trackTaskLocation', JSON.stringify({ TaskIdentifier: $(this).data('id') }));
 });
 
 $('.delivery-job-entries').on('click', '.delivery-job-accept', function (e) {
-    $.post('http://prp-phone/selectedJob', JSON.stringify({ jobType: $(this).data('job-type'), jobId: $(this).data('job-id') }));
+    $.post('http://mrp-phone/selectedJob', JSON.stringify({ jobType: $(this).data('job-type'), jobId: $(this).data('job-id') }));
 });
 
 $('.stocks-entries').on('click', '.stocks-exchange', function (e) {
@@ -2281,27 +2281,27 @@ $('.stocks-entries').on('click', '.stocks-exchange', function (e) {
 
 $('.garage-entries').on('click', '.garage-spawn', function (e) {
     e.preventDefault();
-    $.post('http://prp-phone/vehspawn', JSON.stringify({ vehplate: $(this).data('plate') }));
-    $.post('http://prp-phone/btnGarage', JSON.stringify({}));
+    $.post('http://mrp-phone/vehspawn', JSON.stringify({ vehplate: $(this).data('plate') }));
+    $.post('http://mrp-phone/btnGarage', JSON.stringify({}));
 });
 
 $('.garage-entries').on('click', '.garage-track', function () {
-    $.post('http://prp-phone/vehtrack', JSON.stringify({ vehplate: $(this).data('plate') }));
+    $.post('http://mrp-phone/vehtrack', JSON.stringify({ vehplate: $(this).data('plate') }));
 });
 
 $('.garage-entries').on('click', '.garage-pay', function (e) {
-    $.post('http://prp-phone/vehiclePay', JSON.stringify({ vehiclePlate: $(this).data('plate'), amount: $(this).data('amount') }));
+    $.post('http://mrp-phone/vehiclePay', JSON.stringify({ vehiclePlate: $(this).data('plate'), amount: $(this).data('amount') }));
     setTimeout(function () {
-        $.post('http://prp-phone/btnGarage', JSON.stringify({}));
+        $.post('http://mrp-phone/btnGarage', JSON.stringify({}));
     }, 1500);
 });
 
 $('.gps-entries, .keys-entries').on('click', '.gps-location-click', function () {
-    $.post('http://prp-phone/loadUserGPS', JSON.stringify({ house_id: $(this).data('house-id'), house_type: $(this).data('house-type') }));
+    $.post('http://mrp-phone/loadUserGPS', JSON.stringify({ house_id: $(this).data('house-id'), house_type: $(this).data('house-type') }));
 })
 
 $('.contacts-entries, .call-history-entries').on('click', '.btn-contacts-call', function () {
-    $.post('http://prp-phone/callContact', JSON.stringify({ name: $(this).data('name'), number: $(this).data('number') }));
+    $.post('http://mrp-phone/callContact', JSON.stringify({ name: $(this).data('name'), number: $(this).data('number') }));
 });
 
 $('.contacts-entries, .call-history-entries').on('click', '.btn-contacts-send-message', function (event) {
@@ -2324,7 +2324,7 @@ $('.contacts-entries-wrapper').on('click', '.btn-contacts-remove', function () {
 });
 
 $('#confirm-modal-accept').click(function (event) {
-    $.post('http://prp-phone/removeContact', JSON.stringify({ name: $(this).data('name'), number: $(this).data('number') }));
+    $.post('http://mrp-phone/removeContact', JSON.stringify({ name: $(this).data('name'), number: $(this).data('number') }));
     $('#confirm-modal').modal('close');
 });
 
@@ -2500,7 +2500,7 @@ $(document).on('click','img',function(){
    if(matchd != null) {
        url = `<image width="100%" height="100%" src='${url}'>`
    }
-   $.post('http://prp-phone/newTwatSubmit', JSON.stringify({
+   $.post('http://mrp-phone/newTwatSubmit', JSON.stringify({
        twat: url,
        time: moment.utc()
    }));

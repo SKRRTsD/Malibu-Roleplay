@@ -10,7 +10,7 @@ $(document).ready(function(){
       // 69 = E btw lol rofl heh 
       if (data.which == 69) {
         closeMain()
-        $.post('http://prp-taskbarplus/taskEnd', JSON.stringify({taskResult: percent}));
+        $.post('http://mrp-taskbarplus/taskEnd', JSON.stringify({taskResult: percent}));
       }
   }
 
@@ -49,7 +49,7 @@ $(document).ready(function(){
 
     if(item.closeFail === true) {
       closeMain()
-      $.post('http://prp-taskbarplus/taskCancel', JSON.stringify({tasknum: curTask}));
+      $.post('http://mrp-taskbarplus/taskCancel', JSON.stringify({tasknum: curTask}));
     }
 
     if(item.closeProgress === true) {

@@ -22,7 +22,7 @@ function closeGui()
     guiEnabled = false
     SendNUIMessage({closeProgress = true})
     ClearPedTasks(PlayerPedId())
-    TriggerEvent("prp-taskbar:disablecontrols", false)
+    TriggerEvent("mrp-taskbar:disablecontrols", false)
 end
 
 function closeNormalGui()
@@ -86,7 +86,7 @@ end)
 local taskInProcess = false
 function taskBar(length,name,runCheck,keepWeapon,vehicle,vehCheck)
     local playerPed = PlayerPedId()
-    TriggerEvent("prp-taskbar:disablecontrols", true)
+    TriggerEvent("mrp-taskbar:disablecontrols", true)
     if taskInProcess then
         return 0
     end
@@ -204,8 +204,8 @@ AddEventHandler('event:control:taskBar', function(useID)
 end)
  
 local pDisabled = false
-RegisterNetEvent('prp-taskbar:disablecontrols')
-AddEventHandler('prp-taskbar:disablecontrols', function(status)
+RegisterNetEvent('mrp-taskbar:disablecontrols')
+AddEventHandler('mrp-taskbar:disablecontrols', function(status)
     pDisabled = status
     while pDisabled == true do
         Citizen.Wait(0) 

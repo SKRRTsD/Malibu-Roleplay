@@ -94,6 +94,6 @@ Citizen.CreateThread(function()
 			table.remove(storePedLocations[i].registers, k)
 		end
 
-		print("^1[prp-robbery] Resetting All Stores / Safes^0")
+		print("^1[mrp-robbery] Resetting All Stores / Safes^0")
     end
 end)

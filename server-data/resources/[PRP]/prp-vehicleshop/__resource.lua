@@ -9,6 +9,6 @@ server_script {
 
 client_scripts {
     "@PolyZone/client.lua",
-    "@prp-errorlog/client/cl_errorlog.lua",
+    "@mrp-errorlog/client/cl_errorlog.lua",
     "client/*.lua"
   }

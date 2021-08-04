@@ -18,7 +18,7 @@ RegisterServerEvent("sunrise:carshop:table")
 AddEventHandler("sunrise:carshop:table", function(table)
     if table ~= nil then 
         carTable = table
-        TriggerClientEvent("prp-sunriseshop:returnTable", -1, carTable)
+        TriggerClientEvent("mrp-sunriseshop:returnTable", -1, carTable)
         updateDisplayVehicles()
     end 
 end)
@@ -40,7 +40,7 @@ end)
 
 RegisterServerEvent("sunrise:CheckMoneyForVeh")
 AddEventHandler("sunrise:CheckMoneyForVeh", function(name, model, price, financed)
-    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
     local money = tonumber(user:getCash())
     if fananced then
         local financedPrice =  math.ceil(price / 4)
@@ -48,7 +48,7 @@ AddEventHandler("sunrise:CheckMoneyForVeh", function(name, model, price, finance
             user:removeMoney(financedPrice)
             TriggerClientEvent("sunrise:FinishMoneyCheckForVeh", user.source, name, model, price, financed)
             TriggerClientEvent("menu:veh:purchase", user.source)
-            exports["prp-banking"]:UpdateSociety(financedPrice, "sunrise_shop", "add")
+            exports["mrp-banking"]:UpdateSociety(financedPrice, "sunrise_shop", "add")
         else
             TriggerClientEvent('DoLongHudText', user.source, 'You dont have enough money on you!', 2)
             TriggerClientEvent("sunrise:carshop:failedpurchase", user.source)
@@ -58,7 +58,7 @@ AddEventHandler("sunrise:CheckMoneyForVeh", function(name, model, price, finance
             user:removeMoney(price)
             TriggerClientEvent('sunrise:FinishMoneyCheckForVeh', user.source, name, model, price, financed)
             TriggerClientEvent('menu:veh:purchase', user.source)
-            exports["prp-banking"]:UpdateSociety(price, "sunrise_shop", "add")
+            exports["mrp-banking"]:UpdateSociety(price, "sunrise_shop", "add")
         else
             TriggerClientEvent('DoLongHudText', user.source, 'You dont have enough money on you!', 2)
             TriggerClientEvent('sunrise:carshop:failedpurchase', user.source)
@@ -69,13 +69,13 @@ end)
 RegisterServerEvent('sunrise:BuyForVeh')
 AddEventHandler('sunrise:BuyForVeh', function(platew, name, vehicle, price, financed)
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
     local char = user:getVar("character")
     local player = user:getVar("hexid")
     exports.ghmattimysql:execute("SELECT * FROM `characters_cars` WHERE license_plate = @license_plate", {['license_plate'] = platew}, function(result)
         if result[1] then
             dbplate = math.random(10000000,99999999)
-            TriggerClientEvent("prp-sunriseshop:update:plate", src, dbplate)
+            TriggerClientEvent("mrp-sunriseshop:update:plate", src, dbplate)
         else
             dbplate = platew
         end

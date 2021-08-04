@@ -43,7 +43,7 @@ $(document).on('mousedown', (event) => {
     if (element.id.split("-")[0] === 'target') {
         let TargetData = $("#" + element.id).data('TargetData');
         let ParmsData = $("#" + element.id).data('ParmsData');
-        $.post('http://prp-target/selectTarget', JSON.stringify({
+        $.post('http://mrp-target/selectTarget', JSON.stringify({
             event: TargetData,
             parms: ParmsData,
         }));
@@ -58,7 +58,7 @@ $(document).on('keydown', function() {
         case 27: // ESC
             $(".target-label").html("");
             $('.target-wrapper').hide();
-            $.post('http://prp-target/closeTarget');
+            $.post('http://mrp-target/closeTarget');
             break;
     }
 });

@@ -1,7 +1,7 @@
 local nearRepo = false
 
 Citizen.CreateThread(function()
-    exports["prp-polyzone"]:AddBoxZone("veh_shop_repo", vector3(-239.27, -1183.79, 23.04), 8.6, 5, {
+    exports["mrp-polyzone"]:AddBoxZone("veh_shop_repo", vector3(-239.27, -1183.79, 23.04), 8.6, 5, {
         name="veh_shop_repo",
         heading=270,
         --debugPoly=true,
@@ -11,25 +11,25 @@ Citizen.CreateThread(function()
 end)
 
 
-RegisterNetEvent('prp-polyzone:enter')
-AddEventHandler('prp-polyzone:enter', function(name)
+RegisterNetEvent('mrp-polyzone:enter')
+AddEventHandler('mrp-polyzone:enter', function(name)
     if name == "veh_shop_repo" then
-        local job = exports["prp_manager"]:isPed("myjob")
+        local job = exports["mrp_manager"]:isPed("myjob")
         if job == "car_shop" then
             nearRepo = true
             AtRepo()
-            TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Repo Vehicle"))
+            TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Repo Vehicle"))
         end
     end
 end)
 
-RegisterNetEvent('prp-polyzone:exit')
-AddEventHandler('prp-polyzone:exit', function(name)
+RegisterNetEvent('mrp-polyzone:exit')
+AddEventHandler('mrp-polyzone:exit', function(name)
     if name == "veh_shop_repo" then
-        local job = exports["prp_manager"]:isPed("myjob")
+        local job = exports["mrp_manager"]:isPed("myjob")
         if job == "car_shop" then
             nearRepo = false
-            TriggerEvent('prp-textui:HideUI')
+            TriggerEvent('mrp-textui:HideUI')
         end
     end
 end)
@@ -42,7 +42,7 @@ function AtRepo()
             if vehicle ~= 0 then
                 local plate = GetVehicleNumberPlateText(vehicle)
                 if IsControlJustReleased(0, 38) then
-                    TriggerServerEvent("prp-vehicleshop:repo", plate)
+                    TriggerServerEvent("mrp-vehicleshop:repo", plate)
                 end
             end
         end

@@ -11,8 +11,8 @@ local degHealth = {
 
 RegisterNetEvent("mech:tools")
 AddEventHandler("mech:tools", function(args)
-    local shop = exports["prp_manager"]:isPed("myjob")
-    if exports["prp-inventory"]:hasEnoughOfItem(args[1],tonumber(args[2]),false) then
+    local shop = exports["mrp_manager"]:isPed("myjob")
+    if exports["mrp-inventory"]:hasEnoughOfItem(args[1],tonumber(args[2]),false) then
         TriggerServerEvent("mech:add:materials", args[1], tonumber(args[2]), shop)
     else
         TriggerEvent("DoLongHudText", "You don't have the materials")
@@ -22,12 +22,12 @@ end)
 
 RegisterNetEvent("mech:tools:cl")
 AddEventHandler("mech:tools:cl", function(materials, amount, deg, plate)
-    local shop = exports["prp_manager"]:isPed("myjob")
+    local shop = exports["mrp_manager"]:isPed("myjob")
     TriggerServerEvent("mech:remove:materials", materials, amount, deg, plate, shop)
 end)
 
 function repairVeh(args)
-    local job = exports["prp_manager"]:isPed("myjob")
+    local job = exports["mrp_manager"]:isPed("myjob")
     if job == 'tuner_shop' or job == 'auto_exotics' or job == 'harmony_autos' or job == 'hayes_autos' then 
         local degname = string.lower(args[1])
         local amount = tonumber(args[2])
@@ -100,7 +100,7 @@ function repairVeh(args)
             Wait(100)
             TaskPlayAnim(PlayerPedId(),"mp_car_bomb","car_bomb_mechanic",8.0, -8, -1, 49, 0, 0, 0, 0)
             FreezeEntityPosition(PlayerPedId(), true)
-            local finished = exports["prp-taskbar"]:taskBar(amount*1000,"Repairing")
+            local finished = exports["mrp-taskbar"]:taskBar(amount*1000,"Repairing")
             local coordA = GetEntityCoords(PlayerPedId(), 1)
             local coordB = GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 5.0, 0.0)
             local targetVehicle = getVehicleInDirection(coordA, coordB)
@@ -144,7 +144,7 @@ function getVehicleInDirection(coordFrom, coordTo)
 end
 
 RegisterCommand("repair", function(source, args)
-    local job = exports["prp_manager"]:isPed("myjob")
+    local job = exports["mrp_manager"]:isPed("myjob")
     if job == 'tuner_shop' or job == 'auto_exotics' or job == 'harmony_autos' or job == 'hayes_autos' then 
         if Tuner or auto_exotics or harmony_autos or hayes_autos then
             if args[1] and args[2] then
@@ -156,7 +156,7 @@ end)
 
 
 RegisterCommand("mechadd", function(source, args)
-    local job = exports["prp_manager"]:isPed("myjob")
+    local job = exports["mrp_manager"]:isPed("myjob")
     print(job, harmony_autos)
     if job == 'tuner_shop' or job == 'auto_exotics' or job == 'harmony_autos' or job == 'hayes_autos' then 
         if Tuner or auto_exotics or harmony_autos or hayes_autos then

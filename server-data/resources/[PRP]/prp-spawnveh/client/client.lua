@@ -3,7 +3,7 @@
 ----------------------
 
 RegisterCommand("extra", function(source, args, rawCommand)
-	if exports["prp_manager"]:isPed("myjob") == "police" then
+	if exports["mrp_manager"]:isPed("myjob") == "police" then
 		local ped = PlayerPedId()
 		local veh = GetVehiclePedIsIn(ped, false)
 		local extraID = tonumber(args[1])
@@ -48,7 +48,7 @@ RegisterCommand("extra", function(source, args, rawCommand)
 				end
 			end
 		end
-	elseif exports["prp_manager"]:isPed("myjob") == "ems" then
+	elseif exports["mrp_manager"]:isPed("myjob") == "ems" then
 		local ped = PlayerPedId()
 		local veh = GetVehiclePedIsIn(ped, false)
 		local extraID = tonumber(args[1])
@@ -98,16 +98,16 @@ RegisterCommand("extra", function(source, args, rawCommand)
 end, false)
   
 RegisterCommand('fix', function(source)
-	if exports["prp_manager"]:isPed("myjob") == "police" then
+	if exports["mrp_manager"]:isPed("myjob") == "police" then
 		policeFix()
-	elseif exports["prp_manager"]:isPed("myjob") == "ems" then
+	elseif exports["mrp_manager"]:isPed("myjob") == "ems" then
 		EMSFix()
 	end
 end,false)
 
 
 RegisterCommand('boat', function(source, args)
-	if exports["prp_manager"]:isPed("myjob") == "police" then
+	if exports["mrp_manager"]:isPed("myjob") == "police" then
       TriggerEvent('erp:spawnVehicle', 'predator')
 	else
 		TriggerEvent('DoLongHudText', 'You are not Police!', 1)
@@ -117,7 +117,7 @@ end)
 RegisterCommand('livery', function(source, args, raw)
 	local coords = GetEntityCoords(GetPlayerPed(-1))
 	local vehicle = GetVehiclePedIsIn(GetPlayerPed(-1))
-	local job = exports["prp_manager"]:isPed("myjob")
+	local job = exports["mrp_manager"]:isPed("myjob")
 	if job == 'police' or job == 'ems' and GetVehicleLiveryCount(vehicle) - 1 >= tonumber(args[1]) then
 		SetVehicleLivery(vehicle, tonumber(args[1]))
 		TriggerEvent('DoLongHudText', 'Livery Set', 1)
@@ -127,7 +127,7 @@ RegisterCommand('livery', function(source, args, raw)
   end)
 
 RegisterCommand("svlistuc", function(source, args, rawCommand)
-	if exports["prp_manager"]:isPed("myjob") == "police" then
+	if exports["mrp_manager"]:isPed("myjob") == "police" then
 		TriggerEvent('chatMessagess', 'Undercover Vehicles:', 2, " \n [14] Galivanter Baller (UC) \n [15] Bravado Banshee (UC) \n [16] Bravado Buffalo (UC) \n [17] Pfister Comet (UC) \n [18] Invetero Coquette (UC) \n [19] Albany Primo (UC) \n [20] Declasse Rancher (UC) \n [21] Albany Washington (UC) ")
 	end
 end)
@@ -191,7 +191,7 @@ end)
 
 RegisterNetEvent('PDSpawnVeh')
 AddEventHandler('PDSpawnVeh', function()
-	TriggerEvent('prp-context:sendMenu', {
+	TriggerEvent('mrp-context:sendMenu', {
         {
             id = 1,
             header = "Police Garage",
@@ -276,7 +276,7 @@ end)
 
 RegisterNetEvent('EMSSpawnVeh')
 AddEventHandler('EMSSpawnVeh', function()
-	TriggerEvent('prp-context:sendMenu', {
+	TriggerEvent('mrp-context:sendMenu', {
         {
             id = 1,
             header = "EMS Garage",
@@ -342,7 +342,7 @@ end)
 
 RegisterNetEvent('spawn:veh:pd')
 AddEventHandler('spawn:veh:pd', function(type)
-	if exports["prp-inventory"]:hasEnoughOfItem('pdkeyfob',1,true) then 
+	if exports["mrp-inventory"]:hasEnoughOfItem('pdkeyfob',1,true) then 
 	SpawnVehPD(type.vehicle)	
 else
 	TriggerEvent("DoLongHudText", "You do not have a Keyfob get one inside under the stairs!", 2)
@@ -613,12 +613,12 @@ function policeFix()
 			local veh = GetVehiclePedIsIn(ped, false)
 			if GetDistanceBetweenCoords(GetEntityCoords(ped), v[1], v[2], v[3], true) <= Config.Distance then
 				TriggerEvent('DoLongHudText', 'Your vehicle is being repaired please wait', 1)
-				local finished = exports["prp-taskbar"]:taskBar(5000, "Completing Task")
+				local finished = exports["mrp-taskbar"]:taskBar(5000, "Completing Task")
 				if finished == 100 then
 					TriggerEvent('DoLongHudText', 'Your vehicle has been repaired', 1)
 					SetVehicleFixed(veh)
 					SetVehicleDirtLevel(veh, 0.0)
-					exports["prp-hud"]:SetFuel(veh, 100)
+					exports["mrp-hud"]:SetFuel(veh, 100)
 				end
 			end
 		end
@@ -632,12 +632,12 @@ function EMSFix()
 			local veh = GetVehiclePedIsIn(ped, false)
 			if GetDistanceBetweenCoords(GetEntityCoords(ped), v[1], v[2], v[3], true) <= Config.Distance then
 				TriggerEvent('DoLongHudText', 'Your vehicle is being repaired please wait', 1)
-				local finished = exports["prp-taskbar"]:taskBar(5000, "Completing Task")
+				local finished = exports["mrp-taskbar"]:taskBar(5000, "Completing Task")
 				if finished == 100 then
 					TriggerEvent('DoLongHudText', 'Your vehicle has been repaired', 1)
 					SetVehicleFixed(veh)
 					SetVehicleDirtLevel(veh, 0.0)
-					exports["prp-hud"]:SetFuel(veh, 100)
+					exports["mrp-hud"]:SetFuel(veh, 100)
 				end
 			end
 		end
@@ -741,7 +741,7 @@ end)
 
 RegisterNetEvent('Vehicle:Rental')
 AddEventHandler('Vehicle:Rental', function()
-    TriggerEvent('prp-context:sendMenu', {
+    TriggerEvent('mrp-context:sendMenu', {
         {
             id = 1,
             header = "Rental Garage",

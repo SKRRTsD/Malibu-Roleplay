@@ -4,8 +4,8 @@ PRP._Scoreboard = {}
 PRP._Scoreboard.PlayersS = {}
 PRP._Scoreboard.RecentS = {}
 
-RegisterServerEvent('prp-scoreboard:AddPlayer')
-AddEventHandler("prp-scoreboard:AddPlayer", function()
+RegisterServerEvent('mrp-scoreboard:AddPlayer')
+AddEventHandler("mrp-scoreboard:AddPlayer", function()
 
     local identifiers, steamIdentifier = GetPlayerIdentifiers(source)
     for _, v in pairs(identifiers) do
@@ -20,7 +20,7 @@ AddEventHandler("prp-scoreboard:AddPlayer", function()
     local scomid = steamIdentifier:gsub("steam:", "")
     local data = { src = source, steamid = stid, comid = scomid, name = ply }
 
-    TriggerClientEvent("prp-scoreboard:AddPlayer", -1, data )
+    TriggerClientEvent("mrp-scoreboard:AddPlayer", -1, data )
     PRP.Scoreboard.AddAllPlayers()
 end)
 
@@ -42,7 +42,7 @@ function PRP.Scoreboard.AddAllPlayers(self)
         local scomid = steamIdentifier:gsub("steam:", "")
         local data = { src = tonumber(_PlayerId), steamid = stid, comid = scomid, name = ply }
 
-        TriggerClientEvent("prp-scoreboard:AddAllPlayers", source, data)
+        TriggerClientEvent("mrp-scoreboard:AddAllPlayers", source, data)
 
     end
 end
@@ -66,9 +66,9 @@ AddEventHandler("playerDropped", function()
     local plyid = source
     local data = { src = source, steamid = stid, comid = scomid, name = ply }
 
-    TriggerClientEvent("prp-scoreboard:RemovePlayer", -1, data )
+    TriggerClientEvent("mrp-scoreboard:RemovePlayer", -1, data )
     Wait(600000)
-    TriggerClientEvent("prp-scoreboard:RemoveRecent", -1, plyid)
+    TriggerClientEvent("mrp-scoreboard:RemoveRecent", -1, plyid)
 end)
 
 function HexIdToSteamId(hexId)

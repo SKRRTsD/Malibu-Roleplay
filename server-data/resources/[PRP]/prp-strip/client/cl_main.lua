@@ -1,8 +1,8 @@
 RegisterNetEvent("vanilla:register")
 AddEventHandler("vanilla:register", function(registerID)
-    local myJob = exports["prp_manager"]:isPed("myJob")
+    local myJob = exports["mrp_manager"]:isPed("myJob")
     if myJob == "vanilla_unicorn" then
-        local order = exports["prp-applications"]:KeyboardInput({
+        local order = exports["mrp-applications"]:KeyboardInput({
             header = "Create Receipt",
             rows = {
                 {
@@ -27,7 +27,7 @@ end)
 
 RegisterNetEvent("vanilla:make:drink")
 AddEventHandler("vanilla:make:drink", function()
-    local myJob = exports["prp_manager"]:isPed("myJob")
+    local myJob = exports["mrp_manager"]:isPed("myJob")
     if myJob == "vanilla_unicorn" then
         TriggerEvent("server-inventory-open", "1313", "Shop");
     else
@@ -47,6 +47,6 @@ end)
 
 RegisterNetEvent('vanilla:cash:in')
 AddEventHandler('vanilla:cash:in', function()
-    local cid = exports["prp_manager"]:isPed("cid")
+    local cid = exports["mrp_manager"]:isPed("cid")
     TriggerServerEvent("vanilla:update:pay", cid)
 end)

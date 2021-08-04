@@ -40,7 +40,7 @@ function playerTargetEnable()
                 for _, model in pairs(Models) do
                     if _ == GetEntityModel(entity) then
                         for k , v in ipairs(Models[_]["job"]) do 
-                            if v == "all" or v == exports["prp_manager"]:isPed("myJob") then
+                            if v == "all" or v == exports["mrp_manager"]:isPed("myJob") then
                                 if _ == GetEntityModel(entity) then
                                     if #(plyCoords - coords) <= Models[_]["distance"] then
 
@@ -79,7 +79,7 @@ function playerTargetEnable()
                         local distanceToBone = GetDistanceBetweenCoords(bonePos, plyCoords, 1)
                         if #(bonePos - coords) <= Bones[_]["distance"] then
                             for k , v in ipairs(Bones[_]["job"]) do
-                                if v == "all" or v == exports["prp_manager"]:isPed("myJob") then
+                                if v == "all" or v == exports["mrp_manager"]:isPed("myJob") then
                                     if #(plyCoords - coords) <= Bones[_]["distance"] then
                                         success = true
                                         newOptions = {}
@@ -118,7 +118,7 @@ function playerTargetEnable()
             for _, zone in pairs(Zones) do
                 if Zones[_]:isPointInside(coords) then
                     for k , v in ipairs(Zones[_]["targetoptions"]["job"]) do 
-                        if v == "all" or v == exports["prp_manager"]:isPed("myJob") then
+                        if v == "all" or v == exports["mrp_manager"]:isPed("myJob") then
                             if #(plyCoords - Zones[_].center) <= zone["targetoptions"]["distance"] then
 
                                 success = true

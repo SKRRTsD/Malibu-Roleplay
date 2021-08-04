@@ -142,16 +142,16 @@
 --     DrawRect(_x,_y+0.0125, 0.015+ factor, 0.03, 41, 11, 41, 68)
 -- end
 
--- RegisterNetEvent('prp-robbery:UseBankThermiteOne')
--- AddEventHandler('prp-robbery:UseBankThermiteOne', function(bankId, lockerId)
+-- RegisterNetEvent('mrp-robbery:UseBankThermiteOne')
+-- AddEventHandler('mrp-robbery:UseBankThermiteOne', function(bankId, lockerId)
 --     local ped = GetPlayerPed(-1)
 --     local pos = GetEntityCoords(ped)
 -- 	local dist = GetDistanceBetweenCoords(pos, Config.BigBanks["pacific"]["thermite"][1]["x"], Config.BigBanks["pacific"]["thermite"][1]["y"], Config.BigBanks["pacific"]["thermite"][1]["z"])
 -- 	if bankId == closestBank then
 --     if dist < 1.5 then
 -- 		if CheckPolice() >= Config.MinimumPacificPolice then
--- 			if exports['prp-inventory']:hasEnoughOfItem('thermite', 1) then
---                     if exports["prp-thermite"]:startGame(15,2,10,500) then
+-- 			if exports['mrp-inventory']:hasEnoughOfItem('thermite', 1) then
+--                     if exports["mrp-thermite"]:startGame(15,2,10,500) then
 -- 				    TriggerEvent('inventory:removeItem',"thermite", 1)
 
 --                     TriggerEvent("attachItem","minigameThermite")
@@ -169,13 +169,13 @@
 -- 					FreezeEntityPosition(ped, false)
 --                     ClearPedTasks(PlayerPedId())
                    
--- 					TriggerServerEvent("prp-doors:alterlockstate",79)
+-- 					TriggerServerEvent("mrp-doors:alterlockstate",79)
 --                     else
 --                         local plyCoords = GetEntityCoords(PlayerPedId())
 --                         TriggerEvent('DoLongHudText', "You notice fire, RUN!", 2)
 --                         Wait(2000)
 -- 						if math.random(1,100) > 85 then
---                             exports["prp-thermite"]:startFireAtLocation(plyCoords["x"],plyCoords["y"],plyCoords["z"]-0.3,10000)   
+--                             exports["mrp-thermite"]:startFireAtLocation(plyCoords["x"],plyCoords["y"],plyCoords["z"]-0.3,10000)   
 -- 						end
 --                     end		
 -- 				    TriggerEvent('inventory:removeItem',"thermite", 1)
@@ -190,15 +190,15 @@
 -- end)  
 
 
--- RegisterNetEvent('prp-robbery:UseBankThermiteTwo')
--- AddEventHandler('prp-robbery:UseBankThermiteTwo', function(bankId, lockerId)
+-- RegisterNetEvent('mrp-robbery:UseBankThermiteTwo')
+-- AddEventHandler('mrp-robbery:UseBankThermiteTwo', function(bankId, lockerId)
 --     local ped = GetPlayerPed(-1)
 --     local pos = GetEntityCoords(ped)
 -- 	local dist = GetDistanceBetweenCoords(pos, Config.BigBanks["pacific"]["thermite"][2]["x"], Config.BigBanks["pacific"]["thermite"][2]["y"], Config.BigBanks["pacific"]["thermite"][2]["z"])
 --     if dist < 1.5 then
 -- 		if CheckPolice() >= Config.MinimumPacificPolice then
--- 			if exports['prp-inventory']:hasEnoughOfItem('thermite', 1) then
---                 if exports["prp-thermite"]:startGame(15,2,10,500) then
+-- 			if exports['mrp-inventory']:hasEnoughOfItem('thermite', 1) then
+--                 if exports["mrp-thermite"]:startGame(15,2,10,500) then
 -- 				    TriggerEvent('inventory:removeItem',"thermite", 1)
 
 --                     TriggerEvent("attachItem","minigameThermite")
@@ -216,17 +216,17 @@
 -- 					FreezeEntityPosition(ped, false)
 --                     ClearPedTasks(PlayerPedId())
                     
--- 					TriggerServerEvent("prp-doors:alterlockstate",80)
+-- 					TriggerServerEvent("mrp-doors:alterlockstate",80)
 --                     else
 --                         local plyCoords = GetEntityCoords(PlayerPedId())
 --                         TriggerEvent('DoLongHudText', "You notice fire, RUN!", 2)
 --                         Wait(2000)
 -- 						if math.random(1,100) > 85 then
---                             exports["prp-thermite"]:startFireAtLocation(plyCoords["x"],plyCoords["y"],plyCoords["z"]-0.3,10000)   
+--                             exports["mrp-thermite"]:startFireAtLocation(plyCoords["x"],plyCoords["y"],plyCoords["z"]-0.3,10000)   
 -- 						end
 --                     end		
 -- 				    TriggerEvent('inventory:removeItem',"thermite", 1)
--- 					TriggerEvent("prp-state:stateSet",16,2200)
+-- 					TriggerEvent("mrp-state:stateSet",16,2200)
 --             else
 --                 TriggerEvent('DoLongHudText', "You dont have any thermite!", 2)
 -- 			end		
@@ -240,8 +240,8 @@
 --     isBusy = pBusy
 -- end)
 
--- RegisterNetEvent('prp-robbery:UseBankLockPick')
--- AddEventHandler('prp-robbery:UseBankLockPick', function()
+-- RegisterNetEvent('mrp-robbery:UseBankLockPick')
+-- AddEventHandler('mrp-robbery:UseBankLockPick', function()
 --     local ped = GetPlayerPed(-1)
 --     local pos = GetEntityCoords(ped)
 --     local dist = GetDistanceBetweenCoords(pos, Config.BigBanks["pacific"]["coords"][1]["x"], Config.BigBanks["pacific"]["coords"][1]["y"],Config.BigBanks["pacific"]["coords"][1]["z"])
@@ -250,17 +250,17 @@
 --         if not isBusy then
 --             if CheckPolice() >= Config.MinimumPacificPolice then
 --                 if not Config.BigBanks["pacific"]["isOpened"] then 
---                 if exports['prp-inventory']:hasEnoughOfItem('thermite', 1) then
+--                 if exports['mrp-inventory']:hasEnoughOfItem('thermite', 1) then
 --                     Wait(300)
 --                     TriggerEvent("animation:lockpickcar")
---                     local finished = exports["prp-lockpicking"]:lockpick(100,5,2,10)
+--                     local finished = exports["mrp-lockpicking"]:lockpick(100,5,2,10)
 --                     ClearPedTasks(PlayerPedId())
 --                       if finished == 100 then 
 --                           TriggerEvent("DoLongHudText","Success!", 1)
---                           TriggerServerEvent("prp-doors:alterlockstate",76)
+--                           TriggerServerEvent("mrp-doors:alterlockstate",76)
                          
 --                           TriggerEvent('inventory:removeItem', 'lockpick', 1)
---                           TriggerEvent("prp-state:stateSet",26,1200)
+--                           TriggerEvent("mrp-state:stateSet",26,1200)
 --                           TriggerEvent("evidence:bleeding")
                      
 --                       end
@@ -280,8 +280,8 @@
 --     end 
 -- end)
 
--- RegisterNetEvent('prp-robbery:UseBankCardA')
--- AddEventHandler('prp-robbery:UseBankCardA', function()
+-- RegisterNetEvent('mrp-robbery:UseBankCardA')
+-- AddEventHandler('mrp-robbery:UseBankCardA', function()
 --     local ped = GetPlayerPed(-1)
 --     local pos = GetEntityCoords(ped)
 --     local dist = GetDistanceBetweenCoords(pos, Config.BigBanks["pacific"]["coords"][2]["x"], Config.BigBanks["pacific"]["coords"][2]["y"],Config.BigBanks["pacific"]["coords"][2]["z"])
@@ -292,14 +292,14 @@
 --             if dist < 1.5 then
 --                 if CheckPolice() >= Config.MinimumPacificPolice then
 --                     if not Config.BigBanks["pacific"]["isOpened"] then
---                         if exports['prp-inventory']:hasEnoughOfItem('electronickit', 1) then
+--                         if exports['mrp-inventory']:hasEnoughOfItem('electronickit', 1) then
 --                             FreezeEntityPosition(ped, true)
---                             local card = exports["prp-taskbar"]:taskBar(9000,"Inserting Card")
+--                             local card = exports["mrp-taskbar"]:taskBar(9000,"Inserting Card")
 --                             FreezeEntityPosition(ped, false)
 --                             if card == 100 then
 --                                 FreezeEntityPosition(ped, true)
 --                                 Wait(400)
---                                 local hack = exports["prp-taskbar"]:taskBar(6000,"Hacking..")
+--                                 local hack = exports["mrp-taskbar"]:taskBar(6000,"Hacking..")
 --                                 FreezeEntityPosition(ped, false)
 --                                 Wait(300)
 --                                 TaskPlayAnim(PlayerPedId(), "cellphone@", "cellphone_text_read_base", 2.0, 1.0, -1, 49, 0, 0, 0, 0)
@@ -331,9 +331,9 @@
 --     if success then
 --         TriggerEvent('mhacking:hide')
 -- 		TriggerEvent("animation:cancel")
--- 		TriggerEvent('prp-dispatch:pacificrobbery', -1)
+-- 		TriggerEvent('mrp-dispatch:pacificrobbery', -1)
 -- 		TriggerEvent('DoLongHudText', "Success!", 1)
--- 		TriggerServerEvent("prp-doors:alterlockstate",78)
+-- 		TriggerServerEvent("mrp-doors:alterlockstate",78)
 --     else
 -- 		TriggerEvent('mhacking:hide')
 -- 		TriggerEvent("animation:cancel")
@@ -341,8 +341,8 @@
 -- 	end
 -- end
 
--- RegisterNetEvent('prp-robbery:UseBankCardB')
--- AddEventHandler('prp-robbery:UseBankCardB', function()
+-- RegisterNetEvent('mrp-robbery:UseBankCardB')
+-- AddEventHandler('mrp-robbery:UseBankCardB', function()
 --     local ped = GetPlayerPed(-1)
 --     local pos = GetEntityCoords(ped)
 --     local dist = GetDistanceBetweenCoords(pos, Config.BigBanks["pacific"]["coords"][3]["x"], Config.BigBanks["pacific"]["coords"][3]["y"],Config.BigBanks["pacific"]["coords"][3]["z"])
@@ -353,14 +353,14 @@
 -- 				if dist < 1.5 then
 --                 if CheckPolice() >= Config.MinimumPacificPolice then
 --                     if not Config.BigBanks["pacific"]["isOpened"] then 
--- 					if exports['prp-inventory']:hasEnoughOfItem('usbdevice', 1) then
+-- 					if exports['mrp-inventory']:hasEnoughOfItem('usbdevice', 1) then
 -- 					FreezeEntityPosition(ped, true)
--- 					    local card = exports["prp-taskbar"]:taskBar(9000,"Inserting Card")
+-- 					    local card = exports["mrp-taskbar"]:taskBar(9000,"Inserting Card")
 -- 						    FreezeEntityPosition(ped, false)
 -- 						    if card == 100 then
 -- 							    FreezeEntityPosition(ped, true)
 -- 						        Wait(400)
---                                 local hack = exports["prp-taskbar"]:taskBar(6000,"Hacking..")
+--                                 local hack = exports["mrp-taskbar"]:taskBar(6000,"Hacking..")
 -- 								FreezeEntityPosition(ped, false)
 -- 						    end	
 --                                 Wait(300)
@@ -378,7 +378,7 @@
 --                                     streetLabel = streetLabel .. " " .. street2
 --                                 end
 --                                 if Config.BigBanks["pacific"]["alarm"] then
---                                     TriggerEvent('prp-dispatch:pacificrobbery')
+--                                     TriggerEvent('mrp-dispatch:pacificrobbery')
 --                                 copsCalled = true
 --                             end
 --                         end
@@ -415,8 +415,8 @@
 -- end
 
 
--- RegisterNetEvent('prp-robbery:UseBankCardC')
--- AddEventHandler('prp-robbery:UseBankCardC', function()
+-- RegisterNetEvent('mrp-robbery:UseBankCardC')
+-- AddEventHandler('mrp-robbery:UseBankCardC', function()
 --     local ped = GetPlayerPed(-1)
 --     local pos = GetEntityCoords(ped)
 --     local dist = GetDistanceBetweenCoords(pos, Config.BigBanks["pacific"]["coords"][4]["x"], Config.BigBanks["pacific"]["coords"][4]["y"], Config.BigBanks["pacific"]["coords"][4]["z"])
@@ -427,14 +427,14 @@
 --                 if dist < 1.5 then
 --                     if CheckPolice() >= Config.MinimumPacificPolice then
 --                         if not Config.BigBanks["pacific"]["isOpened"] then 
--- 						if exports['prp-inventory']:hasEnoughOfItem('electronickit', 1) then
+-- 						if exports['mrp-inventory']:hasEnoughOfItem('electronickit', 1) then
 -- 						FreezeEntityPosition(ped, true)
--- 						    local card = exports["prp-taskbar"]:taskBar(9000,"Inserting Card")
+-- 						    local card = exports["mrp-taskbar"]:taskBar(9000,"Inserting Card")
 -- 							FreezeEntityPosition(ped, false)
 -- 						    if card == 100 then
 -- 							    TriggerEvent('DoLongHudText', "Please leave here !", 2)
 -- 						        Wait(400)
---                                 local hack = exports["prp-taskbar"]:taskBar(6000,"Hacking..")
+--                                 local hack = exports["mrp-taskbar"]:taskBar(6000,"Hacking..")
 -- 						    end	
 --                                 Wait(300)
 --         						TaskPlayAnim(PlayerPedId(), "cellphone@", "cellphone_text_read_base", 2.0, 1.0, -1, 49, 0, 0, 0, 0)
@@ -451,7 +451,7 @@
 --                                     streetLabel = streetLabel .. " " .. street2
 --                                 end
 --                                 if Config.BigBanks["pacific"]["alarm"] then
---                                    TriggerEvent('prp-dispatch:pacificrobbery')
+--                                    TriggerEvent('mrp-dispatch:pacificrobbery')
 --                                    copsCalled = true
 --                                 end
 --                             end
@@ -478,7 +478,7 @@
 --         TriggerEvent('mhacking:hide')
 -- 		TriggerEvent("animation:cancel")
 -- 		TriggerEvent('DoLongHudText', "Success!", 1)
---         TriggerServerEvent('prp-robbery:server:setBankState', "pacific", true)
+--         TriggerServerEvent('mrp-robbery:server:setBankState', "pacific", true)
 --     else
 -- 		TriggerEvent('mhacking:hide')
 -- 		TriggerEvent("animation:cancel")

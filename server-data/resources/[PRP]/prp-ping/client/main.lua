@@ -8,7 +8,7 @@ function TimeoutPingRequest()
             count = count + 1
             if count >= Config.Timeout and isPending then
                 TriggerEvent('DoLongHudText', 'Ping From ' .. pendingPing.name .. ' Timed Out', 1)
-                TriggerServerEvent('prp-ping:server:SendPingResult', pendingPing.id, 'timeout')
+                TriggerServerEvent('mrp-ping:server:SendPingResult', pendingPing.id, 'timeout')
                 pendingPing = nil
                 isPending = false
             end
@@ -50,15 +50,15 @@ function RemoveBlipDistance()
     end)
 end
 
-RegisterNetEvent('prp-ping:client:SendPing')
-AddEventHandler('prp-ping:client:SendPing', function(sender, senderId, pCoords)
+RegisterNetEvent('mrp-ping:client:SendPing')
+AddEventHandler('mrp-ping:client:SendPing', function(sender, senderId, pCoords)
     if pendingPing == nil then
         pendingPing = {}
         pendingPing.id = senderId
         pendingPing.name = sender
         pendingPing.pos = pCoords
 
-        TriggerServerEvent('prp-ping:server:SendPingResult', pendingPing.id, 'received')
+        TriggerServerEvent('mrp-ping:server:SendPingResult', pendingPing.id, 'received')
         TriggerEvent('DoLongHudText', pendingPing.name .. ' Sent You a Ping, Use /ping accept To Accept', 1)
         isPending = true
 
@@ -68,12 +68,12 @@ AddEventHandler('prp-ping:client:SendPing', function(sender, senderId, pCoords)
 
     else
         TriggerEvent('DoLongHudText', sender .. ' Attempted To Ping You', 1)
-        TriggerServerEvent('prp-ping:server:SendPingResult', senderId, 'unable')
+        TriggerServerEvent('mrp-ping:server:SendPingResult', senderId, 'unable')
     end
 end)
 
-RegisterNetEvent('prp-ping:client:AcceptPing')
-AddEventHandler('prp-ping:client:AcceptPing', function()
+RegisterNetEvent('mrp-ping:client:AcceptPing')
+AddEventHandler('mrp-ping:client:AcceptPing', function()
     if isPending then
         pendingPing.blip = AddBlipForCoord(pendingPing.pos.x, pendingPing.pos.y, pendingPing.pos.z)
         SetBlipSprite(pendingPing.blip, 280)
@@ -98,18 +98,18 @@ AddEventHandler('prp-ping:client:AcceptPing', function()
         end
 
         TriggerEvent('DoLongHudText', pendingPing.name .. '\'s Location Showing On Map', 1)
-        TriggerServerEvent('prp-ping:server:SendPingResult', pendingPing.id, 'accept')
+        TriggerServerEvent('mrp-ping:server:SendPingResult', pendingPing.id, 'accept')
         isPending = false
     else
         TriggerEvent('DoLongHudText', 'You Have No Pending Ping', 2)
     end
 end)
 
-RegisterNetEvent('prp-ping:client:RejectPing')
-AddEventHandler('prp-ping:client:RejectPing', function()
+RegisterNetEvent('mrp-ping:client:RejectPing')
+AddEventHandler('mrp-ping:client:RejectPing', function()
     if pendingPing ~= nil then
         TriggerEvent('DoLongHudText', 'Rejected Ping From ' .. pendingPing.name, 2)
-        TriggerServerEvent('prp-ping:server:SendPingResult', pendingPing.id, 'reject')
+        TriggerServerEvent('mrp-ping:server:SendPingResult', pendingPing.id, 'reject')
         pendingPing = nil
         isPending = false
     else
@@ -117,8 +117,8 @@ AddEventHandler('prp-ping:client:RejectPing', function()
     end
 end)
 
-RegisterNetEvent('prp-ping:client:RemovePing')
-AddEventHandler('prp-ping:client:RemovePing', function()
+RegisterNetEvent('mrp-ping:client:RemovePing')
+AddEventHandler('mrp-ping:client:RemovePing', function()
     if pendingPing ~= nil then
         RemoveBlip(pendingPing.blip)
         pendingPing = nil
@@ -129,5 +129,5 @@ AddEventHandler('prp-ping:client:RemovePing', function()
 end)
 
 RegisterCommand('ping', function(src, args, raw)
-    TriggerServerEvent("prp-ping:attempt",  GetEntityCoords(PlayerPedId()), args[1])
+    TriggerServerEvent("mrp-ping:attempt",  GetEntityCoords(PlayerPedId()), args[1])
 end)

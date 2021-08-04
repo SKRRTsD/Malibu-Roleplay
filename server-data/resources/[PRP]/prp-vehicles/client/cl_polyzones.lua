@@ -1,7 +1,7 @@
 Tuner, auto_exotics, harmony_autos, hayes_autos = false, false, false, false
 
 Citizen.CreateThread(function()
-	exports["prp-polyzone"]:AddBoxZone("tuner", vector3(933.31, -971.0, 39.54), 30, 15, {
+	exports["mrp-polyzone"]:AddBoxZone("tuner", vector3(933.31, -971.0, 39.54), 30, 15, {
         name="tuner",
         heading=275,
       --  debugPoly=true,
@@ -9,7 +9,7 @@ Citizen.CreateThread(function()
         maxZ=40.39
     })
 
-    exports["prp-polyzone"]:AddBoxZone("auto_exotics", vector3(542.17, -177.28, 54.49), 53.8, 25, {
+    exports["mrp-polyzone"]:AddBoxZone("auto_exotics", vector3(542.17, -177.28, 54.49), 53.8, 25, {
         name="auto_exotics",
         heading=189,
         --debugPoly=true,
@@ -17,7 +17,7 @@ Citizen.CreateThread(function()
         maxZ=56.29
     })
 
-    exports["prp-polyzone"]:AddBoxZone("harmony_autos", vector3(1178.51, 2640.06, 37.75), 13.8, 10, {
+    exports["mrp-polyzone"]:AddBoxZone("harmony_autos", vector3(1178.51, 2640.06, 37.75), 13.8, 10, {
         name="harmony_autos",
         heading=270,
         --debugPoly=true,
@@ -25,7 +25,7 @@ Citizen.CreateThread(function()
         maxZ=39.15
     })
 
-    exports["prp-polyzone"]:AddBoxZone("hayes_autos", vector3(-1419.51, -447.71, 35.91), 26.6, 10, {
+    exports["mrp-polyzone"]:AddBoxZone("hayes_autos", vector3(-1419.51, -447.71, 35.91), 26.6, 10, {
         name="hayes_autos",
         heading=302,
         --debugPoly=true,
@@ -35,9 +35,9 @@ Citizen.CreateThread(function()
 end)
 
 
-RegisterNetEvent('prp-polyzone:enter')
-AddEventHandler('prp-polyzone:enter', function(name)
-    local job = exports["prp_manager"]:isPed("myjob")
+RegisterNetEvent('mrp-polyzone:enter')
+AddEventHandler('mrp-polyzone:enter', function(name)
+    local job = exports["mrp_manager"]:isPed("myjob")
     if name == "tuner" then
         if job == "tuner_shop" then
             Tuner = true     
@@ -57,9 +57,9 @@ AddEventHandler('prp-polyzone:enter', function(name)
     end
 end)
 
-RegisterNetEvent('prp-polyzone:exit')
-AddEventHandler('prp-polyzone:exit', function(name)
-    local job = exports["prp_manager"]:isPed("myjob")
+RegisterNetEvent('mrp-polyzone:exit')
+AddEventHandler('mrp-polyzone:exit', function(name)
+    local job = exports["mrp_manager"]:isPed("myjob")
     if name == "tuner" then
         if job == "tuner_shop" then
             Tuner = false  

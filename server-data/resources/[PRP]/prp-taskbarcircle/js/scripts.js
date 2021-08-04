@@ -74,7 +74,7 @@ $(document).ready(function() {
       if (degrees >= new_degrees) {
         if (streak > 0) {
             closeMain();
-            $.post('http://prp-taskbarskill/taskCancel', JSON.stringify({
+            $.post('http://mrp-taskbarskill/taskCancel', JSON.stringify({
                 tasknum: curTask
             }));
             streak = 0;
@@ -92,7 +92,7 @@ $(document).ready(function() {
       streak++;
       if (streak > 2) {
           closeMain();
-          $.post('http://prp-taskbarskill/taskEnd', JSON.stringify({
+          $.post('http://mrp-taskbarskill/taskEnd', JSON.stringify({
               taskResult: percent
           }));
       } else {
@@ -115,7 +115,7 @@ $(document).ready(function() {
 
       if (item.closeFail === true) {
           closeMain();
-          $.post('http://prp-taskbarskill/taskCancel', JSON.stringify({
+          $.post('http://mrp-taskbarskill/taskCancel', JSON.stringify({
               tasknum: curTask
           }));
           streak = 0;
@@ -142,14 +142,14 @@ $(document).ready(function() {
             if( degrees < d_start ){
                 // console.log('Failed: Too soon!');
                 closeMain();
-                $.post('http://prp-taskbarskill/taskCancel', JSON.stringify({
+                $.post('http://mrp-taskbarskill/taskCancel', JSON.stringify({
                     tasknum: curTask
                 }));
                 wrong();
             }else if( degrees > d_end ){
                 // console.log('Failed: Too late!');
                 closeMain();
-                $.post('http://prp-taskbarskill/taskCancel', JSON.stringify({
+                $.post('http://mrp-taskbarskill/taskCancel', JSON.stringify({
                     tasknum: curTask
                 }));
                 wrong();
@@ -160,7 +160,7 @@ $(document).ready(function() {
         }else{
             // console.log('Failed: Pressed '+key_pressed+' instead of '+key_to_press);
             closeMain();
-            $.post('http://prp-taskbarskill/taskCancel', JSON.stringify({
+            $.post('http://mrp-taskbarskill/taskCancel', JSON.stringify({
                 tasknum: curTask
             }));
             wrong();

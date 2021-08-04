@@ -405,7 +405,7 @@ Citizen.CreateThread(
             {
                 options = {
                     {
-                        event = "prp-dumpster",
+                        event = "mrp-dumpster",
                         icon = "fas fa-trash-alt",
                         label = "Dumpster Dive"
                     }
@@ -424,7 +424,7 @@ Citizen.CreateThread(
             {
                 options = {
                     {
-                        event = "prp-dumpster2",
+                        event = "mrp-dumpster2",
                         icon = "fas fa-trash-alt",
                         label = "Dumpster Dive"
                     }
@@ -443,7 +443,7 @@ Citizen.CreateThread(
             {
                 options = {
                     {
-                        event = "prp-dumpster3",
+                        event = "mrp-dumpster3",
                         icon = "fas fa-trash-alt",
                         label = "Dumpster Dive"
                     }
@@ -463,7 +463,7 @@ Citizen.CreateThread(
                         {
                             options = {
                                 {
-                                    event = "prp-boxes",
+                                    event = "mrp-boxes",
                                     icon = "fas fa-box-open",
                                     label = "Search Box"
                                 }
@@ -482,7 +482,7 @@ Citizen.CreateThread(
                         {
                             options = {
                                 {
-                                    event = "prp-boxes2",
+                                    event = "mrp-boxes2",
                                     icon = "fas fa-box-open",
                                     label = "Search Box"
                                 }
@@ -503,7 +503,7 @@ Citizen.CreateThread(
                         {
                             options = {
                                 {
-                                    event = "prp-boxes3",
+                                    event = "mrp-boxes3",
                                     icon = "fas fa-box-open",
                                     label = "Search Box"
                                 }
@@ -1446,7 +1446,7 @@ Citizen.CreateThread(
         }, {
             options = {
                 {
-                    event = "prp-burgershot:startprocess3",
+                    event = "mrp-burgershot:startprocess3",
                     icon = "fas fa-hamburger",
                     label = "Cook Burger",
                 },
@@ -1464,7 +1464,7 @@ Citizen.CreateThread(
         }, {
             options = {
                 {
-                    event = "prp-burgershot:startprocess3",
+                    event = "mrp-burgershot:startprocess3",
                     icon = "fas fa-hamburger",
                     label = "Cook Burger",
                 },
@@ -1482,7 +1482,7 @@ Citizen.CreateThread(
         }, {
             options = {
                 {
-                    event = "prp-burgershot:startfryer",
+                    event = "mrp-burgershot:startfryer",
                     icon = "fas fa-utensils",
                     label = "Make Fries",
                 },
@@ -1500,13 +1500,13 @@ Citizen.CreateThread(
         }, {
             options = {
                 {
-                    event = "prp-burgershot:makeshake",
+                    event = "mrp-burgershot:makeshake",
                     icon = "fas fa-hand-holding",
                     label = "Make a Nice Cold Mike Shake",
 
                 },
                 {
-                    event = "prp-burgershot:getcola",
+                    event = "mrp-burgershot:getcola",
                     icon = "fas fa-hand-holding",
                     label = "Make a Cup of Coca Cola",
                 },
@@ -1524,13 +1524,13 @@ Citizen.CreateThread(
         }, {
             options = {
                 {
-                    event = "prp-burgershot:makeshake",
+                    event = "mrp-burgershot:makeshake",
                     icon = "fas fa-hand-holding",
                     label = "Make a Nice Cold Mike Shake",
 
                 },
                 {
-                    event = "prp-burgershot:getcola",
+                    event = "mrp-burgershot:getcola",
                     icon = "fas fa-hand-holding",
                     label = "Make a Cup of Coca Cola",
                 },
@@ -1859,7 +1859,7 @@ Citizen.CreateThread(
         }, {
             options = {
                 {
-                    event = "prp-weedstore:startpicking",
+                    event = "mrp-weedstore:startpicking",
                     icon = "fas fa-hand-holding-usd",
                     label = "Harvest Cherry",
                 },
@@ -1877,7 +1877,7 @@ Citizen.CreateThread(
         }, {
             options = {
                 {
-                    event = "prp-weedstore:startpacking",
+                    event = "mrp-weedstore:startpacking",
                     icon = "fas fa-box-open",
                     label = "Pack it!",
                 },
@@ -4253,7 +4253,7 @@ Citizen.CreateThread(
             {
                 options = {
                     {
-                        event = "prp-gas:checkpump",
+                        event = "mrp-gas:checkpump",
                         icon = "fas fa-gas-pump",
                         label = "Fuel Up Your Car!"
                     }
@@ -4483,12 +4483,12 @@ Citizen.CreateThread(
     }, {
         options = {
             {
-                event = "prp-hunting:start",
+                event = "mrp-hunting:start",
                 icon = "fas fa-horse-head",
                 label = "Start Hunting $500"
             },
             {
-                event = "prp-hunting:stop",
+                event = "mrp-hunting:stop",
                 icon = "fas fa-scroll",
                 label = "Return Hunting Gear"
             },
@@ -4646,7 +4646,7 @@ Citizen.CreateThread(
             }, {
                 options = {
                     {
-                        event = "prp-garbage:starting",
+                        event = "mrp-garbage:starting",
                         icon = "fas fa-circle",
                         label = "Clock in"
                     },

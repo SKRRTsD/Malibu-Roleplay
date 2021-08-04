@@ -10,21 +10,21 @@ local disable = false
 
 
 --- CODE
-RegisterNetEvent('prp-weathersync:spawned')
-AddEventHandler('prp-weathersync:spawned', function()
+RegisterNetEvent('mrp-weathersync:spawned')
+AddEventHandler('mrp-weathersync:spawned', function()
 	disable = false
-    TriggerServerEvent('prp-weathersync:server:RequestStateSync')
+    TriggerServerEvent('mrp-weathersync:server:RequestStateSync')
 end)
 
-RegisterNetEvent('prp-weathersync:client:EnableSync')
-AddEventHandler('prp-weathersync:client:EnableSync', function()
+RegisterNetEvent('mrp-weathersync:client:EnableSync')
+AddEventHandler('mrp-weathersync:client:EnableSync', function()
 	disable = false
-    TriggerServerEvent('prp-weathersync:server:RequestStateSync')
+    TriggerServerEvent('mrp-weathersync:server:RequestStateSync')
 	SetRainLevel(0.0)
 end)
 
-RegisterNetEvent('prp-weathersync:client:DisableSync')
-AddEventHandler('prp-weathersync:client:DisableSync', function()
+RegisterNetEvent('mrp-weathersync:client:DisableSync')
+AddEventHandler('mrp-weathersync:client:DisableSync', function()
 	disable = true
 
 	Citizen.CreateThread(function() 
@@ -39,15 +39,15 @@ AddEventHandler('prp-weathersync:client:DisableSync', function()
 	end)
 end)
 
-RegisterNetEvent('prp-weathersync:client:SyncTime')
-AddEventHandler('prp-weathersync:client:SyncTime', function(base, offset, freeze)
+RegisterNetEvent('mrp-weathersync:client:SyncTime')
+AddEventHandler('mrp-weathersync:client:SyncTime', function(base, offset, freeze)
     freezeTime = freeze
     timeOffset = offset
     baseTime = base
 end)
 
-RegisterNetEvent('prp-weathersync:client:SyncWeather')
-AddEventHandler('prp-weathersync:client:SyncWeather', function(NewWeather, newblackout)
+RegisterNetEvent('mrp-weathersync:client:SyncWeather')
+AddEventHandler('mrp-weathersync:client:SyncWeather', function(NewWeather, newblackout)
     CurrentWeather = NewWeather
     blackout = newblackout
 end)

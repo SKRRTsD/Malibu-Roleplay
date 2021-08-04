@@ -6,7 +6,7 @@ function removePlayerFromCall(source, callChannel)
 
     callData[callChannel] = callData[callChannel] or {}
     for player, _ in pairs(callData[callChannel]) do
-        TriggerClientEvent('prp-voice:removePlayerFromCall', player, source)
+        TriggerClientEvent('mrp-voice:removePlayerFromCall', player, source)
     end
     callData[callChannel][source] = nil
     voiceData[source] = voiceData[source] or defaultTable(source)
@@ -24,13 +24,13 @@ function addPlayerToCall(source, callChannel)
     for player, _ in pairs(callData[callChannel]) do
         -- don't need to send to the source because they're about to get sync'd!
         if player ~= source then
-            TriggerClientEvent('prp-voice:addPlayerToCall', player, source)
+            TriggerClientEvent('mrp-voice:addPlayerToCall', player, source)
         end
     end
     callData[callChannel][source] = false
     voiceData[source] = voiceData[source] or defaultTable(source)
     voiceData[source].call = callChannel
-    TriggerClientEvent('prp-voice:syncCallData', source, callData[callChannel])
+    TriggerClientEvent('mrp-voice:syncCallData', source, callData[callChannel])
 end
 
 --- set the players call channel
@@ -41,7 +41,7 @@ function setPlayerCall(source, callChannel)
     if GetInvokingResource() then
         -- got set in a export, need to update the client to tell them that their radio
         -- changed
-        TriggerClientEvent('prp-voice:clSetPlayerCall', source, callChannel)
+        TriggerClientEvent('mrp-voice:clSetPlayerCall', source, callChannel)
     end
     voiceData[source] = voiceData[source] or defaultTable(source)
     local plyVoice = voiceData[source]
@@ -58,7 +58,7 @@ function setPlayerCall(source, callChannel)
 end
 exports('setPlayerCall', setPlayerCall)
 
-RegisterNetEvent('prp-voice:setPlayerCall', function(callChannel)
+RegisterNetEvent('mrp-voice:setPlayerCall', function(callChannel)
     setPlayerCall(source, callChannel)
 end)
 
@@ -73,11 +73,11 @@ function setTalkingOnCall(talking)
         for player, _ in pairs(callTbl) do
             if player ~= source then
                 logger.verbose('[call] Sending event to %s to tell them that %s is talking', player, source)
-                TriggerClientEvent('prp-voice:setTalkingOnCall', player, source, talking)
+                TriggerClientEvent('mrp-voice:setTalkingOnCall', player, source, talking)
             end
         end
     else
         logger.info('[phone] %s tried to talk in call %s, but it doesnt exist.', source, plyVoice.call)
     end
 end
-RegisterNetEvent('prp-voice:setTalkingOnCall', setTalkingOnCall)
+RegisterNetEvent('mrp-voice:setTalkingOnCall', setTalkingOnCall)

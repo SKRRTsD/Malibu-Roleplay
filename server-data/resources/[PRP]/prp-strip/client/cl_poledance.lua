@@ -6,7 +6,7 @@ local Player, PlayerCoords, NearbyPlayers
 
 
 Citizen.CreateThread(function()
-    local insideStageArea = exports["prp-polyzone"]:AddPolyZone("vanilla_unicorn_stage", {
+    local insideStageArea = exports["mrp-polyzone"]:AddPolyZone("vanilla_unicorn_stage", {
       vector2(110.1001739502, -1290.4718017578),
       vector2(109.52603912354, -1290.9528808594),
       vector2(106.32556915283, -1292.7944335938),
@@ -48,12 +48,12 @@ Citizen.CreateThread(function()
     end
 end)
 
-AddEventHandler("prp-polyzone:enter", function(zone)
+AddEventHandler("mrp-polyzone:enter", function(zone)
   if zone ~= "vanilla_unicorn_stage" then return end
   IsOnStage = true
 end)
 
-AddEventHandler("prp-polyzone:exit", function(zone)
+AddEventHandler("mrp-polyzone:exit", function(zone)
   if zone ~= "vanilla_unicorn_stage" then return end
   IsOnStage = false
 end)

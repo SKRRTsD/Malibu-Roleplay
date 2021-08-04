@@ -11,7 +11,7 @@ colors = {
     ["purple"] = {128, 0, 128},
 }
 
-RegisterNetEvent('prp-scenes:send', function(sent)
+RegisterNetEvent('mrp-scenes:send', function(sent)
     scenes = sent
 end)
 
@@ -41,7 +41,7 @@ RegisterCommand('-scenecreate', function()
     if placement[1] == 0.0 or placement == nil or not placement then return end
     coords = placement
 
-    local scene = exports["prp-applications"]:KeyboardInput({
+    local scene = exports["mrp-applications"]:KeyboardInput({
         header = "Add Scene",
         rows = {
             {
@@ -72,7 +72,7 @@ RegisterCommand('-scenecreate', function()
     if color == nil or string.lower(color) == nil or colors[string.lower(color)] == nil then color = "white" end
     local color = colors[string.lower(color)]
 
-    TriggerServerEvent('prp-scenes:add', coords, message, color, distance)
+    TriggerServerEvent('mrp-scenes:add', coords, message, color, distance)
 end)
 
 RegisterCommand('+scenehide', function()
@@ -88,7 +88,7 @@ end)
 RegisterCommand('+scenedelete', function()
     local scene = ClosestSceneLooking()
     if scene ~= nil then
-        TriggerServerEvent('prp-scenes:delete', scene)
+        TriggerServerEvent('mrp-scenes:delete', scene)
     end
 end)
 
@@ -119,7 +119,7 @@ Citizen.CreateThread(function()
     end
 end)
 
-TriggerServerEvent('prp-scenes:fetch')
+TriggerServerEvent('mrp-scenes:fetch')
 RegisterKeyMapping('+scenecreate', '(scenes): Place Scene', "NONE", "NONE")
 RegisterKeyMapping('+scenehide', '(scenes): Toggle Scenes', "NONE", "NONE")
 RegisterKeyMapping('+scenedelete', '(scenes): Delete Scene', "NONE", "NONE")

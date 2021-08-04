@@ -524,8 +524,8 @@ AddEventHandler("commission2", function(newAmount)
 	end
 end)
 
-RegisterNetEvent("prp-sunriseshop:returnTable")
-AddEventHandler("prp-sunriseshop:returnTable", function(newTable)
+RegisterNetEvent("mrp-sunriseshop:returnTable")
+AddEventHandler("mrp-sunriseshop:returnTable", function(newTable)
 
 	carTable = newTable
 	DespawnSaleVehicles()
@@ -950,8 +950,8 @@ AddEventHandler("sunrise:carshop:failedpurchase", function()
 end)
 
 
-RegisterNetEvent("prp-sunriseshop:setPlate")
-AddEventHandler("prp-sunriseshop:setPlate", function(vehicle, plate)
+RegisterNetEvent("mrp-sunriseshop:setPlate")
+AddEventHandler("mrp-sunriseshop:setPlate", function(vehicle, plate)
 	SetVehicleNumberPlateText(vehicle, plate)
 	Citizen.Wait(1000)
 	TriggerEvent("keys:addNew", vehicle, plate)
@@ -1416,12 +1416,12 @@ AddEventHandler('sunrise:vehshop:spawnVehicle', function(v)
 		SetModelAsNoLongerNeeded(car)
 		TaskWarpPedIntoVehicle(playerPed, veh, -1)
 		SetEntityInvincible(veh, true)
-		TriggerEvent('prp-sunriseshop:setPlate', veh, plate)
+		TriggerEvent('mrp-sunriseshop:setPlate', veh, plate)
 	end
 end)
 
-RegisterNetEvent("prp-sunriseshop:update:plate")
-AddEventHandler("prp-sunriseshop:update:plate", function(plate)
+RegisterNetEvent("mrp-sunriseshop:update:plate")
+AddEventHandler("mrp-sunriseshop:update:plate", function(plate)
 	local veh = GetVehiclePedIsUsing(PlayerPedId())
 	SetVehicleNumberPlateText(veh, plate)
 	local NPlate = GetVehicleNumberPlateText(veh)
@@ -1486,19 +1486,19 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(500)
         if insideVehShop and isExportReady then
-            rank = exports["prp_manager"]:GroupRank("sunrise_shop")
+            rank = exports["mrp_manager"]:GroupRank("sunrise_shop")
             Citizen.Wait(10000)
         end
     end
 end)
 
-AddEventHandler("prp-core:exportsReady", function()
+AddEventHandler("mrp-core:exportsReady", function()
 	Wait(1)
 	isExportReady = true
 end)
 
-RegisterNetEvent("prp-sunriseshop:repo:success")
-AddEventHandler("prp-sunriseshop:repo:success", function()
+RegisterNetEvent("mrp-sunriseshop:repo:success")
+AddEventHandler("mrp-sunriseshop:repo:success", function()
 	local veh = GetVehiclePedIsIn(PlayerPedId())
 	if veh ~= 0 then
 		Citizen.InvokeNative(0xEA386986E786A54F, Citizen.PointerValueIntInitialized(veh))
@@ -1509,7 +1509,7 @@ end)
 
 RegisterNetEvent("sunrise:search:list:repo")
 AddEventHandler("sunrise:search:list:repo", function()
-	local valid = exports["prp-applications"]:KeyboardInput({
+	local valid = exports["mrp-applications"]:KeyboardInput({
 		header = "Search Repo List",
 		rows = {
 			{
@@ -1519,6 +1519,6 @@ AddEventHandler("sunrise:search:list:repo", function()
 		}
 	})
 	if valid then
-		TriggerServerEvent("prp-sunriseshop:checkrepo", valid[1].input)
+		TriggerServerEvent("mrp-sunriseshop:checkrepo", valid[1].input)
 	end
 end)

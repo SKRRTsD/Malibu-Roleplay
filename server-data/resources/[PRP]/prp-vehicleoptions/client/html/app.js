@@ -114,7 +114,7 @@ $(function () {
 
     $('.door').on('click', function () {
         var doorIndex = $(this).attr('value');
-        $.post('http://prp-vehicleoptions/openDoor', JSON.stringify({
+        $.post('http://mrp-vehicleoptions/openDoor', JSON.stringify({
             doorIndex: doorIndex
         })
         );
@@ -122,38 +122,38 @@ $(function () {
 
     $('.seat').on('click', function () {
         var seatIndex = $(this).attr('value');
-        $.post('http://prp-vehicleoptions/switchSeat', JSON.stringify({
+        $.post('http://mrp-vehicleoptions/switchSeat', JSON.stringify({
             seatIndex: seatIndex
         })
         );
     });
 
     $('.close').on('click', function () {
-        $.post('http://prp-vehicleoptions/escape', JSON.stringify({})
+        $.post('http://mrp-vehicleoptions/escape', JSON.stringify({})
         );
     });
 
     $('.alldoor').on('click', function () {
         if (frontPanel === true) {
-            $.post('http://prp-vehicleoptions/togglealldoor', JSON.stringify({}));
+            $.post('http://mrp-vehicleoptions/togglealldoor', JSON.stringify({}));
         }
     });
 
     $('.lockdoors').on('click', function () {
         if (frontPanel === true) {
-            $.post('http://prp-vehicleoptions/lockdoors', JSON.stringify({}));
+            $.post('http://mrp-vehicleoptions/lockdoors', JSON.stringify({}));
         }
     });
 
     $('.roof').on('click', function () {
         if (frontPanel === true) {
-            $.post('http://prp-vehicleoptions/convertroof', JSON.stringify({}));
+            $.post('http://mrp-vehicleoptions/convertroof', JSON.stringify({}));
         }
     });
 
     $('.window').on('click', function () {
         var windowIndex = $(this).attr('value');
-        $.post('http://prp-vehicleoptions/togglewindow', JSON.stringify({
+        $.post('http://mrp-vehicleoptions/togglewindow', JSON.stringify({
             windowIndex: windowIndex
         })
         );
@@ -161,13 +161,13 @@ $(function () {
 
     $('.engine').on('click', function () {
         if (frontPanel === true) {
-            $.post('http://prp-vehicleoptions/toggleengine', JSON.stringify({}));
+            $.post('http://mrp-vehicleoptions/toggleengine', JSON.stringify({}));
         }
     });
 
     $('.power-key').on('click', function () {
         if (frontPanel === true) {
-            $.post('http://prp-vehicleoptions/givekeys', JSON.stringify({}));
+            $.post('http://mrp-vehicleoptions/givekeys', JSON.stringify({}));
         }
     });
 
@@ -177,7 +177,7 @@ $(function () {
                 data.which == 90) ||
                 data.which == 27
             ) {
-                $.post('http://prp-vehicleoptions/escape', JSON.stringify({}));
+                $.post('http://mrp-vehicleoptions/escape', JSON.stringify({}));
             }
         }
     };

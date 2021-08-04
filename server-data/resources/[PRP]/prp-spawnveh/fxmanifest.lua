@@ -7,5 +7,5 @@ server_script "server/main.lua"
 client_scripts {
    'config.lua',
    'client/client.lua',
-   "@prp-errorlog/client/cl_errorlog.lua"
+   "@mrp-errorlog/client/cl_errorlog.lua"
 }

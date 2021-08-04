@@ -42,7 +42,7 @@ AddEventHandler('attachPropPerm', function(attachModelSent,boneNumberSent,x,y,z,
 		Citizen.Wait(100)
 	end
 	attachedPropPerm = CreateObject(attachModel, 1.0, 1.0, 1.0, 1, 1, 0)
-	exports["prp_manager"]:GlobalObject(attachedPropPerm)
+	exports["mrp_manager"]:GlobalObject(attachedPropPerm)
 
 	AttachEntityToEntity(attachedPropPerm, PlayerPedId(), bone, x, y, z, xR, yR, zR, 1, 1, 0, 0, 2, 1)
 
@@ -138,7 +138,7 @@ AddEventHandler('attachProp', function(attachModelSent,boneNumberSent,x,y,z,xR,y
 		Citizen.Wait(100)
 	end
 	attachedProp = CreateObject(attachModel, 1.0, 1.0, 1.0, 1, 1, 0)
-	exports["prp_manager"]:GlobalObject(attachedProp)
+	exports["mrp_manager"]:GlobalObject(attachedProp)
 	SetModelAsNoLongerNeeded(attachModel)
 	AttachEntityToEntity(attachedProp, PlayerPedId(), bone, x, y, z, xR, yR, zR, 1, 1, 0, 0, 2, 1)
 end)
@@ -170,7 +170,7 @@ AddEventHandler('attachPropPhone', function(attachModelSent,boneNumberSent,x,y,z
 		Citizen.Wait(100)
 	end
 	attachedPropPhone = CreateObject(attachModelPhone, 1.0, 1.0, 1.0, 1, 1, 0)
-	exports["prp_manager"]:GlobalObject(attachedPropPhone)
+	exports["mrp_manager"]:GlobalObject(attachedPropPhone)
 	AttachEntityToEntity(attachedPropPhone, PlayerPedId(), bone, x, y, z, xR, yR, zR, 1, 0, 0, 0, 2, 1)
 end)
 
@@ -231,7 +231,7 @@ AddEventHandler('attachProp69', function(attachModelSent,boneNumberSent,x,y,z,xR
 		Citizen.Wait(100)
 	end
 	attachedProp69 = CreateObject(attachModel69, 1.0, 1.0, 1.0, 1, 1, 0)
-	exports["prp_manager"]:GlobalObject(attachedProp69)
+	exports["mrp_manager"]:GlobalObject(attachedProp69)
 	AttachEntityToEntity(attachedProp69, PlayerPedId(), bone, x, y, z, xR, yR, zR, 1, 0, 0, 0, 2, 1)
 end)
 

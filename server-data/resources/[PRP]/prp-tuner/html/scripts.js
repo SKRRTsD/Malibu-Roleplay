@@ -31,7 +31,7 @@ $(document).ready(function(){
 
   $(".btntuneSystem").click(function(){
     console.log("h345elloooo")
-      $.post('http://prp-tuner/tuneSystem', JSON.stringify({ boost: $("#boost").val(),fuel: $("#fuel").val(),gears: $("#gears").val(),braking: $("#braking").val(),drive: $("#drive").val()  }));
+      $.post('http://mrp-tuner/tuneSystem', JSON.stringify({ boost: $("#boost").val(),fuel: $("#fuel").val(),gears: $("#gears").val(),braking: $("#braking").val(),drive: $("#drive").val()  }));
   });
 
 
@@ -81,7 +81,7 @@ $(document).ready(function(){
   // On 'Esc' call close method
   document.onkeyup = function (data) {
     if ( data.which == 27 ) {
-      $.post('http://prp-tuner/close', JSON.stringify({}));
+      $.post('http://mrp-tuner/close', JSON.stringify({}));
     }
   };
 });

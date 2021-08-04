@@ -156,7 +156,7 @@ function preventVehicleExit()
         local options = {1000,2000,3000}
         disableControl = true
         disableTurning()
-        local finished = exports["prp-taskbar"]:taskBar(options[math.random(1,3)],"Taking off Harness",true)
+        local finished = exports["mrp-taskbar"]:taskBar(options[math.random(1,3)],"Taking off Harness",true)
         if finished == 100 then
             harness = false
             TriggerEvent("harness", false, harnessDurability)
@@ -374,9 +374,9 @@ function toggleHarness()
     disableTurning()
     local finished = 0
     if harness then
-        finished = exports["prp-taskbar"]:taskBar(5000,"Taking off Harness",true)
+        finished = exports["mrp-taskbar"]:taskBar(5000,"Taking off Harness",true)
     else
-        finished = exports["prp-taskbar"]:taskBar(5000,"Putting on Harness",true)
+        finished = exports["mrp-taskbar"]:taskBar(5000,"Putting on Harness",true)
     end
     if (finished == 100) then
         if playerPed == driverPed then

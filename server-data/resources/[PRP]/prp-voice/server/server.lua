@@ -99,7 +99,7 @@ RegisterCommand('mute', function(source, args)
 	local mutePly = tonumber(args[1])
 	if mutePly then
 		if voiceData[mutePly] then
-			TriggerClientEvent('prp-voice:toggleMute', mutePly)
+			TriggerClientEvent('mrp-voice:toggleMute', mutePly)
 		end
 	end
 end, true)

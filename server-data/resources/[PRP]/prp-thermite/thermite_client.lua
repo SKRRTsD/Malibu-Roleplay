@@ -73,7 +73,7 @@ function startGame(dropAmount,letter,speed,inter)
   currentlyInGame = true
   while currentlyInGame do
     Wait(400)
-    if exports["prp_manager"]:isPed("dead") then 
+    if exports["mrp_manager"]:isPed("dead") then 
       closeGui()
     end 
   end

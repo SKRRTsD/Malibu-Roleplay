@@ -106,7 +106,7 @@ end)
 
 RegisterNetEvent('weedpassupdate')
 AddEventHandler('weedpassupdate', function()
-    local gangNum = exports["prp_manager"]:isPed("gang")
+    local gangNum = exports["mrp_manager"]:isPed("gang")
     if gangNum == 4 then
         TriggerServerEvent("updatePasses")
     end
@@ -115,7 +115,7 @@ end)
 
 
 function hasDecryptGod()
-    if exports["prp-inventory"]:hasEnoughOfItem("decrypterenzo",1,false,false) then
+    if exports["mrp-inventory"]:hasEnoughOfItem("decrypterenzo",1,false,false) then
       return true
     else
       return false
@@ -251,11 +251,11 @@ end)
 -- 9 = Money Bag, 10 = Money Brick
 --weed,cocaine,guns,launder,stolengoods = getQuantitys()
 function getQuantitys()
-    local weed = exports["prp-inventory"]:getQuantity("weedoz")
-    local cocaine = exports["prp-inventory"]:getQuantity("coke5g")
-    local guns = exports["prp-inventory"]:getQuantity("riflebody")
-    local launder = exports["prp-inventory"]:getQuantity("inkset")
-    local stolengoods = exports["prp-inventory"]:getQuantity("valuablegoods")
+    local weed = exports["mrp-inventory"]:getQuantity("weedoz")
+    local cocaine = exports["mrp-inventory"]:getQuantity("coke5g")
+    local guns = exports["mrp-inventory"]:getQuantity("riflebody")
+    local launder = exports["mrp-inventory"]:getQuantity("inkset")
+    local stolengoods = exports["mrp-inventory"]:getQuantity("valuablegoods")
     return weed,cocaine,guns,launder,stolengoods
 end
 
@@ -360,7 +360,7 @@ local secondaryjobList = {
   {name="Money Distributor", id="launderh"},
 }
 function hasEncryption()
-    if (exports["prp-inventory"]:hasEnoughOfItem("decryptersess",1,false) or exports["prp-inventory"]:hasEnoughOfItem("decrypterfv2",1,false)) and not exports["prp_manager"]:isPed("disabled") then
+    if (exports["mrp-inventory"]:hasEnoughOfItem("decryptersess",1,false) or exports["mrp-inventory"]:hasEnoughOfItem("decrypterfv2",1,false)) and not exports["mrp_manager"]:isPed("disabled") then
       return true
     else
       return false
@@ -368,7 +368,7 @@ function hasEncryption()
 end
 
 function hasDevice()
-    if exports["prp-inventory"]:hasEnoughOfItem("mk2usbdevice",1,false) and not exports["prp_manager"]:isPed("disabled") then
+    if exports["mrp-inventory"]:hasEnoughOfItem("mk2usbdevice",1,false) and not exports["mrp_manager"]:isPed("disabled") then
       return true
     else
       return false
@@ -376,7 +376,7 @@ function hasDevice()
 end
 
 function hasPhone()
-    if exports["prp-inventory"]:hasEnoughOfItem("mobilephone",1,false) and not exports["prp_manager"]:isPed("disabled") then
+    if exports["mrp-inventory"]:hasEnoughOfItem("mobilephone",1,false) and not exports["mrp_manager"]:isPed("disabled") then
       return true
     else
       return false
@@ -822,7 +822,7 @@ function SearchPockets(ai)
             if IsControlJustReleased(1,Controlkey["generalUse"][1]) then
                 searching = true
                 TriggerEvent("animation:PlayAnimation","search")
-                local finished = exports["prp-taskbar"]:taskBar(25000,"Searching Thug")
+                local finished = exports["mrp-taskbar"]:taskBar(25000,"Searching Thug")
                 if finished == 100 then
                     DropItemPed(ai)
                 end
@@ -1003,10 +1003,10 @@ end
 
 
 function getQuantitysH()
-    local weed = exports["prp-inventory"]:getQuantity("weed5oz")
-    local cocaine = exports["prp-inventory"]:getQuantity("coke50g")
-    local guns = exports["prp-inventory"]:getQuantity("riflebodybox")
-    local launder = exports["prp-inventory"]:getQuantity("inkcrate")
+    local weed = exports["mrp-inventory"]:getQuantity("weed5oz")
+    local cocaine = exports["mrp-inventory"]:getQuantity("coke50g")
+    local guns = exports["mrp-inventory"]:getQuantity("riflebodybox")
+    local launder = exports["mrp-inventory"]:getQuantity("inkcrate")
     return weed,cocaine,guns,launder
 end
 
@@ -1577,11 +1577,11 @@ function attemptDecrypt()
     TriggerEvent("DoLongHudText","Attempting Decryption")
     decrypting = true
   
-    local usb = exports["prp-inventory"]:hasEnoughOfItem("mk2usbdevice",1,false)
-    local usb2 = exports["prp-inventory"]:hasEnoughOfItem("usbdevice",1,false)
-    local base = exports["prp-inventory"]:hasEnoughOfItem("decryptersess",1,false)
-    local expert = exports["prp-inventory"]:hasEnoughOfItem("decrypterfv2",1,false)
-    local expert2 = exports["prp-inventory"]:hasEnoughOfItem("decrypterenzo",1,false)
+    local usb = exports["mrp-inventory"]:hasEnoughOfItem("mk2usbdevice",1,false)
+    local usb2 = exports["mrp-inventory"]:hasEnoughOfItem("usbdevice",1,false)
+    local base = exports["mrp-inventory"]:hasEnoughOfItem("decryptersess",1,false)
+    local expert = exports["mrp-inventory"]:hasEnoughOfItem("decrypterfv2",1,false)
+    local expert2 = exports["mrp-inventory"]:hasEnoughOfItem("decrypterenzo",1,false)
 
     if usb2 then
         TriggerEvent("DoLongHudText","Conflicting USB device detected",2)

@@ -1,17 +1,17 @@
-RegisterServerEvent("prp-ping:attempt", function(pCoords, pFinderId)
+RegisterServerEvent("mrp-ping:attempt", function(pCoords, pFinderId)
 	local pSrc = source
-	local user = exports["prp-core"]:getModule("Player"):GetUser(pSrc)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(pSrc)
 	local char = user:getCurrentCharacter()
     local name = char.first_name .. " " .. char.last_name
 	if pFinderId ~= nil then
         if pFinderId:lower() == 'accept' then
-            TriggerClientEvent('prp-ping:client:AcceptPing', pSrc)
+            TriggerClientEvent('mrp-ping:client:AcceptPing', pSrc)
         elseif pFinderId:lower() == 'reject' then
-            TriggerClientEvent('prp-ping:client:RejectPing', pSrc)
+            TriggerClientEvent('mrp-ping:client:RejectPing', pSrc)
         else
             local tSrc = tonumber(pFinderId)
             if pSrc ~= tSrc then
-                TriggerClientEvent('prp-ping:client:SendPing', tSrc, name, pSrc, pCoords)
+                TriggerClientEvent('mrp-ping:client:SendPing', tSrc, name, pSrc, pCoords)
             else
                 TriggerClientEvent('DoLongHudText', pSrc, 'Can\'t Ping Yourself', 1)
             end
@@ -19,9 +19,9 @@ RegisterServerEvent("prp-ping:attempt", function(pCoords, pFinderId)
     end
 end)
 
-RegisterServerEvent('prp-ping:server:SendPingResult')
-AddEventHandler('prp-ping:server:SendPingResult', function(id, result)
-	local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+RegisterServerEvent('mrp-ping:server:SendPingResult')
+AddEventHandler('mrp-ping:server:SendPingResult', function(id, result)
+	local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
 	local char = user:getCurrentCharacter()
     local name = char.first_name .. " " .. char.last_name
 	if result == 'accept' then

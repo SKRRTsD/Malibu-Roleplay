@@ -56,7 +56,7 @@ function PRP.Jobs.CanBecomeJob(self, user, job, callback)
     if not hexId or not characterId or not src then callback(false, "Id's don't exist") return end
         if not PRP.Jobs.ValidJobs[job] then callback(false, "Job isn't a valid job") return end
         
-        TriggerEvent("prp-jobmanager:attemptBecomeJob", src, characterId, function(allowed, reason)
+        TriggerEvent("mrp-jobmanager:attemptBecomeJob", src, characterId, function(allowed, reason)
             if not allowed then callback(false, reason) return end
         end)
 
@@ -129,8 +129,8 @@ function PRP.Jobs.SetJob(self, user, job, notify, callback)
 
         local name = PRP.Jobs.ValidJobs[job].name
 
-        TriggerClientEvent("prp-jobmanager:playerBecameJob", src, job, name, false)
-        TriggerClientEvent("prp-jobmanager:playerBecomeEvent", src, job, name, notify)
+        TriggerClientEvent("mrp-jobmanager:playerBecameJob", src, job, name, false)
+        TriggerClientEvent("mrp-jobmanager:playerBecomeEvent", src, job, name, notify)
 
         if PRP.Jobs:CountJob("trucker") >= 1 then
             TriggerEvent("lscustoms:IsTruckerOnline",true)
@@ -152,13 +152,13 @@ AddEventHandler("playerDropped", function(reason)
     end
 end)
 
-AddEventHandler("prp-core:characterLoaded", function(user, char)
+AddEventHandler("mrp-core:characterLoaded", function(user, char)
     PRP.Jobs:SetJob(user, "unemployed", false)
 end)
 
 -- Need to think of a better way to do this, says no such export when resource is started
-AddEventHandler("prp-core:exportsReady", function()
-    exports["prp-core"]:addModule("JobManager", PRP.Jobs)
+AddEventHandler("mrp-core:exportsReady", function()
+    exports["mrp-core"]:addModule("JobManager", PRP.Jobs)
 end)
 
 local policebonus = 0
@@ -206,12 +206,12 @@ Citizen.CreateThread(function()
                 end
 
                 for src,data in pairs(tbl) do
-                    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+                    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
                     if user then
                         if tonumber(curTime) == tonumber(data.lastPayCheck) or tonumber(data.lastPayCheck) >= 480 then
                             PRP.Jobs.CurPlayerJobs[job][src].lastPayCheck = curTime
                             TriggerEvent("server:givepayJob", job, math.floor(payCheck), src)
-                            exports["prp-core"]:AddLog("Job Pay", user, "User recieved paycheck, amount: " .. tostring(payCheck))
+                            exports["mrp-core"]:AddLog("Job Pay", user, "User recieved paycheck, amount: " .. tostring(payCheck))
                         else
 
                         end
@@ -228,8 +228,8 @@ RegisterServerEvent('jobssystem:jobs')
 AddEventHandler('jobssystem:jobs', function(job, src)
     if src == nil or src == 0 then src = source end
 
-    local jobs = exports["prp-core"]:getModule("JobManager")
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local jobs = exports["mrp-core"]:getModule("JobManager")
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
 
     if not user then return end
     if not jobs then return end
@@ -245,7 +245,7 @@ TriggerEvent('jobssystem:jobs', args[1], source)
 end)
 
 RegisterCommand('addwhitelist', function(source, args)
-    local user = exports["prp-core"]:getModule("Player"):GetUser(tonumber(args[1]))
-    local jobs = exports["prp-core"]:getModule("JobManager")
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(tonumber(args[1]))
+    local jobs = exports["mrp-core"]:getModule("JobManager")
     jobs:AddWhiteList(user, args[2], args[3])
 end)

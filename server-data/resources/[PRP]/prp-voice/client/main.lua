@@ -15,12 +15,12 @@ radioData = {}
 callData = {}
 
 -- TODO: Convert the last Cfg to a Convar, while still keeping it simple.
-AddEventHandler('prp-voice:settingsCallback', function(cb)
+AddEventHandler('mrp-voice:settingsCallback', function(cb)
 	cb(Cfg)
 end)
 
-RegisterNetEvent('prp-voice:SetRadioVolume')
-AddEventHandler('prp-voice:SetRadioVolume', function(passedRadioVolume)
+RegisterNetEvent('mrp-voice:SetRadioVolume')
+AddEventHandler('mrp-voice:SetRadioVolume', function(passedRadioVolume)
 	volume = passedRadioVolume
 end)
 
@@ -195,8 +195,8 @@ RegisterCommand('+cycleproximity', function()
 	SendNUIMessage({
 		voiceMode = voiceMode - 1
 	})
-	TriggerEvent('prp-voice:setTalkingMode', voiceMode)
-	TriggerEvent("prp-hud:changeRange", voiceMode)
+	TriggerEvent('mrp-voice:setTalkingMode', voiceMode)
+	TriggerEvent("mrp-hud:changeRange", voiceMode)
 end, false)
 RegisterCommand('-cycleproximity', function()
 end)
@@ -224,7 +224,7 @@ function toggleMute()
 	end
 end
 exports('toggleMute', toggleMute)
-RegisterNetEvent('prp-voice:toggleMute', toggleMute)
+RegisterNetEvent('mrp-voice:toggleMute', toggleMute)
 
 local mutedTbl = {}
 --- toggles the targeted player muted
@@ -254,7 +254,7 @@ function setVoiceProperty(type, value)
 	elseif type == "micClicks" then
 		local val = tostring(value)
 		micClicks = val
-		SetResourceKvp('prp-voice_enableMicClicks', val)
+		SetResourceKvp('mrp-voice_enableMicClicks', val)
 	end
 end
 exports('setVoiceProperty', setVoiceProperty)
@@ -390,9 +390,9 @@ AddEventHandler('onClientResourceStart', function(resource)
 	end
 	print('Starting script initialization')
 
-	local micClicksKvp = GetResourceKvpString('prp-voice_enableMicClicks')
+	local micClicksKvp = GetResourceKvpString('mrp-voice_enableMicClicks')
 	if not micClicksKvp then
-		SetResourceKvp('prp-voice_enableMicClicks', tostring(true))
+		SetResourceKvp('mrp-voice_enableMicClicks', tostring(true))
 	else
 		micClicks = micClicksKvp
 	end

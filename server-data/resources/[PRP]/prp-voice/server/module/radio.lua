@@ -5,7 +5,7 @@ function removePlayerFromRadio(source, radioChannel)
 	logger.info('[radio] Removed %s from radio %s', source, radioChannel)
 	radioData[radioChannel] = radioData[radioChannel] or {}
 	for player, _ in pairs(radioData[radioChannel]) do
-		TriggerClientEvent('prp-voice:removePlayerFromRadio', player, source)
+		TriggerClientEvent('mrp-voice:removePlayerFromRadio', player, source)
 	end
 	radioData[radioChannel][source] = nil
 	voiceData[source] = voiceData[source] or defaultTable(source)
@@ -22,13 +22,13 @@ function addPlayerToRadio(source, radioChannel)
 	-- if not create it (basically if not radiodata make radiodata)
 	radioData[radioChannel] = radioData[radioChannel] or {}
 	for player, _ in pairs(radioData[radioChannel]) do
-		TriggerClientEvent('prp-voice:addPlayerToRadio', player, source)
+		TriggerClientEvent('mrp-voice:addPlayerToRadio', player, source)
 	end
 	voiceData[source] = voiceData[source] or defaultTable(source)
 
 	voiceData[source].radio = radioChannel
 	radioData[radioChannel][source] = false
-	TriggerClientEvent('prp-voice:syncRadioData', source, radioData[radioChannel])
+	TriggerClientEvent('mrp-voice:syncRadioData', source, radioData[radioChannel])
 end
 
 -- TODO: Implement this in a way that allows players to be on multiple channels
@@ -40,7 +40,7 @@ function setPlayerRadio(source, radioChannel)
 	if GetInvokingResource() then
 		-- got set in a export, need to update the client to tell them that their radio
 		-- changed
-		TriggerClientEvent('prp-voice:clSetPlayerRadio', source, radioChannel)
+		TriggerClientEvent('mrp-voice:clSetPlayerRadio', source, radioChannel)
 	end
 	voiceData[source] = voiceData[source] or defaultTable(source)
 	local plyVoice = voiceData[source]
@@ -57,7 +57,7 @@ function setPlayerRadio(source, radioChannel)
 end
 exports('setPlayerRadio', setPlayerRadio)
 
-RegisterNetEvent('prp-voice:setPlayerRadio', function(radioChannel)
+RegisterNetEvent('mrp-voice:setPlayerRadio', function(radioChannel)
 	setPlayerRadio(source, radioChannel)
 end)
 
@@ -72,11 +72,11 @@ function setTalkingOnRadio(talking)
 		logger.info('[radio] Set %s to talking: %s on radio %s',source, talking, plyVoice.radio)
 		for player, _ in pairs(radioTbl) do
 			if player ~= source then
-				TriggerClientEvent('prp-voice:setTalkingOnRadio', player, source, talking)
+				TriggerClientEvent('mrp-voice:setTalkingOnRadio', player, source, talking)
 				logger.verbose('[radio] Sync %s to let them know %s is %s',player, source, talking and 'talking' or 'not talking')
 			end
 		end
 	end
 end
-RegisterNetEvent('prp-voice:setTalkingOnRadio', setTalkingOnRadio)
+RegisterNetEvent('mrp-voice:setTalkingOnRadio', setTalkingOnRadio)
 

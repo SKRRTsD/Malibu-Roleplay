@@ -1,7 +1,7 @@
 
-RegisterNetEvent("prp-jobmanager:playerBecameJob")
-AddEventHandler("prp-jobmanager:playerBecameJob", function(job, name, notify)
-    local LocalPlayer = exports["prp-core"]:getModule("LocalPlayer")
+RegisterNetEvent("mrp-jobmanager:playerBecameJob")
+AddEventHandler("mrp-jobmanager:playerBecameJob", function(job, name, notify)
+    local LocalPlayer = exports["mrp-core"]:getModule("LocalPlayer")
     LocalPlayer:setVar("job", job)
     if notify ~= false then 
         TriggerEvent("DoLongHudText", job ~= "unemployed" and "New Job: " .. tostring(name) or "You're now unemployed", 1) 
@@ -39,17 +39,17 @@ AddEventHandler("prp-jobmanager:playerBecameJob", function(job, name, notify)
     if job == "pdm"  then
         TriggerEvent('DoLongHudText',"Go Sell Some Cars",1)
     end
-   -- TriggerServerEvent("prp-items:updateID",job,exports["prp_manager"]:retreiveBusinesses())
+   -- TriggerServerEvent("mrp-items:updateID",job,exports["mrp_manager"]:retreiveBusinesses())
 end)
 
-RegisterNetEvent("prp-core:characterLoaded")
-AddEventHandler("prp-core:characterLoaded", function(character)
-    local LocalPlayer = exports["prp-core"]:getModule("LocalPlayer")
+RegisterNetEvent("mrp-core:characterLoaded")
+AddEventHandler("mrp-core:characterLoaded", function(character)
+    local LocalPlayer = exports["mrp-core"]:getModule("LocalPlayer")
     LocalPlayer:setVar("job", "unemployed")
 
 end)
 
-RegisterNetEvent("prp-core:exportsReady")
-AddEventHandler("prp-core:exportsReady", function()
-    exports["prp-core"]:addModule("JobManager", PRP.Jobs)
+RegisterNetEvent("mrp-core:exportsReady")
+AddEventHandler("mrp-core:exportsReady", function()
+    exports["mrp-core"]:addModule("JobManager", PRP.Jobs)
 end)

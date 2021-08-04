@@ -100,11 +100,11 @@ AddEventHandler("isRobberyActive:fleeca", function(pBusy)
     isBusy = pBusy
 end)
 
-RegisterNetEvent('prp-robbery:usb')
-AddEventHandler('prp-robbery:usb', function()
+RegisterNetEvent('mrp-robbery:usb')
+AddEventHandler('mrp-robbery:usb', function()
     local ped = GetPlayerPed(-1)
     local pos = GetEntityCoords(ped)
-    local police = exports["prp_manager"]:isPed("countpolice")
+    local police = exports["mrp_manager"]:isPed("countpolice")
     if closestBank ~= nil then
         TriggerServerEvent("isRobberyActive")
         Citizen.Wait(500)
@@ -113,18 +113,18 @@ AddEventHandler('prp-robbery:usb', function()
                 local dist = GetDistanceBetweenCoords(pos, Config.SmallBanks[closestBank].coords.x, Config.SmallBanks[closestBank].coords.y, Config.SmallBanks[closestBank].coords.z)
                 if dist < 1.5 then				
                     if not Config.SmallBanks[closestBank]["isOpened"] then 
-                        if exports['prp-inventory']:hasEnoughOfItem('laptop1', 1) and exports['prp-inventory']:hasEnoughOfItem('Gruppe6Card22', 1) and exports['prp-inventory']:hasEnoughOfItem('fcadrive', 1) then
+                        if exports['mrp-inventory']:hasEnoughOfItem('laptop1', 1) and exports['mrp-inventory']:hasEnoughOfItem('Gruppe6Card22', 1) and exports['mrp-inventory']:hasEnoughOfItem('fcadrive', 1) then
                             if police >= 0 then
-                                exports['prp-dispatch']:SendAlert("AlertFleecaRobbery")
+                                exports['mrp-dispatch']:SendAlert("AlertFleecaRobbery")
                                 StartHeistFleecaPanel()
-                                local card = exports["prp-taskbar"]:taskBar(9000,"Hooking up equipment")
+                                local card = exports["mrp-taskbar"]:taskBar(9000,"Hooking up equipment")
                                 if card == 100 then
                                     TriggerEvent('inventory:removeItem', 'fcadrive', 1)	
                                     TriggerEvent('inventory:removeItem', 'laptop1', 1)	
                                     TriggerEvent('inventory:removeItem', 'Gruppe6Card22', 1)	
                                     TriggerEvent("client:newStress",true,200)
                                     FreezeEntityPosition(GetPlayerPed(-1), false)
-                                    exports['prp-memory']:StartMinigame({
+                                    exports['mrp-memory']:StartMinigame({
                                         success = 'fleeca:success:panel',
                                         fail = 'fleeca:fail:panel'
                                     })
@@ -149,8 +149,8 @@ AddEventHandler('prp-robbery:usb', function()
 end)
 
 
-RegisterNetEvent('prp-robbery:client:setBankState')
-AddEventHandler('prp-robbery:client:setBankState', function(bankId, state)
+RegisterNetEvent('mrp-robbery:client:setBankState')
+AddEventHandler('mrp-robbery:client:setBankState', function(bankId, state)
     if bankId == "pacific" then
         -- Config.BigBanks["pacific"]["isOpened"] = state
         -- if state then
@@ -164,22 +164,22 @@ AddEventHandler('prp-robbery:client:setBankState', function(bankId, state)
     end
 end)
 
-RegisterNetEvent('prp-robbery:client:enableAllBankSecurity')
-AddEventHandler('prp-robbery:client:enableAllBankSecurity', function()
+RegisterNetEvent('mrp-robbery:client:enableAllBankSecurity')
+AddEventHandler('mrp-robbery:client:enableAllBankSecurity', function()
     for k, v in pairs(Config.SmallBanks) do
         Config.SmallBanks[k]["alarm"] = true
     end
 end)
 
-RegisterNetEvent('prp-robbery:client:disableAllBankSecurity')
-AddEventHandler('prp-robbery:client:disableAllBankSecurity', function()
+RegisterNetEvent('mrp-robbery:client:disableAllBankSecurity')
+AddEventHandler('mrp-robbery:client:disableAllBankSecurity', function()
     for k, v in pairs(Config.SmallBanks) do
         Config.SmallBanks[k]["alarm"] = false
     end
 end)
 
-RegisterNetEvent('prp-robbery:client:BankSecurity')
-AddEventHandler('prp-robbery:client:BankSecurity', function(key, status)
+RegisterNetEvent('mrp-robbery:client:BankSecurity')
+AddEventHandler('mrp-robbery:client:BankSecurity', function(key, status)
     Config.SmallBanks[key]["alarm"] = status
 end)
 
@@ -270,8 +270,8 @@ function ResetBankDoors()
     end
 end
 
-RegisterNetEvent('prp-robbery:client:setLockerState')
-AddEventHandler('prp-robbery:client:setLockerState', function(bankId, lockerId, state, bool)
+RegisterNetEvent('mrp-robbery:client:setLockerState')
+AddEventHandler('mrp-robbery:client:setLockerState', function(bankId, lockerId, state, bool)
     if bankId == "pacific" then	
         Config.BigBanks["pacific"]["lockers"][lockerId][state] = bool
     else
@@ -279,8 +279,8 @@ AddEventHandler('prp-robbery:client:setLockerState', function(bankId, lockerId, 
     end
 end)
 
-RegisterNetEvent('prp-robbery:client:ResetFleecaLockers')
-AddEventHandler('prp-robbery:client:ResetFleecaLockers', function(BankId)
+RegisterNetEvent('mrp-robbery:client:ResetFleecaLockers')
+AddEventHandler('mrp-robbery:client:ResetFleecaLockers', function(BankId)
     Config.SmallBanks[BankId]["isOpened"] = false
     for k,_ in pairs(Config.SmallBanks[BankId]["lockers"]) do
         Config.SmallBanks[BankId]["lockers"][k]["isOpened"] = false
@@ -327,39 +327,39 @@ end
 function OpenLocker(bankId, lockerId)
     local pos = GetEntityCoords(GetPlayerPed(-1))
 
-    TriggerServerEvent('prp-robbery:server:setLockerState', bankId, lockerId, 'isBusy', true)
+    TriggerServerEvent('mrp-robbery:server:setLockerState', bankId, lockerId, 'isBusy', true)
     if bankId == "pacific" then
-        -- print(exports['prp-inventory']:getQuality('hacklaptop'))
-        -- if exports['prp-inventory']:hasEnoughOfItem('hacklaptop', 1) then
-        --     exports['prp-memory']:StartMinigame({
+        -- print(exports['mrp-inventory']:getQuality('hacklaptop'))
+        -- if exports['mrp-inventory']:hasEnoughOfItem('hacklaptop', 1) then
+        --     exports['mrp-memory']:StartMinigame({
         --         success = 'pacific:success',
         --         fail = 'pacific:fail'
         --     })
         -- else
         --     TriggerEvent('DoLongHudText', "You dont have any thermite!", 2)
-		-- 	TriggerServerEvent('prp-robbery:server:setLockerState', bankId, lockerId, 'isBusy', false)
+		-- 	TriggerServerEvent('mrp-robbery:server:setLockerState', bankId, lockerId, 'isBusy', false)
 		-- end
     else
 
-        if exports['prp-inventory']:hasEnoughOfItem('drill', 1) then
-            local finished = exports["prp-lockpicking"]:lockpick(100,5,2,10)
+        if exports['mrp-inventory']:hasEnoughOfItem('drill', 1) then
+            local finished = exports["mrp-lockpicking"]:lockpick(100,5,2,10)
             if finished == 100 then 
                 FreezeEntityPosition(PlayerPedId(), true)
                 lockpicking = true
                 ExecuteCommand('e search')
-                local finished = exports["prp-taskbar"]:taskBar(15000,"Breaking into Bankbox")
+                local finished = exports["mrp-taskbar"]:taskBar(15000,"Breaking into Bankbox")
                 if finished == 100 then
                     lockpicking = false
                     TriggerEvent("fleeca:success")
                     FreezeEntityPosition(PlayerPedId(), false)
-                    TriggerServerEvent('prp-robbery:server:setLockerState', bankId, lockerId, 'isOpened', true)
-                    TriggerServerEvent('prp-robbery:server:setLockerState', bankId, lockerId, 'isBusy', false)
+                    TriggerServerEvent('mrp-robbery:server:setLockerState', bankId, lockerId, 'isOpened', true)
+                    TriggerServerEvent('mrp-robbery:server:setLockerState', bankId, lockerId, 'isBusy', false)
                     TriggerEvent("fleeca:loot")
                 else
                     lockpicking = false
                     FreezeEntityPosition(PlayerPedId(), false)
-                    TriggerServerEvent('prp-robbery:server:setLockerState', bankId, lockerId, 'isOpened', false)
-                    TriggerServerEvent('prp-robbery:server:setLockerState', bankId, lockerId, 'isBusy', false)
+                    TriggerServerEvent('mrp-robbery:server:setLockerState', bankId, lockerId, 'isOpened', false)
+                    TriggerServerEvent('mrp-robbery:server:setLockerState', bankId, lockerId, 'isBusy', false)
                 end
             else
                 TriggerEvent("fleeca:fail")
@@ -367,14 +367,14 @@ function OpenLocker(bankId, lockerId)
                 local pSecondChance = math.random(1, 10)
                 if pSecondChance >= 5 then
                     TriggerEvent("DoLongHudText", "You got another shot!")
-                    TriggerServerEvent('prp-robbery:server:setLockerState', bankId, lockerId, 'isOpened', false)
-                    TriggerServerEvent('prp-robbery:server:setLockerState', bankId, lockerId, 'isBusy', false)
+                    TriggerServerEvent('mrp-robbery:server:setLockerState', bankId, lockerId, 'isOpened', false)
+                    TriggerServerEvent('mrp-robbery:server:setLockerState', bankId, lockerId, 'isBusy', false)
                 end
             end
 
         else
             TriggerEvent('DoLongHudText', "You need a lockpick for this!", 2)
-			TriggerServerEvent('prp-robbery:server:setLockerState', bankId, lockerId, 'isBusy', false)
+			TriggerServerEvent('mrp-robbery:server:setLockerState', bankId, lockerId, 'isBusy', false)
 		end
     end
 end
@@ -382,8 +382,8 @@ end
 
 RegisterNetEvent("fleeca:success:panel", function()
     TriggerEvent('DoLongHudText', "Success!", 1)
-    TriggerEvent('prp-dispatch:bankrobbery', -1)
-    TriggerServerEvent('prp-robbery:server:setBankState', closestBank, true)
+    TriggerEvent('mrp-dispatch:bankrobbery', -1)
+    TriggerServerEvent('mrp-robbery:server:setBankState', closestBank, true)
     DeleteObject(laptop)
 end)
 
@@ -403,8 +403,8 @@ end)
 --     FreezeEntityPosition(GetPlayerPed(-1), false)
 --     ClearPedTasks(PlayerPedId())
 
---     TriggerServerEvent('prp-robbery:server:setLockerState', bankId, lockerId, 'isOpened', true)
---     TriggerServerEvent('prp-robbery:server:setLockerState', bankId, lockerId, 'isBusy', false)
+--     TriggerServerEvent('mrp-robbery:server:setLockerState', bankId, lockerId, 'isOpened', true)
+--     TriggerServerEvent('mrp-robbery:server:setLockerState', bankId, lockerId, 'isBusy', false)
 -- end)
 
 

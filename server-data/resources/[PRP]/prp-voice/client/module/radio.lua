@@ -15,7 +15,7 @@ function syncRadioData(radioTable)
 		end
 	end
 end
-RegisterNetEvent('prp-voice:syncRadioData', syncRadioData)
+RegisterNetEvent('mrp-voice:syncRadioData', syncRadioData)
 
 --- event setTalkingOnRadio
 --- sets the players talking status, triggered when a player starts/stops talking.
@@ -26,7 +26,7 @@ function setTalkingOnRadio(plySource, enabled)
 	radioData[plySource] = enabled
 	playMicClicks(enabled)
 end
-RegisterNetEvent('prp-voice:setTalkingOnRadio', setTalkingOnRadio)
+RegisterNetEvent('mrp-voice:setTalkingOnRadio', setTalkingOnRadio)
 
 --- event addPlayerToRadio
 --- adds a player onto the radio.
@@ -40,7 +40,7 @@ function addPlayerToRadio(plySource)
 		logger.info('[radio] %s joined radio %s', plySource, radioChannel)
 	end
 end
-RegisterNetEvent('prp-voice:addPlayerToRadio', addPlayerToRadio)
+RegisterNetEvent('mrp-voice:addPlayerToRadio', addPlayerToRadio)
 
 --- event removePlayerFromRadio
 --- removes the player (or self) from the radio
@@ -67,14 +67,14 @@ function removePlayerFromRadio(plySource)
 		end
 	end
 end
-RegisterNetEvent('prp-voice:removePlayerFromRadio', removePlayerFromRadio)
+RegisterNetEvent('mrp-voice:removePlayerFromRadio', removePlayerFromRadio)
 
 --- function setRadioChannel
 --- sets the local players current radio channel and updates the server
 ---@param channel number the channel to set the player to, or 0 to remove them.
 function setRadioChannel(channel)
 	if GetConvarInt('voice_enableRadios', 1) ~= 1 then return end
-	TriggerServerEvent('prp-voice:setPlayerRadio', channel)
+	TriggerServerEvent('mrp-voice:setPlayerRadio', channel)
 	plyState:set('radioChannel', channel, GetConvarInt('voice_syncData', 0) == 1)
 	radioChannel = channel
 	if GetConvarInt('voice_enableUi', 0) == 1 then
@@ -137,7 +137,7 @@ RegisterCommand('+radiotalk', function()
 		if radioChannel > 0 then
 			logger.info('[radio] Start broadcasting, update targets and notify server.')
 			playerTargets(radioData, NetworkIsPlayerTalking(PlayerId()) and callData or {})
-			TriggerServerEvent('prp-voice:setTalkingOnRadio', true)
+			TriggerServerEvent('mrp-voice:setTalkingOnRadio', true)
 			radioPressed = true
 			playMicClicks(true)
 			if GetConvarInt('voice_enableRadioAnim', 1) == 1 then
@@ -148,8 +148,8 @@ RegisterCommand('+radiotalk', function()
 				TaskPlayAnim(PlayerPedId(), "random@arrests", "generic_radio_enter", 8.0, 2.0, -1, 50, 2.0, 0, 0, 0)
 			end
 			Citizen.CreateThread(function()
-				TriggerEvent('prp-hud:transmitting', radioPressed)
-				TriggerEvent("prp-voice:radioActive", true)
+				TriggerEvent('mrp-hud:transmitting', radioPressed)
+				TriggerEvent("mrp-voice:radioActive", true)
 				while radioPressed do
 					Wait(0)
 					SetControlNormal(0, 249, 1.0)
@@ -166,13 +166,13 @@ RegisterCommand('-radiotalk', function()
 		radioPressed = false
 		MumbleClearVoiceTargetPlayers(1)
 		playerTargets(NetworkIsPlayerTalking(PlayerId()) and callData or {})
-		TriggerEvent('prp-hud:transmitting', radioPressed)
-		TriggerEvent("prp-voice:radioActive", false)
+		TriggerEvent('mrp-hud:transmitting', radioPressed)
+		TriggerEvent("mrp-voice:radioActive", false)
 		playMicClicks(false)
 		if GetConvarInt('voice_enableRadioAnim', 1) == 1 then
 			StopAnimTask(PlayerPedId(), "random@arrests", "generic_radio_enter", -4.0)
 		end
-		TriggerServerEvent('prp-voice:setTalkingOnRadio', false)
+		TriggerServerEvent('mrp-voice:setTalkingOnRadio', false)
 	end
 end, false)
 
@@ -184,4 +184,4 @@ function syncRadio(_radioChannel)
 	plyState:set('radioChannel', _radioChannel, GetConvarInt('voice_syncData', 0) == 1)
 	radioChannel = _radioChannel
 end
-RegisterNetEvent('prp-voice:clSetPlayerRadio', syncRadio)
+RegisterNetEvent('mrp-voice:clSetPlayerRadio', syncRadio)

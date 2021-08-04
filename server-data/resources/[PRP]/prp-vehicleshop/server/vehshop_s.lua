@@ -16,7 +16,7 @@ RegisterServerEvent('carshop:table')
 AddEventHandler('carshop:table', function(table)
     if table ~= nil then
         carTable = table
-        TriggerClientEvent('prp-vehicleshop:returnTable', -1, carTable)
+        TriggerClientEvent('mrp-vehicleshop:returnTable', -1, carTable)
         updateDisplayVehicles()
     end
 end)
@@ -39,7 +39,7 @@ end)
 -- Check if player has enough money
 RegisterServerEvent('CheckMoneyForVeh')
 AddEventHandler('CheckMoneyForVeh', function(name, model,price,financed)
-    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
     local money = tonumber(user:getCash())
     if financed then
         local financedPrice = math.ceil(price / 3)
@@ -47,7 +47,7 @@ AddEventHandler('CheckMoneyForVeh', function(name, model,price,financed)
             user:removeMoney(financedPrice)
             TriggerClientEvent('FinishMoneyCheckForVeh', user.source, name, model, price, financed)
             TriggerClientEvent('menu:veh:purchase', user.source)
-            exports["prp-banking"]:UpdateSociety(financedPrice, "car_shop", "add")
+            exports["mrp-banking"]:UpdateSociety(financedPrice, "car_shop", "add")
         else
             TriggerClientEvent('DoLongHudText', user.source, 'You dont have enough money on you!', 2)
             TriggerClientEvent('carshop:failedpurchase', user.source)
@@ -57,7 +57,7 @@ AddEventHandler('CheckMoneyForVeh', function(name, model,price,financed)
             user:removeMoney(price)
             TriggerClientEvent('FinishMoneyCheckForVeh', user.source, name, model, price, financed)
             TriggerClientEvent('menu:veh:purchase', user.source)
-            exports["prp-banking"]:UpdateSociety(price, "car_shop", "add")
+            exports["mrp-banking"]:UpdateSociety(price, "car_shop", "add")
         else
             TriggerClientEvent('DoLongHudText', user.source, 'You dont have enough money on you!', 2)
             TriggerClientEvent('carshop:failedpurchase', user.source)
@@ -70,13 +70,13 @@ end)
 RegisterServerEvent('BuyForVeh')
 AddEventHandler('BuyForVeh', function(platew, name, vehicle, price, financed)
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
     local char = user:getVar("character")
     local player = user:getVar("hexid")
     exports.ghmattimysql:execute("SELECT * FROM `characters_cars` WHERE license_plate = @license_plate", {['license_plate'] = platew}, function(result)
         if result[1] then
             dbplate = math.random(10000000,99999999)
-            TriggerClientEvent("prp-vehicleshop:update:plate", src, dbplate)
+            TriggerClientEvent("mrp-vehicleshop:update:plate", src, dbplate)
         else
             dbplate = platew
         end
@@ -119,7 +119,7 @@ end)
 RegisterServerEvent('crownvicbuy')
 AddEventHandler('crownvicbuy', function(plate, name, personalvehicle)
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
     local char = user:getVar("character")
     local player = user:getVar("hexid")
     exports.ghmattimysql:execute('INSERT INTO characters_cars (owner, cid, license_plate, name, model, purchase_price, vehicle_state) VALUES (@owner, @cid, @license_plate, @name, @model, @buy_price, @vehicle_state)',{
@@ -138,7 +138,7 @@ end)
 RegisterServerEvent('police:buycrownvic_sv')
 AddEventHandler('police:buycrownvic_sv', function()
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
     local char = user:getVar("character")
     local money = tonumber(user:getCash())
     if money >= 5000 then
@@ -152,7 +152,7 @@ end)
 RegisterServerEvent('chargerbuy')
 AddEventHandler('chargerbuy', function(plate, name, personalvehicle)
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
     local char = user:getVar("character")
     local player = user:getVar("hexid")
     exports.ghmattimysql:execute('INSERT INTO characters_cars (owner, cid, license_plate, model, data, name, purchase_price, vehicle_state, current_garage) VALUES (@owner, @cid, @license_plate, @model, @data, @name, @purchase_price, @vehicle_state, @current_garage)',{
@@ -171,7 +171,7 @@ end)
 RegisterServerEvent('police:buycharger_sv')
 AddEventHandler('police:buycharger_sv', function()
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
     local char = user:getVar("character")
     local money = tonumber(user:getCash())
     if money >= 180000 then
@@ -203,7 +203,7 @@ end)
 RegisterServerEvent('car:dopayment')
 AddEventHandler('car:dopayment', function(plateNumber)
     local pSrc = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(pSrc)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(pSrc)
     exports.ghmattimysql:execute("SELECT * FROM `characters_cars` WHERE license_plate = ?", {plateNumber}, function(data)
         if data[1] then
             local CurrentPayment = math.floor(data[1].financed/data[1].payments_left)
@@ -226,10 +226,10 @@ AddEventHandler('car:dopayment', function(plateNumber)
 end)
 
 
-RegisterServerEvent("prp-vehicleshop:repo")
-AddEventHandler("prp-vehicleshop:repo", function(plate)
+RegisterServerEvent("mrp-vehicleshop:repo")
+AddEventHandler("mrp-vehicleshop:repo", function(plate)
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local cid = user:getVar("character").id
 
     exports.ghmattimysql:execute("SELECT `license_plate`, `repoed` FROM `characters_cars` WHERE license_plate = ? AND finance_time = ? AND payments_left >= 1", {plate, "0"}, function(data)
@@ -238,7 +238,7 @@ AddEventHandler("prp-vehicleshop:repo", function(plate)
                 {['license_plate'] = plate,
                 ['@repoed'] = "1"
             })
-            TriggerClientEvent("prp-vehicleshop:repo:success", src)
+            TriggerClientEvent("mrp-vehicleshop:repo:success", src)
             TriggerEvent("paycheck:server:add", src, cid, 500)
         else
             TriggerClientEvent("DoLongHudText", src, "This vehicle is not owned by anyone", 2)
@@ -247,14 +247,14 @@ AddEventHandler("prp-vehicleshop:repo", function(plate)
   
 end)
 
-RegisterServerEvent("prp-vehicleshop:checkrepo")
-AddEventHandler("prp-vehicleshop:checkrepo", function(plate)
+RegisterServerEvent("mrp-vehicleshop:checkrepo")
+AddEventHandler("mrp-vehicleshop:checkrepo", function(plate)
     if plate == nil then
         return 
     end
 
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(src)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     local cid = user:getVar("character").id
 
     exports.ghmattimysql:execute("SELECT * FROM `characters_cars` WHERE license_plate = ? and cid = ?", {plate, cid}, function(data)
@@ -305,7 +305,7 @@ SetTimeout(timer, updateFinance)
 RegisterServerEvent('casinoreedeem')
 AddEventHandler('casinoreedeem', function(plate, name, personalvehicle)
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
     local char = user:getVar("character")
     local player = user:getVar("hexid")
     exports.ghmattimysql:execute('INSERT INTO characters_cars (owner, cid, license_plate, name, model, purchase_price, vehicle_state) VALUES (@owner, @cid, @license_plate, @name, @model, @buy_price, @vehicle_state)',{
@@ -324,7 +324,7 @@ end)
 RegisterServerEvent('casino:reedeem_sv')
 AddEventHandler('casino:reedeem_sv', function()
     local src = source
-    local user = exports["prp-core"]:getModule("Player"):GetUser(source)
+    local user = exports["mrp-core"]:getModule("Player"):GetUser(source)
     local char = user:getVar("character")
     local money = tonumber(user:getCash())
     if money >= 0 then

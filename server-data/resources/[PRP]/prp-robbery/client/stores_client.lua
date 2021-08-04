@@ -1,5 +1,5 @@
-RegisterNetEvent("prp-jobmanager:playerBecameJob")
-AddEventHandler("prp-jobmanager:playerBecameJob", function(job, name, notify)
+RegisterNetEvent("mrp-jobmanager:playerBecameJob")
+AddEventHandler("mrp-jobmanager:playerBecameJob", function(job, name, notify)
     if isMedic and job ~= "ems" then isMedic = false isInService = false end
     if isCop and job ~= "police" then isCop = false isInService = false end
     if job == "police" then isCop = true isInService = true end
@@ -111,7 +111,7 @@ end)
 
 RegisterNetEvent("police:notifySecurityCam")
 AddEventHandler("police:notifySecurityCam", function(currentRobbery)
-	local myjob = exports["prp_manager"]:isPed("myjob")
+	local myjob = exports["mrp_manager"]:isPed("myjob")
 	if myjob == "police" then
 		TriggerEvent('chatMessage', "DISPATCH ", 3, "Security Camera number " .. currentRobbery .. " has been triggered.", 5000)
 	end
@@ -121,11 +121,11 @@ end)
 
 RegisterNetEvent("store:dosafe")
 AddEventHandler("store:dosafe", function()
-	local police = exports["prp_manager"]:isPed("countpolice")
+	local police = exports["mrp_manager"]:isPed("countpolice")
 	if police >= 1 then
 		local storeid = isStoreRobbery()
 		TriggerServerEvent('conviencesafe:log')
-		TriggerEvent("prp-dispatch:storerobbery")
+		TriggerEvent("mrp-dispatch:storerobbery")
 		TriggerServerEvent("police:camrobbery",storeid)
 		TriggerEvent("client:newStress",true,200)	
 		TriggerEvent("safecracking:loop",10,"robbery:safe")
@@ -143,9 +143,9 @@ local you = 0
 
 RegisterNetEvent("store:register")
 AddEventHandler("store:register", function(storeid,regid)
-	local police = exports["prp_manager"]:isPed("countpolice")
+	local police = exports["mrp_manager"]:isPed("countpolice")
 	if police >= 1 then
-		TriggerEvent("prp-dispatch:storerobbery")
+		TriggerEvent("mrp-dispatch:storerobbery")
 		TriggerServerEvent('convienceregister:log')
 		TriggerServerEvent("police:camrobbery",storeid)
 		TriggerEvent("client:newStress",true,200)	
@@ -255,7 +255,7 @@ end)
 
 RegisterCommand('cctv', function(source, args)
 	camNumber = args[1]
-	local job = exports["prp_manager"]:isPed("myjob")
+	local job = exports["mrp_manager"]:isPed("myjob")
 	if job == "police" and camNumber then
 		if camNumber == "off" then
 			inCam = false
@@ -398,7 +398,7 @@ function SpawnPed(i)
         Citizen.Wait(0)
     end
 
-    local IsPedNearCoords = exports["prp_manager"]:IsPedNearCoords(x,y,z)
+    local IsPedNearCoords = exports["mrp_manager"]:IsPedNearCoords(x,y,z)
     if not IsPedNearCoords then
     	if GetPedType(pedType) ~= nil then
 			local shopPed = CreatePed(GetPedType(pedType), pedType, x,y,z, h, 1, 1)
@@ -420,7 +420,7 @@ end
 LuckySpot = false
 
 Citizen.CreateThread(function()
-	exports["prp-polyzone"]:AddBoxZone("store_robbery_lucky", vector3(913.97, -1272.84, 27.1), 1.8, 1.2, {
+	exports["mrp-polyzone"]:AddBoxZone("store_robbery_lucky", vector3(913.97, -1272.84, 27.1), 1.8, 1.2, {
 		name="store_robbery_lucky",
 		heading=37,
 		minZ=25.95,
@@ -428,20 +428,20 @@ Citizen.CreateThread(function()
 	})
 end)
 
-RegisterNetEvent('prp-polyzone:enter')
-AddEventHandler('prp-polyzone:enter', function(name)
+RegisterNetEvent('mrp-polyzone:enter')
+AddEventHandler('mrp-polyzone:enter', function(name)
     if name == "store_robbery_lucky" then
         LuckySpot = true     
         LuckyDrawPlace()
-		TriggerEvent('prp-textui:ShowUI', 'show', ("[E] %s"):format("Talk")) 
+		TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Talk")) 
     end
 end)
 
-RegisterNetEvent('prp-polyzone:exit')
-AddEventHandler('prp-polyzone:exit', function(name)
+RegisterNetEvent('mrp-polyzone:exit')
+AddEventHandler('mrp-polyzone:exit', function(name)
     if name == "store_robbery_lucky" then
         LuckySpot = false  
-		TriggerEvent('prp-textui:HideUI')   
+		TriggerEvent('mrp-textui:HideUI')   
     end
 end)
 
@@ -450,11 +450,11 @@ function LuckyDrawPlace()
         while LuckySpot do
             Citizen.Wait(5)
 			if IsControlJustReleased(0, 38) then
-				if exports["prp-inventory"]:hasEnoughOfItem("pix1",1,false) then			
+				if exports["mrp-inventory"]:hasEnoughOfItem("pix1",1,false) then			
 					TriggerEvent("inventory:removeItem", "pix1", 1)
 					FreezeEntityPosition(PlayerPedId(),true)
 					TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_HANG_OUT_STREET", 0, true)
-					local finished = exports["prp-taskbar"]:taskBar(7500,"Gathering Information")
+					local finished = exports["mrp-taskbar"]:taskBar(7500,"Gathering Information")
 					if finished == 100 then					
 						FreezeEntityPosition(PlayerPedId(),false)						
 						TriggerEvent('lucky:store')    

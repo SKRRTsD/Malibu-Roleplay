@@ -1,5 +1,5 @@
-RegisterNetEvent("prp-jobmanager:playerBecameJob")
-AddEventHandler("prp-jobmanager:playerBecameJob", function(job, name, notify)
+RegisterNetEvent("mrp-jobmanager:playerBecameJob")
+AddEventHandler("mrp-jobmanager:playerBecameJob", function(job, name, notify)
     if isMedic and job ~= "ems" then isMedic = false isInService = false end
     if isCop and job ~= "police" then isCop = false isInService = false end
     if job == "police" then isCop = true isInService = true end

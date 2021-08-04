@@ -640,8 +640,8 @@ AddEventHandler("commission", function(newAmount)
 	end
 end)
 
-RegisterNetEvent("prp-vehicleshop:returnTable")
-AddEventHandler("prp-vehicleshop:returnTable", function(newTable)
+RegisterNetEvent("mrp-vehicleshop:returnTable")
+AddEventHandler("mrp-vehicleshop:returnTable", function(newTable)
 
 	carTable = newTable
 	DespawnSaleVehicles()
@@ -1054,7 +1054,7 @@ end
 
 RegisterNetEvent("casino:reedeem")
 AddEventHandler("casino:reedeem", function()
-	if exports["prp-inventory"]:hasEnoughOfItem("casinofob",1,false) then 
+	if exports["mrp-inventory"]:hasEnoughOfItem("casinofob",1,false) then 
 		TriggerEvent("inventory:removeItem","casinofob", 1)       
 		TriggerServerEvent('casino:reedeem_sv')
 	else
@@ -1093,7 +1093,7 @@ AddEventHandler("casino:reedeem2", function()
 	Citizen.InvokeNative(0x629BFA74418D6239,Citizen.PointerValueIntInitialized(personalvehicle))
 	TaskWarpPedIntoVehicle(PlayerPedId(),personalvehicle,-1)
 	SetEntityVisible(ped,true)			
-	local VehicleProps = exports['prp-core']:FetchVehProps(personalvehicle)
+	local VehicleProps = exports['mrp-core']:FetchVehProps(personalvehicle)
 	local name = 'subwrx'
 	TriggerEvent("keys:addNew",personalvehicle, plate)
 	TriggerServerEvent('casinoreedeem', plate, name, VehicleProps)
@@ -1103,7 +1103,7 @@ end)
 
 RegisterNetEvent("police:buycrownvic")
 AddEventHandler("police:buycrownvic", function()
-	if exports["prp_manager"]:isPed("myJob") == 'police' then
+	if exports["mrp_manager"]:isPed("myJob") == 'police' then
 		TriggerServerEvent('police:buycrownvic_sv')
 	else
 		TriggerEvent('DoLongHudText', 'You are not a police officer dumbass!', 2)
@@ -1141,7 +1141,7 @@ AddEventHandler("police:buycrownvic2", function()
 	Citizen.InvokeNative(0x629BFA74418D6239,Citizen.PointerValueIntInitialized(personalvehicle))
 	TaskWarpPedIntoVehicle(PlayerPedId(),personalvehicle,-1)
 	SetEntityVisible(ped,true)			
-	local VehicleProps = exports['prp-core']:FetchVehProps(personalvehicle)
+	local VehicleProps = exports['mrp-core']:FetchVehProps(personalvehicle)
 	local name = 'polvic'
 	TriggerEvent("keys:addNew",personalvehicle, plate)
 	TriggerServerEvent('crownvicbuy', plate, name, VehicleProps)
@@ -1149,7 +1149,7 @@ end)
 
 RegisterNetEvent("police:buycharger")
 AddEventHandler("police:buycharger", function()
-	if exports["prp_manager"]:isPed("myJob") == 'police' then
+	if exports["mrp_manager"]:isPed("myJob") == 'police' then
 		TriggerServerEvent('police:buycharger_sv')
 	else
 		TriggerEvent('DoLongHudText', 'You are not a police officer dumbass!', 2)
@@ -1187,7 +1187,7 @@ AddEventHandler("police:buycharger2", function()
 	Citizen.InvokeNative(0x629BFA74418D6239,Citizen.PointerValueIntInitialized(personalvehicle))
 	TaskWarpPedIntoVehicle(PlayerPedId(),personalvehicle,-1)
 	SetEntityVisible(ped,true)			
-	local VehicleProps = exports['prp-core']:FetchVehProps(personalvehicle)
+	local VehicleProps = exports['mrp-core']:FetchVehProps(personalvehicle)
 	local name = 'polchar'
 	TriggerEvent("keys:addNew",personalvehicle, plate)
 	TriggerServerEvent('chargerbuy', plate, name, VehicleProps)
@@ -1200,8 +1200,8 @@ AddEventHandler("carshop:failedpurchase", function()
 end)
 
 
-RegisterNetEvent("prp-vehicleshop:setPlate")
-AddEventHandler("prp-vehicleshop:setPlate", function(vehicle, plate)
+RegisterNetEvent("mrp-vehicleshop:setPlate")
+AddEventHandler("mrp-vehicleshop:setPlate", function(vehicle, plate)
 	SetVehicleNumberPlateText(vehicle, plate)
 	Citizen.Wait(1000)
 	TriggerEvent("keys:addNew", vehicle, plate)
@@ -1664,12 +1664,12 @@ AddEventHandler('vehshop:spawnVehicle', function(v)
 		SetModelAsNoLongerNeeded(car)
 		TaskWarpPedIntoVehicle(playerPed, veh, -1)
 		SetEntityInvincible(veh, true)
-		TriggerEvent('prp-vehicleshop:setPlate', veh, plate)
+		TriggerEvent('mrp-vehicleshop:setPlate', veh, plate)
 	end
 end)
 
-RegisterNetEvent("prp-vehicleshop:update:plate")
-AddEventHandler("prp-vehicleshop:update:plate", function(plate)
+RegisterNetEvent("mrp-vehicleshop:update:plate")
+AddEventHandler("mrp-vehicleshop:update:plate", function(plate)
 	local veh = GetVehiclePedIsUsing(PlayerPedId())
 	SetVehicleNumberPlateText(veh, plate)
 	local NPlate = GetVehicleNumberPlateText(veh)
@@ -1702,7 +1702,7 @@ local vehshopLoc = PolyZone:Create({
 	vector2(-59.549613952637, -1063.388671875),
 	vector2(-1.2465063333511, -1081.7679443359)
 }, {
-    name = "prp-vehicleshop",
+    name = "mrp-vehicleshop",
     minZ = 0,
     maxZ = 40.5,
     debugGrid = false,
@@ -1730,19 +1730,19 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(500)
         if insideVehShop and isExportReady then
-            rank = exports["prp_manager"]:GroupRank("car_shop")
+            rank = exports["mrp_manager"]:GroupRank("car_shop")
             Citizen.Wait(10000)
         end
     end
 end)
 
-AddEventHandler("prp-core:exportsReady", function()
+AddEventHandler("mrp-core:exportsReady", function()
 	Wait(1)
 	isExportReady = true
 end)
 
-RegisterNetEvent("prp-vehicleshop:repo:success")
-AddEventHandler("prp-vehicleshop:repo:success", function()
+RegisterNetEvent("mrp-vehicleshop:repo:success")
+AddEventHandler("mrp-vehicleshop:repo:success", function()
 	local veh = GetVehiclePedIsIn(PlayerPedId())
 	if veh ~= 0 then
 		Citizen.InvokeNative(0xEA386986E786A54F, Citizen.PointerValueIntInitialized(veh))
@@ -1753,7 +1753,7 @@ end)
 
 RegisterNetEvent("search:list:repo")
 AddEventHandler("search:list:repo", function()
-	local valid = exports["prp-applications"]:KeyboardInput({
+	local valid = exports["mrp-applications"]:KeyboardInput({
 		header = "Search Repo List",
 		rows = {
 			{
@@ -1763,6 +1763,6 @@ AddEventHandler("search:list:repo", function()
 		}
 	})
 	if valid then
-		TriggerServerEvent("prp-vehicleshop:checkrepo", valid[1].input)
+		TriggerServerEvent("mrp-vehicleshop:checkrepo", valid[1].input)
 	end
 end)

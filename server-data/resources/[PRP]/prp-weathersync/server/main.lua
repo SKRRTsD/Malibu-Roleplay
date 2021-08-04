@@ -33,10 +33,10 @@ local blackout = false
 
 --CODE
 
-RegisterServerEvent('prp-weathersync:server:RequestStateSync')
-AddEventHandler('prp-weathersync:server:RequestStateSync', function()
-    TriggerClientEvent('prp-weathersync:client:SyncWeather', -1, CurrentWeather, blackout)
-    TriggerClientEvent('prp-weathersync:client:SyncTime', -1, baseTime, timeOffset, freezeTime)
+RegisterServerEvent('mrp-weathersync:server:RequestStateSync')
+AddEventHandler('mrp-weathersync:server:RequestStateSync', function()
+    TriggerClientEvent('mrp-weathersync:client:SyncWeather', -1, CurrentWeather, blackout)
+    TriggerClientEvent('mrp-weathersync:client:SyncTime', -1, baseTime, timeOffset, freezeTime)
 end)
 
 function FreezeElement(element)
@@ -47,19 +47,19 @@ function FreezeElement(element)
     end
 end
 
-RegisterServerEvent('prp-weathersync:server:setWeather')
-AddEventHandler('prp-weathersync:server:setWeather', function(type)
+RegisterServerEvent('mrp-weathersync:server:setWeather')
+AddEventHandler('mrp-weathersync:server:setWeather', function(type)
     CurrentWeather = string.upper(type)
-    TriggerEvent('prp-weathersync:server:RequestStateSync')
+    TriggerEvent('mrp-weathersync:server:RequestStateSync')
 end)
 
-RegisterServerEvent('prp-weathersync:server:toggleBlackout')
-AddEventHandler('prp-weathersync:server:toggleBlackout', function()
+RegisterServerEvent('mrp-weathersync:server:toggleBlackout')
+AddEventHandler('mrp-weathersync:server:toggleBlackout', function()
     ToggleBlackout()
 end)
 
-RegisterServerEvent('prp-weathersync:server:setTime')
-AddEventHandler('prp-weathersync:server:setTime', function(hour, minute)
+RegisterServerEvent('mrp-weathersync:server:setTime')
+AddEventHandler('mrp-weathersync:server:setTime', function(hour, minute)
     if minute ~= nil then
         SetExactTime(hour, minute)
     else
@@ -69,26 +69,26 @@ end)
 
 function SetWeather(type)
     CurrentWeather = string.upper(type)
-    TriggerEvent('prp-weathersync:server:RequestStateSync')
+    TriggerEvent('mrp-weathersync:server:RequestStateSync')
 end
 
 function SetTime(type)
     if type:upper() == AvailableTimeTypes[1] then
         ShiftToMinute(0)
         ShiftToHour(9)
-        TriggerEvent('prp-weathersync:server:RequestStateSync')
+        TriggerEvent('mrp-weathersync:server:RequestStateSync')
     elseif type:upper() == AvailableTimeTypes[2] then
         ShiftToMinute(0)
         ShiftToHour(12)
-        TriggerEvent('prp-weathersync:server:RequestStateSync')
+        TriggerEvent('mrp-weathersync:server:RequestStateSync')
     elseif type:upper() == AvailableTimeTypes[3] then
         ShiftToMinute(0)
         ShiftToHour(18)
-        TriggerEvent('prp-weathersync:server:RequestStateSync')
+        TriggerEvent('mrp-weathersync:server:RequestStateSync')
     else
         ShiftToMinute(0)
         ShiftToHour(23)
-        TriggerEvent('prp-weathersync:server:RequestStateSync')
+        TriggerEvent('mrp-weathersync:server:RequestStateSync')
     end
 end
 
@@ -112,12 +112,12 @@ function SetExactTime(hour, minute)
     else
         newtime = newtime .. minute
     end
-    TriggerEvent('prp-weathersync:server:RequestStateSync')
+    TriggerEvent('mrp-weathersync:server:RequestStateSync')
 end
 
 function ToggleBlackout()
     blackout = not blackout
-    TriggerEvent('prp-weathersync:server:RequestStateSync')
+    TriggerEvent('mrp-weathersync:server:RequestStateSync')
 end
 
 function ShiftToMinute(minute)
@@ -156,7 +156,7 @@ function NextWeatherStage()
     elseif CurrentWeather == "SMOG" or CurrentWeather == "FOGGY" then
         CurrentWeather = "CLEAR"
     end
-    TriggerEvent("prp-weathersync:server:RequestStateSync")
+    TriggerEvent("mrp-weathersync:server:RequestStateSync")
 end
 
 Citizen.CreateThread(function()
@@ -173,14 +173,14 @@ end)
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(10000)
-        TriggerClientEvent('prp-weathersync:client:SyncTime', -1, baseTime, timeOffset, freezeTime)
+        TriggerClientEvent('mrp-weathersync:client:SyncTime', -1, baseTime, timeOffset, freezeTime)
     end
 end)
 
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(300000)
-        TriggerClientEvent('prp-weathersync:client:SyncWeather', -1, CurrentWeather, blackout)
+        TriggerClientEvent('mrp-weathersync:client:SyncWeather', -1, CurrentWeather, blackout)
     end
 end)
 
