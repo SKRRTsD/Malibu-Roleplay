@@ -47,11 +47,11 @@ Citizen.CreateThread(
                         icon = "fas fa-car",
                         label = "Buy Crown Vic $5000",
                     },
-                    {
-                        event = "police:buycharger",
-                        icon = "fas fa-car",
-                        label = "Buy Charger $180000",
-                    },
+                    -- {
+                    --     event = "police:buycharger",
+                    --     icon = "fas fa-car",
+                    --     label = "Buy Charger $180000",
+                    -- },
                 },
                 job = {"police"},
                 distance = 1.5
@@ -512,6 +512,30 @@ Citizen.CreateThread(
                             distance = 1.7
                         }
                     )
+        --#####################--
+        --##Prison Jail Time###--
+        --#####################--
+        -- AddCircleZone(
+        --     "checkjailtime",
+        --     vector3(1832.05, 2592.71, 46.36),
+        --     0.25,
+        --     {
+        --         name = "checkjailtime",
+        --         debugPoly = false,
+        --         useZ = true
+        --     },
+        --     {
+        --         options = {
+        --             {
+        --                 event = "checkJailTime",
+        --                 icon = "fas fa-circle",
+        --                 label = "Check Jail Time"
+        --             }
+        --         },
+        --         job = {"all"},
+        --         distance = 1.5
+        --     }
+        -- )
         
         -------- EMS --------
 
