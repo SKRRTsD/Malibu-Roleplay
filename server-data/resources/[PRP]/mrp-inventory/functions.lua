@@ -893,6 +893,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
         if (finished == 100) then
             remove = true
             TriggerServerEvent("backpack:give:items")
+            TriggerEvent()
         end
     end
 
@@ -1903,35 +1904,35 @@ AddEventHandler('animation:repair', function(veh)
 end)
 
 
--- RegisterCommand('steal', function()
---     RequestAnimDict("random@shop_robbery")
---     while not HasAnimDictLoaded("random@shop_robbery") do
---         Citizen.Wait(0)
--- 	end
---     t, distance, closestPed = GetClosestPlayer()
---     if(distance ~= -1 and distance < 5) then
---         local searchPlayerPed = GetPlayerPed(t)
---         if ( IsEntityPlayingAnim(GetPlayerPed(t), "dead", "dead_a", 3) or IsEntityPlayingAnim(GetPlayerPed(t), "amb@code_human_cower_stand@male@base", "base", 3) or IsEntityPlayingAnim(GetPlayerPed(t), "amb@code_human_cower@male@base", "base", 3) or  IsEntityPlayingAnim(GetPlayerPed(t), "random@arrests@busted", "idle_a", 3) or IsEntityPlayingAnim(GetPlayerPed(t), "mp_arresting", "idle", 3) or IsEntityPlayingAnim(GetPlayerPed(t), "random@mugging3", "handsup_standing_base", 3) or IsEntityPlayingAnim(GetPlayerPed(t), "missfbi5ig_22", "hands_up_anxious_scientist", 3) or IsEntityPlayingAnim(GetPlayerPed(t), "missfbi5ig_22", "hands_up_loop_scientist", 3) ) then
---             if IsPedArmed(PlayerPedId(), 7) then
---                 TaskPlayAnim(PlayerPedId(), "random@shop_robbery", "robbery_action_b", 8.0, -8, -1, 16, 0, 0, 0, 0)
---                 local finished = exports["mrp-taskbar"]:taskBar(10000,"Robbing Player")
---                 if (finished == 100) then
---                     t, distance, closestPed = GetClosestPlayer()
---                     if(distance ~= -1 and distance < 5) then
---                         TriggerServerEvent("people-search", GetPlayerServerId(t))
---                         TriggerServerEvent("Stealtheybread", GetPlayerServerId(t))
---                         TriggerServerEvent("stealcommand:log")
---                     else
---                         TriggerEvent("DoLongHudText", "No player near you!",2)
---                     end
---                     ClearPedTasks(PlayerPedId())
---                 end
---             else
---                 TriggerEvent("DoLongHudText", "You need a weapon!",2)
---             end
---         end
---     end
--- end)
+RegisterCommand('steal', function()
+    RequestAnimDict("random@shop_robbery")
+    while not HasAnimDictLoaded("random@shop_robbery") do
+        Citizen.Wait(0)
+	end
+    t, distance, closestPed = GetClosestPlayer()
+    if(distance ~= -1 and distance < 5) then
+        local searchPlayerPed = GetPlayerPed(t)
+        if ( IsEntityPlayingAnim(GetPlayerPed(t), "dead", "dead_a", 3) or IsEntityPlayingAnim(GetPlayerPed(t), "amb@code_human_cower_stand@male@base", "base", 3) or IsEntityPlayingAnim(GetPlayerPed(t), "amb@code_human_cower@male@base", "base", 3) or  IsEntityPlayingAnim(GetPlayerPed(t), "random@arrests@busted", "idle_a", 3) or IsEntityPlayingAnim(GetPlayerPed(t), "mp_arresting", "idle", 3) or IsEntityPlayingAnim(GetPlayerPed(t), "random@mugging3", "handsup_standing_base", 3) or IsEntityPlayingAnim(GetPlayerPed(t), "missfbi5ig_22", "hands_up_anxious_scientist", 3) or IsEntityPlayingAnim(GetPlayerPed(t), "missfbi5ig_22", "hands_up_loop_scientist", 3) ) then
+            if IsPedArmed(PlayerPedId(), 7) then
+                TaskPlayAnim(PlayerPedId(), "random@shop_robbery", "robbery_action_b", 8.0, -8, -1, 16, 0, 0, 0, 0)
+                local finished = exports["mrp-taskbar"]:taskBar(10000,"Robbing Player")
+                if (finished == 100) then
+                    t, distance, closestPed = GetClosestPlayer()
+                    if(distance ~= -1 and distance < 5) then
+                        TriggerServerEvent("people-search", GetPlayerServerId(t))
+                        TriggerServerEvent("Stealtheybread", GetPlayerServerId(t))
+                        TriggerServerEvent("stealcommand:log")
+                    else
+                        TriggerEvent("DoLongHudText", "No player near you!",2)
+                    end
+                    ClearPedTasks(PlayerPedId())
+                end
+            else
+                TriggerEvent("DoLongHudText", "You need a weapon!",2)
+            end
+        end
+    end
+end)
 
 RegisterCommand("closeinv", function(source, args)
     TriggerEvent("closeInventoryGui")
