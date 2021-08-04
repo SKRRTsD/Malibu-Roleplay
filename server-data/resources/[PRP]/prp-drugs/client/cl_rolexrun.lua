@@ -199,7 +199,7 @@ end)
 
 RegisterNetEvent("rolexdelivery:startDealing")
 AddEventHandler("rolexdelivery:startDealing", function()
-	local NearNPC = exports["prp_manager"]:GetClosestNPC()
+	local NearNPC = exports["mrp_manager"]:GetClosestNPC()
 	PlayAmbientSpeech1(NearNPC, "Chat_Resp", "SPEECH_PARAMS_FORCE", 1)
 	TriggerEvent("DoLongHudText","Your pager will be updated with locations soon.")
 	salecount = 0	

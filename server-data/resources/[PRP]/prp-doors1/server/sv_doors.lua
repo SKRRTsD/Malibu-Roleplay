@@ -3,16 +3,16 @@ character = {}
 Citizen.CreateThread(function()
     while true do
         Wait(1000)
-        TriggerClientEvent('mrp-doors:states',-1,prp_DOORS)
+        TriggerClientEvent('mrp-doors:states',-1,mrp_DOORS)
     end
 end)
 
 RegisterNetEvent('mrp-doors:changeLock-status')
 AddEventHandler('mrp-doors:changeLock-status', function(doorId,state)
-    prp_DOORS[doorId]["lock"] = state
+    mrp_DOORS[doorId]["lock"] = state
     if doorId == 93 or doorId == 94 then
-        prp_DOORS[doorId]["lock"] = false
-        prp_DOORS[doorId]["forceUnlocked"] = true
+        mrp_DOORS[doorId]["lock"] = false
+        mrp_DOORS[doorId]["forceUnlocked"] = true
     end
     Wait(1000)
     TriggerClientEvent('mrp-doors:changeLock-status',-1,tonumber(doorId),state,true)

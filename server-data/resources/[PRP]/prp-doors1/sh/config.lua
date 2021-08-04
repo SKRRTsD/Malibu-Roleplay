@@ -1,4 +1,4 @@
-prp_DOORS = {
+mrp_DOORS = {
   {
       info = "",
       active = true,

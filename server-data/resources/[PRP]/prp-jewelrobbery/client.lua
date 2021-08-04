@@ -180,7 +180,7 @@ end
 
 RegisterNetEvent('jewel:card')
 AddEventHandler('jewel:card', function()
-	if exports["prp_manager"]:isPed("countpolice") >= 3 then
+	if exports["mrp_manager"]:isPed("countpolice") >= 3 then
 		local thermite = exports["mrp-inventory"]:hasEnoughOfItem("Gruppe6Card3",1,false) and exports["mrp-inventory"]:hasEnoughOfItem("thermalcharge",1,false)
 		if thermite then
 			TriggerEvent("inventory:removeItem","Gruppe6Card3", 1)
@@ -206,7 +206,7 @@ end)
 
 RegisterNetEvent('jewel:disconnect')
 AddEventHandler('jewel:disconnect', function()
-	if exports["prp_manager"]:isPed("countpolice") >= 4 then
+	if exports["mrp_manager"]:isPed("countpolice") >= 4 then
 		if exports["mrp-inventory"]:hasEnoughOfItem("heavydutydrill",1,false) then
 			local ped = GetPlayerPed(-1)
 			local x,y,z = table.unpack(GetEntityCoords(ped, true))

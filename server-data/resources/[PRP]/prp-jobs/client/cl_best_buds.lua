@@ -1,6 +1,6 @@
 RegisterNetEvent("Best_buds:register")
 AddEventHandler("Best_buds:register", function(registerID)
-    local myJob = exports["prp_manager"]:isPed("myJob")
+    local myJob = exports["mrp_manager"]:isPed("myJob")
     if myJob == "best_buds" then
         local order = exports["mrp-applications"]:KeyboardInput({
             header = "Create Receipt",
@@ -30,6 +30,6 @@ end)
 
 RegisterNetEvent('Best_buds:cash:in')
 AddEventHandler('Best_buds:cash:in', function()
-    local cid = exports["prp_manager"]:isPed("cid")
+    local cid = exports["mrp_manager"]:isPed("cid")
     TriggerServerEvent("Best_buds:update:pay", cid)
 end)

@@ -869,7 +869,7 @@ AddEventHandler('attachPropCon', function(attachModelSent,boneNumberSent,x,y,z,x
         Citizen.Wait(100)
     end
     attachedProp = CreateObject(attachModel, 1.0, 1.0, 1.0, 1, 1, 0)
-    exports["prp_manager"]:GlobalObject(attachedProp)
+    exports["mrp_manager"]:GlobalObject(attachedProp)
     AttachEntityToEntity(attachedProp, PlayerPedId(), bone, x, y, z, xR, yR, zR, 1, 1, 0, 0, 2, 1)
     exit = false
     local plyCoords = GetEntityCoords(PlayerPedId())
@@ -902,7 +902,7 @@ AddEventHandler('attachPropDrugsObjectnoanim', function(attachModelSent,boneNumb
         Citizen.Wait(100)
     end
     attachedProp = CreateObject(attachModel, 1.0, 1.0, 1.0, 1, 1, 0)
-    exports["prp_manager"]:GlobalObject(attachedProp)
+    exports["mrp_manager"]:GlobalObject(attachedProp)
     AttachEntityToEntity(attachedProp, PlayerPedId(), bone, x, y, z, xR, yR, zR, 1, 1, 0, 0, 2, 1)
     Citizen.Wait(5000)
     removeAttachedProp()
@@ -921,7 +921,7 @@ AddEventHandler('attachPropDrugsObject', function(attachModelSent,boneNumberSent
         Citizen.Wait(100)
     end
     attachedProp = CreateObject(attachModel, 1.0, 1.0, 1.0, 1, 1, 0)
-    exports["prp_manager"]:GlobalObject(attachedProp)
+    exports["mrp_manager"]:GlobalObject(attachedProp)
     AttachEntityToEntity(attachedProp, PlayerPedId(), bone, x, y, z, xR, yR, zR, 1, 1, 0, 0, 2, 1)
     Citizen.Wait(5000)
     removeAttachedProp()
@@ -942,7 +942,7 @@ AddEventHandler('attachPropHObject', function(attachModelSent,boneNumberSent,x,y
         Citizen.Wait(100)
     end
     attachedProp = CreateObject(attachModel, 1.0, 1.0, 1.0, 1, 1, 0)
-    exports["prp_manager"]:GlobalObject(attachedProp)
+    exports["mrp_manager"]:GlobalObject(attachedProp)
     AttachEntityToEntity(attachedProp, PlayerPedId(), bone, x, y, z, xR, yR, zR, 1, 1, 0, 0, 2, 1)
     Citizen.Wait(10000)
     removeAttachedProp()
@@ -965,7 +965,7 @@ AddEventHandler('attachPropDrugs2', function(attachModelSent,boneNumberSent,x,y,
     end
 
     attachedProp = CreateObject(attachModel, 1.0, 1.0, 1.0, 1, 1, 0)
-    exports["prp_manager"]:GlobalObject(attachedProp)
+    exports["mrp_manager"]:GlobalObject(attachedProp)
     AttachEntityToEntity(attachedProp, PlayerPedId(), bone, x, y, z, xR, yR, zR, 1, 1, 0, 0, 2, 1)
     Citizen.Wait(4000)
     removeAttachedProp()
@@ -990,7 +990,7 @@ AddEventHandler('attachPropChopShop', function(attachModelSent,boneNumberSent,x,
     end
 
     attachedProp = CreateObject(attachModel, 1.0, 1.0, 1.0, 1, 1, 0)
-    exports["prp_manager"]:GlobalObject(attachedProp)
+    exports["mrp_manager"]:GlobalObject(attachedProp)
     AttachEntityToEntity(attachedProp, PlayerPedId(), bone, x, y, z, xR, yR, zR, 1, 1, 0, 0, 2, 1)
 
 end)
@@ -1009,7 +1009,7 @@ AddEventHandler('attachPropDrugs', function(attachModelSent,boneNumberSent,x,y,z
         Citizen.Wait(100)
     end
     attachedProp = CreateObject(attachModel, 1.0, 1.0, 1.0, 1, 1, 0)
-    exports["prp_manager"]:GlobalObject(attachedProp)
+    exports["mrp_manager"]:GlobalObject(attachedProp)
     AttachEntityToEntity(attachedProp, PlayerPedId(), bone, x, y, z, xR, yR, zR, 1, 1, 0, 0, 2, 1)
     Citizen.Wait(4000)
     removeAttachedProp()
@@ -1029,7 +1029,7 @@ function attachPropCash(attachModelSent,boneNumberSent,x,y,z,xR,yR,zR)
         Citizen.Wait(100)
     end
     attachedProp = CreateObject(attachModel, 1.0, 1.0, 1.0, 1, 1, 0)
-    exports["prp_manager"]:GlobalObject(attachedProp)
+    exports["mrp_manager"]:GlobalObject(attachedProp)
     AttachEntityToEntity(attachedProp, PlayerPedId(), bone, x, y, z, xR, yR, zR, 1, 1, 0, 0, 2, 1)
     Citizen.Wait(2500)
     

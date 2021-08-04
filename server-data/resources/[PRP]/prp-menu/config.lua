@@ -211,7 +211,7 @@ rootMenuConfig =  {
         icon = "#impound-vehicle",
         functionName = "ImpoundVeh",
         enableMenu = function()
-            return ((isPolice or exports["prp_manager"]:isPed("myjob") == "DOJ") and not isDead)
+            return ((isPolice or exports["mrp_manager"]:isPed("myjob") == "DOJ") and not isDead)
         end
     },
 
@@ -221,7 +221,7 @@ rootMenuConfig =  {
         icon = "#mdt",
         functionName = "mrp-mdt:hotKeyOpen",
         enableMenu = function()
-            return ((isPolice or exports["prp_manager"]:isPed("myjob") == "DOJ") and not isDead)
+            return ((isPolice or exports["mrp_manager"]:isPed("myjob") == "DOJ") and not isDead)
         end
     }
 }

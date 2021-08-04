@@ -110,7 +110,7 @@ end
 
 RegisterNetEvent("docks:manage")
 AddEventHandler("docks:manage", function(arg,arg2)
-  local rank = exports["prp_manager"]:GroupRank("dock_worker")
+  local rank = exports["mrp_manager"]:GroupRank("dock_worker")
   if rank > 3 then
     if arg == "list" then
       TriggerServerEvent("inv:latestdocks")
@@ -127,7 +127,7 @@ end)
 local inProgress = false
 RegisterNetEvent('event:control:truckerjob')
 AddEventHandler('event:control:truckerjob', function(useID)
-  local rank = exports["prp_manager"]:GroupRank("dock_worker")
+  local rank = exports["mrp_manager"]:GroupRank("dock_worker")
   if rank > 0 then
     if useID == 1 and not inProgress then
       inProgress = true
@@ -148,7 +148,7 @@ Citizen.CreateThread(function()
       local dist = #(vector3(DockInfo["requestspawn"]["x"],DockInfo["requestspawn"]["y"],DockInfo["requestspawn"]["z"]) - GetEntityCoords(PlayerPedId()))
       local drop1 = #(vector3(DockInfo["Drop1"]["x"],DockInfo["Drop1"]["y"],DockInfo["Drop1"]["z"]) - GetEntityCoords(PlayerPedId()))
       if dist < 30 or drop1 < 30 then
-        local rank = exports["prp_manager"]:GroupRank("dock_worker")
+        local rank = exports["mrp_manager"]:GroupRank("dock_worker")
         if rank > 0 then
           if dist < 20 then
             -- paleto
@@ -254,7 +254,7 @@ Citizen.CreateThread(function()
   while true do
 
     Wait(1)
-    if exports["prp_manager"]:isPed("myjob") and existingVeh ~= nil then
+    if exports["mrp_manager"]:isPed("myjob") and existingVeh ~= nil then
       if job ~= 0 and stage == "pickup" then
         if currentJobs[currentJobPos] == nil then
           TriggerEvent("DoLongHudText","Looks like the job has been taken,find a new job in the phone.",1)
@@ -383,7 +383,7 @@ end)
 Citizen.CreateThread(function()
   while true do
     Wait(9000)
-    if job ~= 0 and exports["prp_manager"]:isPed("myjob") then
+    if job ~= 0 and exports["mrp_manager"]:isPed("myjob") then
       currentJobPos = returnJobPos(job)
       checkDestruction()
     end

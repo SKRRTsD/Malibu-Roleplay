@@ -582,7 +582,7 @@ AddEventHandler('evidence:bleeding', function()
     if not WaterTest() then
 
         local ped = PlayerPedId()
-        local cid = exports["prp_manager"]:isPed("cid")
+        local cid = exports["mrp_manager"]:isPed("cid")
         local blood = "DNA-"..cid
 
         local uniqueEvidenceId = playerCoords.x .. "-" .. playerCoords.y .. "-" .. playerCoords.x
@@ -728,7 +728,7 @@ Citizen.CreateThread(
           end
         end
         if IsControlJustReleased(0,38) and minScan < 2.0 then
-          local myjob = exports["prp_manager"]:isPed("myjob")
+          local myjob = exports["mrp_manager"]:isPed("myjob")
           local finished = exports["mrp-taskbar"]:taskBar(3000,"Picking Up Item","What?",true)
           if finished == 100 then
             if myjob ~= "police" then

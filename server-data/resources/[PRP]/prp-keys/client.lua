@@ -32,7 +32,7 @@ end)
 
 
 RegisterCommand("idek", function(src, args, raw)
-  TriggerServerEvent("login:get:keys", exports["prp_manager"]:isPed("cid"))	
+  TriggerServerEvent("login:get:keys", exports["mrp_manager"]:isPed("cid"))	
 end)
 
 RegisterNetEvent('keys:loadKey')

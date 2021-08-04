@@ -80,7 +80,7 @@ CreateThread(function()
 end)
 
 RegisterNetEvent("vanilla:request:song", function()
-    local job = exports["prp_manager"]:isPed("myjob")
+    local job = exports["mrp_manager"]:isPed("myjob")
     if job == "vanilla_unicorn" then
         local url = exports["mrp-applications"]:KeyboardInput({
             header = "Place the song URL below.",
@@ -150,7 +150,7 @@ end)
 
 
 RegisterNetEvent("vanilla:change:volume", function()
-    local job = exports["prp_manager"]:isPed("myjob")
+    local job = exports["mrp_manager"]:isPed("myjob")
     if job == "vanilla_unicorn" then
         local url = exports["mrp-applications"]:KeyboardInput({
             header = "Settings: 0 - 100",
@@ -170,7 +170,7 @@ RegisterNetEvent("vanilla:change:volume", function()
 end)
 
 RegisterNetEvent("bahamas:request:song", function()
-    local job = exports["prp_manager"]:isPed("myjob")
+    local job = exports["mrp_manager"]:isPed("myjob")
     if job == "bahamas_bar" then
         local url = exports["mrp-applications"]:KeyboardInput({
             header = "Place the song URL below.",
@@ -191,7 +191,7 @@ RegisterNetEvent("bahamas:request:song", function()
 end)
 
 RegisterNetEvent("bahamas:change:volume", function()
-    local job = exports["prp_manager"]:isPed("myjob")
+    local job = exports["mrp_manager"]:isPed("myjob")
     if job == "bahamas_bar" then
         local url = exports["mrp-applications"]:KeyboardInput({
             header = "Settings: 0 - 100",
@@ -211,7 +211,7 @@ RegisterNetEvent("bahamas:change:volume", function()
 end)
 
 RegisterNetEvent("casino:request:song", function()
-    local job = exports["prp_manager"]:isPed("myjob")
+    local job = exports["mrp_manager"]:isPed("myjob")
     if job == "casino_dealer" then
         local url = exports["mrp-applications"]:KeyboardInput({
             header = "Place the song URL below.",
@@ -232,7 +232,7 @@ RegisterNetEvent("casino:request:song", function()
 end)
 
 RegisterNetEvent("casino:change:volume", function()
-    local job = exports["prp_manager"]:isPed("myjob")
+    local job = exports["mrp_manager"]:isPed("myjob")
     if job == "casino_dealer" then
         local url = exports["mrp-applications"]:KeyboardInput({
             header = "Settings: 0 - 100",
@@ -252,7 +252,7 @@ RegisterNetEvent("casino:change:volume", function()
 end)
 
 RegisterNetEvent("arcade:request:song", function()
-    local job = exports["prp_manager"]:isPed("myjob")
+    local job = exports["mrp_manager"]:isPed("myjob")
     if job == "videogeddon_arcade" then
         local url = exports["mrp-applications"]:KeyboardInput({
             header = "Place the song URL below.",
@@ -273,7 +273,7 @@ RegisterNetEvent("arcade:request:song", function()
 end)
 
 RegisterNetEvent("arcade:change:volume", function()
-    local job = exports["prp_manager"]:isPed("myjob")
+    local job = exports["mrp_manager"]:isPed("myjob")
     if job == "videogeddon_arcade" then
         local url = exports["mrp-applications"]:KeyboardInput({
             header = "Settings: 0 - 100",

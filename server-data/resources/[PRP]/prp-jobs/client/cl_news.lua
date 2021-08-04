@@ -145,7 +145,7 @@ end)
 RegisterNetEvent('event:control:newsJob')
 AddEventHandler('event:control:newsJob', function(useID)
 		local isInVeh = IsPedInAnyVehicle(PlayerPedId(), false)
-		if not exports["prp_manager"]:isPed("disabled") and not isInVeh then
+		if not exports["mrp_manager"]:isPed("disabled") and not isInVeh then
 	if useID == 2 and not movcamera then
 
 		if newscamera then

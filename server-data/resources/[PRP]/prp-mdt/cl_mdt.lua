@@ -40,7 +40,7 @@ end)
 
 RegisterNetEvent("mrp-mdt:hotKeyOpen")
 AddEventHandler("mrp-mdt:hotKeyOpen", function()
-    local myjob = exports["prp_manager"]:isPed("myjob")
+    local myjob = exports["mrp_manager"]:isPed("myjob")
     if myjob == "police" then
         TriggerServerEvent('mrp-mdt:Open', "police")
     elseif myjob == "DOJ" then
@@ -256,7 +256,7 @@ function ToggleGUI(explicit_status)
 end
 
 RegisterCommand('mdt', function()
-    if exports["prp_manager"]:isPed("myjob") == 'police' then
+    if exports["mrp_manager"]:isPed("myjob") == 'police' then
         TriggerEvent('mrp-mdt:hotKeyOpen')
     else
         TriggerEvent('DoLongHudText', 'You are not a police officer!', 2)

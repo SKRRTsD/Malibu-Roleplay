@@ -774,7 +774,7 @@ AddEventHandler("fire:damageUser", function(Reqeuester)
 
 	if IsPedShooting(Attackerped) then
 		local name = GetSelectedPedWeapon(Attackerped)
-        if name == `WEAPON_FIREEXTINGUISHER` and not exports["prp_manager"]:isPed("dead") then
+        if name == `WEAPON_FIREEXTINGUISHER` and not exports["mrp_manager"]:isPed("dead") then
         	lastDamageTrigger = GetGameTimer()
         	currentValues["oxy"] = currentValues["oxy"] - 15
         end
@@ -807,7 +807,7 @@ Citizen.CreateThread(function()
 			else
 				if currentValues["oxy"] <= 0 then
 					
-					if exports["prp_manager"]:isPed("dead") then
+					if exports["mrp_manager"]:isPed("dead") then
 						lastDamageTrigger = -7000
 						currentValues["oxy"] = 25.0
 					else
@@ -870,7 +870,7 @@ local blipgps = {}
 RegisterNetEvent('GPSTrack:Accepted')
 AddEventHandler('GPSTrack:Accepted', function(x,y,z,srcid,stage)
 
-	local job = exports["prp_manager"]:isPed("myjob")
+	local job = exports["mrp_manager"]:isPed("myjob")
 	if job == "police" or job == "ems" or job == "auto_exotics" or job == "tuner_shop" or job == "harmony_autos" or job == "hayes_autos" then
 		if blipgps.srcid then
 			RemoveBlip(blipgps.srcid)
@@ -1092,7 +1092,7 @@ function attachProp2(attachModelSent,boneNumberSent,x,y,z,xR,yR,zR)
 		Citizen.Wait(100)
 	end
 	attachedProp2 = CreateObject(attachModel, 1.0, 1.0, 1.0, 1, 1, 0)
-	exports["prp_manager"]:GlobalObject(attachedProp2)
+	exports["mrp_manager"]:GlobalObject(attachedProp2)
 	AttachEntityToEntity(attachedProp2, PlayerPedId(), bone, x, y, z, xR, yR, zR, 1, 1, 0, 0, 2, 1)
 	SetModelAsNoLongerNeeded(attachModel)
 end
@@ -1109,7 +1109,7 @@ function attachProp(attachModelSent,boneNumberSent,x,y,z,xR,yR,zR)
 		Citizen.Wait(100)
 	end
 	attachedProp = CreateObject(attachModel, 1.0, 1.0, 1.0, 1, 1, 0)
-	exports["prp_manager"]:GlobalObject(attachedProp)
+	exports["mrp_manager"]:GlobalObject(attachedProp)
 	AttachEntityToEntity(attachedProp, PlayerPedId(), bone, x, y, z, xR, yR, zR, 1, 1, 0, 0, 2, 1)
 	SetModelAsNoLongerNeeded(attachModel)
 end

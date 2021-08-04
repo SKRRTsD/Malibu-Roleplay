@@ -726,7 +726,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
 
     if (itemid == "advlockpick") then
              
-        local myJob = exports["prp_manager"]:isPed("myJob")
+        local myJob = exports["mrp_manager"]:isPed("myJob")
         if myJob ~= "news" then
         else
             TriggerEvent("DoLongHudText","Nice news reporting, you shit lord idiot.")
@@ -736,11 +736,11 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
 
 
     if (itemid == "Gruppe6Card") then
-        local police = exports["prp_manager"]:isPed("countpolice")
+        local police = exports["mrp_manager"]:isPed("countpolice")
         if police >= 4 then
         local coordA = GetEntityCoords(PlayerPedId(), 1)
         local coordB = GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 100.0, 0.0)
-        -- local countpolice = exports["prp_manager"]:isPed("countpolice")
+        -- local countpolice = exports["mrp_manager"]:isPed("countpolice")
         local targetVehicle = getVehicleInDirection(coordA, coordB)
         if targetVehicle ~= 0 and GetHashKey("stockade") == GetEntityModel(targetVehicle) then
             local entityCreatePoint = GetOffsetFromEntityInWorldCoords(targetVehicle, 0.0, -4.0, 0.0)
@@ -1199,7 +1199,7 @@ end)
 
 RegisterNetEvent('SniffRequestCID')
 AddEventHandler('SniffRequestCID', function(src)
-    local cid = exports["prp_manager"]:isPed("cid")
+    local cid = exports["mrp_manager"]:isPed("cid")
     TriggerServerEvent("SniffCID",cid,src)
 end)
 
@@ -1656,7 +1656,7 @@ AddEventHandler('inv:lockPick', function(isForced,inventoryName,slot)
             carTimer = math.ceil(carTimer / 3)
 
 
-            local myJob = exports["prp_manager"]:isPed("myJob")
+            local myJob = exports["mrp_manager"]:isPed("myJob")
             if myjob == "towtruck" then
                 carTimer = 4000
             end
@@ -1796,7 +1796,7 @@ AddEventHandler('veh:repairing', function(inventoryName,slot,itemid)
 
             if finished == 100 then
                 
-                local myJob = exports["prp_manager"]:isPed("myJob")
+                local myJob = exports["mrp_manager"]:isPed("myJob")
                 if myJob == "towtruck" then
 
                     SetVehicleEngineHealth(targetVehicle, 1000.0)

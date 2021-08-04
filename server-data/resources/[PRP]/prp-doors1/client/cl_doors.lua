@@ -193,7 +193,7 @@ Citizen.CreateThread(function()
         minZ=28.14,
         maxZ=32.14
     })
-    doors = prp_DOORS
+    doors = mrp_DOORS
     TriggerServerEvent("mrp-doors:request-lock-state")
 end)
 

@@ -169,7 +169,7 @@ RegisterNetEvent("character:finishedLoadingChar", function()
 
 
     -- Jail
-	TriggerServerEvent("retreive:jail",exports["prp_manager"]:isPed("cid"))	
+	TriggerServerEvent("retreive:jail",exports["mrp_manager"]:isPed("cid"))	
 
     -- shit
     TriggerServerEvent("asset_portals:get:coords")
@@ -178,7 +178,7 @@ RegisterNetEvent("character:finishedLoadingChar", function()
     TriggerServerEvent("police:getAnimData")
     TriggerServerEvent("trucker:returnCurrentJobs")
     TriggerEvent("reviveFunction")
-    TriggerServerEvent("login:get:keys", exports["prp_manager"]:isPed("cid"))	
+    TriggerServerEvent("login:get:keys", exports["mrp_manager"]:isPed("cid"))	
     TriggerEvent("menu:veh:relog") -- resets menu garage options
     TriggerServerEvent("police:SetMeta")
 end)
@@ -197,7 +197,7 @@ AddEventHandler("mrp-login:finishedClothing", function(endType)
             TriggerEvent("mrp-clothingmenu:Spawning", false)
             DestroyAllCams(true)
             RenderScriptCams(false, true, 1, true, true)
-            TriggerServerEvent("character:new:character", exports["prp_manager"]:isPed("cid"))
+            TriggerServerEvent("character:new:character", exports["mrp_manager"]:isPed("cid"))
             TriggerEvent("mrp-core:playerSpawned")
             Citizen.Wait(500)
             TriggerServerEvent("mrp-login:licenses")

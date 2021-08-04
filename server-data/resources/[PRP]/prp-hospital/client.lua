@@ -34,7 +34,7 @@ RegisterNetEvent('attempt:check-in', function()
 end)
 
 RegisterNetEvent("attempt:change:check-in", function()
-	if exports['prp_manager']:isPed("myjob") == "ems" then
+	if exports['mrp_manager']:isPed("myjob") == "ems" then
 		TriggerServerEvent("ems:toggle")
 	else
 		TriggerEvent("DoLongHudText", "This is only for EMS to use.", 2)
@@ -43,12 +43,12 @@ end)
 
 RegisterNetEvent("mrp-hospitalization:page")
 AddEventHandler("mrp-hospitalization:page", function()
-	if exports["prp_manager"]:isPed("countems") >= 1 then 
+	if exports["mrp_manager"]:isPed("countems") >= 1 then 
 		loadAnimDict('anim@narcotics@trash')
 		TaskPlayAnim(PlayerPedId(),'anim@narcotics@trash', 'drop_front',1.0, 1.0, -1, 1, 0, 0, 0, 0)
 		local finished = exports["mrp-taskbar"]:taskBar(2500,"Paging a Doctor")
 		if finished == 100 then
-			if exports["prp_manager"]:isPed("countems") >= 1 and not isTriageEnabled then
+			if exports["mrp_manager"]:isPed("countems") >= 1 and not isTriageEnabled then
 				TriggerEvent("DoLongHudText","A doctor has been paged. Please take a seat and wait.",2)
 				TriggerServerEvent("phone:triggerPager")
 			end
@@ -240,7 +240,7 @@ AddEventHandler("SpawnPeds", function()
             Citizen.Wait(0)
         end
 
-        local IsPedNearCoords = exports["prp_manager"]:IsPedNearCoords(x,y,z)
+        local IsPedNearCoords = exports["mrp_manager"]:IsPedNearCoords(x,y,z)
         if not IsPedNearCoords then
 
         	if GetPedType(pedType) ~= nil then

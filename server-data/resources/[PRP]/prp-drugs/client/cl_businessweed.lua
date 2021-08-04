@@ -1,6 +1,6 @@
 RegisterNetEvent("mrp-weedstore:startpicking")
 AddEventHandler("mrp-weedstore:startpicking", function()
-    local rank = exports["prp_manager"]:GroupRank("best_buds")
+    local rank = exports["mrp_manager"]:GroupRank("best_buds")
     if rank > 0 then  
         if exports['mrp-inventory']:hasEnoughOfItem("qualityscales", 1) then
             local dict = 'missfinale_c2ig_11'
@@ -25,7 +25,7 @@ AddEventHandler("mrp-weedstore:startpicking", function()
 end)
 RegisterNetEvent("mrp-weedstore:startpacking")
 AddEventHandler("mrp-weedstore:startpacking", function()
-    local rank = exports["prp_manager"]:GroupRank("best_buds")
+    local rank = exports["mrp_manager"]:GroupRank("best_buds")
     if rank > 0 then  
         if exports['mrp-inventory']:hasEnoughOfItem("driedbud", 50) and exports['mrp-inventory']:hasEnoughOfItem("plastic", 25) then
             local dict = 'missfinale_c2ig_11'
@@ -53,7 +53,7 @@ end)
 
 RegisterNetEvent("weedstore:register")
 AddEventHandler("weedstore:register", function(registerID)
-    local myJob = exports["prp_manager"]:isPed("myJob")
+    local myJob = exports["mrp_manager"]:isPed("myJob")
     if myJob == "best_buds" then
         local order = exports["mrp-applications"]:KeyboardInput({
             header = "Create Receipt",
@@ -83,7 +83,7 @@ end)
 
 RegisterNetEvent('weedstore:cash:in')
 AddEventHandler('weedstore:cash:in', function()
-    local cid = exports["prp_manager"]:isPed("cid")
+    local cid = exports["mrp_manager"]:isPed("cid")
     TriggerServerEvent("weedstore:update:pay", cid)
 end)
 

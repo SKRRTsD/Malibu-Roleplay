@@ -284,7 +284,7 @@ end
 
 function NearWeazelNews2()
     Citizen.CreateThread(function()
-        local myJob = exports["prp_manager"]:isPed("myJob")
+        local myJob = exports["mrp_manager"]:isPed("myJob")
         while NearWeazelNews do
             Citizen.Wait(5)
             if IsControlJustReleased(0, 38) then

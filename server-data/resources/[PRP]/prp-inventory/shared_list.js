@@ -1564,7 +1564,7 @@ itemList["joint"] = {
     weight: 1,
     nonStack: false,
     model: "",
-    image: "prp_joint.png",
+    image: "mrp_joint.png",
     information: "Its a Joint, man. ",
     deg: false
 }
@@ -3429,7 +3429,7 @@ itemList["anime"] = {
     weight: 0,
     nonStack: false,
     model: "",
-    image: "prp_anime-poster.png",
+    image: "mrp_anime-poster.png",
     information: "Weebs in uwu",
     deg: false
 }

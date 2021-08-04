@@ -1,6 +1,6 @@
 RegisterNetEvent("mrp-burgershot:startprocess3")
 AddEventHandler("mrp-burgershot:startprocess3", function()
-    local rank = exports["prp_manager"]:GroupRank("burger_shot")
+    local rank = exports["mrp_manager"]:GroupRank("burger_shot")
     if rank > 0 then    
         if exports["mrp-inventory"]:hasEnoughOfItem("rawpatty", 1) then 
             local dict = 'amb@prop_human_bbq@male@idle_a'
@@ -29,7 +29,7 @@ end)
 
 RegisterNetEvent("mrp-burgershot:startfryer")
 AddEventHandler("mrp-burgershot:startfryer", function()
-    local rank = exports["prp_manager"]:GroupRank("burger_shot")
+    local rank = exports["mrp_manager"]:GroupRank("burger_shot")
     if rank > 0 then  
         if exports["mrp-inventory"]:hasEnoughOfItem("potato", 1) then
             local dict = 'missfinale_c2ig_11'
@@ -57,7 +57,7 @@ end)
 
 RegisterNetEvent("mrp-burgershot:makeshake")
 AddEventHandler("mrp-burgershot:makeshake", function()
-    local rank = exports["prp_manager"]:GroupRank("burger_shot")
+    local rank = exports["mrp_manager"]:GroupRank("burger_shot")
     if rank > 0 then
         if exports["mrp-inventory"]:hasEnoughOfItem("milkshakeformula", 1) then
             local dict = 'mp_ped_interaction'
@@ -85,7 +85,7 @@ end)
 
 RegisterNetEvent("mrp-burgershot:getcola")
 AddEventHandler("mrp-burgershot:getcola", function()
-    local rank = exports["prp_manager"]:GroupRank("burger_shot")
+    local rank = exports["mrp_manager"]:GroupRank("burger_shot")
     if rank > 0 then
         if exports["mrp-inventory"]:hasEnoughOfItem("hfcs", 1) then   
             local dict = 'mp_ped_interaction'
@@ -113,7 +113,7 @@ end)
 
 RegisterNetEvent("burgershot:register")
 AddEventHandler("burgershot:register", function(registerID)
-    local myJob = exports["prp_manager"]:isPed("myJob")
+    local myJob = exports["mrp_manager"]:isPed("myJob")
     if myJob == "burger_shot" then
         local order = exports["mrp-applications"]:KeyboardInput({
             header = "Create Receipt",
@@ -143,7 +143,7 @@ end)
 
 RegisterNetEvent('burgershot:cash:in')
 AddEventHandler('burgershot:cash:in', function()
-    local cid = exports["prp_manager"]:isPed("cid")
+    local cid = exports["mrp_manager"]:isPed("cid")
     TriggerServerEvent("burgershot:update:pay", cid)
 end)
 

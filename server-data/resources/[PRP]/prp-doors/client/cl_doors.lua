@@ -22,7 +22,7 @@ AddEventHandler("mrp-jobmanager:playerBecameJob", function(job, name, notify)
     if job == "therapist" then isTher = true isInService = true end
 
     if isMedic == true or isDoc == true or isTher == true then
-        local cid = exports["prp_manager"]:isPed("cid")
+        local cid = exports["mrp_manager"]:isPed("cid")
         for i=1, #cidDoctorsCopAccess do
             if cid == cidDoctorsCopAccess[i] then
                 isCop = true
@@ -405,7 +405,7 @@ Citizen.CreateThread(function()
 end)
 
 function OpenCheck(curClosestNum)
-    --local gangType = exports["prp_manager"]:isPed("gang")
+    --local gangType = exports["mrp_manager"]:isPed("gang")
     local job = exports["mrp-core"]:getModule("LocalPlayer"):getVar("job")
 
     -- MRPD
@@ -478,7 +478,7 @@ function OpenCheck(curClosestNum)
 
     local foundValid = false
     for k,v in pairs(PRP.rankCheck) do
-        local rank = exports["prp_manager"]:GroupRank(k)
+        local rank = exports["mrp_manager"]:GroupRank(k)
         for o,p in pairs(v) do
             if rank >= o and not foundValid then
                 if p.between ~= nil then

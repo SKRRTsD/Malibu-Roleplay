@@ -1,6 +1,6 @@
 RegisterNetEvent("bean:register")
 AddEventHandler("bean:register", function(registerID)
-    local myJob = exports["prp_manager"]:isPed("myJob")
+    local myJob = exports["mrp_manager"]:isPed("myJob")
     if myJob == "bean_machine" then
         local order = exports["mrp-applications"]:KeyboardInput({
             header = "Create Receipt",
@@ -30,6 +30,6 @@ end)
 
 RegisterNetEvent('bean:cash:in')
 AddEventHandler('bean:cash:in', function()
-    local cid = exports["prp_manager"]:isPed("cid")
+    local cid = exports["mrp_manager"]:isPed("cid")
     TriggerServerEvent("bean:update:pay", cid)
 end)

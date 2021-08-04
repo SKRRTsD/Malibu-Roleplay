@@ -1,6 +1,6 @@
 RegisterNetEvent("bahamas:register")
 AddEventHandler("bahamas:register", function(registerID)
-    local myJob = exports["prp_manager"]:isPed("myJob")
+    local myJob = exports["mrp_manager"]:isPed("myJob")
     if myJob == "bahamas_bar" then
         local order = exports["mrp-applications"]:KeyboardInput({
             header = "Create Receipt",
@@ -25,7 +25,7 @@ end)
 
 RegisterNetEvent("bahamas:make:drink")
 AddEventHandler("bahamas:make:drink", function()
-    local myJob = exports["prp_manager"]:isPed("myJob")
+    local myJob = exports["mrp_manager"]:isPed("myJob")
     if myJob == "bahamas_bar" or myJob== "videogeddon_arcade" then
         TriggerEvent("server-inventory-open", "1313", "Shop");
     else
@@ -41,7 +41,7 @@ end)
 
 RegisterNetEvent('bahamas:cash:in')
 AddEventHandler('bahamas:cash:in', function()
-    local cid = exports["prp_manager"]:isPed("cid")
+    local cid = exports["mrp_manager"]:isPed("cid")
     TriggerServerEvent("bahamas:update:pay", cid)
 end)
 

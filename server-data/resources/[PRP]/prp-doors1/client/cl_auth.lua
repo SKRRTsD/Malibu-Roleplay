@@ -35,7 +35,7 @@ AddEventHandler("mrp-jobmanager:playerBecameJob", function(job, name, notify)
 end)
 
 function getBusinesses()
-    local characterId = exports["prp_manager"]:isPed("cid")
+    local characterId = exports["mrp_manager"]:isPed("cid")
     local _, employment = RPC.execute("GetEmploymentInformation", { character = { id = characterId } })
     businesses = employment
     businessesCacheTimer = GetGameTimer()
@@ -47,10 +47,10 @@ function hasSecuredAccess(pId, pType)
         return accessCheckCache[pType][pId] == true
     end
 
-    local characterId = exports['prp_manager']:isPed("cid")
+    local characterId = exports['mrp_manager']:isPed("cid")
     accessCheckCacheTimer[pType][pId] = GetGameTimer()
 
-    local job = exports['prp_manager']:isPed("myjob")
+    local job = exports['mrp_manager']:isPed("myjob")
 
     local authorized = securityAccess[pType][pId]
     if not authorized then return end
