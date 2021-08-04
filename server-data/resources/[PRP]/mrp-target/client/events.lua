@@ -719,6 +719,48 @@ Citizen.CreateThread(
             }
         )
         AddCircleZone(
+            "shopp",
+            vector3(2678.3, 3279.89, 55.39),
+            0.35,
+            {
+                name = "shopp",
+                debugPoly = false,
+                useZ = true
+            },
+            {
+                options = {
+                    {
+                        event = "shop:general",
+                        icon = "fas fa-shopping-basket",
+                        label = "Purchase Goods"
+                    }
+                },
+                job = {"all"},
+                distance = 1.5
+            }
+        )
+        AddCircleZone(
+            "shops",
+            vector3(2676.27, 3281.03, 55.34),
+            0.35,
+            {
+                name = "shops",
+                debugPoly = false,
+                useZ = true
+            },
+            {
+                options = {
+                    {
+                        event = "shop:general",
+                        icon = "fas fa-shopping-basket",
+                        label = "Purchase Goods"
+                    }
+                },
+                job = {"all"},
+                distance = 1.5
+            }
+        )
+        AddCircleZone(
             "Store1s",
             vector3(25.11, -1345.0, 29.5),
             0.55,
