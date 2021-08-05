@@ -1129,7 +1129,7 @@ AddEventHandler("police:buycrownvic2", function()
 	while not HasModelLoaded('npolvic') do
 		Citizen.Wait(0)
 	end
-	personalvehicle = CreateVehicle('npolvic',451.01538085938, -1019.6835327148, 28.437377929688, 87.874015808105,true,false)
+	personalvehicle = CreateVehicle('npolvic',450.96432495117, -975.97631835938, 25.510437011719, 89.37914276123,true,false)
 	SetModelAsNoLongerNeeded('npolvic')
 
 	SetVehicleOnGroundProperly(personalvehicle)
@@ -1156,6 +1156,15 @@ AddEventHandler("police:buycharger", function()
 	end
 end)
 
+RegisterNetEvent("police:buytaurus")
+AddEventHandler("police:buytaurus", function()
+	if exports["mrp_manager"]:isPed("myJob") == 'police' then
+		TriggerServerEvent('police:buytaurus_sv')
+	else
+		TriggerEvent('DoLongHudText', 'You are not a police officer dumbass!', 2)
+	end
+end)
+
 RegisterNetEvent("police:buycharger2")
 AddEventHandler("police:buycharger2", function()
 	local vehicle = veh
@@ -1175,7 +1184,7 @@ AddEventHandler("police:buycharger2", function()
 	while not HasModelLoaded('polchar') do
 		Citizen.Wait(0)
 	end
-	personalvehicle = CreateVehicle('polchar',451.01538085938, -1019.6835327148, 28.437377929688, 87.874015808105,true,false)
+	personalvehicle = CreateVehicle('polchar',450.96432495117, -975.97631835938, 25.510437011719, 89.37914276123,true,false)
 	SetModelAsNoLongerNeeded('polcharpolchar')
 
 	SetVehicleOnGroundProperly(personalvehicle)
@@ -1191,6 +1200,44 @@ AddEventHandler("police:buycharger2", function()
 	local name = 'polchar'
 	TriggerEvent("keys:addNew",personalvehicle, plate)
 	TriggerServerEvent('chargerbuy', plate, name, VehicleProps)
+end)
+
+
+RegisterNetEvent("police:buytaurus2")
+AddEventHandler("police:buytaurus2", function()
+	local vehicle = veh
+	local price = price		
+	local veh = GetVehiclePedIsUsing(ped)
+	local colors = table.pack(GetVehicleColours(veh))
+	local extra_colors = table.pack(GetVehicleExtraColours(veh))
+
+	local mods = {}
+	for i = 0,24 do
+		mods[i] = GetVehicleMod(veh,i)
+	end
+	Citizen.InvokeNative(0xEA386986E786A54F, Citizen.PointerValueIntInitialized(veh))
+
+	FreezeEntityPosition(ped,false)
+	RequestModel('poltaurus')
+	while not HasModelLoaded('poltaurus') do
+		Citizen.Wait(0)
+	end
+	personalvehicle = CreateVehicle('poltaurus',450.96432495117, -975.97631835938, 25.510437011719, 89.37914276123,true,false)
+	SetModelAsNoLongerNeeded('poltaurus')
+
+	SetVehicleOnGroundProperly(personalvehicle)
+
+	local plate = GetVehicleNumberPlateText(personalvehicle)
+	SetVehicleHasBeenOwnedByPlayer(personalvehicle,true)
+	local id = NetworkGetNetworkIdFromEntity(personalvehicle)
+	SetNetworkIdCanMigrate(id, true)
+	Citizen.InvokeNative(0x629BFA74418D6239,Citizen.PointerValueIntInitialized(personalvehicle))
+	TaskWarpPedIntoVehicle(PlayerPedId(),personalvehicle,-1)
+	SetEntityVisible(ped,true)			
+	local VehicleProps = exports['mrp-core']:FetchVehProps(personalvehicle)
+	local name = 'poltaurus'
+	TriggerEvent("keys:addNew",personalvehicle, plate)
+	TriggerServerEvent('taurusbuy', plate, name, VehicleProps)
 end)
 
 RegisterNetEvent("carshop:failedpurchase")

@@ -36,8 +36,8 @@ Citizen.CreateThread(
             distance = 1.5
         })
 
-        AddCircleZone("pdgarage", vector3(464.51, -1012.59, 28.43), 0.72, {
-            name="pdgarage",
+        AddCircleZone("personal_pd", vector3(443.77, -974.21, 26.05), 0.25, {
+            name="personal_pd",
             debugPoly=false,
             useZ=true
             }, {
@@ -47,11 +47,16 @@ Citizen.CreateThread(
                         icon = "fas fa-car",
                         label = "Buy Crown Vic $5000",
                     },
-                    -- {
-                    --     event = "police:buycharger",
-                    --     icon = "fas fa-car",
-                    --     label = "Buy Charger $180000",
-                    -- },
+                    {
+                        event = "police:buycharger",
+                        icon = "fas fa-car",
+                        label = "Buy Charger $40000",
+                    },
+                    {
+                        event = "police:buytaurus",
+                        icon = "fas fa-car",
+                        label = "Buy Taurus $20000",
+                    },
                 },
                 job = {"police"},
                 distance = 1.5
