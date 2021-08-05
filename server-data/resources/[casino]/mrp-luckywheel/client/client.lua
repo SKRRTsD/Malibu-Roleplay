@@ -78,7 +78,7 @@ AddEventHandler("mrp_luckywheel:doRoll", function(_priceIndex)
     Citizen.CreateThread(function()
         local speedIntCnt = 0.2
         local rollspeed = 0.2
-        local _winAngle = (_priceIndex - 1) * 18
+        local _winAngle = (_priceIndex - 1 * 18)
         local _rollAngle = _winAngle + (360 * 8)
         local _midLength = (_rollAngle / 2)
         local intCnt = 0
