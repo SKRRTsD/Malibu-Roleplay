@@ -1052,8 +1052,6 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
             TriggerEvent("inventory:removeItem", "drugbaggy", 50)
             TriggerEvent( "player:receiveItem","1gcocaine", math.random(45, 50) ) 
         end
-           else
-               TriggerEvent("DoLongHudText", "You need 1x Coke Brick 50x Drug Baggies and 1x Scale", 2)
     end
 
     if (itemid == "glucose") then 

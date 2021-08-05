@@ -18,7 +18,7 @@ local nearHayes = false
 local nearAutoExotics = false
 local nearHarmony = false
 
-local bennyLocationTuner = vector3(938.37, -970.82, 39.76)
+local bennyLocationTuner = vector3(-1423.5458984375, -450.31451416016, 35.909698486328)
 local harmonyautos = vector3(-31.566396713257, -1065.1439208984, 27.535711288452)
 local AutoExoticsPlace = vector3(546.57568359375, -189.33773803711, 54.493179321289)
 local hayesautos = vector3(450.27642822266, -975.96057128906, 25.379083633423)
@@ -767,8 +767,8 @@ AddEventHandler('event:control:bennys', function(useID)
         if useID == 1 and not isPlyInBennys and exports["mrp_manager"]:isPed("myJob") == "harmony_autos" then -- Bennys
             bennyHeading = 342.16030883789
             enterLocation(harmonyautos)
-        elseif useID == 2 and not isPlyInBennys and exports["mrp_manager"]:isPed("myJob") == "tuner_shop" then
-            bennyHeading = 265.4372253418
+        elseif useID == 2 and not isPlyInBennys and exports["mrp_manager"]:isPed("myJob") == "hayes_autos" then
+            bennyHeading = 27.642738342285
             enterLocation(bennyLocationTuner)
         elseif useID == 3 and not isPlyInBennys and exports["mrp_manager"]:isPed("myJob") == "police" then
             bennyHeading = 89.437484741211
@@ -888,15 +888,27 @@ Citizen.CreateThread(function()
                 end
 
 
-                -- GMS
+                -- Tuner Shop
                 if nearTuner and job == "tuner_shop" then
                     if not isPlyInBennys then
-                        Draw3DText(bennyLocationTuner.x, bennyLocationTuner.y, bennyLocationTuner.z + 0.5, "[Press ~p~E~w~ - Enter Goat Motor Service]", 255, 255, 255, 255, 4, 0.45, true, true, true, true, 0, 0, 0, 0, 55)
+                        Draw3DText(bennyLocationTuner.x, bennyLocationTuner.y, bennyLocationTuner.z + 0.5, "[Press ~p~E~w~ - Enter Tuner Shop]", 255, 255, 255, 255, 4, 0.45, true, true, true, true, 0, 0, 0, 0, 55)
                         if IsControlJustReleased(1, 38) then
                             TriggerEvent('event:control:bennys', 2)
                         end
                     else
                        disableControls()
+                    end
+                end
+
+                -- Hayes
+                if nearTuner and job == "hayes_autos" then
+                    if not isPlyInBennys then
+                        Draw3DText(bennyLocationTuner.x, bennyLocationTuner.y, bennyLocationTuner.z + 0.5, "[Press ~p~E~w~ - Enter Hayes Autos]", 255, 255, 255, 255, 4, 0.45, true, true, true, true, 0, 0, 0, 0, 55)
+                        if IsControlJustReleased(1, 38) then
+                            TriggerEvent('event:control:bennys', 2)
+                        end
+                    else
+                        disableControls()
                     end
                 end
 
