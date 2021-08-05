@@ -2897,6 +2897,19 @@ itemList["weedtaco"] = {
     deg: false
 }
 
+itemList["illegaldelivery"] = {
+    fullyDegrades: true,
+    decayrate: 0.00012,
+    displayname: "Delivery Product",
+    price: 10,
+    weight: 6,
+    nonStack: false,
+    model: "",
+    image: "box.png",
+    information: "This aint free taco.",
+    deg: false
+}
+
 
 itemList["fishtaco"] = {
     fullyDegrades: true,
