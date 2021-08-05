@@ -4562,7 +4562,7 @@ itemList["diamondrec"] = {
 itemList["casinofob"] = {
     fullyDegrades: false,
     decayrate: 0.0,
-    displayname: "Key Fob",
+    displayname: "Key Fob (Casino)",
     price: 1,
     weight: 0,
     nonStack: false,
