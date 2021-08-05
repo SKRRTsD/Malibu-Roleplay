@@ -180,7 +180,7 @@ end
 
 RegisterNetEvent('jewel:card')
 AddEventHandler('jewel:card', function()
-	if exports["mrp_manager"]:isPed("countpolice") >= 3 then
+	if exports["mrp_manager"]:isPed("countpolice") >= 0 then
 		local thermite = exports["mrp-inventory"]:hasEnoughOfItem("Gruppe6Card3",1,false) and exports["mrp-inventory"]:hasEnoughOfItem("thermalcharge",1,false)
 		if thermite then
 			TriggerEvent("inventory:removeItem","Gruppe6Card3", 1)
