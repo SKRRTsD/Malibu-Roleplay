@@ -955,6 +955,13 @@ Citizen.CreateThread(function()
         maxZ=18.07
     }) 
 
+    exports["mrp-polyzone"]:AddBoxZone("bennyz_pdm_repair", vector3(-29.26, -1042.57, 28.4), 5, 4.2, {
+        name="bennyz_pdm_repair",
+        heading=340,
+        minZ=26.4,
+        maxZ=30.4
+    }) 
+
 end)
 
 RegisterNetEvent('mrp-polyzone:enter')
@@ -975,6 +982,14 @@ AddEventHandler('mrp-polyzone:enter', function(name)
             TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Repair ($150)"))
         end
     end
+
+    if name == "bennyz_pdm_repair" then
+        if vehicle ~= 0 then
+            NearCiv = true
+            arcadeRepairFunction()
+            TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Repair ($150)"))
+        end
+    end
 end)
 
 RegisterNetEvent('mrp-polyzone:exit')
@@ -983,6 +998,9 @@ AddEventHandler('mrp-polyzone:exit', function(name)
         NearCiv = false
     end
     if name == "arcade_repair" then
+        NearCiv = false
+    end
+    if name == "bennyz_pdm_repair" then
         NearCiv = false
     end
     TriggerEvent('mrp-textui:HideUI')
@@ -1020,8 +1038,6 @@ RegisterNetEvent("bennys:civ:repair:cl", function()
     local car = GetVehiclePedIsIn(PlayerPedId(), false)
     if car ~= 0 then
         FreezeEntityPosition(car, true)
-        local finished = exports["mrp-taskbar"]:taskBar(math.random(15000, 20000),"Repairing Vehicle")
-        if finished == 100 then
             SetVehicleFixed(car)
             SetVehicleDirtLevel(car, 0)
             SetVehicleDeformationFixed(car)
@@ -1029,6 +1045,5 @@ RegisterNetEvent("bennys:civ:repair:cl", function()
             FreezeEntityPosition(car, false)
         else
             FreezeEntityPosition(car, false)
-        end
     end
 end)
