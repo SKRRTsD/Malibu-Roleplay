@@ -1,15 +1,14 @@
-RegisterNetEvent('mrp-doors:show')
-AddEventHandler('mrp-doors:show', function(action, text)
-	SendNUIMessage({
-		action = action,
-		text = text,
-	})
-end)
+function showInteraction(text , type)
+    SendNUIMessage({
+        type = "open",
+        text = text,
+        color = type,
+    })
+end
 
-RegisterNetEvent('mrp-doors:hide')
-AddEventHandler('mrp-doors:hide', function()
-	SendNUIMessage({
-		action = 'hide'
-	})
-end)
+function hideInteraction()
+    SendNUIMessage({
+        type = "close",
+    })
+end
 

@@ -181,10 +181,15 @@ end)
 
 RegisterNUICallback('closeTarget', function(data, cb)
     SetNuiFocus(false, false)
-
     success = false
-
     targetActive = false
+end)
+
+RegisterCommand("closeeye", function(source, args)
+    TriggerEvent("closetarget")
+    targetActive = false
+    success = false
+    SetNuiFocus(false, false)
 end)
 
 --Functions from https://forum.cfx.re/t/get-camera-coordinates/183555/14
@@ -263,6 +268,88 @@ function AddTargetVehicle(bones, parameteres)
     end
 end
 
+function RotationToDirection(rotation)
+    local adjustedRotation =
+    {
+        x = (math.pi / 180) * rotation.x,
+        y = (math.pi / 180) * rotation.y,
+        z = (math.pi / 180) * rotation.z
+    }
+    local direction =
+    {
+        x = -math.sin(adjustedRotation.z) * math.abs(math.cos(adjustedRotation.x)),
+        y = math.cos(adjustedRotation.z) * math.abs(math.cos(adjustedRotation.x)),
+        z = math.sin(adjustedRotation.x)
+    }
+    return direction
+end
+
+function RayCastGamePlayCamera(distance)
+    local cameraRotation = GetGameplayCamRot()
+    local cameraCoord = GetGameplayCamCoord()
+    local direction = RotationToDirection(cameraRotation)
+    local destination =
+    {
+        x = cameraCoord.x + direction.x * distance,
+        y = cameraCoord.y + direction.y * distance,
+        z = cameraCoord.z + direction.z * distance
+    }
+    local a, b, c, d, e = GetShapeTestResult(StartShapeTestRay(cameraCoord.x, cameraCoord.y, cameraCoord.z, destination.x, destination.y, destination.z, -1, PlayerPedId(), 0))
+    return b, c, e
+end
+
+function GetForwardVector(rotation)
+    local rot = (math.pi / 180.0) * rotation
+    return vector3(-math.sin(rot.z) * math.abs(math.cos(rot.x)), math.cos(rot.z) * math.abs(math.cos(rot.x)), math.sin(rot.x))
+end
+
+function RayCast(origin, target, options, ignoreEntity, radius)
+    local handle = StartShapeTestSweptSphere(origin.x, origin.y, origin.z, target.x, target.y, target.z, radius, options, ignoreEntity, 0)
+    return GetShapeTestResult(handle)
+end
+
+function GetEntityPlayerIsLookingAt(pDistance, pRadius, pFlag, pIgnore)
+    -- print("PLAYER LOOKING AT",pDistance, pRadius, pFlag, pIgnore)
+    local distance = pDistance or 3.0
+    local originCoords = GetPedBoneCoords(PlayerPedId(), 31086)
+    local forwardVectors = GetForwardVector(GetGameplayCamRot(2))
+    local forwardCoords = originCoords + (forwardVectors * (IsInVehicle and distance + 1.5 or distance))
+    
+    if not forwardVectors then return end
+
+    local _, hit, targetCoords, _, targetEntity = RayCast(originCoords, forwardCoords, pFlag or 286, pIgnore, pRadius or 0.2)
+    -- print("WHAT ENTITY IS LOOKING ",hit,targetEntity)
+    if not hit and targetEntity == 0 then return end
+
+    local entityType = GetEntityType(targetEntity)
+    -- print("ENTITY TYPE",entityType)
+    return targetEntity, entityType, targetCoords
+end
+
+Citizen.CreateThread(function()
+    while true do
+        local idle = 250
+
+        PlayerPed = PlayerPedId()
+      
+        local entity, entityType, entityCoords = GetEntityPlayerIsLookingAt(3.0, 0.2, 286, PlayerPed)
+
+        if entity and entityType ~= 0 then
+            if entity ~= CurrentTarget then
+                
+                CurrentTarget = entity
+             
+                TriggerEvent('mrp-target:inFront', CurrentTarget, entityType, entityCoords)
+            end
+        elseif CurrentTarget then
+            CurrentTarget = nil
+            TriggerEvent('mrp-target:inFront', CurrentTarget)
+        end
+
+        Citizen.Wait(idle)
+    end
+end)
+
 
 exports("AddCircleZone", AddCircleZone)
 
@@ -273,3 +360,10 @@ exports("AddPolyzone", AddPolyzone)
 exports("AddTargetModel", AddTargetModel)
 
 exports("AddTargetVehicle", AddTargetBone)
+
+exports('GetCurrentEntity', function()
+    return CurrentTarget
+end)
+
+
+exports('GetEntityPlayerIsLookingAt', GetEntityPlayerIsLookingAt)
