@@ -13,7 +13,7 @@ end
 
 local Queue = {}
 -- EDIT THESE IN SERVER.CFG + OTHER OPTIONS IN CONFIG.LUA
-Queue.MaxPlayers = GetConvarInt("sv_maxclients", 40)
+Queue.MaxPlayers = GetConvarInt("sv_maxclients", 48)
 Queue.Debug = GetConvar("sv_debugqueue", "true") == "true" and true or false
 Queue.DisplayQueue = GetConvar("sv_displayqueue", "true") == "true" and true or false
 Queue.InitHostName = GetConvar("sv_hostname")
@@ -688,7 +688,7 @@ Citizen.CreateThread(function()
             end
         end
     
-        Queue.MaxPlayers = GetConvarInt("sv_maxclients", 40)
+        Queue.MaxPlayers = GetConvarInt("sv_maxclients", 48)
         Queue.Debug = GetConvar("sv_debugqueue", "true") == "true" and true or false
         Queue.DisplayQueue = GetConvar("sv_displayqueue", "true") == "true" and true or false
 
