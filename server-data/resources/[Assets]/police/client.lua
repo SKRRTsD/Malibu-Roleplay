@@ -56,6 +56,12 @@ AddEventHandler('event:control:openpersonalpd', function()
 	TriggerEvent("server-inventory-open", "1", "personalMRPD-"..cid)
 end)
 
+RegisterNetEvent('pokemon-folder')
+AddEventHandler('pokemon-folder', function()
+	local cid = exports["mrp_manager"]:isPed("cid")
+	TriggerEvent("server-inventory-open", "1", "Pokemon-"..cid)
+end)
+
 RegisterNetEvent('pd:deathcheck')
 AddEventHandler('pd:deathcheck', function()
   if not isDead then

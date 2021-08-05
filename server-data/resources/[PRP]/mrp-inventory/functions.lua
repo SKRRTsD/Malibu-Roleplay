@@ -271,6 +271,10 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
         end
     end
 
+    if ( itemid == "pokemonfolder" ) then
+       TriggerEvent('pokemon-folder')
+    end
+
     if ( itemid == "materialcrate" ) then
         local finished = exports["mrp-taskbar"]:taskBar(10000,"Opening Crate",false,false,playerVeh)
         if (finished == 100) then
