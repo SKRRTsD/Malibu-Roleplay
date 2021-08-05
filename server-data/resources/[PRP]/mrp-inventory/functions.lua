@@ -741,7 +741,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
 
     if (itemid == "Gruppe6Card") then
         local police = exports["mrp_manager"]:isPed("countpolice")
-        if police >= 4 then
+        if police >= 0 then
         local coordA = GetEntityCoords(PlayerPedId(), 1)
         local coordB = GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 100.0, 0.0)
         -- local countpolice = exports["mrp_manager"]:isPed("countpolice")

@@ -122,7 +122,7 @@ end)
 RegisterNetEvent("store:dosafe")
 AddEventHandler("store:dosafe", function()
 	local police = exports["mrp_manager"]:isPed("countpolice")
-	if police >= 1 then
+	if police >= 0 then
 		local storeid = isStoreRobbery()
 		TriggerServerEvent('conviencesafe:log')
 		TriggerEvent("mrp-dispatch:storerobbery")
@@ -144,7 +144,7 @@ local you = 0
 RegisterNetEvent("store:register")
 AddEventHandler("store:register", function(storeid,regid)
 	local police = exports["mrp_manager"]:isPed("countpolice")
-	if police >= 1 then
+	if police >= 0 then
 		TriggerEvent("mrp-dispatch:storerobbery")
 		TriggerServerEvent('convienceregister:log')
 		TriggerServerEvent("police:camrobbery",storeid)
