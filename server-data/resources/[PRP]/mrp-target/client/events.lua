@@ -163,12 +163,12 @@ Citizen.CreateThread(
                 options = {
                     {
                         event = "police:forceEnter",
-                        icon = "fas fa-sign-in-alt",
+                        icon = "fas fa-chevron-circle-right",
                         label = "Seat Player!"
                     },
                     {
                         event = "unseatPlayer",
-                        icon = "fas fa-sign-out-alt",
+                        icon = "fas fa-chevron-circle-left",
                         label = "Unseat Player!"
                     },
                     {
