@@ -10471,6 +10471,19 @@ itemList["jimpass"] = {
 
 // Pokemon
 
+itemList["pokemonfolder"] = {
+    fullyDegrades: false,
+    decayrate: 0.0,
+    displayname: "Pokemon File",
+    price: 150,
+    weight: 1,
+    nonStack: false,
+    model: "",
+    image: "pokemonfolder.png",
+    weapon: false,
+    deg: false
+}
+
 itemList["shiningpack"] = {
     fullyDegrades: false,
     decayrate: 0.0,
