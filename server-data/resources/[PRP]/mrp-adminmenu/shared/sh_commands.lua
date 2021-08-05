@@ -37,17 +37,17 @@ end
 
 PRP.Admin:AddCommand(cmd)
 
--- local cmd = {}
--- cmd = {
---     title = "God",
---     command = "god",
---     concmd = "god",
---     category = "Player",
---     usage = "god",
---     description = "Enables god mode",
---     ranks = {"dev"},
---     vars = {}
--- }
+local cmd = {}
+cmd = {
+    title = "God",
+    command = "god",
+    concmd = "god",
+    category = "Player",
+    usage = "god",
+    description = "Enables god mode",
+    ranks = {"dev"},
+    vars = {}
+}
 
 function cmd.RunCommand(caller, args)
     local log = string.format("%s [%s] set god mode: %s", caller:getVar("name"), caller:getVar("steamid"), args.toggle and "true" or "false")
