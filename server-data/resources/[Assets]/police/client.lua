@@ -2021,19 +2021,18 @@ end)
 local near_evidence = false
 
 Citizen.CreateThread(function()
-    exports["mrp-polyzone"]:AddBoxZone("evidence_spot", vector3(475.48, -1005.78, 26.27), 1.8, 2, {
-		name="evidence_spot",
-		heading=90,
-		--debugPoly=true,
-		minZ=25.27,
-		maxZ=27.07
+    exports["mrp-polyzone"]:AddBoxZone("evidence_police", vector3(473.91, -994.12, 26.27), 7, 4.2, {
+		name="evidence_police",
+		heading=0,
+		minZ=24.27,
+		maxZ=28.27
     }) 
 end)
 
 
 RegisterNetEvent('mrp-polyzone:enter')
 AddEventHandler('mrp-polyzone:enter', function(name)
-    if name == "evidence_spot" then
+    if name == "evidence_police" then
         local job = exports["mrp_manager"]:isPed("myjob")
         if job == "police" then
             near_evidence = true
@@ -2043,8 +2042,8 @@ AddEventHandler('mrp-polyzone:enter', function(name)
 end)
 
 RegisterNetEvent('mrp-polyzone:exit')
-AddEventHandler('mrp-polyzone:exit', function(name)
-    if name == "evidence_spot" then
+AddEventHandler('evidence_police-polyzone:exit', function(name)
+    if name == "evidence_police" then
         near_evidence = false
     end
     TriggerEvent('mrp-textui:HideUI')
