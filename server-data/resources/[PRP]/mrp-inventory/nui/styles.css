@@ -46,7 +46,7 @@ body {
 }
 
 .infowrap {
-    background-color: rgba(22, 22, 22, 0.6);
+    background-color: rgba(42, 41, 66, 0.6);
     width: 100%;
 }
 
@@ -114,7 +114,7 @@ body {
 }
 
 #move-amount:hover {
-    background-color: #47688a;
+    background-color: #47488a;
 }
 
 h2 {
@@ -134,8 +134,9 @@ hr {
 
 
 div.tooltip {
-    background-color: #222831;
-    border-bottom-left-radius: 0;
+    border-radius: 8px;
+    border:1px rgb(160, 143, 180) solid;
+    background-color: #292841;
 }
 
 .Logs {
@@ -159,15 +160,32 @@ div.tooltip {
     overflow: hidden;
 }
 
+div.usearea {
+    border-radius:8px;
+    margin-top: 20%;
+    background-color: #33305e;
+    color: rgba(220, 220, 220, 1);
+}
+
+div.usearea:hover {
+    border-radius:8px;
+    background-color: #47488a;
+}
+
+
 div.CloseInv {
-    margin-top: 40%;
-    background-color: #30475e;
+    border-radius:8px;
+    margin-top: 20%;
+    background-color: #33305e;
     color: rgba(220, 220, 220, 1);
 }
 
 div.CloseInv:hover {
-    background-color: #47688a;
+    border-radius:8px;
+    background-color: #47488a;
 }
+
+
 
 input[type='number']::-webkit-outer-spin-button,
 input[type='number']::-webkit-inner-spin-button {
@@ -181,7 +199,7 @@ input[type='number']::-webkit-inner-spin-button {
     height: 130px;
     text-align: center;
     border: 1px solid rgba(220, 240, 220, 0.05);
-    background: linear-gradient(to bottom, rgba(1, 1, 1, 0.15) 107px, #191e25 108px) repeat-x;
+    background: linear-gradient(to bottom, rgba(1, 1, 1, 0.15) 107px, #292841 108px) repeat-x;
     transition: all 0.2s ease;
     margin: 1px;
     text-transform: uppercase;
@@ -195,7 +213,7 @@ input[type='number']::-webkit-inner-spin-button {
     height: 130px;
     text-align: center;
     border: 1px solid rgba(220, 240, 220, 0.05);
-    background: linear-gradient(to bottom, rgba(1, 1, 1, 0.15) 107px, #191e25 108px) repeat-x;
+    background: linear-gradient(to bottom, rgba(1, 1, 1, 0.15) 107px, #292841 108px) repeat-x;
     transition: all 0.2s ease;
     margin: 1px;
     text-transform: uppercase;
@@ -219,7 +237,7 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .item:hover {
-    background-color: rgba(55, 55, 55, 0.15);
+    background-color: #3027633f;
     border: solid rgba(222, 222, 222, 0.25) 1px;
 }
 
@@ -236,7 +254,7 @@ input[type='number']::-webkit-inner-spin-button {
     border: 1px solid rgba(200, 200, 200, 0.9);
     position: absolute;
     z-index: -1;
-    background: #222831;
+    background: rgb(42, 41, 66);
 }
 
 .inventory {
@@ -287,7 +305,7 @@ input[type='number']::-webkit-inner-spin-button {
     position: absolute;
     left: 0;
     bottom: 0;
-    background: #30475e;
+    background: #2e2949;
     background-size: 100000% 100000%;
     pointer-events: none;
     border-bottom-left-radius: 4px;
@@ -348,7 +366,7 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .wrapmain::-webkit-scrollbar-thumb {
-    background: #30475e !important;
+    background: #37305e !important;
     border-radius: 3px;
 }
 
@@ -357,7 +375,7 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .wrapsecondary::-webkit-scrollbar-thumb {
-    background: #30475e !important;
+    background: #37305e !important;
     border-radius: 3px;
 }
 
@@ -423,7 +441,7 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .move-center:hover {
-    background-color: #191e25c0;
+    background-color: #3027633f;
 }
 
 .move-center:hover .Use {
@@ -440,7 +458,7 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .bottom-button:hover {
-    background: #2c3441;
+    background: #47488a;
 }
 
 .money::before {
@@ -479,8 +497,8 @@ img.smaller {
 }
 
 .move-center {
-    background-color: #191e25aa;
-    border-radius: 5px;
+    background-color: #1b1925aa;
+    border-radius: 8px;
     margin: 15% auto 0;
     padding: 2vh;
     transition: all 0.5s ease;
@@ -493,8 +511,8 @@ img.smaller {
     font-size: 1.3vh;
     text-align: center;
     color: rgba(220, 220, 220, 1);
-    border-radius: 5px;
-    background-color: #30475e;
+    border-radius: 8px;
+    background-color: #33305e;
     border: none;
     text-transform: uppercase;
 }
@@ -503,7 +521,7 @@ img.smaller {
     align-items: center;
     background-color: #689f38;
     border-radius: 5px;
-    color: #191e25;
+    color: #292841;
     display: block;
     flex-grow: 1;
     float: none;
@@ -528,7 +546,7 @@ img.smaller {
 }
 
 .bottom-button {
-    background: #191e25;
+    background: #27263b;
     border-radius: 5px;
     color: #fff;
     display: inline-block;
@@ -544,7 +562,9 @@ img.smaller {
 }
 
 .help-menu {
-    background-color: #191e25;
+    border-radius: 8px;
+    border:1px rgb(160, 143, 180) solid;
+    background-color: #292841;
     border-radius: 10px;
     color: rgba(220, 220, 220, 1);
     display: none;
@@ -568,7 +588,9 @@ input[type='checkbox'] {
 }
 
 .settings-menu {
-    background-color: #191e25;
+    border-radius: 8px;
+    border:1px rgb(160, 143, 180) solid;
+    background-color: #292841;
     border-radius: 10px;
     color: rgba(220, 220, 220, 1);
     display: none;
@@ -583,7 +605,7 @@ input[type='checkbox'] {
 }
 
 button {
-    background-color: #30475e;
+    background-color: #37305e;
     border: none;
     border-radius: 5px;
     color: rgba(220, 220, 220, 1);
@@ -624,7 +646,7 @@ button.save-settings {
 }
 
 .CurrentInformation {
-    background-color: #191e25b6;
+    background-color: #292841b6;
     border-radius: 5px;
     color: rgba(220, 220, 220, 1);
     font-size: 1.35vh;
@@ -706,12 +728,13 @@ h2 {
 }
 
 .craftSearch {
-    background-color: #191e259d;
-    border: none;
+    border:1px rgb(160, 143, 180) solid;
+    background-color: #1d18279d;
+    margin-bottom: 5.1px;
     border-radius: 1vh;
     color: #fff;
     font-size: 1.5vh;
-    height: 2vh;
+    height: 2.5vh;
     padding: 1%;
     width: 90.5%;
 }
@@ -732,7 +755,7 @@ h2 {
 }
 
 .item {
-    background: linear-gradient(to bottom, rgba(1, 1, 1, 0.15) 82%, #191e25 82%) repeat-x;
+    background: linear-gradient(to bottom, #0f0f1173 82%, #1b192573 82%) repeat-x;
     border: 1px solid rgba(220, 240, 220, 0.05);
     border-radius: 7%;
     float: left;
@@ -746,6 +769,7 @@ h2 {
 }
 
 .craftGrid {
+    margin-top:16%;
     display: grid;
     grid-column-gap: 0.25%;
     grid-row-gap: 0.25%;
@@ -753,7 +777,7 @@ h2 {
 }
 
 .craftContainer {
-    background-color: #101318a2;
+    background-color: #121018a2;
     border-radius: 3%;
     display: inline-block;
     margin: 2px;
