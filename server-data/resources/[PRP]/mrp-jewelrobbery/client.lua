@@ -206,7 +206,7 @@ end)
 
 RegisterNetEvent('jewel:disconnect')
 AddEventHandler('jewel:disconnect', function()
-	if exports["mrp_manager"]:isPed("countpolice") >= 4 then
+	if exports["mrp_manager"]:isPed("countpolice") >= 0 then
 		if exports["mrp-inventory"]:hasEnoughOfItem("heavydutydrill",1,false) then
 			local ped = GetPlayerPed(-1)
 			local x,y,z = table.unpack(GetEntityCoords(ped, true))
