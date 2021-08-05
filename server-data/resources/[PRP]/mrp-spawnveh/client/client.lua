@@ -749,21 +749,10 @@ AddEventHandler('Vehicle:Rental', function()
         },
         {
             id = 2,
-            header = "Futo",
+            header = "Faggio",
             txt = "$150",
             params = {
                 event = "spawn:veh:rental",
-                args = {
-                    vehicle = "futo"
-                }
-            }
-        },
-        {
-            id = 2,
-            header = "Faggio Bike",
-            txt = "$150",
-            params = {
-                event = "spawn:veh:rental2",
                 args = {
                     vehicle = "faggio"
                 }
@@ -791,8 +780,19 @@ AddEventHandler('Vehicle:Rental', function()
                 }
             }
         },
-        {
+		{
             id = 5,
+            header = "Futo",
+            txt = "$150",
+            params = {
+                event = "spawn:veh:rental2",
+                args = {
+                    vehicle = "futo"
+                }
+            }
+        },
+        {
+            id = 6,
             header = "Scorcher Mountain Bike",
             txt = "$150",
             params = {
@@ -803,7 +803,7 @@ AddEventHandler('Vehicle:Rental', function()
             }
         },
         {
-            id = 6,
+            id = 7,
             header = "BMX",
             txt = "$150",
             params = {
@@ -814,7 +814,7 @@ AddEventHandler('Vehicle:Rental', function()
             }
         },
         {
-            id = 7,
+            id = 8,
             header = "Close Menu",
             txt = "Exit the menu!",
             params = {
