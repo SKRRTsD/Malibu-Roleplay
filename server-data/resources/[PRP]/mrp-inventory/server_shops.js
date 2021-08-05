@@ -320,6 +320,7 @@ function HardwareStore() {
         { item_id: "firework1", id: 0, name: "Shop", information: "{}", slot: 22, amount: 1 },
         { item_id: "firework2", id: 0, name: "Shop", information: "{}", slot: 23, amount: 1 },
         { item_id: "fountain", id: 0, name: "Shop", information: "{}", slot: 24, amount: 1 },
+        { item_id: "pokemonfolder", id: 0, name: "Shop", information: "{}", slot: 25, amount: 1 },
     ];
     return JSON.stringify(shopItems);
 }

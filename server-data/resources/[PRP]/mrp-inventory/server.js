@@ -376,7 +376,7 @@ onNet("server-inventory-open", async (coords, player, secondInventory, targetNam
         } else if (secondInventory == "4") {
             var targetinvname = targetName;
             var shopArray = HardwareStore();
-            var shopAmount = 24;
+            var shopAmount = 25;
             emitNet("inventory-open-target", src, [invArray, arrayCount, playerinvname, shopArray, shopAmount, targetinvname, 500, false]);
         } else if (secondInventory == "10965") {
             var targetinvname = targetName;
