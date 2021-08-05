@@ -80,20 +80,20 @@ AddEventHandler('sellgoldenore', function()
     end
 end)
 
-RegisterNetEvent('sellgoldenore')
-AddEventHandler('sellgoldenore', function()
-    if exports["mrp-inventory"]:hasEnoughOfItem("goldore",1,false) then
-        local finished = exports["mrp-taskbar"]:taskBar(10000,"Selling goldore!")
+RegisterNetEvent('selluncutruby')
+AddEventHandler('selluncutruby', function()
+    if exports["mrp-inventory"]:hasEnoughOfItem("uncutruby",1,false) then
+        local finished = exports["mrp-taskbar"]:taskBar(10000,"Selling Uncut Ruby!")
         if finished == 100 then
-            TriggerEvent('inventory:removeItem', 'goldore', 1)
-            TriggerServerEvent( 'sk1c2:payout', math.random(90,190))
-            TriggerEvent('DoLongHudText', 'You successfully sold a goldore.', 1)
+            TriggerEvent('inventory:removeItem', 'uncutruby', 1)
+            TriggerServerEvent( 'sk1c2:payout', math.random(120,210))
+            TriggerEvent('DoLongHudText', 'You successfully sold a Uncut Ruby.', 1)
         else
             TriggerEvent('DoLongHudText', 'Cancelled', 2)
         end
 
     else
-        TriggerEvent('DoLongHudText', 'You dont have a goldore to sell', 2)
+        TriggerEvent('DoLongHudText', 'You dont have a Uncut Ruby to sell', 2)
     end
 end)
 
