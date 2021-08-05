@@ -927,6 +927,10 @@ function DisplayInventoryMultiple(playerinventory, itemCount, invName, targetinv
         secondaryMaxWeight = 250.0;
         slotLimitTarget = 40;
         displayName = 'Other Player';
+    } else if (targetinvName.indexOf('Pokemon-') > -1) {
+        secondaryMaxWeight = 0.0;
+        slotLimitTarget = 100;
+        displayName = 'Pokemon Collection';
     } else if (targetinvName.indexOf('rifle-rack') > -1) {
         secondaryMaxWeight = 25.0;
         slotLimitTarget = 2;
