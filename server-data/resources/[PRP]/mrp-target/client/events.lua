@@ -4338,9 +4338,9 @@ Citizen.CreateThread(
             {
                 options = {
                     {
-                        event = 'crack:enter',
+                        event = 'coke:enter',
                         icon = "fas fa-arrow-alt-circle-up",
-                        label = "What Dis ?!"
+                        label = "What is Dis ?!"
                     }
                 },
                 job = {"all"},
@@ -4357,9 +4357,9 @@ Citizen.CreateThread(
         }, {
             options = {
                 {
-                    event = 'crack:exit',
+                    event = 'coke:exit',
                     icon = "fas fa-arrow-alt-circle-down",
-                    label = "Leave Crack Lab!"
+                    label = "Leave Coke Lab!"
                 }
             },
             job = {"all"},
@@ -4376,9 +4376,28 @@ Citizen.CreateThread(
         }, {
             options = {
                 {
-                    event = 'crack:start',
+                    event = 'coke:start',
                     icon = "fas fa-drum",
                     label = "Start Mixing!"
+                }
+            },
+            job = {"all"},
+            distance = 5.0
+        }
+    )
+
+        AddBoxZone("coca_leaf", vector3(-1155.61, -1521.84, 10.63), 2, 0.8, {
+            name="coca_leaf",
+            heading=215,
+            --debugPoly=true,
+            minZ=6.83,
+            maxZ=10.83
+        }, {
+            options = {
+                {
+                    event = 'leaf:menu',
+                    icon = "fas fa-leaf",
+                    label = "Mash Up Leafs!"
                 }
             },
             job = {"all"},

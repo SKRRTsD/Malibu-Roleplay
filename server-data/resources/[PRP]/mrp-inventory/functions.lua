@@ -1040,9 +1040,20 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
         TaskItem("amb@world_human_clipboard@male@idle_a", "idle_c", 49,6550,"Healing","healed:minors",true,itemid,playerVeh)
     end
 
-    if (itemid == "coke50g") then
-        CreateCraftOption("coke5g", 80, true)
+    -- if (itemid == "coke50g") then
+    --     CreateCraftOption("coke5g", 80, true)
         
+    -- end
+
+    if ( itemid == "coke50g" and hasEnoughOfItem("qualityscales",1,false) and hasEnoughOfItem("drugbaggy",50,false) ) then
+        local finished = exports["mrp-taskbar"]:taskBar(7500,"Packing Cocaine",false,false,playerVeh)
+        if (finished == 100) then
+            TriggerEvent("inventory:removeItem", "coke50g", 1)
+            TriggerEvent("inventory:removeItem", "drugbaggy", 50)
+            TriggerEvent( "player:receiveItem","1gcocaine", math.random(45, 50) ) 
+        end
+           else
+               TriggerEvent("DoLongHudText", "You need 1x Coke Brick 50x Drug Baggies and 1x Scale", 2)
     end
 
     if (itemid == "glucose") then 

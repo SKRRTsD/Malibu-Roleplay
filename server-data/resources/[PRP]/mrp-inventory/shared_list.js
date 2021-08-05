@@ -1492,6 +1492,34 @@ itemList["1gcocaine"] = {
     deg: false
 }
 
+itemList["cocapaste"] = {
+    fullyDegrades: true,
+    illegal: true,
+    decayrate: 0.5,
+    displayname: "Coca Paste",
+    price: 100,
+    weight: 0.5,
+    nonStack: false,
+    model: "",
+    image: "paste.png",
+    information: "mhmmm a Coca Paste.",
+    deg: false
+}
+
+itemList["cocaleaf"] = {
+    fullyDegrades: true,
+    illegal: true,
+    decayrate: 0.5,
+    displayname: "Coca Leaf",
+    price: 100,
+    weight: 0.5,
+    nonStack: false,
+    model: "",
+    image: "leaf.png",
+    information: "Cocaine Leaf.",
+    deg: false
+}
+
 itemList["1gcrack"] = {
     fullyDegrades: true,
     illegal: true,
@@ -9031,7 +9059,7 @@ itemList["1gmeth"] = {
 itemList["drugbaggy"] = {
     fullyDegrades: false,
     decayrate: 0.0,
-    displayname: "Empty Bag",
+    displayname: "Empty Drug Baggy",
     price: 1,
     weight: 1,
     nonStack: false,
