@@ -2175,6 +2175,7 @@ MRP_DOORS = {
     {
       info = "",
       active = true,
+<<<<<<< Updated upstream
       id = 154,
       coords = vector3(375.23077392578, -821.23687744141, 29.302623748779),
       model = -311575617,
@@ -2207,6 +2208,8 @@ MRP_DOORS = {
     {
       info = "",
       active = true,
+=======
+>>>>>>> Stashed changes
       id = 156,
       coords = vector3(923.60382080078, 43.343212127686, 81.1064453125),
       model = 558771340,
