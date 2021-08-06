@@ -689,7 +689,48 @@ MRP_DOORS = {
       forceUnlocked = false,
     },
     
-
+    {
+      info = "",
+      active = true,
+      id = 46,
+      keyFob = true,
+      coords = vector3(410.02578735352, -1024.2199707031, 29.220199584961),
+      model = -1635161509,
+      lock = true,
+      automatic = {
+        distance = 10.0,
+        rate = 1.0
+      },
+      desc = "MRPDBollard01",
+      access = {
+        job = {
+          ["PD"] = true,
+        },
+        business = {},
+      },
+      forceUnlocked = false,
+    },
+    {
+      info = "",
+      active = true,
+      id = 47,
+      keyFob = true,
+      coords = vector3(410.02578735352, -1024.2259521484, 29.220220565796),
+      model = -1868050792,
+      lock = true,
+      automatic = {
+        distance = 10.0,
+        rate = 1.0
+      },
+      desc = "MRPDBollard02",
+      access = {
+        job = {
+          ["PD"] = true,
+        },
+        business = {},
+      },
+      forceUnlocked = false,
+    },
     {
       info = "",
       active = true,
@@ -1942,6 +1983,102 @@ MRP_DOORS = {
     {
       info = "",
       active = true,
+      id = 142,
+      coords = vector3(-1184.1956787109, -883.76446533203, 13.799784660339),
+      model = -1475798232,
+      lock = true,
+      desc = "Burger Shot Entrance Door",
+      access = {
+        job = {},
+        business = {
+          ["burger_shot"] = true,
+        },
+      },
+      forceUnlocked = false,
+    },
+    {
+      info = "",
+      active = true,
+      id = 143,
+      coords = vector3(-1183.4927978516, -885.00457763672, 13.984017372131),
+      model = 1517256706,
+      lock = true,
+      desc = "Burger Shot Entrance Door",
+      access = {
+        job = {},
+        business = {
+          ["burger_shot"] = true,
+        },
+      },
+      forceUnlocked = false,
+    },
+    {
+      info = "",
+      active = true,
+      id = 144,
+      coords = vector3(-1198.1717529297, -884.93707275391, 14.017860412598),
+      model = -1475798232,
+      lock = true,
+      desc = "Burger Shot Side Door",
+      access = {
+        job = {},
+        business = {
+          ["burger_shot"] = true,
+        },
+      },
+      forceUnlocked = false,
+    },
+    {
+      info = "",
+      active = true,
+      id = 145,
+      coords = vector3(-1196.9694824219, -884.12683105469, 14.017807006836),
+      model = 1517256706,
+      lock = true,
+      desc = "Burger Shot Entrance Door",
+      access = {
+        job = {},
+        business = {
+          ["burger_shot"] = true,
+        },
+      },
+      forceUnlocked = false,
+    },
+    {
+      info = "",
+      active = true,
+      id = 146,
+      coords = vector3(-1200.564453125, -892.16192626953, 13.995233535767),
+      model = -1253427798,
+      lock = true,
+      desc = "Burger Shot Kitchen Door",
+      access = {
+        job = {},
+        business = {
+          ["burger_shot"] = true,
+        },
+      },
+      forceUnlocked = false,
+    },
+    {
+      info = "",
+      active = true,
+      id = 147,
+      coords = vector3(-1199.5739746094, -903.28393554688, 13.990163803101),
+      model = -1877571861,
+      lock = true,
+      desc = "Burger Shot Back Door",
+      access = {
+        job = {},
+        business = {
+          ["burger_shot"] = true,
+        },
+      },
+      forceUnlocked = false,
+    },
+    {
+      info = "",
+      active = true,
       id = 148,
       coords = vector3(-1193.2159423828, -906.4931640625, 13.998950958252),
       model = -1871759441,
@@ -2063,6 +2200,134 @@ MRP_DOORS = {
         job = {},
         business = {
           ["weed_store"] = true,
+        },
+      },
+      forceUnlocked = false,
+    },
+    {
+      info = "",
+      active = true,
+      id = 156,
+      coords = vector3(923.60382080078, 43.343212127686, 81.1064453125),
+      model = 558771340,
+      lock = true,
+      desc = "Casino Front Doors",
+      access = {
+        job = {},
+        business = {
+          ["casino_dealer"] = true,
+        },
+      },
+      forceUnlocked = false,
+    },
+    {
+      info = "",
+      active = true,
+      id = 157,
+      coords = vector3(924.02868652344, 44.425395965576, 81.106330871582),
+      model = 21324050,
+      lock = true,
+      desc = "Casino Front Doors",
+      access = {
+        job = {},
+        business = {
+          ["casino_dealer"] = true,
+        },
+      },
+      forceUnlocked = false,
+    },
+    {
+      info = "",
+      active = true,
+      id = 158,
+      coords = vector3(924.91058349609, 45.706497192383, 81.106353759766),
+      model = 558771340,
+      lock = true,
+      desc = "Casino Front Doors",
+      access = {
+        job = {},
+        business = {
+          ["casino_dealer"] = true,
+        },
+      },
+      forceUnlocked = false,
+    },
+    {
+      info = "",
+      active = true,
+      id = 159,
+      coords = vector3(925.63397216797, 46.820274353027, 81.106353759766),
+      model = 21324050,
+      lock = true,
+      desc = "Casino Front Doors",
+      access = {
+        job = {},
+        business = {
+          ["casino_dealer"] = true,
+        },
+      },
+      forceUnlocked = false,
+    },
+    {
+      info = "",
+      active = true,
+      id = 160,
+      coords = vector3(926.37835693359, 48.259651184082, 81.106353759766),
+      model = 558771340,
+      lock = true,
+      desc = "Casino Front Doors",
+      access = {
+        job = {},
+        business = {
+          ["casino_dealer"] = true,
+        },
+      },
+      forceUnlocked = false,
+    },
+    {
+      info = "",
+      active = true,
+      id = 161,
+      coords = vector3(927.15795898438, 49.102474212646, 81.106353759766),
+      model = 21324050,
+      lock = true,
+      desc = "Casino Front Doors",
+      access = {
+        job = {},
+        business = {
+          ["casino_dealer"] = true,
+        },
+      },
+      forceUnlocked = false,
+    },
+    {
+      info = "",
+      active = true,
+      id = 162,
+      coords = vector3(1122.8189697266, 265.02777099609, -51.040733337402),
+      model = 680601509,
+      lock = true,
+      desc = "Casino Management",
+      access = {
+        job = {},
+        business = {
+          ["casino_dealer"] = true,
+        },
+      },
+      forceUnlocked = false,
+    },
+    {
+      info = "",
+      active = true,
+      id = 163,
+      coords = vector3(1122.7944335938, 264.01623535156, -51.040729522705),
+      model = 680601509,
+      lock = true,
+      desc = "Casino Management",
+      access = {
+        job = {},
+        business = {
+          ["casino_dealer"] = true,
         },
       },
       forceUnlocked = false,

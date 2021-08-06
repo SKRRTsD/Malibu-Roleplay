@@ -1,6 +1,3 @@
---Swxy#0001
-
-
 SQL = SQL or {}
 
 SQL.scalar = function(qyery, ...)
@@ -116,5 +113,3 @@ end
 function Await(pPromise)
     return Citizen.Await(pPromise)
 end
-
---Swxy#0001

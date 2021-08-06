@@ -21,6 +21,3 @@ SQL.execute = (query, params) => {
         });
     });
 }
-
-
-//Swxy#0001

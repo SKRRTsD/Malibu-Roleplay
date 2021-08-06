@@ -1,6 +1,3 @@
-
---Swxy#0001
-
 local Promise = {}
 Promise.__index = Promise
 local Promisified = {}
@@ -221,6 +218,3 @@ function Promise:all(...)
 end
 
 return Promise
-
-
---Swxy#0001

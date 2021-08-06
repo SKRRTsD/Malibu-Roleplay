@@ -2,7 +2,7 @@ fx_version "cerulean"
 
 games {"gta5"}
 
-description "Lib"
+description "NoPixel Lib"
 
 server_scripts {
 	"**/sv_*.lua",
