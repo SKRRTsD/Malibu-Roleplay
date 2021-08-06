@@ -4,8 +4,7 @@ const mdtApp = new Vue({
         page: "Home",
         officer: {
             name: "Guest",
-            department: "police",
-			rank: ''
+            department: "police"
         },
         style: {
             police: true
@@ -56,23 +55,6 @@ const mdtApp = new Vue({
             recommended_sentence: 0,
             sentence: ''
         },
-
-        calls: {},
-        current_call: {
-            source: null,
-            details: null,
-            id: null,
-            time: null,
-            officers: null,
-            coords: null,
-            location: null
-        },
-        selected_call: null,
-        edit_call: {
-            details: "",
-            index: null
-        },
-
         offender_search: "",
         offender_results: {
             query: "",
@@ -82,7 +64,6 @@ const mdtApp = new Vue({
             first_name: null,
             last_name: null,
             notes: "",
-            licenses: false,
             properties: {},
             phone_number: null,
             convictions: null,
@@ -96,8 +77,6 @@ const mdtApp = new Vue({
         offender_changes: {
             notes: "",
             mugshot_url: "",
-            licenses: [],
-            licenses_removed: [],
             convictions: [],
             convictions_removed: [],
             bail: false
@@ -110,8 +89,7 @@ const mdtApp = new Vue({
         },
         vehicle_selected: {
             plate: null,
-            type: null,
-            owner: null,
+            cid: null,
             owner_id: null,
             model: null,
             color: null
@@ -165,9 +143,6 @@ const mdtApp = new Vue({
                 $("#warrants").addClass("nav-active");
             } else if (page == "Submit Report") {
                 $("#submit-report").addClass("nav-active");
-            } else if (page == "Calls") {
-                $('#calls').addClass('nav-active');
-                $.post('http://mrp-mdt/getCalls');
             }
         },
         closeMDT() {
@@ -208,12 +183,11 @@ const mdtApp = new Vue({
             $.post('http://mrp-mdt/saveOffenderChanges', JSON.stringify({
                 changes: this.offender_changes,
                 id: this.offender_selected.id,
-                identifier: this.offender_selected.identifier
+                identifier: this.offender_selected.id
             }));
             this.modal = null;
             this.offender_selected.notes = this.offender_changes.notes;
             this.offender_selected.mugshot_url = this.offender_changes.mugshot_url;
-            this.offender_selected.licenses = this.offender_changes.licenses;
             this.offender_selected.convictions = this.offender_changes.convictions;
             this.offender_selected.bail = this.offender_changes.bail;
             return;
@@ -283,13 +257,14 @@ const mdtApp = new Vue({
             }
         },
         SubmitNewReport() {
-            if (this.report_new.title && this.report_new.char_id && this.report_new.incident) {
+            if (this.report_new.title && this.report_new.char_id && (Object.keys(this.report_new.charges).length > 0) && this.report_new.incident) {
                 $.post('http://mrp-mdt/submitNewReport', JSON.stringify({
                     title: this.report_new.title,
                     char_id: this.report_new.char_id,
                     name: this.report_new.name,
                     charges: this.report_new.charges,
                     incident: this.report_new.incident,
+                    sentence: this.report_new.sentence,
                 }));
 
                 this.report_new.title = "";
@@ -301,6 +276,7 @@ const mdtApp = new Vue({
                 this.report_new.focus = "name";
                 this.report_new.recommended_fine = 0;
                 this.report_new.recommended_sentence = 0;
+                this.report_new.sentence = "";
                 this.offender_search = "";
                 this.offender_results.query = "";
                 this.offender_results.results = false;
@@ -316,6 +292,11 @@ const mdtApp = new Vue({
             this.modal = 'loading';
             return;
         },
+        evFile(currentid) {
+			$.post('http://mrp-mdt/evFile', JSON.stringify({
+            id: currentid,
+            }));
+		},
         ToggleReportEdit() {
             if (this.report_edit.enable) {
                 this.report_edit.enable = false;
@@ -450,15 +431,6 @@ const mdtApp = new Vue({
             this.modal = 'loading';
             return;
         },
-        RemoveLicense(license) {
-            for (var key in this.offender_selected.licenses) {
-                var license2 = this.offender_selected.licenses[key]
-                if (license.label == license2.label) {
-                    Vue.delete(this.offender_changes.licenses, key)
-                    this.offender_changes.licenses_removed.push(license)
-                }
-            }
-        },
         RemoveConviction(conviction) {
             for (var offense in this.offender_changes.convictions) {
                 if (offense == conviction) {
@@ -470,62 +442,6 @@ const mdtApp = new Vue({
                     }
                 }
             }
-        },
-        AttachToCall(index) {
-            $.post('http://mrp-mdt/attachToCall', JSON.stringify({
-                index: index,
-                coords: this.calls[index].coords
-            }));
-            this.current_call = this.calls[index]
-            return;
-        },
-        DetachFromCall(index) {
-            $.post('http://mrp-mdt/detachFromCall', JSON.stringify({
-                index: index
-            }));
-            this.current_call = {
-                source: null,
-                details: null,
-                id: null,
-                time: null,
-                officers: null,
-                coords: null,
-                location: null
-            }
-            return;
-        },
-        SetCallWaypoint(index) {
-            $.post('http://mrp-mdt/setCallWaypoint', JSON.stringify({
-                coords: this.calls[index].coords
-            }));
-            return;
-        },
-        ShowCallDetails(index) {
-            this.modal = "call_details";
-            this.selected_call = index;
-            return;
-        },
-        EditCall(index){
-            this.modal = 'edit_call';
-            this.edit_call.details = this.current_call.details;
-            this.edit_call.index = index;
-            return;
-        },
-        SaveEditCall() {
-            $.post('http://mrp-mdt/editCall', JSON.stringify({
-                index: this.edit_call.index,
-                details: this.edit_call.details
-            }));
-            this.modal = null;
-            this.edit_call.details = "";
-            this.edit_call.index = null;
-            return;
-        },
-        DeleteCall(index) {
-            $.post('http://mrp-mdt/deleteCall', JSON.stringify({
-                index: index
-            }));
-            return;
         },
         showNotification(message) {
             this.notify = message;
@@ -590,8 +506,6 @@ document.onreadystatechange = () => {
                 mdtApp.offender_results.query = "";
                 mdtApp.offender_changes.notes = mdtApp.offender_selected.notes;
                 mdtApp.offender_changes.mugshot_url = mdtApp.offender_selected.mugshot_url;
-                mdtApp.offender_changes.licenses = mdtApp.offender_selected.licenses;
-                mdtApp.offender_changes.licenses_removed = [];
                 mdtApp.offender_changes.convictions = mdtApp.offender_selected.convictions;
                 mdtApp.offender_changes.convictions_removed = [];
                 mdtApp.offender_changes.bail = mdtApp.offender_selected.bail;
@@ -613,7 +527,6 @@ document.onreadystatechange = () => {
                 mdtApp.vehicle_results.results = event.data.matches;
                 mdtApp.vehicle_selected = {
                     plate: null,
-                    type: null,
                     owner: null,
                     owner_id: null,
                     model: null,
@@ -636,8 +549,7 @@ document.onreadystatechange = () => {
                 mdtApp.vehicle_search = event.data.plate;
                 mdtApp.vehicle_selected = {
                     plate: null,
-                    type: null,
-                    owner: null,
+                    cid: null,
                     owner_id: null,
                     model: null,
                     color: null
@@ -656,7 +568,6 @@ document.onreadystatechange = () => {
                 mdtApp.homepage.reports = event.data.reports;
                 mdtApp.homepage.warrants = event.data.warrants;
                 mdtApp.officer.name = event.data.officer;
-				mdtApp.officer.rank = event.data.rank + ' ';
                 if (mdtApp.officer.department != event.data.department) {
                     mdtApp.officer.department = event.data.department;
                     if (event.data.department == 'police') {
@@ -665,44 +576,6 @@ document.onreadystatechange = () => {
                 }
             } else if (event.data.type == "sendNotification") {
                 mdtApp.showNotification(event.data.message);
-            } else if (event.data.type == "newCall") {
-                var today = new Date();
-                var time = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate() + " " + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-                var call = {
-                    source: event.data.source,
-                    id: event.data.id,
-                    details: event.data.details,
-                    coords: event.data.coords,
-                    location: event.data.location,
-                    time: time,
-                    officers: []
-                }
-                Vue.set(mdtApp.calls, event.data.id, call)
-            } else if (event.data.type == "newCallAttach") {
-                mdtApp.calls[event.data.call].officers.push(event.data.charname)
-            } else if (event.data.type == "newCallDetach") {
-                var i = mdtApp.calls[event.data.call].officers.length
-                while (i--) {
-                    if (mdtApp.calls[event.data.call].officers[i] == event.data.charname) {
-                        mdtApp.calls[event.data.call].officers.splice(i, 1);
-                    }
-                }
-            } else if (event.data.type == "editCall") {
-                mdtApp.calls[event.data.call].details = event.data.details;
-            } else if (event.data.type == "deleteCall") {
-                if (mdtApp.current_call.id == mdtApp.calls[event.data.call].id) {
-                    $.post('http://mrp-mdt/deleteCallBlip')
-                    mdtApp.current_call = {
-                        source: null,
-                        details: null,
-                        id: null,
-                        time: null,
-                        officers: null,
-                        coords: null,
-                        location: null
-                    }
-                }
-                Vue.delete(mdtApp.calls, event.data.call)
             } else if (event.data.type == "closeModal") {
                 mdtApp.modal = null;
             };
@@ -729,7 +602,6 @@ function ClearActiveNavItems() {
     $("#search-vehicles").removeClass("nav-active");
     $("#warrants").removeClass("nav-active");
     $("#submit-report").removeClass("nav-active");
-    $("#calls").removeClass("nav-active");
 }
 
 function WarrantTimer() {

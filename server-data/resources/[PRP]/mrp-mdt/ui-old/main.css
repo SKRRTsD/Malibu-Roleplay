@@ -1,17 +1,25 @@
 #main {
     position: relative;
     text-align: center;
-    top: 5%;
+    top: 10%;
     width: 80%;
     margin: auto;
 }
-
+#banner {
+    position: fixed;
+    display: inline-block;
+    bottom: 10%;
+    right: 1%;
+    max-width: 400px;
+    height: auto;
+    opacity: 0.3;
+    user-select: none;
+}
 #notification h4 {
     font-weight: bold; 
     margin: 0; 
     color: white !important;
 }
-
 .page-title {
     margin-bottom: 30px;
 }
@@ -23,7 +31,6 @@
     max-width: 50%;
     max-height: 550px;
     overflow-y: auto;
-    margin-left: 5%;
     height: auto;
     text-align: left;
     user-select: none;
@@ -53,9 +60,9 @@
     border-radius: 5px;
 }
 .nav-active {
-    background-color: #303847d7;
+    text-decoration: underline;
+    font-weight: bold;
 }
-
 .ellipsis {
     position: relative;
     width: 200px;
@@ -84,8 +91,7 @@ br {
 }
 p {
     font-family: "Courier";
-    color: #DCDCDC;
-
+    color: white;
 }
 ul {
     list-style-type: none;

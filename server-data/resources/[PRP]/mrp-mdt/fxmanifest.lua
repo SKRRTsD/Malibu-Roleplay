@@ -1,3 +1,5 @@
+-- Made by distritic
+-- Do not sell, redistribute or claim this code as your own without my permission, thank you. <3
 fx_version 'adamant'
 game 'gta5'
 
