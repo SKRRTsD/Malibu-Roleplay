@@ -698,8 +698,8 @@ MRP_DOORS = {
       model = -1635161509,
       lock = true,
       automatic = {
-        distance = 10.0,
-        rate = 1.0
+        distance = 15.0,
+        rate = 10.0
       },
       desc = "MRPDBollard01",
       access = {
@@ -719,8 +719,8 @@ MRP_DOORS = {
       model = -1868050792,
       lock = true,
       automatic = {
-        distance = 10.0,
-        rate = 1.0
+        distance = 15.0,
+        rate = 10.0
       },
       desc = "MRPDBollard02",
       access = {
@@ -2183,7 +2183,7 @@ MRP_DOORS = {
       access = {
         job = {},
         business = {
-          ["weed_store"] = true,
+          ["best_buds"] = true,
         },
       },
       forceUnlocked = false,
@@ -2199,7 +2199,7 @@ MRP_DOORS = {
       access = {
         job = {},
         business = {
-          ["weed_store"] = true,
+          ["best_buds"] = true,
         },
       },
       forceUnlocked = false,
