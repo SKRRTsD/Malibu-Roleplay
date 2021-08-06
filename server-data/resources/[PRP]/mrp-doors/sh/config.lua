@@ -698,7 +698,7 @@ MRP_DOORS = {
       model = -1635161509,
       lock = true,
       automatic = {
-        distance = 10.0,
+        distance = 20.0,
         rate = 1.0
       },
       desc = "MRPDBollard01",
@@ -708,18 +708,18 @@ MRP_DOORS = {
         },
         business = {},
       },
-      forceUnlocked = false,
+      forceUnlocked = true,
     },
     {
       info = "",
       active = true,
       id = 47,
-      keyFob = true,
+      keyFob = false,
       coords = vector3(410.02578735352, -1024.2259521484, 29.220220565796),
       model = -1868050792,
       lock = true,
       automatic = {
-        distance = 10.0,
+        distance = 20.0,
         rate = 1.0
       },
       desc = "MRPDBollard02",
@@ -729,7 +729,7 @@ MRP_DOORS = {
         },
         business = {},
       },
-      forceUnlocked = false,
+      forceUnlocked = true,
     },
     {
       info = "",
@@ -746,7 +746,7 @@ MRP_DOORS = {
         },
         business = {},
       },
-      forceUnlocked = false,
+      forceUnlocked = true,
     },
     {
       info = "",
@@ -1983,102 +1983,6 @@ MRP_DOORS = {
     {
       info = "",
       active = true,
-      id = 142,
-      coords = vector3(-1184.1956787109, -883.76446533203, 13.799784660339),
-      model = -1475798232,
-      lock = true,
-      desc = "Burger Shot Entrance Door",
-      access = {
-        job = {},
-        business = {
-          ["burger_shot"] = true,
-        },
-      },
-      forceUnlocked = false,
-    },
-    {
-      info = "",
-      active = true,
-      id = 143,
-      coords = vector3(-1183.4927978516, -885.00457763672, 13.984017372131),
-      model = 1517256706,
-      lock = true,
-      desc = "Burger Shot Entrance Door",
-      access = {
-        job = {},
-        business = {
-          ["burger_shot"] = true,
-        },
-      },
-      forceUnlocked = false,
-    },
-    {
-      info = "",
-      active = true,
-      id = 144,
-      coords = vector3(-1198.1717529297, -884.93707275391, 14.017860412598),
-      model = -1475798232,
-      lock = true,
-      desc = "Burger Shot Side Door",
-      access = {
-        job = {},
-        business = {
-          ["burger_shot"] = true,
-        },
-      },
-      forceUnlocked = false,
-    },
-    {
-      info = "",
-      active = true,
-      id = 145,
-      coords = vector3(-1196.9694824219, -884.12683105469, 14.017807006836),
-      model = 1517256706,
-      lock = true,
-      desc = "Burger Shot Entrance Door",
-      access = {
-        job = {},
-        business = {
-          ["burger_shot"] = true,
-        },
-      },
-      forceUnlocked = false,
-    },
-    {
-      info = "",
-      active = true,
-      id = 146,
-      coords = vector3(-1200.564453125, -892.16192626953, 13.995233535767),
-      model = -1253427798,
-      lock = true,
-      desc = "Burger Shot Kitchen Door",
-      access = {
-        job = {},
-        business = {
-          ["burger_shot"] = true,
-        },
-      },
-      forceUnlocked = false,
-    },
-    {
-      info = "",
-      active = true,
-      id = 147,
-      coords = vector3(-1199.5739746094, -903.28393554688, 13.990163803101),
-      model = -1877571861,
-      lock = true,
-      desc = "Burger Shot Back Door",
-      access = {
-        job = {},
-        business = {
-          ["burger_shot"] = true,
-        },
-      },
-      forceUnlocked = false,
-    },
-    {
-      info = "",
-      active = true,
       id = 148,
       coords = vector3(-1193.2159423828, -906.4931640625, 13.998950958252),
       model = -1871759441,
@@ -2175,7 +2079,6 @@ MRP_DOORS = {
     {
       info = "",
       active = true,
-<<<<<<< Updated upstream
       id = 154,
       coords = vector3(375.23077392578, -821.23687744141, 29.302623748779),
       model = -311575617,
@@ -2184,7 +2087,7 @@ MRP_DOORS = {
       access = {
         job = {},
         business = {
-          ["best_buds"] = true,
+          ["weed_store"] = true,
         },
       },
       forceUnlocked = false,
@@ -2200,7 +2103,7 @@ MRP_DOORS = {
       access = {
         job = {},
         business = {
-          ["best_buds"] = true,
+          ["weed_store"] = true,
         },
       },
       forceUnlocked = false,
@@ -2208,8 +2111,6 @@ MRP_DOORS = {
     {
       info = "",
       active = true,
-=======
->>>>>>> Stashed changes
       id = 156,
       coords = vector3(923.60382080078, 43.343212127686, 81.1064453125),
       model = 558771340,
