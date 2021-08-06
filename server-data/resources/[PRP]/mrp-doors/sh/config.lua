@@ -2183,7 +2183,7 @@ MRP_DOORS = {
       access = {
         job = {},
         business = {
-          ["weed_store"] = true,
+          ["best_buds"] = true,
         },
       },
       forceUnlocked = false,
@@ -2199,7 +2199,7 @@ MRP_DOORS = {
       access = {
         job = {},
         business = {
-          ["weed_store"] = true,
+          ["best_buds"] = true,
         },
       },
       forceUnlocked = false,
