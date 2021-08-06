@@ -77,7 +77,7 @@ body {
     font-weight: bold;
     margin-top: 0.2vh;
     opacity: 0.9;
-    margin-left: 0.2vh;
+    margin-left: 0.3vh;
 }
 
 #bind2 {
@@ -88,7 +88,7 @@ body {
     font-weight: bold;
     margin-top: 0.2vh;
     opacity: 0.9;
-    margin-left: 10.8vh;
+    margin-left: 11vh;
 }
 
 #bind3 {
@@ -99,7 +99,7 @@ body {
     font-weight: bold;
     margin-top: 0.2vh;
     opacity: 0.9;
-    margin-left: 21.5vh;
+    margin-left: 21.8vh;
 }
 
 #bind4 {
@@ -110,11 +110,11 @@ body {
     font-weight: bold;
     margin-top: 0.2vh;
     opacity: 0.9;
-    margin-left: 32vh;
+    margin-left: 32.5vh;
 }
 
 #move-amount:hover {
-    background-color: #47488a;
+    background-color: #4f4f4f;
     border-radius:5px;
 }
 
@@ -133,11 +133,9 @@ hr {
     opacity: 0.2;
 }
 
-
 div.tooltip {
-    border-radius: 8px;
-    border:1px rgb(160, 143, 180) solid;
-    background-color: #292841;
+    background-color: #1d1e1f;
+    border-bottom-left-radius: 0;
 }
 
 .Logs {
@@ -164,26 +162,26 @@ div.tooltip {
 div.usearea {
     border-radius:8px;
     margin-top: 20%;
-    background-color: #33305e;
+    background-color: #1d1e1f;
     color: rgba(220, 220, 220, 1);
 }
 
 div.usearea:hover {
     border-radius:8px;
-    background-color: #47488a;
+    background-color: #1d1e1f;
 }
 
 
 div.CloseInv {
     border-radius:5px;
     margin-top: 30%;
-    background-color: #33305e;
+    background-color: #1d1e1f;
     color: rgba(220, 220, 220, 1);
 }
 
 div.CloseInv:hover {
     border-radius:5px;
-    background-color: #47488a;
+    background-color: #4f4f4f;
 }
 
 
@@ -199,12 +197,12 @@ input[type='number']::-webkit-inner-spin-button {
     width: 110px;
     height: 130px;
     text-align: center;
-    border: 1px solid rgba(220, 240, 220, 0.05);
-    background: linear-gradient(to bottom, rgba(1, 1, 1, 0.15) 107px, #292841 108px) repeat-x;
+    border: 2px solid rgba(45, 45, 45, 0.55);
+    background: linear-gradient(to bottom, rgba(1, 1, 1, 0.15) 107px, #1d1e1f 108px) repeat-x;
     transition: all 0.2s ease;
     margin: 1px;
     text-transform: uppercase;
-    border-radius: 7px;
+    background-color: rgba(70, 70, 70, 0.1);
 }
 
 .item3 {
@@ -213,12 +211,12 @@ input[type='number']::-webkit-inner-spin-button {
     width: 110px;
     height: 130px;
     text-align: center;
-    border: 1px solid rgba(220, 240, 220, 0.05);
-    background: linear-gradient(to bottom, rgba(1, 1, 1, 0.15) 107px, #292841 108px) repeat-x;
+    border: 2px solid rgba(45, 45, 45, 0.55);
+    background: linear-gradient(to bottom, rgba(1, 1, 1, 0.15) 107px, #1d1e1f 108px) repeat-x;
     transition: all 0.2s ease;
     margin: 1px;
     text-transform: uppercase;
-    border-radius: 7px;
+    background-color: rgba(70, 70, 70, 0.1);
 }
 
 ::-webkit-input-placeholder {
@@ -238,8 +236,8 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .item:hover {
-    background-color: #3027633f;
-    border: solid rgba(222, 222, 222, 0.25) 1px;
+    background-color: rgba(55, 55, 55, 0.5);
+    /* border: solid rgba(255, 255, 255, 0.5) 2px; */
 }
 
 .inventorybg {
@@ -290,27 +288,20 @@ input[type='number']::-webkit-inner-spin-button {
     position: absolute;
     left: 0;
     bottom: 0;
-    background: linear-gradient(to bottom, #30475e, #f26e65 100%);
+    background: linear-gradient(to bottom, #2e7953, #da5950 100%);
     background-size: 1000% 1000%;
     background-position: 0% 0%;
     pointer-events: none;
-    border-bottom-left-radius: 0.5vh;
     height: 0.8vh;
-}
-
-.near-full {
-    border-bottom-right-radius: 0.5vh;
 }
 
 .perfect {
     position: absolute;
     left: 0;
     bottom: 0;
-    background: #2e2949;
+    background: #2e7953;
     background-size: 100000% 100000%;
     pointer-events: none;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
     height: 0.8vh;
 }
 
@@ -318,11 +309,13 @@ input[type='number']::-webkit-inner-spin-button {
     position: absolute;
     left: 0;
     bottom: 0;
-    background: #f26e65;
+    background: #da5950;
     pointer-events: none;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
     height: 0.8vh;
+}
+
+.near-full {
+    border-bottom-right-radius: 0px;
 }
 
 #UseBar {
@@ -363,21 +356,19 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .wrapmain::-webkit-scrollbar {
-    width: 5px;
+    width: 8px;
 }
 
 .wrapmain::-webkit-scrollbar-thumb {
-    background: #37305e !important;
-    border-radius: 3px;
+    background: #1d1e1f !important;
 }
 
 .wrapsecondary::-webkit-scrollbar {
-    width: 5px;
+    width: 8px;
 }
 
 .wrapsecondary::-webkit-scrollbar-thumb {
-    background: #37305e !important;
-    border-radius: 3px;
+    background: #1d1e1f !important;
 }
 
 
@@ -406,13 +397,13 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .weightbar {
-    background-color: #1114199f;
+    background-color: #1d1e1f;
+    display: inline-block;
+    height: 1.5vh;
+    overflow: visible;
     position: relative;
     width: 83%;
-    height: 20px;
-    border-radius: 10px;
-    overflow: visible;
-    display: inline-block;
+    border: 2px solid rgba(45, 45, 45, 0.55);
 }
 
 .weight-max {
@@ -422,16 +413,16 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .weightfill {
-    background: linear-gradient(to right, #689f38a9, #f2a265b0 600px);
-    height: 20px;
-    text-align: right;
-    margin-right: 5px;
-    position: absolute;
-    max-width: 100%;
-    line-height: 20px;
-    transition: width 1s, background-color 1s;
-    border-radius: 10px;
+    background: linear-gradient(to right, #2e7953, #ca3535 600px);
     display: inline-block;
+    height: 100%;
+    line-height: 1.8vh;
+    margin-right: 1%;
+    max-width: 100%;
+    position: absolute;
+    text-align: right;
+    font-size: 11px;
+    transition: width 1s background-color 1s;
 }
 
 .weight-hanging {
@@ -442,7 +433,7 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .move-center:hover {
-    background-color: #3027633f;
+    background-color: #29284185;
 }
 
 .move-center:hover .Use {
@@ -513,7 +504,7 @@ img.smaller {
     text-align: center;
     color: rgba(220, 220, 220, 1);
     border-radius: 5px;
-    background-color: #33305e;
+    background-color: #222324;
     border: none;
     text-transform: uppercase;
 }
@@ -695,25 +686,25 @@ h2 {
 }
 
 .weightbar {
-    background-color: #1114199f;
-    border-radius: 1vh;
+    background-color: #1d1e1f;
     display: inline-block;
-    height: 2vh;
+    height: 1.5vh;
     overflow: visible;
     position: relative;
     width: 83%;
+    border: 2px solid rgba(45, 45, 45, 0.55);
 }
 
 .weightfill {
-    background: linear-gradient(to right, #689f38a9, #f2a265b0 600px);
-    border-radius: 1vh;
+    background: linear-gradient(to right, #2e7953, #ca3535 600px);
     display: inline-block;
     height: 100%;
-    line-height: 2.2vh;
+    line-height: 1.8vh;
     margin-right: 1%;
     max-width: 100%;
     position: absolute;
     text-align: right;
+    font-size: 11px;
     transition: width 1s background-color 1s;
 }
 
@@ -756,17 +747,17 @@ h2 {
 }
 
 .item {
-    background: linear-gradient(to bottom, #0f0f1173 82%, #1b192573 82%) repeat-x;
-    border: 1px solid rgba(220, 240, 220, 0.05);
-    border-radius: 7%;
+    background: linear-gradient(to bottom, rgba(1, 1, 1, 0.15) 82%, #1d1e1f 82%) repeat-x;
+    border: 2px solid rgba(45, 45, 45, 0.55);
     float: left;
     height: 12.5vh;
-    margin: 1%;
+    margin: 2%;
     position: relative;
     text-align: center;
     text-transform: uppercase;
     transition: all 0.2s ease;
     width: 98%;
+    background-color: rgba(70, 70, 70, 0.1);
 }
 
 .craftGrid {
