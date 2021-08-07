@@ -2492,4 +2492,68 @@ MRP_DOORS = {
       },
       forceUnlocked = false,
     },
+    {
+      info = "",
+      active = true,
+      id = 174,
+      coords = vector3(257.0973815918, 220.52247619629, 106.28537750244),
+      model = -222270721,
+      lock = true,
+      desc = "Pacific Bank Door 1 (Upstairs)",
+      access = {
+        job = {
+          ["PD"] = true,
+        },
+        business = {},
+      },
+      forceUnlocked = false,
+    },
+    {
+      info = "",
+      active = true,
+      id = 175,
+      coords = vector3(261.63775634766, 221.99905395508, 106.28378295898),
+      model = 746855201,
+      lock = true,
+      desc = "Pacific Bank Door 2 (Upstairs)",
+      access = {
+        job = {
+          ["PD"] = true,
+        },
+        business = {},
+      },
+      forceUnlocked = false,
+    },
+    {
+      info = "",
+      active = true,
+      id = 176,
+      coords = vector3(252.5679473877, 221.06173706055, 101.68375396729),
+      model = -1508355822,
+      lock = true,
+      desc = "Pacific Bank 1 (Behined Vault Door)",
+      access = {
+        job = {
+          ["PD"] = true,
+        },
+        business = {},
+      },
+      forceUnlocked = false,
+    },
+    {
+      info = "",
+      active = true,
+      id = 178,
+      coords = vector3(261.43966674805, 215.08265686035, 101.68375396729),
+      model = -1508355822,
+      lock = true,
+      desc = "Pacific Bank 2 (Behined Vault Door)",
+      access = {
+        job = {
+          ["PD"] = true,
+        },
+        business = {},
+      },
+      forceUnlocked = false,
+    },
 }
