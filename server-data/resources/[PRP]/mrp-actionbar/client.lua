@@ -594,7 +594,6 @@ function unholster1h(weaponHash)
 	    if weaponHash == -2084633992 then
 			GiveWeaponComponentToPed( ped, -2084633992, `COMPONENT_AT_AR_FLSH` )
 			GiveWeaponComponentToPed( ped, -2084633992, `COMPONENT_AT_AR_AFGRIP` )
-			GiveWeaponComponentToPed( ped, -2084633992, `COMPONENT_AT_SCOPE_MEDIUM` )
 	    end
 	    if weaponHash == 1432025498 then
 			GiveWeaponComponentToPed( ped, 1432025498, `COMPONENT_AT_SCOPE_MACRO_MK2` )
