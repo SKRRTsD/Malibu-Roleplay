@@ -1054,6 +1054,19 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
         end
     end
 
+    if ( itemid == "Bankbox" and hasEnoughOfItem("2227010557",1,false)) then
+        local finished = exports["mrp-taskbar"]:taskBar(7500,"Attempting to crack open bankbox!",false,false,playerVeh)
+        if (finished == 100) then
+            TriggerEvent("inventory:removeItem", "Bankbox", 1)
+            TriggerEvent("player:receiveItem","rollcash", math.random(55, 70) ) 
+            TriggerEvent("player:receiveItem","goldbar", math.random(3, 10) ) 
+            TriggerEvent("player:receiveItem","rolexwatch", math.random(7, 20) ) 
+            TriggerEvent("player:receiveItem","cashstack", math.random(35, 40) ) 
+        else
+            TriggerEvent('DoLongHudText', 'Damn you fucked something up the loot got destroyed!' 2)
+        end
+    end
+
     if (itemid == "glucose") then 
         CreateCraftOption("1gcocaine", 80, true)
         
