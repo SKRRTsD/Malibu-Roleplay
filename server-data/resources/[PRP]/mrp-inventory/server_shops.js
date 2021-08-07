@@ -33,7 +33,7 @@ function SilencerCraft() {
 function WeaponCraft() {
     var shopItems = [
         { item_id: "-771403250", id: 0, name: "craft", information: "{}", slot: 1, amount: 1 },
-        { item_id: "324215364", id: 0, name: "craft", information: "{}", slot: 2, amount: 10 },
+        { item_id: "324215364", id: 0, name: "craft", information: "{}", slot: 2, amount: 1 },
         { item_id: "pistolammo", id: 0, name: "craft", information: "{}", slot: 3, amount: 10 },
         { item_id: "subammo", id: 0, name: "craft", information: "{}", slot: 4, amount: 10 },
     ];
