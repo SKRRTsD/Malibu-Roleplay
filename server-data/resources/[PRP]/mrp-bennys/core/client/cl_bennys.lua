@@ -1059,3 +1059,32 @@ RegisterNetEvent("bennys:civ:repair:cl", function()
             FreezeEntityPosition(car, false)
     end
 end)
+
+-- Citizen.CreateThread(function()
+-- 	exports["mrp-polyzone"]:AddBoxZone("bennys_box", vector3(-39.33, -1054.35, 28.4), 3, 5.0, {
+-- 		name="bennys_box",
+--         heading=250,
+--         minZ=26.6,
+--         maxZ=30.6
+-- 	})	  
+-- end)
+
+-- RegisterNetEvent('mrp-polyzone:enter')
+-- AddEventHandler('mrp-polyzone:enter', function(name)
+--     if name == "bennys_box"  then
+-- 		TriggerEvent('mrp-textui:ShowUI', 'show', ("%s"):format("Bennys")) 
+--     end
+-- end)
+
+-- RegisterNetEvent('mrp-polyzone:exit')
+-- AddEventHandler('mrp-polyzone:exit', function(name)
+--     if name == "bennys_box"  then
+--     end
+--     TriggerEvent('mrp-ui:HideUI')
+-- end)
+
+-- RegisterNetEvent('mrp:bennys')
+-- AddEventHandler('mrp:bennys', function()
+--     print('fuckingwork')
+--     CivRepairFunction()
+-- end) -- L8ER

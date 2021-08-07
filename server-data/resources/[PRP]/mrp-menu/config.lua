@@ -206,6 +206,22 @@ rootMenuConfig =  {
         end
     },
 
+    -- {
+    --     id = "bennys",
+    --     displayName = "Enter Bennys",
+    --     icon = "#mines",
+    --     functionName = "mrp:bennys",
+
+    --     enableMenu = function()
+    --         local platerpedid = PlayerPedId()
+    --         local plyCoords = GetEntityCoords(platerpedid)
+    --         local distance = GetDistanceBetweenCoords(plyCoords.x,plyCoords.y,plyCoords.z,-39.385974884033, -1054.7535400391, 27.788469314575,false)
+            
+    --         return (distance <= 5.0)
+            
+    --     end
+    -- }, -- DO LATER CBA
+
     {
         id = "police-impound",
         displayName = "Impound Options",
