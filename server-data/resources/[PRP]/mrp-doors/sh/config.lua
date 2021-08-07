@@ -2556,4 +2556,36 @@ MRP_DOORS = {
       },
       forceUnlocked = false,
     },
+    {
+      info = "",
+      active = true,
+      id = 179,
+      coords = vector3(-105.05993652344, 6473.0595703125, 31.626792907715),
+      model = 1622278560,
+      lock = true,
+      desc = "Paleto Bank Door 1",
+      access = {
+        job = {
+          ["PD"] = true,
+        },
+        business = {},
+      },
+      forceUnlocked = false,
+    },
+    {
+      info = "",
+      active = true,
+      id = 180,
+      coords = vector3(-106.24798583984, 6475.48828125, 31.626777648926),
+      model = 1309269072,
+      lock = true,
+      desc = "Paleto Bank Door 2",
+      access = {
+        job = {
+          ["PD"] = true,
+        },
+        business = {},
+      },
+      forceUnlocked = false,
+    },
 }
