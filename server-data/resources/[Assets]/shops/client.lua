@@ -156,6 +156,19 @@ function setShopBlip()
 	SetBlockingOfNonTemporaryEvents(ped, true)
 	TaskStartScenarioInPlace(ped, "WORLD_HUMAN_CLIPBOARD", 0, true)
 
+	-- Docs
+	modelHash = GetHashKey("a_m_m_afriamer_01")
+	RequestModel(modelHash)
+	while not HasModelLoaded(modelHash) do
+		Wait(1)
+	end
+	ped = CreatePed(0, modelHash , 1181.5024414062, -3112.8596191406, 6.0280251502991 -1,true)
+	FreezeEntityPosition(ped, true)
+	SetEntityHeading(ped, 153.62969970703)
+	SetEntityInvincible(ped, true)
+	SetBlockingOfNonTemporaryEvents(ped, true)
+	TaskStartScenarioInPlace(ped, "WORLD_HUMAN_CLIPBOARD", 0, true)
+
 	-- Casino Claim Car
 	modelHash = GetHashKey("a_m_y_smartcaspat_01")
 	RequestModel(modelHash)

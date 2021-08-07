@@ -1207,7 +1207,15 @@ AddEventHandler('randPickupAnim', function()
     ClearPedSecondaryTask(PlayerPedId())
 end)
 
+RegisterNetEvent('silencer:crafting')
+AddEventHandler('silencer:crafting', function()
+    TriggerEvent("server-inventory-open", "9999", "Craft")
+end)
 
+RegisterNetEvent('weapon:crafting')
+AddEventHandler('weapon:crafting', function()
+    TriggerEvent("server-inventory-open", "1000", "Craft")
+end)
 
 local clientInventory = {};
 RegisterNetEvent('current-items')

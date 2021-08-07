@@ -175,6 +175,9 @@ itemList["-771403250"] = {
     craft: [{
         itemid: "goldbar",
         amount: 7
+    }, {
+        itemid: "aluminium",
+        amount: 25
     }],
     weight: 13,
     nonStack: true,
@@ -656,7 +659,10 @@ itemList["324215364"] = {
     price: 25000,
     craft: [{
         itemid: "valuablegoods",
-        amount: 1
+        amount: 2
+    }, {
+        itemid: "aluminium",
+        amount: 25
     }, {
         itemid: "goldbar",
         amount: 4

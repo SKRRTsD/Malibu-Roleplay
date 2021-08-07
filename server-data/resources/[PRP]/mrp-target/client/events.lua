@@ -4410,6 +4410,80 @@ Citizen.CreateThread(
         }
     )
 
+            AddBoxZone("guncraft_enter", vector3(1182.59, -3113.85, 6.03), 1.5, 1.3, {
+                name="guncraft_enter",
+                heading=0,
+                --debugPoly=true,
+                minZ=3.43,
+                maxZ=7.43
+            }, {
+                options = {
+                    {
+                        event = 'guncraft:enter',
+                        icon = "fas fa-warehouse",
+                        label = "Enter Warehouse"
+                    }
+                },
+                job = {"all"},
+                distance = 1.0
+            }
+        )
+
+        AddBoxZone("guncraft_exit", vector3(857.06, -3250.8, -98.37), 2, 2, {
+            name="guncraft_exit",
+            heading=0,
+            minZ=-100.37,
+            maxZ=-96.37
+        }, {
+            options = {
+                {
+                    event = 'guncraft:exit',
+                    icon = "fas fa-warehouse",
+                    label = "Exit Warehouse"
+                }
+            },
+            job = {"all"},
+            distance = 1.0
+        }
+    )
+
+        AddBoxZone("guncraft_silencer", vector3(898.34, -3222.16, -98.24), 0.7, 1.9, {
+            name="guncraft_silencer",
+            heading=25,
+            debugPoly = false,
+            minZ=-101.04,
+            maxZ=-97.04
+        }, {
+            options = {
+                {
+                    event = 'silencer:crafting',
+                    icon = "fas fa-circle",
+                    label = "Craft Silencers"
+                }
+            },
+            job = {"all"},
+            distance = 2.0
+            }
+        )
+
+        AddBoxZone("weapon_craft", vector3(896.07, -3217.05, -98.23), 4, 0.9, {
+            name="weapon_craft",
+            heading=335,
+            debugPoly = false,
+            minZ=-101.03,
+            maxZ=-97.03
+        }, {
+            options = {
+                {
+                    event = 'weapon:crafting',
+                    icon = "fas fa-circle",
+                    label = "Craft Weapons"
+                }
+            },
+            job = {"all"},
+            distance = 2.0
+            }
+        )
 
         AddCircleZone(
             "methstart",

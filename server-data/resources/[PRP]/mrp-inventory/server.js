@@ -408,6 +408,16 @@ onNet("server-inventory-open", async (coords, player, secondInventory, targetNam
             var shopArray = PoliceArmory();
             var shopAmount = 11;
             emitNet("inventory-open-target", src, [invArray, arrayCount, playerinvname, shopArray, shopAmount, targetinvname, 500, false]);
+        } else if (secondInventory == "9999") {
+            var targetinvname = targetName;
+            var shopArray = SilencerCraft();
+            var shopAmount = 4;
+            emitNet("inventory-open-target", src, [invArray, arrayCount, playerinvname, shopArray, shopAmount, targetinvname, 500, false]);
+        } else if (secondInventory == "1000") {
+            var targetinvname = targetName;
+            var shopArray = WeaponCraft();
+            var shopAmount = 4;
+            emitNet("inventory-open-target", src, [invArray, arrayCount, playerinvname, shopArray, shopAmount, targetinvname, 500, false]);
         } else if (secondInventory == "15") {
             var targetinvname = targetName;
             var shopArray = EMT();
