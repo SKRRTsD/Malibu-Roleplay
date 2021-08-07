@@ -126,7 +126,7 @@ itemList["-1810795771"] = {
 itemList["-2084633992"] = {
     fullyDegrades: false,
     decayrate: 1.0,
-    displayname: "Carbine rifle",
+    displayname: "M4",
     price: 0,
     craft: [{
         itemid: "aluminium",
@@ -141,7 +141,7 @@ itemList["-2084633992"] = {
     weight: 15,
     nonStack: true,
     model: "",
-    image: "weapon_carbine-rifle.png",
+    image: "m4.png",
     weapon: true,
     deg: true
 }
