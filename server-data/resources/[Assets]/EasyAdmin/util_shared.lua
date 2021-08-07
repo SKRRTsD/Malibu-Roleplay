@@ -1,19 +1,32 @@
 permissions = {
-	["ban.temporary"] = false,
-	["ban.permanent"] = false,
-	["kick"] = false,
-	["spectate"] = false,
-	["unban"] = false,
-	["teleport.player"] = false,
-	["manageserver"] = false,
-	["slap"] = false,
-	["freeze"] = false,
-	["screenshot"] = false,
+	["player.ban.temporary"] = false,
+	["player.ban.permanent"] = false,
+	["player.kick"] = false,
+	["player.spectate"] = false,
+	["player.unban"] = false,
+	["player.teleport.single"] = false,
+	["player.slap"] = false,
+	["player.freeze"] = false,
+	["player.screenshot"] = false,
+	["player.mute"] = false,
+	["player.warn"] = false,
+	["player.teleport.everyone"] = false,
+	["player.reports.view"] = false,
+	["player.reports.process"] = false,
+
+	["server.cleanup.cars"] = false,
+	["server.cleanup.props"] = false,
+	["server.cleanup.peds"] = false,
+	["server.permissions.read"] = false,
+	["server.permissions.write"] = false,
+	["server.shortcut.add"] = false,
+	["server.reminder.add"] = false,
+	["server.convars"] = false,
+	["server.resources.start"] = false,
+	["server.resources.stop"] = false,
+
 	["immune"] = false,
 	["anon"] = false,
-	["mute"] = false,
-	["teleport.everyone"] = false,
-	["warn"] = false
 }
 
 
@@ -63,6 +76,15 @@ function formatDateString(string)
 	return os.date(dateFormat, string)
 end
 
+function formatShortcuts(thisstring)
+	local cleanString = string.gsub(string.lower(thisstring), " ", "")
+	for shortcut,value in pairs(MessageShortcuts) do
+		if string.lower(shortcut) == cleanString then
+			thisstring = value
+		end
+	end
+	return thisstring
+end
 
 function math.round(num, numDecimalPlaces)
 	if numDecimalPlaces and numDecimalPlaces>0 then
@@ -114,7 +136,9 @@ function table_to_string(tbl)
             result = result..table_to_string(v)
         elseif type(v) == "boolean" then
             result = result..tostring(v)
-        else
+		elseif type(v) == "function" then
+			result = result..tostring(v)
+		else
             result = result.."\""..v.."\""
         end
         result = result..","
@@ -124,4 +148,12 @@ function table_to_string(tbl)
         result = result:sub(1, result:len()-1)
     end
     return result.."}"
+end
+
+function mergeTables(t1, t2)
+	local t = t1
+	for i,v in pairs(t2) do
+		table.insert(t, v)
+	end
+	return t
 end

@@ -8,11 +8,13 @@
 players = {}
 banlist = {}
 cachedplayers = {}
-
+reports = {}
+add_aces, add_principals = {}, {}
 RegisterNetEvent("EasyAdmin:adminresponse")
 RegisterNetEvent("EasyAdmin:amiadmin")
 RegisterNetEvent("EasyAdmin:fillBanlist")
 RegisterNetEvent("EasyAdmin:requestSpectate")
+RegisterNetEvent("EasyAdmin:requestCleanup")
 
 RegisterNetEvent("EasyAdmin:SetSetting")
 RegisterNetEvent("EasyAdmin:SetLanguage")
@@ -26,15 +28,23 @@ RegisterNetEvent("EasyAdmin:GetInfinityPlayerList")
 RegisterNetEvent("EasyAdmin:fillCachedPlayers")
 
 
-AddEventHandler('EasyAdmin:adminresponse', function(response,permission)
-	permissions[response] = permission
-	if permission == true then
-		isAdmin = true
+AddEventHandler('EasyAdmin:adminresponse', function(perms)
+	permissions = perms
+
+	for perm, val in pairs(perms) do
+		if val == true then
+			isAdmin = true
+		end
 	end
 end)
 
 AddEventHandler('EasyAdmin:SetSetting', function(setting,state)
 	settings[setting] = state
+	if setting == "button" and state ~= "none" then
+		if (not RedM and not tonumber(settings.button)) then
+			RegisterKeyMapping('easyadmin', 'Open EasyAdmin', 'keyboard', settings.button)
+		end
+	end
 end)
 
 AddEventHandler('EasyAdmin:SetLanguage', function(newstrings)
@@ -47,7 +57,7 @@ AddEventHandler("EasyAdmin:fillBanlist", function(thebanlist)
 end)
 
 AddEventHandler("EasyAdmin:fillCachedPlayers", function(thecached)
-	if permissions["ban.temporary"] or permissions["ban.permanent"] then
+	if permissions["player.ban.temporary"] or permissions["player.ban.permanent"] then
 		cachedplayers = thecached
 	end
 end)
@@ -58,6 +68,30 @@ end)
 
 AddEventHandler("EasyAdmin:GetInfinityPlayerList", function(players)
 	playerlist = players
+end)
+
+RegisterNetEvent("EasyAdmin:getServerAces")
+AddEventHandler("EasyAdmin:getServerAces", function(aces,principals)
+	add_aces = aces
+	add_principals = principals
+	PrintDebugMessage("Recieved ACE Permissions list", 4)
+end)
+
+RegisterNetEvent("EasyAdmin:SetLanguage")
+AddEventHandler("EasyAdmin:SetLanguage", function()
+	if permissions["server.permissions.read"] then
+		TriggerServerEvent("EasyAdmin:getServerAces")
+	end
+end)
+
+RegisterNetEvent("EasyAdmin:NewReport")
+AddEventHandler("EasyAdmin:NewReport", function(reportData)
+	reports[reportData.id] = reportData
+end)
+
+RegisterNetEvent("EasyAdmin:RemoveReport")
+AddEventHandler("EasyAdmin:RemoveReport", function(reportData)
+	reports[reportData.id] = nil 
 end)
 
 
@@ -107,6 +141,119 @@ AddEventHandler('EasyAdmin:requestSpectate', function(playerServerId, tgtCoords)
 	stopSpectateUpdate = false 
 end)
 
+Citizen.CreateThread(function()
+	AddEventHandler('EasyAdmin:requestCleanup', function(type)
+		if type == "cars" then
+			
+			local toDelete = GetGamePool("CVehicle")
+			for _,veh in pairs(toDelete) do
+				PrintDebugMessage("starting deletion for veh "..veh, 4)
+				if DoesEntityExist(veh) then
+					if not IsPedAPlayer(GetPedInVehicleSeat(veh, -1)) then
+						if not NetworkHasControlOfEntity(veh) then
+							local i=0
+							repeat 
+								NetworkRequestControlOfEntity(veh)
+								i=i+1
+								Wait(150)
+							until (NetworkHasControlOfEntity(veh) or i==500)
+						end
+						PrintDebugMessage("deleting veh "..veh, 3)
+						
+						-- draw
+						SetTextFont(2)
+						SetTextColour(255, 255, 255, 200)
+						SetTextProportional(1)
+						SetTextScale(0.0, 0.6)
+						SetTextDropshadow(0, 0, 0, 0, 255)
+						SetTextEdge(1, 0, 0, 0, 255)
+						SetTextDropShadow()
+						SetTextOutline()
+						SetTextEntry("STRING")
+						AddTextComponentString(string.format(GetLocalisedText("cleaningcar"), veh))
+						EndTextCommandDisplayText(0.45, 0.95)
+						SetEntityAsNoLongerNeeded(veh)
+						DeleteEntity(veh)
+						Wait(1)
+					end
+				end
+				toDelete[i] = nil
+			end
+		elseif type == "peds" then
+			local toDelete = GetGamePool("CPed")
+			for _,ped in pairs(toDelete) do
+				PrintDebugMessage("starting deletion for ped "..ped, 4)
+				if DoesEntityExist(ped) and not IsPedAPlayer(ped) then
+					if not NetworkHasControlOfEntity(ped) then
+						local i=0
+						repeat 
+							NetworkRequestControlOfEntity(ped)
+							i=i+1
+							Wait(150)
+						until (NetworkHasControlOfEntity(ped) or i==500)
+					end
+					PrintDebugMessage("deleting ped "..ped, 3)
+					
+					-- draw
+					SetTextFont(2)
+					SetTextColour(255, 255, 255, 200)
+					SetTextProportional(1)
+					SetTextScale(0.0, 0.6)
+					SetTextDropshadow(0, 0, 0, 0, 255)
+					SetTextEdge(1, 0, 0, 0, 255)
+					SetTextDropShadow()
+					SetTextOutline()
+					SetTextEntry("STRING")
+					AddTextComponentString(string.format(GetLocalisedText("cleaningped"), ped))
+					EndTextCommandDisplayText(0.45, 0.95)
+					SetEntityAsNoLongerNeeded(ped)
+					DeleteEntity(ped)
+					Wait(1)
+				end
+				toDelete[i] = nil
+			end
+			
+		elseif type == "props" then
+			local toDelete = mergeTables(GetGamePool("CObject"), GetGamePool("CPickup"))
+			for _,object in pairs(toDelete) do
+				PrintDebugMessage("starting deletion for object "..object, 4)
+				if DoesEntityExist(object) then
+					if not NetworkHasControlOfEntity(object) then
+						local i=0
+						repeat 
+							NetworkRequestControlOfEntity(object)
+							i=i+1
+							Wait(150)
+						until (NetworkHasControlOfEntity(object) or i==500)
+					end
+					PrintDebugMessage("deleting object "..object, 3)
+					
+					-- draw
+					SetTextFont(2)
+					SetTextColour(255, 255, 255, 200)
+					SetTextProportional(1)
+					SetTextScale(0.0, 0.6)
+					SetTextDropshadow(0, 0, 0, 0, 255)
+					SetTextEdge(1, 0, 0, 0, 255)
+					SetTextDropShadow()
+					SetTextOutline()
+					SetTextEntry("STRING")
+					AddTextComponentString(string.format(GetLocalisedText("cleaningprop"), object))
+					EndTextCommandDisplayText(0.45, 0.95)
+					DetachEntity(object, false, false)
+					if IsObjectAPickup(object) then 
+						RemovePickup(object)
+					end
+					SetEntityAsNoLongerNeeded(object)
+					DeleteEntity(object)
+					Wait(1)
+				end
+				toDelete[i] = nil
+			end
+		end
+		ShowNotification(string.format(GetLocalisedText("finishedcleaning"), GetLocalisedText(type)))
+	end)
+end)
 Citizen.CreateThread( function()
 	while true do
 		Citizen.Wait(500)
@@ -247,6 +394,6 @@ AddEventHandler("EasyAdmin:showNotification", function(text, important)
 	if not RedM then
 		BeginTextCommandThefeedPost("STRING")
 		AddTextComponentString(text)
-		EndTextCommandThefeedPostTicker(important,0)
+		EndTextCommandThefeedPostTicker(important or false,0)
 	end
 end)
