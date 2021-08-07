@@ -450,6 +450,69 @@ AddEventHandler('mrp-alerts:jewrob', function()
 	TriggerServerEvent('mrp-alerts:robjew')
 end)
 
+-- Power Plant --
+
+RegisterNetEvent('mrp-alerts:powerplant')
+AddEventHandler('mrp-alerts:powerplant', function()
+	local job = exports["mrp_manager"]:isPed("myjob")
+	if job == 'police' then
+		local alpha = 250
+		local targetCoords = GetEntityCoords(PlayerPedId(), true)
+
+		SetBlipSprite(thiefBlip,  51)
+		SetBlipColour(thiefBlip,  1)
+		SetBlipScale(thiefBlip, 1.5)
+		SetBlipAsShortRange(thiefBlip,  1)
+		BeginTextCommandSetBlipName("STRING")
+		AddTextComponentString('10-31A Tresspassing At A Power Plant')
+		EndTextCommandSetBlipName(thiefBlip)
+		PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
+
+		while alpha ~= 0 do
+			Citizen.Wait(120 * 4)
+			alpha = alpha - 1
+			SetBlipAlpha(thiefBlip, alpha)
+
+		if alpha == 0 then
+			RemoveBlip(thiefBlip)
+		return
+      end
+    end
+  end
+end)
+
+-- Paleto Bank --
+
+RegisterNetEvent('mrp-alerts:paleto')
+AddEventHandler('mrp-alerts:paleto', function(plyPos)
+	local job = exports["mrp_manager"]:isPed("myjob")
+	if job == 'police' then
+		local alpha = 250
+		local targetCoords = GetEntityCoords(PlayerPedId(), true)
+		local thiefBlip = AddBlipForCoord(plyPos.x, plyPos.y, plyPos.z)
+
+		SetBlipSprite(thiefBlip,  51)
+		SetBlipColour(thiefBlip,  1)
+		SetBlipScale(thiefBlip, 1.5)
+		SetBlipAsShortRange(thiefBlip,  1)
+		BeginTextCommandSetBlipName("STRING")
+		AddTextComponentString('10-90 Paleto Bank Robbery In Progress')
+		EndTextCommandSetBlipName(thiefBlip)
+		PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
+
+		while alpha ~= 0 do
+			Citizen.Wait(120 * 4)
+			alpha = alpha - 1
+			SetBlipAlpha(thiefBlip, alpha)
+
+		if alpha == 0 then
+			RemoveBlip(thiefBlip)
+		return
+      end
+    end
+  end
+end)
+
 RegisterNetEvent('mrp-dispatch:fleeca:bank:receive')
 AddEventHandler('mrp-dispatch:fleeca:bank:receive', function(pCoords)
 	local job = exports["mrp_manager"]:isPed("myjob")
@@ -519,9 +582,6 @@ AddEventHandler('mrp-alerts:sellingdrugs', function()
 	TriggerServerEvent('mrp-alerts:drugsselling', {x = pos.x, y = pos.y, z = pos.z})
 end)
 
-
-
-
 RegisterNetEvent('mrp-dispatch:methexplosion')
 AddEventHandler("mrp-dispatch:methexplosion",function()
   AlertMeth()
@@ -532,6 +592,10 @@ AddEventHandler("mrp-dispatch:pacific",function()
   AlertPacific()
 end)
 
+RegisterNetEvent('mrp:alert:paleto')
+AddEventHandler('mrp:alert:paleto', function()
+	AlertPaletoBank()
+end)
 
 RegisterNetEvent('mrp-dispatch:jailbreak')
 AddEventHandler("mrp-dispatch:jailbreak",function()
@@ -568,4 +632,9 @@ end)
 RegisterNetEvent('mrp-dispatch:downplayer')
 AddEventHandler("mrp-dispatch:downplayer",function()
 	TriggerEvent("police:1047")
+end)
+
+RegisterNetEvent('mrp:alert:powerplant')
+AddEventHandler('mrp:alert:powerplant', function()
+  AlertPowerPlant()
 end)

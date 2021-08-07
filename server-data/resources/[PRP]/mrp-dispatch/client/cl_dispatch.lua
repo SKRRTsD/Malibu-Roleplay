@@ -1127,6 +1127,8 @@ function AlertCheckRobbery2()
   end
 end
 
+
+
 function DrugSales()
   local street1 = GetStreetAndZone()
   local gender = IsPedMale(PlayerPedId()) 
@@ -1243,6 +1245,58 @@ function AlertBankTruck()
   end
 end
 
+function AlertPowerPlant()
+  local street1 = GetStreetAndZone()
+  local gender = IsPedMale(PlayerPedId())
+  local plyPos = GetEntityCoords(PlayerPedId())
+  local isInVehicle = IsPedInAnyVehicle(PlayerPedId())
+  local dispatchCode = "10-31A"
+  local eventId = uuid()
+  TriggerServerEvent('dispatch:svNotify', {
+    dispatchCode = dispatchCode,
+    firstStreet = street1,
+    gender = gender,
+    eventId = eventId,
+    isImportant = true,
+    priority = 1,
+    dispatchMessage = "Tresspassing At a Power Plant",
+    recipientList = {
+      police = "police"
+    },
+  })
+  
+  TriggerEvent('mrp-alerts:powerplant')
+  Wait(math.random(5000,15000))
+
+  if math.random(1,10) > 3 and IsPedInAnyVehicle(PlayerPedId()) and not isInVehicle then
+    plyPos = GetEntityCoords(PlayerPedId())
+    vehicleData = GetVehicleDescription() or {}
+    TriggerServerEvent('dispatch:svNotify', {
+      dispatchCode = 'CarFleeing',
+      relatedCode = dispatchCode,
+      firstStreet = street1,
+      gender = gender,
+      model = vehicleData.model,
+      plate = vehicleData.plate,
+      firstColor = vehicleData.firstColor,
+      secondColor = vehicleData.secondColor,
+      heading = vehicleData.heading,
+      eventId = eventId,
+      isImportant = true,
+      priority = 1,
+      recipientList = {
+        police = "police"
+      },
+      origin = {
+        x = plyPos.x,
+        y = plyPos.y,
+        z = plyPos.z
+      }
+    })
+    TriggerEvent('mrp-alerts:powerplant')
+  end
+end
+
 function AlertJewelRob()
   local street1 = GetStreetAndZone()
   local gender = IsPedMale(PlayerPedId())
@@ -1338,6 +1392,64 @@ end
 
 ----- END OF FLEECA BANKS ----
 
+function AlertPaletoBank()
+  local street1 = GetStreetAndZone()
+  local gender = IsPedMale(PlayerPedId())
+  local plyPos = GetEntityCoords(PlayerPedId())
+  local isInVehicle = IsPedInAnyVehicle(PlayerPedId())
+  local dispatchCode = "10-90"
+  local eventId = uuid()
+  local alpha = 250
+  TriggerServerEvent('dispatch:svNotify', {
+    dispatchCode = dispatchCode,
+    firstStreet = street1,
+    gender = gender,
+    eventId = eventId,
+    isImportant = true,
+    priority = 1,
+    dispatchMessage = "Paleto Bank Robbery In Progress",
+    recipientList = {
+      police = "police"
+    },
+    origin = {
+      x = plyPos.x,
+      y = plyPos.y,
+      z = plyPos.z
+    }
+  })
+
+  TriggerEvent('t1ger_drugs:OutlawBlipEvent')
+  
+  Wait(math.random(5000,15000))
+
+  if math.random(1,10) > 3 and IsPedInAnyVehicle(PlayerPedId()) and not isInVehicle then
+    plyPos = GetEntityCoords(PlayerPedId())
+    vehicleData = GetVehicleDescription() or {}
+    TriggerServerEvent('dispatch:svNotify', {
+      dispatchCode = 'CarFleeing',
+      relatedCode = dispatchCode,
+      firstStreet = street1,
+      gender = gender,
+      model = vehicleData.model,
+      plate = vehicleData.plate,
+      firstColor = vehicleData.firstColor,
+      secondColor = vehicleData.secondColor,
+      heading = vehicleData.heading,
+      eventId = eventId,
+      isImportant = true,
+      priority = 1,
+      recipientList = {
+        police = "police"
+      },
+      origin = {
+        x = plyPos.x,
+        y = plyPos.y,
+        z = plyPos.z
+      }
+    })
+    TriggerEvent('t1ger_drugs:OutlawBlipEvent')
+  end
+end
 
 exports("SendAlert", function(pAlertType)
   TriggerEvent("mrp-dispatch:alert", pAlertType)
