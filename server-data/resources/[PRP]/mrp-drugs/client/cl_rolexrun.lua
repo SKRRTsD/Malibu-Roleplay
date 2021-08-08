@@ -118,12 +118,12 @@ local carpick = {
 }
 
 local carspawns2 = {
-	[1] =  { ['x'] = -615.93035888672,['y'] = 331.08557128906,['z'] = 84.491836547852,['h'] = 356.51058959961, ['info'] = ' car 8' },
-	[2] =  { ['x'] = -619.50622558594,['y'] = 331.92239379883,['z'] = 84.490386962891,['h'] = 352.755859375, ['info'] = ' car 1' },
-	[3] =  { ['x'] = -612.43762207031,['y'] =330.64642333984,['z'] = 84.491195678711,['h'] = 358.00253295898, ['info'] = ' car 2' },
-	[4] =  { ['x'] = -612.21215820312,['y'] =346.74667358398,['z'] = 84.491142272949,['h'] = 177.13720703125, ['info'] = ' car 3' },
-	[5] =  { ['x'] = -614.95935058594,['y'] = 347.07119750977,['z'] =84.490592956543,['h'] = 178.01599121094, ['info'] = ' car 4' },
-	[6] =  { ['x'] = -618.79296875,['y'] = 347.13333129883,['z'] = 84.490905761719,['h'] = 173.84649658203, ['info'] = ' car 5' },
+	[1] =  { ['x'] = 416.19912719727,['y'] = 345.98068237305,['z'] = 102.11197662354,['h'] = 51.659381866455, ['info'] = ' car 8' },
+	[2] =  { ['x'] = 416.19912719727,['y'] = 345.98068237305,['z'] = 102.11197662354,['h'] = 51.659381866455, ['info'] = ' car 1' },
+	[3] =  { ['x'] = 416.19912719727,['y'] = 345.98068237305,['z'] = 102.11197662354,['h'] = 51.659381866455, ['info'] = ' car 2' },
+	[4] =  { ['x'] = 416.19912719727,['y'] = 345.98068237305,['z'] = 102.11197662354,['h'] = 51.659381866455, ['info'] = ' car 3' },
+	[5] =  { ['x'] = 416.19912719727,['y'] = 345.98068237305,['z'] = 102.11197662354,['h'] = 51.659381866455, ['info'] = ' car 4' },
+	[6] =  { ['x'] = 416.19912719727,['y'] = 345.98068237305,['z'] = 102.11197662354,['h'] = 51.659381866455, ['info'] = ' car 5' },
 
 }
 
@@ -246,18 +246,18 @@ end
 RolexSpot = false
 
 Citizen.CreateThread(function()
-	exports["mrp-polyzone"]:AddBoxZone("rolex_run_start", vector3(-614.21, 324.11, 82.26), 1.6, 1, {
-		name="rolex_run_start",
-		heading=355,
-		minZ=79.06,
-		maxZ=83.06
+	exports["mrp-polyzone"]:AddBoxZone("shiet", vector3(414.56, 343.97, 102.42), 1.3, 1.5, {
+		name="shiet",
+		heading=340,
+		minZ=99.62,
+		maxZ=103.62
 	  })
 	  
 end)
 
 RegisterNetEvent('mrp-polyzone:enter')
 AddEventHandler('mrp-polyzone:enter', function(name)
-    if name == "rolex_run_start" then
+    if name == "shiet" then
         RolexSpot = true     
         LuckyDrawPlace()
 		if not RolexRun then
@@ -270,7 +270,7 @@ end)
 
 RegisterNetEvent('mrp-polyzone:exit')
 AddEventHandler('mrp-polyzone:exit', function(name)
-    if name == "rolex_run_start" then
+    if name == "shiet" then
         RolexSpot = false  
 		TriggerEvent('mrp-textui:HideUI')   
     end
@@ -281,12 +281,12 @@ function LuckyDrawPlace()
         while RolexSpot do
             Citizen.Wait(5)
 			if IsControlJustReleased(0, 38) then
-                if exports["mrp-inventory"]:hasEnoughOfItem("rolexwatch",1) or exports ["mrp-inventory"]:hasEnoughOfItem("goldbar",1)  then     
+                if exports["mrp-inventory"]:hasEnoughOfItem("rolexwatch",5) or exports ["mrp-inventory"]:hasEnoughOfItem("goldbar",5)  then     
                     if not RolexRun then
                         TriggerServerEvent("rolexdelivery:server", 500)
                     end
                 else
-                    TriggerEvent('DoLongHudText', 'You need something special', 2)      
+                    TriggerEvent('DoLongHudText', 'You need $500, 5 Rolex Watches and 5 Goldbars to start a run!', 2)      
                 end    
 			end
 		end
@@ -476,8 +476,12 @@ function DoDropOff(requestMoney)
 				TriggerEvent( "player:receiveItem", "Gruppe6Card", 1 )
 			end
 			
-			if math.random(10) == 1 then
-				TriggerEvent( "player:receiveItem", "specialaxe", 1 )
+			if math.random(10) == 5 then
+				TriggerEvent( "player:receiveItem", "Gruppe6Card3", 1 )
+			end
+
+			if math.random(10) == 8 then
+				TriggerEvent( "player:receiveItem", "Gruppe6Card22", 1 )
 			end
 
 			if RolexRun then
@@ -657,9 +661,9 @@ function setPed()
 	while not HasModelLoaded(modelHash) do
 		Wait(1)
 	end
-	created_ped = CreatePed(0, modelHash , -614.18841552734, 323.9372253418, 82.261375427246 -1, true)
+	created_ped = CreatePed(0, modelHash , 414.45907592773, 343.72674560547, 102.42112731934 -1, true)
 	FreezeEntityPosition(created_ped, true)
-	SetEntityHeading(created_ped,  347.64755249023)
+	SetEntityHeading(created_ped,  342.93899536133)
 	SetEntityInvincible(created_ped, true)
 	SetBlockingOfNonTemporaryEvents(created_ped, true)
 	TaskStartScenarioInPlace(created_ped, "WORLD_HUMAN_AA_SMOKE", 0, true)

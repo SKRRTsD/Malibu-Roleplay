@@ -4841,12 +4841,12 @@ Citizen.CreateThread(
 
             -- Karen :0
 
-            AddBoxZone("karens_a_op ", vector3(-524.15, -711.09, 33.83), 0.7, 0.7, {
-                name="karens_a_op ",
-                heading=25,
+            AddBoxZone("vpn", vector3(-648.09, -1135.74, 11.99), 0.7, 0.7, {
+                name="vpn ",
+                heading=20,
                 debugPoly=false,
-                minZ=31.03,
-                maxZ=35.03
+                minZ=8.99,
+                maxZ=12.99
             }, {
                 options = {
                     {
