@@ -11037,6 +11037,19 @@ itemList["mew"] = {
     deg: false
 }
 
+itemList["mewtwo"] = {
+    fullyDegrades: false,
+    decayrate: 0.0,
+    displayname: "MewtwoGX Card",
+    price: 250,
+    weight: 0,
+    nonStack: true,
+    model: "",
+    image: "mewtwo.png",
+    weapon: false,
+    deg: false
+}
+
 itemList["jiranchi"] = {
     fullyDegrades: false,
     decayrate: 0.0,

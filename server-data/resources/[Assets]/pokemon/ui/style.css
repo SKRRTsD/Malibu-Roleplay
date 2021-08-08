@@ -202,6 +202,10 @@ body {
   background-image: url(https://images.pokemontcg.io/sm35/40.png);
 }
 
+.card.metwo {
+  background-image: url(https://images.pokemoncard.io/images/sm35/sm35-78.png);
+}
+
 .card.jiranchi {
   background-image: url(https://images.pokemontcg.io/sm35/42.png);
 }
