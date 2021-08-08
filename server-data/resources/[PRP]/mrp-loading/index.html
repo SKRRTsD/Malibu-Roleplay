@@ -1,62 +1,115 @@
-<!DOCTYPE html>
-<html>
-
+<!doctype html>
+<html lang="en" class="no-js">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
-    <script src="vue.min.js" type="text/javascript"></script>
-    <link href="style.css" rel="stylesheet">
-
-
-    <title>NoPixel Character Selection</title>
+  <meta charset="UTF-8" />
+  <title>Loadingscreen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/index.css" />
+  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 </head>
-
 <body>
-    <div id="app">
-        <div id="keepingColor">
-            <div id="background">
-                <img id="bak0" src="images/background1.jpg" style="top: -2%; opacity: 0" />
-                <img id="bak1" src="images/background2.jpg" style="top: -50%; opacity: 0" />
-                <img id="bak2" src="images/background3.jpg" style="top: 0; opacity: 0" />
-                <img id="bak3" src="images/background4.jpg" style="top: -23%; opacity: 0" />
-                <img id="bak4" src="images/background5.jpg" style="top: -20%; opacity: 0" />
-            </div>
-        </div>
-            
-        <div id="logo">
 
-            <div class="log-containter" v-if="showLog">
-                <div class="log-header"></div>
-                <div id="log" class="log">Error initializing log</div>
-                <div class="log-footer"></div>
-            </div>
+<style>
+.content {
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #000000;
+  width: 100%;
+  padding: 20px;
+}
 
-            <div id="debug" class="log log-top-right"></div>
-            <div class="loading-container">
-                <div class ="loading-labels">
-                    <div id="INIT_BEFORE_MAP_LOADED-label" class="color-first"></div>
-                    <div id="MAP-label" class="color-second"></div>
-                    <div id="INIT_AFTER_MAP_LOADED-label" class="color-third"></div>
-                    <div id="INIT_SESSION-label" class="color-fourth"></div>
-                </div>
-                <div class="loading-bar-container">
-                    <div id="INIT_BEFORE_MAP_LOADED-bar" class="loading-bar bgcolor-first"></div>
-                    <div id="MAP-bar" class="loading-bar bgcolor-second"></div>
-                    <div id="INIT_AFTER_MAP_LOADED-bar" class="loading-bar bgcolor-third"></div>
-                    <div id="INIT_SESSION-bar" class="loading-bar bgcolor-fourth"></div>
-                </div>
-            </div>
+#myBtn {
+  width: 200px;
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+}
 
-            <!-- <div class="interaction-help-prompt">
-                <div class="interaction-text-help">
-                    <div class="new-help-key">G</div>
-                    <div class="new-help-info">Display Output</div>
-                </div>
-            </div> -->
-        </div>
+#myBtn:hover {
+  background: rgb(0, 183, 255);
+  color: black;
+}
+
+.home-banner .slide .video-slide {
+  background-color: rgb(96, 28, 255); }
+
+.home-banner.loading .video-background {
+  opacity: 0; }
+
+.video-background {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: 2s opacity ease;
+  transition: 2s opacity ease;
+  opacity: 1; }
+
+.video-foreground,
+.video-background iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; }
+</style>
+
+	<div class="video-background" style="background: #000;">
+		<div class="video-foreground" id="YouTubeBackgroundVideoPlayer"></div>
+	</div>
+
+<script async src="https://www.youtube.com/iframe_api"></script>
+<script async src="video.js"></script>
+
+  <div id="intro">
+       <div>
+	   	   <img src='png.png' class="heartBeat animated infinite"style='width:424px;height:424px;'>
     </div>
 
-    <script src="script.js" type="text/javascript"></script>
-</body>
+            <div><img src='Discord.png' style='width:70px;height:17px'>
 
+            <div> 
+                <font face='Montserrat' size="3px" style='color: white;'>Malibu Roleplay</font>
+                <br>
+                <font face='Montserrat' size="3px" style='color: white;'>Press <strong>Space</strong> to start / stop the song</font>
+            </div>
+  </div>
+</div>
+
+<div class="kreska razem"></div>
+<div class="kreska2 razem"></div>
+
+<audio id="leson" src="audio.mp3" autoplay="true" hidden="true" loop="true"/>
+    <script>
+
+    var play = false;
+    var myAudio = document.getElementById("leson");
+    
+    myAudio.volume = 0.1;
+
+    function onKeyDown(event) {
+            switch (event.keyCode) {
+                case 32: //SpaceBar                    
+                    if (play) {
+                        myAudio.pause();
+                        play = false;
+                    } else {
+                        myAudio.play();
+                        play = true;
+                    }
+                    break;
+            }
+      return false;
+    }
+
+    window.addEventListener("keydown", onKeyDown, false);
+    </script>
+
+</body>
 </html>
