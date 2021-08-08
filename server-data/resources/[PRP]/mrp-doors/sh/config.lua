@@ -688,49 +688,6 @@ MRP_DOORS = {
       },
       forceUnlocked = false,
     },
-    
-    {
-      info = "",
-      active = true,
-      id = 46,
-      keyFob = true,
-      coords = vector3(410.02578735352, -1024.2199707031, 29.220199584961),
-      model = -1635161509,
-      lock = true,
-      automatic = {
-        distance = 15.0,
-        rate = 10.0
-      },
-      desc = "MRPDBollard01",
-      access = {
-        job = {
-          ["PD"] = true,
-        },
-        business = {},
-      },
-      forceUnlocked = false,
-    },
-    {
-      info = "",
-      active = true,
-      id = 47,
-      keyFob = true,
-      coords = vector3(410.02578735352, -1024.2259521484, 29.220220565796),
-      model = -1868050792,
-      lock = true,
-      automatic = {
-        distance = 15.0,
-        rate = 10.0
-      },
-      desc = "MRPDBollard02",
-      access = {
-        job = {
-          ["PD"] = true,
-        },
-        business = {},
-      },
-      forceUnlocked = false,
-    },
     {
       info = "",
       active = true,
