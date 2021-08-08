@@ -751,8 +751,7 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
 
 
     if (itemid == "Gruppe6Card") then
-        local police = exports["mrp_manager"]:isPed("countpolice")
-        if police >= 0 then
+        if exports["mrp_manager"]:isPed("countpolice") >= 4 then
         local coordA = GetEntityCoords(PlayerPedId(), 1)
         local coordB = GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 100.0, 0.0)
         -- local countpolice = exports["mrp_manager"]:isPed("countpolice")
@@ -1148,7 +1147,6 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
         TriggerEvent("healed:useOxy")
         AttachPropAndPlayAnimation("amb@world_human_drinking@beer@female@idle_a", "idle_e", 49, 6000,"Eating", "inv:wellfed",true,itemid,playerVeh)
     end
-    
 
     if itemid == "Headphones" then
         TriggerEvent("attemt:play:song")

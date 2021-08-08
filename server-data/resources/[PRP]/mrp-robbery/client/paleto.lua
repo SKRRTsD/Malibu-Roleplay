@@ -81,18 +81,14 @@ Citizen.CreateThread(function()
         if distance < 3.0 then
         	 Wait(1)
              DrawMarker(27,701.06237792969, 107.65113067627, 80.134399414062, 0, 0, 0, 0, 0, 0, 0.60, 0.60, 0.3, 11, 111, 11, 60, 0, 0, 2, 0, 0, 0, 0) 
-             local police = exports["mrp_manager"]:isPed("countpolice")
-             if police >= 0 then
+             if exports["mrp_manager"]:isPed("countpolice") >= 4 then
              if IsControlJustReleased(0,38) and distance < 1.0 then
-                local police = exports["mrp_manager"]:isPed("countpolice")
-                if police >= 0 then
              	if exports["mrp-inventory"]:hasEnoughOfItem("electronickit",1,false) then
                     TriggerEvent("inventory:removeItem", "electronickit", 1)
 					TriggerEvent("animation:PlayAnimation","leanbar2")
                     TriggerEvent("mhacking:show")
                     TriggerEvent("mhacking:start",7,13,firstdoor)
 					Citizen.Wait(3600000)
-                       end
                     end
              	end
              end
@@ -111,8 +107,7 @@ Citizen.CreateThread(function()
         	 Wait(1)
              DrawMarker(27,2585.8454589844, 5065.794921875, 44.115726470947, 0, 0, 0, 0, 0, 0, 0.60, 0.60, 0.3, 11, 111, 11, 60, 0, 0, 2, 0, 0, 0, 0) 
              if IsControlJustReleased(0,38) and distance < 1.0 then
-                local police = exports["mrp_manager"]:isPed("countpolice")
-                if police >= 0 then
+                if exports["mrp_manager"]:isPed("countpolice") >= 4 then
              	if exports["mrp-inventory"]:hasEnoughOfItem("electronickit",1,false) then
                     TriggerEvent("inventory:removeItem", "electronickit", 1)
 					TriggerEvent("animation:PlayAnimation","leanbar2")

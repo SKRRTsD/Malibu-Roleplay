@@ -6317,6 +6317,18 @@ itemList["markedbills"] = {
     deg: false
 }
 
+itemList["flatscreentv"] = {
+    fullyDegrades: false,
+    illegal: true,
+    decayrate: 0.0,
+    displayname: "T",
+    price: 300,
+    weight: 1,
+    nonStack: false,
+    model: "",
+    image: "inked-money-bag.png",
+    deg: false
+}
 
 itemList["martini"] = {
     fullyDegrades: false,
