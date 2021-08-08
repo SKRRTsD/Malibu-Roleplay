@@ -30,7 +30,6 @@ Citizen.CreateThread(function()
                     inRange = true
                 end
             end
-
             if not inRange then
                 Citizen.Wait(1000)
                 closestBank = nil
@@ -61,7 +60,6 @@ Citizen.CreateThread(function()
                                 DrawMarker(27,Config.SmallBanks[closestBank]["lockers"][k].x, Config.SmallBanks[closestBank]["lockers"][k].y, Config.SmallBanks[closestBank]["lockers"][k].z-0.9, 0, 0, 0, 0, 0, 0, 0.60, 0.60, 0.3, 255,0,0, 60, 0, 0, 2, 0, 0, 0, 0)
 
                                 if dist < 0.5 then
-                                    DrawText3Ds(Config.SmallBanks[closestBank]["lockers"][k].x, Config.SmallBanks[closestBank]["lockers"][k].y, Config.SmallBanks[closestBank]["lockers"][k].z, "[E]")									
                                     if IsControlJustPressed(0, Keys["E"]) then
                                         OpenLocker(closestBank, k)
                                     end   
@@ -104,7 +102,7 @@ RegisterNetEvent('mrp-robbery:usb')
 AddEventHandler('mrp-robbery:usb', function()
     local ped = GetPlayerPed(-1)
     local pos = GetEntityCoords(ped)
-    if exports["mrp_manager"]:isPed("countpolice") >= 4 then
+    if exports["mrp_manager"]:isPed("countpolice") >= 0 then
     if closestBank ~= nil then
         TriggerServerEvent("isRobberyActive")
         Citizen.Wait(500)
@@ -113,20 +111,18 @@ AddEventHandler('mrp-robbery:usb', function()
                 local dist = GetDistanceBetweenCoords(pos, Config.SmallBanks[closestBank].coords.x, Config.SmallBanks[closestBank].coords.y, Config.SmallBanks[closestBank].coords.z)
                 if dist < 1.5 then				
                     if not Config.SmallBanks[closestBank]["isOpened"] then 
-                        if exports['mrp-inventory']:hasEnoughOfItem('laptop1', 1) and exports['mrp-inventory']:hasEnoughOfItem('Gruppe6Card22', 1) and exports['mrp-inventory']:hasEnoughOfItem('fcadrive', 1) then
+                        if exports['mrp-inventory']:hasEnoughOfItem('laptop1', 1) and exports['mrp-inventory']:hasEnoughOfItem('Gruppe6Card22', 1) and exports['mrp-inventory']:hasEnoughOfItem('usbdevice', 1) then
                                 exports['mrp-dispatch']:SendAlert("AlertFleecaRobbery")
                                 StartHeistFleecaPanel()
                                 local card = exports["mrp-taskbar"]:taskBar(9000,"Hooking up equipment")
                                 if card == 100 then
-                                    TriggerEvent('inventory:removeItem', 'fcadrive', 1)	
+                                    TriggerEvent('inventory:removeItem', 'usbdevice', 1)	
                                     TriggerEvent('inventory:removeItem', 'laptop1', 1)	
                                     TriggerEvent('inventory:removeItem', 'Gruppe6Card22', 1)	
                                     TriggerEvent("client:newStress",true,200)
                                     FreezeEntityPosition(GetPlayerPed(-1), false)
-                                    exports['mrp-memory']:StartMinigame({
-                                        success = 'fleeca:success:panel',
-                                        fail = 'fleeca:fail:panel'
-                                    })
+                                    TriggerEvent("mhacking:show")
+                                    TriggerEvent("mhacking:start",7,10,bankdoor)
                                 end  
                             else
                                 TriggerEvent("DoLongHudText", "Not enough cops online.", 2)
@@ -379,12 +375,12 @@ function OpenLocker(bankId, lockerId)
 end
 
 
-RegisterNetEvent("fleeca:success:panel", function()
-    TriggerEvent('DoLongHudText', "Success!", 1)
-    TriggerEvent('mrp-dispatch:bankrobbery', -1)
-    TriggerServerEvent('mrp-robbery:server:setBankState', closestBank, true)
-    DeleteObject(laptop)
-end)
+-- RegisterNetEvent("fleeca:success:panel", function()
+--     TriggerEvent('DoLongHudText', "Success!", 1)
+--     TriggerEvent('mrp-dispatch:bankrobbery', -1)
+--     TriggerServerEvent('mrp-robbery:server:setBankState', closestBank, true)
+--     DeleteObject(laptop)
+-- end)
 
 -- RegisterNetEvent("pacific:success", function()
 --     TriggerEvent("attachItem","minigameThermite")
@@ -417,11 +413,11 @@ RegisterNetEvent("fleeca:fail", function()
 end)
 
 
-RegisterNetEvent("fleeca:fail:panel", function()
-    TriggerServerEvent("inventory:deg:item", "hacklaptop")
-    TriggerEvent('DoLongHudText', "Failed", 2)
-    DeleteObject(laptop)
-end)
+-- RegisterNetEvent("fleeca:fail:panel", function()
+--     TriggerServerEvent("inventory:deg:item", "hacklaptop")
+--     TriggerEvent('DoLongHudText', "Failed", 2)
+--     DeleteObject(laptop)
+-- end)
 
 
 
@@ -444,3 +440,20 @@ elseif roll == 5 then
     TriggerEvent('DoLongHudText', "Damn the box was empty!", 2)
  end
 end)
+
+
+function bankdoor(success, timeremaining)
+    if success then
+        TriggerEvent('mhacking:hide')
+        TriggerEvent('DoLongHudText', "Success!", 1)
+        TriggerEvent('mrp-dispatch:bankrobbery', -1)
+        TriggerServerEvent('mrp-robbery:server:setBankState', closestBank, true)
+        DeleteObject(laptop)
+    else
+        TriggerEvent('mhacking:hide')
+        TriggerServerEvent("inventory:deg:item", "hacklaptop")
+        TriggerEvent('DoLongHudText', "Failed", 2)
+        TriggerEvent('mrp-dispatch:bankrobbery', -1)
+        DeleteObject(laptop)
+    end
+end

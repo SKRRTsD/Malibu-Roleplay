@@ -10371,7 +10371,7 @@ itemList["supplycreatesmall"] = {
     deg: false
 }
 
-itemList["laptop1"] = {
+itemList["laptop4"] = {
     fullyDegrades: false,
     decayrate: 0.0,
     displayname: "Yellow laptop",
@@ -10424,7 +10424,7 @@ itemList["laptop3"] = {
     deg: false
 }
 
-itemList["laptop4"] = {
+itemList["laptop1"] = {
     fullyDegrades: false,
     decayrate: 0.0,
     displayname: "Red laptop",
