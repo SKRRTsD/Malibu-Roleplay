@@ -165,7 +165,7 @@ rootMenuConfig =  {
         enableMenu = function()
             for k,v in ipairs(GarageLocations) do
                 local pos = v.loc
-                if #(vector3(pos[1],pos[2],pos[3]) - GetEntityCoords(PlayerPedId())) < 3.0 and not isDead and not IsPedInAnyVehicle(PlayerPedId(), false) and not TakenOut then
+                if #(vector3(pos[1],pos[2],pos[3]) - GetEntityCoords(PlayerPedId())) < 3.0 and not isDead and not IsPedInAnyVehicle(PlayerPedId(), false) then
                     return true
                 end
             end
@@ -182,7 +182,7 @@ rootMenuConfig =  {
         enableMenu = function()
             for k,v in ipairs(GarageLocations) do
                 local pos = v.loc
-                if #(vector3(pos[1],pos[2],pos[3]) - GetEntityCoords(PlayerPedId())) < 3.0 and not isDead and not IsPedInAnyVehicle(PlayerPedId(), false) and TakenOut then
+                if #(vector3(pos[1],pos[2],pos[3]) - GetEntityCoords(PlayerPedId())) < 3.0 and not isDead and not IsPedInAnyVehicle(PlayerPedId(), false) then
                     return true
                 end
             end
