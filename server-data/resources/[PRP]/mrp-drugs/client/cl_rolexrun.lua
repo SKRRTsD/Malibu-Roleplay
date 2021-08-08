@@ -309,7 +309,7 @@ Citizen.CreateThread(function()
 		    Citizen.Wait(150000)
 		    firstdeal = false
 		elseif RolexRun then
-			if (not DoesEntityExist(rolexVehicle) or GetVehicleEngineHealth(rolexVehicle) < 100.0) and vehspawn then
+			if (not DoesEntityExist(rolexVehicle) or GetVehicleEngineHealth(rolexVehicle) < 50.0) and vehspawn then
 				RolexRun = false
 				tasking = false
 				TriggerEvent("chatMessage", "EMAIL - Drug Deliveries", 8, "Dude! You fucked the car up, I canceled your run, asshole! ")
