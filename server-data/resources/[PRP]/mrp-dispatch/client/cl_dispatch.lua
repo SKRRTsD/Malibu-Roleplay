@@ -1389,6 +1389,64 @@ function AlertFleecaRobbery()
   TriggerEvent("mrp-dispatch:fleeca:bank", plyPos)
 end
 
+function AlertBigbank2()
+  local street1 = GetStreetAndZone()
+  local gender = IsPedMale(PlayerPedId())
+  local plyPos = GetEntityCoords(PlayerPedId())
+  local isInVehicle = IsPedInAnyVehicle(PlayerPedId())
+  local dispatchCode = "10-90"
+  local eventId = uuid()
+  local alpha = 250
+  TriggerServerEvent('dispatch:svNotify', {
+    dispatchCode = dispatchCode,
+    firstStreet = street1,
+    gender = gender,
+    eventId = eventId,
+    isImportant = true,
+    priority = 1,
+    dispatchMessage = "Pacific Standard In Progress",
+    recipientList = {
+      police = "police"
+    },
+    origin = {
+      x = plyPos.x,
+      y = plyPos.y,
+      z = plyPos.z
+    }
+  })
+
+  TriggerEvent('t1ger_drugs:OutlawBlipEvent')
+  
+  Wait(math.random(5000,15000))
+
+  if math.random(1,10) > 3 and IsPedInAnyVehicle(PlayerPedId()) and not isInVehicle then
+    plyPos = GetEntityCoords(PlayerPedId())
+    vehicleData = GetVehicleDescription() or {}
+    TriggerServerEvent('dispatch:svNotify', {
+      dispatchCode = 'CarFleeing',
+      relatedCode = dispatchCode,
+      firstStreet = street1,
+      gender = gender,
+      model = vehicleData.model,
+      plate = vehicleData.plate,
+      firstColor = vehicleData.firstColor,
+      secondColor = vehicleData.secondColor,
+      heading = vehicleData.heading,
+      eventId = eventId,
+      isImportant = true,
+      priority = 1,
+      recipientList = {
+        police = "police"
+      },
+      origin = {
+        x = plyPos.x,
+        y = plyPos.y,
+        z = plyPos.z
+      }
+    })
+    TriggerEvent('t1ger_drugs:OutlawBlipEvent')
+  end
+end
 
 ----- END OF FLEECA BANKS ----
 
