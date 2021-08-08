@@ -450,6 +450,38 @@ AddEventHandler('mrp-alerts:jewrob', function()
 	TriggerServerEvent('mrp-alerts:robjew')
 end)
 
+-- Big Bank --
+
+RegisterNetEvent('mrp-alerts:bigbank2')
+AddEventHandler('mrp-alerts:bigbank2', function(plyPos)
+	local job = exports["isPed"]:isPed("myjob")
+	if job == 'police' or job == 'news' then
+		local alpha = 250
+		local targetCoords = GetEntityCoords(PlayerPedId(), true)
+		local thiefBlip = AddBlipForCoord(plyPos.x, plyPos.y, plyPos.z)
+
+		SetBlipSprite(thiefBlip,  51)
+		SetBlipColour(thiefBlip,  1)
+		SetBlipScale(thiefBlip, 1.5)
+		SetBlipAsShortRange(thiefBlip,  1)
+		BeginTextCommandSetBlipName("STRING")
+		AddTextComponentString('10-90 Pacific Standard Bank In Progress')
+		EndTextCommandSetBlipName(thiefBlip)
+		PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
+
+		while alpha ~= 0 do
+			Citizen.Wait(120 * 4)
+			alpha = alpha - 1
+			SetBlipAlpha(thiefBlip, alpha)
+
+		if alpha == 0 then
+			RemoveBlip(thiefBlip)
+		return
+      end
+    end
+  end
+end)
+
 -- Power Plant --
 
 RegisterNetEvent('mrp-alerts:powerplant')
@@ -580,6 +612,11 @@ end)
 AddEventHandler('mrp-alerts:sellingdrugs', function()
 	local pos = GetEntityCoords(PlayerPedId(), true)
 	TriggerServerEvent('mrp-alerts:drugsselling', {x = pos.x, y = pos.y, z = pos.z})
+end)
+
+RegisterNetEvent('mrp:alert:bigbank2')
+AddEventHandler('mrp:alert:bigbank2', function()
+  AlertBigbank2()
 end)
 
 RegisterNetEvent('mrp-dispatch:methexplosion')
