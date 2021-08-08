@@ -121,7 +121,7 @@ end)
 
 RegisterNetEvent("store:dosafe")
 AddEventHandler("store:dosafe", function()
-	if exports["mrp_manager"]:isPed("countpolice") >= 4 then
+	if exports["mrp_manager"]:isPed("countpolice") >= 2 then
 		local storeid = isStoreRobbery()
 		TriggerServerEvent('conviencesafe:log')
 		TriggerEvent("mrp-dispatch:storerobbery")
@@ -234,11 +234,6 @@ AddEventHandler("robbery:safe", function()
 	if math.random(25) > 8 then
     	TriggerEvent("player:receiveItem","Gruppe6Card",1)
 	end
-
-	if math.random(85) > 75 then
-    	TriggerEvent("player:receiveItem","secretkey",1)
-	end
-
 
 	if math.random(25) > 15 then
     	TriggerEvent("player:receiveItem","Gruppe6Card22",1)

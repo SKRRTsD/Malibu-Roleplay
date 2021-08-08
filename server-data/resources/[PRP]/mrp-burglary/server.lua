@@ -1,5 +1,5 @@
 local robbableItems = {
-  [1] = {chance = 10, id = 0, quantity = math.random(50, 70)},
+  [1] = {chance = 10, id = 0, quantity = math.random(25, 250)},
   [2] = {chance = 5, id = 'plastic', quantity = math.random(1, 2)},
   [3] = {chance = 13, id = 'pistolammo', quantity = 1},
   [4] = {chance = 30, id = 'rollcash', quantity = math.random(5,10)},
@@ -23,6 +23,9 @@ local robbableItems = {
   [22] = {chance = 6, id = 'rolexwatch', math.random(1,5)},
   [23] = {chance = 7, id = 'goldbar', math.random(1,4)},
   [24] = {chance = 7, id = 'anime', math.random(1,3)},
+  [25] = {chance = 36, id = '453432689', 1},
+  [26] = {chance = 15, id = 'joint', math.random(1,3)},
+  [27] = {chance = 18, id = 'Boombox', 1},
  }
  
  RegisterServerEvent('houseRobberies:removeLockpick')
