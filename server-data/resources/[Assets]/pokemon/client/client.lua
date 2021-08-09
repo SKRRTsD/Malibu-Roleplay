@@ -53,7 +53,6 @@ local packs = {
 		{name = 'genesect', hollow = true},
 		{name = 'volcanion', hollow = true},
 		{name = 'mew', hollow = true},
-		{name = 'mewtwo', hollow = true}
 		{name = 'jiranchi', hollow = true},
 		{name = 'rayquaza', hollow = true},	
 		{name = 'arceus', hollow = true},	
