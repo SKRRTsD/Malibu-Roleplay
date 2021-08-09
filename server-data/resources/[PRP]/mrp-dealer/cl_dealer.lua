@@ -276,7 +276,6 @@ Citizen.CreateThread(function()
 									TaskLookAtEntity(customer.ped, playerPed, 3500, 2048, 3)
 									TaskTurnPedToFaceEntity(customer.ped, playerPed, 3500)
 									Citizen.Wait(4500)
-									StopJob(true)
 								else -- distance else
 									DrawMissionText("The buyer has canceled the transaction.", 3000)
 									StopJob(true)
@@ -414,7 +413,6 @@ RegisterNetEvent('done')
 AddEventHandler('done', function()
 	selling = false
 	secondsRemaining = 0
-	StopJob(false)
 end)
 
 function DrawText3Ds(x,y,z, text)
