@@ -426,7 +426,7 @@ AddEventHandler("fleeca:loot", function()
  local roll = math.random(5)
 -- if roll == 1 then
    -- TriggerEvent("player:receiveItem", "", 1)
- elseif roll == 1 then
+ if roll == 1 then
      TriggerEvent("player:receiveItem", "goldbar", math.random(2, 10))
      TriggerEvent("player:receiveItem", "bdiamond", math.random(10, 25))
      TriggerEvent("player:receiveItem", "goldcoin", math.random(15, 35))
