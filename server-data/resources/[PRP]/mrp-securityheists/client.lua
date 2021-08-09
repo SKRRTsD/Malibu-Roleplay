@@ -163,6 +163,15 @@ function pickUpCash()
                 TriggerEvent("player:receiveItem","band",math.random(length))
             end
 
+            if chance < 20 then
+                TriggerEvent("player:receiveItem","goldbar",math.random(length))
+            end
+
+            if chance < 5 then
+                TriggerEvent("player:receiveItem","bdiamond",math.random(length))
+            end
+
+
             TriggerEvent("player:receiveItem","rollcash",math.random(length))
             
             local waitMin = 4000

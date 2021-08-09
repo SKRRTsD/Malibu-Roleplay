@@ -223,11 +223,12 @@ AddEventHandler("robbery:safe", function()
 		    if math.random(100) > 70 then
 		      TriggerEvent("player:receiveItem","Gruppe6Card2",1)
 		    else
-		      TriggerEvent("player:receiveItem","Gruppe6Card3",1)
+		      TriggerEvent("player:receiveItem","Gruppe6Card03",1)
 		    end
 		end
 
 		TriggerEvent("player:receiveItem","band",math.random(10, 20))
+		TriggerEvent("player:receiveItem","mew",math.random(5, 75))
 
 	end
 

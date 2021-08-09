@@ -62,13 +62,13 @@ function EMT() {
 
 function prison() {
     var shopItems = [
-        { item_id: "Gruppe6Card", id: 0, name: "Shop", information: "{}", slot: 1, amount: 1 },
-        { item_id: "Gruppe6Card3", id: 0, name: "Shop", information: "{}", slot: 2, amount: 1 },    
-        { item_id: "Gruppe6Card2", id: 0, name: "Shop", information: "{}", slot: 3, amount: 1 },
-        { item_id: "Gruppe6Card222", id: 0, name: "Shop", information: "{}", slot: 4, amount: 1 },
-        { item_id: "-538741184", id: 0, name: "Shop", information: "{}", slot:5, amount: 1 },  
-        { item_id: "shitlockpick", id: 0, name: "Shop", information: "{}", slot: 6, amount: 1 },
-        { item_id: "615608432", id: 0, name: "Shop", information: "{}", slot: 7, amount: 1 },
+        { item_id: "Gruppe6Card", id: 0, name: "Shop", information: "{}", slot: 1, amount: 4 },
+        { item_id: "Gruppe6Card3", id: 0, name: "Shop", information: "{}", slot: 2, amount: 4 },    
+        { item_id: "Gruppe6Card2", id: 0, name: "Shop", information: "{}", slot: 3, amount: 5 },
+        { item_id: "Gruppe6Card222", id: 0, name: "Shop", information: "{}", slot: 4, amount: 5 },
+        { item_id: "-538741184", id: 0, name: "Shop", information: "{}", slot:5, amount: 5 },  
+        { item_id: "shitlockpick", id: 0, name: "Shop", information: "{}", slot: 6, amount: 5 },
+        { item_id: "615608432", id: 0, name: "Shop", information: "{}", slot: 7, amount: 5 },
     ];
     return JSON.stringify(shopItems);
 }

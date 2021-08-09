@@ -424,19 +424,17 @@ end)
 RegisterNetEvent("fleeca:loot")
 AddEventHandler("fleeca:loot", function()
  local roll = math.random(5)
- if roll == 1 then
-    TriggerEvent("player:receiveItem", "weaponbox", 1)
- elseif roll == 2 then
-     TriggerEvent("player:receiveItem", "goldbar", math.random(1, 5))
-     TriggerEvent("player:receiveItem", "rolexwatch", math.random(10, 25))
+-- if roll == 1 then
+   -- TriggerEvent("player:receiveItem", "", 1)
+ elseif roll == 1 then
+     TriggerEvent("player:receiveItem", "goldbar", math.random(2, 10))
+     TriggerEvent("player:receiveItem", "bdiamond", math.random(10, 25))
      TriggerEvent("player:receiveItem", "goldcoin", math.random(15, 35))
- elseif roll == 3 then
-     TriggerEvent("player:receiveItem", "band", math.random(15, 50))
-     TriggerEvent("player:receiveItem", "cashstack", math.random(10, 40))
-     TriggerEvent("player:receiveItem", "rollcash", math.random(25, 75))
- elseif roll == 4 then
-    TriggerEvent("player:receiveItem", "materialcrate", 1)
-elseif roll == 5 then
+ elseif roll == 2 then
+     TriggerEvent("player:receiveItem", "band", math.random(30, 95))
+     TriggerEvent("player:receiveItem", "cashstack", math.random(50, 85))
+     TriggerEvent("player:receiveItem", "rollcash", math.random(55, 250))
+elseif roll == 3 then
     TriggerEvent('DoLongHudText', "Damn the box was empty!", 2)
  end
 end)
