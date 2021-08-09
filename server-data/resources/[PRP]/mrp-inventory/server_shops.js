@@ -333,14 +333,13 @@ function HardwareStore() {
         { item_id: "washedpan", id: 0, name: "Shop", information: "{}", slot: 15, amount: 1 },
         { item_id: "drugbaggy", id: 0, name: "Shop", information: "{}", slot: 16, amount: 1 },
         { item_id: "bakingsoda", id: 0, name: "Shop", information: "{}", slot: 17, amount: 1 },
-        { item_id: "fishbait", id: 0, name: "Shop", information: "{}", slot: 18, amount: 1 },
-        { item_id: "crabcage", id: 0, name: "Shop", information: "{}", slot: 19, amount: 1 },
-        { item_id: "polishkit", id: 0, name: "Shop", information: "{}", slot: 20, amount: 1 },
-        { item_id: "rocket", id: 0, name: "Shop", information: "{}", slot: 21, amount: 1 },
-        { item_id: "firework1", id: 0, name: "Shop", information: "{}", slot: 22, amount: 1 },
-        { item_id: "firework2", id: 0, name: "Shop", information: "{}", slot: 23, amount: 1 },
-        { item_id: "fountain", id: 0, name: "Shop", information: "{}", slot: 24, amount: 1 },
-        { item_id: "pokemonfolder", id: 0, name: "Shop", information: "{}", slot: 25, amount: 1 },
+        { item_id: "crabcage", id: 0, name: "Shop", information: "{}", slot: 18, amount: 1 },
+        { item_id: "polishkit", id: 0, name: "Shop", information: "{}", slot: 19, amount: 1 },
+        { item_id: "rocket", id: 0, name: "Shop", information: "{}", slot: 20, amount: 1 },
+        { item_id: "firework1", id: 0, name: "Shop", information: "{}", slot: 21, amount: 1 },
+        { item_id: "firework2", id: 0, name: "Shop", information: "{}", slot: 22, amount: 1 },
+        { item_id: "fountain", id: 0, name: "Shop", information: "{}", slot: 23, amount: 1 },
+        { item_id: "pokemonfolder", id: 0, name: "Shop", information: "{}", slot: 24, amount: 1 },
     ];
     return JSON.stringify(shopItems);
 }
