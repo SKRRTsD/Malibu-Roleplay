@@ -15,7 +15,7 @@ Citizen.CreateThread(function()
                 local finished = exports["mrp-taskbar"]:taskBar(8000,"Melting Lock")
                 if finished == 100 then
                     TriggerEvent("inventory:removeItem", "thermalcharge", 1)
-                    TriggerEvent("mrp-doors:changeLock-status", 156, false)
+                    TriggerEvent("mrp-doors:changeLock-status", 154, false)
 					Citizen.Wait(3600000)
                             end
                         else
