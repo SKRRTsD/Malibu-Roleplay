@@ -8,14 +8,14 @@ Citizen.CreateThread(function()
         if distance < 5.0 then
         	 Wait(1)
              DrawMarker(27,256.62463378906, 219.63626098633, 105.28650665283, 0, 0, 0, 0, 0, 0, 0.60, 0.60, 0.3, 11, 111, 11, 60, 0, 0, 2, 0, 0, 0, 0) 
-             if exports["mrp_manager"]:isPed("countpolice") >= 4 then
+             if exports["mrp_manager"]:isPed("countpolice") >= 0 then
              if IsControlJustReleased(0,38) and distance < 5.0 then
                 if exports["mrp-inventory"]:hasEnoughOfItem("thermalcharge",1,false) then
                 TriggerEvent('av_vault:bomba') 
                 local finished = exports["mrp-taskbar"]:taskBar(8000,"Melting Lock")
                 if finished == 100 then
                     TriggerEvent("inventory:removeItem", "thermalcharge", 1)
-                    TriggerEvent("mrp-doors:changeLock-status", 156, false)
+                    TriggerEvent("mrp-doors:changeLock-status", 154, false)
 					Citizen.Wait(3600000)
                             end
                         else
