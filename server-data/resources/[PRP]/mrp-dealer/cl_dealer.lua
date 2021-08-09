@@ -177,6 +177,10 @@ function NpcReport()
 	end
 end
 
+function DrugSales()
+	TriggerEvent('mrp-alerts:sellingdrugs')
+end
+
 function GetPedInfrontOfEntity(entity)
 	local playerCoords = GetEntityCoords(entity)
 	local inDirection  = GetOffsetFromEntityInWorldCoords(entity, 0.0, 5.0, 0.0)
