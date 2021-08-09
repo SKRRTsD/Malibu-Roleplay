@@ -26,32 +26,36 @@ AddEventHandler('mrp-jewelrobbery:AwardItems', function()
         end
 	end]]
 
-	TriggerClientEvent("player:receiveItem", src, "rolexwatch",math.random(5,10))
+	TriggerClientEvent("player:receiveItem", src, "rolexwatch",math.random(0,2))
 
 	if math.random(7) == 1 then
-		TriggerClientEvent("player:receiveItem", src, "goldbar",math.random(4,8))
+		TriggerClientEvent("player:receiveItem", src, "goldbar",math.random(0,8))
     end
     if math.random(9) == 1 then
-		TriggerClientEvent("player:receiveItem", src, "bdiamond",math.random(1,1))
+		TriggerClientEvent("player:receiveItem", src, "bdiamond",math.random(0,1))
     end
 
     if math.random(2) == 1 then
-		TriggerClientEvent("player:receiveItem", src, "stolen8ctchain",math.random(1,8))
+		TriggerClientEvent("player:receiveItem", src, "stolen8ctchain",math.random(0,8))
     end
 
     if math.random(3) == 1 then
-		TriggerClientEvent("player:receiveItem", src, "stolen10ctchain",math.random(1,6))
+		TriggerClientEvent("player:receiveItem", src, "stolen10ctchain",math.random(0,6))
     end
 
     if math.random(2) == 1 then
-		TriggerClientEvent("player:receiveItem", src, "stolen2ctchain",math.random(1,10))
+		TriggerClientEvent("player:receiveItem", src, "stolen2ctchain",math.random(0,10))
     end
     
     if math.random(1) == 1 then
-		TriggerClientEvent("player:receiveItem", src, "goldcoin",math.random(1,5))
+		TriggerClientEvent("player:receiveItem", src, "goldcoin",math.random(0,15))
     end
 
-    if math.random(2) == 1 then
-		TriggerClientEvent("player:receiveItem", src, "erpring",math.random(1,4))
-    end  
+    if math.random(8) == 1 then
+      TriggerClientEvent("player:receiveItem", src, "goldore",math.random(0,2))
+    end
+
+    if math.random(22) == 1 then
+      TriggerClientEvent("player:receiveItem", src, "ruby",math.random(0,1))
+    end
 end)
