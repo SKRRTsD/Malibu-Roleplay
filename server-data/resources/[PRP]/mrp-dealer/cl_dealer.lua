@@ -177,6 +177,10 @@ function NpcReport()
 	end
 end
 
+function DrugSales()
+	TriggerEvent('mrp-alerts:sellingdrugs')
+end
+
 function GetPedInfrontOfEntity(entity)
 	local playerCoords = GetEntityCoords(entity)
 	local inDirection  = GetOffsetFromEntityInWorldCoords(entity, 0.0, 5.0, 0.0)
@@ -301,7 +305,6 @@ Citizen.CreateThread(function()
 						if NpcReport() then
 							DrugSales()
 						end
-						StopJob(false)
 						Citizen.Wait(1000)
 					end -- NpcBuy end
 				end -- isSelling end
