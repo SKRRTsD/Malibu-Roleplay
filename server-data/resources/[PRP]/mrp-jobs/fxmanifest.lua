@@ -16,7 +16,6 @@ files {
 
 client_scripts {
     'client/cl_*.lua',
-    "@mrp-errorlog/client/cl_errorlog.lua"
 }
 
 server_scripts {
