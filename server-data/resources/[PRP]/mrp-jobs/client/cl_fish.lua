@@ -8,9 +8,6 @@ TryToFish = function()
             poleTimer = 5
             if baitTimer == 0 then
                 CastBait(fishingRod, castLocation)
-            end
-        else
-            TriggerEvent("DoLongHudText","You need fishing bait, head over to mega mall to grab some", 2)
         end
     else
         TriggerEvent("DoLongHudText","You need to aim towards the fish!",2)
