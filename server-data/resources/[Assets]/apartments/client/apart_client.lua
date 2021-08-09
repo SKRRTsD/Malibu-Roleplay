@@ -1744,10 +1744,7 @@ end
  
 
 local apartmentEntries = {
-    [1] = { ["x"] = 312.96966552734,["y"] = -218.2705078125, ["z"] = 54.221797943115, ["name"] = "Hotel 1-1" },
-    [2] = { ["x"] = -1440.0783691406, ["y"] = -549.49505615234, ["z"] = 34.741863250732, ["name"] = "Del Perro Apartments" },
-    [3] = { ['x'] = -1472.38,['y'] = -657.84,['z'] = 29.27, ["name"] = "Hotel 1-2" },
-    [4] = { ['x'] = 505.4,['y'] = 215.07,['z'] = 102.9, ["name"] = "Hotel 1-3" },
+    [1] = { ["x"] = -267.9616394043, ["y"] = -957.93841552734, ["z"] = 31.227447509766, ["name"] = "Alta St Apartments" },
 }
 
 local showMainAppartment = false
@@ -4344,7 +4341,7 @@ end
 
 
 function buildApartment(heading)
-	SetEntityCoords(PlayerPedId(), 152.09986877441 , -1004.7946166992, -98.999984741211)
+	SetEntityCoords(PlayerPedId(), -267.43167114258, -959.75561523438, 31.227432250977)
 	Wait(1300)
 	local generator = { x = curHouseCoords["x"] , y = curHouseCoords["y"], z = curHouseCoords["z"] - 28.0}
 	Citizen.Wait(1500)
@@ -4363,7 +4360,7 @@ end
 
 
 function buildHouse()
-	SetEntityCoords(PlayerPedId(), 152.09986877441 , -1004.7946166992, -98.999984741211)
+	SetEntityCoords(PlayerPedId(), -267.43167114258, -959.75561523438, 31.227432250977)
 	Wait(1300)
 	local generator = { x = curHouseCoords["x"] , y = curHouseCoords["y"], z = curHouseCoords["z"] - 28.0}
 	Citizen.Wait(1500)
@@ -4380,7 +4377,7 @@ function buildHouse()
 end
 
 function buildFranklin()
-	SetEntityCoords(PlayerPedId(), 152.09986877441 , -1004.7946166992, -98.999984741211)
+	SetEntityCoords(PlayerPedId(), -267.43167114258, -959.75561523438, 31.227432250977)
 	Wait(1300)
 	local generator = { x = curHouseCoords["x"] , y = curHouseCoords["y"], z = curHouseCoords["z"] - 28.0}
 	Citizen.Wait(1500)
@@ -4401,7 +4398,7 @@ end
 
 
 function buildMansionBasic()
-	SetEntityCoords(PlayerPedId(), 152.09986877441 , -1004.7946166992, -98.999984741211)
+	SetEntityCoords(PlayerPedId(), -267.43167114258, -959.75561523438, 31.227432250977)
 	Wait(1300)
 	local generator = { x = curHouseCoords["x"] , y = curHouseCoords["y"], z = curHouseCoords["z"] - 28.0}
 	Citizen.Wait(1500)

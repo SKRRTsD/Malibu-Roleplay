@@ -150,8 +150,8 @@ AddEventHandler('hotel:forceOut', function(roomNumber,roomtype)
 	if #(vector3(CurrentForced.x, CurrentForced.y, CurrentForced.z) - GetEntityCoords(PlayerPedId())) < 90.0 then
 		CleanUpArea()
 		if roomNumber == 2 then
-			SetEntityCoords(PlayerPedId(),-1447.7923583984, -537.50085449219, 34.740158081055)
-			SetEntityHeading(PlayerPedId(), 217.77249145508)
+			SetEntityCoords(PlayerPedId(),-271.08367919922, -957.78851318359, 31.227449417114)
+			SetEntityHeading(PlayerPedId(), 298.60440063477)
 		elseif roomNumber == 3 then
 			SetEntityCoords(PlayerPedId(),160.26762390137,-641.96905517578,47.073524475098)
 		end
@@ -160,8 +160,8 @@ AddEventHandler('hotel:forceOut', function(roomNumber,roomtype)
 		CleanUpArea()
 		if #(vector3(CurrentForced.x, CurrentForced.y, CurrentForced.z) - GetEntityCoords(PlayerPedId())) < 90.0 then
 			if roomNumber == 2 then
-				SetEntityCoords(PlayerPedId(),-1447.7923583984, -537.50085449219, 34.740158081055)
-				SetEntityHeading(PlayerPedId(), 217.77249145508)
+				SetEntityCoords(PlayerPedId(),-271.08367919922, -957.78851318359, 31.227449417114)
+				SetEntityHeading(PlayerPedId(), 298.60440063477)
 			elseif roomNumber == 3 then
 				SetEntityCoords(PlayerPedId(),160.26762390137,-641.96905517578,47.073524475098)
 			end
@@ -347,7 +347,7 @@ AddEventHandler('hotel:createRoom1', function(numMultiplier,roomType,mykeys,illn
 	spawning = false
 	TriggerEvent("spawning",true)
 	FreezeEntityPosition(PlayerPedId(),true)
-	SetEntityCoords(PlayerPedId(), 152.09986877441 , -1004.7946166992, -98.999984741211)
+	SetEntityCoords(PlayerPedId(), -267.43167114258, -959.75561523438, 31.227432250977)
 	SetEntityInvincible(PlayerPedId(),true)
 	myRoomNumber = numMultiplier
 	myRoomType = roomType
@@ -374,7 +374,7 @@ AddEventHandler('hotel:createRoom1', function(numMultiplier,roomType,mykeys,illn
 	if roomType == 1 then
 		myspawnpoints[#myspawnpoints + 1] = { ['x'] = 326.38,['y'] = -212.11,['z'] = 54.09,['h'] = 166.11, ['info'] = ' Apartments 1', ["typeSpawn"] = 2 }
 	elseif roomType == 2 then
-		myspawnpoints[#myspawnpoints + 1] = { ['x'] = -1440.0491943359, ['y'] = -549.58312988281,['z'] = 34.741855621338,['h'] = 214.14559936523, ['info'] = ' Apartments 2', ["typeSpawn"] = 2 }
+		myspawnpoints[#myspawnpoints + 1] = { ['x'] = -267.43167114258, ['y'] = -959.75561523438,['z'] = 31.227432250977,['h'] = 214.14559936523, ['info'] = ' Apartments 2', ["typeSpawn"] = 2 }
 	else
 		myspawnpoints[#myspawnpoints + 1] = { ['x'] = 173.96,['y'] = -631.29,['z'] = 47.08,['h'] = 303.12, ['info'] = ' Apartments 3', ["typeSpawn"] = 2 }
 	end
@@ -647,7 +647,7 @@ RegisterNetEvent('hotel:teleportRoom')
 AddEventHandler('hotel:teleportRoom', function(numMultiplier,roomType)
 	local numMultiplier = tonumber(numMultiplier)
 	local roomType = tonumber(roomType)
-	if (#(vector3(106.11, -647.76, 45.1) - GetEntityCoords(PlayerPedId())) < 5 and roomType == 3) or (#(vector3(160.26762390137,-641.96905517578,47.073524475098) - GetEntityCoords(PlayerPedId())) < 5 and roomType == 3) or (#(vector3(-1447.6635742188, -537.40478515625, 34.740135192871) - GetEntityCoords(PlayerPedId())) < 5 and roomType == 2) then
+	if (#(vector3(106.11, -647.76, 45.1) - GetEntityCoords(PlayerPedId())) < 5 and roomType == 3) or (#(vector3(160.26762390137,-641.96905517578,47.073524475098) - GetEntityCoords(PlayerPedId())) < 5 and roomType == 3) or (#(vector3(-270.98306274414, -957.76678466797, 31.227451324463) - GetEntityCoords(PlayerPedId())) < 5 and roomType == 2) then
 		moveToMultiplierHotel(numMultiplier,roomType)
 	elseif (#(vector3(apartments1[numMultiplier]["x"],apartments1[numMultiplier]["y"],apartments1[numMultiplier]["z"]) - GetEntityCoords(PlayerPedId())) < 5 and roomType == 1) then
 		moveToMultiplierHotel(numMultiplier,roomType)
@@ -804,8 +804,8 @@ function buildRoom(numMultiplier,roomType)
    		Citizen.Wait(100)
 	end
 
-  	SetEntityCoords(PlayerPedId(), 152.09986877441, -1004.7946166992, -98.999984741211)
-	SetEntityHeading(PlayerPedId(), 350.25)
+  	SetEntityCoords(PlayerPedId(), -268.01715087891, -958.16058349609, 31.227449417114)
+	SetEntityHeading(PlayerPedId(), 200.33)
 	FreezeEntityPosition(PlayerPedId(), true)
 	Citizen.Wait(4500)
 
@@ -1188,7 +1188,7 @@ Citizen.CreateThread(function()
 		local plyId = PlayerPedId()
 		local plyCoords = GetEntityCoords(plyId)
 
-		local entry2nd = #(vector3(-1447.6635742188, -537.40478515625, 34.740135192871) - plyCoords)
+		local entry2nd = #(vector3(-270.98306274414, -957.76678466797, 31.227451324463) - plyCoords)
 	
 		smallestDist(entry2nd)
 
@@ -1250,7 +1250,7 @@ Citizen.CreateThread(function()
 					TriggerEvent("dooranim")
 					TriggerEvent('InteractSound_CL:PlayOnOne','DoorOpen', 0.2)
 
-					if #(vector3(-1447.6635742188, -537.40478515625, 34.740135192871) - plyCoords) < 5 and myRoomType == 2 then
+					if #(vector3(-270.98306274414, -957.76678466797, 31.227451324463) - plyCoords) < 5 and myRoomType == 2 then
 						processBuildType(myRoomNumber,myRoomType)
 					else
 						TriggerEvent("DoLongHudText","Moved too far away!",2)
@@ -1299,8 +1299,8 @@ Citizen.CreateThread(function()
 					isForced = false
 					TriggerEvent("enabledamage",false)
 					if curRoomType == 2 then
-						SetEntityCoords(PlayerPedId(),-1447.7923583984, -537.50085449219, 34.740158081055)
-						SetEntityHeading(PlayerPedId(), 217.77249145508)
+						SetEntityCoords(PlayerPedId(),-271.08367919922, -957.78851318359, 31.227449417114)
+						SetEntityHeading(PlayerPedId(), 298.60440063477)
 					elseif curRoomType == 3 then
 						SetEntityCoords(PlayerPedId(),160.26762390137,-641.96905517578,47.073524475098)
 					elseif curRoomType == 1 then
@@ -1435,8 +1435,8 @@ Citizen.CreateThread(function()
 					CleanUpArea()
 
 					if curRoomType == 2 then
-						SetEntityCoords(PlayerPedId(),-1447.7923583984, -537.50085449219, 34.740158081055)
-						SetEntityHeading(PlayerPedId(), 217.77249145508)
+						SetEntityCoords(PlayerPedId(),-271.08367919922, -957.78851318359, 31.227449417114)
+						SetEntityHeading(PlayerPedId(), 298.60440063477)
 					elseif curRoomType == 3 then
 						SetEntityCoords(PlayerPedId(),160.26762390137,-641.96905517578,47.073524475098)
 					elseif curRoomType == 1 then
@@ -1464,26 +1464,26 @@ function logout()
 end
 
 Citizen.CreateThread(function()
-    exports["mrp-polyzone"]:AddBoxZone("apartment_enter", vector3(-1447.72, -537.35, 34.74), 2.0, 1, {
-		name="apartment_enter",
-		heading=305,
+    exports["mrp-polyzone"]:AddBoxZone("apartments_enter", vector3(-271.36, -958.05, 31.23), 2, 2, {
+		name="apartments_enter",
+		heading=295,
 		--debugPoly=true,
-		minZ=33.74,
-		maxZ=36.34
+		minZ=29.03,
+		maxZ=33.03
     }) 
 end)
 
 
 RegisterNetEvent('mrp-polyzone:enter')
 AddEventHandler('mrp-polyzone:enter', function(name)
-    if name == "apartment_enter" then
+    if name == "apartments_enter" then
         nearType2 = true
     end
 end)
 
 RegisterNetEvent('mrp-polyzone:exit')
 AddEventHandler('mrp-polyzone:exit', function(name)
-    if name == "apartment_enter" then
+    if name == "apartments_enter" then
         nearType2 = false
     end
     TriggerEvent('mrp-textui:HideUI')
@@ -1495,8 +1495,8 @@ RegisterNetEvent("apartments:leave", function()
 	Wait(330)
 	CleanUpArea()
 	TriggerEvent("enabledamage",false)
-	SetEntityCoords(PlayerPedId(),-1447.7923583984, -537.50085449219, 34.740158081055)
-	SetEntityHeading(PlayerPedId(), 217.77249145508)
+	SetEntityCoords(PlayerPedId(),-271.04711914062, -957.82263183594, 31.227434158325)
+	SetEntityHeading(PlayerPedId(), 299.37060546875)
 	TriggerEvent("enabledamage",true)
 	Citizen.Wait(100)
 	TriggerEvent("dooranim")
