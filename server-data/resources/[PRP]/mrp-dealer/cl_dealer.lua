@@ -178,7 +178,7 @@ function NpcReport()
 end
 
 function DrugSales()
-	TriggerEvent('mrp-alerts:sellingdrugs')
+TriggerEvent('mrp-alerts:sellingdrugs')
 end
 
 function GetPedInfrontOfEntity(entity)
@@ -305,6 +305,7 @@ Citizen.CreateThread(function()
 						if NpcReport() then
 							DrugSales()
 						end
+						StopJob(false)
 						Citizen.Wait(1000)
 					end -- NpcBuy end
 				end -- isSelling end
