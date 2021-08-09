@@ -244,8 +244,6 @@ Citizen.CreateThread(function()
 														if #hasAsked > 25 then
 															table.remove(hasAsked, 1)
 														end
-													else
-														StopJob(true)
 													end
 												end
 											end -- control end
