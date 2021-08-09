@@ -48,26 +48,26 @@ function isValidZone(playerCoords)
 	return false
 end
 
-function StopJob(delPed)
-	if customer.ped then
-		if DoesEntityExist(customer.ped) then
-			if customer.blip and DoesBlipExist(customer.blip) then
-				RemoveBlip(customer.blip)
-				customer.blip = nil
-			end
+-- function StopJob(delPed)
+-- 	if customer.ped then
+-- 		if DoesEntityExist(customer.ped) then
+-- 			if customer.blip and DoesBlipExist(customer.blip) then
+-- 				RemoveBlip(customer.blip)
+-- 				customer.blip = nil
+-- 			end
 
-			--[[
-				if delPed then
-					SetEntityAsNoLongerNeeded(customer.ped)
-					DeleteEntity(customer.ped)
-				end
-			--]]
-		end
-	end
+-- 			--[[
+-- 				if delPed then
+-- 					SetEntityAsNoLongerNeeded(customer.ped)
+-- 					DeleteEntity(customer.ped)
+-- 				end
+-- 			--]]
+-- 		end
+-- 	end
 
-	isSelling = false
-	customer = {ped = nil, tmr = 9, drug = nil}
-end
+-- 	isSelling = false
+-- 	customer = {ped = nil, tmr = 9, drug = nil}
+-- end
 
 function canPedBeUsed(ped)
 	if ped == nil then
@@ -233,9 +233,9 @@ Citizen.CreateThread(function()
 														TaskStandStill(customer.ped, 3500)
 														TaskLookAtEntity(customer.ped, playerPed, 3500, 1, 1)
 														DrawMissionText("Asking the person if they are interested...")
-														customer.blip = AddBlipForEntity(customer.ped)
-														SetBlipColour(customer.blip, 2)
-														SetBlipCategory(customer.blip, 3)
+														-- customer.blip = AddBlipForEntity(customer.ped)
+														-- SetBlipColour(customer.blip, 2)
+														-- SetBlipCategory(customer.blip, 3)
 														table.insert(hasAsked, tostring(ped))
 														if #hasAsked > 25 then
 															table.remove(hasAsked, 1)
