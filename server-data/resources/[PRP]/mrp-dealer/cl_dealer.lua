@@ -48,26 +48,26 @@ function isValidZone(playerCoords)
 	return false
 end
 
--- function StopJob(delPed)
--- 	if customer.ped then
--- 		if DoesEntityExist(customer.ped) then
--- 			if customer.blip and DoesBlipExist(customer.blip) then
--- 				RemoveBlip(customer.blip)
--- 				customer.blip = nil
--- 			end
+function StopJob(delPed)
+	if customer.ped then
+		if DoesEntityExist(customer.ped) then
+			if customer.blip and DoesBlipExist(customer.blip) then
+				RemoveBlip(customer.blip)
+				customer.blip = nil
+			end
 
--- 			--[[
--- 				if delPed then
--- 					SetEntityAsNoLongerNeeded(customer.ped)
--- 					DeleteEntity(customer.ped)
--- 				end
--- 			--]]
--- 		end
--- 	end
+			--[[
+				if delPed then
+					SetEntityAsNoLongerNeeded(customer.ped)
+					DeleteEntity(customer.ped)
+				end
+			--]]
+		end
+	end
 
--- 	isSelling = false
--- 	customer = {ped = nil, tmr = 9, drug = nil}
--- end
+	isSelling = false
+	customer = {ped = nil, tmr = 9, drug = nil}
+end
 
 function canPedBeUsed(ped)
 	if ped == nil then
@@ -177,10 +177,6 @@ function NpcReport()
 	end
 end
 
-function DrugSales()
-TriggerEvent('mrp-alerts:sellingdrugs')
-end
-
 function GetPedInfrontOfEntity(entity)
 	local playerCoords = GetEntityCoords(entity)
 	local inDirection  = GetOffsetFromEntityInWorldCoords(entity, 0.0, 5.0, 0.0)
@@ -237,13 +233,15 @@ Citizen.CreateThread(function()
 														TaskStandStill(customer.ped, 3500)
 														TaskLookAtEntity(customer.ped, playerPed, 3500, 1, 1)
 														DrawMissionText("Asking the person if they are interested...")
-														-- customer.blip = AddBlipForEntity(customer.ped)
-														-- SetBlipColour(customer.blip, 2)
-														-- SetBlipCategory(customer.blip, 3)
+														customer.blip = AddBlipForEntity(customer.ped)
+														SetBlipColour(customer.blip, 2)
+														SetBlipCategory(customer.blip, 3)
 														table.insert(hasAsked, tostring(ped))
 														if #hasAsked > 25 then
 															table.remove(hasAsked, 1)
 														end
+													else
+														StopJob(true)
 													end
 												end
 											end -- control end
@@ -276,6 +274,7 @@ Citizen.CreateThread(function()
 									TaskLookAtEntity(customer.ped, playerPed, 3500, 2048, 3)
 									TaskTurnPedToFaceEntity(customer.ped, playerPed, 3500)
 									Citizen.Wait(4500)
+									StopJob(true)
 								else -- distance else
 									DrawMissionText("The buyer has canceled the transaction.", 3000)
 									StopJob(true)
@@ -413,6 +412,7 @@ RegisterNetEvent('done')
 AddEventHandler('done', function()
 	selling = false
 	secondsRemaining = 0
+	StopJob(false)
 end)
 
 function DrawText3Ds(x,y,z, text)
