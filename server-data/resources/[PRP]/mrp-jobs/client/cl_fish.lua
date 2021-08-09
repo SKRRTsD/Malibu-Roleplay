@@ -4,8 +4,6 @@ TryToFish = function()
     local waterValidated, castLocation = IsInWater()
 
     if waterValidated then
-        local twat = exports["mrp-inventory"]:hasEnoughOfItem("fishbait",1,false) 
-        if twat then
             local fishingRod = GenerateFishingRod(PlayerPedId())
             poleTimer = 5
             if baitTimer == 0 then
@@ -91,17 +89,14 @@ CastBait = function(rodHandle, castLocation)
     if caughtFish then
         TriggerEvent("player:receiveItem",'fish', math.random(1,5))
         TriggerEvent("DoLongHudText","You caught a fish",1)
-        TriggerEvent("inventory:removeItem","fishbait", 1)
 
         if math.random(60) > 40 then
             TriggerEvent("player:receiveItem","turtle",1)
-            TriggerEvent("inventory:removeItem","fishbait", 1)
         end
 
-        if math.random(50) > 40 then
+        if math.random(50) > 35 then
             TriggerEvent("player:receiveItem","fishingmackerel",1)
             TriggerEvent("DoLongHudText","You caught a Mackerel",1)
-            TriggerEvent("inventory:removeItem","fishbait", 1)
         end
 
         -- if math.random(230) > 225 then
