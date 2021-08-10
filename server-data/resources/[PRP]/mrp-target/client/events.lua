@@ -4717,9 +4717,23 @@ Citizen.CreateThread(
                 distance = 2.5
             })
 
-
-
-
+            AddBoxZone("mining_info", vector3(-596.93, 2088.8, 131.41), 0.7, 0.7, {
+                name="mining_info",
+                heading=350,
+                --debugPoly=true,
+                minZ=128.61,
+                maxZ=132.61
+            }, {
+                options = {
+                    {
+                        event = "mining-info",
+                        icon = "fas fa-circle",
+                        label = "Get Mining Info"
+                    },
+                },
+                job = {"all"},
+                distance = 2.5
+            })
 
             -- PDM SHIT --
             AddBoxZone("pdm_checkrepo", vector3(-192.42, -1161.89, 23.67), 0.5, 0.5, {

@@ -267,3 +267,28 @@ AddEventHandler("miningmenu", function()
 		},
 	})
 end)
+
+
+RegisterNetEvent("mining-info")
+AddEventHandler("mining-info", function()
+	TriggerEvent('mrp-context:sendMenu', {
+		{
+			id = "1",
+			header = "Miner",
+			txt = "",
+		},
+        {
+			id = "2",
+			header = "Miner Says",
+			txt = "Use your F1 muscle inside to start mining and make sure you have a pickaxe to mine the stone and a wash pan to wash the stone!",
+		},
+		{
+			id = "3",
+			header = "Close Menu",
+			txt = "Exit the mining menu!",
+			params = {
+				event = "",
+			}
+		},
+	})
+end)
