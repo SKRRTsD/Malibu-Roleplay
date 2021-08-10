@@ -1034,9 +1034,9 @@ AddEventHandler('weapon:general', function()
 		TriggerEvent("server-inventory-open", "5", "Shop");
 		Wait(1000)
 	else
-		TriggerEvent("server-inventory-open", "6", "Shop");
+		TriggerEvent("server-inventory-open", "5", "Shop");
 		Wait(1000)
-		TriggerEvent("DoLongHudText", "You dont have an active firearms license, contact the police.", 2)
+		-- TriggerEvent("DoLongHudText", "You dont have an active firearms license, contact the police.", 2)
 	end
 end)
 
