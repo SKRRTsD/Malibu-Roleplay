@@ -338,6 +338,7 @@ AddEventHandler('hotel:creation:character', function(numMultiplier,roomType)
 	processBuildType(myRoomNumber, myRoomType)
 	TriggerEvent("DoLongHudText", "Maybe take a look in that backpack!")
 	TriggerEvent("character:finishedLoadingChar")
+	TriggerEvent("player:receiveItem", "backpack", 1) 
 end)
 
 RegisterNetEvent('hotel:createRoom1')
