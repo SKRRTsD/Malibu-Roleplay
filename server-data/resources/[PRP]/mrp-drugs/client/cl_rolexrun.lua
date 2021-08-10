@@ -17,13 +17,13 @@ local vehspawn = false
 local rolexVehicle = 0
 local firstdeal = false
 local lunchtime2 = false
-local goldbarprice = math.random(400, 600)
-local rolexcashprice = math.random(500, 800)
-local bdiamondprice = math.random(2000, 3000)
-local erpringprice = math.random(200, 400)
+local goldbarprice = math.random(200, 400)
+local rolexcashprice = math.random(100, 250)
+local bdiamondprice = math.random(500, 1500)
+local erpringprice = math.random(750, 1750)
 
-local stolen8ctchainprice = math.random(90, 180)
-local stolen10ctchainprice = math.random(200, 400)
+local stolen8ctchainprice = math.random(90, 150)
+local stolen10ctchainprice = math.random(225, 250)
 local stolen2ctchainprice = math.random(50, 100)
 local goldcoinprice = math.random(300, 350)
 
