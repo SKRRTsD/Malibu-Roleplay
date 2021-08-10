@@ -228,7 +228,7 @@ AddEventHandler("mrp-hunting:sellcarcass4", function()
 		playerAnim()
 		local finished = exports["mrp-taskbar"]:taskBar(4000,"Selling Red 3 Star",true,false,playerVeh)
 		if finished == 100 then
-			local carcass4 = math.random(340, 460)
+			local carcass4 = math.random(500, 700)
 			TriggerServerEvent("mrp-hunting:sell", carcass4)
 			ClearPedTasksImmediately(PlayerPedId())
 			TriggerEvent('inventory:removeItem', 'huntingcarcass4', 1)
