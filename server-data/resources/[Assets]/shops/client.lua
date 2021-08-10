@@ -208,15 +208,15 @@ function setShopBlip()
 	SetBlockingOfNonTemporaryEvents(ped, true)
 	TaskStartScenarioInPlace(ped, "WORLD_HUMAN_CLIPBOARD", 0, true)
 
-    -- secret
+    -- Money Wash
 	modelHash = GetHashKey("a_m_m_tranvest_01")
 	RequestModel(modelHash)
 	while not HasModelLoaded(modelHash) do
 		 Wait(1)
 	end
-	created_ped = CreatePed(0, modelHash , -1375.6711425781, -336.31344604492, 38.004148818213,true)
+	created_ped = CreatePed(0, modelHash , 499.12533569336, -550.29895019531, 23.851160049438,true)
 	FreezeEntityPosition(created_ped, true)
-	SetEntityHeading(created_ped,  42.585456848145)
+	SetEntityHeading(created_ped,  177.87086486816)
 	SetEntityInvincible(created_ped, true)
 	SetBlockingOfNonTemporaryEvents(created_ped, true)
 	TaskStartScenarioInPlace(created_ped, "WORLD_HUMAN_CLIPBOARD", 0, true)

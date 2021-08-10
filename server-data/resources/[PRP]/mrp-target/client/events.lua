@@ -4993,13 +4993,13 @@ Citizen.CreateThread(
                 distance = 1.5
             })
 
-            -- sectet enter
+            -- Money Wash
 
-            AddBoxZone("secret_enter", vector3(-1375.67, -336.19, 39.16), 0.7, 0.7, {
-                name="secret_enter",
-                heading=30,
-                minZ=36.15,
-                maxZ=40.15
+            AddBoxZone("money_wash", vector3(499.24, -550.01, 24.75), 1, 1.2, {
+                name="money_wash",
+                heading=355,
+                minZ=22.15,
+                maxZ=26.15
                 }, {
                     options = {
                         {
@@ -5009,7 +5009,7 @@ Citizen.CreateThread(
                         },
                     },
                     job = {"all"},
-                    distance = 1.5
+                    distance = 2.5
                 })
 
             AddBoxZone("secret_leave", vector3(1138.11, -3199.39, -39.67), 1.4, 0.8, {
