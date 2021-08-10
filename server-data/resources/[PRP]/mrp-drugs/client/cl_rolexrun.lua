@@ -487,12 +487,12 @@ function DoDropOff(requestMoney)
 			if RolexRun then
 				cashPayment = math.random(90,125)
 		        if exports["mrp-inventory"]:hasEnoughOfItem("rolexwatch",rolexcount) then     
-		            TriggerEvent("inventory:removeItem","rolexwatch", 10)   
+		            TriggerEvent("inventory:removeItem","rolexwatch", 2)   
 		            cashPayment = cashPayment + rolexcashprice             
 		            TriggerEvent("DoLongHudText","Thanks for the extra sauce!") 
                     TriggerServerEvent('mission:finished', "rolexwatch", cashPayment)         
 				elseif exports["mrp-inventory"]:hasEnoughOfItem("goldbar",goldbarcount) then     
-					TriggerEvent("inventory:removeItem","goldbar", 5)   
+					TriggerEvent("inventory:removeItem","goldbar", 1)   
 					cashPayment = cashPayment + goldbarprice  
                     TriggerServerEvent('mission:finished', "goldbar", cashPayment)                  
 					TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
@@ -509,25 +509,25 @@ function DoDropOff(requestMoney)
 
 
 				elseif exports["mrp-inventory"]:hasEnoughOfItem("stolen8ctchain",stolen8ctchaincount) then     
-					TriggerEvent("inventory:removeItem","stolen8ctchain", 5)   
+					TriggerEvent("inventory:removeItem","stolen8ctchain", 1)   
 					cashPayment = cashPayment + stolen8ctchainprice  
                     TriggerServerEvent('mission:finished', "stolen8ctchain", cashPayment)                  
 					TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
 
 				elseif exports["mrp-inventory"]:hasEnoughOfItem("stolen10ctchain",stolen10ctchaincount) then     
-					TriggerEvent("inventory:removeItem","stolen10ctchain", 5)   
+					TriggerEvent("inventory:removeItem","stolen10ctchain", 1)   
 					cashPayment = cashPayment + stolen10ctchainprice  
                     TriggerServerEvent('mission:finished', "stolen10ctchain", cashPayment)                  
 					TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
 
 				elseif exports["mrp-inventory"]:hasEnoughOfItem("stolen2ctchain",stolen2ctchaincount) then     
-					TriggerEvent("inventory:removeItem","stolen2ctchain", 5)   
+					TriggerEvent("inventory:removeItem","stolen2ctchain", 1)   
 					cashPayment = cashPayment + stolen2ctchainprice  
                     TriggerServerEvent('mission:finished', "stolen2ctchain", cashPayment)                  
 					TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
 
 				elseif exports["mrp-inventory"]:hasEnoughOfItem("goldcoin",goldcoincount) then     
-					TriggerEvent("inventory:removeItem","goldcoin", 5)   
+					TriggerEvent("inventory:removeItem","goldcoin", 1)   
 					cashPayment = cashPayment + goldcoinprice  
                     TriggerServerEvent('mission:finished', "goldcoin", cashPayment)                  
 					TriggerEvent("DoLongHudText","Thanks for the extra sauce!")
