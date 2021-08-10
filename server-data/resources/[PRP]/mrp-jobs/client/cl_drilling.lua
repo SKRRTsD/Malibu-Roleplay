@@ -31,10 +31,9 @@ function PlutoRPstartdrillingyo()
         while drillingstart do
             Citizen.Wait(5)
             if IsControlJustPressed(1, 38) and IsPedInAnyVehicle(GetPlayerPed(-1), false) ~= 1 then
-                TriggerEvent('DoLongHudText', 'wait 20 seconds', 1 )
                 FreezeEntityPosition(GetPlayerPed(-1),true)
                 ExecuteCommand("e drill")
-                Citizen.Wait(20000) -- 20 secs
+                local finished = exports["mrp-taskbar"]:taskBar(20000,"Drilling!")
                 ExecuteCommand("e c")
                 if math.random(3) == 2 then
                     TriggerEvent("drilling:loot")	
