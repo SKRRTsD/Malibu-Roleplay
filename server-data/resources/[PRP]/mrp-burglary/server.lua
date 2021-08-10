@@ -67,7 +67,6 @@ local robbableItems = {
      elseif not gotID[item.id] then
        gotID[item.id] = true
        TriggerClientEvent('player:receiveItem', source, item.id, item.quantity)
-       TriggerClientEvent('DoLongHudText', source, 'You found '..item.id, 1)
      end
    else
      TriggerClientEvent('DoLongHudText', source, 'You found nothing', 1)
