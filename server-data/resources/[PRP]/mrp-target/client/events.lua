@@ -4638,12 +4638,12 @@ Citizen.CreateThread(
 
     --Hunting
 
-    AddBoxZone("hunting_locationnnn", vector3(-677.31, 5832.23, 17.33), 0.4, 0.7, {
-        name="hunting_locationnnn",
+    AddBoxZone("hunting", vector3(-674.4, 5837.56, 17.34), 0.7, 0.7, {
+        name="hunting",
         heading=315,
         debugPoly=false,
-        minZ=14.33,
-        maxZ=18.33
+        minZ=14.34,
+        maxZ=18.34
     }, {
         options = {
             {
