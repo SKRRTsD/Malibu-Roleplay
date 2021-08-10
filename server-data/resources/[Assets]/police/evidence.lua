@@ -1573,23 +1573,23 @@ AddEventHandler("myboneIssuesTarget",function()
 			if bones[i]["hitcount"] > 2 then
                 effectedcount = effectedcount + 1
                 if damagereport == "" then
-                    damagereport = damagereport .. "" .. bones[i]["part"] .. " is very painful"
+                    damagereport = damagereport .. "" .. bones[i]["part"] .. " is causing disturbance"
                 else
-                    damagereport = damagereport .. " | " .. bones[i]["part"] .. " is very painful"
+                    damagereport = damagereport .. " | " .. bones[i]["part"] .. " is causing disturbance"
                 end
 			elseif bones[i]["hitcount"] == 2 then
                 effectedcount = effectedcount + 1
                 if damagereport == "" then
-                    damagereport = damagereport .. "" .. bones[i]["part"] .. " feels warm with blood"
+                    damagereport = damagereport .. "" .. bones[i]["part"] .. " feels like its getting packed with warm blood!"
                 else
-                    damagereport = damagereport .. " | " .. bones[i]["part"] .. " feels warm with blood"
+                    damagereport = damagereport .. " | " .. bones[i]["part"] .. " feels like its getting packed with warm blood!"
                 end 
 			elseif bones[i]["hitcount"] == 1 then
                 effectedcount = effectedcount + 1
                 if damagereport == "" then
-                    damagereport = damagereport .. "" .. bones[i]["part"] .. " feels irritated"
+                    damagereport = damagereport .. "" .. bones[i]["part"] .. " is making you feel disturbed!"
                 else
-                    damagereport = damagereport .. " | " .. bones[i]["part"] .. " feels irritated"
+                    damagereport = damagereport .. " | " .. bones[i]["part"] .. " is making you feel disturbed!"
                 end
 			end
 		end	
@@ -1603,7 +1603,7 @@ AddEventHandler("myboneIssuesTarget",function()
         end
 
         if effectedcount > 3 then
-            damagereport = "I feel multiple pains"
+            damagereport = "I feel pain in multiple places."
         end
         if damagereport ~= "" then
             TriggerEvent("DoLongHudText",damagereport, 155)

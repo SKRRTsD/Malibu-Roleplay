@@ -3095,7 +3095,7 @@ Citizen.CreateThread(
                     }
                 },
                 job = {"all"},
-                distance = 10.0
+                distance = 5.0
             }
         )
 
@@ -3117,7 +3117,7 @@ Citizen.CreateThread(
                     }
                 },
                 job = {"all"},
-                distance = 10.0
+                distance = 2.5
             }
         )
 
@@ -3139,7 +3139,7 @@ Citizen.CreateThread(
                     }
                 },
                 job = {"all"},
-                distance = 10.0
+                distance = 5.0
             }
         )
 
