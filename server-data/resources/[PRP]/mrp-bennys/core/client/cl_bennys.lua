@@ -951,72 +951,72 @@ end)
 
 local NearCiv = false
 
-Citizen.CreateThread(function()
-    exports["mrp-polyzone"]:AddBoxZone("Civ_repair", vector3(-211.6117401123, -1323.6309814453, 30.479585647583), 6.8, 10, {
-        name="Civ_repair",
-        heading=160,
-        debugPoly=false,
-        minZ=27.4,
-        maxZ=31.4
-    }) 
+-- Citizen.CreateThread(function()
+--     exports["mrp-polyzone"]:AddBoxZone("Civ_repair", vector3(-211.6117401123, -1323.6309814453, 30.479585647583), 6.8, 10, {
+--         name="Civ_repair",
+--         heading=160,
+--         debugPoly=false,
+--         minZ=27.4,
+--         maxZ=31.4
+--     }) 
 
-    exports["mrp-polyzone"]:AddBoxZone("arcade_repair", vector3(714.36, -790.48, 16.47), 13.8, 4, {
-        name="arcade_repair",
-        heading=270,
-        minZ=14.07,
-        maxZ=18.07
-    }) 
+--     exports["mrp-polyzone"]:AddBoxZone("arcade_repair", vector3(714.36, -790.48, 16.47), 13.8, 4, {
+--         name="arcade_repair",
+--         heading=270,
+--         minZ=14.07,
+--         maxZ=18.07
+--     }) 
 
-    exports["mrp-polyzone"]:AddBoxZone("bennyz_pdm_repair", vector3(-29.26, -1042.57, 28.4), 5, 4.2, {
-        name="bennyz_pdm_repair",
-        heading=340,
-        minZ=26.4,
-        maxZ=30.4
-    }) 
+--     exports["mrp-polyzone"]:AddBoxZone("bennyz_pdm_repair", vector3(-29.26, -1042.57, 28.4), 5, 4.2, {
+--         name="bennyz_pdm_repair",
+--         heading=340,
+--         minZ=26.4,
+--         maxZ=30.4
+--     }) 
 
-end)
+-- end)
 
-RegisterNetEvent('mrp-polyzone:enter')
-AddEventHandler('mrp-polyzone:enter', function(name)
-    local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
-    if name == "Civ_repair" then
-        if vehicle ~= 0 then
-            NearCiv = true
-            CivRepairFunction()
-            TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Repair ($350)"))
-        end
-    end
+-- RegisterNetEvent('mrp-polyzone:enter')
+-- AddEventHandler('mrp-polyzone:enter', function(name)
+--     local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+--     if name == "Civ_repair" then
+--         if vehicle ~= 0 then
+--             NearCiv = true
+--             CivRepairFunction()
+--             TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Repair ($350)"))
+--         end
+--     end
 
-    if name == "arcade_repair" then
-        if vehicle ~= 0 then
-            NearCiv = true
-            arcadeRepairFunction()
-            TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Repair ($150)"))
-        end
-    end
+--     if name == "arcade_repair" then
+--         if vehicle ~= 0 then
+--             NearCiv = true
+--             arcadeRepairFunction()
+--             TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Repair ($150)"))
+--         end
+--     end
 
-    if name == "bennyz_pdm_repair" then
-        if vehicle ~= 0 then
-            NearCiv = true
-            arcadeRepairFunction()
-            TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Repair ($150)"))
-        end
-    end
-end)
+--     if name == "bennyz_pdm_repair" then
+--         if vehicle ~= 0 then
+--             NearCiv = true
+--             arcadeRepairFunction()
+--             TriggerEvent('mrp-textui:ShowUI', 'show', ("[E] %s"):format("Repair ($150)"))
+--         end
+--     end
+-- end)
 
-RegisterNetEvent('mrp-polyzone:exit')
-AddEventHandler('mrp-polyzone:exit', function(name)
-    if name == "Civ_repair" then
-        NearCiv = false
-    end
-    if name == "arcade_repair" then
-        NearCiv = false
-    end
-    if name == "bennyz_pdm_repair" then
-        NearCiv = false
-    end
-    TriggerEvent('mrp-textui:HideUI')
-end)
+-- RegisterNetEvent('mrp-polyzone:exit')
+-- AddEventHandler('mrp-polyzone:exit', function(name)
+--     if name == "Civ_repair" then
+--         NearCiv = false
+--     end
+--     if name == "arcade_repair" then
+--         NearCiv = false
+--     end
+--     if name == "bennyz_pdm_repair" then
+--         NearCiv = false
+--     end
+--     TriggerEvent('mrp-textui:HideUI')
+-- end)
 
 function CivRepairFunction()
 	Citizen.CreateThread(function()
