@@ -29,7 +29,7 @@ function giveChips(source,amount)
     local src = source
     local user = exports["mrp-core"]:getModule("Player"):GetUser(src)
     user:addMoney(amount)
-    exports["mrp-banking"]:UpdateSociety(amount, "casino_dealer", "add")
+    exports["mrp-banking"]:UpdateSociety(amount, "casino_dealer", "remove")
 end
 
 AddEventHandler('playerDropped', function (reason)
