@@ -123,7 +123,7 @@ AddEventHandler("washerevent", function()
                 local finished = exports["mrp-taskbar"]:taskBar(10000,"Washing Stones")
                 if finished == 100 then
                     TriggerEvent("inventory:removeItem","stone", 5)
-                    TriggerEvent('player:receiveItem', math.random(1,8))	                    
+                    TriggerEvent('player:receiveItem',"washedstone", math.random(1,8))	                    
                 end
 
                 
