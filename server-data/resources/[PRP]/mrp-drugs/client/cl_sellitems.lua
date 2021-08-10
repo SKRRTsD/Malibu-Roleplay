@@ -15,8 +15,6 @@ AddEventHandler('sellgamingpc', function()
     end
 end)
 
-print("test")
-
 RegisterNetEvent('sellgamingmouse')
 AddEventHandler('sellgamingmouse', function()
     if exports["mrp-inventory"]:hasEnoughOfItem("gamingmouse",1,false) then
