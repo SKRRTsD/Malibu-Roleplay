@@ -578,6 +578,7 @@ end)
  	local src = source
  	local user = exports["mrp-core"]:getModule("Player"):GetUser(t)
  	local character = user:getCurrentCharacter()
+ 	exports.ghmattimysql:execute('SELECT * FROM user_licenses WHERE `owner`= ? AND `type` = ? AND `status` = ?', {character.id, "Driver", "1"}, function(presearch)
  		if presearch[1] then
  			exports.ghmattimysql:execute('SELECT * FROM user_licenses WHERE `owner`= ? AND `type` = ? AND `status` = ?', {character.id, "Firearm", "0"}, function(data)
  				if data[1] then
@@ -594,6 +595,8 @@ end)
  					TriggerClientEvent('DoLongHudText', src, 'They already have a active firearms license.', 2)
  				end
  			end)
+ 		else
+ 			TriggerClientEvent('DoLongHudText', src, 'They dont have a active driver\'s license.', 2)
  		end
  	end)
  end)
