@@ -764,7 +764,7 @@ RegisterNetEvent('event:control:bennys')
 AddEventHandler('event:control:bennys', function(useID)
     if IsPedInAnyVehicle(PlayerPedId(), false) then
         bennyHeading = 319.73135375977
-        if useID == 1 and not isPlyInBennys and exports["mrp_manager"]:isPed("myJob") == "harmony_autos" then -- Bennys
+        if useID == 1 and not isPlyInBennys then -- Bennys
             bennyHeading = 342.16030883789
             enterLocation(harmonyautos)
         elseif useID == 2 and not isPlyInBennys and exports["mrp_manager"]:isPed("myJob") == "hayes_autos" then
@@ -863,7 +863,7 @@ Citizen.CreateThread(function()
                 local job = exports["mrp_manager"]:isPed("myJob")
  
                 -- Harmony Auto
-                if nearHarmony and job == "harmony_autos" then
+                if nearHarmony then
                     if not isPlyInBennys then
                         Draw3DText(harmonyautos.x, harmonyautos.y, harmonyautos.z + 0.5, "[Press ~p~E~w~ - Enter Bennys]", 255, 255, 255, 255, 4, 0.45, true, true, true, true, 0, 0, 0, 0, 55)
                         if IsControlJustReleased(1, 38) then
