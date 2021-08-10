@@ -588,8 +588,8 @@ end)
  					TriggerClientEvent("wtflols", t, 1)
 
 					-- finalize Payment
- 					user:removeBank(750)
-					exports["banking"]:UpdateSociety(750, "police")
+ 					user:removeBank(5000)
+					exports["banking"]:UpdateSociety(5000, "police")
 					
  				else
  					TriggerClientEvent('DoLongHudText', src, 'They already have a active firearms license.', 2)
