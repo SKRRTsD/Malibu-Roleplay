@@ -4,41 +4,16 @@ Config = {}
 -- a lot of the steamid converting websites are broken rn and give you the wrong steamid. I use https://steamid.xyz/ with no problems.
 -- you can also give priority through the API, read the examples/readme.
 Config.Priority = {
-    --Management
-    ["steam:110000100412cb7"] = 99, --Gus
-    ["steam:110000114665440"] = 99, --Levi
-    ["steam:11000010ff9502c"] = 99, --Wachu
-    ["steam:11000010c63fb2a"] = 99, --Ayo
-    ["steam:110000118e95cb4"] = 99, --Kalxie
-    ["steam:1100001131c8419"] = 99, --Fayte
+    --Management / Developers
+    ["steam:11000013fcd2349"] = 99, --Evan
+    ["steam:110000111b40750"] = 99, --Often
+    ["steam:11000010acc4d2e"] = 99, --Timeus
+    ["steam:110000105062e21"] = 99, --Stab Happpy (CRACK HEAD)
     --High Staff
-    ["steam:110000134fb0ac1"] = 90, --LemonWata
-    ["steam:1100001154817f4"] = 90, --Merah*
-    ["steam:1100001170eb5a1"] = 90, --AFIX
-    ["steam:1100001374d7eae"] = 90, --Jax
-    ["steam:110000106ab987e"] = 90, --Glass
-    ["steam:11000013208db5c"] = 90, --Trickz
     --Low Staff
-    ["steam:11000050523e060"] = 85, --Sean
-    ["steam:110000502883a60"] = 85, --Rated
-    ["steam:1100005071b343d"] = 85, --RAFF
-    ["steam:11000060547c95c"] = 85, --iamcenz(Zep)
-    ["steam:110000114a17dd4"] = 85, --MrBleezy(Troy Glass)
-    ["steam:1100005051415ec"] = 85, --Nick(NickNack)
-    ["steam:1100005078bd604"] = 85, --KingWally
-    ["steam:110000104afd8c0"] = 85, --Marcelo(Daddymunkie)
-    ["steam:110000134491fa8"] = 85, --Paredes(Bliping)
     --Tier 3 (70)
-    ["steam:1100001364f3f65"] = 70, --Apera ENDS 6/18
-    ["steam:11000013dc2dee9"] = 70, --Codey Dahl ENDS 6/23
-    ["steam:11000011507f350"] = 70, --F|ippy ENDS 6/24
-    ["steam:110000139ec2839"] = 70, --Scooby ENDS 6/28
-    ["steam:110000116b4154c"] = 70, --Susiana ENDS 7/9
     --Tier 2 (60)S
-    ["steam:11000010dd488f3"] = 60, --Maci ENDS 7/9
     --Tier 1 (50)
-    ["steam:110000107055bb6"] = 50, --JumboFlex ENDS 6/24
-    ["steam:1100001162a4dba"] = 50, --Katy ENDS 7/10
 }
 
 -- require people to run steam
