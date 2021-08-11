@@ -599,10 +599,10 @@ function setShopBlip()
 	while not HasModelLoaded(modelHash) do
 		Wait(1)
 	end
-	ped = CreatePed(0, modelHash , 22.148561477661, -1103.7393798828, 38.151630401611 - 1,true)
+	ped = CreatePed(0, modelHash , -353.38610839844, -2265.6782226562, 7.6081852912903 - 1,true)
 	FreezeEntityPosition(ped, true)
 	SetEntityInvincible(ped, true)
-	SetEntityHeading(ped, 344.21990966797)
+	SetEntityHeading(ped, 350.91268920898)
 	SetBlockingOfNonTemporaryEvents(ped, true)
 	TaskStartScenarioInPlace(ped, "WORLD_HUMAN_AA_SMOKE", 0, true)
 

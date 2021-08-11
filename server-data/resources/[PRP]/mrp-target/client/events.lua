@@ -4834,12 +4834,12 @@ Citizen.CreateThread(
             })
 
             -- talk to a sus man yo at legion yo
-            AddBoxZone("sk1c2_isaniceperson", vector3(22.08, -1103.78, 38.15), 0.8, 0.8, {
-                name="sk1c2_isaniceperson",
-                heading=340,
+            AddBoxZone("man", vector3(-353.36, -2265.63, 7.61), 0.7, 0.7, {
+                name="man",
+                heading=0,
                 --debugPoly=true,
-                minZ=34.95,
-                maxZ=38.95
+                minZ=4.61,
+                maxZ=8.61
             }, 
             {
                 options = {
