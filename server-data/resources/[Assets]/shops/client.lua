@@ -678,9 +678,9 @@ function setShopBlip()
 	while not HasModelLoaded(modelHash) do
 		Wait(1)
 	end
-	created_ped = CreatePed(1, modelHash , -277.80999755859, 2205.6218261719, 129.43240356445,true)
+	created_ped = CreatePed(1, modelHash , -830.45056152344, -1255.2735595703, 5.6844964027405,true)
 	FreezeEntityPosition(created_ped, true)
-	SetEntityHeading(created_ped,  62.639362335205)
+	SetEntityHeading(created_ped,  175.36006164551)
 	SetEntityInvincible(created_ped, true)
 	SetBlockingOfNonTemporaryEvents(created_ped, true)
 	TaskStartScenarioInPlace(created_ped, "", 0, true)
@@ -1036,7 +1036,7 @@ AddEventHandler('weapon:general', function()
 	else
 		TriggerEvent("server-inventory-open", "5", "Shop");
 		Wait(1000)
-		-- TriggerEvent("DoLongHudText", "You dont have an active firearms license, contact the police.", 2)
+		-- TriggerEvent("DoLongHudText", "You dont have an active firearms license, contact the police.", 2) -- Removed for now [Evan]
 	end
 end)
 

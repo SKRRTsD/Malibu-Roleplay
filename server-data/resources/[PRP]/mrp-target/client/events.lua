@@ -4755,11 +4755,11 @@ Citizen.CreateThread(
             })
 
               -- Booky Man
-              AddBoxZone("booky_guy", vector3(-277.81, 2205.59, 129.87), 0.7, 0.7, {
-                name="booky_guy",
-                heading=335,
-                minZ=127.27,
-                maxZ=131.27
+              AddBoxZone("sell", vector3(-830.47, -1255.38, 6.58), 0.7, 0.7, {
+                name="sell",
+                heading=350,
+                minZ=3.58,
+                maxZ=7.58
             }, {
                 options = {
                     {
